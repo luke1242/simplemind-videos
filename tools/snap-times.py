@@ -8,4 +8,9 @@ for s in p:
     for b in s['beats']:
         ts |= {round(b['a'] + 0.3, 2), round(b['e'] - 0.1, 2), round(b['e'] + 0.12, 2)}
     ts.add(round(s['end'] - 0.1, 2))
+import os
+sf=f"scenes/part{n}.sfx.json"
+if os.path.exists(sf):
+    for e in json.load(open(sf)):
+        if e['kind'] in ('pop','ding'): ts.add(round(e['t']+0.8,2))
 print(','.join(str(t) for t in sorted(ts)))

@@ -25,6 +25,9 @@ for i, (t, e) in enumerate(cuts):
     labels += [f"[a{i}]", f"[s{i}]"]; prev = t
 fc.append(f"[0:a]atrim={prev:.4f}:{dur:.4f},asetpts=PTS-STARTPTS[aend]")
 labels.append("[aend]")
+tail = float(sys.argv[5]) if len(sys.argv) > 5 else 0
+if tail:
+    fc.append(f"anullsrc=r=44100:cl=mono,atrim=0:{tail:.3f}[stail]"); labels.append("[stail]")
 fc.append("".join(labels) + f"concat=n={len(labels)}:v=0:a=1[o]")
 subprocess.run(["ffmpeg","-v","error","-y","-i",src,"-filter_complex",";".join(fc),"-map","[o]","-ar","44100","-ac","1",out],check=True)
 new = float(subprocess.check_output(["ffprobe","-v","error","-show_entries","format=duration","-of","csv=p=0",out]))
