@@ -58,7 +58,7 @@ scenes.forEach((sc, i) => {
 });
 function boardHtml(id, o) {
   const b = o.box;
-  return `<div id="${id}" class="board" data-layout-allow-overlap style="left:${f3(b.x * 1920)}px;top:${f3(b.y * 1080)}px;width:${f3(b.w * 1920)}px;height:${f3(b.h * 1080)}px">${o.text.map((l) => `<div class="bl${l === "SPOTLIGHT" ? " org" : ""}">${l}</div>`).join("")}</div>`;
+  return `<div id="${id}" class="board" data-layout-allow-overlap style="left:${f3(b.x * 1920)}px;top:${f3(b.y * 1080)}px;width:${f3(b.w * 1920)}px;height:${f3(b.h * 1080)}px">${o.text.map((l) => `<div class="bl${l === "SPOTLIGHT" ? " org" : ""}" data-layout-allow-overlap>${l}</div>`).join("")}</div>`;
 }
 for (const n of used) fs.copyFileSync(`assets/pictures/${n}.jpg`, `${out}/assets/pictures/${n}.jpg`);
 for (const sc of scenes) for (const b of sc.resolvedBeats) if (b.type === "crop") fs.copyFileSync(`assets/pictures/${sc.id}-crop${b.bi}.jpg`, `${out}/assets/pictures/${sc.id}-crop${b.bi}.jpg`);
