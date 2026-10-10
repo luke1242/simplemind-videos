@@ -119,6 +119,25 @@ Do this once per session, quietly:
 - The narrator is the **only** character with his particular look. Other characters must look clearly different (A6).
 - Never change his shapes, colors or proportions between pictures. Only the **pose** (A7), the **expression** (A7), the position, the scale, and a horizontal flip change.
 
+**The narrator is NEVER animated.** He's a still picture in every frame. Nothing about him moves: no limbs, no blinking, no breathing, no bobbing. He only changes by **switching to a different still picture** (a new pose and/or expression) with a quick 0.2s crossfade.
+
+**Match his pose to the tone of the voice.** The voiceover has a mood in every line. Pick the narrator's pose and expression to fit it, using the scene list as the starting point. Inside a long scene, swap him to a new still pose when the tone clearly shifts, at most once every ~4 seconds and at most 3 poses per scene. Use this guide:
+
+| Voice tone | Narrator pose | Expression |
+|---|---|---|
+| calm, explaining, storytelling | `present` or `explain` | `neutral` |
+| curious, asking a question | `think` | `thinking` |
+| serious, firm, emphatic | `stand` (or `explain` with a raised finger) | `neutral` |
+| anxious, nervous, embarrassed | `stand` gripping a strap, or `facepalm` | `worried` / `cringe` |
+| surprised, a reveal | `stand` | `surprised` |
+| relieved, warm, reassuring | `arms-relaxed` | `relieved` |
+| upbeat, confident, a list step | `explain`, `thumbs-up` or `present` | `happy` |
+| amused, playful, dry joke | `shrug` | `happy` |
+| reflective, quiet, sad | `sit-curb`, `sit-bench` or `stand` | `neutral` / `worried` |
+| ending, call to action | `point-left` or `wave` | `happy` / `wink` |
+
+Each of these is just another **pre-built still** from the pose set (A7). Never draw an in-between frame.
+
 ## A6. Other characters
 
 - If Luke added other images in `reference/characters/`, build each as its own master SVG (named after the file, e.g. `friend.png` → `friend.svg`) and use them for the matching roles (researcher, friend, waiter, and so on).
@@ -182,15 +201,27 @@ Allowed extras, which are not character motion:
 
 ## A11. Timing, audio and the final join
 
+**Longer pauses (do this first, every part).** The raw voiceover runs fast, about 7.5 minutes total, and Luke wants 8.5 to 9+ minutes. Fix it by **lengthening the silences only**. Never slow down or time-stretch the speech itself.
+
+1. Detect every pause: `ffmpeg -i audio/partN.mp3 -af silencedetect=noise=-35dB:d=0.25 -f null -`.
+2. Cut the audio at the middle of each pause and insert extra silence (generated with `anullsrc`, matching the sample rate and channels):
+   - **Short pause** (under 0.6s, between sentences): add **+0.25s**
+   - **Beat pause** (0.6s or longer, the "..." moments): add **+0.9s**
+   - **Scene change** (the pause closest to each scene boundary, from the timing step): add **+0.4s** on top of the above
+   - **Big reveals** ("Only about a quarter," "Missed chances," "Hardly anyone's watching"): make sure at least **2.0s** of silence follows
+3. Join the pieces in order into `audio/padded/partN.wav` (keep the originals untouched). Use **the padded file** for timing, rendering and the final join.
+4. Print the old and new length of each part. The expected total is about **8.5 to 9.5 minutes** for all 4 parts. If the total comes out under 8:30, raise the short-pause padding to +0.35s and redo it.
+5. Listen-check 20 seconds: it should sound like a calm, confident speaker, not robotic gaps. If the pauses feel unnatural, lower the short-pause padding.
+
 **Timing (per part):**
-1. Get the duration with `ffprobe audio/partN.mp3`.
-2. Find the pauses: `ffmpeg -i audio/partN.mp3 -af silencedetect=noise=-35dB:d=0.35 -f null -`.
+1. Get the duration with `ffprobe audio/padded/partN.wav`.
+2. Find the pauses: `ffmpeg -i audio/padded/partN.wav -af silencedetect=noise=-35dB:d=0.35 -f null -`.
 3. Estimate each scene's length from its narration word count, then snap each boundary to the nearest silence within ±1.5s.
 4. For in-scene cues ("swap at the word X"), estimate the position by word count inside the scene.
 5. Save to `scenes/partN.timing.json` and print a short scene/start/end table.
 6. If Luke corrects a time, edit only that boundary.
 
-**Build loop (per part):** timing → `scenes/partN.json` → build any missing pictures (skip REUSE scenes) → `node tools/build-part.mjs N` → lint and check → snapshot 4 frames → render `renders/partN.mp4` (**voice only**) → report → stop.
+**Build loop (per part):** pad pauses → timing → `scenes/partN.json` → build any missing pictures (skip REUSE scenes) → `node tools/build-part.mjs N` → lint and check → snapshot 4 frames → render `renders/partN.mp4` (**voice only**) → report → stop.
 
 **Final join** (automatically right after Part 4, or when Luke asks):
 1. Concat the parts into `renders/full-voice.mp4`, with 1.0s of silence and a held last frame between parts.
@@ -204,10 +235,10 @@ Allowed extras, which are not character motion:
 - [ ] The narrator matches `reference/characters/narrator.png` and is identical in every picture.
 - [ ] Pictures match the character-sheet style: clean uniform outlines, oval eyes, stick limbs, flat colors, lots of white space.
 - [ ] Only palette colors are used.
-- [ ] Only camera moves, swaps and overlay pop-ins; no character motion.
+- [ ] Only camera moves, swaps and overlay pop-ins; no character motion. The narrator is a still picture whose pose fits the tone of each line.
 - [ ] On-screen text is spelled exactly as in Part B, with ≤ 5 words.
 - [ ] B-roll is graded, muted and ≤ 15% of the part; missing clips fall back to the picture.
-- [ ] Video length equals audio length, and the audio is present.
+- [ ] The padded audio is used, video length equals audio length, and the audio is present.
 - [ ] (Final) The music is soft and the voice is always clearly on top.
 
 ---
@@ -216,8 +247,9 @@ Allowed extras, which are not character motion:
 
 **Title:** One of the Most Useful Lessons I Learned
 **Topic:** the spotlight effect: people notice and judge us far less than we think
-**Length:** about 9 to 10 minutes across 4 parts
-**Audio:** `audio/part1.mp3` … `audio/part4.mp3`
+**Length:** raw voice ≈ 7.5 min (part 1 1:27, part 2 2:02, part 3 2:12, part 4 1:52). After pause padding (A11), the target is about **8.5 to 9.5 minutes**.
+**Audio:** `audio/part1.mp3` … `audio/part4.mp3`, padded into `audio/padded/`
+**Music:** `music/track.mp3` (a dark ambient track, about 12.5 min, so no looping is needed). Keep it very soft.
 
 **Scene format** (each becomes one entry in `scenes/partN.json`): `id`, `picture` (what to draw: setting, characters with pose + expression, props), `camera`, `swap` (optional picture B + the word that triggers it), `overlay` (exact text), `broll` (optional: which part of the scene), `transition`, `narration` (used for timing only and never shown on screen).
 
