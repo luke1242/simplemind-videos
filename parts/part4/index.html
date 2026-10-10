@@ -37,7 +37,6 @@ html,body{margin:0;background:#FAF7F0}
 <div id="root" data-composition-id="part4" data-start="0" data-width="1920" data-height="1080" data-duration="138.439">
 <div id="s41" class="clip" data-start="0" data-duration="3.72" style="z-index:10"><div id="s41-fade" class="fill"><div id="s41-cam" class="fill"><div id="s41-picA" class="fill"><div class="fill diag cardc"><div class="cardtxt"><div class="ln">HOW I USE</div><div class="ln"><span class="badge yellow">THIS</span></div></div></div></div></div></div></div>
 <div id="s42" class="clip" data-start="3.72" data-duration="15.42" style="z-index:20"><div id="s42-fade" class="fill"><div id="s42-cam" class="fill"><img src="assets/pictures/S42.jpg" class="pic" alt=""><div id="s42-ov0" class="stepbox" data-layout-allow-overlap style="left:1017.6px;top:756px;width:825.6px;height:291.6px"><div class="pill sm">STEP 1</div><div class="stxt">WOULD I REMEMBER THIS?</div></div></div></div></div>
-<div id="s42-b0" class="clip" data-start="8.01" data-duration="1.96" style="z-index:21"><div id="s42-b0-cam" class="fill"><img src="assets/pictures/S42-crop0.jpg" class="pic" alt=""><div class="mapov" style="transform:translate(-240px,0px) scale(1.25)"><div id="s42-cov0" class="stepbox" data-layout-allow-overlap style="left:1017.6px;top:756px;width:825.6px;height:291.6px"><div class="pill sm">STEP 1</div><div class="stxt">WOULD I REMEMBER THIS?</div></div></div></div></div>
 <div id="s43" class="clip" data-start="18.74" data-duration="11.98" style="z-index:30"><div id="s43-fade" class="fill"><div id="s43-cam" class="fill"><img src="assets/pictures/S43.jpg" class="pic" alt=""></div></div></div>
 <div id="s43-b0" class="clip card" data-start="25.3" data-duration="1.4" style="z-index:32"><div id="s43-b0-in" class="cardtxt"><div class="ln"><span class="badge yellow">FIVE</span></div><div class="ln">SECONDS</div></div></div>
 <div id="s43-b1" class="clip" data-start="26.77" data-duration="3.95" style="z-index:31"><div id="s43-b1-cam" class="fill"><img src="assets/pictures/S43-crop1.jpg" class="pic" alt=""></div></div>
@@ -60,8 +59,6 @@ html,body{margin:0;background:#FAF7F0}
 <script>
 const tl = gsap.timeline({ paused: true });
 tl.fromTo("#s42-ov0",{opacity:0},{opacity:1,duration:0.5,ease:"power1.out"},5.53);
-tl.fromTo("#s42-cov0",{opacity:0},{opacity:1,duration:0.5,ease:"power1.out"},5.53);
-tl.fromTo("#s42-b0-cam",{scale:1},{scale:1.04,duration:1.96,ease:"sine.inOut"},8.01);
 tl.fromTo("#s43-fade",{opacity:0},{opacity:1,duration:0.4,ease:"none"},18.74);
 tl.fromTo("#s43-cam",{scale:1.06,x:0},{scale:1,x:0,duration:11.98,ease:"sine.inOut"},18.74);
 tl.fromTo("#s43-b0-in",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},25.3);
