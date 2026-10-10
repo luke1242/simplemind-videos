@@ -28,14 +28,7 @@ Luke now makes the scene pictures himself with an AI image tool (Nano Banana). *
   - **S41:** a text card "HOW I USE THIS"
   - **S44:** a "STEP 2: CUT IT IN HALF" card with 50% changing to 25%
   - every overlay in Part B, and **2 to 3 extra text cards or punch-in crops per scene** for the 3 to 4s pacing (A8b)
-- **Pictures not made yet (use these stand-ins, and list them in your report):**
-  - **S08b:** keep S08 with no swap
-  - **S20:** a text card, "YOU'RE THE MAIN CHARACTER"
-  - **S34:** S32 with two thought-bubble pop-ins (a storm cloud and a smiley)
-  - **S42:** S05 (the thinking pose) plus the STEP 1 overlay
-  - **S50:** a text card, "THAT'S FREEDOM."
-  - **S51:** S43, plus a text card "HARDLY ANYONE'S WATCHING."
-  - **S52:** a cream end-screen card with the narrator cropped from S19 on the right and the left 55% empty
+- **Pictures not made yet:** only **S42** is missing, so use S05 (the thinking pose) plus the STEP 1 overlay. Note that S51 is the narrator with neutral eyes and S51b with happy ^ ^ eyes (there's no wink picture).
 - **Any other missing picture:** use a text card with that scene's key phrase, keep going, and list the missing files in your report.
 - **Everything else still applies:** pause padding, timing, camera moves (slow zooms and pans on the pictures), SFX, the soft music mix, and one part per session.
 
