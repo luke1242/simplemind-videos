@@ -13,6 +13,39 @@ The owner is Luke. He is not a developer, so keep messages to him short and plai
 
 ---
 
+# ⚡ ROUND 2 FIXES (from Luke's review of the full preview; these override everything below)
+
+The full preview was a big improvement: the crops, sharpness, charts and loudness are all good, and so is the length (9:11). Fix these next:
+
+1. **No shot longer than 4 seconds.** The preview averaged 7.8s per shot, and 19 shots were held for 10s or more (e.g. 0:00–0:15, 0:36–0:48, 1:06–1:21, 4:13–5:02, 8:48–9:11). The new hard limits:
+   - **Max 4.0s per shot**, with a target average of about **3s**.
+   - The only exceptions: the S05 title card (2.5s) and the final end screen (S52's last 5s).
+   - Every scene gets split into beats that change on **sentence or phrase boundaries** from the word timestamps, never mid-word.
+2. **Icon cutaways (the main new tool).**
+   - **The icon set is final: 26 icons in `icons/`** (I05–I27, I29, I30, I31), plain off-white background, 1376×768. Scale them to 1920×1080 with lanczos. The numbers have gaps on purpose. Use only files that exist.
+   - Use them as **1.5 to 3s cutaways** timed to the exact word they illustrate. Examples: "posting" → I05, "eyes" → I06, "spotlight" → I07, "T-shirt" → I08, "learned" → I09, "three seconds" → I11, "tripped" → I12, "weeks" → I13, "that night" → I14, "replay" → I15, "Cornell" → I16, "one simple question" → I17, "barely notice" → I18, "main character" → I19, "workout" → I20, "speech" → I21, "transparency" → I22, "mess up" → I23, "kindness" → I24, "magnifying glass" → I25, "liking gap" → I26, "awkward / nice" → I27, "wasn't even watching" → I29, "missed chances" → I30, "cut it in half" → I31.
+   - Show each icon centered on cream with a quick 0.2s scale-pop (0.92 → 1.0) and a soft *pop* SFX.
+   - Use any icon that fits a phrase. The same icon can be used at most twice.
+   - **If `icons/` is empty or missing, skip icons** and use text cards and crops instead.
+3. **Beat recipe.** A long scene now looks like this: main picture (≤4s) → icon cutaway on the key word → punch-in crop of the main picture (≤1.4×) → text card *or* picture B → back to the main picture. Never two text cards in a row, and never two icons in a row.
+4. **Readable labels:** the STEP pills and overlay labels were tiny (e.g. 7:30, 7:48, 8:06). Make overlay text at least **56px tall** in a solid pill with a 6px outline, placed top-center, not in a corner.
+5. **Crossfades:** keep scene crossfades to **0.25s**, and use hard cuts for every beat inside a scene, so there are no double-exposure frames (e.g. 0:30, 0:54).
+6. **Audio sync:**
+   - Every cut must land within **±0.1s of a word start** (from `faster-whisper` word timestamps).
+   - Text cards and icons appear **exactly** on their word.
+   - Before rendering, print a table of cut, word and time for Luke, and spot-check 5 random cuts.
+7. **Build the whole video in ONE go, with no check-ins.** Do Parts 1 → 2 → 3 → 4 back to back in this session, then the final join with music (A11), without stopping to report or ask Luke anything between parts. Still run your own checks (lint, check, contact sheet, cut table) and fix problems yourself. When it's done, send Luke **`renders/full.mp4`** as a file in the chat, and also commit and push it (GitHub refuses files over 100 MB, so if it's bigger, push a copy re-encoded under 95 MB as `renders/full-small.mp4` instead), plus a 3-line report. If the session gets close to its limits, commit and push after each part so a new session can pick up where you left off.
+8. **Narrator pop-ups (the "host" moments).**
+   - **The poses are already prepped:** `assets/narrator/N01.png … N12.png` are transparent cut-outs (about 680px tall, so show him at ≤ 65% of 1080 without upscaling much). Use them as-is. Don't redo the background removal. The original sheet is `narrator/pose-sheet.jpg` (reference only).
+   - **Pose list:** N01 explain (open hand), N02 finger up, N03 point right (hand on hip), N04 point right (both hands), N05 shrug, N06 thinking (hand on chin), N07 thumbs up, N08 two fingers (step 2/counting), N09 surprised (hands up), N10 facepalm, N11 arms crossed, N12 wave. All of them face or point to the **right**, so put him **lower-left** with the card or icon on the right. If he must stand on the right, flip him horizontally.
+   - **When to use him:** every **25 to 40 seconds**, on lines where he's explaining, making a point, asking a question, listing a step, or reacting. That's about 3 to 5 pop-ups per part.
+   - **Match the pose to the tone:** N01 explain, N02 a key point, N03/N04 pointing at a card or icon on the right, N05 a joke or shrug, N06 a question, N07 a step or good news, N08 counting/steps, N09 a surprise or reveal, N10 embarrassment, N11 a confident statement, N12 the intro/outro.
+   - **Layout:** he's about **55 to 65% of the frame height**, standing in the lower-left or lower-right corner. Fill the rest of the frame with a text card, an icon or a chart on cream, placed on the side he's facing or pointing to.
+   - **Motion:** he's never animated. Allowed: slide in from the edge (0.25s, ease-out) and out (0.2s), a soft *swoosh* SFX, and swapping to another N pose with a hard cut when the tone changes (at most 2 poses per pop-up).
+   - Each pop-up lasts **2 to 4s**, which counts as one shot under the 4s rule.
+
+---
+
 # 🔧 FIXES FROM THE PART 1 REVIEW (these override everything else; follow them exactly)
 
 Luke reviewed the first Part 1 render. These problems happened, so here's how to avoid them:
@@ -58,7 +91,7 @@ Luke now makes the scene pictures himself with an AI image tool (Nano Banana). *
   - every overlay in Part B, and **2 to 3 extra text cards or punch-in crops per scene** for the 3 to 4s pacing (A8b)
 - **All pictures exist now**, including S42. S51 is the narrator smiling (^ ^), and S51b is him **winking**.
 - **Any other missing picture:** use a text card with that scene's key phrase, keep going, and list the missing files in your report.
-- **Everything else still applies:** pause padding, timing, camera moves (slow zooms and pans on the pictures), SFX, the soft music mix, and one part per session.
+- **Everything else still applies:** pause padding, timing, camera moves (slow zooms and pans on the pictures), SFX, the soft music mix, and the build order (all parts in one go, see ROUND 2 item 7).
 
 ---
 
@@ -70,7 +103,7 @@ Luke now makes the scene pictures himself with an AI image tool (Nano Banana). *
 2. **Characters are built once from Luke's reference and reused.** Every picture uses the same master character files. A character's pose is chosen from a fixed pose set. Never draw a "new version" of a character.
 3. **Match the style references exactly** (A4). If this guide and the reference images disagree, the images win.
 4. **Data-driven.** Scenes live in `scenes/partN.json`, and one generator script builds any part. Don't hand-write HTML per scene.
-5. **One part per session.** Build it, render it, report back in 2 to 3 lines, then stop. After Part 4, do the final join and music automatically (A11).
+5. **All parts in one go** (see ROUND 2 item 7): build and render each part, commit and push, move straight on to the next, then do the final join and music (A11) and deliver `renders/full.mp4`. No check-ins between parts.
 6. **Check before rendering:** run `npx hyperframes lint` and `npx hyperframes check`, and snapshot 4 frames. Don't re-render a whole part to fix one scene.
 7. **Save usage.** Reuse pictures wherever the scene list says REUSE. Don't load skills or docs you don't need, and don't paste big files into chat.
 
@@ -293,7 +326,7 @@ Rules: the narrator is still never animated. Use hard cuts or quick slide-ins (0
 5. Save to `scenes/partN.timing.json` and print a short scene/start/end table.
 6. If Luke corrects a time, edit only that boundary.
 
-**Build loop (per part):** pad pauses → timing → `scenes/partN.json` → build any missing pictures (skip REUSE scenes) → `node tools/build-part.mjs N` → lint and check → snapshot 4 frames → render `renders/partN.mp4` (**voice only**) → report → stop.
+**Build loop (per part):** pad pauses → timing → `scenes/partN.json` → build any missing pictures (skip REUSE scenes) → `node tools/build-part.mjs N` → lint and check → snapshot 4 frames → render `renders/partN.mp4` (**voice only**) → commit and push → next part (no report until the full video is done).
 
 **Final join** (automatically right after Part 4, or when Luke asks):
 1. Concat the parts into `renders/full-voice.mp4`, with 1.0s of silence and a held last frame between parts.
