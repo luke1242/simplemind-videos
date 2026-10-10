@@ -35,7 +35,7 @@ reference/
   style/*.png|jpg              ← Luke: style examples to match
 audio/part1.mp3 … part4.mp3    ← Luke: ElevenLabs voiceover
 music/track.mp3                ← Luke: background music (.mp3/.wav/.m4a)
-broll/S01.mp4, S06.mp4 …       ← B-roll clips by scene ID (picked by you via Pexels, or added by Luke)
+broll/S01.mp4, S06.mp4 …       ← B-roll clips by scene ID (picked by you via Pixabay, or added by Luke)
 assets/
   characters/*.svg             ← master characters + poses (built once)
   pictures/S01.svg …           ← one illustration per scene (built once each)
@@ -186,12 +186,14 @@ Allowed extras, which are not character motion:
 
 **How to get clips, in this order:**
 1. **A clip Luke already added** in `broll/` named by scene ID (e.g. `broll/S06.mp4`) always wins.
-2. **The Pexels API**, if the environment variable `PEXELS_API_KEY` is set:
-   - Search `https://api.pexels.com/videos/search?query=<terms>&orientation=landscape&size=medium&per_page=10`, with header `Authorization: $PEXELS_API_KEY`.
-   - Pick the clip that best fits the line being spoken: calm, no on-screen text, no big brand logos, no one staring into the camera, and a warm or neutral look.
-   - Prefer 1920×1080, or 1280×720 if that's all there is. Download it from the `video_files` link into `broll/S##.mp4`. Keep downloads small (at most about 40 MB each), and trim to 8s with `ffmpeg` right away.
-   - Log each clip in `broll/CREDITS.txt` (scene, Pexels URL, creator name).
-3. **If the network blocks Pexels or there's no key:** skip B-roll and use the scene's picture. Don't stop, and don't try workarounds. Mention it in one line in your report.
+2. **The Pixabay API**, if the environment variable `PIXABAY_API_KEY` is set (this is the main source):
+   - Search `https://pixabay.com/api/videos/?key=$PIXABAY_API_KEY&q=<url-encoded terms>&video_type=film&safesearch=true&per_page=20`.
+   - Pick the clip that best fits the line being spoken: calm, no on-screen text, no big brand logos, no one staring into the camera, and a warm or neutral look. Skip clips shorter than 5s.
+   - Use `videos.large.url` (1920×1080) if it exists, otherwise `videos.medium.url` (1280×720). Download it into `broll/S##.mp4`. Keep downloads small (at most about 40 MB each), and trim to 8s with `ffmpeg` right away.
+   - Log each clip in `broll/CREDITS.txt` (scene, the hit's `pageURL`, and the `user` name).
+3. **The Pexels API**, only if `PEXELS_API_KEY` is set (a backup; new Pexels keys are currently paused):
+   - Search `https://api.pexels.com/videos/search?query=<terms>&orientation=landscape&size=medium&per_page=10`, with header `Authorization: $PEXELS_API_KEY`, and download from a `video_files` link. Apply the same picking, size and credit rules as above.
+4. **If the network blocks the source or there's no key:** skip B-roll and use the scene's picture. Don't stop, and don't try workarounds. Mention it in one line in your report.
 
 **Using a clip:**
 - Show it for the part of the scene marked `broll`, **muted** (the voiceover keeps playing), using its best 4 to 6 seconds. Fit it 16:9 (center-crop if needed) and apply a slow `zoom-in`.

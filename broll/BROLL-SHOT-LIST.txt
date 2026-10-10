@@ -1,6 +1,6 @@
 B-ROLL SHOT LIST  (optional)
 
-Claude Code picks and downloads B-roll by itself if you add a free Pexels API key (see CLAUDE.md, section A10).
+Claude Code picks and downloads B-roll by itself if you add a free Pixabay API key (see CLAUDE.md, section A10).
 You only need this list if you want to choose clips yourself - any clip you add here overrides its pick.
 Where to get free clips: pexels.com/videos  or  pixabay.com/videos  (free to use on YouTube).
 Download in HD (1920x1080). Avoid clips with big brand logos or faces staring at the camera.
