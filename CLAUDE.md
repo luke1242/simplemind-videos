@@ -60,15 +60,21 @@ Do this once per session, quietly:
 
 ## A4. Visual style
 
-**First, open and look at every image in `reference/style/` and `reference/characters/`.** They are the target. The main style reference is the **character-sheet image** (a stick figure with curly brown hair and a yellow shirt, shown in front view, turnaround, expressions and explainer poses). **Copy that drawing style.**
+**First, open and look at every image in `reference/style/` and `reference/characters/`.** They are the target. Use the character-sheet image only for how side characters are built (head, stick limbs, poses). For the overall look, follow the TARGET LOOK below.
+
+**TARGET LOOK: the stickman documentary-explainer style** (like popular "hunter-gatherer history" stickman channels). If `reference/style/` contains frames named `target-*.png|jpg`, those are **the** look and override everything else here.
 
 **The style in words:**
-- **Clean, modern explainer-doodle look.** Crisp, smooth, uniform black outlines (about 4 to 5px at 1080p) with round caps and joins. Lines are clean, **not sketchy**, with no wobble filter.
-- **Characters:** a big round head with a simple face; **thin straight black stick limbs**; small rounded black hands and feet; one simple flat-colored shirt/tunic shape for the torso; a **soft light-grey ellipse shadow** under the feet.
-- **Faces:** two black vertical-oval eyes (each with a tiny white highlight dot); simple short eyebrows only when needed for the expression; one simple mouth line. Happy and surprised mouths are filled black with a small red-orange tongue.
-- **Colors:** flat fills only, no gradients and no textures. Bright but soft: mustard yellow, sky blue, sage green, terracotta, pink, with lots of **white / off-white space**.
-- **Settings:** minimal. Off-white background, a ground line, and 1 to 3 simple props or flat shapes that say where we are. Never busy.
-- **Text:** Montserrat ExtraBold or Bebas Neue in dark ink, with **one** accent color (dark green `#2F6B2F` or orange `#F2A65A`). Rounded green label pills are allowed, like the "Stage 1" tags in the reference. Max 5 words on screen.
+- **2D comic/vector illustration** with **clean, uniform, thick black outlines** (about 5 to 6px at 1080p) around every character, object and foreground shape. Round caps and joins, not sketchy.
+- **Objects and backgrounds get depth:** light **hatching** (a few thin parallel ink strokes) and simple **two-tone cel-shading** (one darker flat shade on the shadow side) on rocks, furniture, bedding, buildings, ground and hills. Characters stay flat.
+- **Fully illustrated environments** for story moments (a bedroom, a gym, a school hallway, a stage, a park, a city street at dusk): a real sense of place, with a horizon, a few props, a sky. Use **plain cream `#FAF7F0` backgrounds** only for text cards, diagrams and comparisons.
+- **Characters (side cast):** a round white head, **pure black stick limbs**, a simple torso silhouette in one flat color (shirt, hoodie, suit), and a small ground shadow. **Faces:** dot eyes, **curved-line eyebrows that carry most of the emotion**, and a simple line mouth (open for surprise or joy).
+- **Mood-based color:**
+  - story, outdoor and hopeful scenes are **warm and sun-drenched** (ochre, sandy yellow, terracotta, muted olive, warm sky blue, sunset orange)
+  - school, office and stressful scenes are **cooler and desaturated** (cool greys, slate blue, stark white)
+  - night scenes are **deep indigo/navy with warm glowing accents** (a lamp, a phone screen, a spotlight)
+- **Diagrams** use the same outline style: maps, pie charts, bar comparisons, split-screens, icons with red X's, magnifying-glass close-ups.
+- **Text:** a rounded, friendly sans (**Nunito ExtraBold**), centered short phrases on cream, and key words, numbers and dates in **yellow or red badges with black outlines**. Max 5 words.
 
 **Canvas:** 1920×1080, 30 fps, MP4 (H.264 + AAC).
 
@@ -250,7 +256,7 @@ Rules: the narrator is still never animated. Use hard cuts or quick slide-ins (0
 ## A12. Self-check before every render
 
 - [ ] The narrator matches `reference/characters/narrator.png` and is identical in every picture.
-- [ ] Pictures match the character-sheet style: clean uniform outlines, oval eyes, stick limbs, flat colors, lots of white space.
+- [ ] Pictures match the documentary-explainer target: thick clean outlines, hatching or cel-shading on objects, mood-based color, illustrated environments, and cream backgrounds only for cards and diagrams.
 - [ ] Only palette colors are used.
 - [ ] Only camera moves, swaps and overlay pop-ins; no character motion. The narrator is a still picture whose pose fits the tone of each line.
 - [ ] On-screen text is spelled exactly as in Part B, with ≤ 5 words.
