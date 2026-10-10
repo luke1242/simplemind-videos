@@ -34,7 +34,7 @@ The full preview was a big improvement: the crops, sharpness, charts and loudnes
    - Every cut must land within **±0.1s of a word start** (from `faster-whisper` word timestamps).
    - Text cards and icons appear **exactly** on their word.
    - Before rendering, print a table of cut, word and time for Luke, and spot-check 5 random cuts.
-7. **Build the whole video again,** one part per session, with these rules.
+7. **Build the whole video in ONE go, with no check-ins.** Do Parts 1 → 2 → 3 → 4 back to back in this session, then the final join with music (A11), without stopping to report or ask Luke anything between parts. Still run your own checks (lint, check, contact sheet, cut table) and fix problems yourself. When it's done, send Luke **`renders/full.mp4`** (also commit and push it), plus a 3-line report. If the session gets close to its limits, commit and push after each part so a new session can pick up where you left off.
 8. **Narrator pop-ups (the "host" moments).**
    - **The poses are already prepped:** `assets/narrator/N01.png … N12.png` are transparent cut-outs (about 680px tall, so show him at ≤ 65% of 1080 without upscaling much). Use them as-is. Don't redo the background removal. The original sheet is `narrator/pose-sheet.jpg` (reference only).
    - **Pose list:** N01 explain (open hand), N02 finger up, N03 point right (hand on hip), N04 point right (both hands), N05 shrug, N06 thinking (hand on chin), N07 thumbs up, N08 two fingers (step 2/counting), N09 surprised (hands up), N10 facepalm, N11 arms crossed, N12 wave. All of them face or point to the **right**, so put him **lower-left** with the card or icon on the right. If he must stand on the right, flip him horizontally.
@@ -91,7 +91,7 @@ Luke now makes the scene pictures himself with an AI image tool (Nano Banana). *
   - every overlay in Part B, and **2 to 3 extra text cards or punch-in crops per scene** for the 3 to 4s pacing (A8b)
 - **All pictures exist now**, including S42. S51 is the narrator smiling (^ ^), and S51b is him **winking**.
 - **Any other missing picture:** use a text card with that scene's key phrase, keep going, and list the missing files in your report.
-- **Everything else still applies:** pause padding, timing, camera moves (slow zooms and pans on the pictures), SFX, the soft music mix, and one part per session.
+- **Everything else still applies:** pause padding, timing, camera moves (slow zooms and pans on the pictures), SFX, the soft music mix, and the build order (all parts in one go, see ROUND 2 item 7).
 
 ---
 
@@ -103,7 +103,7 @@ Luke now makes the scene pictures himself with an AI image tool (Nano Banana). *
 2. **Characters are built once from Luke's reference and reused.** Every picture uses the same master character files. A character's pose is chosen from a fixed pose set. Never draw a "new version" of a character.
 3. **Match the style references exactly** (A4). If this guide and the reference images disagree, the images win.
 4. **Data-driven.** Scenes live in `scenes/partN.json`, and one generator script builds any part. Don't hand-write HTML per scene.
-5. **One part per session.** Build it, render it, report back in 2 to 3 lines, then stop. After Part 4, do the final join and music automatically (A11).
+5. **All parts in one go** (see ROUND 2 item 7): build and render each part, commit and push, move straight on to the next, then do the final join and music (A11) and deliver `renders/full.mp4`. No check-ins between parts.
 6. **Check before rendering:** run `npx hyperframes lint` and `npx hyperframes check`, and snapshot 4 frames. Don't re-render a whole part to fix one scene.
 7. **Save usage.** Reuse pictures wherever the scene list says REUSE. Don't load skills or docs you don't need, and don't paste big files into chat.
 
