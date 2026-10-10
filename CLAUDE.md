@@ -17,7 +17,7 @@ The owner is Luke. He is not a developer, so keep messages to him short and plai
 
 Luke now makes the scene pictures himself with an AI image tool (Nano Banana). **Your job is to assemble the video, not to draw scenes or characters.**
 
-- **Pictures:** `pictures/S##.png` (and `S##b.png` for the "after" picture of a swap), 1920×1080. Prompts are in `prompts/nano-banana-prompts.md`. Use them as-is: don't redraw, restyle or "fix" them. Only crop or scale them to fit 16:9.
+- **Pictures:** `pictures/S##.jpg` (or `.png`), plus `S##b` for the "after" picture of a swap. They're 1376×768. Scale them up to fill 1920×1080 (same aspect ratio) with high-quality (lanczos) scaling. Prompts are in `prompts/nano-banana-prompts.md`. Use them as-is: don't redraw, restyle or "fix" them. Only crop or scale them to fit 16:9.
 - **Skip entirely:** building character SVGs, poses, the character sheet (A5 to A7 and A9), and drawing scene pictures. Keep the narrator rules only as a reference for what scenes mean.
 - **No B-roll.** Ignore A10 and every `broll:` line. Never download footage.
 - **Picture map:** REUSE scenes use the referenced picture (S09 → S08 and S08b, S16 → S15 card, S19 → S17, S24/S45 → S21, S29 → S28 card, S37 → S35 and S35b, S46 → S30, S43 uses S43.png). Swaps use `S##.png` then `S##b.png` at the trigger word.
@@ -28,7 +28,15 @@ Luke now makes the scene pictures himself with an AI image tool (Nano Banana). *
   - **S41:** a text card "HOW I USE THIS"
   - **S44:** a "STEP 2: CUT IT IN HALF" card with 50% changing to 25%
   - every overlay in Part B, and **2 to 3 extra text cards or punch-in crops per scene** for the 3 to 4s pacing (A8b)
-- **Missing picture:** use a text card with that scene's key phrase, keep going, and list the missing files in your report.
+- **Pictures not made yet (use these stand-ins, and list them in your report):**
+  - **S08b:** keep S08 with no swap
+  - **S20:** a text card, "YOU'RE THE MAIN CHARACTER"
+  - **S34:** S32 with two thought-bubble pop-ins (a storm cloud and a smiley)
+  - **S42:** S05 (the thinking pose) plus the STEP 1 overlay
+  - **S50:** a text card, "THAT'S FREEDOM."
+  - **S51:** S43, plus a text card "HARDLY ANYONE'S WATCHING."
+  - **S52:** a cream end-screen card with the narrator cropped from S19 on the right and the left 55% empty
+- **Any other missing picture:** use a text card with that scene's key phrase, keep going, and list the missing files in your report.
 - **Everything else still applies:** pause padding, timing, camera moves (slow zooms and pans on the pictures), SFX, the soft music mix, and one part per session.
 
 ---
