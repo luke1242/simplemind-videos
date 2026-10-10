@@ -46,7 +46,7 @@ function boardHtml(id, o) {
   if (kind === "bubble") return `<div id="${id}" class="bubble" data-layout-allow-overlap style="${pos}"><svg viewBox="0 0 100 100" width="100%" height="100%">${ICONS[o.icon]}</svg></div>`;
   if (kind === "badge") return `<div id="${id}" class="tagbox" data-layout-allow-overlap style="${pos};font-size:84px"><span class="badge ${o.badge}">${o.text}</span></div>`;
   if (kind !== "board") return `<div id="${id}" class="tagbox ${kind}" data-layout-allow-overlap style="${pos}">${o.text.join(" ")}</div>`;
-  return `<div id="${id}" class="board" data-layout-allow-overlap style="${pos}${o.color ? `;color:${o.color}` : ""}">${o.text.map((l) => `<div class="bl${l === "SPOTLIGHT" ? " org" : ""}" data-layout-allow-overlap>${l}</div>`).join("")}</div>`;
+  return `<div id="${id}" class="board" data-layout-allow-overlap style="${pos}${o.color ? `;color:${o.color}` : ""}${o.bg ? `;background:${o.bg};border-radius:36px` : ""}">${o.text.map((l) => `<div class="bl${l === "SPOTLIGHT" ? " org" : ""}" data-layout-allow-overlap>${l}</div>`).join("")}</div>`;
 }
 const scenes = cfg.scenes.map((sc, i) => ({ ...sc, t: tim.scenes[i] }));
 scenes.forEach((sc, i) => {
