@@ -30,15 +30,18 @@ scenes.forEach((sc, i) => {
   for (let k = 1; k < beats.length; k++) if (beats[k].a < beats[k - 1].e) warn.push(`${sc.id}: beats overlap`);
   sc.resolvedBeats = beats;
   // base picture clip
-  let inner = `<img src="${pic(sc.picture)}" class="pic" alt="">`;
+  let inner = sc.diagram ? `<div id="${id}-picA" class="fill">${pieHtml(sc.diagram)}</div>` : `<img src="${pic(sc.picture)}" class="pic" alt="">`;
   if (sc.pictureB) inner += `<img id="${id}-picB" src="${pic(sc.pictureB)}" class="pic" style="opacity:0" alt="">`;
+  if (sc.diagramB) inner += `<div id="${id}-picB" class="fill" style="opacity:0">${pieHtml(sc.diagramB)}</div>`;
   const ov = (sc.overlays || []).map((o, k) => boardHtml(`${id}-ov${k}`, o)).join("");
   html.push(`<div id="${id}" class="clip" data-start="${f3(cs)}" data-duration="${f3(ce - cs)}" style="z-index:${z}"><div id="${id}-fade" class="fill"><div id="${id}-cam" class="fill">${inner}${ov}</div></div></div>`);
   if (!hard) tl.push(`tl.fromTo("#${id}-fade",{opacity:0},{opacity:1,duration:${XF},ease:"none"},${f3(cs)});`);
+  const hasSwap = sc.pictureB || sc.diagramB;
+  const camStart = sc.cameraStart === "swap" ? findWord(t, sc.swapWord).s : cs;
   const cam = { "zoom-in": [1, 1.06, 0, 0], "zoom-out": [1.06, 1, 0, 0], "pan-right": [1.04, 1.04, 30, -30], "pan-left": [1.04, 1.04, -30, 30] }[sc.camera];
-  if (cam) tl.push(`tl.fromTo("#${id}-cam",{scale:${cam[0]},x:${cam[2]}},{scale:${cam[1]},x:${cam[3]},duration:${f3(ce - cs)},ease:"sine.inOut"},${f3(cs)});`);
-  if (sc.pictureB) { const w = findWord(t, sc.swapWord); tl.push(`tl.to("#${id}-picB",{opacity:1,duration:0.3,ease:"none"},${f3(w.s)});`); }
-  (sc.overlays || []).forEach((o, k) => { const w = findWord(t, o.word, o.occ || 1); tl.push(`tl.fromTo("#${id}-ov${k}",{opacity:0},{opacity:1,duration:0.5,ease:"power1.out"},${f3(w.s - 0.05)});`); tl.push(`tl.fromTo("#${id}-cov${k}",{opacity:0},{opacity:1,duration:0.5,ease:"power1.out"},${f3(w.s - 0.05)});`); });
+  if (cam) tl.push(`tl.fromTo("#${id}-cam",{scale:${cam[0]},x:${cam[2]}},{scale:${cam[1]},x:${cam[3]},duration:${f3(ce - camStart)},ease:"sine.inOut"},${f3(camStart)});`);
+  if (hasSwap) { const w = findWord(t, sc.swapWord); tl.push(`tl.to("#${id}-picB",{opacity:1,duration:0.3,ease:"none"},${f3(w.s)});`); if (sc.diagramB) tl.push(`tl.set("#${id}-picA",{opacity:0},${f3(w.s + 0.3)});`); }
+  (sc.overlays || []).forEach((o, k) => { const w = findWord(t, o.word, o.occ || 1); tl.push(`tl.fromTo("#${id}-ov${k}",{opacity:0},{opacity:1,duration:0.5,ease:"power1.out"},${f3(w.s - 0.05)});`); if (beats.some((b) => b.type === "crop")) tl.push(`tl.fromTo("#${id}-cov${k}",{opacity:0},{opacity:1,duration:0.5,ease:"power1.out"},${f3(w.s - 0.05)});`); });
   // beat clips
   for (const b of beats) {
     const bid = `${id}-b${b.bi}`;
@@ -56,8 +59,14 @@ scenes.forEach((sc, i) => {
     }
   }
 });
+function pieHtml(d) {
+  const cx = 960, cy = 440, r = 310, a = (d.pct / 100) * 2 * Math.PI, x = cx + r * Math.sin(a), y = cy - r * Math.cos(a);
+  const slice = d.pct >= 100 ? `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${ORG}" stroke="${INK}" stroke-width="9"/>` : `<path d="M${cx} ${cy} L${cx} ${cy - r} A${r} ${r} 0 ${a > Math.PI ? 1 : 0} 1 ${f3(x)} ${f3(y)} Z" fill="${ORG}" stroke="${INK}" stroke-width="9" stroke-linejoin="round"/>`;
+  return `<div class="fill diag"><svg viewBox="0 0 1920 1080" width="1920" height="1080" style="position:absolute;inset:0"><circle cx="${cx}" cy="${cy}" r="${r}" fill="#E6E1D6" stroke="${INK}" stroke-width="9"/>${slice}</svg><div class="dlabel"><span>${d.label}</span><span class="badge ${d.badge}">${d.value}</span></div></div>`;
+}
 function boardHtml(id, o) {
-  const b = o.box;
+  const b = o.box, kind = o.type || "board";
+  if (kind !== "board") return `<div id="${id}" class="tagbox ${kind}" data-layout-allow-overlap style="left:${f3(b.x * 1920)}px;top:${f3(b.y * 1080)}px;width:${f3(b.w * 1920)}px;height:${f3(b.h * 1080)}px">${o.text.join(" ")}</div>`;
   return `<div id="${id}" class="board" data-layout-allow-overlap style="left:${f3(b.x * 1920)}px;top:${f3(b.y * 1080)}px;width:${f3(b.w * 1920)}px;height:${f3(b.h * 1080)}px">${o.text.map((l) => `<div class="bl${l === "SPOTLIGHT" ? " org" : ""}" data-layout-allow-overlap>${l}</div>`).join("")}</div>`;
 }
 for (const n of used) fs.copyFileSync(`assets/pictures/${n}.jpg`, `${out}/assets/pictures/${n}.jpg`);
@@ -87,6 +96,11 @@ html,body{margin:0;background:${PAPER}}
 .org{color:${ORG};-webkit-text-stroke:6px ${INK};paint-order:stroke fill}
 .mapov{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0}
 .board{position:absolute;display:flex;flex-direction:column;align-items:center;justify-content:center;color:${INK};font-size:112px;line-height:1.08;text-align:center}
+.diag{background:${PAPER}}
+.dlabel{position:absolute;left:0;right:0;top:830px;display:flex;justify-content:center;align-items:center;gap:36px;font-size:130px;white-space:nowrap}
+.tagbox{position:absolute;display:flex;align-items:center;justify-content:center;white-space:nowrap}
+.tagbox.label{background:${PAPER};border:5px solid ${INK};border-radius:40px;font-size:40px}
+.tagbox.pill{background:${GREEN};color:#fff;border:6px solid ${INK};border-radius:60px;font-size:54px;letter-spacing:3px}
 .board .bl.org{-webkit-text-stroke:4px ${INK}}
 </style></head><body>
 <div id="root" data-composition-id="part${N}" data-start="0" data-width="1920" data-height="1080" data-duration="${f3(dur)}">

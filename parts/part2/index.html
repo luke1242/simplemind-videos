@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=1920, height=1080"><title>Part 2</title>
+<script src="assets/gsap.min.js"></script>
+<style>
+@font-face{font-family:"Nunito";font-weight:800;src:url("assets/fonts/nunito-800.woff2") format("woff2")}
+html,body{margin:0;background:#FAF7F0}
+#root{position:relative;width:100%;height:100%;overflow:hidden;background:#FAF7F0;font-family:"Nunito",sans-serif;font-weight:800;color:#1A1A1A}
+.clip{position:absolute;inset:0;overflow:hidden}
+.fill{position:absolute;inset:0}
+.pic{position:absolute;inset:0;width:100%;height:100%;display:block}
+.card{background:#FAF7F0;display:flex;align-items:center;justify-content:center}
+.cardtxt{display:flex;flex-direction:column;align-items:center;gap:26px;text-align:center}
+.ln{font-size:170px;line-height:1.05;letter-spacing:1px;white-space:nowrap}
+.ln.big{font-size:118px}
+.badge{display:inline-block;padding:4px 40px 12px;border:9px solid #1A1A1A;border-radius:34px;box-shadow:8px 8px 0 #1A1A1A}
+.badge.yellow{background:#F2C230;color:#1A1A1A} .badge.red{background:#D64545;color:#fff}
+.pill{background:#2F6B2F;color:#fff;border:7px solid #1A1A1A;border-radius:60px;font-size:64px;padding:2px 54px 8px;letter-spacing:4px;margin-bottom:18px}
+.org{color:#F2A65A;-webkit-text-stroke:6px #1A1A1A;paint-order:stroke fill}
+.mapov{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0}
+.board{position:absolute;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#1A1A1A;font-size:112px;line-height:1.08;text-align:center}
+.diag{background:#FAF7F0}
+.dlabel{position:absolute;left:0;right:0;top:830px;display:flex;justify-content:center;align-items:center;gap:36px;font-size:130px;white-space:nowrap}
+.tagbox{position:absolute;display:flex;align-items:center;justify-content:center;white-space:nowrap}
+.tagbox.label{background:#FAF7F0;border:5px solid #1A1A1A;border-radius:40px;font-size:40px}
+.tagbox.pill{background:#2F6B2F;color:#fff;border:6px solid #1A1A1A;border-radius:60px;font-size:54px;letter-spacing:3px}
+.board .bl.org{-webkit-text-stroke:4px #1A1A1A}
+</style></head><body>
+<div id="root" data-composition-id="part2" data-start="0" data-width="1920" data-height="1080" data-duration="145.872">
+<div id="s11" class="clip" data-start="0" data-duration="10.48" style="z-index:10"><div id="s11-fade" class="fill"><div id="s11-cam" class="fill"><img src="assets/pictures/S11.jpg" class="pic" alt=""><div id="s11-ov0" class="tagbox label" data-layout-allow-overlap style="left:57.6px;top:939.6px;width:691.2px;height:91.8px">Cornell University, ~2000</div></div></div></div>
+<div id="s12" class="clip" data-start="10.08" data-duration="10.84" style="z-index:20"><div id="s12-fade" class="fill"><div id="s12-cam" class="fill"><img src="assets/pictures/S12.jpg" class="pic" alt=""></div></div></div>
+<div id="s12-b0" class="clip card" data-start="17.78" data-duration="1.5" style="z-index:22"><div id="s12-b0-in" class="cardtxt"><div class="ln">REALLY</div><div class="ln"><span class="badge red">EMBARRASSING</span></div></div></div>
+<div id="s13" class="clip" data-start="20.52" data-duration="7.8" style="z-index:30"><div id="s13-fade" class="fill"><div id="s13-cam" class="fill"><img src="assets/pictures/S13.jpg" class="pic" alt=""></div></div></div>
+<div id="s14" class="clip" data-start="27.92" data-duration="10.2" style="z-index:40"><div id="s14-fade" class="fill"><div id="s14-cam" class="fill"><img src="assets/pictures/S14.jpg" class="pic" alt=""></div></div></div>
+<div id="s14-b0" class="clip" data-start="33.83" data-duration="4.29" style="z-index:41"><div id="s14-b0-cam" class="fill"><img src="assets/pictures/S14-crop0.jpg" class="pic" alt=""></div></div>
+<div id="s15" class="clip" data-start="37.72" data-duration="4.44" style="z-index:50"><div id="s15-fade" class="fill"><div id="s15-cam" class="fill"><div id="s15-picA" class="fill"><div class="fill diag"><svg viewBox="0 0 1920 1080" width="1920" height="1080" style="position:absolute;inset:0"><circle cx="960" cy="440" r="310" fill="#E6E1D6" stroke="#1A1A1A" stroke-width="9"/><path d="M960 440 L960 130 A310 310 0 0 1 960 750 Z" fill="#F2A65A" stroke="#1A1A1A" stroke-width="9" stroke-linejoin="round"/></svg><div class="dlabel"><span>THEIR GUESS:</span><span class="badge yellow">50%</span></div></div></div></div></div></div>
+<div id="s16" class="clip" data-start="42.16" data-duration="5.26" style="z-index:60"><div id="s16-fade" class="fill"><div id="s16-cam" class="fill"><div id="s16-picA" class="fill"><div class="fill diag"><svg viewBox="0 0 1920 1080" width="1920" height="1080" style="position:absolute;inset:0"><circle cx="960" cy="440" r="310" fill="#E6E1D6" stroke="#1A1A1A" stroke-width="9"/><path d="M960 440 L960 130 A310 310 0 0 1 960 750 Z" fill="#F2A65A" stroke="#1A1A1A" stroke-width="9" stroke-linejoin="round"/></svg><div class="dlabel"><span>THEIR GUESS:</span><span class="badge yellow">50%</span></div></div></div><div id="s16-picB" class="fill" style="opacity:0"><div class="fill diag"><svg viewBox="0 0 1920 1080" width="1920" height="1080" style="position:absolute;inset:0"><circle cx="960" cy="440" r="310" fill="#E6E1D6" stroke="#1A1A1A" stroke-width="9"/><path d="M960 440 L960 130 A310 310 0 0 1 1270 440 Z" fill="#F2A65A" stroke="#1A1A1A" stroke-width="9" stroke-linejoin="round"/></svg><div class="dlabel"><span>REALITY:</span><span class="badge red">25%</span></div></div></div></div></div></div>
+<div id="s17" class="clip" data-start="47.02" data-duration="12.72" style="z-index:70"><div id="s17-fade" class="fill"><div id="s17-cam" class="fill"><img src="assets/pictures/S17.jpg" class="pic" alt=""></div></div></div>
+<div id="s17-b0" class="clip card" data-start="48.32" data-duration="1.5" style="z-index:72"><div id="s17-b0-in" class="cardtxt"><div class="ln"><span class="badge yellow">TWICE</span></div><div class="ln">AS MANY</div></div></div>
+<div id="s17-b1" class="clip" data-start="51.22" data-duration="8.52" style="z-index:71"><div id="s17-b1-cam" class="fill"><img src="assets/pictures/S17-crop1.jpg" class="pic" alt=""></div></div>
+<div id="s18" class="clip" data-start="59.34" data-duration="9.82" style="z-index:80"><div id="s18-fade" class="fill"><div id="s18-cam" class="fill"><img src="assets/pictures/S18.jpg" class="pic" alt=""></div></div></div>
+<div id="s18-b0" class="clip" data-start="59.74" data-duration="3.13" style="z-index:81"><div id="s18-b0-cam" class="fill"><img src="assets/pictures/S18-crop0.jpg" class="pic" alt=""></div></div>
+<div id="s19" class="clip" data-start="68.76" data-duration="6.66" style="z-index:90"><div id="s19-fade" class="fill"><div id="s19-cam" class="fill"><img src="assets/pictures/S17.jpg" class="pic" alt=""></div></div></div>
+<div id="s20" class="clip" data-start="75.02" data-duration="18.7" style="z-index:100"><div id="s20-fade" class="fill"><div id="s20-cam" class="fill"><img src="assets/pictures/S20.jpg" class="pic" alt=""></div></div></div>
+<div id="s20-b0" class="clip card" data-start="80.56" data-duration="1.5" style="z-index:102"><div id="s20-b0-in" class="cardtxt"><div class="ln"><span class="badge yellow">MAIN</span></div><div class="ln">CHARACTER</div></div></div>
+<div id="s20-b1" class="clip" data-start="82.65" data-duration="5.6" style="z-index:101"><div id="s20-b1-cam" class="fill"><img src="assets/pictures/S20-crop1.jpg" class="pic" alt=""></div></div>
+<div id="s21" class="clip" data-start="93.32" data-duration="6.08" style="z-index:110"><div id="s21-fade" class="fill"><div id="s21-cam" class="fill"><img src="assets/pictures/S21.jpg" class="pic" alt=""></div></div></div>
+<div id="s22" class="clip" data-start="99" data-duration="5.04" style="z-index:120"><div id="s22-fade" class="fill"><div id="s22-cam" class="fill"><img src="assets/pictures/S22.jpg" class="pic" alt=""></div></div></div>
+<div id="s22-b0" class="clip" data-start="101.45" data-duration="2.59" style="z-index:121"><div id="s22-b0-cam" class="fill"><img src="assets/pictures/S22-crop0.jpg" class="pic" alt=""></div></div>
+<div id="s23" class="clip" data-start="103.64" data-duration="6.48" style="z-index:130"><div id="s23-fade" class="fill"><div id="s23-cam" class="fill"><img src="assets/pictures/S23.jpg" class="pic" alt=""></div></div></div>
+<div id="s23-b0" class="clip" data-start="106.54" data-duration="3.58" style="z-index:131"><div id="s23-b0-cam" class="fill"><img src="assets/pictures/S23-crop0.jpg" class="pic" alt=""></div></div>
+<div id="s24" class="clip" data-start="109.72" data-duration="7.92" style="z-index:140"><div id="s24-fade" class="fill"><div id="s24-cam" class="fill"><img src="assets/pictures/S21.jpg" class="pic" alt=""></div></div></div>
+<div id="s24-b0" class="clip card" data-start="111.96" data-duration="1.6" style="z-index:142"><div id="s24-b0-in" class="cardtxt"><div class="ln">THEIR OWN</div><div class="ln"><span class="badge yellow">SPOTLIGHT</span></div></div></div>
+<div id="s25" class="clip" data-start="117.24" data-duration="14.06" style="z-index:150"><div id="s25-fade" class="fill"><div id="s25-cam" class="fill"><img src="assets/pictures/S25.jpg" class="pic" alt=""></div></div></div>
+<div id="s25-b0" class="clip" data-start="123.07" data-duration="5.34" style="z-index:151"><div id="s25-b0-cam" class="fill"><img src="assets/pictures/S25-crop0.jpg" class="pic" alt=""></div></div>
+<div id="s26" class="clip" data-start="130.9" data-duration="14.972" style="z-index:160"><div id="s26-fade" class="fill"><div id="s26-cam" class="fill"><img src="assets/pictures/S26.jpg" class="pic" alt=""><div id="s26-ov0" class="tagbox pill" data-layout-allow-overlap style="left:729.6px;top:97.2px;width:384px;height:97.2px">SEEMS FINE</div></div></div></div>
+<div id="s26-b0" class="clip card" data-start="132.16" data-duration="1.8" style="z-index:162"><div id="s26-b0-in" class="cardtxt"><div class="ln">ILLUSION OF</div><div class="ln"><span class="badge yellow">TRANSPARENCY</span></div></div></div>
+<div id="s26-b1" class="clip" data-start="141.73" data-duration="4.142" style="z-index:161"><div id="s26-b1-cam" class="fill"><img src="assets/pictures/S26-crop1.jpg" class="pic" alt=""><div class="mapov" style="transform:translate(0px,-49.68px) scale(1.3)"><div id="s26-cov0" class="tagbox pill" data-layout-allow-overlap style="left:729.6px;top:97.2px;width:384px;height:97.2px">SEEMS FINE</div></div></div></div>
+<audio id="vo" src="assets/part2.wav" data-start="0" data-duration="145.872" data-track-index="0"></audio>
+</div>
+<script>
+const tl = gsap.timeline({ paused: true });
+tl.fromTo("#s11-cam",{scale:1.04,x:30},{scale:1.04,x:-30,duration:10.48,ease:"sine.inOut"},0);
+tl.fromTo("#s11-ov0",{opacity:0},{opacity:1,duration:0.5,ease:"power1.out"},6.37);
+tl.fromTo("#s12-fade",{opacity:0},{opacity:1,duration:0.4,ease:"none"},10.08);
+tl.fromTo("#s12-cam",{scale:1,x:0},{scale:1.06,x:0,duration:10.84,ease:"sine.inOut"},10.08);
+tl.fromTo("#s12-b0-in",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},17.78);
+tl.fromTo("#s13-fade",{opacity:0},{opacity:1,duration:0.4,ease:"none"},20.52);
+tl.fromTo("#s13-cam",{scale:1.04,x:-30},{scale:1.04,x:30,duration:7.8,ease:"sine.inOut"},20.52);
+tl.fromTo("#s14-fade",{opacity:0},{opacity:1,duration:0.4,ease:"none"},27.92);
+tl.fromTo("#s14-cam",{scale:1,x:0},{scale:1.06,x:0,duration:10.2,ease:"sine.inOut"},27.92);
+tl.fromTo("#s14-b0-cam",{scale:1},{scale:1.04,duration:4.29,ease:"sine.inOut"},33.83);
+tl.fromTo("#s15-fade",{opacity:0},{opacity:1,duration:0.4,ease:"none"},37.72);
+tl.fromTo("#s16-cam",{scale:1,x:0},{scale:1.06,x:0,duration:2.5,ease:"sine.inOut"},44.92);
+tl.to("#s16-picB",{opacity:1,duration:0.3,ease:"none"},44.92);
+tl.set("#s16-picA",{opacity:0},45.22);
+tl.fromTo("#s17-fade",{opacity:0},{opacity:1,duration:0.4,ease:"none"},47.02);
+tl.fromTo("#s17-cam",{scale:1.06,x:0},{scale:1,x:0,duration:12.72,ease:"sine.inOut"},47.02);
+tl.fromTo("#s17-b0-in",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},48.32);
+tl.fromTo("#s17-b1-cam",{scale:1},{scale:1.04,duration:8.52,ease:"sine.inOut"},51.22);
+tl.fromTo("#s18-fade",{opacity:0},{opacity:1,duration:0.4,ease:"none"},59.34);
+tl.fromTo("#s18-cam",{scale:1,x:0},{scale:1.06,x:0,duration:9.82,ease:"sine.inOut"},59.34);
+tl.fromTo("#s18-b0-cam",{scale:1},{scale:1.04,duration:3.13,ease:"sine.inOut"},59.74);
+tl.fromTo("#s19-fade",{opacity:0},{opacity:1,duration:0.4,ease:"none"},68.76);
+tl.fromTo("#s19-cam",{scale:1,x:0},{scale:1.06,x:0,duration:6.66,ease:"sine.inOut"},68.76);
+tl.fromTo("#s20-fade",{opacity:0},{opacity:1,duration:0.4,ease:"none"},75.02);
+tl.fromTo("#s20-cam",{scale:1,x:0},{scale:1.06,x:0,duration:18.7,ease:"sine.inOut"},75.02);
+tl.fromTo("#s20-b0-in",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},80.56);
+tl.fromTo("#s20-b1-cam",{scale:1},{scale:1.04,duration:5.6,ease:"sine.inOut"},82.65);
+tl.fromTo("#s21-fade",{opacity:0},{opacity:1,duration:0.4,ease:"none"},93.32);
+tl.fromTo("#s21-cam",{scale:1.06,x:0},{scale:1,x:0,duration:6.08,ease:"sine.inOut"},93.32);
+tl.fromTo("#s22-fade",{opacity:0},{opacity:1,duration:0.4,ease:"none"},99);
+tl.fromTo("#s22-cam",{scale:1,x:0},{scale:1.06,x:0,duration:5.04,ease:"sine.inOut"},99);
+tl.fromTo("#s22-b0-cam",{scale:1},{scale:1.04,duration:2.59,ease:"sine.inOut"},101.45);
+tl.fromTo("#s23-fade",{opacity:0},{opacity:1,duration:0.4,ease:"none"},103.64);
+tl.fromTo("#s23-cam",{scale:1.04,x:30},{scale:1.04,x:-30,duration:6.48,ease:"sine.inOut"},103.64);
+tl.fromTo("#s23-b0-cam",{scale:1},{scale:1.04,duration:3.58,ease:"sine.inOut"},106.54);
+tl.fromTo("#s24-fade",{opacity:0},{opacity:1,duration:0.4,ease:"none"},109.72);
+tl.fromTo("#s24-cam",{scale:1,x:0},{scale:1.06,x:0,duration:7.92,ease:"sine.inOut"},109.72);
+tl.fromTo("#s24-b0-in",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},111.96);
+tl.fromTo("#s25-fade",{opacity:0},{opacity:1,duration:0.4,ease:"none"},117.24);
+tl.fromTo("#s25-cam",{scale:1,x:0},{scale:1.06,x:0,duration:14.06,ease:"sine.inOut"},117.24);
+tl.fromTo("#s25-b0-cam",{scale:1},{scale:1.04,duration:5.34,ease:"sine.inOut"},123.07);
+tl.fromTo("#s26-fade",{opacity:0},{opacity:1,duration:0.4,ease:"none"},130.9);
+tl.fromTo("#s26-cam",{scale:1,x:0},{scale:1.06,x:0,duration:14.972,ease:"sine.inOut"},130.9);
+tl.fromTo("#s26-ov0",{opacity:0},{opacity:1,duration:0.5,ease:"power1.out"},138.49);
+tl.fromTo("#s26-cov0",{opacity:0},{opacity:1,duration:0.5,ease:"power1.out"},138.49);
+tl.fromTo("#s26-b0-in",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},132.16);
+tl.fromTo("#s26-b1-cam",{scale:1},{scale:1.04,duration:4.142,ease:"sine.inOut"},141.73);
+window.__timelines["part2"] = tl;
+</script></body></html>
