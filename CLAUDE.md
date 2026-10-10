@@ -13,6 +13,26 @@ The owner is Luke. He is not a developer, so keep messages to him short and plai
 
 ---
 
+# ⚠️ CURRENT MODE: AI PICTURES (this overrides anything below that conflicts)
+
+Luke now makes the scene pictures himself with an AI image tool (Nano Banana). **Your job is to assemble the video, not to draw scenes or characters.**
+
+- **Pictures:** `pictures/S##.png` (and `S##b.png` for the "after" picture of a swap), 1920×1080. Prompts are in `prompts/nano-banana-prompts.md`. Use them as-is: don't redraw, restyle or "fix" them. Only crop or scale them to fit 16:9.
+- **Skip entirely:** building character SVGs, poses, the character sheet (A5 to A7 and A9), and drawing scene pictures. Keep the narrator rules only as a reference for what scenes mean.
+- **No B-roll.** Ignore A10 and every `broll:` line. Never download footage.
+- **Picture map:** REUSE scenes use the referenced picture (S09 → S08 and S08b, S16 → S15 card, S19 → S17, S24/S45 → S21, S29 → S28 card, S37 → S35 and S35b, S46 → S30, S43 uses S43.png). Swaps use `S##.png` then `S##b.png` at the trigger word.
+- **You build in code** (the A8b style: cream background, Nunito ExtraBold, yellow/red outlined badges):
+  - the title card (S05)
+  - **S15/S16:** a pie chart, "THEIR GUESS: 50%" changing to "REALITY: 25%"
+  - **S28/S29:** a balance scale diagram, "EXPECTED" vs "REALITY"
+  - **S41:** a text card "HOW I USE THIS"
+  - **S44:** a "STEP 2: CUT IT IN HALF" card with 50% changing to 25%
+  - every overlay in Part B, and **2 to 3 extra text cards or punch-in crops per scene** for the 3 to 4s pacing (A8b)
+- **Missing picture:** use a text card with that scene's key phrase, keep going, and list the missing files in your report.
+- **Everything else still applies:** pause padding, timing, camera moves (slow zooms and pans on the pictures), SFX, the soft music mix, and one part per session.
+
+---
+
 # PART A: CHANNEL RULES
 
 ## A1. Golden rules
