@@ -172,6 +172,21 @@ Allowed extras, which are not character motion:
 
 **Banned:** moving limbs, walking cycles, wobble, bounce, shake, spin, fast whips, and line boil.
 
+## A8b. Pacing and style target (most important for the final feel)
+
+Luke's target is the stickman documentary-explainer style (hunter-gatherer history style videos): **a new shot every 3 to 4 seconds**, clean thick outlines, warm earthy colors, light hatching or cel-shading on objects (not on characters), lots of simple diagrams, and short text cards.
+
+**Make new shots cheaply. Don't draw a new scene every 3 seconds.** Split each scene in Part B into **beats of about 3 to 4s**, and fill the extra beats with these, in order of cost:
+1. **Punch-in crop:** the same picture, framed tight on a detail (a face, a prop, a thought bubble). A hard cut counts as a new shot and costs nothing.
+2. **Text card:** a key phrase from the line, centered on a cream `#FAF7F0` background, 2 to 5 words (e.g. "Nobody's watching." "Missed chances." "25%"). Use a rounded friendly font (**Nunito ExtraBold** from `@fontsource/nunito`), with key words or numbers in a **yellow `#F2C230` or red `#D64545` badge** with a black outline.
+3. **Simple infographic:** a pie chart, a bar comparison, a split-screen "expected vs reality," an icon with a red X, or a number counting up. Flat icons, no characters needed.
+4. **Icon pop-in** over the current picture (thought bubble, "!", "?", arrow, checkmark).
+5. **A new picture**, only when the scene list asks for one.
+
+Rules: the narrator is still never animated. Use hard cuts or quick slide-ins (0.25s) between beats and a 0.4s crossfade only between scenes. Aim for about **2 to 3 beats per scene**, while keeping the total number of drawn pictures about the same as the scene list.
+
+**Sound effects:** add light SFX on beats: a soft *swoosh* on slide-ins, a *pop* on icon pop-ins, a *click* on text cards, and a *ding* on reveals. They should be quiet (about −20 dB under the voice), at most about 1 every 3 seconds. Generate them locally with `ffmpeg` (short sine/noise bursts with fast fades) so nothing needs to be downloaded, and save them in `assets/sfx/`. Mix them in at the final join along with the music.
+
 ## A9. Character self-check (first session only; no stopping)
 
 1. Build the master narrator, any other characters, the generic persons, and all poses.
