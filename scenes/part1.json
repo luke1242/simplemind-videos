@@ -1,0 +1,31 @@
+{
+  "part": 1,
+  "audio": "audio/part1.mp3",
+  "scenes": [
+    { "id": "S01", "picture": "S01", "camera": "zoom-in", "broll": { "from": "start", "len": 4 },
+      "narration": "For a long time, there was one thought that stopped me from doing almost everything. Going to the gym. Raising my hand in class. Trying out for something. Posting anything online." },
+    { "id": "S02", "picture": "S02", "camera": "zoom-in", "transition": "cut",
+      "narration": "Everyone's going to be watching." },
+    { "id": "S03", "picture": "S03", "camera": "zoom-out",
+      "narration": "That's what it felt like. Every single time. Like I was standing alone on a giant stage, with one bright spotlight on me, and thousands of eyes in the dark." },
+    { "id": "S04", "picture": "S04", "camera": "zoom-in",
+      "narration": "Then I learned about one experiment, involving a really embarrassing T-shirt." },
+    { "id": "S05", "picture": "S05", "camera": "hold", "holdAfter": 2.5,
+      "overlays": [ { "type": "titlecard", "at": "end", "dur": 2.5 } ],
+      "narration": "And it changed how I see almost everything. By the end of this video, you'll know exactly how wrong our brains are about this, by how much, and the one question I now ask myself that shuts that thought down in about three seconds." },
+    { "id": "S06", "picture": "S06", "camera": "pan-right",
+      "narration": "So here's how it used to go for me. I'd walk into a room, and I'd feel like there was a spotlight following me." },
+    { "id": "S07", "picture": "S07", "camera": "zoom-in",
+      "overlays": [ { "type": "bubbles", "at": "everyone saw it", "gap": 0.4,
+        "items": [ { "x": 330, "y": 340, "icon": "laugh" }, { "x": 1500, "y": 340, "icon": "!" }, { "x": 1740, "y": 360, "icon": "?" } ] } ],
+      "narration": "If I tripped, everyone saw it. If my outfit was a little off, everyone noticed. If I said something dumb, I was sure everyone would remember it for weeks." },
+    { "id": "S08", "picture": "S08", "camera": "zoom-in",
+      "narration": "And then I'd replay it in my head that night. Over and over. Like a highlight reel of every awkward thing I'd ever done." },
+    { "id": "S09", "picture": "S08", "pictureB": "S09b", "swapAt": "weird", "camera": "zoom-out",
+      "narration": "If you've ever done that, lying in bed at night, thinking about something awkward from three years ago. You're not weird. You're not broken." },
+    { "id": "S10", "picture": "S10", "camera": "hold",
+      "overlays": [ { "type": "text", "at": "spotlight effect", "x": 1405, "y": 440, "w": 560, "size": 62,
+        "lines": [ { "t": "THE", "c": "ink" }, { "t": "SPOTLIGHT", "c": "green" }, { "t": "EFFECT", "c": "ink" } ] } ],
+      "narration": "Your brain is doing something almost everyone's brain does. And it even has a name. Psychologists call it the spotlight effect. It's the feeling that people are noticing you, and judging you, way more than they actually are. And once you understand how strong it is, it's hard to see things the same way again." }
+  ]
+}

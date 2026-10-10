@@ -1,0 +1,96 @@
+{
+  "part": 1,
+  "audio": "audio/padded/part1.wav",
+  "duration": 103.038,
+  "rawDuration": 86.988,
+  "scenes": [
+    {
+      "id": "S01",
+      "start": 0,
+      "end": 14.466,
+      "speechStart": 0.13,
+      "speechEnd": 14.95,
+      "cues": {}
+    },
+    {
+      "id": "S02",
+      "start": 14.466,
+      "end": 17.083,
+      "speechStart": 15.11,
+      "speechEnd": 17.49,
+      "cues": {}
+    },
+    {
+      "id": "S03",
+      "start": 17.083,
+      "end": 27.899,
+      "speechStart": 17.66,
+      "speechEnd": 28.28,
+      "cues": {}
+    },
+    {
+      "id": "S04",
+      "start": 27.899,
+      "end": 32.931,
+      "speechStart": 28.48,
+      "speechEnd": 33.32,
+      "cues": {}
+    },
+    {
+      "id": "S05",
+      "start": 32.931,
+      "end": 50.068,
+      "speechStart": 33.45,
+      "speechEnd": 47.47,
+      "cues": {
+        "o0": 47.62
+      }
+    },
+    {
+      "id": "S06",
+      "start": 50.068,
+      "end": 56.878,
+      "speechStart": 50.86,
+      "speechEnd": 57.21,
+      "cues": {}
+    },
+    {
+      "id": "S07",
+      "start": 56.878,
+      "end": 67.638,
+      "speechStart": 57.37,
+      "speechEnd": 68.09,
+      "cues": {
+        "o0": 58.1
+      }
+    },
+    {
+      "id": "S08",
+      "start": 67.638,
+      "end": 75.866,
+      "speechStart": 68.22,
+      "speechEnd": 76.28,
+      "cues": {}
+    },
+    {
+      "id": "S09",
+      "start": 75.866,
+      "end": 84.74,
+      "speechStart": 76.28,
+      "speechEnd": 84.4,
+      "cues": {
+        "swap": 82.52
+      }
+    },
+    {
+      "id": "S10",
+      "start": 84.74,
+      "end": 103.038,
+      "speechStart": 85.25,
+      "speechEnd": 102.93,
+      "cues": {
+        "o0": 91.89
+      }
+    }
+  ]
+}
