@@ -22,8 +22,8 @@ The full preview was a big improvement: the crops, sharpness, charts and loudnes
    - The only exceptions: the S05 title card (2.5s) and the final end screen (S52's last 5s).
    - Every scene gets split into beats that change on **sentence or phrase boundaries** from the word timestamps, never mid-word.
 2. **Icon cutaways (the main new tool).**
-   - The icon set is **27 icons** in `icons/`, plain off-white background: I02, I03, I05–I25, I28, I30, I31, I34. The numbers have gaps on purpose (I01, I04, I26, I27, I29, I32, I33, I35, I36 were dropped). Some are 1376×768 instead of 2K, which is fine: scale them to 1920×1080 with lanczos. The prompt list is in `prompts/icon-prompts.md`. Use only the files that actually exist.
-   - Use them as **1.5 to 3s cutaways** timed to the exact word they illustrate. Examples: "gym" → I02, "posting" → I05, "spotlight" → I07, "T-shirt" → I08, "lightbulb/learned" → I09, "tripped" → I12, "night" → I14, "question" → I17, "phones/busy" → I18, "main character" → I19, "workout" → I20, "speech" → I21, "mess up" → I23, "raising my hand" → I03, "eyes" → I06, "three seconds" → I11, "weeks" → I13, "replay" → I15, "Cornell" → I16, "transparency" → I22, "kindness" → I24, "magnifying glass" → I25, "brave" → I28, "missed chances" → I30, "cut it in half" → I31, "freedom" → I34.
+   - **The icon set is final: 26 icons in `icons/`** (I05–I27, I29, I30, I31), plain off-white background, 1376×768. Scale them to 1920×1080 with lanczos. The numbers have gaps on purpose. Use only files that exist.
+   - Use them as **1.5 to 3s cutaways** timed to the exact word they illustrate. Examples: "posting" → I05, "eyes" → I06, "spotlight" → I07, "T-shirt" → I08, "learned" → I09, "three seconds" → I11, "tripped" → I12, "weeks" → I13, "that night" → I14, "replay" → I15, "Cornell" → I16, "one simple question" → I17, "barely notice" → I18, "main character" → I19, "workout" → I20, "speech" → I21, "transparency" → I22, "mess up" → I23, "kindness" → I24, "magnifying glass" → I25, "liking gap" → I26, "awkward / nice" → I27, "wasn't even watching" → I29, "missed chances" → I30, "cut it in half" → I31.
    - Show each icon centered on cream with a quick 0.2s scale-pop (0.92 → 1.0) and a soft *pop* SFX.
    - Use any icon that fits a phrase. The same icon can be used at most twice.
    - **If `icons/` is empty or missing, skip icons** and use text cards and crops instead.
@@ -36,14 +36,13 @@ The full preview was a big improvement: the crops, sharpness, charts and loudnes
    - Before rendering, print a table of cut, word and time for Luke, and spot-check 5 random cuts.
 7. **Build the whole video again,** one part per session, with these rules.
 8. **Narrator pop-ups (the "host" moments).**
-   - Luke is adding cut-out poses of the narrator as `narrator/N01.jpg … N12.jpg`, full body on pure white. The prompts are in `prompts/narrator-pose-prompts.md`.
-   - **Prep once:** remove the white background with a flood fill from the image edges (tolerance about 12), so his white eyes and sneakers stay intact. Feather the edge by 1px, save as transparent PNGs in `assets/narrator/`, and check them on a dark background.
+   - **The poses are already prepped:** `assets/narrator/N01.png … N12.png` are transparent cut-outs (about 680px tall, so show him at ≤ 65% of 1080 without upscaling much). Use them as-is. Don't redo the background removal. The original sheet is `narrator/pose-sheet.jpg` (reference only).
+   - **Pose list:** N01 explain (open hand), N02 finger up, N03 point right (hand on hip), N04 point right (both hands), N05 shrug, N06 thinking (hand on chin), N07 thumbs up, N08 two fingers (step 2/counting), N09 surprised (hands up), N10 facepalm, N11 arms crossed, N12 wave. All of them face or point to the **right**, so put him **lower-left** with the card or icon on the right. If he must stand on the right, flip him horizontally.
    - **When to use him:** every **25 to 40 seconds**, on lines where he's explaining, making a point, asking a question, listing a step, or reacting. That's about 3 to 5 pop-ups per part.
-   - **Match the pose to the tone:** N01 explain, N02 a key point, N03/N04 pointing at a card or icon on the other side, N05 a joke or shrug, N06 a question, N07 a step or good news, N08 counting/steps, N09 a surprise or reveal, N10 embarrassment, N11 a confident statement, N12 the intro/outro.
+   - **Match the pose to the tone:** N01 explain, N02 a key point, N03/N04 pointing at a card or icon on the right, N05 a joke or shrug, N06 a question, N07 a step or good news, N08 counting/steps, N09 a surprise or reveal, N10 embarrassment, N11 a confident statement, N12 the intro/outro.
    - **Layout:** he's about **55 to 65% of the frame height**, standing in the lower-left or lower-right corner. Fill the rest of the frame with a text card, an icon or a chart on cream, placed on the side he's facing or pointing to.
    - **Motion:** he's never animated. Allowed: slide in from the edge (0.25s, ease-out) and out (0.2s), a soft *swoosh* SFX, and swapping to another N pose with a hard cut when the tone changes (at most 2 poses per pop-up).
    - Each pop-up lasts **2 to 4s**, which counts as one shot under the 4s rule.
-   - **If `narrator/` is empty, skip pop-ups.**
 
 ---
 
