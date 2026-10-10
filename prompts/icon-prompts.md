@@ -19,14 +19,20 @@ When I say "the narrator", use the attached narrator exactly: a glowing peach br
 Reply "ready" and wait for my first prompt.
 ```
 
+## Status: cut to 27 icons
+
+**Done (19):** I05–I23 are in `icons/`.
+
+**Still to make (8):** I02, I03, I24, I25, I28, I30, I31, I34.
+
+**Dropped (not needed):** I01, I04, I26, I27, I29, I32, I33, I35, I36.
+
 ## Prompts
 
 | File | Prompt |
 |---|---|
-| I01 | A stressed stickman scratching his head, sweating, holding a long checklist on a clipboard. |
 | I02 | A small modern gym building with a big red location pin above it and little "ping" lines. |
 | I03 | A single hand raised up high, like in a classroom. |
-| I04 | A sports sign-up clipboard with a whistle hanging next to it. |
 | I05 | A smartphone showing a big glowing "share/upload" button with a finger hovering over it. |
 | I06 | Dozens of pairs of white eyes staring out of total darkness. |
 | I07 | A bright theater spotlight shining a cone of warm light down onto an empty circle on the floor. |
@@ -48,14 +54,7 @@ Reply "ready" and wait for my first prompt.
 | I23 | A dropped lunch tray with spilled fries, a juice box and an apple. |
 | I24 | Two stickman hands helping each other up, with a small heart. |
 | I25 | A big magnifying glass with a shine on the lens. |
-| I26 | Two speech bubbles side by side, one with a smiley face, one with a heart. |
-| I27 | A small grey storm cloud on the left and a bright smiling sun on the right. |
 | I28 | A shiny medal with a ribbon, like a reward for bravery. |
-| I29 | Rows of empty red theater seats. |
 | I30 | A blank sign-up sheet pinned to a corkboard with one empty line. |
 | I31 | Giant scissors cutting a paper circle exactly in half. |
-| I32 | An open door with warm light pouring out of it. |
-| I33 | A tiny desk lamp on a small wooden stool, glowing softly. |
 | I34 | A bird flying free out of an open birdcage. |
-| I35 | A big green checkmark inside a circle. |
-| I36 | A brain-head narrator walking up a simple staircase toward a sunrise. |

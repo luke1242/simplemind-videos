@@ -22,8 +22,8 @@ The full preview was a big improvement: the crops, sharpness, charts and loudnes
    - The only exceptions: the S05 title card (2.5s) and the final end screen (S52's last 5s).
    - Every scene gets split into beats that change on **sentence or phrase boundaries** from the word timestamps, never mid-word.
 2. **Icon cutaways (the main new tool).**
-   - Luke is adding simple spot-illustration icons as `icons/I01.jpg … I36.jpg` (2K, plain off-white background). The prompt list is in `prompts/icon-prompts.md`.
-   - Use them as **1.5 to 3s cutaways** timed to the exact word they illustrate. Examples: "gym" → I02, "raising my hand" → I03, "eyes" → I06, "three seconds" → I11, "weeks" → I13, "replay" → I15, "Cornell" → I16, "transparency" → I22, "kindness" → I24, "magnifying glass" → I25, "liking gap" → I26, "brave" → I28, "missed chances" → I30, "cut it in half" → I31, "freedom" → I34.
+   - The icon set is **27 icons** in `icons/`, plain off-white background: I02, I03, I05–I25, I28, I30, I31, I34. The numbers have gaps on purpose (I01, I04, I26, I27, I29, I32, I33, I35, I36 were dropped). Some are 1376×768 instead of 2K, which is fine: scale them to 1920×1080 with lanczos. The prompt list is in `prompts/icon-prompts.md`. Use only the files that actually exist.
+   - Use them as **1.5 to 3s cutaways** timed to the exact word they illustrate. Examples: "gym" → I02, "posting" → I05, "spotlight" → I07, "T-shirt" → I08, "lightbulb/learned" → I09, "tripped" → I12, "night" → I14, "question" → I17, "phones/busy" → I18, "main character" → I19, "workout" → I20, "speech" → I21, "mess up" → I23, "raising my hand" → I03, "eyes" → I06, "three seconds" → I11, "weeks" → I13, "replay" → I15, "Cornell" → I16, "transparency" → I22, "kindness" → I24, "magnifying glass" → I25, "brave" → I28, "missed chances" → I30, "cut it in half" → I31, "freedom" → I34.
    - Show each icon centered on cream with a quick 0.2s scale-pop (0.92 → 1.0) and a soft *pop* SFX.
    - Use any icon that fits a phrase. The same icon can be used at most twice.
    - **If `icons/` is empty or missing, skip icons** and use text cards and crops instead.
