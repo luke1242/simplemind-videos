@@ -219,7 +219,7 @@ scenes.forEach((sc, i) => {
       let content;
       if (c.type === "icon") { usedIcons.add(c.icon); content = `<img src="assets/icons/${c.icon}.jpg" class="popicon" alt="">`; }
       else content = `<div class="popcard">${linesHtml(c.parts, "ln sm")}</div>`;
-      html.push(`<div id="${sid}" class="clip card" data-start="${f3(cs)}" data-duration="${f3(cd)}" style="z-index:${zi}"><div id="${sid}-c" class="popwrap">${content}</div><img id="${sid}-n" class="narr" src="assets/narrator/${pose}.png" alt=""></div>`);
+      html.push(`<div id="${sid}" class="clip card" data-start="${f3(cs)}" data-duration="${f3(cd)}" style="z-index:${zi}${c.type === "icon" ? ";background:#F8F5EE" : ""}"><div id="${sid}-c" class="popwrap">${content}</div><img id="${sid}-n" class="narr" src="assets/narrator/${pose}.png" alt=""></div>`);
       tl.push(`tl.fromTo("#${sid}-n",{x:-460},{x:0,duration:0.25,ease:"power2.out"},${f3(a)});`);
       tl.push(`tl.to("#${sid}-n",{x:-460,duration:0.2,ease:"power2.in"},${f3(e - 0.22)});`);
       tl.push(`tl.fromTo("#${sid}-c",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},${f3(a + 0.1)});`);
@@ -276,7 +276,7 @@ html,body{margin:0;background:${PAPER}}
 .spill2{background:${PAPER};border:6px solid ${INK};border-radius:44px;font-size:60px;line-height:1.05;padding:4px 40px 10px;white-space:nowrap}
 .popwrap{position:absolute;left:760px;right:50px;top:0;bottom:0;display:flex;align-items:center;justify-content:center}
 .popcard{display:flex;flex-direction:column;align-items:center;gap:22px;text-align:center}
-.popicon{width:1180px;height:664px;mix-blend-mode:multiply}
+.popicon{width:1180px;height:664px}
 .narr{position:absolute;left:70px;bottom:0;height:700px}
 .board .bl.org{-webkit-text-stroke:4px ${INK}}
 </style></head><body>
