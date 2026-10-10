@@ -13,6 +13,31 @@ The owner is Luke. He is not a developer, so keep messages to him short and plai
 
 ---
 
+# ⚡ ROUND 2 FIXES (from Luke's review of the full preview; these override everything below)
+
+The full preview was a big improvement: the crops, sharpness, charts and loudness are all good, and so is the length (9:11). Fix these next:
+
+1. **No shot longer than 4 seconds.** The preview averaged 7.8s per shot, and 19 shots were held for 10s or more (e.g. 0:00–0:15, 0:36–0:48, 1:06–1:21, 4:13–5:02, 8:48–9:11). The new hard limits:
+   - **Max 4.0s per shot**, with a target average of about **3s**.
+   - The only exceptions: the S05 title card (2.5s) and the final end screen (S52's last 5s).
+   - Every scene gets split into beats that change on **sentence or phrase boundaries** from the word timestamps, never mid-word.
+2. **Icon cutaways (the main new tool).**
+   - Luke is adding simple spot-illustration icons as `icons/I01.jpg … I36.jpg` (2K, plain off-white background). The prompt list is in `prompts/icon-prompts.md`.
+   - Use them as **1.5 to 3s cutaways** timed to the exact word they illustrate. Examples: "gym" → I02, "raising my hand" → I03, "eyes" → I06, "three seconds" → I11, "weeks" → I13, "replay" → I15, "Cornell" → I16, "transparency" → I22, "kindness" → I24, "magnifying glass" → I25, "liking gap" → I26, "brave" → I28, "missed chances" → I30, "cut it in half" → I31, "freedom" → I34.
+   - Show each icon centered on cream with a quick 0.2s scale-pop (0.92 → 1.0) and a soft *pop* SFX.
+   - Use any icon that fits a phrase. The same icon can be used at most twice.
+   - **If `icons/` is empty or missing, skip icons** and use text cards and crops instead.
+3. **Beat recipe.** A long scene now looks like this: main picture (≤4s) → icon cutaway on the key word → punch-in crop of the main picture (≤1.4×) → text card *or* picture B → back to the main picture. Never two text cards in a row, and never two icons in a row.
+4. **Readable labels:** the STEP pills and overlay labels were tiny (e.g. 7:30, 7:48, 8:06). Make overlay text at least **56px tall** in a solid pill with a 6px outline, placed top-center, not in a corner.
+5. **Crossfades:** keep scene crossfades to **0.25s**, and use hard cuts for every beat inside a scene, so there are no double-exposure frames (e.g. 0:30, 0:54).
+6. **Audio sync:**
+   - Every cut must land within **±0.1s of a word start** (from `faster-whisper` word timestamps).
+   - Text cards and icons appear **exactly** on their word.
+   - Before rendering, print a table of cut, word and time for Luke, and spot-check 5 random cuts.
+7. **Build the whole video again,** one part per session, with these rules.
+
+---
+
 # 🔧 FIXES FROM THE PART 1 REVIEW (these override everything else; follow them exactly)
 
 Luke reviewed the first Part 1 render. These problems happened, so here's how to avoid them:
