@@ -35,6 +35,15 @@ The full preview was a big improvement: the crops, sharpness, charts and loudnes
    - Text cards and icons appear **exactly** on their word.
    - Before rendering, print a table of cut, word and time for Luke, and spot-check 5 random cuts.
 7. **Build the whole video again,** one part per session, with these rules.
+8. **Narrator pop-ups (the "host" moments).**
+   - Luke is adding cut-out poses of the narrator as `narrator/N01.jpg … N12.jpg`, full body on pure white. The prompts are in `prompts/narrator-pose-prompts.md`.
+   - **Prep once:** remove the white background with a flood fill from the image edges (tolerance about 12), so his white eyes and sneakers stay intact. Feather the edge by 1px, save as transparent PNGs in `assets/narrator/`, and check them on a dark background.
+   - **When to use him:** every **25 to 40 seconds**, on lines where he's explaining, making a point, asking a question, listing a step, or reacting. That's about 3 to 5 pop-ups per part.
+   - **Match the pose to the tone:** N01 explain, N02 a key point, N03/N04 pointing at a card or icon on the other side, N05 a joke or shrug, N06 a question, N07 a step or good news, N08 counting/steps, N09 a surprise or reveal, N10 embarrassment, N11 a confident statement, N12 the intro/outro.
+   - **Layout:** he's about **55 to 65% of the frame height**, standing in the lower-left or lower-right corner. Fill the rest of the frame with a text card, an icon or a chart on cream, placed on the side he's facing or pointing to.
+   - **Motion:** he's never animated. Allowed: slide in from the edge (0.25s, ease-out) and out (0.2s), a soft *swoosh* SFX, and swapping to another N pose with a hard cut when the tone changes (at most 2 poses per pop-up).
+   - Each pop-up lasts **2 to 4s**, which counts as one shot under the 4s rule.
+   - **If `narrator/` is empty, skip pop-ups.**
 
 ---
 
