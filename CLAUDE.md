@@ -13,6 +13,34 @@ The owner is Luke. He is not a developer, so keep messages to him short and plai
 
 ---
 
+# 🔧 FIXES FROM THE PART 1 REVIEW (these override everything else; follow them exactly)
+
+Luke reviewed the first Part 1 render. These problems happened, so here's how to avoid them:
+
+1. **Audio sync. Use real word timestamps, never word-count estimates.**
+   - `pip install faster-whisper` (the model downloads from huggingface.co, which this environment allows).
+   - Transcribe `audio/padded/partN.wav` with model `small.en`, `word_timestamps=True`, and save to `scenes/partN.words.json`.
+   - Match each scene's narration to the transcript (fuzzy word matching): **a scene starts at its first word and ends right before the next scene's first word.** Swap and overlay cues use the exact time of their trigger word.
+   - Beats inside a scene change at **sentence boundaries** from the transcript, so a cut never lands mid-word.
+   - If faster-whisper truly can't run, fall back to silence boundaries, mapping sentences to silences in order. Never estimate by word count.
+2. **Zoom-ins:**
+   - Punch-in crops are at most **1.3×** (never 2×).
+   - Before choosing a crop, **open the picture and look at it**. Center the crop on a real subject (the narrator's head and upper body, or a key prop), and keep the whole subject inside the frame. Never crop to only legs, only a background, or a cut-off head.
+   - Maximum 1 crop per scene.
+3. **Sharpness:** the source pictures are 1376×768, so they're already stretched about 1.4× to fill 1080p. With crops capped at 1.3× and zooms at 1.06×, they stay acceptable. Use lanczos scaling plus a light `unsharp=5:5:0.6` when scaling the pictures.
+4. **Text cards are seasoning, not the meal.**
+   - Pictures take up at least **75%** of screen time.
+   - At most **1 text card per scene**, lasting 1.5 to 2.5s, **never two cards back to back**, and only for the punchiest phrase being said at that moment.
+   - S05: show the picture for most of it, one card ("THE 3-SECOND QUESTION"), then the title card.
+5. **Transitions:**
+   - Never crossfade into or out of a text card. Use **hard cuts**.
+   - Crossfades (0.4s) only go picture to picture between scenes.
+   - Every beat must be fully hidden once it ends, so nothing ghosts through.
+6. **Review before rendering:** snapshot **every beat** (not just 4 frames) into a contact sheet, look at it, and fix any crop that hides the subject, any ghosting, and any shot that doesn't match what's being said. Then render.
+7. **Rebuild Part 1** with these rules. Don't patch the old timing.
+
+---
+
 # ⚠️ CURRENT MODE: AI PICTURES (this overrides anything below that conflicts)
 
 Luke now makes the scene pictures himself with an AI image tool (Nano Banana). **Your job is to assemble the video, not to draw scenes or characters.**
