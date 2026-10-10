@@ -1,0 +1,3 @@
+Put your background music here, named:  track.mp3
+(It will be mixed very quietly under the voice automatically.)
+You can delete this text file afterwards.

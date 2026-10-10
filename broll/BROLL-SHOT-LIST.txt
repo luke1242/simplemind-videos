@@ -1,0 +1,22 @@
+B-ROLL SHOT LIST  (optional)
+
+Claude Code picks and downloads B-roll by itself if you add a free Pexels API key (see CLAUDE.md, section A10).
+You only need this list if you want to choose clips yourself - any clip you add here overrides its pick.
+Where to get free clips: pexels.com/videos  or  pixabay.com/videos  (free to use on YouTube).
+Download in HD (1920x1080). Avoid clips with big brand logos or faces staring at the camera.
+Rename each download to the file name below and drop it in this folder.
+
+FILE NAME   SEARCH FOR
+S01.mp4     "walking into gym"  /  "gym entrance"
+S06.mp4     "school hallway students walking"
+S11.mp4     "university campus students"
+S20.mp4     "empty movie theater"
+S22.mp4     "man lifting weights mirror"
+S24.mp4     "crowd walking city street"
+S32.mp4     "friends talking park bench"
+S38.mp4     "quiet street sunset"
+S47.mp4     "man walking into gym"  /  "gym workout start"
+S49.mp4     "people working out gym"
+S50.mp4     "sunrise hills"  /  "person hilltop sunrise"
+
+Clip length: anything 5-20 seconds is fine; only 4-6 seconds of each is used.
