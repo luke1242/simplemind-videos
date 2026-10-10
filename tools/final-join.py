@@ -16,7 +16,7 @@ for i, n in enumerate(parts):
     fc.append(f"[{i}:a]apad=pad_dur={pad}[a{i}]")
     labels.append(f"[v{i}][a{i}]")
 fc.append("".join(labels) + f"concat=n={len(parts)}:v=1:a=1[v][a]")
-subprocess.run(["ffmpeg", "-v", "error", "-y", *inputs, "-filter_complex", ";".join(fc), "-map", "[v]", "-map", "[a]", "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-pix_fmt", "yuv420p", "-r", "30", "-c:a", "pcm_s16le", f"{R}/full-voice.mkv"], check=True)
+if not os.path.exists(f"{R}/full-voice.mkv"): subprocess.run(["ffmpeg", "-v", "error", "-y", *inputs, "-filter_complex", ";".join(fc), "-map", "[v]", "-map", "[a]", "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-pix_fmt", "yuv420p", "-r", "30", "-c:a", "pcm_s16le", f"{R}/full-voice.mkv"], check=True)
 print("voice-only joined:", round(dur(f"{R}/full-voice.mkv"), 2), "s")
 # 2) SFX track from cues (min 2.5s apart, quiet)
 ev = []
@@ -26,12 +26,13 @@ ev.sort(); keep, last = [], -9
 for tt, k in ev:
     if tt - last >= 2.5: keep.append((tt, k)); last = tt
 print("sfx cues:", len(keep), "of", len(ev))
-sin, sfc, sl = [], [], []
-for j, (tt, k) in enumerate(keep):
-    sin += ["-i", f"assets/sfx/{k}.wav"]
-    sfc.append(f"[{j}:a]adelay={int(tt*1000)}|{int(tt*1000)},volume=0.12[s{j}]"); sl.append(f"[s{j}]")
-sfc.append("".join(sl) + f"amix=n={len(keep)}:normalize=0:dropout_transition=0,apad=whole_dur={total:.2f}[sfx]")
-subprocess.run(["ffmpeg", "-v", "error", "-y", *sin, "-filter_complex", ";".join(sfc), "-map", "[sfx]", "-t", f"{total:.2f}", "-ar", "44100", "-ac", "1", f"{R}/sfx.wav"], check=True)
+import wave, numpy as np
+SR = 44100; buf = np.zeros(int(total * SR) + SR, dtype=np.float32); cache = {}
+for tt, k in keep:
+    if k not in cache:
+        w = wave.open(f"assets/sfx/{k}.wav"); cache[k] = np.frombuffer(w.readframes(w.getnframes()), dtype=np.int16).astype(np.float32) / 32768
+    a = cache[k] * 0.12; o = int(tt * SR); buf[o:o + len(a)] += a[:max(0, len(buf) - o)]
+w = wave.open(f"{R}/sfx.wav", "wb"); w.setnchannels(1); w.setsampwidth(2); w.setframerate(SR); w.writeframes((np.clip(buf, -1, 1) * 32767).astype(np.int16).tobytes()); w.close()
 # 3) music + sidechain duck + mix
 music = [f for f in os.listdir("music") if f.lower().endswith((".mp3", ".wav", ".m4a")) and os.path.getsize(f"music/{f}") > 50000]
 if not music:
