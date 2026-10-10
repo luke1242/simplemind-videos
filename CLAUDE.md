@@ -326,7 +326,7 @@ Rules: the narrator is still never animated. Use hard cuts or quick slide-ins (0
 5. Save to `scenes/partN.timing.json` and print a short scene/start/end table.
 6. If Luke corrects a time, edit only that boundary.
 
-**Build loop (per part):** pad pauses → timing → `scenes/partN.json` → build any missing pictures (skip REUSE scenes) → `node tools/build-part.mjs N` → lint and check → snapshot 4 frames → render `renders/partN.mp4` (**voice only**) → report → stop.
+**Build loop (per part):** pad pauses → timing → `scenes/partN.json` → build any missing pictures (skip REUSE scenes) → `node tools/build-part.mjs N` → lint and check → snapshot 4 frames → render `renders/partN.mp4` (**voice only**) → commit and push → next part (no report until the full video is done).
 
 **Final join** (automatically right after Part 4, or when Luke asks):
 1. Concat the parts into `renders/full-voice.mp4`, with 1.0s of silence and a held last frame between parts.
