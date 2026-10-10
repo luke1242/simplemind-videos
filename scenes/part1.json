@@ -1,0 +1,233 @@
+{
+ "part": 1,
+ "scenes": [
+  {
+   "id": "S01",
+   "narration": "For a long time, there was one thought that stopped me from doing almost everything. Going to the gym. Raising my hand in class. Trying out for something. Posting anything online.",
+   "pic": "S01",
+   "camera": "zoom-in",
+   "beats": [
+    {
+     "type": "pic"
+    },
+    {
+     "type": "card",
+     "text": "ONE *THOUGHT* STOPPED ME"
+    },
+    {
+     "type": "crop",
+     "fx": 0.78,
+     "fy": 0.42,
+     "s": 2
+    },
+    {
+     "type": "card",
+     "text": "GYM. CLASS. *ONLINE.*"
+    }
+   ]
+  },
+  {
+   "id": "S02",
+   "narration": "Everyone's going to be watching.",
+   "pic": "S02",
+   "camera": "zoom-in",
+   "transition": "cut",
+   "beats": [
+    {
+     "type": "pic"
+    }
+   ]
+  },
+  {
+   "id": "S03",
+   "narration": "That's what it felt like. Every single time. Like I was standing alone on a giant stage, with one bright spotlight on me, and thousands of eyes in the dark.",
+   "pic": "S03",
+   "camera": "zoom-out",
+   "beats": [
+    {
+     "type": "pic"
+    },
+    {
+     "type": "crop",
+     "fx": 0.75,
+     "fy": 0.85,
+     "s": 2.2
+    },
+    {
+     "type": "card",
+     "text": "ALONE ON A *STAGE*"
+    }
+   ]
+  },
+  {
+   "id": "S04",
+   "narration": "Then I learned about one experiment, involving a really embarrassing T-shirt.",
+   "pic": "S04",
+   "camera": "zoom-in",
+   "beats": [
+    {
+     "type": "pic"
+    }
+   ]
+  },
+  {
+   "id": "S05",
+   "holdAfter": 2.5,
+   "narration": "And it changed how I see almost everything. By the end of this video, you'll know exactly how wrong our brains are about this, by how much, and the one question I now ask myself that shuts that thought down in about three seconds.",
+   "pic": "S05",
+   "camera": "hold",
+   "beats": [
+    {
+     "type": "pic"
+    },
+    {
+     "type": "card",
+     "text": "HOW *WRONG* ARE OUR BRAINS?"
+    },
+    {
+     "type": "card",
+     "text": "BY HOW *MUCH*?"
+    },
+    {
+     "type": "card",
+     "text": "THE *3-SECOND* QUESTION"
+    },
+    {
+     "type": "title",
+     "dur": 2.5
+    }
+   ]
+  },
+  {
+   "id": "S06",
+   "narration": "So here's how it used to go for me. I'd walk into a room, and I'd feel like there was a spotlight following me.",
+   "pic": "S06",
+   "camera": "pan-right",
+   "beats": [
+    {
+     "type": "pic"
+    },
+    {
+     "type": "crop",
+     "fx": 0.5,
+     "fy": 0.9,
+     "s": 2
+    },
+    {
+     "type": "card",
+     "text": "A *SPOTLIGHT* FOLLOWING ME"
+    }
+   ]
+  },
+  {
+   "id": "S07",
+   "narration": "If I tripped, everyone saw it. If my outfit was a little off, everyone noticed. If I said something dumb, I was sure everyone would remember it for weeks.",
+   "pic": "S07",
+   "camera": "zoom-in",
+   "beats": [
+    {
+     "type": "pic"
+    },
+    {
+     "type": "crop",
+     "fx": 0.42,
+     "fy": 0.4,
+     "s": 1.9
+    },
+    {
+     "type": "card",
+     "text": "EVERYONE *SAW* IT"
+    },
+    {
+     "type": "card",
+     "text": "REMEMBERED FOR *WEEKS*"
+    }
+   ]
+  },
+  {
+   "id": "S08",
+   "narration": "And then I'd replay it in my head that night. Over and over. Like a highlight reel of every awkward thing I'd ever done.",
+   "pic": "S08",
+   "camera": "zoom-in",
+   "beats": [
+    {
+     "type": "pic"
+    },
+    {
+     "type": "crop",
+     "fx": 0.72,
+     "fy": 0.25,
+     "s": 2.2
+    },
+    {
+     "type": "card",
+     "text": "A HIGHLIGHT REEL OF *AWKWARD*"
+    }
+   ]
+  },
+  {
+   "id": "S09",
+   "narration": "If you've ever done that, lying in bed at night, thinking about something awkward from three years ago. You're not weird. You're not broken.",
+   "pic": "S08",
+   "camera": "zoom-out",
+   "beats": [
+    {
+     "type": "pic"
+    },
+    {
+     "type": "crop",
+     "fx": 0.74,
+     "fy": 0.62,
+     "s": 2.4
+    },
+    {
+     "type": "pic",
+     "pic": "S08b",
+     "cue": "weird",
+     "camera": "zoom-out"
+    }
+   ]
+  },
+  {
+   "id": "S10",
+   "narration": "Your brain is doing something almost everyone's brain does. And it even has a name. Psychologists call it the spotlight effect. It's the feeling that people are noticing you, and judging you, way more than they actually are. And once you understand how strong it is, it's hard to see things the same way again.",
+   "pic": "S10",
+   "camera": "hold",
+   "overlays": [
+    {
+     "text": "THE SPOTLIGHT EFFECT",
+     "cue": "spotlight effect",
+     "x": 0.71,
+     "y": 0.37,
+     "w": 0.36
+    }
+   ],
+   "beats": [
+    {
+     "type": "pic"
+    },
+    {
+     "type": "crop",
+     "fx": 0.71,
+     "fy": 0.38,
+     "s": 1.7,
+     "cue": "spotlight"
+    },
+    {
+     "type": "card",
+     "text": "NOTICED *LESS* THAN YOU THINK"
+    },
+    {
+     "type": "crop",
+     "fx": 0.3,
+     "fy": 0.45,
+     "s": 1.8
+    },
+    {
+     "type": "card",
+     "text": "SEE IT *DIFFERENTLY*"
+    }
+   ]
+  }
+ ]
+}
