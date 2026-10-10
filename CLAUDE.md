@@ -24,10 +24,10 @@ Luke reviewed the first Part 1 render. These problems happened, so here's how to
    - Beats inside a scene change at **sentence boundaries** from the transcript, so a cut never lands mid-word.
    - If faster-whisper truly can't run, fall back to silence boundaries, mapping sentences to silences in order. Never estimate by word count.
 2. **Zoom-ins:**
-   - Punch-in crops are at most **1.3×** (never 2×).
+   - Punch-in crops are at most **1.4×** (never 2×).
    - Before choosing a crop, **open the picture and look at it**. Center the crop on a real subject (the narrator's head and upper body, or a key prop), and keep the whole subject inside the frame. Never crop to only legs, only a background, or a cut-off head.
    - Maximum 1 crop per scene.
-3. **Sharpness:** the source pictures are 1376×768, so they're already stretched about 1.4× to fill 1080p. With crops capped at 1.3× and zooms at 1.06×, they stay acceptable. Use lanczos scaling plus a light `unsharp=5:5:0.6` when scaling the pictures.
+3. **Sharpness:** the pictures are now 2K, so crops up to **1.4×** stay sharp. Crop from the full 2K source (not the downscaled copy), and use lanczos scaling.
 4. **Text cards are seasoning, not the meal.**
    - Pictures take up at least **75%** of screen time.
    - At most **1 text card per scene**, lasting 1.5 to 2.5s, **never two cards back to back**, and only for the punchiest phrase being said at that moment.
@@ -45,7 +45,7 @@ Luke reviewed the first Part 1 render. These problems happened, so here's how to
 
 Luke now makes the scene pictures himself with an AI image tool (Nano Banana). **Your job is to assemble the video, not to draw scenes or characters.**
 
-- **Pictures:** `pictures/S##.jpg` (or `.png`), plus `S##b` for the "after" picture of a swap. They're 1376×768. Scale them up to fill 1920×1080 (same aspect ratio) with high-quality (lanczos) scaling. Prompts are in `prompts/nano-banana-prompts.md`. Use them as-is: don't redraw, restyle or "fix" them. Only crop or scale them to fit 16:9.
+- **Pictures:** `pictures/S##.jpg` (or `.png`), plus `S##b` for the "after" picture of a swap. They're now **2K (2752×1536)**, except S31b, which is still 1376×768. Scale them **down** to 1920×1080 (lanczos), so they're sharp. Prompts are in `prompts/nano-banana-prompts.md`. Use them as-is: don't redraw, restyle or "fix" them. Only crop or scale them to fit 16:9.
 - **Skip entirely:** building character SVGs, poses, the character sheet (A5 to A7 and A9), and drawing scene pictures. Keep the narrator rules only as a reference for what scenes mean.
 - **No B-roll.** Ignore A10 and every `broll:` line. Never download footage.
 - **Picture map:** REUSE scenes use the referenced picture (S09 → S08 and S08b, S16 → S15 card, S19 → S17, S24/S45 → S21, S29 → S28 card, S37 → S35 and S35b, S46 → S30, S43 uses S43.png). Swaps use `S##.png` then `S##b.png` at the trigger word.
@@ -56,7 +56,7 @@ Luke now makes the scene pictures himself with an AI image tool (Nano Banana). *
   - **S41:** a text card "HOW I USE THIS"
   - **S44:** a "STEP 2: CUT IT IN HALF" card with 50% changing to 25%
   - every overlay in Part B, and **2 to 3 extra text cards or punch-in crops per scene** for the 3 to 4s pacing (A8b)
-- **Pictures not made yet:** only **S42** is missing, so use S05 (the thinking pose) plus the STEP 1 overlay. Note that S51 is the narrator with neutral eyes and S51b with happy ^ ^ eyes (there's no wink picture).
+- **All pictures exist now**, including S42. S51 is the narrator smiling (^ ^), and S51b is him **winking**.
 - **Any other missing picture:** use a text card with that scene's key phrase, keep going, and list the missing files in your report.
 - **Everything else still applies:** pause padding, timing, camera moves (slow zooms and pans on the pictures), SFX, the soft music mix, and one part per session.
 
