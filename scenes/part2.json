@@ -1,55 +1,349 @@
 {
-  "part": 2,
-  "audio": "audio/padded/part2.wav",
-  "scenes": [
-    {"id":"S11","picture":"S11","camera":"pan-right",
-     "narration":"So here's the experiment. Around the year two thousand, a psychologist named Thomas Gilovich and his team at Cornell University ran a study with college students.",
-     "overlays":[{"type":"label","text":["Cornell University, ~2000"],"word":"cornell","box":{"x":0.03,"y":0.87,"w":0.36,"h":0.085}}],
-     "beats":[]},
-    {"id":"S12","picture":"S12","camera":"zoom-in",
-     "narration":"They had one student put on a T-shirt with a big, cheesy picture of a singer on it. One that college students at the time would find really embarrassing to be seen in.",
-     "beats":[{"type":"card","word":"embarrassing","dur":1.5,"back":0.2,"parts":[{"t":"REALLY"},{"t":"EMBARRASSING","badge":"red"}]}]},
-    {"id":"S13","picture":"S13","camera":"pan-left",
-     "narration":"Then that student walked into a room full of other students, stayed for a moment, and walked back out.","beats":[]},
-    {"id":"S14","picture":"S14","camera":"zoom-in",
-     "narration":"Afterward, the researchers asked the student in the T-shirt one simple question. How many people in that room do you think noticed your shirt?",
-     "beats":[{"type":"crop","sentences":[1,1],"cx":0.5,"cy":0.45,"z":1.25}]},
-    {"id":"S15","diagram":{"kind":"pie","pct":50,"label":"THEIR GUESS:","badge":"yellow","value":"50%"},"camera":"hold",
-     "narration":"On average, they guessed about half.","beats":[]},
-    {"id":"S16","diagram":{"kind":"pie","pct":50,"label":"THEIR GUESS:","badge":"yellow","value":"50%"},
-     "diagramB":{"kind":"pie","pct":25,"label":"REALITY:","badge":"red","value":"25%"},"swapWord":"quarter","camera":"zoom-in","cameraStart":"swap","continues":true,
-     "narration":"The real number? Only about a quarter.","beats":[]},
-    {"id":"S17","picture":"S17","camera":"zoom-out",
-     "narration":"They thought twice as many people noticed as actually did. And remember, that was a shirt picked specifically to be embarrassing. Something designed to get noticed.",
-     "beats":[{"type":"card","word":"twice","dur":1.5,"parts":[{"t":"TWICE","badge":"yellow"},{"t":"AS MANY"}]},
-              {"type":"crop","sentences":[1,2],"cx":0.5,"cy":0.42,"z":1.3}]},
-    {"id":"S18","picture":"S18","camera":"zoom-in",
-     "narration":"Now think about the little things you worry about every day. A bad hair day. A pimple. Saying you too when the waiter says enjoy your meal.",
-     "beats":[{"type":"crop","sentences":[0,0],"cx":0.3,"cy":0.4,"z":1.3}]},
-    {"id":"S19","picture":"S17","camera":"zoom-in",
-     "narration":"If people barely noticed a ridiculous T-shirt, they're definitely not tracking those.","beats":[]},
-    {"id":"S20","picture":"S20","camera":"zoom-in",
-     "narration":"So why does this happen? It's actually pretty simple. You are the main character of your own life. You see everything from inside your own head, so you're thinking about yourself all day long. And your brain quietly assumes everyone else is thinking about you too.",
-     "beats":[{"type":"card","word":"main","dur":1.5,"parts":[{"t":"MAIN","badge":"yellow"},{"t":"CHARACTER"}]},
-              {"type":"crop","sentences":[3,3],"cx":0.5,"cy":0.55,"z":1.25}]},
-    {"id":"S21","picture":"S21","camera":"zoom-out",
-     "narration":"But here's the thing. Everyone else is the main character of their own life too.","beats":[]},
-    {"id":"S22","picture":"S22","camera":"zoom-in",
-     "narration":"That guy you think is judging your workout? He's worried about his own form.",
-     "beats":[{"type":"crop","sentences":[1,1],"cx":0.45,"cy":0.45,"z":1.25}]},
-    {"id":"S23","picture":"S23","camera":"pan-right",
-     "narration":"That girl you think noticed you stumble over your words? She's busy replaying something she said.",
-     "beats":[{"type":"crop","sentences":[1,1],"cx":0.62,"cy":0.42,"z":1.25}]},
-    {"id":"S24","picture":"S21","camera":"zoom-in",
-     "narration":"Everyone is walking around in their own little spotlight, so busy worrying about it that they barely notice yours.",
-     "beats":[{"type":"card","word":"spotlight","dur":1.6,"back":0.4,"parts":[{"t":"THEIR OWN"},{"t":"SPOTLIGHT","badge":"yellow"}]}]},
-    {"id":"S25","picture":"S25","camera":"zoom-in",
-     "narration":"And it's not just about how you look. Gilovich and his team found something similar with nerves. When people gave a speech, they thought their nervousness was way more obvious than it really was. The audience mostly couldn't tell.",
-     "beats":[{"type":"crop","sentences":[2,2],"cx":0.32,"cy":0.42,"z":1.3}]},
-    {"id":"S26","picture":"S26","camera":"zoom-in",
-     "narration":"They called it the illusion of transparency. It's that feeling that everyone can see right through you. They can't. The shaking you feel on the inside? From the outside? It mostly just looks like a normal person talking.",
-     "overlays":[{"type":"pill","text":["SEEMS FINE"],"word":"can't","box":{"x":0.38,"y":0.09,"w":0.2,"h":0.09}}],
-     "beats":[{"type":"card","word":"illusion","dur":1.8,"back":0.1,"parts":[{"t":"ILLUSION OF"},{"t":"TRANSPARENCY","badge":"yellow"}]},
-              {"type":"crop","sentences":[4,5],"cx":0.35,"cy":0.42,"z":1.3}]}
-  ]
+ "part": 2,
+ "audio": "audio/padded/part2.wav",
+ "scenes": [
+  {
+   "id": "S11",
+   "camera": "pan-right",
+   "narration": "So here's the experiment. Around the year two thousand, a psychologist named Thomas Gilovich and his team at Cornell University ran a study with college students.",
+   "events": [
+    {
+     "kind": "pop",
+     "pose": "N01",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "THE"
+       },
+       {
+        "t": "EXPERIMENT",
+        "badge": "yellow"
+       }
+      ]
+     },
+     "word": "so",
+     "occ": 1,
+     "dur": 3.0
+    },
+    {
+     "kind": "icon",
+     "icon": "I16",
+     "word": "cornell",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "picture": "S11",
+   "overlays": [
+    {
+     "type": "label",
+     "text": "Cornell University, ~2000",
+     "word": "cornell"
+    }
+   ]
+  },
+  {
+   "id": "S12",
+   "camera": "zoom-in",
+   "narration": "They had one student put on a T-shirt with a big, cheesy picture of a singer on it. One that college students at the time would find really embarrassing to be seen in.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I08",
+     "word": "shirt",
+     "occ": 1,
+     "dur": 1.8
+    },
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "REALLY"
+      },
+      {
+       "t": "EMBARRASSING",
+       "badge": "red"
+      }
+     ],
+     "word": "really",
+     "occ": 1,
+     "dur": 1.6,
+     "back": 0.0
+    }
+   ],
+   "picture": "S12"
+  },
+  {
+   "id": "S13",
+   "camera": "pan-left",
+   "narration": "Then that student walked into a room full of other students, stayed for a moment, and walked back out.",
+   "events": [],
+   "picture": "S13"
+  },
+  {
+   "id": "S14",
+   "camera": "zoom-in",
+   "narration": "Afterward, the researchers asked the student in the T-shirt one simple question. How many people in that room do you think noticed your shirt?",
+   "events": [
+    {
+     "kind": "pop",
+     "pose": "N06",
+     "content": {
+      "type": "icon",
+      "icon": "I17"
+     },
+     "word": "simple",
+     "occ": 1,
+     "dur": 3.0
+    }
+   ],
+   "picture": "S14"
+  },
+  {
+   "id": "S15",
+   "camera": "hold",
+   "narration": "On average, they guessed about half.",
+   "events": [],
+   "diagram": {
+    "kind": "pie",
+    "pct": 50,
+    "label": "THEIR GUESS:",
+    "badge": "yellow",
+    "value": "50%"
+   },
+   "foci": [
+    [
+     0.5,
+     0.42,
+     1.3
+    ],
+    [
+     0.5,
+     0.82,
+     1.3
+    ]
+   ]
+  },
+  {
+   "id": "S16",
+   "camera": "zoom-in",
+   "narration": "The real number? Only about a quarter.",
+   "events": [],
+   "diagram": {
+    "kind": "pie",
+    "pct": 50,
+    "label": "THEIR GUESS:",
+    "badge": "yellow",
+    "value": "50%"
+   },
+   "diagramB": {
+    "kind": "pie",
+    "pct": 25,
+    "label": "REALITY:",
+    "badge": "red",
+    "value": "25%"
+   },
+   "swap": {
+    "word": "quarter"
+   },
+   "continues": true,
+   "foci": [
+    [
+     0.5,
+     0.42,
+     1.3
+    ],
+    [
+     0.5,
+     0.82,
+     1.3
+    ]
+   ]
+  },
+  {
+   "id": "S17",
+   "camera": "zoom-out",
+   "narration": "They thought twice as many people noticed as actually did. And remember, that was a shirt picked specifically to be embarrassing. Something designed to get noticed.",
+   "events": [
+    {
+     "kind": "pop",
+     "pose": "N09",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "TWICE",
+        "badge": "yellow"
+       },
+       {
+        "t": "AS MANY"
+       }
+      ]
+     },
+     "word": "twice",
+     "occ": 1,
+     "dur": 3.0
+    }
+   ],
+   "picture": "S17"
+  },
+  {
+   "id": "S18",
+   "camera": "zoom-in",
+   "narration": "Now think about the little things you worry about every day. A bad hair day. A pimple. Saying you too when the waiter says enjoy your meal.",
+   "events": [],
+   "picture": "S18"
+  },
+  {
+   "id": "S19",
+   "camera": "zoom-in",
+   "narration": "If people barely noticed a ridiculous T-shirt, they're definitely not tracking those.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I18",
+     "word": "barely",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "picture": "S17"
+  },
+  {
+   "id": "S20",
+   "camera": "zoom-in",
+   "narration": "So why does this happen? It's actually pretty simple. You are the main character of your own life. You see everything from inside your own head, so you're thinking about yourself all day long. And your brain quietly assumes everyone else is thinking about you too.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I19",
+     "word": "main",
+     "occ": 1,
+     "dur": 1.8
+    },
+    {
+     "kind": "pop",
+     "pose": "N06",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "INSIDE YOUR"
+       },
+       {
+        "t": "OWN HEAD",
+        "badge": "yellow"
+       }
+      ]
+     },
+     "word": "inside",
+     "occ": 1,
+     "dur": 3.0
+    }
+   ],
+   "picture": "S20"
+  },
+  {
+   "id": "S21",
+   "camera": "zoom-out",
+   "narration": "But here's the thing. Everyone else is the main character of their own life too.",
+   "events": [],
+   "picture": "S21"
+  },
+  {
+   "id": "S22",
+   "camera": "zoom-in",
+   "narration": "That guy you think is judging your workout? He's worried about his own form.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I20",
+     "word": "workout",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "picture": "S22"
+  },
+  {
+   "id": "S23",
+   "camera": "pan-right",
+   "narration": "That girl you think noticed you stumble over your words? She's busy replaying something she said.",
+   "events": [],
+   "picture": "S23"
+  },
+  {
+   "id": "S24",
+   "camera": "zoom-in",
+   "narration": "Everyone is walking around in their own little spotlight, so busy worrying about it that they barely notice yours.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "THEIR OWN"
+      },
+      {
+       "t": "SPOTLIGHT",
+       "badge": "yellow"
+      }
+     ],
+     "word": "own",
+     "occ": 1,
+     "dur": 1.6,
+     "back": 0.0
+    },
+    {
+     "kind": "icon",
+     "icon": "I18",
+     "word": "barely",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "picture": "S21"
+  },
+  {
+   "id": "S25",
+   "camera": "zoom-in",
+   "narration": "And it's not just about how you look. Gilovich and his team found something similar with nerves. When people gave a speech, they thought their nervousness was way more obvious than it really was. The audience mostly couldn't tell.",
+   "events": [
+    {
+     "kind": "pop",
+     "pose": "N10",
+     "content": {
+      "type": "icon",
+      "icon": "I21"
+     },
+     "word": "speech",
+     "occ": 1,
+     "dur": 3.0
+    }
+   ],
+   "picture": "S25"
+  },
+  {
+   "id": "S26",
+   "camera": "zoom-in",
+   "narration": "They called it the illusion of transparency. It's that feeling that everyone can see right through you. They can't. The shaking you feel on the inside? From the outside? It mostly just looks like a normal person talking.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I22",
+     "word": "transparency",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "picture": "S26",
+   "overlays": [
+    {
+     "type": "pill",
+     "text": "SEEMS FINE",
+     "word": "can't"
+    }
+   ]
+  }
+ ]
 }

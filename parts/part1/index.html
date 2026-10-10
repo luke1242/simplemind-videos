@@ -8,83 +8,136 @@ html,body{margin:0;background:#FAF7F0}
 .clip{position:absolute;inset:0;overflow:hidden}
 .fill{position:absolute;inset:0}
 .pic{position:absolute;inset:0;width:100%;height:100%;display:block}
+.iconshot{background:#F8F5EE}
 .card{background:#FAF7F0;display:flex;align-items:center;justify-content:center}
 .cardtxt{display:flex;flex-direction:column;align-items:center;gap:26px;text-align:center}
 .ln{font-size:170px;line-height:1.05;letter-spacing:1px;white-space:nowrap}
 .ln.big{font-size:118px}
+.ln.sm{font-size:112px}
 .badge{display:inline-block;padding:4px 40px 12px;border:9px solid #1A1A1A;border-radius:34px;box-shadow:8px 8px 0 #1A1A1A}
 .badge.yellow{background:#F2C230;color:#1A1A1A} .badge.red{background:#D64545;color:#fff}
 .pill{background:#2F6B2F;color:#fff;border:7px solid #1A1A1A;border-radius:60px;font-size:64px;padding:2px 54px 8px;letter-spacing:4px;margin-bottom:18px}
+.pill.big{margin:0;border-width:6px;font-size:64px;padding:2px 50px 8px}
 .org{color:#F2A65A;-webkit-text-stroke:6px #1A1A1A;paint-order:stroke fill}
 .mapov{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0}
 .board{position:absolute;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#1A1A1A;font-size:112px;line-height:1.08;text-align:center}
 .diag{background:#FAF7F0}
-.dlabel{position:absolute;left:0;right:0;top:830px;display:flex;justify-content:center;align-items:center;gap:36px;font-size:130px;white-space:nowrap}
-.tagbox{position:absolute;display:flex;align-items:center;justify-content:center;white-space:nowrap}
-.tagbox.label{background:#FAF7F0;border:5px solid #1A1A1A;border-radius:40px;font-size:40px}
-.tagbox.pill{background:#2F6B2F;color:#fff;border:6px solid #1A1A1A;border-radius:60px;font-size:54px;letter-spacing:3px}
 .cardc{display:flex;align-items:center;justify-content:center}
+.dlabel{position:absolute;left:0;right:0;top:830px;display:flex;justify-content:center;align-items:center;gap:36px;font-size:130px;white-space:nowrap}
 .spillrow{position:absolute;left:0;right:0;top:70px;display:flex;justify-content:center}
 .stitle{position:absolute;left:0;right:0;top:190px;text-align:center;font-size:140px;line-height:1}
 .bigval{position:absolute;left:1000px;right:0;top:560px;display:flex;justify-content:center;font-size:240px}
 .sclab{position:absolute;width:500px;display:flex;justify-content:center;font-size:84px}
-.stepbox{position:absolute;background:#FAF7F0;border:6px solid #1A1A1A;border-radius:30px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;box-sizing:border-box;padding:8px 18px}
-.stepbox .pill.sm{font-size:42px;padding:0 34px 4px;margin:0;border-width:5px}
-.stxt{font-size:50px;line-height:1.05}
+.tagbox{position:absolute;display:flex;align-items:center;justify-content:center;white-space:nowrap}
 .bubble{position:absolute;background:#fff;border:6px solid #1A1A1A;border-radius:50%;box-sizing:border-box;padding:14px}
+.scr{position:absolute;left:0;right:0;top:24px;display:flex;flex-direction:column;align-items:center;gap:14px;z-index:5}
+.spill2{background:#FAF7F0;border:6px solid #1A1A1A;border-radius:44px;font-size:60px;line-height:1.05;padding:4px 40px 10px;white-space:nowrap}
+.popwrap{position:absolute;left:760px;right:50px;top:0;bottom:0;display:flex;align-items:center;justify-content:center}
+.popcard{display:flex;flex-direction:column;align-items:center;gap:22px;text-align:center}
+.popicon{width:1180px;height:664px;mix-blend-mode:multiply}
+.narr{position:absolute;left:70px;bottom:0;height:700px}
 .board .bl.org{-webkit-text-stroke:4px #1A1A1A}
 </style></head><body>
 <div id="root" data-composition-id="part1" data-start="0" data-width="1920" data-height="1080" data-duration="102.938">
-<div id="s01" class="clip" data-start="0" data-duration="15.04" style="z-index:10"><div id="s01-fade" class="fill"><div id="s01-cam" class="fill"><img src="assets/pictures/S01.jpg" class="pic" alt=""></div></div></div>
-<div id="s01-b0" class="clip" data-start="8.17" data-duration="4.08" style="z-index:11"><div id="s01-b0-cam" class="fill"><img src="assets/pictures/S01-crop0.jpg" class="pic" alt=""></div></div>
-<div id="s02" class="clip" data-start="15.04" data-duration="2.46" style="z-index:20"><div id="s02-fade" class="fill"><div id="s02-cam" class="fill"><img src="assets/pictures/S02.jpg" class="pic" alt=""></div></div></div>
-<div id="s03" class="clip" data-start="17.1" data-duration="11.04" style="z-index:30"><div id="s03-fade" class="fill"><div id="s03-cam" class="fill"><img src="assets/pictures/S03.jpg" class="pic" alt=""></div></div></div>
-<div id="s03-b0" class="clip card" data-start="25.68" data-duration="1.5" style="z-index:32"><div id="s03-b0-in" class="cardtxt"><div class="ln"><span class="badge red">THOUSANDS</span></div><div class="ln">OF EYES</div></div></div>
-<div id="s04" class="clip" data-start="27.74" data-duration="5.52" style="z-index:40"><div id="s04-fade" class="fill"><div id="s04-cam" class="fill"><img src="assets/pictures/S04.jpg" class="pic" alt=""></div></div></div>
-<div id="s05" class="clip" data-start="32.86" data-duration="17.58" style="z-index:50"><div id="s05-fade" class="fill"><div id="s05-cam" class="fill"><img src="assets/pictures/S05.jpg" class="pic" alt=""></div></div></div>
-<div id="s05-b0" class="clip card" data-start="43.22" data-duration="1.5" style="z-index:52"><div id="s05-b0-in" class="cardtxt"><div class="ln">THE</div><div class="ln"><span class="badge yellow">3-SECOND</span></div><div class="ln">QUESTION</div></div></div>
-<div id="s05-b1" class="clip card" data-start="47.94" data-duration="2.5" style="z-index:52"><div id="s05-b1-in" class="cardtxt"><div class="pill">LESSON</div><div class="ln big">ONE OF THE MOST <span class="org">USEFUL</span></div><div class="ln big">LESSONS I LEARNED</div></div></div>
-<div id="s06" class="clip" data-start="50.44" data-duration="6.78" style="z-index:60"><div id="s06-fade" class="fill"><div id="s06-cam" class="fill"><img src="assets/pictures/S06.jpg" class="pic" alt=""></div></div></div>
-<div id="s06-b0" class="clip" data-start="52.73" data-duration="4.49" style="z-index:61"><div id="s06-b0-cam" class="fill"><img src="assets/pictures/S06-crop0.jpg" class="pic" alt=""></div></div>
-<div id="s07" class="clip" data-start="56.82" data-duration="11.08" style="z-index:70"><div id="s07-fade" class="fill"><div id="s07-cam" class="fill"><img src="assets/pictures/S07.jpg" class="pic" alt=""></div></div></div>
-<div id="s07-b0" class="clip" data-start="59.61" data-duration="3.38" style="z-index:71"><div id="s07-b0-cam" class="fill"><img src="assets/pictures/S07-crop0.jpg" class="pic" alt=""></div></div>
-<div id="s07-b1" class="clip card" data-start="65.56" data-duration="1.5" style="z-index:72"><div id="s07-b1-in" class="cardtxt"><div class="ln">FOR</div><div class="ln"><span class="badge red">WEEKS</span></div></div></div>
-<div id="s08" class="clip" data-start="67.5" data-duration="8.64" style="z-index:80"><div id="s08-fade" class="fill"><div id="s08-cam" class="fill"><img src="assets/pictures/S08.jpg" class="pic" alt=""></div></div></div>
-<div id="s08-b0" class="clip" data-start="72.05" data-duration="4.09" style="z-index:81"><div id="s08-b0-cam" class="fill"><img src="assets/pictures/S08-crop0.jpg" class="pic" alt=""></div></div>
-<div id="s09" class="clip" data-start="76.14" data-duration="8.64" style="z-index:90"><div id="s09-fade" class="fill"><div id="s09-cam" class="fill"><img src="assets/pictures/S08.jpg" class="pic" alt=""><img id="s09-picB" src="assets/pictures/S08b.jpg" class="pic" style="opacity:0" alt=""></div></div></div>
-<div id="s10" class="clip" data-start="84.38" data-duration="18.558" style="z-index:100"><div id="s10-fade" class="fill"><div id="s10-cam" class="fill"><img src="assets/pictures/S10.jpg" class="pic" alt=""><div id="s10-ov0" class="board" data-layout-allow-overlap style="left:960px;top:129.6px;width:806.4px;height:464.4px"><div class="bl" data-layout-allow-overlap>THE</div><div class="bl org" data-layout-allow-overlap>SPOTLIGHT</div><div class="bl" data-layout-allow-overlap>EFFECT</div></div></div></div></div>
-<div id="s10-b0" class="clip card" data-start="89.34" data-duration="1.5" style="z-index:102"><div id="s10-b0-in" class="cardtxt"><div class="ln">IT HAS A</div><div class="ln"><span class="badge yellow">NAME</span></div></div></div>
-<div id="s10-b1" class="clip" data-start="93.21" data-duration="5.12" style="z-index:101"><div id="s10-b1-cam" class="fill"><img src="assets/pictures/S10-crop1.jpg" class="pic" alt=""><div class="mapov" style="transform:translate(-376.32px,0px) scale(1.2)"><div id="s10-cov0" class="board" data-layout-allow-overlap style="left:960px;top:129.6px;width:806.4px;height:464.4px"><div class="bl" data-layout-allow-overlap>THE</div><div class="bl org" data-layout-allow-overlap>SPOTLIGHT</div><div class="bl" data-layout-allow-overlap>EFFECT</div></div></div></div></div>
+<div id="s01-s0" class="clip" data-start="0" data-duration="3.22" style="z-index:11"><div id="s01-s0-fade" class="fill"><div id="s01-s0-cam" class="fill"><img src="assets/pictures/S01.jpg" class="pic" alt=""></div></div></div>
+<div id="s01-s1" class="clip" data-start="3.22" data-duration="2.88" style="z-index:12"><div id="s01-s1-fade" class="fill"><div id="s01-s1-cam" class="fill"><img src="assets/pictures/S01-f0.jpg" class="pic" alt=""><div class="mapov" style="transform:translate(0px,0px) scale(1.3)"></div></div></div></div>
+<div id="s01-s2" class="clip" data-start="6.1" data-duration="2.18" style="z-index:13"><div id="s01-s2-fade" class="fill"><div id="s01-s2-cam" class="fill"><img src="assets/pictures/S01.jpg" class="pic" alt=""></div></div></div>
+<div id="s01-s3" class="clip" data-start="8.28" data-duration="2.22" style="z-index:14"><div id="s01-s3-fade" class="fill"><div id="s01-s3-cam" class="fill"><img src="assets/pictures/S01-f1.jpg" class="pic" alt=""><div class="mapov" style="transform:translate(-576px,-232.2px) scale(1.3)"></div></div></div></div>
+<div id="s01-s4" class="clip" data-start="10.5" data-duration="1.86" style="z-index:15"><div id="s01-s4-fade" class="fill"><div id="s01-s4-cam" class="fill"><img src="assets/pictures/S01.jpg" class="pic" alt=""></div></div></div>
+<div id="s01-s5" class="clip iconshot" data-start="12.36" data-duration="2.68" style="z-index:16"><img id="s01-s5-img" src="assets/icons/I05.jpg" class="pic" alt=""></div>
+<div id="s02-s0" class="clip" data-start="15.04" data-duration="2.46" style="z-index:17"><div id="s02-s0-fade" class="fill"><div id="s02-s0-cam" class="fill"><img src="assets/pictures/S02.jpg" class="pic" alt=""></div></div></div>
+<div id="s03-s0" class="clip" data-start="17.25" data-duration="3.85" style="z-index:18"><div id="s03-s0-fade" class="fill"><div id="s03-s0-cam" class="fill"><img src="assets/pictures/S03.jpg" class="pic" alt=""></div></div></div>
+<div id="s03-s1" class="clip" data-start="21.1" data-duration="3.1" style="z-index:19"><div id="s03-s1-fade" class="fill"><div id="s03-s1-cam" class="fill"><img src="assets/pictures/S03-f0.jpg" class="pic" alt=""><div class="mapov" style="transform:translate(0px,-189px) scale(1.35)"></div></div></div></div>
+<div id="s03-s2" class="clip" data-start="24.2" data-duration="2.22" style="z-index:20"><div id="s03-s2-fade" class="fill"><div id="s03-s2-cam" class="fill"><img src="assets/pictures/S03.jpg" class="pic" alt=""></div></div></div>
+<div id="s03-s3" class="clip iconshot" data-start="26.42" data-duration="1.72" style="z-index:21"><img id="s03-s3-img" src="assets/icons/I06.jpg" class="pic" alt=""></div>
+<div id="s04-s0" class="clip iconshot" data-start="28.14" data-duration="1.92" style="z-index:22"><img id="s04-s0-img" src="assets/icons/I09.jpg" class="pic" alt=""></div>
+<div id="s04-s1" class="clip" data-start="30.06" data-duration="2.12" style="z-index:23"><div id="s04-s1-fade" class="fill"><div id="s04-s1-cam" class="fill"><img src="assets/pictures/S04.jpg" class="pic" alt=""></div></div></div>
+<div id="s04-s2" class="clip iconshot" data-start="32.18" data-duration="1.08" style="z-index:24"><img id="s04-s2-img" src="assets/icons/I08.jpg" class="pic" alt=""></div>
+<div id="s05-s0" class="clip" data-start="33.26" data-duration="3.86" style="z-index:25"><div id="s05-s0-fade" class="fill"><div id="s05-s0-cam" class="fill"><img src="assets/pictures/S05.jpg" class="pic" alt=""></div></div></div>
+<div id="s05-s1" class="clip" data-start="37.12" data-duration="3.24" style="z-index:26"><div id="s05-s1-fade" class="fill"><div id="s05-s1-cam" class="fill"><img src="assets/pictures/S05-f0.jpg" class="pic" alt=""><div class="mapov" style="transform:translate(-336px,0px) scale(1.35)"></div></div></div></div>
+<div id="s05-s2" class="clip" data-start="40.36" data-duration="2.86" style="z-index:27"><div id="s05-s2-fade" class="fill"><div id="s05-s2-cam" class="fill"><img src="assets/pictures/S05.jpg" class="pic" alt=""></div></div></div>
+<div id="s05-s3" class="clip card" data-start="43.22" data-duration="1.66" style="z-index:28"><div id="s05-s3-in" class="cardtxt"><div class="ln">THE</div><div class="ln"><span class="badge yellow">3-SECOND</span></div><div class="ln">QUESTION</div></div></div>
+<div id="s05-s4" class="clip" data-start="44.88" data-duration="1.46" style="z-index:29"><div id="s05-s4-fade" class="fill"><div id="s05-s4-cam" class="fill"><img src="assets/pictures/S05-f0.jpg" class="pic" alt=""><div class="mapov" style="transform:translate(-336px,0px) scale(1.35)"></div></div></div></div>
+<div id="s05-s5" class="clip iconshot" data-start="46.34" data-duration="1.6" style="z-index:30"><img id="s05-s5-img" src="assets/icons/I11.jpg" class="pic" alt=""></div>
+<div id="s05-s6" class="clip card" data-start="47.94" data-duration="2.5" style="z-index:31"><div id="s05-s6-in" class="cardtxt"><div class="pill">LESSON</div><div class="ln big">ONE OF THE MOST <span class="org">USEFUL</span></div><div class="ln big">LESSONS I LEARNED</div></div></div>
+<div id="s06-s0" class="clip" data-start="50.44" data-duration="2.4" style="z-index:32"><div id="s06-s0-fade" class="fill"><div id="s06-s0-cam" class="fill"><img src="assets/pictures/S06.jpg" class="pic" alt=""></div></div></div>
+<div id="s06-s1" class="clip" data-start="52.84" data-duration="2.24" style="z-index:33"><div id="s06-s1-fade" class="fill"><div id="s06-s1-cam" class="fill"><img src="assets/pictures/S06-f0.jpg" class="pic" alt=""><div class="mapov" style="transform:translate(-288px,0px) scale(1.3)"></div></div></div></div>
+<div id="s06-s2" class="clip card" data-start="55.08" data-duration="2.14" style="z-index:34"><div id="s06-s2-c" class="popwrap"><img src="assets/icons/I07.jpg" class="popicon" alt=""></div><img id="s06-s2-n" class="narr" src="assets/narrator/N03.png" alt=""></div>
+<div id="s07-s0" class="clip iconshot" data-start="57.22" data-duration="1.86" style="z-index:35"><img id="s07-s0-img" src="assets/icons/I12.jpg" class="pic" alt=""></div>
+<div id="s07-s1" class="clip" data-start="59.08" data-duration="2.6" style="z-index:36"><div id="s07-s1-fade" class="fill"><div id="s07-s1-cam" class="fill"><img src="assets/pictures/S07.jpg" class="pic" alt=""></div></div></div>
+<div id="s07-s2" class="clip" data-start="61.68" data-duration="2.68" style="z-index:37"><div id="s07-s2-fade" class="fill"><div id="s07-s2-cam" class="fill"><img src="assets/pictures/S07-f0.jpg" class="pic" alt=""><div class="mapov" style="transform:translate(0px,-135px) scale(1.25)"></div></div></div></div>
+<div id="s07-s3" class="clip" data-start="64.36" data-duration="2.1" style="z-index:38"><div id="s07-s3-fade" class="fill"><div id="s07-s3-cam" class="fill"><img src="assets/pictures/S07.jpg" class="pic" alt=""></div></div></div>
+<div id="s07-s4" class="clip iconshot" data-start="66.46" data-duration="1.44" style="z-index:39"><img id="s07-s4-img" src="assets/icons/I13.jpg" class="pic" alt=""></div>
+<div id="s08-s0" class="clip" data-start="67.9" data-duration="1.68" style="z-index:40"><div id="s08-s0-fade" class="fill"><div id="s08-s0-cam" class="fill"><img src="assets/pictures/S08.jpg" class="pic" alt=""></div></div></div>
+<div id="s08-s1" class="clip iconshot" data-start="69.58" data-duration="1.62" style="z-index:41"><img id="s08-s1-img" src="assets/icons/I14.jpg" class="pic" alt=""></div>
+<div id="s08-s2" class="clip" data-start="71.2" data-duration="1.34" style="z-index:42"><div id="s08-s2-fade" class="fill"><div id="s08-s2-cam" class="fill"><img src="assets/pictures/S08-f0.jpg" class="pic" alt=""><div class="mapov" style="transform:translate(-576px,-0.54px) scale(1.3)"></div></div></div></div>
+<div id="s08-s3" class="clip card" data-start="72.54" data-duration="3.6" style="z-index:43"><div id="s08-s3-c" class="popwrap"><img src="assets/icons/I15.jpg" class="popicon" alt=""></div><img id="s08-s3-n" class="narr" src="assets/narrator/N10.png" alt=""></div>
+<div id="s09-s0" class="clip" data-start="76.14" data-duration="3.26" style="z-index:44"><div id="s09-s0-fade" class="fill"><div id="s09-s0-cam" class="fill"><img src="assets/pictures/S08.jpg" class="pic" alt=""></div></div></div>
+<div id="s09-s1" class="clip" data-start="79.4" data-duration="2.92" style="z-index:45"><div id="s09-s1-fade" class="fill"><div id="s09-s1-cam" class="fill"><img src="assets/pictures/S08-f0.jpg" class="pic" alt=""><div class="mapov" style="transform:translate(-576px,-0.54px) scale(1.3)"></div></div></div></div>
+<div id="s09-s2" class="clip" data-start="82.32" data-duration="2.46" style="z-index:46"><div id="s09-s2-fade" class="fill"><div id="s09-s2-cam" class="fill"><img src="assets/pictures/S08b.jpg" class="pic" alt=""></div></div></div>
+<div id="s10-s0" class="clip" data-start="84.53" data-duration="2.99" style="z-index:47"><div id="s10-s0-fade" class="fill"><div id="s10-s0-cam" class="fill"><img src="assets/pictures/S10.jpg" class="pic" alt=""><div id="s10-s0-ov0" class="board" data-layout-allow-overlap style="left:960px;top:129.6px;width:806.4px;height:464.4px"><div class="bl" data-layout-allow-overlap>THE</div><div class="bl org" data-layout-allow-overlap>SPOTLIGHT</div><div class="bl" data-layout-allow-overlap>EFFECT</div></div></div></div></div>
+<div id="s10-s1" class="clip" data-start="87.52" data-duration="2.12" style="z-index:48"><div id="s10-s1-fade" class="fill"><div id="s10-s1-cam" class="fill"><img src="assets/pictures/S10-f0.jpg" class="pic" alt=""><div class="mapov" style="transform:translate(-376.32px,0px) scale(1.2)"><div id="s10-s1-ov0" class="board" data-layout-allow-overlap style="left:960px;top:129.6px;width:806.4px;height:464.4px"><div class="bl" data-layout-allow-overlap>THE</div><div class="bl org" data-layout-allow-overlap>SPOTLIGHT</div><div class="bl" data-layout-allow-overlap>EFFECT</div></div></div></div></div></div>
+<div id="s10-s2" class="clip card" data-start="89.64" data-duration="1.78" style="z-index:49"><div id="s10-s2-in" class="cardtxt"><div class="ln">IT HAS A</div><div class="ln"><span class="badge yellow">NAME</span></div></div></div>
+<div id="s10-s3" class="clip" data-start="91.42" data-duration="2.22" style="z-index:50"><div id="s10-s3-fade" class="fill"><div id="s10-s3-cam" class="fill"><img src="assets/pictures/S10.jpg" class="pic" alt=""><div id="s10-s3-ov0" class="board" data-layout-allow-overlap style="left:960px;top:129.6px;width:806.4px;height:464.4px"><div class="bl" data-layout-allow-overlap>THE</div><div class="bl org" data-layout-allow-overlap>SPOTLIGHT</div><div class="bl" data-layout-allow-overlap>EFFECT</div></div></div></div></div>
+<div id="s10-s4" class="clip card" data-start="93.64" data-duration="3.3" style="z-index:51"><div id="s10-s4-c" class="popwrap"><img src="assets/icons/I06.jpg" class="popicon" alt=""></div><img id="s10-s4-n" class="narr" src="assets/narrator/N02.png" alt=""></div>
+<div id="s10-s5" class="clip" data-start="96.94" data-duration="3.76" style="z-index:52"><div id="s10-s5-fade" class="fill"><div id="s10-s5-cam" class="fill"><img src="assets/pictures/S10-f0.jpg" class="pic" alt=""><div class="mapov" style="transform:translate(-376.32px,0px) scale(1.2)"><div id="s10-s5-ov0" class="board" data-layout-allow-overlap style="left:960px;top:129.6px;width:806.4px;height:464.4px"><div class="bl" data-layout-allow-overlap>THE</div><div class="bl org" data-layout-allow-overlap>SPOTLIGHT</div><div class="bl" data-layout-allow-overlap>EFFECT</div></div></div></div></div></div>
+<div id="s10-s6" class="clip" data-start="100.7" data-duration="2.238" style="z-index:53"><div id="s10-s6-fade" class="fill"><div id="s10-s6-cam" class="fill"><img src="assets/pictures/S10.jpg" class="pic" alt=""><div id="s10-s6-ov0" class="board" data-layout-allow-overlap style="left:960px;top:129.6px;width:806.4px;height:464.4px"><div class="bl" data-layout-allow-overlap>THE</div><div class="bl org" data-layout-allow-overlap>SPOTLIGHT</div><div class="bl" data-layout-allow-overlap>EFFECT</div></div></div></div></div>
 <audio id="vo" src="assets/part1.wav" data-start="0" data-duration="102.938" data-track-index="0"></audio>
 </div>
 <script>
 const tl = gsap.timeline({ paused: true });
-tl.fromTo("#s01-cam",{scale:1,x:0},{scale:1.06,x:0,duration:15.04,ease:"sine.inOut"},0);
-tl.fromTo("#s01-b0-cam",{scale:1},{scale:1.04,duration:4.08,ease:"sine.inOut"},8.17);
-tl.fromTo("#s02-cam",{scale:1,x:0},{scale:1.06,x:0,duration:2.46,ease:"sine.inOut"},15.04);
-tl.fromTo("#s03-fade",{opacity:0},{opacity:1,duration:0.4,ease:"none"},17.1);
-tl.fromTo("#s03-cam",{scale:1.06,x:0},{scale:1,x:0,duration:11.04,ease:"sine.inOut"},17.1);
-tl.fromTo("#s03-b0-in",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},25.68);
-tl.fromTo("#s04-fade",{opacity:0},{opacity:1,duration:0.4,ease:"none"},27.74);
-tl.fromTo("#s04-cam",{scale:1,x:0},{scale:1.06,x:0,duration:5.52,ease:"sine.inOut"},27.74);
-tl.fromTo("#s05-fade",{opacity:0},{opacity:1,duration:0.4,ease:"none"},32.86);
-tl.fromTo("#s05-b0-in",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},43.22);
-tl.fromTo("#s05-b1-in",{scale:0.94},{scale:1,duration:0.3,ease:"back.out(1.4)"},47.94);
-tl.fromTo("#s06-cam",{scale:1.04,x:30},{scale:1.04,x:-30,duration:6.78,ease:"sine.inOut"},50.44);
-tl.fromTo("#s06-b0-cam",{scale:1},{scale:1.04,duration:4.49,ease:"sine.inOut"},52.73);
-tl.fromTo("#s07-fade",{opacity:0},{opacity:1,duration:0.4,ease:"none"},56.82);
-tl.fromTo("#s07-cam",{scale:1,x:0},{scale:1.06,x:0,duration:11.08,ease:"sine.inOut"},56.82);
-tl.fromTo("#s07-b0-cam",{scale:1},{scale:1.04,duration:3.38,ease:"sine.inOut"},59.61);
-tl.fromTo("#s07-b1-in",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},65.56);
-tl.fromTo("#s08-fade",{opacity:0},{opacity:1,duration:0.4,ease:"none"},67.5);
-tl.fromTo("#s08-cam",{scale:1,x:0},{scale:1.06,x:0,duration:8.64,ease:"sine.inOut"},67.5);
-tl.fromTo("#s08-b0-cam",{scale:1},{scale:1.04,duration:4.09,ease:"sine.inOut"},72.05);
-tl.fromTo("#s09-cam",{scale:1.06,x:0},{scale:1,x:0,duration:8.64,ease:"sine.inOut"},76.14);
-tl.to("#s09-picB",{opacity:1,duration:0.3,ease:"none"},82.32);
-tl.fromTo("#s10-fade",{opacity:0},{opacity:1,duration:0.4,ease:"none"},84.38);
-tl.fromTo("#s10-ov0",{opacity:0},{opacity:1,duration:0.5,ease:"power1.out"},91.71);
-tl.fromTo("#s10-cov0",{opacity:0},{opacity:1,duration:0.5,ease:"power1.out"},91.71);
-tl.fromTo("#s10-b0-in",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},89.34);
-tl.fromTo("#s10-b1-cam",{scale:1},{scale:1.04,duration:5.12,ease:"sine.inOut"},93.21);
+tl.fromTo("#s01-s0-cam",{scale:1,x:0},{scale:1.05,x:0,duration:3.22,ease:"sine.inOut"},0);
+tl.fromTo("#s01-s1-cam",{scale:1},{scale:1.03,duration:2.88,ease:"sine.inOut"},3.22);
+tl.fromTo("#s01-s2-cam",{scale:1.05,x:0},{scale:1,x:0,duration:2.18,ease:"sine.inOut"},6.1);
+tl.fromTo("#s01-s3-cam",{scale:1},{scale:1.03,duration:2.22,ease:"sine.inOut"},8.28);
+tl.fromTo("#s01-s4-cam",{scale:1,x:0},{scale:1.05,x:0,duration:1.86,ease:"sine.inOut"},10.5);
+tl.fromTo("#s01-s5-img",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},12.36);
+tl.fromTo("#s02-s0-cam",{scale:1,x:0},{scale:1.05,x:0,duration:2.46,ease:"sine.inOut"},15.04);
+tl.fromTo("#s03-s0-fade",{opacity:0},{opacity:1,duration:0.25,ease:"none"},17.25);
+tl.fromTo("#s03-s0-cam",{scale:1.05,x:0},{scale:1,x:0,duration:3.85,ease:"sine.inOut"},17.25);
+tl.fromTo("#s03-s1-cam",{scale:1},{scale:1.03,duration:3.1,ease:"sine.inOut"},21.1);
+tl.fromTo("#s03-s2-cam",{scale:1,x:0},{scale:1.05,x:0,duration:2.22,ease:"sine.inOut"},24.2);
+tl.fromTo("#s03-s3-img",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},26.42);
+tl.fromTo("#s04-s0-img",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},28.14);
+tl.fromTo("#s04-s1-cam",{scale:1,x:0},{scale:1.05,x:0,duration:2.12,ease:"sine.inOut"},30.06);
+tl.fromTo("#s04-s2-img",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},32.18);
+tl.fromTo("#s05-s1-cam",{scale:1},{scale:1.03,duration:3.24,ease:"sine.inOut"},37.12);
+tl.fromTo("#s05-s2-cam",{scale:1,x:0},{scale:1.05,x:0,duration:2.86,ease:"sine.inOut"},40.36);
+tl.fromTo("#s05-s3-in",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},43.22);
+tl.fromTo("#s05-s4-cam",{scale:1},{scale:1.03,duration:1.46,ease:"sine.inOut"},44.88);
+tl.fromTo("#s05-s5-img",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},46.34);
+tl.fromTo("#s05-s6-in",{scale:0.94},{scale:1,duration:0.3,ease:"back.out(1.4)"},47.94);
+tl.fromTo("#s06-s0-cam",{scale:1.04,x:25},{scale:1.04,x:-25,duration:2.4,ease:"sine.inOut"},50.44);
+tl.fromTo("#s06-s1-cam",{scale:1},{scale:1.03,duration:2.24,ease:"sine.inOut"},52.84);
+tl.fromTo("#s06-s2-n",{x:-460},{x:0,duration:0.25,ease:"power2.out"},55.08);
+tl.to("#s06-s2-n",{x:-460,duration:0.2,ease:"power2.in"},57);
+tl.fromTo("#s06-s2-c",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},55.18);
+tl.fromTo("#s07-s0-img",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},57.22);
+tl.fromTo("#s07-s1-cam",{scale:1,x:0},{scale:1.05,x:0,duration:2.6,ease:"sine.inOut"},59.08);
+tl.fromTo("#s07-s2-cam",{scale:1},{scale:1.03,duration:2.68,ease:"sine.inOut"},61.68);
+tl.fromTo("#s07-s3-cam",{scale:1.05,x:0},{scale:1,x:0,duration:2.1,ease:"sine.inOut"},64.36);
+tl.fromTo("#s07-s4-img",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},66.46);
+tl.fromTo("#s08-s0-cam",{scale:1,x:0},{scale:1.05,x:0,duration:1.68,ease:"sine.inOut"},67.9);
+tl.fromTo("#s08-s1-img",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},69.58);
+tl.fromTo("#s08-s2-cam",{scale:1},{scale:1.03,duration:1.34,ease:"sine.inOut"},71.2);
+tl.fromTo("#s08-s3-n",{x:-460},{x:0,duration:0.25,ease:"power2.out"},72.54);
+tl.to("#s08-s3-n",{x:-460,duration:0.2,ease:"power2.in"},75.92);
+tl.fromTo("#s08-s3-c",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},72.64);
+tl.fromTo("#s09-s0-cam",{scale:1.05,x:0},{scale:1,x:0,duration:3.26,ease:"sine.inOut"},76.14);
+tl.fromTo("#s09-s1-cam",{scale:1},{scale:1.03,duration:2.92,ease:"sine.inOut"},79.4);
+tl.fromTo("#s09-s2-cam",{scale:1,x:0},{scale:1.05,x:0,duration:2.46,ease:"sine.inOut"},82.32);
+tl.fromTo("#s10-s0-fade",{opacity:0},{opacity:1,duration:0.25,ease:"none"},84.53);
+tl.fromTo("#s10-s0-ov0",{opacity:0},{opacity:1,duration:0.5,ease:"power1.out"},91.71);
+tl.fromTo("#s10-s1-cam",{scale:1},{scale:1.03,duration:2.12,ease:"sine.inOut"},87.52);
+tl.fromTo("#s10-s1-ov0",{opacity:0},{opacity:1,duration:0.5,ease:"power1.out"},91.71);
+tl.fromTo("#s10-s2-in",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},89.64);
+tl.fromTo("#s10-s3-cam",{scale:1,x:0},{scale:1.05,x:0,duration:2.22,ease:"sine.inOut"},91.42);
+tl.fromTo("#s10-s3-ov0",{opacity:0},{opacity:1,duration:0.5,ease:"power1.out"},91.71);
+tl.fromTo("#s10-s4-n",{x:-460},{x:0,duration:0.25,ease:"power2.out"},93.64);
+tl.to("#s10-s4-n",{x:-460,duration:0.2,ease:"power2.in"},96.72);
+tl.fromTo("#s10-s4-c",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},93.74);
+tl.fromTo("#s10-s5-cam",{scale:1},{scale:1.03,duration:3.76,ease:"sine.inOut"},96.94);
+tl.fromTo("#s10-s5-ov0",{opacity:0},{opacity:1,duration:0.5,ease:"power1.out"},91.71);
+tl.fromTo("#s10-s6-ov0",{opacity:0},{opacity:1,duration:0.5,ease:"power1.out"},91.71);
 window.__timelines["part1"] = tl;
 </script></body></html>
