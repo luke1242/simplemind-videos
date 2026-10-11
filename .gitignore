@@ -5,3 +5,4 @@ parts/*/snapshots/
 renders/*.mp4
 renders/*.mkv
 renders/*.wav
+!renders/full-small.mp4
