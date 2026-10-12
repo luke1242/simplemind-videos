@@ -1,4 +1,6 @@
-# Current video: "The Biggest Regret Almost Everyone Has"
+# Current video: "Psychology of Regret: Why Playing It Safe Haunts You Later"
+
+The on-screen title card stays THE BIGGEST REGRET / ALMOST EVERYONE HAS. The upload title, thumbnail and description are in `prompts/upload-package.md`.
 
 **Topic:** regrets of inaction. Over time, people regret what they *didn't* do far more than what they did.
 **Series:** this is episode 2 after the spotlight video, and it calls back to it twice.

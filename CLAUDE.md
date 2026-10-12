@@ -32,6 +32,7 @@ The repo root always holds the **current** video. Finished videos are archived i
 ```
 CLAUDE.md                 ← this guide (channel rules, the same for every video)
 VIDEO.md                  ← the current video's scene list
+PLAYBOOK.md               ← titles, thumbnails, descriptions and script shape (for Luke and script writing; not needed to build)
 audio/part1-4.mp3         ← Luke: ElevenLabs voiceover (padded copies go in audio/padded/)
 pictures/S##.jpg|png      ← scene pictures (S##b = "after" picture of a swap)
 icons/I##.jpg             ← icon cutaways (16:9, off-white background)
