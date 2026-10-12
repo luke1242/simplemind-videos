@@ -1,0 +1,370 @@
+{
+ "part": 4,
+ "audio": "audio/padded/part4.wav",
+ "scenes": [
+  {
+   "id": "S41",
+   "camera": "hold",
+   "narration": "So here's how I actually use this now.",
+   "events": [],
+   "diagram": {
+    "kind": "card",
+    "parts": [
+     {
+      "t": "HOW I USE"
+     },
+     {
+      "t": "THIS",
+      "badge": "yellow"
+     }
+    ]
+   }
+  },
+  {
+   "id": "S42",
+   "camera": "hold",
+   "narration": "One. Ask the three-second question. This is the one I promised you. When that everyone's watching thought shows up, I ask myself: Would I remember this, if someone else did it?",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I11",
+     "word": "three",
+     "occ": 1,
+     "dur": 1.8
+    },
+    {
+     "kind": "pop",
+     "pose": "N06",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "WOULD I"
+       },
+       {
+        "t": "REMEMBER THIS?",
+        "badge": "yellow"
+       }
+      ]
+     },
+     "word": "would",
+     "occ": 1,
+     "dur": 3.0
+    }
+   ],
+   "picture": "S42",
+   "overlays": [
+    {
+     "type": "step",
+     "step": "STEP 1",
+     "text": "WOULD I REMEMBER THIS?",
+     "word": "ask"
+    }
+   ]
+  },
+  {
+   "id": "S43",
+   "camera": "zoom-out",
+   "narration": "If someone tripped at the gym, would you think about it tomorrow? Probably not. You'd forget in about five seconds. That's exactly how much they'll think about you.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I12",
+     "word": "tripped",
+     "occ": 1,
+     "dur": 1.8
+    },
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "FIVE",
+       "badge": "yellow"
+      },
+      {
+       "t": "SECONDS"
+      }
+     ],
+     "word": "five",
+     "occ": 1,
+     "dur": 1.4,
+     "back": 0.1
+    }
+   ],
+   "picture": "S43"
+  },
+  {
+   "id": "S44",
+   "camera": "hold",
+   "narration": "Two. Cut the number in half. However many people you think will notice, cut it in half. That's literally what the T-shirt study found. Your brain overestimates by about double.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I31",
+     "word": "cut",
+     "occ": 1,
+     "dur": 1.8
+    },
+    {
+     "kind": "pop",
+     "pose": "N02",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "THE T-SHIRT"
+       },
+       {
+        "t": "STUDY",
+        "badge": "yellow"
+       }
+      ]
+     },
+     "word": "literally",
+     "occ": 1,
+     "dur": 3.0
+    }
+   ],
+   "diagram": {
+    "kind": "stepPie",
+    "step": "STEP 2",
+    "title": "CUT IT IN HALF",
+    "pct": 50,
+    "badge": "yellow",
+    "value": "50%"
+   },
+   "diagramB": {
+    "kind": "stepPie",
+    "step": "STEP 2",
+    "title": "CUT IT IN HALF",
+    "pct": 25,
+    "badge": "red",
+    "value": "25%"
+   },
+   "swap": {
+    "word": "half"
+   },
+   "foci": [
+    [
+     0.5,
+     0.5,
+     1.15
+    ]
+   ]
+  },
+  {
+   "id": "S45",
+   "camera": "zoom-in",
+   "narration": "Three. Remember, everyone has their own spotlight. Picture the room. Everyone in it is worried about themselves. You're not on a stage. You're in a crowd of people who all think they're on a stage.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "YOU'RE NOT"
+      },
+      {
+       "t": "ON A STAGE",
+       "badge": "red"
+      }
+     ],
+     "word": "stage",
+     "occ": 1,
+     "dur": 1.6,
+     "back": 0.5
+    }
+   ],
+   "picture": "S21",
+   "overlays": [
+    {
+     "type": "step",
+     "step": "STEP 3",
+     "text": "EVERYONE HAS A SPOTLIGHT",
+     "word": "three"
+    }
+   ]
+  },
+  {
+   "id": "S46",
+   "camera": "zoom-in",
+   "narration": "Four. Assume people are kinder than your brain says. If you do mess up, the people who saw it are probably thinking about it far less, and far more kindly, than you are. And after a conversation, assume they liked you more than you think. The research says they probably did.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I24",
+     "word": "kinder",
+     "occ": 1,
+     "dur": 1.8
+    },
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "FAR MORE"
+      },
+      {
+       "t": "KINDLY",
+       "badge": "yellow"
+      }
+     ],
+     "word": "kindly",
+     "occ": 1,
+     "dur": 1.5,
+     "back": 0.3
+    },
+    {
+     "kind": "pop",
+     "pose": "N07",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "THEY LIKED"
+       },
+       {
+        "t": "YOU MORE",
+        "badge": "yellow"
+       }
+      ]
+     },
+     "word": "liked",
+     "occ": 1,
+     "dur": 3.0
+    }
+   ],
+   "picture": "S30",
+   "overlays": [
+    {
+     "type": "step",
+     "step": "STEP 4",
+     "text": "PEOPLE ARE KINDER",
+     "word": "four"
+    }
+   ]
+  },
+  {
+   "id": "S47",
+   "camera": "zoom-in",
+   "narration": "Five. Do it anyway, and watch what happens. Next time, do the thing you're nervous about. Then pay attention to how people actually react. Almost every time, it's way less than you expected.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "WAY LESS",
+       "badge": "yellow"
+      },
+      {
+       "t": "THAN EXPECTED"
+      }
+     ],
+     "word": "way",
+     "occ": 1,
+     "dur": 1.5,
+     "back": 0.2
+    }
+   ],
+   "picture": "S47",
+   "overlays": [
+    {
+     "type": "step",
+     "step": "STEP 5",
+     "text": "DO IT ANYWAY",
+     "word": "five"
+    }
+   ]
+  },
+  {
+   "id": "S48",
+   "camera": "hold",
+   "narration": "And every time you see that for yourself, the spotlight gets a little dimmer.",
+   "events": [],
+   "picture": "S48",
+   "pictureB": "S48b",
+   "swap": {
+    "word": "dimmer"
+   }
+  },
+  {
+   "id": "S49",
+   "camera": "zoom-out",
+   "narration": "So here's the lesson. People aren't watching you nearly as much as you think. And that's not sad. That's freedom.",
+   "events": [
+    {
+     "kind": "pop",
+     "pose": "N11",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "THE"
+       },
+       {
+        "t": "LESSON",
+        "badge": "yellow"
+       }
+      ]
+     },
+     "word": "so",
+     "occ": 1,
+     "dur": 2.5
+    },
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "THAT'S"
+      },
+      {
+       "t": "FREEDOM",
+       "badge": "yellow"
+      }
+     ],
+     "word": "freedom",
+     "occ": 1,
+     "dur": 1.8,
+     "back": 0.4
+    }
+   ],
+   "picture": "S49"
+  },
+  {
+   "id": "S50",
+   "camera": "zoom-out",
+   "narration": "It means you can try. You can mess up. You can look a little dumb while you get better. You can ask the question. Post the video. Walk into the gym. Talk to the person.",
+   "events": [],
+   "picture": "S50"
+  },
+  {
+   "id": "S51",
+   "camera": "zoom-in",
+   "narration": "Because the only one keeping score that closely, is you. So go do the thing. Hardly anyone's watching.",
+   "events": [],
+   "picture": "S51",
+   "pictureB": "S51b",
+   "swap": {
+    "word": "hardly"
+   }
+  },
+  {
+   "id": "S52",
+   "camera": "hold",
+   "narration": "And if you want to actually make that thing a habit, the sixty-six-day video breaks down exactly how long that really takes.",
+   "events": [
+    {
+     "kind": "pop",
+     "pose": "N12",
+     "content": {
+      "type": "icon",
+      "icon": "I13"
+     },
+     "word": "sixty",
+     "occ": 1,
+     "dur": 3.0
+    }
+   ],
+   "picture": "S52",
+   "holdEnd": true
+  }
+ ]
+}

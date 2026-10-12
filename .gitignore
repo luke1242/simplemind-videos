@@ -1,0 +1,13 @@
+node_modules/
+renders/work-*/
+renders/.*transaction*/
+parts/*/snapshots/
+renders/*.mp4
+renders/*.mkv
+renders/*.wav
+!renders/full-small.mp4
+
+audio/padded/
+parts/*/assets/*.wav
+preview/
+review/
