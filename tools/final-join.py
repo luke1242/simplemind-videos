@@ -24,7 +24,8 @@ for i, n in enumerate(parts):
     for e in json.load(open(f"scenes/part{n}.sfx.json")): ev.append((offs[i] + e["t"], e["kind"]))
 ev.sort(); keep, last = [], -9
 for tt, k in ev:
-    if tt - last >= 2.5: keep.append((tt, k)); last = tt
+    if k == "riser": keep.append((tt, k))   # risers always play (before the biggest reveals)
+    elif tt - last >= 2.5: keep.append((tt, k)); last = tt
 print("sfx cues:", len(keep), "of", len(ev))
 import wave, numpy as np
 SR = 44100; buf = np.zeros(int(total * SR) + SR, dtype=np.float32); cache = {}
