@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=1920, height=1080"><title>Part 4</title>
+<script src="assets/gsap.min.js"></script>
+<style>
+@font-face{font-family:"Nunito";font-weight:800;src:url("assets/fonts/nunito-800.woff2") format("woff2")}
+html,body{margin:0;background:#FAF7F0}
+#root{position:relative;width:100%;height:100%;overflow:hidden;background:#FAF7F0;font-family:"Nunito",sans-serif;font-weight:800;color:#1A1A1A}
+.clip{position:absolute;inset:0;overflow:hidden}
+.tt,.fill{position:absolute;inset:0}
+.tt{background:#FAF7F0}
+.fin{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:50% 50%}
+.bleed{position:absolute;left:-1920px;top:-1080px;width:5760px;height:3240px}
+.cam{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0}
+.pic{position:absolute;left:0;top:0;width:1920px;height:1080px;display:block}
+.iconbg{background:#F8F5EE}
+.card{background:#FAF7F0;display:flex;align-items:center;justify-content:center}
+.cardtxt{display:flex;flex-direction:column;align-items:center;gap:26px;text-align:center}
+.ln{font-size:170px;line-height:1.05;letter-spacing:1px;white-space:nowrap;position:relative}
+.ln.big{font-size:130px}.ln.small{font-size:84px}.ln.mid{font-size:112px}
+.badge{display:inline-block;padding:4px 40px 12px;border:9px solid #1A1A1A;border-radius:34px;box-shadow:8px 8px 0 #1A1A1A}
+.badge.yellow{background:#F2C230;color:#1A1A1A} .badge.red{background:#D64545;color:#fff}
+.pill{background:#2F6B2F;color:#fff;border:7px solid #1A1A1A;border-radius:60px;font-size:64px;padding:2px 54px 8px;letter-spacing:4px;margin-bottom:18px}
+.pill.big{margin:0;border-width:6px;font-size:64px;padding:2px 50px 8px}
+.org{color:#F2A65A;-webkit-text-stroke:6px #1A1A1A;paint-order:stroke fill}
+.mk{position:relative;display:inline-block}.mk i{position:absolute;left:-14px;right:-14px;top:22%;bottom:2%;background:#F2C230;transform-origin:0 50%;z-index:0;border-radius:10px}.mk b{position:relative;z-index:1;font-weight:800}
+.circw{position:relative;display:inline-block}.circ{position:absolute;left:-60px;top:-34px;width:calc(100% + 120px);height:calc(100% + 68px);overflow:visible}
+.ulw{position:relative;display:inline-block}.ul{position:absolute;left:0;bottom:-26px;width:100%;height:30px;overflow:visible}
+.ulp{position:absolute;left:0;bottom:-24px;width:100%;height:26px;overflow:visible}
+.hbg{position:absolute;inset:0;background:#FAF7F0}
+.frame{position:absolute;left:455.2px;top:140px;width:1420.8px;height:799.2px;border-radius:28px;overflow:hidden;background:#FAF7F0}
+.hs{position:absolute;left:0;top:0;width:1920px;height:1080px;transform:scale(0.74);transform-origin:0 0}
+.fborder{position:absolute;left:455.2px;top:140px;width:1420.8px;height:799.2px;box-sizing:border-box;border:6px solid #1A1A1A;border-radius:28px;pointer-events:none}
+.nw{position:absolute;inset:0;z-index:5}
+.narr{position:absolute;bottom:48px;display:block}
+.nshadow{position:absolute;bottom:26px;height:46px;background:radial-gradient(ellipse at center,rgba(26,26,26,.28),rgba(26,26,26,0) 70%)}
+.diag{background:#FAF7F0}
+.cardc{display:flex;align-items:center;justify-content:center}
+.dlabel{position:absolute;left:0;right:0;top:830px;display:flex;justify-content:center;align-items:center;gap:36px;font-size:130px;white-space:nowrap}
+.sclab{position:absolute;width:500px;display:flex;justify-content:center;font-size:84px}
+.tagbox{position:absolute;display:flex;align-items:center;justify-content:center;white-space:nowrap}
+.scr{position:absolute;left:0;right:0;top:24px;display:flex;flex-direction:column;align-items:center;gap:14px;z-index:6}.scr.row{flex-direction:row;justify-content:center;gap:20px;top:22px}
+.spill2{background:#FAF7F0;border:6px solid #1A1A1A;border-radius:44px;font-size:60px;line-height:1.05;padding:4px 40px 10px;white-space:nowrap;position:relative}
+.sbub{position:absolute;background:#fff;border:7px solid #1A1A1A;border-radius:42px;box-sizing:border-box;display:flex;align-items:center;justify-content:center;text-align:center;font-size:64px;line-height:1.05;padding:6px 18px}
+.sbub i{position:absolute;right:-34px;bottom:-30px;width:40px;height:40px;background:#fff;border:7px solid #1A1A1A;border-radius:50%;box-sizing:border-box}
+.sign{position:absolute;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1;color:#1A1A1A;white-space:nowrap}
+.ovsvg{position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:visible}
+.clab{position:absolute;white-space:nowrap}
+.wheel{padding:0 26px 4px;overflow:hidden}.dig{display:block;height:253px;overflow:hidden;width:130px}.col{display:flex;flex-direction:column;line-height:253px;text-align:center}
+.bar{position:absolute;border:9px solid #1A1A1A;border-radius:26px 26px 0 0;box-sizing:border-box;box-shadow:8px 8px 0 rgba(26,26,26,.18)}
+.btag{position:absolute;left:-40px;right:-40px;top:-130px;text-align:center;font-size:100px;white-space:nowrap}
+.blab{position:absolute;text-align:center;font-size:66px;line-height:1.05}
+.topbadge{position:absolute;left:0;right:0;top:48px;display:flex;justify-content:center;align-items:center;gap:28px;font-size:94px;white-space:nowrap}
+.ctitle{position:absolute;left:0;right:0;top:36px;text-align:center;font-size:100px;letter-spacing:3px}
+.axl{position:absolute;font-size:62px}
+.llab{position:absolute;font-size:62px;white-space:nowrap;-webkit-text-stroke:2px #1A1A1A;paint-order:stroke fill}
+.tag{position:absolute;font-size:70px}.tag .badge{padding:0 30px 8px}
+.sweep{position:absolute;width:300px;height:300px;opacity:0;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,247,200,.95),rgba(255,255,255,0));filter:blur(8px);border-radius:50%}
+.half{position:absolute;top:0;width:960px;height:1080px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px}
+.half .ln{font-size:128px}
+.vdiv{position:absolute;left:956px;top:120px;width:8px;height:840px;background:#1A1A1A;border-radius:4px}
+.qmark{position:absolute;left:210px;top:60px;font-size:420px;line-height:1;color:#F2A65A;-webkit-text-stroke:5px #1A1A1A;paint-order:stroke fill}
+.qtext{position:absolute;left:200px;top:250px;width:1540px;font-size:90px;line-height:1.42;text-align:left}
+.qtext .w{display:inline-block;margin-right:16px}.qtext .badge{padding:0 20px 6px;box-shadow:6px 6px 0 #1A1A1A;border-width:7px;border-radius:24px;margin-right:16px}.qtext .badge .w{margin-right:14px}.qtext .badge .w:last-child{margin-right:0}
+.qby{position:absolute;left:0;right:0;top:880px;text-align:center;font-size:58px;color:#6a6454}
+.irow{display:flex;gap:70px;align-items:center}
+.itile{width:520px;height:520px;border:9px solid #1A1A1A;border-radius:36px;overflow:hidden;background:#F8F5EE;box-shadow:10px 10px 0 rgba(26,26,26,.2)}.itile img{width:924px;height:520px;margin-left:-202px;display:block}
+.sweepbox{position:absolute;overflow:hidden}.sweepband{position:absolute;left:0;top:-20%;width:35%;height:140%;transform:skewX(-18deg);background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,247,200,.9),rgba(255,255,255,0));opacity:0}
+.leak{position:absolute;inset:0;mix-blend-mode:screen;background:radial-gradient(ellipse 60% 70% at 95% 10%,rgba(255,170,70,.95),rgba(255,120,40,0) 70%),radial-gradient(ellipse 50% 60% at 5% 95%,rgba(255,210,120,.75),rgba(255,160,60,0) 70%)}
+</style></head><body>
+<div id="root" data-composition-id="part4" data-start="0" data-width="1920" data-height="1080" data-duration="207.254">
+<svg width="0" height="0" style="position:absolute"><filter id="mb" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB"><feGaussianBlur id="mbb" stdDeviation="0 0"/></filter></svg>
+<div id="r47-s0" class="clip" data-start="0" data-duration="3.04" style="z-index:11"><div id="r47-s0-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="r47-s0-fin" class="fin"><div id="r47-s0-cam" class="cam"><div class="fill diag cardc"><div class="cardtxt" id="r47-s0-dg-ct"><div class="ln" id="r47-s0-dg-l0">HOW I USE</div><div class="ln" id="r47-s0-dg-l1"><span class="badge yellow">THIS</span></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="r47-s1" class="clip" data-start="3.04" data-duration="1.78" style="z-index:12"><div id="r47-s1-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="r47-s1-fin" class="fin"><div class="fill card"><div id="r47-s1-in" class="cardtxt"><div class="ln" id="r47-s1-l0"><span class="badge yellow">5</span></div><div class="ln" id="r47-s1-l1">STEPS</div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="r48-s0" class="clip" data-start="4.82" data-duration="1.2" style="z-index:13"><div id="r48-s0-t" class="tt"><div id="r48-s0-fin" class="fin"><div id="r48-s0-cam" class="cam"><img src="assets/pictures/S44.jpg" class="pic" alt=""></div></div><div id="r48-s0-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 1</div><div class="spill2">THE ROCKING CHAIR TEST</div></div></div></div>
+<div id="r48-s1" class="clip" data-start="6.02" data-duration="1.7" style="z-index:14"><div id="r48-s1-t" class="tt"><div id="r48-s1-fin" class="fin"><div class="fill iconbg"><img id="r48-s1-img" src="assets/icons/I40.jpg" class="pic" alt=""></div></div></div></div>
+<div id="r48-s2" class="clip" data-start="7.72" data-duration="2.82" style="z-index:15"><div id="r48-s2-t" class="tt"><div id="r48-s2-fin" class="fin"><div id="r48-s2-cam" class="cam"><img src="assets/pictures/S44.jpg" class="pic" alt=""></div></div><div id="r48-s2-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 1</div><div class="spill2">THE ROCKING CHAIR TEST</div></div></div></div>
+<div id="r48-s3" class="clip" data-start="10.54" data-duration="1.8" style="z-index:16"><div id="r48-s3-t" class="tt"><div id="r48-s3-fin" class="fin"><div id="r48-s3-cam" class="cam"><img src="assets/pictures/S44.jpg" class="pic" alt=""></div></div><div id="r48-s3-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 1</div><div class="spill2">THE ROCKING CHAIR TEST</div></div></div></div>
+<div id="r48-s4" class="clip" data-start="12.34" data-duration="3.64" style="z-index:17"><div id="r48-s4-t" class="tt"><div id="r48-s4-fin" class="fin"><div id="r48-s4-cam" class="cam"><img src="assets/pictures/S44.jpg" class="pic" alt=""></div></div><div id="r48-s4-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 1</div><div class="spill2">THE ROCKING CHAIR TEST</div></div></div></div>
+<div id="r48-s5" class="clip" data-start="15.98" data-duration="3.16" style="z-index:18"><div id="r48-s5-t" class="tt"><div id="r48-s5-fin" class="fin"><div id="r48-s5-cam" class="cam"><img src="assets/pictures/S44.jpg" class="pic" alt=""></div></div><div id="r48-s5-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 1</div><div class="spill2">THE ROCKING CHAIR TEST</div></div></div></div>
+<div id="r48-s6" class="clip" data-start="19.14" data-duration="2.24" style="z-index:19"><div id="r48-s6-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="r48-s6-fin" class="fin"><div class="fill card"><div id="r48-s6-in" class="cardtxt"><div class="ln" id="r48-s6-l0"><span class="badge yellow">AWKWARD?</span></div></div></div></div></div></div><div class="fborder"></div></div><div id="r48-s6-nw" class="nw"><div class="nshadow" style="left:296.20000000000005px;width:225px"></div><img class="narr" style="left:306.20000000000005px;height:648px" src="assets/narrator/N06.png" alt=""></div></div>
+<div id="r48-s7" class="clip" data-start="21.38" data-duration="0.46" style="z-index:20"><div id="r48-s7-t" class="tt"><div id="r48-s7-fin" class="fin"><div id="r48-s7-cam" class="cam"><img src="assets/pictures/S44.jpg" class="pic" alt=""></div></div><div id="r48-s7-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 1</div><div class="spill2">THE ROCKING CHAIR TEST</div></div></div></div>
+<div id="r48-s8" class="clip" data-start="21.84" data-duration="1.76" style="z-index:21"><div id="r48-s8-t" class="tt"><div id="r48-s8-fin" class="fin"><div class="fill card"><div id="r48-s8-in" class="cardtxt"><div class="ln" id="r48-s8-l0">OR</div><div class="ln" id="r48-s8-l1"><span class="badge red">NEVER TRIED?</span></div></div></div></div></div></div>
+<div id="r48-s9" class="clip" data-start="23.6" data-duration="3.32" style="z-index:22"><div id="r48-s9-t" class="tt"><div id="r48-s9-fin" class="fin"><div id="r48-s9-cam" class="cam"><img src="assets/pictures/S44.jpg" class="pic" alt=""></div></div><div id="r48-s9-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 1</div><div class="spill2">THE ROCKING CHAIR TEST</div></div></div></div>
+<div id="r48-s10" class="clip" data-start="26.92" data-duration="3.72" style="z-index:23"><div id="r48-s10-t" class="tt"><div id="r48-s10-fin" class="fin"><div id="r48-s10-cam" class="cam"><img src="assets/pictures/S44.jpg" class="pic" alt=""></div></div><div id="r48-s10-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 1</div><div class="spill2">THE ROCKING CHAIR TEST</div></div></div></div>
+<div id="r48-s11" class="clip" data-start="30.64" data-duration="2.76" style="z-index:24"><div id="r48-s11-t" class="tt"><div id="r48-s11-fin" class="fin"><div id="r48-s11-cam" class="cam"><img src="assets/pictures/S44b.jpg" class="pic" alt=""></div></div><div id="r48-s11-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 1</div><div class="spill2">THE ROCKING CHAIR TEST</div></div></div></div>
+<div id="r49-s0" class="clip" data-start="33.4" data-duration="3.32" style="z-index:25"><div id="r49-s0-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="r49-s0-fin" class="fin"><div id="r49-s0-cam" class="cam"><div class="fill diag"><svg viewBox="0 0 1920 1080" width="1920" height="1080" style="position:absolute;inset:0" ><line x1="200" y1="900" x2="1720" y2="900" stroke="#1A1A1A" stroke-width="9" stroke-linecap="round"/><path d="M1700 876 L1735 900 L1700 924" fill="none" stroke="#1A1A1A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><line x1="200" y1="150" x2="200" y2="900" stroke="#1A1A1A" stroke-width="9" stroke-linecap="round"/>
+    <path id="r49-s0-dg-A" d="M260 270 C 620 300, 900 640, 1660 720" fill="none" stroke="#D9805F" stroke-width="16" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/><path id="r49-s0-dg-B" d="M260 750 C 760 730, 1100 300, 1660 235" fill="none" stroke="#D64545" stroke-width="16" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg>
+    <div class="ctitle">REGRET OVER TIME</div><div class="axl" style="left:200px;top:925px">TODAY</div><div class="axl" style="left:1220px;top:925px;width:500px;text-align:right">YEARS LATER</div>
+    <div class="llab" id="r49-s0-dg-LA" style="left:300px;top:180px;color:#D9805F">THINGS I DID</div><div class="llab" id="r49-s0-dg-LB" style="left:300px;top:790px;color:#D64545">THINGS I DIDN'T DO</div>
+    <div class="tag" id="r49-s0-dg-fade" style="left:1400px;top:760px"><span class="badge yellow">FADE</span></div><div class="tag" id="r49-s0-dg-grow" style="left:1380px;top:90px"><span class="badge red">GROW</span></div>
+    <div class="sweep" id="r49-s0-dg-sw" style="left:761.514px;top:372.354px"></div></div></div></div></div></div><div class="fborder"></div><div id="r49-s0-so0" class="scr row" data-layout-allow-overlap><div class="pill big">STEP 2</div><div class="spill2">REMEMBER WHICH ONE FADES</div></div></div></div>
+<div id="r49-s1" class="clip" data-start="36.72" data-duration="2.82" style="z-index:26"><div id="r49-s1-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="r49-s1-fin" class="fin"><div id="r49-s1-cam" class="cam"><div class="fill diag"><svg viewBox="0 0 1920 1080" width="1920" height="1080" style="position:absolute;inset:0" ><line x1="200" y1="900" x2="1720" y2="900" stroke="#1A1A1A" stroke-width="9" stroke-linecap="round"/><path d="M1700 876 L1735 900 L1700 924" fill="none" stroke="#1A1A1A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><line x1="200" y1="150" x2="200" y2="900" stroke="#1A1A1A" stroke-width="9" stroke-linecap="round"/>
+    <path id="r49-s1-dg-A" d="M260 270 C 620 300, 900 640, 1660 720" fill="none" stroke="#D9805F" stroke-width="16" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/><path id="r49-s1-dg-B" d="M260 750 C 760 730, 1100 300, 1660 235" fill="none" stroke="#D64545" stroke-width="16" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg>
+    <div class="ctitle">REGRET OVER TIME</div><div class="axl" style="left:200px;top:925px">TODAY</div><div class="axl" style="left:1220px;top:925px;width:500px;text-align:right">YEARS LATER</div>
+    <div class="llab" id="r49-s1-dg-LA" style="left:300px;top:180px;color:#D9805F">THINGS I DID</div><div class="llab" id="r49-s1-dg-LB" style="left:300px;top:790px;color:#D64545">THINGS I DIDN'T DO</div>
+    <div class="tag" id="r49-s1-dg-fade" style="left:1400px;top:760px"><span class="badge yellow">FADE</span></div><div class="tag" id="r49-s1-dg-grow" style="left:1380px;top:90px"><span class="badge red">GROW</span></div>
+    <div class="sweep" id="r49-s1-dg-sw" style="left:761.514px;top:372.354px"></div></div></div></div></div></div><div class="fborder"></div><div id="r49-s1-so0" class="scr row" data-layout-allow-overlap><div class="pill big">STEP 2</div><div class="spill2">REMEMBER WHICH ONE FADES</div></div></div></div>
+<div id="r49-s2" class="clip" data-start="39.54" data-duration="1.84" style="z-index:27"><div id="r49-s2-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="r49-s2-fin" class="fin"><div class="fill iconbg"><img id="r49-s2-img" src="assets/icons/I44.jpg" class="pic" alt=""></div></div></div></div><div class="fborder"></div></div></div>
+<div id="r49-s3" class="clip" data-start="41.38" data-duration="3.18" style="z-index:28"><div id="r49-s3-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="r49-s3-fin" class="fin"><div id="r49-s3-cam" class="cam"><div class="fill diag"><svg viewBox="0 0 1920 1080" width="1920" height="1080" style="position:absolute;inset:0" ><line x1="200" y1="900" x2="1720" y2="900" stroke="#1A1A1A" stroke-width="9" stroke-linecap="round"/><path d="M1700 876 L1735 900 L1700 924" fill="none" stroke="#1A1A1A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><line x1="200" y1="150" x2="200" y2="900" stroke="#1A1A1A" stroke-width="9" stroke-linecap="round"/>
+    <path id="r49-s3-dg-A" d="M260 270 C 620 300, 900 640, 1660 720" fill="none" stroke="#D9805F" stroke-width="16" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/><path id="r49-s3-dg-B" d="M260 750 C 760 730, 1100 300, 1660 235" fill="none" stroke="#D64545" stroke-width="16" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg>
+    <div class="ctitle">REGRET OVER TIME</div><div class="axl" style="left:200px;top:925px">TODAY</div><div class="axl" style="left:1220px;top:925px;width:500px;text-align:right">YEARS LATER</div>
+    <div class="llab" id="r49-s3-dg-LA" style="left:300px;top:180px;color:#D9805F">THINGS I DID</div><div class="llab" id="r49-s3-dg-LB" style="left:300px;top:790px;color:#D64545">THINGS I DIDN'T DO</div>
+    <div class="tag" id="r49-s3-dg-fade" style="left:1400px;top:760px"><span class="badge yellow">FADE</span></div><div class="tag" id="r49-s3-dg-grow" style="left:1380px;top:90px"><span class="badge red">GROW</span></div>
+    <div class="sweep" id="r49-s3-dg-sw" style="left:761.514px;top:372.354px"></div></div></div></div></div></div><div class="fborder"></div><div id="r49-s3-so0" class="scr row" data-layout-allow-overlap><div class="pill big">STEP 2</div><div class="spill2">REMEMBER WHICH ONE FADES</div></div></div></div>
+<div id="r49-s4" class="clip" data-start="44.56" data-duration="3.72" style="z-index:29"><div id="r49-s4-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="r49-s4-fin" class="fin"><div id="r49-s4-cam" class="cam"><div class="fill diag"><svg viewBox="0 0 1920 1080" width="1920" height="1080" style="position:absolute;inset:0" ><line x1="200" y1="900" x2="1720" y2="900" stroke="#1A1A1A" stroke-width="9" stroke-linecap="round"/><path d="M1700 876 L1735 900 L1700 924" fill="none" stroke="#1A1A1A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><line x1="200" y1="150" x2="200" y2="900" stroke="#1A1A1A" stroke-width="9" stroke-linecap="round"/>
+    <path id="r49-s4-dg-A" d="M260 270 C 620 300, 900 640, 1660 720" fill="none" stroke="#D9805F" stroke-width="16" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/><path id="r49-s4-dg-B" d="M260 750 C 760 730, 1100 300, 1660 235" fill="none" stroke="#D64545" stroke-width="16" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg>
+    <div class="ctitle">REGRET OVER TIME</div><div class="axl" style="left:200px;top:925px">TODAY</div><div class="axl" style="left:1220px;top:925px;width:500px;text-align:right">YEARS LATER</div>
+    <div class="llab" id="r49-s4-dg-LA" style="left:300px;top:180px;color:#D9805F">THINGS I DID</div><div class="llab" id="r49-s4-dg-LB" style="left:300px;top:790px;color:#D64545">THINGS I DIDN'T DO</div>
+    <div class="tag" id="r49-s4-dg-fade" style="left:1400px;top:760px"><span class="badge yellow">FADE</span></div><div class="tag" id="r49-s4-dg-grow" style="left:1380px;top:90px"><span class="badge red">GROW</span></div>
+    <div class="sweep" id="r49-s4-dg-sw" style="left:761.514px;top:372.354px"></div></div></div></div></div></div><div class="fborder"></div><div id="r49-s4-so0" class="scr row" data-layout-allow-overlap><div class="pill big">STEP 2</div><div class="spill2">REMEMBER WHICH ONE FADES</div></div></div></div>
+<div id="r49-s5" class="clip" data-start="48.28" data-duration="3.94" style="z-index:30"><div id="r49-s5-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="r49-s5-fin" class="fin"><div id="r49-s5-cam" class="cam"><div class="fill diag"><svg viewBox="0 0 1920 1080" width="1920" height="1080" style="position:absolute;inset:0" ><line x1="200" y1="900" x2="1720" y2="900" stroke="#1A1A1A" stroke-width="9" stroke-linecap="round"/><path d="M1700 876 L1735 900 L1700 924" fill="none" stroke="#1A1A1A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><line x1="200" y1="150" x2="200" y2="900" stroke="#1A1A1A" stroke-width="9" stroke-linecap="round"/>
+    <path id="r49-s5-dg-A" d="M260 270 C 620 300, 900 640, 1660 720" fill="none" stroke="#D9805F" stroke-width="16" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/><path id="r49-s5-dg-B" d="M260 750 C 760 730, 1100 300, 1660 235" fill="none" stroke="#D64545" stroke-width="16" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg>
+    <div class="ctitle">REGRET OVER TIME</div><div class="axl" style="left:200px;top:925px">TODAY</div><div class="axl" style="left:1220px;top:925px;width:500px;text-align:right">YEARS LATER</div>
+    <div class="llab" id="r49-s5-dg-LA" style="left:300px;top:180px;color:#D9805F">THINGS I DID</div><div class="llab" id="r49-s5-dg-LB" style="left:300px;top:790px;color:#D64545">THINGS I DIDN'T DO</div>
+    <div class="tag" id="r49-s5-dg-fade" style="left:1400px;top:760px"><span class="badge yellow">FADE</span></div><div class="tag" id="r49-s5-dg-grow" style="left:1380px;top:90px"><span class="badge red">GROW</span></div>
+    <div class="sweep" id="r49-s5-dg-sw" style="left:761.514px;top:372.354px"></div></div></div></div></div></div><div class="fborder"></div><div id="r49-s5-so0" class="scr row" data-layout-allow-overlap><div class="pill big">STEP 2</div><div class="spill2">REMEMBER WHICH ONE FADES</div></div></div></div>
+<div id="r49-s6" class="clip" data-start="52.22" data-duration="1.62" style="z-index:31"><div id="r49-s6-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="r49-s6-fin" class="fin"><div class="fill iconbg"><img id="r49-s6-img" src="assets/icons/I48.jpg" class="pic" alt=""></div></div></div></div><div class="fborder"></div></div></div>
+<div id="r50-s0" class="clip" data-start="53.84" data-duration="3.56" style="z-index:32"><div id="r50-s0-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="r50-s0-fin" class="fin"><div id="r50-s0-cam" class="cam"><div class="fill diag"><div class="half" id="r50-s0-dg-L" style="left:0"><div class="ln">A SHORT</div><div class="ln"><span class="badge yellow">STING</span></div></div><div class="vdiv"></div><div class="half" id="r50-s0-dg-R" style="left:960px"><div class="ln">A LONG</div><div class="ln"><span class="badge red">WHAT IF</span></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="r50-s1" class="clip" data-start="57.4" data-duration="3.16" style="z-index:33"><div id="r50-s1-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="r50-s1-fin" class="fin"><div id="r50-s1-cam" class="cam"><div class="fill diag"><div class="half" id="r50-s1-dg-L" style="left:0"><div class="ln">A SHORT</div><div class="ln"><span class="badge yellow">STING</span></div></div><div class="vdiv"></div><div class="half" id="r50-s1-dg-R" style="left:960px"><div class="ln">A LONG</div><div class="ln"><span class="badge red">WHAT IF</span></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="r50-s2" class="clip" data-start="60.56" data-duration="2.64" style="z-index:34"><div id="r50-s2-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="r50-s2-fin" class="fin"><div id="r50-s2-cam" class="cam"><div class="fill diag"><div class="half" id="r50-s2-dg-L" style="left:0"><div class="ln">A SHORT</div><div class="ln"><span class="badge yellow">STING</span></div></div><div class="vdiv"></div><div class="half" id="r50-s2-dg-R" style="left:960px"><div class="ln">A LONG</div><div class="ln"><span class="badge red">WHAT IF</span></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="r51-s0" class="clip" data-start="63.2" data-duration="2.44" style="z-index:35"><div id="r51-s0-t" class="tt"><div id="r51-s0-fin" class="fin"><div id="r51-s0-cam" class="cam"><img src="assets/pictures/S47.jpg" class="pic" alt=""></div></div><div id="r51-s0-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 3</div><div class="spill2">MAKE IT SMALLER</div></div></div></div>
+<div id="r51-s1" class="clip" data-start="65.64" data-duration="2.94" style="z-index:36"><div id="r51-s1-t" class="tt"><div id="r51-s1-fin" class="fin"><div id="r51-s1-cam" class="cam"><img src="assets/pictures/S47.jpg" class="pic" alt=""></div></div><div id="r51-s1-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 3</div><div class="spill2">MAKE IT SMALLER</div></div></div></div>
+<div id="r51-s2" class="clip" data-start="68.58" data-duration="2.5" style="z-index:37"><div id="r51-s2-t" class="tt"><div id="r51-s2-fin" class="fin"><div id="r51-s2-cam" class="cam"><img src="assets/pictures/S47.jpg" class="pic" alt=""></div></div><div id="r51-s2-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 3</div><div class="spill2">MAKE IT SMALLER</div></div></div></div>
+<div id="r51-s3" class="clip" data-start="71.08" data-duration="2.86" style="z-index:38"><div id="r51-s3-t" class="tt"><div id="r51-s3-fin" class="fin"><div id="r51-s3-cam" class="cam"><img src="assets/pictures/S47.jpg" class="pic" alt=""></div></div><div id="r51-s3-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 3</div><div class="spill2">MAKE IT SMALLER</div></div></div></div>
+<div id="r51-s4" class="clip" data-start="73.94" data-duration="1.66" style="z-index:39"><div id="r51-s4-t" class="tt"><div id="r51-s4-fin" class="fin"><div class="fill iconbg"><img id="r51-s4-img" src="assets/icons/I49.jpg" class="pic" alt=""></div></div></div></div>
+<div id="r51-s5" class="clip" data-start="75.6" data-duration="0.32" style="z-index:40"><div id="r51-s5-t" class="tt"><div id="r51-s5-fin" class="fin"><div id="r51-s5-cam" class="cam"><img src="assets/pictures/S47.jpg" class="pic" alt=""></div></div><div id="r51-s5-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 3</div><div class="spill2">MAKE IT SMALLER</div></div></div></div>
+<div id="r51-s6" class="clip" data-start="75.92" data-duration="1.86" style="z-index:41"><div id="r51-s6-t" class="tt"><div id="r51-s6-fin" class="fin"><div class="fill iconbg"><img id="r51-s6-img" src="assets/icons/I41.jpg" class="pic" alt=""></div></div></div></div>
+<div id="r51-s7" class="clip" data-start="77.78" data-duration="1.78" style="z-index:42"><div id="r51-s7-t" class="tt"><div id="r51-s7-fin" class="fin"><div id="r51-s7-cam" class="cam"><img src="assets/pictures/S47.jpg" class="pic" alt=""></div></div><div id="r51-s7-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 3</div><div class="spill2">MAKE IT SMALLER</div></div></div></div>
+<div id="r51-s8" class="clip" data-start="79.56" data-duration="1.78" style="z-index:43"><div id="r51-s8-t" class="tt"><div id="r51-s8-fin" class="fin"><div class="fill card"><div id="r51-s8-in" class="cardtxt"><div class="ln" id="r51-s8-l0">NOT YOUR</div><div class="ln" id="r51-s8-l1"><span class="badge yellow">WHOLE LIFE</span></div></div></div></div></div></div>
+<div id="r51-s9" class="clip" data-start="81.34" data-duration="1.48" style="z-index:44"><div id="r51-s9-t" class="tt"><div id="r51-s9-fin" class="fin"><div id="r51-s9-cam" class="cam"><img src="assets/pictures/S47.jpg" class="pic" alt=""></div></div><div id="r51-s9-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 3</div><div class="spill2">MAKE IT SMALLER</div></div></div></div>
+<div id="r51-s10" class="clip" data-start="82.32" data-duration="1.2" style="z-index:45"><div id="r51-s10-t" class="tt"><div id="r51-s10-fin" class="fin"><div id="r51-s10-cam" class="cam"><img src="assets/pictures/S47b.jpg" class="pic" alt=""></div></div><div id="r51-s10-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 3</div><div class="spill2">MAKE IT SMALLER</div></div></div></div>
+<div id="r52-s0" class="clip" data-start="83.52" data-duration="2.56" style="z-index:46"><div id="r52-s0-t" class="tt"><div id="r52-s0-fin" class="fin"><div id="r52-s0-cam" class="cam"><img src="assets/pictures/S40.jpg" class="pic" alt=""></div></div><div id="r52-s0-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 4</div><div class="spill2">A SHOULD, OR A WANT?</div></div></div></div>
+<div id="r52-s1" class="clip" data-start="86.08" data-duration="3.02" style="z-index:47"><div id="r52-s1-t" class="tt"><div id="r52-s1-fin" class="fin"><div id="r52-s1-cam" class="cam"><img src="assets/pictures/S40.jpg" class="pic" alt=""></div></div><div id="r52-s1-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 4</div><div class="spill2">A SHOULD, OR A WANT?</div></div></div></div>
+<div id="r52-s2" class="clip" data-start="89.1" data-duration="3.06" style="z-index:48"><div id="r52-s2-t" class="tt"><div id="r52-s2-fin" class="fin"><div id="r52-s2-cam" class="cam"><img src="assets/pictures/S40.jpg" class="pic" alt=""></div></div><div id="r52-s2-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 4</div><div class="spill2">A SHOULD, OR A WANT?</div></div></div></div>
+<div id="r52-s3" class="clip" data-start="92.16" data-duration="3.76" style="z-index:49"><div id="r52-s3-t" class="tt"><div id="r52-s3-fin" class="fin"><div id="r52-s3-cam" class="cam"><img src="assets/pictures/S40.jpg" class="pic" alt=""></div></div><div id="r52-s3-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 4</div><div class="spill2">A SHOULD, OR A WANT?</div></div></div></div>
+<div id="r52-s4" class="clip" data-start="95.92" data-duration="2.6" style="z-index:50"><div id="r52-s4-t" class="tt"><div id="r52-s4-fin" class="fin"><div id="r52-s4-cam" class="cam"><img src="assets/pictures/S40.jpg" class="pic" alt=""></div></div><div id="r52-s4-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 4</div><div class="spill2">A SHOULD, OR A WANT?</div></div></div></div>
+<div id="r52-s5" class="clip" data-start="98.52" data-duration="2.44" style="z-index:51"><div id="r52-s5-t" class="tt"><div id="r52-s5-fin" class="fin"><div id="r52-s5-cam" class="cam"><img src="assets/pictures/S40.jpg" class="pic" alt=""></div></div><div id="r52-s5-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 4</div><div class="spill2">A SHOULD, OR A WANT?</div></div></div></div>
+<div id="r52-s6" class="clip" data-start="100.96" data-duration="2.5" style="z-index:52"><div id="r52-s6-t" class="tt"><div id="r52-s6-fin" class="fin"><div class="fill diag cardc"><div class="irow"><div id="r52-s6-ic0" class="itile"><img src="assets/icons/I50.jpg" alt=""></div><div id="r52-s6-ic1" class="itile"><img src="assets/icons/I09.jpg" alt=""></div><div id="r52-s6-ic2" class="itile"><img src="assets/icons/I26.jpg" alt=""></div></div></div></div></div></div>
+<div id="r52-s7" class="clip" data-start="103.46" data-duration="1.64" style="z-index:53"><div id="r52-s7-t" class="tt"><div id="r52-s7-fin" class="fin"><div id="r52-s7-cam" class="cam"><img src="assets/pictures/S40.jpg" class="pic" alt=""></div></div><div id="r52-s7-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 4</div><div class="spill2">A SHOULD, OR A WANT?</div></div></div></div>
+<div id="r52-s8" class="clip" data-start="105.1" data-duration="2.8" style="z-index:54"><div id="r52-s8-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="r52-s8-fin" class="fin"><div class="fill card"><div id="r52-s8-in" class="cardtxt"><div class="ln" id="r52-s8-l0">WORTH</div><div class="ln" id="r52-s8-l1"><span class="badge yellow">LISTENING TO</span></div></div></div></div></div></div><div class="fborder"></div></div><div id="r52-s8-nw" class="nw"><div class="nshadow" style="left:255.20000000000005px;width:266px"></div><img class="narr" style="left:265.20000000000005px;height:648px" src="assets/narrator/N02.png" alt=""></div></div>
+<div id="r53-s0" class="clip" data-start="107.9" data-duration="3.06" style="z-index:55"><div id="r53-s0-t" class="tt"><div id="r53-s0-fin" class="fin"><div id="r53-s0-cam" class="cam"><img src="assets/pictures/S35.jpg" class="pic" alt=""></div></div><div id="r53-s0-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 5</div><div class="spill2">DECIDE BEFORE THE FEAR</div></div></div></div>
+<div id="r53-s1" class="clip" data-start="110.96" data-duration="3.5" style="z-index:56"><div id="r53-s1-t" class="tt"><div id="r53-s1-fin" class="fin"><div id="r53-s1-cam" class="cam"><img src="assets/pictures/S35.jpg" class="pic" alt=""></div></div><div id="r53-s1-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 5</div><div class="spill2">DECIDE BEFORE THE FEAR</div></div></div></div>
+<div id="r53-s2" class="clip" data-start="114.46" data-duration="3.54" style="z-index:57"><div id="r53-s2-t" class="tt"><div id="r53-s2-fin" class="fin"><div id="r53-s2-cam" class="cam"><img src="assets/pictures/S35.jpg" class="pic" alt=""></div></div><div id="r53-s2-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 5</div><div class="spill2">DECIDE BEFORE THE FEAR</div></div></div></div>
+<div id="r53-s3" class="clip" data-start="118" data-duration="1.84" style="z-index:58"><div id="r53-s3-t" class="tt"><div id="r53-s3-fin" class="fin"><div class="fill iconbg"><img id="r53-s3-img" src="assets/icons/I30.jpg" class="pic" alt=""></div></div></div></div>
+<div id="r53-s4" class="clip" data-start="119.84" data-duration="1" style="z-index:59"><div id="r53-s4-t" class="tt"><div id="r53-s4-fin" class="fin"><div id="r53-s4-cam" class="cam"><img src="assets/pictures/S35.jpg" class="pic" alt=""></div></div><div id="r53-s4-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 5</div><div class="spill2">DECIDE BEFORE THE FEAR</div></div></div></div>
+<div id="r53-s5" class="clip" data-start="120.84" data-duration="1.78" style="z-index:60"><div id="r53-s5-t" class="tt"><div id="r53-s5-fin" class="fin"><div class="fill iconbg"><img id="r53-s5-img" src="assets/icons/I13.jpg" class="pic" alt=""></div></div></div></div>
+<div id="r53-s6" class="clip" data-start="122.62" data-duration="2.5" style="z-index:61"><div id="r53-s6-t" class="tt"><div id="r53-s6-fin" class="fin"><div id="r53-s6-cam" class="cam"><img src="assets/pictures/S35.jpg" class="pic" alt=""></div></div><div id="r53-s6-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 5</div><div class="spill2">DECIDE BEFORE THE FEAR</div></div></div></div>
+<div id="r53-s7" class="clip" data-start="125.12" data-duration="2.5" style="z-index:62"><div id="r53-s7-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="r53-s7-fin" class="fin"><div class="fill card"><div id="r53-s7-in" class="cardtxt"><div class="ln" id="r53-s7-l0">HARD PART:</div><div class="ln" id="r53-s7-l1"><span class="badge yellow">DONE</span></div></div></div></div></div></div><div class="fborder"></div></div><div id="r53-s7-nw" class="nw"><div class="nshadow" style="left:215.20000000000005px;width:306px"></div><img class="narr" style="left:225.20000000000005px;height:648px" src="assets/narrator/N07.png" alt=""></div></div>
+<div id="r54-s0" class="clip" data-start="127.62" data-duration="2.6" style="z-index:63"><div id="r54-s0-t" class="tt"><div id="r54-s0-fin" class="fin"><div id="r54-s0-cam" class="cam"><img src="assets/pictures/S50.jpg" class="pic" alt=""></div></div></div></div>
+<div id="r54-s1" class="clip" data-start="130.22" data-duration="2.14" style="z-index:64"><div id="r54-s1-t" class="tt"><div id="r54-s1-fin" class="fin"><div id="r54-s1-cam" class="cam"><img src="assets/pictures/S50.jpg" class="pic" alt=""></div></div></div></div>
+<div id="r54-s2" class="clip" data-start="132.36" data-duration="3.04" style="z-index:65"><div id="r54-s2-t" class="tt"><div id="r54-s2-fin" class="fin"><div id="r54-s2-cam" class="cam"><img src="assets/pictures/S50.jpg" class="pic" alt=""></div></div></div></div>
+<div id="r54-s3" class="clip" data-start="135.4" data-duration="1.78" style="z-index:66"><div id="r54-s3-t" class="tt"><div id="r54-s3-fin" class="fin"><div class="fill iconbg"><img id="r54-s3-img" src="assets/icons/I46.jpg" class="pic" alt=""></div></div></div></div>
+<div id="r54-s4" class="clip" data-start="137.18" data-duration="0.38" style="z-index:67"><div id="r54-s4-t" class="tt"><div id="r54-s4-fin" class="fin"><div id="r54-s4-cam" class="cam"><img src="assets/pictures/S50.jpg" class="pic" alt=""></div></div></div></div>
+<div id="r54-s5" class="clip" data-start="137.56" data-duration="1.79" style="z-index:68"><div id="r54-s5-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="r54-s5-fin" class="fin"><div class="fill card"><div id="r54-s5-in" class="cardtxt"><div class="ln" id="r54-s5-l0">JUST</div><div class="ln" id="r54-s5-l1"><span class="ulw"><span class="badge yellow">FUNNY</span><svg class="ul" viewBox="0 0 400 30" preserveAspectRatio="none"><path id="r54-s5-p1-ul" d="M6 18 C60 6 110 26 170 14 S300 8 394 16" fill="none" stroke="#D64545" stroke-width="9" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg></span></div><div class="ln" id="r54-s5-l2">NOW</div></div></div></div></div></div><div class="fborder"></div></div><div id="r54-s5-nw" class="nw"><div class="nshadow" style="left:134.20000000000005px;width:387px"></div><img class="narr" style="left:144.20000000000005px;height:648px" src="assets/narrator/N05.png" alt=""></div></div>
+<div id="r55-s0" class="clip" data-start="139.1" data-duration="2.18" style="z-index:69"><div id="r55-s0-t" class="tt"><div id="r55-s0-fin" class="fin"><div id="r55-s0-cam" class="cam"><img src="assets/pictures/S37.jpg" class="pic" alt=""></div></div></div></div>
+<div id="r55-s1" class="clip" data-start="141.28" data-duration="2.7" style="z-index:70"><div id="r55-s1-t" class="tt"><div id="r55-s1-fin" class="fin"><div id="r55-s1-cam" class="cam"><img src="assets/pictures/S37.jpg" class="pic" alt=""></div></div></div></div>
+<div id="r56-s0" class="clip" data-start="143.98" data-duration="3.72" style="z-index:71"><div id="r56-s0-t" class="tt"><div id="r56-s0-fin" class="fin"><div id="r56-s0-cam" class="cam"><img src="assets/pictures/S10.jpg" class="pic" alt=""></div></div></div></div>
+<div id="r56-s1" class="clip" data-start="147.7" data-duration="2.4" style="z-index:72"><div id="r56-s1-t" class="tt"><div id="r56-s1-fin" class="fin"><div id="r56-s1-cam" class="cam"><img src="assets/pictures/S10.jpg" class="pic" alt=""></div></div></div></div>
+<div id="r56-s2" class="clip" data-start="150.1" data-duration="2.52" style="z-index:73"><div id="r56-s2-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="r56-s2-fin" class="fin"><div class="fill card"><div id="r56-s2-in" class="cardtxt"><div class="ln" id="r56-s2-l0">BUILT TO</div><div class="ln" id="r56-s2-l1"><span class="badge yellow">PROTECT YOU</span></div></div></div></div></div></div><div class="fborder"></div></div><div id="r56-s2-nw" class="nw"><div class="nshadow" style="left:196.20000000000005px;width:325px"></div><img class="narr" style="left:206.20000000000005px;height:648px" src="assets/narrator/N01.png" alt=""></div></div>
+<div id="r56-s3" class="clip" data-start="152.62" data-duration="3.04" style="z-index:74"><div id="r56-s3-t" class="tt"><div id="r56-s3-fin" class="fin"><div id="r56-s3-cam" class="cam"><img src="assets/pictures/S10.jpg" class="pic" alt=""></div></div></div></div>
+<div id="r56-s4" class="clip" data-start="155.66" data-duration="1.48" style="z-index:75"><div id="r56-s4-t" class="tt"><div id="r56-s4-fin" class="fin"><div id="r56-s4-cam" class="cam"><img src="assets/pictures/S10.jpg" class="pic" alt=""></div></div></div></div>
+<div id="r56-s5" class="clip" data-start="157.14" data-duration="1.98" style="z-index:76"><div id="r56-s5-t" class="tt"><div id="r56-s5-fin" class="fin"><div class="fill card"><div id="r56-s5-in" class="cardtxt"><div class="ln" id="r56-s5-l0">YOU CAN</div><div class="ln" id="r56-s5-l1"><span class="badge yellow">STOP PAYING</span></div></div></div></div></div></div>
+<div id="r57-s0" class="clip" data-start="159.12" data-duration="2.14" style="z-index:77"><div id="r57-s0-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="r57-s0-fin" class="fin"><div id="r57-s0-cam" class="cam"><img src="assets/pictures/S04.jpg" class="pic" alt=""></div></div></div></div><div class="fborder"></div></div></div>
+<div id="r57-s1" class="clip" data-start="161.26" data-duration="1.84" style="z-index:78"><div id="r57-s1-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="r57-s1-fin" class="fin"><div class="fill card"><div id="r57-s1-in" class="cardtxt"><div class="ln" id="r57-s1-l0">IT'S</div><div class="ln" id="r57-s1-l1"><span class="badge red">SAFER</span></div><div class="ln" id="r57-s1-l2">NOT TO</div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="r57-s2" class="clip" data-start="163.1" data-duration="1.88" style="z-index:79"><div id="r57-s2-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="r57-s2-fin" class="fin"><div id="r57-s2-cam" class="cam"><img src="assets/pictures/S04.jpg" class="pic" alt=""></div></div></div></div><div class="fborder"></div></div></div>
+<div id="r57-s3" class="clip" data-start="164.98" data-duration="2.94" style="z-index:80"><div id="r57-s3-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="r57-s3-fin" class="fin"><div id="r57-s3-cam" class="cam"><img src="assets/pictures/S04.jpg" class="pic" alt=""></div></div></div></div><div class="fborder"></div></div></div>
+<div id="r58-s0" class="clip" data-start="167.92" data-duration="3.3" style="z-index:81"><div id="r58-s0-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="r58-s0-fin" class="fin"><div id="r58-s0-cam" class="cam"><div class="fill diag cardc"><div class="cardtxt" id="r58-s0-dg-ct"><div class="ln mid" id="r58-s0-dg-l0">THEY DIDN'T WISH THEY'D</div><div class="ln" id="r58-s0-dg-l1"><span class="badge red">PLAYED IT SAFE</span></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="r58-s1" class="clip" data-start="171.22" data-duration="3.1" style="z-index:82"><div id="r58-s1-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="r58-s1-fin" class="fin"><div id="r58-s1-cam" class="cam"><div class="fill diag cardc"><div class="cardtxt" id="r58-s1-dg-ct"><div class="ln mid" id="r58-s1-dg-l0">THEY WISHED THEY'D</div><div class="ln" id="r58-s1-dg-l1"><span class="badge yellow">TRIED</span></div></div><div class="sweep" id="r58-s1-dg-sw" style="left:760px;top:240px;width:400px;height:600px;border-radius:0;transform:skewX(-20deg)"></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="r59-s0" class="clip" data-start="174.32" data-duration="2" style="z-index:83"><div id="r59-s0-t" class="tt"><div id="r59-s0-fin" class="fin"><div id="r59-s0-cam" class="cam"><img src="assets/pictures/S54.jpg" class="pic" alt=""></div></div></div></div>
+<div id="r59-s1" class="clip" data-start="176.32" data-duration="2.36" style="z-index:84"><div id="r59-s1-t" class="tt"><div id="r59-s1-fin" class="fin"><div class="fill iconbg"><img id="r59-s1-img" src="assets/icons/I41.jpg" class="pic" alt=""></div></div></div></div>
+<div id="r60-s0" class="clip" data-start="178.68" data-duration="2.26" style="z-index:85"><div id="r60-s0-t" class="tt"><div id="r60-s0-fin" class="fin"><div id="r60-s0-cam" class="cam"><img src="assets/pictures/S55.jpg" class="pic" alt=""></div></div></div></div>
+<div id="r61-s0" class="clip" data-start="180.94" data-duration="2.74" style="z-index:86"><div id="r61-s0-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="r61-s0-fin" class="fin"><div class="fill card"><div id="r61-s0-in" class="cardtxt"><div class="ln" id="r61-s0-l0">WORST CASE:</div><div class="ln" id="r61-s0-l1"><span class="badge yellow">A FUNNY STORY</span></div></div></div></div></div></div><div class="fborder"></div></div><div id="r61-s0-nw" class="nw"><div class="nshadow" style="left:134.20000000000005px;width:387px"></div><img class="narr" style="left:144.20000000000005px;height:648px" src="assets/narrator/N05.png" alt=""></div></div>
+<div id="r61-s1" class="clip" data-start="183.68" data-duration="2.04" style="z-index:87"><div id="r61-s1-t" class="tt"><div id="r61-s1-fin" class="fin"><div id="r61-s1-cam" class="cam"><img src="assets/pictures/S56.jpg" class="pic" alt=""></div></div></div></div>
+<div id="r61-s2" class="clip" data-start="185.72" data-duration="2.92" style="z-index:88"><div id="r61-s2-t" class="tt"><div id="r61-s2-fin" class="fin"><div id="r61-s2-cam" class="cam"><img src="assets/pictures/S56.jpg" class="pic" alt=""></div></div></div></div>
+<div id="r62-s0" class="clip" data-start="188.64" data-duration="3.18" style="z-index:89"><div id="r62-s0-t" class="tt"><div id="r62-s0-fin" class="fin"><div id="r62-s0-cam" class="cam"><img src="assets/pictures/S57.jpg" class="pic" alt=""></div></div></div></div>
+<div id="r62-s1" class="clip" data-start="191.82" data-duration="2.16" style="z-index:90"><div id="r62-s1-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="r62-s1-fin" class="fin"><div class="fill card"><div id="r62-s1-in" class="cardtxt"><div class="ln" id="r62-s1-l0">WHICH</div><div class="ln" id="r62-s1-l1"><span class="badge yellow">NUMBER?</span></div></div></div></div></div></div><div class="fborder"></div></div><div id="r62-s1-nw" class="nw"><div class="nshadow" style="left:240.20000000000005px;width:281px"></div><img class="narr" style="left:250.20000000000005px;height:648px" src="assets/narrator/N08.png" alt=""></div></div>
+<div id="r62-s2" class="clip" data-start="193.98" data-duration="3.36" style="z-index:91"><div id="r62-s2-t" class="tt"><div id="r62-s2-fin" class="fin"><div id="r62-s2-cam" class="cam"><img src="assets/pictures/S57.jpg" class="pic" alt=""></div></div></div></div>
+<div id="r62-s3" class="clip" data-start="197.34" data-duration="2.88" style="z-index:92"><div id="r62-s3-t" class="tt"><div id="r62-s3-fin" class="fin"><div id="r62-s3-cam" class="cam"><img src="assets/pictures/S57.jpg" class="pic" alt=""></div></div></div></div>
+<div id="r62-s4" class="clip" data-start="200.22" data-duration="2.14" style="z-index:93"><div id="r62-s4-t" class="tt"><div id="r62-s4-fin" class="fin"><div id="r62-s4-cam" class="cam"><img src="assets/pictures/S57.jpg" class="pic" alt=""></div></div></div></div>
+<div id="r62-s5" class="clip" data-start="202.36" data-duration="4.894" style="z-index:94"><div id="r62-s5-t" class="tt"><div id="r62-s5-fin" class="fin"><div id="r62-s5-cam" class="cam"><img src="assets/pictures/S57.jpg" class="pic" alt=""></div></div></div></div>
+<div id="nar1" class="clip" data-start="0" data-duration="3.04" style="z-index:900"><div id="nar1-w" class="nw"><div class="nshadow" style="left:196.20000000000005px;width:325px"></div><img class="narr" style="left:206.20000000000005px;height:648px" src="assets/narrator/N01.png" alt=""></div></div>
+<div id="nar2" class="clip" data-start="3.04" data-duration="1.78" style="z-index:900"><div id="nar2-w" class="nw"><div class="nshadow" style="left:240.20000000000005px;width:281px"></div><img class="narr" style="left:250.20000000000005px;height:648px" src="assets/narrator/N08.png" alt=""></div></div>
+<div id="nar3" class="clip" data-start="33.4" data-duration="14.88" style="z-index:900"><div id="nar3-w" class="nw"><div class="nshadow" style="left:215.20000000000005px;width:306px"></div><img class="narr" style="left:225.20000000000005px;height:648px" src="assets/narrator/N07.png" alt=""></div></div>
+<div id="nar4" class="clip" data-start="48.28" data-duration="5.56" style="z-index:900"><div id="nar4-w" class="nw"><div class="nshadow" style="left:255.20000000000005px;width:266px"></div><img class="narr" style="left:265.20000000000005px;height:648px" src="assets/narrator/N02.png" alt=""></div></div>
+<div id="nar5" class="clip" data-start="53.84" data-duration="9.36" style="z-index:900"><div id="nar5-w" class="nw"><div class="nshadow" style="left:196.20000000000005px;width:325px"></div><img class="narr" style="left:206.20000000000005px;height:648px" src="assets/narrator/N01.png" alt=""></div></div>
+<div id="nar6" class="clip" data-start="159.12" data-duration="11.4" style="z-index:900"><div id="nar6-w" class="nw"><div class="nshadow" style="left:196.20000000000005px;width:325px"></div><img class="narr" style="left:206.20000000000005px;height:648px" src="assets/narrator/N01.png" alt=""></div></div>
+<div id="nar7" class="clip" data-start="170.52" data-duration="3.8" style="z-index:900"><div id="nar7-w" class="nw"><div class="nshadow" style="left:296.20000000000005px;width:225px"></div><img class="narr" style="left:306.20000000000005px;height:648px" src="assets/narrator/N06.png" alt=""></div></div>
+<div id="leak0" class="clip" data-start="141.66" data-duration="1.8" style="z-index:950;pointer-events:none"><div id="leak0-i" class="leak"></div></div>
+<audio id="vo" src="assets/part4.wav" data-start="0" data-duration="207.254" data-track-index="0"></audio>
+</div>
+<script>
+const pp=(cx,cy,r,pct)=>{const p=Math.min(Math.max(pct,0.01),99.99),a=p/100*2*Math.PI;return "M"+cx+" "+cy+" L"+cx+" "+(cy-r)+" A"+r+" "+r+" 0 "+(a>Math.PI?1:0)+" 1 "+(cx+r*Math.sin(a)).toFixed(2)+" "+(cy-r*Math.cos(a)).toFixed(2)+" Z";};
+const tl = gsap.timeline({ paused: true });
+tl.fromTo("#r47-s1-in",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},3.14);
+tl.set("#r48-s0-cam",{x:0,y:0,scale:1},4.82);
+tl.fromTo("#r48-s0-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:1.2,ease:"none"},4.82);
+tl.fromTo("#r48-s1-img",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},6.02);
+tl.set("#r48-s2-cam",{x:0,y:0,scale:1},7.72);
+tl.fromTo("#r48-s2-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:2.82,ease:"none"},7.72);
+tl.set("#r48-s3-cam",{x:0,y:0,scale:1},10.54);
+tl.fromTo("#r48-s3-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:1.8,ease:"none"},10.54);
+tl.to("#r48-s3-so0",{opacity:0,duration:0.2},10.77);
+tl.set("#r48-s4-cam",{x:0,y:0,scale:1},12.34);
+tl.fromTo("#r48-s4-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:3.64,ease:"none"},12.34);
+tl.set("#r48-s5-cam",{x:0,y:0,scale:1},15.98);
+tl.fromTo("#r48-s5-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:3.16,ease:"none"},15.98);
+tl.fromTo("#r48-s6-in",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},19.24);
+tl.fromTo("#r48-s6-nw",{x:-520},{x:0,duration:0.25,ease:"power2.out"},19.14);
+tl.to("#r48-s6-nw",{x:-520,duration:0.2,ease:"power2.in"},21.16);
+tl.set("#r48-s7-cam",{x:0,y:0,scale:1},21.38);
+tl.fromTo("#r48-s7-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:0.46,ease:"none"},21.38);
+tl.fromTo("#r48-s8-in",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},21.84);
+tl.set("#r48-s9-cam",{x:0,y:0,scale:1},23.6);
+tl.fromTo("#r48-s9-cam",{x:0,y:0,scale:1},{x:0,y:0,scale:1.4,duration:0.25,ease:"expo.out"},25.56);
+tl.fromTo("#r48-s9-cam",{x:0,y:0,scale:1.4},{x:0,y:0,scale:1.421,duration:1.11,ease:"none"},25.81);
+tl.set("#r48-s10-cam",{x:0,y:0,scale:1.4},26.92);
+tl.fromTo("#r48-s10-cam",{x:0,y:0,scale:1.4},{x:0,y:0,scale:1.421,duration:3.72,ease:"none"},26.92);
+tl.set("#r48-s11-cam",{x:0,y:0,scale:1},30.64);
+tl.fromTo("#r48-s11-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:2.76,ease:"none"},30.64);
+tl.to("#r49-s0-dg-A",{strokeDashoffset:0,duration:1.5,ease:"power1.inOut"},35.37);
+tl.to("#r49-s0-dg-B",{strokeDashoffset:0,duration:1.5,ease:"power1.inOut"},35.37);
+tl.set("#r49-s0-dg-LA,#r49-s0-dg-LB",{opacity:0},0);
+tl.to("#r49-s0-dg-LA,#r49-s0-dg-LB",{opacity:1,duration:0.4},35.37);
+tl.set("#r49-s0-dg-fade",{opacity:0},0);
+tl.fromTo("#r49-s0-dg-fade",{opacity:0,scale:0.6},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.6)"},43.69);
+tl.set("#r49-s0-dg-grow",{opacity:0},0);
+tl.fromTo("#r49-s0-dg-grow",{opacity:0,scale:0.6},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.6)"},50.35);
+tl.to("#r49-s1-dg-A",{strokeDashoffset:0,duration:1.5,ease:"power1.inOut"},35.37);
+tl.to("#r49-s1-dg-B",{strokeDashoffset:0,duration:1.5,ease:"power1.inOut"},35.37);
+tl.set("#r49-s1-dg-LA,#r49-s1-dg-LB",{opacity:0},0);
+tl.to("#r49-s1-dg-LA,#r49-s1-dg-LB",{opacity:1,duration:0.4},35.37);
+tl.set("#r49-s1-dg-fade",{opacity:0},0);
+tl.fromTo("#r49-s1-dg-fade",{opacity:0,scale:0.6},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.6)"},43.69);
+tl.set("#r49-s1-dg-grow",{opacity:0},0);
+tl.fromTo("#r49-s1-dg-grow",{opacity:0,scale:0.6},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.6)"},50.35);
+tl.fromTo("#r49-s2-img",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},39.54);
+tl.to("#r49-s3-dg-A",{strokeDashoffset:0,duration:1.5,ease:"power1.inOut"},35.37);
+tl.to("#r49-s3-dg-B",{strokeDashoffset:0,duration:1.5,ease:"power1.inOut"},35.37);
+tl.set("#r49-s3-dg-LA,#r49-s3-dg-LB",{opacity:0},0);
+tl.to("#r49-s3-dg-LA,#r49-s3-dg-LB",{opacity:1,duration:0.4},35.37);
+tl.set("#r49-s3-dg-fade",{opacity:0},0);
+tl.fromTo("#r49-s3-dg-fade",{opacity:0,scale:0.6},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.6)"},43.69);
+tl.set("#r49-s3-dg-grow",{opacity:0},0);
+tl.fromTo("#r49-s3-dg-grow",{opacity:0,scale:0.6},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.6)"},50.35);
+tl.to("#r49-s4-dg-A",{strokeDashoffset:0,duration:1.5,ease:"power1.inOut"},35.37);
+tl.to("#r49-s4-dg-B",{strokeDashoffset:0,duration:1.5,ease:"power1.inOut"},35.37);
+tl.set("#r49-s4-dg-LA,#r49-s4-dg-LB",{opacity:0},0);
+tl.to("#r49-s4-dg-LA,#r49-s4-dg-LB",{opacity:1,duration:0.4},35.37);
+tl.set("#r49-s4-dg-fade",{opacity:0},0);
+tl.fromTo("#r49-s4-dg-fade",{opacity:0,scale:0.6},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.6)"},43.69);
+tl.set("#r49-s4-dg-grow",{opacity:0},0);
+tl.fromTo("#r49-s4-dg-grow",{opacity:0,scale:0.6},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.6)"},50.35);
+tl.to("#r49-s5-dg-A",{strokeDashoffset:0,duration:1.5,ease:"power1.inOut"},35.37);
+tl.to("#r49-s5-dg-B",{strokeDashoffset:0,duration:1.5,ease:"power1.inOut"},35.37);
+tl.set("#r49-s5-dg-LA,#r49-s5-dg-LB",{opacity:0},0);
+tl.to("#r49-s5-dg-LA,#r49-s5-dg-LB",{opacity:1,duration:0.4},35.37);
+tl.set("#r49-s5-dg-fade",{opacity:0},0);
+tl.fromTo("#r49-s5-dg-fade",{opacity:0,scale:0.6},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.6)"},43.69);
+tl.set("#r49-s5-dg-grow",{opacity:0},0);
+tl.fromTo("#r49-s5-dg-grow",{opacity:0,scale:0.6},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.6)"},50.35);
+tl.fromTo("#r49-s6-img",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},52.22);
+tl.set("#r50-s0-dg-L",{opacity:0},0);
+tl.set("#r50-s0-dg-R",{opacity:0},0);
+tl.fromTo("#r50-s0-dg-L",{opacity:0,scale:0.9},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},58.15);
+tl.fromTo("#r50-s0-dg-R",{opacity:0,scale:0.9},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},59.87);
+tl.to("#r50-s0-dg-L",{filter:"blur(10px)",opacity:0.5,duration:0.35,ease:"power2.inOut"},60.17);
+tl.set("#r50-s1-dg-L",{opacity:0},0);
+tl.set("#r50-s1-dg-R",{opacity:0},0);
+tl.fromTo("#r50-s1-dg-L",{opacity:0,scale:0.9},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},58.15);
+tl.fromTo("#r50-s1-dg-R",{opacity:0,scale:0.9},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},59.87);
+tl.to("#r50-s1-dg-L",{filter:"blur(10px)",opacity:0.5,duration:0.35,ease:"power2.inOut"},60.17);
+tl.set("#r50-s2-dg-L",{opacity:0},0);
+tl.set("#r50-s2-dg-R",{opacity:0},0);
+tl.fromTo("#r50-s2-dg-L",{opacity:0,scale:0.9},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},58.15);
+tl.fromTo("#r50-s2-dg-R",{opacity:0,scale:0.9},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},59.87);
+tl.to("#r50-s2-dg-L",{filter:"blur(10px)",opacity:0.5,duration:0.35,ease:"power2.inOut"},60.17);
+tl.set("#r51-s0-cam",{x:0,y:0,scale:1},63.2);
+tl.fromTo("#r51-s0-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:2.44,ease:"none"},63.2);
+tl.set("#r51-s1-cam",{x:0,y:0,scale:1},65.64);
+tl.fromTo("#r51-s1-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:2.94,ease:"none"},65.64);
+tl.set("#r51-s2-cam",{x:0,y:0,scale:1},68.58);
+tl.fromTo("#r51-s2-cam",{x:0,y:0,scale:1},{x:-384,y:0,scale:1.4,duration:0.26,ease:"power3.inOut"},68.58);
+tl.set("#r51-s2-cam",{filter:"url(#mb)"},68.58);
+tl.fromTo("#mbb",{attr:{stdDeviation:"0 0"}},{attr:{stdDeviation:"38 0"},duration:0.13,ease:"power2.in"},68.58);
+tl.to("#mbb",{attr:{stdDeviation:"0 0"},duration:0.13,ease:"power2.out"},68.71);
+tl.set("#r51-s2-cam",{filter:"none"},68.86);
+tl.fromTo("#r51-s2-cam",{x:-384,y:0,scale:1.4},{x:0,y:0,scale:1,duration:0.4,ease:"power2.out"},70);
+tl.fromTo("#r51-s2-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:0.68,ease:"none"},70.4);
+tl.to("#r51-s2-so0",{opacity:0,duration:0.2},69.15);
+tl.set("#r51-s3-cam",{x:0,y:0,scale:1},71.08);
+tl.fromTo("#r51-s3-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:2.86,ease:"none"},71.08);
+tl.fromTo("#r51-s4-img",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},73.94);
+tl.set("#r51-s5-cam",{x:0,y:0,scale:1},75.6);
+tl.fromTo("#r51-s6-img",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},75.92);
+tl.set("#r51-s7-cam",{x:0,y:0,scale:1},77.78);
+tl.fromTo("#r51-s7-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:1.78,ease:"none"},77.78);
+tl.fromTo("#r51-s8-in",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},79.56);
+tl.set("#r51-s9-cam",{x:0,y:0,scale:1},81.34);
+tl.fromTo("#r51-s9-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:0.98,ease:"none"},81.34);
+tl.set("#r51-s10-cam",{x:0,y:0,scale:1},82.32);
+tl.fromTo("#r51-s10-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:1.2,ease:"none"},82.32);
+tl.fromTo("#r51-s10-t",{clipPath:"circle(0% at 76% 50%)"},{clipPath:"circle(150% at 76% 50%)",duration:0.7,ease:"power2.out"},82.32);
+tl.set("#r52-s0-cam",{x:0,y:0,scale:1},83.52);
+tl.fromTo("#r52-s0-cam",{x:-14.4,y:-8.1,scale:1.015},{x:0,y:0,scale:1,duration:2.56,ease:"none"},83.52);
+tl.set("#r52-s1-cam",{x:0,y:0,scale:1},86.08);
+tl.fromTo("#r52-s1-cam",{x:0,y:0,scale:1},{x:-537.6,y:-162,scale:1.3,duration:0.25,ease:"expo.out"},86.08);
+tl.fromTo("#r52-s1-cam",{x:-537.6,y:-162,scale:1.3},{x:-560.064,y:-172.53,scale:1.319,duration:2.77,ease:"none"},86.33);
+tl.set("#r52-s2-cam",{x:-537.6,y:-162,scale:1.3},89.1);
+tl.fromTo("#r52-s2-cam",{x:-537.6,y:-162,scale:1.3},{x:0,y:0,scale:1,duration:0.4,ease:"power2.out"},89.1);
+tl.fromTo("#r52-s2-cam",{x:-14.4,y:-8.1,scale:1.015},{x:0,y:0,scale:1,duration:2.66,ease:"none"},89.5);
+tl.to("#r52-s2-so0",{opacity:0,duration:0.2},89.47);
+tl.set("#r52-s3-cam",{x:0,y:0,scale:1},92.16);
+tl.fromTo("#r52-s3-cam",{x:0,y:0,scale:1},{x:0,y:-216,scale:1.4,duration:0.25,ease:"expo.out"},92.16);
+tl.fromTo("#r52-s3-cam",{x:0,y:-216,scale:1.4},{x:0,y:-227.34,scale:1.421,duration:3.51,ease:"none"},92.41);
+tl.set("#r52-s4-cam",{x:0,y:-216,scale:1.4},95.92);
+tl.fromTo("#r52-s4-cam",{x:0,y:-216,scale:1.4},{x:0,y:0,scale:1,duration:0.4,ease:"power2.out"},95.92);
+tl.fromTo("#r52-s4-cam",{x:-14.4,y:-8.1,scale:1.015},{x:0,y:0,scale:1,duration:2.2,ease:"none"},96.32);
+tl.set("#r52-s5-cam",{x:0,y:0,scale:1},98.52);
+tl.fromTo("#r52-s5-cam",{x:0,y:0,scale:1},{x:-537.6,y:-162,scale:1.3,duration:0.25,ease:"expo.out"},98.52);
+tl.fromTo("#r52-s5-cam",{x:-537.6,y:-162,scale:1.3},{x:-560.064,y:-172.53,scale:1.319,duration:2.19,ease:"none"},98.77);
+tl.set("#r52-s6-ic0",{opacity:0},0);
+tl.fromTo("#r52-s6-ic0",{opacity:0,scale:0.92},{opacity:1,scale:1,duration:0.2,ease:"power2.out"},100.93);
+tl.set("#r52-s6-ic1",{opacity:0},0);
+tl.fromTo("#r52-s6-ic1",{opacity:0,scale:0.92},{opacity:1,scale:1,duration:0.2,ease:"power2.out"},101.73);
+tl.set("#r52-s6-ic2",{opacity:0},0);
+tl.fromTo("#r52-s6-ic2",{opacity:0,scale:0.92},{opacity:1,scale:1,duration:0.2,ease:"power2.out"},102.95);
+tl.set("#r52-s7-cam",{x:0,y:0,scale:1},103.46);
+tl.fromTo("#r52-s7-cam",{x:-14.4,y:-8.1,scale:1.015},{x:0,y:0,scale:1,duration:1.64,ease:"none"},103.46);
+tl.fromTo("#r52-s8-in",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},105.2);
+tl.fromTo("#r52-s8-nw",{x:-520},{x:0,duration:0.25,ease:"power2.out"},105.1);
+tl.to("#r52-s8-nw",{x:-520,duration:0.2,ease:"power2.in"},107.68);
+tl.set("#r53-s0-cam",{x:0,y:0,scale:1},107.9);
+tl.fromTo("#r53-s0-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:3.06,ease:"none"},107.9);
+tl.set("#r53-s1-cam",{x:0,y:0,scale:1},110.96);
+tl.fromTo("#r53-s1-cam",{x:0,y:0,scale:1},{x:-288,y:-91.8,scale:1.3,duration:0.25,ease:"expo.out"},110.96);
+tl.fromTo("#r53-s1-cam",{x:-288,y:-91.8,scale:1.3},{x:-306.72,y:-101.277,scale:1.319,duration:3.25,ease:"none"},111.21);
+tl.to("#r53-s1-so0",{opacity:0,duration:0.2},113.85);
+tl.set("#r53-s2-cam",{x:-288,y:-91.8,scale:1.3},114.46);
+tl.fromTo("#r53-s2-cam",{x:-288,y:-91.8,scale:1.3},{x:0,y:0,scale:1,duration:0.4,ease:"power2.out"},114.46);
+tl.fromTo("#r53-s2-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:3.14,ease:"none"},114.86);
+tl.fromTo("#r53-s3-img",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},118);
+tl.set("#r53-s4-cam",{x:0,y:0,scale:1},119.84);
+tl.fromTo("#r53-s4-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:1,ease:"none"},119.84);
+tl.fromTo("#r53-s5-img",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},120.84);
+tl.set("#r53-s6-cam",{x:0,y:0,scale:1},122.62);
+tl.fromTo("#r53-s6-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:2.5,ease:"none"},122.62);
+tl.fromTo("#r53-s7-in",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},125.22);
+tl.fromTo("#r53-s7-nw",{x:-520},{x:0,duration:0.25,ease:"power2.out"},125.12);
+tl.to("#r53-s7-nw",{x:-520,duration:0.2,ease:"power2.in"},127.4);
+tl.set("#r54-s0-cam",{x:0,y:0,scale:1},127.62);
+tl.fromTo("#r54-s0-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:2.6,ease:"none"},127.62);
+tl.set("#r54-s1-cam",{x:0,y:0,scale:1},130.22);
+tl.fromTo("#r54-s1-cam",{x:0,y:0,scale:1},{x:-768,y:-246.24,scale:1.4,duration:0.25,ease:"expo.out"},130.22);
+tl.fromTo("#r54-s1-cam",{x:-768,y:-246.24,scale:1.4},{x:-808.32,y:-258.034,scale:1.421,duration:1.89,ease:"none"},130.47);
+tl.set("#r54-s2-cam",{x:-768,y:-246.24,scale:1.4},132.36);
+tl.fromTo("#r54-s2-cam",{x:-768,y:-246.24,scale:1.4},{x:0,y:0,scale:1,duration:0.4,ease:"power2.out"},132.36);
+tl.fromTo("#r54-s2-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:2.64,ease:"none"},132.76);
+tl.fromTo("#r54-s3-img",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},135.4);
+tl.set("#r54-s4-cam",{x:0,y:0,scale:1},137.18);
+tl.fromTo("#r54-s5-in",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},137.66);
+tl.to("#r54-s5-p1-ul",{strokeDashoffset:0,duration:0.5,ease:"power2.out"},137.96);
+tl.fromTo("#r54-s5-nw",{x:-520},{x:0,duration:0.25,ease:"power2.out"},137.56);
+tl.to("#r54-s5-nw",{x:-520,duration:0.2,ease:"power2.in"},138.88);
+tl.set("#r55-s0-cam",{x:0,y:0,scale:1},139.1);
+tl.fromTo("#r55-s0-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:2.18,ease:"none"},139.1);
+tl.fromTo("#r55-s0-t",{opacity:0},{opacity:1,duration:0.25,ease:"none"},139.1);
+tl.set("#r55-s1-cam",{x:0,y:0,scale:1},141.28);
+tl.fromTo("#r55-s1-cam",{x:0,y:0,scale:1},{x:-599.04,y:0,scale:1.4,duration:0.25,ease:"expo.out"},141.28);
+tl.fromTo("#r55-s1-cam",{x:-599.04,y:0,scale:1.4},{x:-622.426,y:0,scale:1.421,duration:2.45,ease:"none"},141.53);
+tl.set("#r56-s0-cam",{x:0,y:0,scale:1},143.98);
+tl.fromTo("#r56-s0-cam",{x:-14.4,y:-8.1,scale:1.015},{x:0,y:0,scale:1,duration:3.72,ease:"none"},143.98);
+tl.set("#r56-s1-cam",{x:0,y:0,scale:1},147.7);
+tl.fromTo("#r56-s1-cam",{x:-14.4,y:-8.1,scale:1.015},{x:0,y:0,scale:1,duration:2.4,ease:"none"},147.7);
+tl.fromTo("#r56-s2-in",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},150.2);
+tl.fromTo("#r56-s2-nw",{x:-520},{x:0,duration:0.25,ease:"power2.out"},150.1);
+tl.to("#r56-s2-nw",{x:-520,duration:0.2,ease:"power2.in"},152.4);
+tl.set("#r56-s3-cam",{x:0,y:0,scale:1},152.62);
+tl.fromTo("#r56-s3-cam",{x:0,y:0,scale:1},{x:-768,y:-432,scale:1.4,duration:0.26,ease:"power3.inOut"},154.34);
+tl.set("#r56-s3-cam",{filter:"url(#mb)"},154.34);
+tl.fromTo("#mbb",{attr:{stdDeviation:"0 0"}},{attr:{stdDeviation:"38 0"},duration:0.13,ease:"power2.in"},154.34);
+tl.to("#mbb",{attr:{stdDeviation:"0 0"},duration:0.13,ease:"power2.out"},154.47);
+tl.set("#r56-s3-cam",{filter:"none"},154.62);
+tl.fromTo("#r56-s3-cam",{x:-768,y:-432,scale:1.4},{x:-808.32,y:-454.68,scale:1.421,duration:1.06,ease:"none"},154.6);
+tl.set("#r56-s4-cam",{x:-768,y:-432,scale:1.4},155.66);
+tl.fromTo("#r56-s4-cam",{x:-768,y:-432,scale:1.4},{x:-808.32,y:-454.68,scale:1.421,duration:1.48,ease:"none"},155.66);
+tl.fromTo("#r56-s5-in",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},157.14);
+tl.set("#r57-s0-cam",{x:0,y:0,scale:1},159.12);
+tl.fromTo("#r57-s0-cam",{x:-14.4,y:-8.1,scale:1.015},{x:0,y:0,scale:1,duration:2.14,ease:"none"},159.12);
+tl.fromTo("#r57-s1-in",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},161.26);
+tl.set("#r57-s2-cam",{x:0,y:0,scale:1},163.1);
+tl.fromTo("#r57-s2-cam",{x:-14.4,y:-8.1,scale:1.015},{x:0,y:0,scale:1,duration:1.88,ease:"none"},163.1);
+tl.set("#r57-s3-cam",{x:0,y:0,scale:1},164.98);
+tl.fromTo("#r57-s3-cam",{x:0,y:0,scale:1},{x:-76.8,y:-363.96,scale:1.35,duration:0.25,ease:"expo.out"},164.98);
+tl.fromTo("#r57-s3-cam",{x:-76.8,y:-363.96,scale:1.35},{x:-92.352,y:-377.519,scale:1.37,duration:2.69,ease:"none"},165.23);
+tl.set("#r58-s1-dg-sw",{opacity:0},0);
+tl.fromTo("#r58-s1-dg-sw",{opacity:1,x:-1300},{x:1300,duration:0.8,ease:"power1.inOut"},171.67);
+tl.set("#r58-s1-dg-sw",{opacity:0},172.52);
+tl.fromTo("#r58-s1-dg-ct .ln",{y:70,opacity:0},{y:0,opacity:1,duration:0.34,ease:"back.out(1.6)",stagger:0.07},171.22);
+tl.set("#r59-s0-cam",{x:0,y:0,scale:1},174.32);
+tl.fromTo("#r59-s0-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:2,ease:"none"},174.32);
+tl.fromTo("#r59-s1-img",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},176.32);
+tl.set("#r60-s0-cam",{x:0,y:0,scale:1},178.68);
+tl.fromTo("#r60-s0-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:2.26,ease:"none"},178.68);
+tl.fromTo("#r61-s0-in",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},181.04);
+tl.fromTo("#r61-s0-nw",{x:-520},{x:0,duration:0.25,ease:"power2.out"},180.94);
+tl.to("#r61-s0-nw",{x:-520,duration:0.2,ease:"power2.in"},183.46);
+tl.set("#r61-s1-cam",{x:0,y:0,scale:1},183.68);
+tl.fromTo("#r61-s1-cam",{x:-14.4,y:-8.1,scale:1.015},{x:0,y:0,scale:1,duration:2.04,ease:"none"},183.68);
+tl.set("#r61-s2-cam",{x:0,y:0,scale:1},185.72);
+tl.fromTo("#r61-s2-cam",{x:0,y:0,scale:1},{x:0,y:-140.4,scale:1.4,duration:0.25,ease:"expo.out"},185.72);
+tl.fromTo("#r61-s2-cam",{x:0,y:-140.4,scale:1.4},{x:0,y:-150.606,scale:1.421,duration:2.67,ease:"none"},185.97);
+tl.set("#r62-s0-cam",{x:0,y:0,scale:1},188.64);
+tl.fromTo("#r62-s0-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:3.18,ease:"none"},188.64);
+tl.fromTo("#r62-s1-in",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},191.92);
+tl.fromTo("#r62-s1-nw",{x:-520},{x:0,duration:0.25,ease:"power2.out"},191.82);
+tl.to("#r62-s1-nw",{x:-520,duration:0.2,ease:"power2.in"},193.76);
+tl.set("#r62-s2-cam",{x:0,y:0,scale:1},193.98);
+tl.fromTo("#r62-s2-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:3.36,ease:"none"},193.98);
+tl.set("#r62-s3-cam",{x:0,y:0,scale:1},197.34);
+tl.fromTo("#r62-s3-cam",{x:0,y:0,scale:1},{x:-576,y:-162,scale:1.3,duration:0.25,ease:"expo.out"},197.34);
+tl.fromTo("#r62-s3-cam",{x:-576,y:-162,scale:1.3},{x:-613.44,y:-172.53,scale:1.319,duration:2.63,ease:"none"},197.59);
+tl.set("#r62-s4-cam",{x:-576,y:-162,scale:1.3},200.22);
+tl.fromTo("#r62-s4-cam",{x:-576,y:-162,scale:1.3},{x:0,y:0,scale:1,duration:0.4,ease:"power2.out"},200.22);
+tl.fromTo("#r62-s4-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:1.74,ease:"none"},200.62);
+tl.set("#r62-s5-cam",{x:0,y:0,scale:1},202.36);
+tl.fromTo("#nar1-w",{x:-520},{x:0,duration:0.25,ease:"power2.out"},0);
+tl.to("#nar2-w",{x:-520,duration:0.2,ease:"power2.in"},4.6);
+tl.fromTo("#nar3-w",{x:-520},{x:0,duration:0.25,ease:"power2.out"},33.4);
+tl.to("#nar5-w",{x:-520,duration:0.2,ease:"power2.in"},62.98);
+tl.fromTo("#nar6-w",{x:-520},{x:0,duration:0.25,ease:"power2.out"},159.12);
+tl.to("#nar7-w",{x:-520,duration:0.2,ease:"power2.in"},174.1);
+tl.fromTo("#leak0-i",{opacity:0},{opacity:0.85,duration:0.56,ease:"power1.out"},141.66);
+tl.to("#leak0-i",{opacity:0,duration:0.84,ease:"power1.in"},142.22);
+window.__timelines["part4"] = tl;
+</script></body></html>
