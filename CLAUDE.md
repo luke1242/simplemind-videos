@@ -10,7 +10,7 @@ Luke is not a developer. Keep messages to him short and plain. **Don't ask him q
 
 ## 0. What to do in a session
 
-1. **Read `VIDEO.md`.** It's the scene list for the current video.
+1. **Read `VIDEO.md`.** It's the scene list for the current video. When planning a *new* video (script, scene list, prompts, upload kit), follow `PLAYBOOK.md`.
 2. **Check the inputs** against it: `audio/part1.mp3` … `part4.mp3`, every `NEW` picture in `pictures/`, and the icons in `icons/`.
    - **Missing audio:** stop and tell Luke which files are missing.
    - **Missing picture:** use a text card with that scene's key phrase, keep going, and list the missing files in the report.

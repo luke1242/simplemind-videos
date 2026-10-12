@@ -1,6 +1,6 @@
 # Nano Banana picture prompts: "The Biggest Regret Almost Everyone Has"
 
-**24 new pictures.** The other 13 are reused from the spotlight video and are already in place.
+**26 new pictures** (S58 and S59 were added for the longer script). The other 13 are reused from the spotlight video and are already in place.
 
 ## How to use
 
@@ -30,6 +30,16 @@ Reply "ready" and wait for my first prompt.
 ```
 
 ---
+
+**S59.png** *(new: the opening shot)*
+```
+A tall indoor swimming pool seen from the side. The narrator stands frozen at the very end of a high diving board, far above the water, knees slightly bent, gripping the air, with small scared round eyes and a sweat drop. Far below, the blue pool. Dramatic height, warm light from big windows.
+```
+
+**S58.png** *(new)*
+```
+A simple bedroom in soft early-morning light. The narrator sits on the edge of his unmade bed, shoulders slumped, staring at a pair of brand-new running sneakers and a packed sports bag waiting by the open bedroom door. Small, worried, guilty eyes. A wall calendar with one day circled hangs on the wall (no readable text).
+```
 
 **S01.png**
 ```
@@ -153,4 +163,4 @@ A giant rocky mountain fills the background, so tall its peak disappears into th
 
 ---
 
-**Total: 24 pictures.** Reused from video 1 (nothing to make): S05, S06, S08, S12, S13, S20, S23, S36, S50, S54, S55, S56, S57.
+**Total: 26 pictures.** Reused from video 1 (nothing to make): S05, S06, S08, S12, S13, S20, S23, S36, S50, S54, S55, S56, S57.

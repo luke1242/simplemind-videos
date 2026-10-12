@@ -35,7 +35,7 @@ Lots of empty space. No other characters, no small details. Must be readable at 
 ```
 Psychology of Regret: Why Playing It Safe Haunts You Later
 
-Researchers asked people a simple question: what's the biggest regret of your life? This video breaks down what they found. Thomas Gilovich and Victoria Medvec's studies (1994, 1995) showed that in the short term we regret our mistakes, but over a lifetime the regrets of inaction win: 84% of people's biggest life regret was something they didn't do. We look at why missed chances grow while mistakes fade, Shai Davidai and Gilovich's 2018 "ideal road not taken" research, and what palliative care nurse Bronnie Ware heard most often from people at the end of their lives. Then 5 simple steps I now use whenever I'm about to talk myself out of something, starting with the rocking chair test.
+Researchers asked people a simple question: what's the biggest regret of your life? This video breaks down what they found. Thomas Gilovich and Victoria Medvec's studies (1994, 1995) showed that in the short term we regret our mistakes, but over a lifetime the regrets of inaction win: 84% of people's biggest life regret was something they didn't do. We look at why missed chances grow while mistakes fade, Shai Davidai and Gilovich's 2018 "ideal road not taken" research, and what palliative care nurse Bronnie Ware heard most often from people at the end of their lives. Then the 4 reasons missed chances follow us around, and 5 simple steps I now use whenever I'm about to talk myself out of something, starting with the rocking chair test.
 
 If you've ever typed a message three times and deleted it three times, this one's for you.
 
