@@ -92,7 +92,9 @@ videos/01-spotlight/      ← video 1, archived; its make-specs.py and scenes/ a
   - It pops in over 0.2s (scale 0.92 → 1.0) with a soft *pop* SFX.
 - Each icon can be used at most twice per video. `VIDEO.md` lists the key ones, and you can add more where an icon clearly fits.
 
-## 6. Narrator pop-ups (the "host" moments)
+## 6. Narrator pop-ups and the narrator host
+
+- **Host mode:** if `VIDEO.md` has `host:` lines, follow its "narrator host" section. The narrator stands at the side of the scene in a host frame, and his pose hard-cuts with the tone of the voice. The rules below (poses, never animated, slide in and out) still apply.
 
 - **The poses:** `assets/narrator/N01.png … N12.png` are transparent cut-outs, about 680px tall. Use them as-is.
 - **What each pose is:**
