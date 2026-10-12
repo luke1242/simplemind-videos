@@ -139,19 +139,43 @@ videos/01-spotlight/      ← video 1, archived; its make-specs.py and scenes/ a
   - Label green `#2F6B2F`, Red `#D64545`
 - **Title card:** a green pill above two lines of big ink text, with one word in orange, held for 2.5s at the end of Part 1.
 
-## 9. Motion and transitions
+## 9. Editing toolkit: motion and transitions
 
-- **Camera moves:** every picture gets one camera move for its shot.
-  - `zoom-in` 1.00 → 1.05 and `zoom-out` 1.05 → 1.00, with `sine.inOut`
-  - `pan-left` / `pan-right` at most ±25px at 1.04
-  - `hold`
-- **Between scenes:** a **0.25s crossfade** only from picture to picture.
-- **Inside a scene:** use **hard cuts** for every beat.
-- **Cards:** never crossfade into or out of a text card.
-- **No ghosting:** every beat must be fully hidden once it ends.
-- **Overlays** pop in with `back.out(1.4)` over 0.3s. Swaps crossfade over 0.3s.
-- **Banned:** moving limbs, walk cycles, wobble, bounce, shake, spin, fast whips and line boil.
-- Everything must be seek-safe on one paused GSAP timeline.
+**No more slow Ken Burns zooms as the main move.** They looked flat. Every shot now gets a *motivated* move: something happens on a word. Pick from this toolkit, driven by the trigger words in `VIDEO.md` (`edit:` lines) and by these defaults.
+
+**Install from the HyperFrames registry** (`npx hyperframes add <name>`, see `/hyperframes-registry`): `motion-blur`, `whip-pan`, `cut-the-curve`, `directional-wipe`, `hw-callout-circle`, `hw-arrow`, `hw-underline`, `marker-highlight`, `count-up`, `number-wheel`, `per-word-rise`, `kinetic-type-swap`, `iris-reveal`, `focus-rack`, `light-sweep-pass`, `organic-light-leak-overlay`.
+- Restyle every one to our palette and Nunito ExtraBold.
+- Keep everything seek-safe.
+- If an item won't install, build the same effect with GSAP plus CSS/SVG filters. Don't stop.
+
+| Technique | What it looks like | Use it for |
+|---|---|---|
+| **Snap zoom** | A fast punch-in (0.25s, `expo.out`) from the full picture to a subject, then a hold with a tiny 1.5% drift | Naming a person or thing in a picture ("Office workers.") |
+| **Whip slide (motion blur)** | The frame slides quickly (0.22–0.3s, `power3.inOut`) from one subject to the next with **directional motion blur** (`motion-blur` component, or an SVG `feGaussianBlur` with a horizontal-only stdDeviation of about 40 at peak speed) and a *swoosh* | Moving between people or objects in the same picture, as in a list |
+| **Whip-pan cut** | A `whip-pan` or `cut-the-curve` transition between two different pictures | Fast topic changes and "but then…" moments |
+| **Push / slide wipe** | A `directional-wipe`: the new picture pushes the old one off | A story moving forward in time (the student leaves, years later) |
+| **Hand-drawn callout** | An `hw-callout-circle` or `hw-arrow` draws on around a subject, with a short label | Pointing at a detail ("Cornell", the 76% student, the reflection) |
+| **Marker highlight / underline** | `marker-highlight` or `hw-underline` on the key word of a card | The punch word in text cards |
+| **Count-up numbers** | `count-up` or `number-wheel`, so numbers roll to their value | Every statistic (75%, 77, 213, 84%, 76%) |
+| **Word-by-word rise** | `per-word-rise` with words timed to the voice | Quotes and two-line cards |
+| **Kinetic word swap** | `kinetic-type-swap`, one word rolling into another | Card → card swaps ("played it safe" → "tried") |
+| **Focus rack** | `focus-rack`: one element sharp, the other blurred, then they switch | Comparisons (should vs want, short sting vs long what-if) |
+| **Iris / light sweep** | `iris-reveal` into a picture, or a `light-sweep-pass` across it | Warm, hopeful reveals (the door opening, the sunrise) |
+| **Light leak** | A soft `organic-light-leak-overlay` | Memories and "years later" moments, at most 3 times per video |
+| **Impact hit** | On a big reveal number only: a 1.06 → 1.0 scale punch plus at most a **3-frame, ≤6px** shake, with a *ding* | The 4–5 biggest reveals only |
+
+**Rules:**
+- **Every shot moves on purpose.** A snap zoom, whip, callout or count-up should land on a word at least every ~3s.
+  - A plain shot gets at most a subtle 1.5% drift.
+  - Never use a slow 5% zoom for a whole shot.
+- **Pictures with several subjects** (lineups, thought bubbles, two-person scenes) are "toured": snap zoom to the first subject on its word, then whip slide to each next subject on its word, then zoom back out to the full picture.
+- **Transitions between scenes:** use a hard cut by default, a whip-pan cut for energy, and a push wipe for a time jump. Crossfades (0.25s) are only for calm, reflective moments.
+- **Inside a scene:** use hard cuts between beats. Never crossfade into or out of a text card, and make sure nothing ghosts.
+- **Crops and zooms** stay at **1.4× or less** of the 2K source and keep the whole subject in frame (section 7).
+- **Overlays** pop in with `back.out(1.4)` over 0.3s. Swaps take 0.3s.
+- **SFX for every move:** *swoosh* for whips and slides, *pop* for snap zooms and icons, *click* for cards, *ding* for reveals. Add a soft *riser* (0.6s) before the 3 biggest reveals, generated with ffmpeg in `tools/make-sfx.sh`. Stay quiet and keep about −20 dB under the voice.
+- **Still banned:** moving the narrator's limbs, walk cycles, wobble or bounce on characters, constant shake, spin, and line boil.
+- Everything must stay seek-safe on one paused GSAP timeline.
 
 ## 10. Audio
 
@@ -180,6 +204,7 @@ videos/01-spotlight/      ← video 1, archived; its make-specs.py and scenes/ a
 - [ ] No shot is over 4s (except the listed exceptions), and the average is about 3s.
 - [ ] Every cut is on a word start, and cards, icons and pop-ups land on their word.
 - [ ] Crops show a whole subject. There's no ghosting and no double exposure.
+- [ ] Every `edit:` line in `VIDEO.md` is done, there are no slow full-shot zooms, and every move lands on its word.
 - [ ] On-screen text is spelled exactly as in `VIDEO.md`, and labels are ≥ 56px.
 - [ ] The narrator is never animated, and pop-up poses fit the line.
 - [ ] The padded audio is used, the video length equals the audio length, and the audio is present.

@@ -19,6 +19,7 @@
   - `card "word" → TEXT` is a text card. **Bold** words go in a yellow badge and ~~struck~~ words in a red badge.
   - `step "word" → STEP n + TEXT` is the top-center step pill.
   - `crop "word" → subject` is a punch-in crop of the main picture.
+- **edit:** lines are the specific edits for that scene (snap zoom, whip slide, callout, count-up…). See the editing toolkit, CLAUDE.md section 9. Every scene without an `edit:` line still gets motivated moves from the toolkit defaults.
 - **narration** is used for timing only and must match the audio. Never show it on screen.
 - **Icons:** I06–I30 are reused from video 1. I40–I50 are new (Luke makes them; prompts in `prompts/icon-prompts.md`). If an icon file is missing, skip that beat.
 
@@ -58,6 +59,7 @@ The narrator **stands at the side of scenes and "explains" them** for most of th
 ## PART 1: The hook and my story (`audio/part1.mp3`)
 
 **R01** · picture S59 (NEW: narrator frozen at the edge of a high diving board) · camera zoom-in
+edit: start wide, then snap zoom to his scared face on "trying" · impact hit on "stupid"
 narration: "Most people think the choice they'll regret is the risky one. Saying the wrong thing. Trying and failing. Looking stupid in front of everyone."
 beats: card "risky" → THE **RISKY** ONE?
 
@@ -67,9 +69,9 @@ narration: "But when researchers actually asked people about their biggest regre
 beats: pop N09 "not" → card THAT'S ~~NOT~~ IT
 
 **R03** · picture S02 (NEW: lineup of 4 people) · camera pan-right
+edit: tour: full lineup → snap zoom to the student on "college" → whip slide to the office worker on "office" → whip slide to the professor on "retired" → whip slide to the elderly woman on "nursing" → zoom back out to all four on "one" (replaces the crop beat)
 host: N06 "they"
 narration: "They asked college students. Office workers. Retired professors. People living in nursing homes, looking back on almost their whole lives. One simple question."
-beats: crop "nursing" → the elderly woman
 
 **R04** · picture S01 (NEW: researcher interviewing an elderly man) · camera zoom-in
 host: N06 "what's" → N02 "and" → N06 "they" (2nd occurrence)
@@ -77,6 +79,7 @@ narration: "What's the biggest regret of your life? And most people's biggest re
 beats: icon I17 "what's" · card "didn't" → WHAT THEY ~~DIDN'T~~ DO
 
 **R05** · picture S04 (NEW: elderly man in a rocking chair with 4 thought bubbles) · camera zoom-in
+edit: tour of the thought bubbles: snap zoom to the book bubble on "class" → whip slide to the waving person on "person" → whip to the airplane on "trip" → whip to the guitar on "thing" → zoom back out on "because"
 host: N06 "the"
 narration: "The class they never took. The person they never talked to. The trip they kept putting off. The thing they always wanted to try... but never did, because it felt too risky, too embarrassing, or like it just wasn't the right time."
 beats: crop "trip" → the thought bubbles · card "right" → NOT THE **RIGHT TIME**
@@ -91,6 +94,7 @@ narration: "There was a tryout I talked myself out of. I had the date written do
 beats: icon I49 "shoes"
 
 **R08** · picture S58 (NEW: narrator on the edge of his bed in the morning, new sneakers by the door) · camera zoom-in
+edit: slow push only on "sat" (8% over 2s; the one allowed slow move), then a hard cut to the shoes crop on "next" (1st occurrence)
 narration: "And the morning of, I just sat on the edge of my bed... and didn't go. I told myself I wasn't good enough yet. That I'd try next year. Next year, I didn't go either."
 beats: icon I13 "year" (1st occurrence) · card "either" → NEXT YEAR: ~~DIDN'T GO~~
 
@@ -108,6 +112,7 @@ overlays (speech bubbles from his head, one by one): YOU'LL LOOK DUMB on "dumb" 
 beats: card "safe" → THE **SAFE** CHOICE
 
 **R12** · picture S10 (NEW: narrator holding a ridiculously long bill) · camera zoom-in
+edit: whip slide down the unrolling bill on "bill"
 narration: "But here's what the research shows. The safe choice isn't always safe. It just sends you the bill later."
 beats: pop N02 "safe" (2nd occurrence) → card ISN'T ALWAYS ~~SAFE~~ · the main picture should be on screen for "bill later"
 
@@ -121,6 +126,7 @@ beats: pop N08 "found" → card WHAT THEY **FOUND** · icon I43 "longer" · pop 
 ## PART 2: The research (`audio/part2.mp3`)
 
 **R14** · picture S12 (COPY: university campus) · camera pan-right
+edit: hand-drawn callout circle around the building with the label "Cornell" on "psychologists"
 host: N01 "in"
 narration: "In the mid nineteen-nineties, two psychologists, Thomas Gilovich and Victoria Medvec, started studying regret."
 overlays: label "Cornell University, 1994" on "nineties"
@@ -132,35 +138,42 @@ narration: "If those names sound familiar, they're two of the same researchers b
 beats: icon I08 "shirt" · pop N05 "trick" → card HOW OUR BRAINS **TRICK US**
 
 **R16** · CODED grid · camera hold
+edit: the grid draws in row by row · "60" counts up on "sixty"
 host: N06 "first"
 60 small person icons (6 rows × 10), all plain, with the label **60** ADULTS.
 narration: "First, they kept it simple. They asked sixty adults one question."
 
 **R17** · picture S15 (NEW: a path splitting at a blank two-way signpost) · camera hold
+edit: snap zoom to the left sign on "did" (1st occurrence) → whip slide to the right sign on "didn't" → zoom out on "wish" (2nd occurrence)
 narration: "When you look back on your life, what do you regret more? The things you did, and wish you hadn't? Or the things you didn't do, and wish you had?"
 overlays (text on the two signs; measure the boxes from the picture): THINGS I DID on "did" · THINGS I DIDN'T DO on "didn't"
 
 **R18** · CODED grid (same as R16) · camera hold · **reveal: at least 2s of silence after**
+edit: count-up 0 → 75% while the people turn red · impact hit on "seventy"
 host: N02 "seventy"
 45 of the 60 people turn red, row by row over 0.6s, starting on "seventy-five". Label: ~~75%~~ DIDN'T DO.
 narration: "Seventy-five percent said the things they didn't do."
 
 **R19** · picture S02 · camera pan-left
+edit: tour: snap zoom to the student on "college" → whip slide to the professor on "professors" → whip slide to the elderly woman on "nursing" → zoom out on "asked"
 host: N01 "then"
 narration: "Then they went deeper. They interviewed seventy-seven people, from college students, to retired professors, to people in nursing homes, and asked them to list their biggest regrets."
-beats: card "seventy-seven" → **77** PEOPLE · crop "professors" → the professor
+beats: card "seventy-seven" → **77** PEOPLE
 
 **R20** · picture S03 · camera zoom-in
+edit: "213" rolls up with the number wheel on "two"
 host: N06 "over"
 narration: "Over two hundred regrets in total."
 
 **R21** · CODED bars · camera hold
+edit: the bars grow with count-ups to 63% and 37%
 host: N02 "and"
 "DIDN'T ACT" (red, 63%) vs "ACTED" (grey, 37%), growing on "outnumbered".
 narration: "And the regrets about not acting outnumbered the regrets about acting... almost two to one."
 beats: badge ALMOST **2 TO 1** on "two"
 
 **R22** · CODED card, swapping to card B on "choice" · camera hold
+edit: card A: "10" in a marker circle · kinetic word swap to card B on "choice"
 host: N06 "and" → N02 "almost"
 Card A: ONLY **10 OF 213**, with the small line "were bad luck" under it. Card B: ALMOST ALL: ~~A CHOICE~~.
 narration: "And here's a detail I didn't expect. Out of all those regrets, only about ten were about things outside their control. Bad luck. Things that just happened to them. Almost everything else... was a choice. Their own."
@@ -175,6 +188,7 @@ host: N06 "then"
 narration: "Then they asked: what's the biggest regret of your whole life?"
 
 **R25** · CODED pie (the existing pie kind) · camera hold · **reveal: at least 2s of silence after**
+edit: the pie fills 0 → 84% with a count-up · riser before it, then impact hit on "eighty"
 host: N02 "eighty"
 Pie at 84%, label "WHOLE LIFE:" with ~~84%~~.
 narration: "Eighty-four percent... picked something they didn't do."
@@ -184,6 +198,7 @@ narration: "So in the short term, our mistakes hurt more. That part is real. If 
 beats: card "short" → SHORT TERM: ~~MISTAKES~~ HURT · icon I14 "tonight"
 
 **R27** · CODED lines ("REGRET OVER TIME") · camera hold · **reveal: at least 2s of silence after**
+edit: the lines draw on with a light sweep at the crossing point
 host: N02 "but" → N06 "the" (2nd occurrence)
 narration: "But over the years, that flips. The mistakes fade. And the missed chances... grow."
 beats: the lines draw on "flips" · FADE tag on "fade" · GROW tag on "grow"
@@ -193,17 +208,20 @@ host: N01 "they"
 narration: "They even tested this with a little story. Two college students, both unhappy at their school."
 
 **R29** · picture S26 (NEW: one student leaves with a moving box, the other stays) · camera pan-right
+edit: push wipe to the left as the student walks away on "transfers"
 host: N01 "one"
 narration: "One of them transfers to a new school. The other one stays. And it turns out, both of them made the wrong choice."
 beats: card "both" → **BOTH** CHOICES WERE ~~WRONG~~
 
 **R30** · picture S26 · camera zoom-in
+edit: hand-drawn arrow plus a "76%" badge to the leaving student · count-up
 host: N06 "so"
 narration: "So who feels worse? Right after the decision, most people said the one who transferred. Seventy-six percent. He took the risk, and it didn't work out."
 overlays: a yellow badge "76%" over the leaving student on "seventy-six"
 beats: pop N06 "who" → card WHO FEELS **WORSE?** · crop "transferred" → the leaving student
 
 **R31** · picture S28 (NEW: the student who stayed, years later, alone on the steps) · camera zoom-in · hold 1.5s at the end of the part
+edit: light-leak overlay plus a push wipe in on "years" (time jump)
 host: N06 "but"
 narration: "But years later? Most people said the one who stayed. The one who never found out."
 overlays: pill "YEARS LATER" top-center on "years"
@@ -230,6 +248,7 @@ narration: "Two. A mistake has an ending. A missed chance doesn't. If you try so
 beats: step "two" → REASON 2 + A MISTAKE HAS AN ENDING · pop N01 "badly" → card THE STORY IS **OVER**
 
 **R36** · picture S33 (NEW: glowing open book with dream scenes rising) · camera zoom-in
+edit: snap zoom to the dream scenes on "imagination" → whip slide across them on "maybe" (1st occurrence)
 narration: "But if you never try, the story stays open. And your imagination keeps writing new endings. Maybe it would have worked. Maybe it would have changed everything."
 beats: crop "changed" → the dream scenes
 
@@ -238,6 +257,7 @@ narration: "You'll never know. And "I'll never know" is a heavy thing to carry."
 beats: card "never" (1st occurrence) → YOU'LL ~~NEVER~~ KNOW · the main picture should be on screen for "heavy thing to carry"
 
 **R38** · picture S35 (NEW), swapping to S35b on "small" · camera zoom-in
+edit: impact hit on "huge" · the swap to S35b is an iris reveal on "small"
 narration: "Three. Over time, you forget why you were scared. In the moment, the fear feels huge. Like the most important thing in the room. But ten years later, you can barely remember it. You remember the reasons you had to go. You just can't remember the reasons you had to stay. And from far away, the thing that stopped you looks... kind of small."
 beats: step "three" → REASON 3 + YOU FORGET THE FEAR · card "huge" → THE FEAR FEELS **HUGE** · icon I43 "ten"
 
@@ -247,10 +267,12 @@ narration: "Which, if you saw my last video, makes a lot of sense. Most of the t
 beats: icon I06 "watching" (1st occurrence) · icon I29 "weren't" (with the main picture between the two icons)
 
 **R40** · picture S37 (NEW: narrator awake in bed, thinking of a closed door) · camera zoom-in
+edit: snap zoom to the door bubble on "door"
 narration: "Four. Unfinished things stay on your mind. Your brain is good at letting go of things that are done. It's much worse at letting go of things that never got finished, or never even got started. So the door you never opened... keeps coming back."
 beats: step "four" → REASON 4 + UNFINISHED THINGS STAY · icon I47 "finished" · crop "door" → the thought bubble
 
 **R41** · picture S03 · camera zoom-out
+edit: hand-drawn underline under the label on "Davidai"
 host: N02 "and" → N01 "gilovich"
 narration: "And there's one more study, from two thousand eighteen, that I think is the most important part of all of this. Gilovich and another researcher, Shai Davidai, asked people about their regrets again. But this time, they sorted them differently."
 overlays: label "Davidai & Gilovich, 2018" on "Davidai"
@@ -261,10 +283,12 @@ narration: "Were they about who you felt you should be? Your duties. Your respon
 beats: card "should" → WHO YOU **SHOULD** BE
 
 **R43** · picture S40 (NEW: narrator at a mirror; his reflection is his ideal self) · camera zoom-in
+edit: snap zoom to the reflection on "become" with a light sweep across the mirror
 narration: "Or were they about who you wanted to be? Your dreams. Your goals. The person you hoped you'd become."
 beats: crop "become" → the reflection
 
 **R44** · CODED bars · camera hold · **reveal: at least 2s of silence after**
+edit: focus rack: WHO I SHOULD BE sharp first, then WHO I WANTED TO BE on "seventy" · count-up to 76% · riser plus impact hit
 host: N02 "seventy"
 "WHO I WANTED TO BE" (red, 76%) vs "WHO I SHOULD BE" (grey, 24%).
 narration: "Seventy-six percent of people said their single biggest regret was about not becoming the person they wanted to be."
@@ -274,6 +298,7 @@ narration: "Think about that. The regrets that last the longest aren't about the
 beats: pop N02 "version" → card NEVER GOT **A CHANCE**
 
 **R46** · picture S42 (NEW: a kind nurse beside an elderly patient) · camera zoom-in · hold 1.5s at the end of the part
+edit: the quote rises word by word (per-word-rise) timed to the voice · marker highlight on "courage" (2nd occurrence)
 host: N06 "a" → N02 "notice"
 narration: "A nurse named Bronnie Ware spent years caring for people in the last weeks of their lives, and she wrote down what they told her. The regret she heard most often was this: "I wish I'd had the courage to live a life true to myself, not the life others expected of me." Notice what that regret is about. It's not about a mistake. It's about courage."
 beats: CODED quote card on "wish", up until "notice" · then the main picture · card "courage" (2nd occurrence) → IT'S ABOUT **COURAGE**
@@ -289,6 +314,7 @@ narration: "So here's how I actually use this now. Five steps."
 beats: pop N08 "five" → card **5** STEPS
 
 **R48** · picture S44 (NEW: old narrator in a rocking chair), swapping to S44b on "annoyed" · camera zoom-in
+edit: snap zoom to old-me's face on "obvious" · the swap to S44b is a hard cut with a pop on "annoyed"
 narration: "One. The rocking chair test. When I'm about to talk myself out of something, I picture myself old, sitting in a rocking chair, looking back on my life. And I ask: will that version of me care that this was awkward? Or will he care that I never tried? Almost every time, the answer is obvious. Old me does not care about the awkward part. Old me is annoyed that I didn't go."
 beats: step "one" → STEP 1 + THE ROCKING CHAIR TEST · icon I40 "rocking" (1st occurrence) · pop N06 "awkward" (1st occurrence) → card **AWKWARD?** · card "never" → OR ~~NEVER TRIED?~~ · crop "obvious" → old narrator's face
 
@@ -298,11 +324,13 @@ narration: "Two. Remember which regret fades. If you try and it goes badly, it'l
 beats: step "two" → STEP 2 + REMEMBER WHICH ONE FADES · icon I44 "sting" · icon I48 "grows" (cut back to the chart between the icons)
 
 **R50** · CODED split · camera hold · **reveal: at least 2s of silence after**
+edit: focus rack between A SHORT STING and A LONG WHAT IF
 host: N01 "so"
 Left: A SHORT **STING** (on "short"). Right: A LONG ~~WHAT IF~~ (on "long").
 narration: "So you're not choosing between pain and no pain. You're choosing between a short sting... and a long "what if.""
 
 **R51** · picture S47 (NEW: narrator facing a giant mountain, one small step at his feet), swapping to S47b (NEW: the door from S09, now slightly open) on "open" · camera zoom-in
+edit: whip slide up the mountain on "too big" · iris reveal from the door gap into S47b on "open"
 narration: "Three. Make it smaller. A lot of the time, we don't act because the thing feels too big. So shrink it. Don't plan to become a runner. Go for one run. Don't write the perfect message. Send a simple one. You don't have to change your whole life today. You just have to open the door a little."
 beats: step "three" → STEP 3 + MAKE IT SMALLER · icon I49 "run" · icon I41 "message" · card "change" → NOT YOUR **WHOLE LIFE**
 
@@ -315,6 +343,7 @@ narration: "Five. Decide before the fear shows up. Fear is loudest in the moment
 beats: step "five" → STEP 5 + DECIDE BEFORE THE FEAR · icon I30 "sign" · icon I13 "calendar" · pop N07 "hard" → card HARD PART: **DONE**
 
 **R54** · picture S50 (COPY: narrator on a curb at dusk) · camera zoom-in
+edit: hand-drawn underline on JUST FUNNY NOW
 narration: "Here's the thing I keep coming back to. Every mistake I've ever made, I can tell you exactly what happened. The story's over. Most of them are just funny now."
 beats: icon I46 "story's" · pop N05 "funny" → card JUST **FUNNY** NOW
 
@@ -322,6 +351,7 @@ beats: icon I46 "story's" · pop N05 "funny" → card JUST **FUNNY** NOW
 narration: "But the things I didn't do? I still wonder about those."
 
 **R56** · picture S10 (the long bill: a callback to "sends you the bill later") · camera zoom-out
+edit: whip slide down the long bill on "charging"
 narration: "And if you've got a list like mine, that doesn't mean you're a coward. It means your brain was doing exactly what it was built to do. Protecting you from a little bit of pain today... by charging you a lot more later. You can stop paying that."
 beats: pop N01 "built" → card BUILT TO **PROTECT YOU** · card "stop" → YOU CAN **STOP PAYING**
 
@@ -331,6 +361,7 @@ narration: "So the next time your brain says, "It's safer not to"... remember wh
 beats: card "safer" → "IT'S ~~SAFER~~ NOT TO"
 
 **R58** · CODED card, swapping to card B on "tried" · camera hold · **reveal: at least 2s of silence after**
+edit: kinetic word swap: PLAYED IT SAFE → TRIED on "tried" · light sweep across TRIED
 host: N01 "they" → N06 "they" (2nd occurrence)
 Card A: THEY DIDN'T WISH THEY'D ~~PLAYED IT SAFE~~. Card B: THEY WISHED THEY'D **TRIED**.
 narration: "They didn't wish they'd played it safer. They wished they'd tried."
@@ -343,6 +374,7 @@ beats: icon I41 "message"
 narration: "Ask the question."
 
 **R61** · picture S56 (COPY: hilltop sunrise) · camera zoom-out · **at least 2s of silence after "wonder"**
+edit: iris reveal into the sunrise on "best"
 narration: "Worst case, you get a funny story. Best case... you never have to wonder."
 beats: pop N05 "worst" → card WORST CASE: **A FUNNY STORY** · the main picture should be on screen from "best case" on
 
