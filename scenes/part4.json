@@ -1,0 +1,662 @@
+{
+ "part": 4,
+ "audio": "audio/padded/part4.wav",
+ "scenes": [
+  {
+   "id": "R47",
+   "camera": "hold",
+   "narration": "So here's how I actually use this now. Five steps.",
+   "events": [
+    {
+     "kind": "pop",
+     "pose": "N08",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "5",
+        "badge": "yellow"
+       },
+       {
+        "t": "STEPS"
+       }
+      ]
+     },
+     "word": "five",
+     "occ": 1,
+     "dur": 2.0
+    }
+   ],
+   "host": [
+    [
+     "N01"
+    ]
+   ],
+   "diagram": {
+    "kind": "card",
+    "parts": [
+     {
+      "t": "HOW I USE"
+     },
+     {
+      "t": "THIS",
+      "badge": "yellow"
+     }
+    ]
+   }
+  },
+  {
+   "id": "R48",
+   "camera": "zoom-in",
+   "narration": "One. The rocking chair test. When I'm about to talk myself out of something, I picture myself old, sitting in a rocking chair, looking back on my life. And I ask: will that version of me care that this was awkward? Or will he care that I never tried? Almost every time, the answer is obvious. Old me does not care about the awkward part. Old me is annoyed that I didn't go.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I40",
+     "word": "rocking",
+     "occ": 1,
+     "dur": 1.8
+    },
+    {
+     "kind": "pop",
+     "pose": "N06",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "AWKWARD?",
+        "badge": "yellow"
+       }
+      ]
+     },
+     "word": "awkward",
+     "occ": 1,
+     "dur": 2.2
+    },
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "OR"
+      },
+      {
+       "t": "NEVER TRIED?",
+       "badge": "red"
+      }
+     ],
+     "word": "never",
+     "occ": 1,
+     "dur": 1.9
+    }
+   ],
+   "picture": "S44",
+   "pictureB": "S44b",
+   "swap": {
+    "word": "annoyed"
+   },
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "obvious",
+     "occ": 1,
+     "f": [
+      0.34,
+      0.34,
+      1.4
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "step",
+     "step": "STEP 1",
+     "text": "THE ROCKING CHAIR TEST",
+     "word": "one",
+     "occ": 1
+    }
+   ]
+  },
+  {
+   "id": "R49",
+   "camera": "hold",
+   "narration": "Two. Remember which regret fades. If you try and it goes badly, it'll sting for a few days. Maybe a few weeks. Then it fades, and your brain turns it into a lesson, or a funny story. If you don't try, that one doesn't fade. It grows.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I44",
+     "word": "sting",
+     "occ": 1,
+     "dur": 1.8
+    },
+    {
+     "kind": "icon",
+     "icon": "I48",
+     "word": "grows",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "host": [
+    [
+     "N07"
+    ],
+    [
+     "N02",
+     "if",
+     2
+    ]
+   ],
+   "overlays": [
+    {
+     "type": "step",
+     "step": "STEP 2",
+     "text": "REMEMBER WHICH ONE FADES",
+     "word": "two",
+     "occ": 1
+    }
+   ],
+   "diagram": {
+    "kind": "lines",
+    "at": {
+     "draw": {
+      "word": "fades",
+      "occ": 1
+     },
+     "fade": {
+      "word": "fades",
+      "occ": 2
+     },
+     "grow": {
+      "word": "one",
+      "occ": 1
+     }
+    }
+   }
+  },
+  {
+   "id": "R50",
+   "camera": "hold",
+   "narration": "So you're not choosing between pain and no pain. You're choosing between a short sting... and a long \"what if.\"",
+   "events": [],
+   "host": [
+    [
+     "N01"
+    ]
+   ],
+   "diagram": {
+    "kind": "split",
+    "left": [
+     "A SHORT",
+     "STING"
+    ],
+    "right": [
+     "A LONG",
+     "WHAT IF"
+    ],
+    "at": {
+     "left": {
+      "word": "short",
+      "occ": 1
+     },
+     "right": {
+      "word": "long",
+      "occ": 1
+     },
+     "rack": {
+      "word": "long",
+      "occ": 1
+     }
+    }
+   }
+  },
+  {
+   "id": "R51",
+   "camera": "zoom-in",
+   "narration": "Three. Make it smaller. A lot of the time, we don't act because the thing feels too big. So shrink it. Don't plan to become a runner. Go for one run. Don't write the perfect message. Send a simple one. You don't have to change your whole life today. You just have to open the door a little.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I49",
+     "word": "run",
+     "occ": 1,
+     "dur": 1.8
+    },
+    {
+     "kind": "icon",
+     "icon": "I41",
+     "word": "message",
+     "occ": 1,
+     "dur": 1.8
+    },
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "NOT YOUR"
+      },
+      {
+       "t": "WHOLE LIFE",
+       "badge": "yellow"
+      }
+     ],
+     "word": "change",
+     "occ": 1,
+     "dur": 1.9
+    }
+   ],
+   "picture": "S47",
+   "pictureB": "S47b",
+   "swap": {
+    "word": "open",
+    "kind": "iris",
+    "pt": [
+     0.76,
+     0.5
+    ]
+   },
+   "moves": [
+    {
+     "kind": "whip",
+     "word": "big",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.28,
+      1.4
+     ]
+    },
+    {
+     "kind": "zoom",
+     "word": "shrink",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.5,
+      1
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "step",
+     "step": "STEP 3",
+     "text": "MAKE IT SMALLER",
+     "word": "three",
+     "occ": 1
+    }
+   ]
+  },
+  {
+   "id": "R52",
+   "camera": "zoom-out",
+   "narration": "Four. Ask yourself: is this a should, or a want? Remember that last study. The regrets that hit hardest aren't about what you were supposed to do. They're about who you wanted to be. So if something keeps pulling at you, the guitar, the business idea, the person you want to talk to... that pull is worth listening to.",
+   "events": [
+    {
+     "kind": "iconrow",
+     "items": [
+      {
+       "icon": "I50",
+       "word": "guitar"
+      },
+      {
+       "icon": "I09",
+       "word": "business"
+      },
+      {
+       "icon": "I26",
+       "word": "person"
+      }
+     ],
+     "word": "guitar",
+     "dur": 3.5
+    },
+    {
+     "kind": "pop",
+     "pose": "N02",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "WORTH"
+       },
+       {
+        "t": "LISTENING TO",
+        "badge": "yellow"
+       }
+      ]
+     },
+     "word": "pull",
+     "occ": 1,
+     "dur": 2.6
+    }
+   ],
+   "picture": "S40",
+   "overlays": [
+    {
+     "type": "step",
+     "step": "STEP 4",
+     "text": "A SHOULD, OR A WANT?",
+     "word": "four",
+     "occ": 1
+    }
+   ]
+  },
+  {
+   "id": "R53",
+   "camera": "zoom-in",
+   "narration": "Five. Decide before the fear shows up. Fear is loudest in the moment. So make the decision earlier, when you're calm. Sign up tonight. Put it on the calendar. Tell a friend you're doing it. Then when the nerves show up later, the hard part is already done.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I30",
+     "word": "sign",
+     "occ": 1,
+     "dur": 1.8
+    },
+    {
+     "kind": "icon",
+     "icon": "I13",
+     "word": "calendar",
+     "occ": 1,
+     "dur": 1.8
+    },
+    {
+     "kind": "pop",
+     "pose": "N07",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "HARD PART:"
+       },
+       {
+        "t": "DONE",
+        "badge": "yellow"
+       }
+      ]
+     },
+     "word": "hard",
+     "occ": 1,
+     "dur": 2.4
+    }
+   ],
+   "picture": "S35",
+   "overlays": [
+    {
+     "type": "step",
+     "step": "STEP 5",
+     "text": "DECIDE BEFORE THE FEAR",
+     "word": "five",
+     "occ": 1
+    }
+   ]
+  },
+  {
+   "id": "R54",
+   "camera": "zoom-in",
+   "narration": "Here's the thing I keep coming back to. Every mistake I've ever made, I can tell you exactly what happened. The story's over. Most of them are just funny now.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I46",
+     "word": "story's",
+     "occ": 1,
+     "dur": 1.8
+    },
+    {
+     "kind": "pop",
+     "pose": "N05",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "JUST"
+       },
+       {
+        "t": "FUNNY",
+        "badge": "yellow",
+        "ul": true
+       },
+       {
+        "t": "NOW"
+       }
+      ]
+     },
+     "word": "funny",
+     "occ": 1,
+     "dur": 2.6
+    }
+   ],
+   "picture": "S50"
+  },
+  {
+   "id": "R55",
+   "camera": "zoom-in",
+   "narration": "But the things I didn't do? I still wonder about those.",
+   "events": [],
+   "picture": "S37",
+   "fx": [
+    {
+     "type": "leak",
+     "word": "wonder"
+    }
+   ],
+   "trans": "fade"
+  },
+  {
+   "id": "R56",
+   "camera": "zoom-out",
+   "narration": "And if you've got a list like mine, that doesn't mean you're a coward. It means your brain was doing exactly what it was built to do. Protecting you from a little bit of pain today... by charging you a lot more later. You can stop paying that.",
+   "events": [
+    {
+     "kind": "pop",
+     "pose": "N01",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "BUILT TO"
+       },
+       {
+        "t": "PROTECT YOU",
+        "badge": "yellow"
+       }
+      ]
+     },
+     "word": "built",
+     "occ": 1,
+     "dur": 2.6
+    },
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "YOU CAN"
+      },
+      {
+       "t": "STOP PAYING",
+       "badge": "yellow"
+      }
+     ],
+     "word": "stop",
+     "occ": 1,
+     "dur": 1.9
+    }
+   ],
+   "picture": "S10",
+   "moves": [
+    {
+     "kind": "whip",
+     "word": "charging",
+     "occ": 1,
+     "f": [
+      0.82,
+      0.85,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "R57",
+   "camera": "zoom-out",
+   "narration": "So the next time your brain says, \"It's safer not to\"... remember what all those people said, looking back on their whole lives.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "IT'S"
+      },
+      {
+       "t": "SAFER",
+       "badge": "red"
+      },
+      {
+       "t": "NOT TO"
+      }
+     ],
+     "word": "safer",
+     "occ": 1,
+     "dur": 1.9
+    }
+   ],
+   "picture": "S04",
+   "host": [
+    [
+     "N01"
+    ]
+   ]
+  },
+  {
+   "id": "R58",
+   "camera": "hold",
+   "narration": "They didn't wish they'd played it safer. They wished they'd tried.",
+   "events": [],
+   "host": [
+    [
+     "N01"
+    ],
+    [
+     "N06",
+     "they",
+     2
+    ]
+   ],
+   "diagram": {
+    "kind": "card",
+    "parts": [
+     {
+      "t": "THEY DIDN'T WISH THEY'D",
+      "sz": "mid"
+     },
+     {
+      "t": "PLAYED IT SAFE",
+      "badge": "red"
+     }
+    ]
+   },
+   "diagramB": {
+    "kind": "card",
+    "sweep": true,
+    "parts": [
+     {
+      "t": "THEY WISHED THEY'D",
+      "sz": "mid"
+     },
+     {
+      "t": "TRIED",
+      "badge": "yellow"
+     }
+    ]
+   },
+   "swap": {
+    "word": "tried"
+   }
+  },
+  {
+   "id": "R59",
+   "camera": "zoom-in",
+   "narration": "So go try. Send the message. Sign up.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I41",
+     "word": "message",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "picture": "S54"
+  },
+  {
+   "id": "R60",
+   "camera": "zoom-in",
+   "narration": "Ask the question.",
+   "events": [],
+   "picture": "S55"
+  },
+  {
+   "id": "R61",
+   "camera": "zoom-out",
+   "narration": "Worst case, you get a funny story. Best case... you never have to wonder.",
+   "events": [
+    {
+     "kind": "pop",
+     "pose": "N05",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "WORST CASE:"
+       },
+       {
+        "t": "A FUNNY STORY",
+        "badge": "yellow"
+       }
+      ]
+     },
+     "word": "worst",
+     "occ": 1,
+     "dur": 3.0
+    }
+   ],
+   "picture": "S56",
+   "irisWord": {
+    "word": "best",
+    "pt": [
+     0.5,
+     0.45
+    ]
+   }
+  },
+  {
+   "id": "R62",
+   "camera": "hold",
+   "narration": "Which of the five steps do you need most? Tell me the number in the comments. And if the thing stopping you is that feeling that everyone's watching, my last video breaks down exactly why that's not true. I'll leave it right here.",
+   "events": [
+    {
+     "kind": "pop",
+     "pose": "N08",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "WHICH"
+       },
+       {
+        "t": "NUMBER?",
+        "badge": "yellow"
+       }
+      ]
+     },
+     "word": "number",
+     "occ": 1,
+     "dur": 2.2
+    }
+   ],
+   "picture": "S57",
+   "holdEnd": true
+  }
+ ]
+}

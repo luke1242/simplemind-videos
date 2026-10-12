@@ -1,0 +1,758 @@
+{
+ "part": 2,
+ "audio": "audio/padded/part2.wav",
+ "scenes": [
+  {
+   "id": "R14",
+   "camera": "pan-right",
+   "narration": "In the mid nineteen-nineties, two psychologists, Thomas Gilovich and Victoria Medvec, started studying regret.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I16",
+     "word": "psychologists",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "picture": "S12",
+   "host": [
+    [
+     "N01"
+    ]
+   ],
+   "trans": "fade",
+   "overlays": [
+    {
+     "type": "circle",
+     "cx": 0.42,
+     "cy": 0.3,
+     "rx": 0.2,
+     "ry": 0.2,
+     "label": "Cornell",
+     "lx": 0.26,
+     "ly": 0.52,
+     "word": "psychologists"
+    },
+    {
+     "type": "label",
+     "text": "Cornell University, 1994",
+     "word": "nineties"
+    }
+   ],
+   "fx": [
+    {
+     "type": "leak",
+     "word": "nineties"
+    }
+   ]
+  },
+  {
+   "id": "R15",
+   "camera": "zoom-in",
+   "narration": "If those names sound familiar, they're two of the same researchers behind the embarrassing T-shirt study from my last video. They spent a lot of their careers figuring out how our brains trick us.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I08",
+     "word": "shirt",
+     "occ": 1,
+     "dur": 1.8
+    },
+    {
+     "kind": "pop",
+     "pose": "N05",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "HOW OUR BRAINS"
+       },
+       {
+        "t": "TRICK US",
+        "badge": "yellow"
+       }
+      ]
+     },
+     "word": "trick",
+     "occ": 1,
+     "dur": 2.6
+    }
+   ],
+   "picture": "S13",
+   "host": [
+    [
+     "N05"
+    ]
+   ]
+  },
+  {
+   "id": "R16",
+   "camera": "hold",
+   "narration": "First, they kept it simple. They asked sixty adults one question.",
+   "events": [],
+   "host": [
+    [
+     "N06"
+    ]
+   ],
+   "diagram": {
+    "kind": "grid",
+    "draw": true,
+    "label": "",
+    "count": {
+     "to": 60,
+     "suffix": "",
+     "text": "ADULTS",
+     "badge": "yellow"
+    },
+    "at": {
+     "count": {
+      "word": "sixty",
+      "occ": 1
+     }
+    }
+   }
+  },
+  {
+   "id": "R17",
+   "camera": "zoom-in",
+   "narration": "When you look back on your life, what do you regret more? The things you did, and wish you hadn't? Or the things you didn't do, and wish you had?",
+   "events": [],
+   "picture": "S15",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "did",
+     "occ": 1,
+     "f": [
+      0.375,
+      0.2,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "didn't",
+     "occ": 1,
+     "f": [
+      0.4,
+      0.38,
+      1.4
+     ]
+    },
+    {
+     "kind": "zoom",
+     "word": "wish",
+     "occ": 2,
+     "f": [
+      0.5,
+      0.5,
+      1
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "sign",
+     "text": "THINGS<br>I DID",
+     "word": "did",
+     "box": {
+      "x": 0.305,
+      "y": 0.125,
+      "w": 0.18,
+      "h": 0.14
+     },
+     "rot": 3,
+     "fs": 46
+    },
+    {
+     "type": "sign",
+     "text": "THINGS I<br>DIDN'T DO",
+     "word": "didn't",
+     "box": {
+      "x": 0.305,
+      "y": 0.32,
+      "w": 0.16,
+      "h": 0.14
+     },
+     "rot": -2,
+     "fs": 42
+    }
+   ]
+  },
+  {
+   "id": "R18",
+   "camera": "hold",
+   "narration": "Seventy-five percent said the things they didn't do.",
+   "events": [],
+   "host": [
+    [
+     "N02"
+    ]
+   ],
+   "lead": 0.8,
+   "diagram": {
+    "kind": "grid",
+    "fill": 45,
+    "label": "",
+    "count": {
+     "to": 75,
+     "suffix": "%",
+     "text": "DIDN'T DO",
+     "badge": "red"
+    },
+    "at": {
+     "red": {
+      "word": "seventy",
+      "occ": 1
+     },
+     "count": {
+      "word": "seventy",
+      "occ": 1
+     }
+    }
+   },
+   "fx": [
+    {
+     "type": "riser",
+     "word": "seventy"
+    },
+    {
+     "type": "impact",
+     "word": "seventy"
+    }
+   ]
+  },
+  {
+   "id": "R19",
+   "camera": "pan-left",
+   "narration": "Then they went deeper. They interviewed seventy-seven people, from college students, to retired professors, to people in nursing homes, and asked them to list their biggest regrets.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "77",
+       "badge": "yellow"
+      },
+      {
+       "t": "PEOPLE"
+      }
+     ],
+     "word": "seventy",
+     "occ": 1,
+     "dur": 1.9
+    }
+   ],
+   "picture": "S02",
+   "host": [
+    [
+     "N01"
+    ]
+   ],
+   "bleed": "#FDEACD",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "college",
+     "occ": 1,
+     "f": [
+      0.2,
+      0.42,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "professors",
+     "occ": 1,
+     "f": [
+      0.62,
+      0.42,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "nursing",
+     "occ": 1,
+     "f": [
+      0.83,
+      0.42,
+      1.4
+     ]
+    },
+    {
+     "kind": "zoom",
+     "word": "asked",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.5,
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "id": "R20",
+   "camera": "zoom-in",
+   "narration": "Over two hundred regrets in total.",
+   "events": [],
+   "picture": "S03",
+   "host": [
+    [
+     "N06"
+    ]
+   ],
+   "overlays": [
+    {
+     "type": "wheel",
+     "value": "213",
+     "word": "two",
+     "box": {
+      "x": 0.04,
+      "y": 0.05,
+      "w": 0.3,
+      "h": 0.25
+     }
+    }
+   ]
+  },
+  {
+   "id": "R21",
+   "camera": "hold",
+   "narration": "And the regrets about not acting outnumbered the regrets about acting... almost two to one.",
+   "events": [],
+   "host": [
+    [
+     "N02"
+    ]
+   ],
+   "diagram": {
+    "kind": "bars",
+    "bars": [
+     {
+      "label": "DIDN'T ACT",
+      "pct": 63
+     },
+     {
+      "label": "ACTED",
+      "pct": 37
+     }
+    ],
+    "badge": [
+     {
+      "t": "ALMOST"
+     },
+     {
+      "t": "2 TO 1",
+      "b": "yellow"
+     }
+    ],
+    "at": {
+     "grow": {
+      "word": "outnumbered",
+      "occ": 1
+     },
+     "badge": {
+      "word": "two",
+      "occ": 1
+     }
+    }
+   }
+  },
+  {
+   "id": "R22",
+   "camera": "hold",
+   "narration": "And here's a detail I didn't expect. Out of all those regrets, only about ten were about things outside their control. Bad luck. Things that just happened to them. Almost everything else... was a choice. Their own.",
+   "events": [
+    {
+     "kind": "pop",
+     "pose": "N09",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "I DIDN'T"
+       },
+       {
+        "t": "EXPECT THIS",
+        "badge": "yellow"
+       }
+      ]
+     },
+     "word": "detail",
+     "occ": 1,
+     "dur": 2.4
+    }
+   ],
+   "host": [
+    [
+     "N06"
+    ],
+    [
+     "N02",
+     "almost"
+    ]
+   ],
+   "diagram": {
+    "kind": "card",
+    "parts": [
+     {
+      "t": "ONLY"
+     },
+     {
+      "t": "10",
+      "badge": "yellow",
+      "circ": true,
+      "after": " OF 213"
+     },
+     {
+      "t": "were bad luck",
+      "small": true
+     }
+    ]
+   },
+   "diagramB": {
+    "kind": "card",
+    "parts": [
+     {
+      "t": "ALMOST ALL:"
+     },
+     {
+      "t": "A CHOICE",
+      "badge": "red"
+     }
+    ]
+   },
+   "swap": {
+    "word": "choice"
+   }
+  },
+  {
+   "id": "R23",
+   "camera": "zoom-in",
+   "narration": "But here's where it gets really interesting. They also asked people to think about two different time frames. First: what's your biggest regret from just this past week? For that one, it was basically a coin flip. About half the people picked something they did. A dumb comment. A bad decision. Something they'd messed up.",
+   "events": [
+    {
+     "kind": "pop",
+     "pose": "N02",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "TWO",
+        "badge": "yellow"
+       },
+       {
+        "t": "TIME FRAMES"
+       }
+      ]
+     },
+     "word": "two",
+     "occ": 1,
+     "dur": 2.4
+    },
+    {
+     "kind": "icon",
+     "icon": "I13",
+     "word": "week",
+     "occ": 1,
+     "dur": 1.8
+    },
+    {
+     "kind": "icon",
+     "icon": "I42",
+     "word": "coin",
+     "occ": 1,
+     "dur": 1.8
+    },
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "ABOUT"
+      },
+      {
+       "t": "HALF",
+       "badge": "yellow"
+      }
+     ],
+     "word": "half",
+     "occ": 1,
+     "dur": 1.9
+    }
+   ],
+   "picture": "S20",
+   "trans": "whip"
+  },
+  {
+   "id": "R24",
+   "camera": "zoom-in",
+   "narration": "Then they asked: what's the biggest regret of your whole life?",
+   "events": [],
+   "picture": "S04",
+   "host": [
+    [
+     "N06"
+    ]
+   ]
+  },
+  {
+   "id": "R25",
+   "camera": "hold",
+   "narration": "Eighty-four percent... picked something they didn't do.",
+   "events": [],
+   "host": [
+    [
+     "N02"
+    ]
+   ],
+   "lead": 0.8,
+   "diagram": {
+    "kind": "pie",
+    "pct": 84,
+    "from": 0,
+    "label": "WHOLE LIFE:",
+    "badge": "red",
+    "value": "84%",
+    "at": {
+     "fill": {
+      "word": "eighty",
+      "occ": 1
+     }
+    }
+   },
+   "fx": [
+    {
+     "type": "riser",
+     "word": "eighty"
+    },
+    {
+     "type": "impact",
+     "word": "eighty",
+     "off": 0.0
+    }
+   ]
+  },
+  {
+   "id": "R26",
+   "camera": "zoom-in",
+   "narration": "So in the short term, our mistakes hurt more. That part is real. If you say something awkward today, you'll probably feel it tonight.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "SHORT TERM:"
+      },
+      {
+       "t": "MISTAKES",
+       "badge": "red"
+      },
+      {
+       "t": "HURT"
+      }
+     ],
+     "word": "short",
+     "occ": 1,
+     "dur": 1.9
+    },
+    {
+     "kind": "icon",
+     "icon": "I14",
+     "word": "tonight",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "picture": "S23",
+   "trans": "fade"
+  },
+  {
+   "id": "R27",
+   "camera": "hold",
+   "narration": "But over the years, that flips. The mistakes fade. And the missed chances... grow.",
+   "events": [],
+   "host": [
+    [
+     "N02"
+    ],
+    [
+     "N06",
+     "the",
+     2
+    ]
+   ],
+   "diagram": {
+    "kind": "lines",
+    "sweep": true,
+    "at": {
+     "draw": {
+      "word": "flips",
+      "occ": 1
+     },
+     "fade": {
+      "word": "fade",
+      "occ": 1
+     },
+     "grow": {
+      "word": "grow",
+      "occ": 1
+     }
+    }
+   }
+  },
+  {
+   "id": "R28",
+   "camera": "zoom-in",
+   "narration": "They even tested this with a little story. Two college students, both unhappy at their school.",
+   "events": [],
+   "picture": "S25",
+   "host": [
+    [
+     "N01"
+    ]
+   ]
+  },
+  {
+   "id": "R29",
+   "camera": "pan-right",
+   "narration": "One of them transfers to a new school. The other one stays. And it turns out, both of them made the wrong choice.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "BOTH",
+       "badge": "yellow"
+      },
+      {
+       "t": "CHOICES WERE"
+      },
+      {
+       "t": "WRONG",
+       "badge": "red"
+      }
+     ],
+     "word": "both",
+     "occ": 1,
+     "dur": 1.9
+    }
+   ],
+   "picture": "S26",
+   "host": [
+    [
+     "N01"
+    ]
+   ],
+   "moves": [
+    {
+     "kind": "whip",
+     "word": "transfers",
+     "occ": 1,
+     "f": [
+      0.7,
+      0.5,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "R30",
+   "camera": "zoom-in",
+   "narration": "So who feels worse? Right after the decision, most people said the one who transferred. Seventy-six percent. He took the risk, and it didn't work out.",
+   "events": [
+    {
+     "kind": "pop",
+     "pose": "N06",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "WHO FEELS"
+       },
+       {
+        "t": "WORSE?",
+        "badge": "yellow"
+       }
+      ]
+     },
+     "word": "who",
+     "occ": 1,
+     "dur": 2.4
+    },
+    {
+     "kind": "crop",
+     "focus": [
+      0.7,
+      0.5,
+      1.4
+     ],
+     "word": "transferred",
+     "occ": 1,
+     "dur": 2.4
+    }
+   ],
+   "picture": "S26",
+   "host": [
+    [
+     "N06"
+    ]
+   ],
+   "overlays": [
+    {
+     "type": "badge",
+     "badge": "yellow",
+     "text": "0%",
+     "count": 76,
+     "word": "seventy",
+     "box": {
+      "x": 0.62,
+      "y": 0.14,
+      "w": 0.2,
+      "h": 0.13
+     },
+     "fs": 96
+    },
+    {
+     "type": "arrow",
+     "x0": 0.72,
+     "y0": 0.29,
+     "x1": 0.7,
+     "y1": 0.37,
+     "word": "seventy"
+    }
+   ]
+  },
+  {
+   "id": "R31",
+   "camera": "zoom-in",
+   "narration": "But years later? Most people said the one who stayed. The one who never found out.",
+   "events": [],
+   "picture": "S28",
+   "host": [
+    [
+     "N06"
+    ]
+   ],
+   "trans": "push",
+   "overlays": [
+    {
+     "type": "pill",
+     "text": "YEARS LATER",
+     "word": "years"
+    }
+   ],
+   "fx": [
+    {
+     "type": "leak",
+     "word": "years"
+    }
+   ]
+  }
+ ]
+}

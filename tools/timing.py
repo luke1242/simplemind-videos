@@ -39,6 +39,9 @@ for si, sc in enumerate(cfg["scenes"]):
                    "sentenceStarts": [W[min(v)]["s"] for k, v in sorted(sents.items())],
                    "sentenceEnds": [W[max(v)]["e"] for k, v in sorted(sents.items())],
                    "words": [{"w": nt[i], "s": W[m[i]]["s"], "e": W[m[i]]["e"]} for i in toks]})
+for i, s in enumerate(scenes):  # optional lead: start a reveal scene a little before its first word (silence), never into the previous narration
+    ld = cfg["scenes"][i].get("lead", 0)
+    if ld and i > 0: s["start"] = max(s["start"] - ld, scenes[i - 1]["narrationEnd"] + 0.25)
 for i, s in enumerate(scenes):
     s["end"] = scenes[i + 1]["start"] if i + 1 < len(scenes) else dur
 scenes[0]["start"] = 0.0
