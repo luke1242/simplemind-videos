@@ -3,7 +3,7 @@
 **Topic:** manifestation. Believing you *can* get something helps; daydreaming that you *already have* it quietly drains your drive. The fix is WOOP (wish, outcome, obstacle, plan) plus picturing the process.
 **Follows:** `PLAYBOOK.md` (hook → personal story → research → 3 reasons → the part everyone gets wrong → 5 steps → emotional close). It calls back to the spotlight video at the end and teases the self-belief video in Part 3.
 **Length:** the raw voice is about 1,680 words. After pause padding, the target is about **11:30–12:00**.
-**Audio:** `audio/part1.mp3` … `audio/part4.mp3` (ElevenLabs, from Luke).
+**Audio:** Luke records shorter clips so ElevenLabs stays clean: `audio/part1a.mp3`, `part1b.mp3` … (13 clips: Part 1 a–c, Part 2 a–c, Part 3 a–c, Part 4 a–d). Run `python3 tools/join-clips.py` first; it joins them into `audio/part1.mp3` … `part4.mp3`. Then continue as normal.
 **Music:** `music/track.mp3`, mixed softly as before.
 **Upload kit** (title, thumbnail, description, tags): `prompts/upload-package.md`.
 **Spec examples:** copy the helpers from `videos/02-regret/make-specs.py` (host mode, edits, steps, swaps). Video 2's `VIDEO.md` uses the same notation.

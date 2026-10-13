@@ -33,7 +33,7 @@ The repo root always holds the **current** video. Finished videos are archived i
 CLAUDE.md                 ← this guide (channel rules, the same for every video)
 VIDEO.md                  ← the current video's scene list
 PLAYBOOK.md               ← titles, thumbnails, descriptions and script shape (for Luke and script writing; not needed to build)
-audio/part1-4.mp3         ← Luke: ElevenLabs voiceover (padded copies go in audio/padded/)
+audio/part1-4.mp3         ← Luke: ElevenLabs voiceover (or clips part1a, part1b … joined by tools/join-clips.py); padded copies go in audio/padded/
 pictures/S##.jpg|png      ← scene pictures (S##b = "after" picture of a swap)
 icons/I##.jpg             ← icon cutaways (16:9, off-white background)
 assets/narrator/N01-N12.png ← narrator pop-up poses, transparent and ready to use
@@ -65,6 +65,7 @@ videos/02-regret/         ← video 2, archived; its make-specs.py and scenes/ a
    - Copy the helpers (`sc`, `icon`, `card`, `pop`, `title`, `mv`, `step`, `quote`, `iconrow`, overlays, `foci`, host tracks) from `videos/02-regret/make-specs.py`, the most recent build. It already supports host mode and the editing toolkit.
    - It outputs `scenes/partN.json` and `scenes/foci.json`.
    - Add any new diagram kinds that `VIDEO.md` asks for to `tools/build-part.mjs`.
+1b. **Clips.** If the voice comes as clips (`audio/part1a.mp3`, `part1b.mp3` …), run `python3 tools/join-clips.py` to join them into `audio/partN.mp3`. Missing-audio checks apply to the joined files.
 2. **Pause padding.** `tools/pad-audio.py` lengthens silences only (see section 10) and outputs `audio/padded/partN.wav`.
 3. **Word timestamps.** Run `tools/transcribe.py audio/padded/partN.wav scenes/partN.words.json`.
 4. **Timing.** Run `tools/timing.py N`. Each scene starts at its first word and ends right before the next scene's first word.
