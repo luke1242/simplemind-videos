@@ -1,0 +1,798 @@
+{
+ "part": 2,
+ "audio": "audio/padded/part2.wav",
+ "scenes": [
+  {
+   "id": "M16",
+   "camera": "zoom-in",
+   "narration": "So let's start with what the research actually found. Oettingen and her colleague Doris Mayer didn't just study job seekers. They studied four completely different groups.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I53",
+     "word": "job",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "picture": "S20",
+   "host": [
+    [
+     "N01"
+    ],
+    [
+     "N06",
+     "oettingen"
+    ]
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "oettingen",
+     "occ": 1,
+     "f": [
+      0.46,
+      0.4,
+      1.4
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "pill",
+     "text": "OETTINGEN & MAYER",
+     "word": "oettingen",
+     "occ": 1,
+     "dur": 2.4
+    },
+    {
+     "type": "tag",
+     "parts": [
+      {
+       "t": "4",
+       "badge": "yellow"
+      },
+      {
+       "t": "GROUPS"
+      }
+     ],
+     "word": "four",
+     "occ": 1,
+     "dur": 2.4,
+     "count": 4,
+     "from": 1,
+     "pos": "bottom"
+    }
+   ]
+  },
+  {
+   "id": "M17",
+   "camera": "hold",
+   "narration": "Students with a crush on someone. Students getting ready for an exam. And even older adults about to have hip replacement surgery.",
+   "events": [],
+   "diagram": {
+    "kind": "iconrow",
+    "items": [
+     {
+      "icon": "I54",
+      "word": "crush",
+      "label": "THE CRUSH"
+     },
+     {
+      "icon": "I46",
+      "word": "exam",
+      "label": "THE EXAM"
+     },
+     {
+      "icon": "I55",
+      "word": "hip",
+      "label": "THE SURGERY"
+     }
+    ]
+   }
+  },
+  {
+   "id": "M18",
+   "camera": "hold",
+   "narration": "Every time, they measured two different things. First: how likely did people think it was that things would work out? And second: how much did they daydream about the perfect outcome? And those two things pointed in opposite directions.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "TWO",
+       "badge": "yellow"
+      },
+      {
+       "t": "THINGS"
+      }
+     ],
+     "word": "two",
+     "occ": 1,
+     "dur": 1.9
+    }
+   ],
+   "host": [
+    [
+     "N06"
+    ],
+    [
+     "N02",
+     "and",
+     2
+    ]
+   ],
+   "diagram": {
+    "kind": "split",
+    "left": [
+     "HOW",
+     "LIKELY?"
+    ],
+    "right": [
+     "HOW MUCH",
+     "DAYDREAMING?"
+    ],
+    "fs": 100,
+    "at": {
+     "left": {
+      "word": "likely",
+      "occ": 1
+     },
+     "right": {
+      "word": "daydream",
+      "occ": 1
+     }
+    },
+    "rb": "yellow",
+    "syms": [
+     {
+      "side": "L",
+      "sym": "up",
+      "word": "opposite"
+     },
+     {
+      "side": "R",
+      "sym": "down",
+      "word": "opposite"
+     }
+    ]
+   }
+  },
+  {
+   "id": "M19",
+   "camera": "zoom-in",
+   "narration": "The students who daydreamed the most about their crush were less likely to actually end up together months later.",
+   "events": [],
+   "picture": "S05",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "daydreamed",
+     "occ": 1,
+     "f": [
+      0.68,
+      0.22,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "less",
+     "occ": 1,
+     "f": [
+      0.4,
+      0.55,
+      1.4
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "tag",
+     "parts": [
+      {
+       "t": "LESS",
+       "badge": "red"
+      },
+      {
+       "t": "LIKELY"
+      }
+     ],
+     "word": "less",
+     "occ": 1,
+     "dur": 2.6
+    }
+   ]
+  },
+  {
+   "id": "M20",
+   "camera": "zoom-in",
+   "narration": "The students who daydreamed most about acing the exam studied less... and their grades went down.",
+   "events": [],
+   "picture": "S06",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "acing",
+     "occ": 1,
+     "f": [
+      0.6,
+      0.25,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "studied",
+     "occ": 1,
+     "f": [
+      0.65,
+      0.8,
+      1.4
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "arrow",
+     "x0": 0.5,
+     "y0": 0.52,
+     "x1": 0.5,
+     "y1": 0.72,
+     "word": "grades",
+     "occ": 1
+    }
+   ]
+  },
+  {
+   "id": "M21",
+   "camera": "zoom-in",
+   "narration": "And the surgery patients who pictured a perfect, easy recovery... were recovering worse two weeks later.",
+   "events": [],
+   "picture": "S21",
+   "host": [
+    [
+     "N06"
+    ]
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "pictured",
+     "occ": 1,
+     "f": [
+      0.76,
+      0.5,
+      1.4
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "tag",
+     "parts": [
+      {
+       "t": "WORSE",
+       "badge": "red"
+      },
+      {
+       "t": "AT 2 WEEKS"
+      }
+     ],
+     "word": "worse",
+     "occ": 1,
+     "dur": 2.6
+    }
+   ]
+  },
+  {
+   "id": "M22",
+   "camera": "zoom-in",
+   "narration": "And when the researchers looked at what those daydreams actually sounded like, there was a pattern.",
+   "events": [],
+   "picture": "S20",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "sounded",
+     "occ": 1,
+     "f": [
+      0.78,
+      0.4,
+      1.3
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "circle",
+     "cx": 0.52,
+     "cy": 0.87,
+     "rx": 0.06,
+     "ry": 0.07,
+     "word": "pattern",
+     "occ": 1
+    }
+   ]
+  },
+  {
+   "id": "M23",
+   "camera": "hold",
+   "narration": "They were effortless. No setbacks. No hard days. Just... arriving.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "ALWAYS"
+      },
+      {
+       "t": "EFFORTLESS",
+       "badge": "yellow"
+      }
+     ],
+     "word": "effortless",
+     "occ": 1,
+     "dur": 1.9
+    }
+   ],
+   "picture": "S24",
+   "moves": [
+    {
+     "kind": "whip",
+     "word": "arriving",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.15,
+      1.4
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "label",
+     "text": "NO SETBACKS",
+     "word": "setbacks",
+     "occ": 1,
+     "dur": 2.4,
+     "until": "hard"
+    },
+    {
+     "type": "label",
+     "text": "NO HARD DAYS",
+     "word": "hard",
+     "occ": 1,
+     "dur": 1.6
+    }
+   ]
+  },
+  {
+   "id": "M24",
+   "camera": "hold",
+   "narration": "Now, to be fair, these studies show a link, not proof. But the same pattern kept showing up, in very different people.",
+   "events": [],
+   "host": [
+    [
+     "N01"
+    ]
+   ],
+   "diagram": {
+    "kind": "cards",
+    "states": [
+     {
+      "parts": [
+       {
+        "t": "A"
+       },
+       {
+        "t": "LINK,",
+        "mk": true
+       },
+       {
+        "t": "NOT PROOF."
+       }
+      ],
+      "w": {
+       "word": "studies",
+       "occ": 1
+      },
+      "mk": {
+       "word": "link",
+       "occ": 1
+      }
+     },
+     {
+      "parts": [
+       {
+        "t": "SAME"
+       },
+       {
+        "t": "PATTERN",
+        "badge": "yellow"
+       },
+       {
+        "t": "EVERY TIME."
+       }
+      ],
+      "w": {
+       "word": "same",
+       "occ": 1
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": "M25",
+   "camera": "zoom-in",
+   "narration": "But the people who simply expected things to go well, who believed it was likely, because they'd done it before or knew they could... they did better. They tried harder. They got more of what they wanted.",
+   "events": [
+    {
+     "kind": "pop",
+     "pose": "N11",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "BELIEVED IT WAS",
+        "sz": "mid"
+       },
+       {
+        "t": "LIKELY",
+        "badge": "yellow"
+       }
+      ]
+     },
+     "word": "believed",
+     "occ": 1,
+     "dur": 2.6
+    },
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "THEY DID"
+      },
+      {
+       "t": "BETTER",
+       "badge": "yellow"
+      }
+     ],
+     "word": "better",
+     "occ": 1,
+     "dur": 1.9
+    }
+   ],
+   "picture": "S35",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "expected",
+     "occ": 1,
+     "f": [
+      0.4,
+      0.58,
+      1.3
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "harder",
+     "occ": 1,
+     "f": [
+      0.62,
+      0.45,
+      1.3
+     ]
+    }
+   ]
+  },
+  {
+   "id": "M26",
+   "camera": "hold",
+   "narration": "So believing it can happen... helps. Daydreaming that it already happened... hurts.",
+   "events": [],
+   "host": [
+    [
+     "N06"
+    ],
+    [
+     "N02",
+     "daydreaming"
+    ]
+   ],
+   "diagram": {
+    "kind": "split",
+    "left": [
+     "BELIEVING IT",
+     "CAN HAPPEN:",
+     "HELPS"
+    ],
+    "right": [
+     "DAYDREAMING IT",
+     "HAPPENED:",
+     "HURTS"
+    ],
+    "fs": 100,
+    "at": {
+     "left": {
+      "word": "helps",
+      "occ": 1
+     },
+     "right": {
+      "word": "hurts",
+      "occ": 1
+     }
+    },
+    "lb": "yellow",
+    "rb": "red"
+   },
+   "fx": [
+    {
+     "type": "riser",
+     "word": "helps"
+    },
+    {
+     "type": "impact",
+     "word": "hurts"
+    }
+   ]
+  },
+  {
+   "id": "M27",
+   "camera": "zoom-in",
+   "narration": "Why would daydreaming hurt? Oettingen and another researcher, Heather Kappes, found a clue in people's bodies.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I25",
+     "word": "clue",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "picture": "S33",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "kappes",
+     "occ": 1,
+     "f": [
+      0.6,
+      0.2,
+      1.4
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "pill",
+     "text": "HEATHER KAPPES",
+     "word": "kappes",
+     "occ": 1,
+     "dur": 2.4
+    }
+   ]
+  },
+  {
+   "id": "M28",
+   "camera": "zoom-in",
+   "narration": "In one study, they had students skip food and water for a few hours. Then some of the thirstiest students were asked to picture a glass of ice-cold water.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I11",
+     "word": "hours",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "picture": "S07",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "skip",
+     "occ": 1,
+     "f": [
+      0.54,
+      0.82,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "picture",
+     "occ": 1,
+     "f": [
+      0.67,
+      0.22,
+      1.4
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "sweep",
+     "word": "ice",
+     "occ": 1,
+     "box": {
+      "x": 0.55,
+      "y": 0.05,
+      "w": 0.22,
+      "h": 0.45
+     }
+    }
+   ]
+  },
+  {
+   "id": "M29",
+   "camera": "hold",
+   "narration": "And when they did... their blood pressure dropped. Their energy dropped.",
+   "events": [],
+   "host": [
+    [
+     "N06"
+    ]
+   ],
+   "diagram": {
+    "kind": "drops",
+    "header": "PICTURING THE WATER",
+    "dir": "down",
+    "rows": [
+     {
+      "label": "BLOOD PRESSURE",
+      "word": "dropped",
+      "occ": 1
+     },
+     {
+      "label": "ENERGY",
+      "word": "dropped",
+      "occ": 2
+     }
+    ]
+   }
+  },
+  {
+   "id": "M30",
+   "camera": "zoom-in",
+   "narration": "Their bodies relaxed, almost as if they'd already had the drink.",
+   "events": [],
+   "picture": "S07",
+   "overlays": [
+    {
+     "type": "circle",
+     "cx": 0.66,
+     "cy": 0.2,
+     "rx": 0.1,
+     "ry": 0.2,
+     "word": "already",
+     "occ": 1
+    },
+    {
+     "type": "tag",
+     "parts": [
+      {
+       "t": "ALREADY"
+      },
+      {
+       "t": "HAD IT",
+       "badge": "yellow"
+      }
+     ],
+     "word": "already",
+     "occ": 1,
+     "dur": 2.4
+    }
+   ]
+  },
+  {
+   "id": "M31",
+   "camera": "zoom-in",
+   "narration": "In another study, people who spent time picturing an amazing week ahead felt less energized. And by the end of that week... they'd gotten fewer of their goals done.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I56",
+     "word": "energized",
+     "occ": 1,
+     "dur": 1.8
+    },
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "FEWER",
+       "badge": "red"
+      },
+      {
+       "t": "GOALS DONE"
+      }
+     ],
+     "word": "fewer",
+     "occ": 1,
+     "dur": 1.9
+    }
+   ],
+   "picture": "S22",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "picturing",
+     "occ": 1,
+     "f": [
+      0.78,
+      0.62,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "M32",
+   "camera": "zoom-in",
+   "narration": "That's the trap. When you picture the finish line in perfect detail, your brain gets a little taste of the reward. And it relaxes... right when you need it to get moving.",
+   "events": [
+    {
+     "kind": "pop",
+     "pose": "N02",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "THAT'S"
+       },
+       {
+        "t": "THE TRAP",
+        "badge": "yellow"
+       }
+      ]
+     },
+     "word": "trap",
+     "occ": 1,
+     "dur": 2.4
+    },
+    {
+     "kind": "icon",
+     "icon": "I52",
+     "word": "taste",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "picture": "S12",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "reward",
+     "occ": 1,
+     "f": [
+      0.55,
+      0.47,
+      1.4
+     ]
+    },
+    {
+     "kind": "zoom",
+     "word": "relaxes",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.5,
+      1
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "moving",
+     "occ": 1,
+     "f": [
+      0.42,
+      0.87,
+      1.4
+     ]
+    }
+   ]
+  }
+ ]
+}

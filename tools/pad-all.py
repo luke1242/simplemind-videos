@@ -3,8 +3,8 @@
 usage: pad-all.py [short_pad]"""
 import json, subprocess, sys
 short = sys.argv[1] if len(sys.argv) > 1 else "0.25"
-REVEAL = {"R18", "R25", "R27", "R44", "R50", "R58", "R61"}      # >= 2s silence after these scenes
-TAIL = {1: 2.5, 2: 1.5, 3: 1.5, 4: 5.0}                          # title card / part-end holds
+REVEAL = {"M07", "M26", "M49", "M50", "M63"}      # >= 2s silence after these scenes
+TAIL = {1: 2.5, 2: 1.0, 3: 1.0, 4: 5.0}                          # title card / part-end holds
 for n in (1, 2, 3, 4):
     cfg = json.load(open(f"scenes/part{n}.json")); raw = json.load(open(f"scenes/part{n}.rawtiming.json"))
     firsts = [s["words"][0]["s"] for s in raw["scenes"]]; ends = [s["narrationEnd"] for s in raw["scenes"]]

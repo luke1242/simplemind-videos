@@ -1,0 +1,933 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=1920, height=1080"><title>Part 4</title>
+<script src="assets/gsap.min.js"></script>
+<style>
+@font-face{font-family:"Nunito";font-weight:800;src:url("assets/fonts/nunito-800.woff2") format("woff2")}
+html,body{margin:0;background:#FAF7F0}
+#root{position:relative;width:100%;height:100%;overflow:hidden;background:#FAF7F0;font-family:"Nunito",sans-serif;font-weight:800;color:#1A1A1A}
+.clip{position:absolute;inset:0;overflow:hidden}
+.tt,.fill{position:absolute;inset:0}
+.tt{background:#FAF7F0}
+.fin{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:50% 50%}
+.bleed{position:absolute;left:-1920px;top:-1080px;width:5760px;height:3240px}
+.cam{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0}
+.pic{position:absolute;left:0;top:0;width:1920px;height:1080px;display:block}
+.iconbg{background:#F8F5EE}
+.card{background:#FAF7F0;display:flex;align-items:center;justify-content:center}
+.cardtxt{display:flex;flex-direction:column;align-items:center;gap:26px;text-align:center}
+.ln{font-size:170px;line-height:1.05;letter-spacing:1px;white-space:nowrap;position:relative}
+.ln.big{font-size:130px}.ln.small{font-size:84px}.ln.mid{font-size:112px}
+.badge{display:inline-block;padding:4px 40px 12px;border:9px solid #1A1A1A;border-radius:34px;box-shadow:8px 8px 0 #1A1A1A}
+.badge.yellow{background:#F2C230;color:#1A1A1A} .badge.red{background:#D64545;color:#fff}
+.pill{background:#2F6B2F;color:#fff;border:7px solid #1A1A1A;border-radius:60px;font-size:64px;padding:2px 54px 8px;letter-spacing:4px;margin-bottom:18px}
+.pill.big{margin:0;border-width:6px;font-size:64px;padding:2px 50px 8px}
+.org{color:#F2A65A;-webkit-text-stroke:6px #1A1A1A;paint-order:stroke fill}
+.mk{position:relative;display:inline-block}.mk i{position:absolute;left:-14px;right:-14px;top:22%;bottom:2%;background:#F2C230;transform-origin:0 50%;z-index:0;border-radius:10px}.mk b{position:relative;z-index:1;font-weight:800}
+.circw{position:relative;display:inline-block}.circ{position:absolute;left:-60px;top:-34px;width:calc(100% + 120px);height:calc(100% + 68px);overflow:visible}
+.ulw{position:relative;display:inline-block}.ul{position:absolute;left:0;bottom:-26px;width:100%;height:30px;overflow:visible}
+.ulp{position:absolute;left:0;bottom:-24px;width:100%;height:26px;overflow:visible}
+.hbg{position:absolute;inset:0;background:#FAF7F0}
+.frame{position:absolute;left:455.2px;top:140px;width:1420.8px;height:799.2px;border-radius:28px;overflow:hidden;background:#FAF7F0}
+.hs{position:absolute;left:0;top:0;width:1920px;height:1080px;transform:scale(0.74);transform-origin:0 0}
+.fborder{position:absolute;left:455.2px;top:140px;width:1420.8px;height:799.2px;box-sizing:border-box;border:6px solid #1A1A1A;border-radius:28px;pointer-events:none}
+.nw{position:absolute;inset:0;z-index:5}
+.narr{position:absolute;bottom:48px;display:block}
+.nshadow{position:absolute;bottom:26px;height:46px;background:radial-gradient(ellipse at center,rgba(26,26,26,.28),rgba(26,26,26,0) 70%)}
+.diag{background:#FAF7F0}
+.cardc{display:flex;align-items:center;justify-content:center}
+.dlabel{position:absolute;left:0;right:0;top:830px;display:flex;justify-content:center;align-items:center;gap:36px;font-size:130px;white-space:nowrap}
+.sclab{position:absolute;width:500px;display:flex;justify-content:center;font-size:84px}
+.tagbox{position:absolute;display:flex;align-items:center;justify-content:center;white-space:nowrap}
+.scr{position:absolute;left:0;right:0;top:24px;display:flex;flex-direction:column;align-items:center;gap:14px;z-index:6}.scr.row{flex-direction:row;justify-content:center;gap:20px;top:22px}
+.spill2{background:#FAF7F0;border:6px solid #1A1A1A;border-radius:44px;font-size:60px;line-height:1.05;padding:4px 40px 10px;white-space:nowrap;position:relative}
+.st{position:absolute;left:0;right:0;top:0;bottom:0;justify-content:center}
+.dhead{position:absolute;left:0;right:0;top:50px;display:flex;justify-content:center;font-size:100px;white-space:nowrap}
+.drow{position:absolute;left:0;right:0;display:flex;justify-content:center;align-items:center;gap:60px}
+.dlab{font-size:96px;white-space:nowrap}.dbox{width:210px;height:210px;box-sizing:border-box;border:9px solid #1A1A1A;border-radius:30px;background:#fff;overflow:hidden;display:flex;align-items:center;justify-content:center;box-shadow:8px 8px 0 rgba(26,26,26,.18)}
+.sym{position:absolute;top:800px;width:160px;height:160px;transform-origin:50% 50%}
+.wcard{position:absolute;left:150px;top:50px;width:1620px;height:980px;box-sizing:border-box;border:9px solid #1A1A1A;border-radius:44px;background:#FFFDF8;box-shadow:12px 12px 0 rgba(26,26,26,.16)}
+.wrow{position:absolute;left:190px;width:1540px;height:200px}
+.wbg{position:absolute;left:-14px;right:-14px;top:-10px;bottom:-10px;border-radius:40px;background:#F2C230;opacity:0}
+.wlet{position:absolute;left:10px;top:15px;width:170px;height:170px;border-radius:50%;box-sizing:border-box;border:9px solid #1A1A1A;display:flex;align-items:center;justify-content:center;font-size:120px;line-height:1;padding-bottom:8px;transform-origin:50% 50%}
+.wlab{position:absolute;left:215px;top:0;height:200px;display:flex;align-items:center;font-size:84px;white-space:nowrap}
+.wslot{position:absolute;left:700px;top:15px;width:790px;height:170px;box-sizing:border-box;border:6px solid #1A1A1A;border-radius:28px;background:#fff;display:flex;align-items:center;justify-content:center}
+.wans{font-size:58px;line-height:1.12;text-align:center;white-space:nowrap}.wans .badge{padding:0 16px 3px;border-width:6px;border-radius:22px;box-shadow:5px 5px 0 #1A1A1A}
+.wtick{position:absolute;left:1500px;top:40px;width:100px;height:100px;opacity:0}
+.icol{display:flex;flex-direction:column;align-items:center;gap:30px}.ilab{width:540px;text-align:center;font-size:62px;line-height:1.05}
+.itile.slot{border-color:#CFC8B8;background:#F2EEE4;box-shadow:none}
+.plusb{position:absolute;left:0;right:0;top:360px;display:flex;justify-content:center;font-size:120px;white-space:nowrap}
+.tagp{font-size:70px;display:flex;gap:18px;align-items:center}.tagp .badge{padding:0 22px 4px;border-width:6px;border-radius:26px;box-shadow:5px 5px 0 #1A1A1A}
+.sign.scard{background:#fff;border:6px solid #1A1A1A;border-radius:16px;box-sizing:border-box;padding:4px 10px 8px;line-height:1.12;box-shadow:5px 5px 0 rgba(26,26,26,.25)}.sign .cnb{padding:0 12px 2px;border-width:4px;border-radius:14px;box-shadow:3px 3px 0 #1A1A1A}
+.sbub{position:absolute;background:#fff;border:7px solid #1A1A1A;border-radius:42px;box-sizing:border-box;display:flex;align-items:center;justify-content:center;text-align:center;font-size:64px;line-height:1.05;padding:6px 18px}
+.sbub i{position:absolute;right:-34px;bottom:-30px;width:40px;height:40px;background:#fff;border:7px solid #1A1A1A;border-radius:50%;box-sizing:border-box}
+.sign{position:absolute;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1;color:#1A1A1A;white-space:nowrap}
+.ovsvg{position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:visible}
+.clab{position:absolute;white-space:nowrap}
+.wheel{padding:0 26px 4px;overflow:hidden}.dig{display:block;height:253px;overflow:hidden;width:130px}.col{display:flex;flex-direction:column;line-height:253px;text-align:center}
+.bar{position:absolute;border:9px solid #1A1A1A;border-radius:26px 26px 0 0;box-sizing:border-box;box-shadow:8px 8px 0 rgba(26,26,26,.18)}
+.btag{position:absolute;left:-40px;right:-40px;top:-130px;text-align:center;font-size:100px;white-space:nowrap}
+.blab{position:absolute;text-align:center;font-size:66px;line-height:1.05}
+.topbadge{position:absolute;left:0;right:0;top:48px;display:flex;justify-content:center;align-items:center;gap:28px;font-size:94px;white-space:nowrap}
+.ctitle{position:absolute;left:0;right:0;top:36px;text-align:center;font-size:100px;letter-spacing:3px}
+.axl{position:absolute;font-size:62px}
+.llab{position:absolute;font-size:62px;white-space:nowrap;-webkit-text-stroke:2px #1A1A1A;paint-order:stroke fill}
+.tag{position:absolute;font-size:70px}.tag .badge{padding:0 30px 8px}
+.sweep{position:absolute;width:300px;height:300px;opacity:0;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,247,200,.95),rgba(255,255,255,0));filter:blur(8px);border-radius:50%}
+.half{position:absolute;top:0;width:960px;height:1080px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px}
+.half .ln{font-size:128px}
+.vdiv{position:absolute;left:956px;top:120px;width:8px;height:840px;background:#1A1A1A;border-radius:4px}
+.qmark{position:absolute;left:210px;top:60px;font-size:420px;line-height:1;color:#F2A65A;-webkit-text-stroke:5px #1A1A1A;paint-order:stroke fill}
+.qtext{position:absolute;left:200px;top:250px;width:1540px;font-size:90px;line-height:1.42;text-align:left}
+.qtext .w{display:inline-block;margin-right:16px}.qtext .badge{padding:0 20px 6px;box-shadow:6px 6px 0 #1A1A1A;border-width:7px;border-radius:24px;margin-right:16px}.qtext .badge .w{margin-right:14px}.qtext .badge .w:last-child{margin-right:0}
+.qby{position:absolute;left:0;right:0;top:880px;text-align:center;font-size:58px;color:#6a6454}
+.irow{display:flex;gap:70px;align-items:center}
+.itile{width:520px;height:520px;border:9px solid #1A1A1A;border-radius:36px;overflow:hidden;background:#F8F5EE;box-shadow:10px 10px 0 rgba(26,26,26,.2)}.itile img{width:924px;height:520px;margin-left:-202px;display:block}
+.sweepbox{position:absolute;overflow:hidden}.sweepband{position:absolute;left:0;top:-20%;width:35%;height:140%;transform:skewX(-18deg);background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,247,200,.9),rgba(255,255,255,0));opacity:0}
+.leak{position:absolute;inset:0;opacity:0;mix-blend-mode:screen;background:radial-gradient(ellipse 60% 70% at 95% 10%,rgba(255,170,70,.95),rgba(255,120,40,0) 70%),radial-gradient(ellipse 50% 60% at 5% 95%,rgba(255,210,120,.75),rgba(255,160,60,0) 70%)}
+</style></head><body>
+<div id="root" data-composition-id="part4" data-start="0" data-width="1920" data-height="1080" data-duration="236.394">
+<svg width="0" height="0" style="position:absolute"><filter id="mb" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB"><feGaussianBlur id="mbb" stdDeviation="0 0"/></filter></svg>
+<div id="m51-s0" class="clip" data-start="0" data-duration="3.18" style="z-index:11"><div id="m51-s0-t" class="tt"><div id="m51-s0-fin" class="fin"><div id="m51-s0-cam" class="cam"><img src="assets/pictures/S36.jpg" class="pic" alt=""></div></div></div></div>
+<div id="m51-s1" class="clip" data-start="3.18" data-duration="1.56" style="z-index:12"><div id="m51-s1-t" class="tt"><div id="m51-s1-fin" class="fin"><div class="fill iconbg"><img id="m51-s1-img" src="assets/icons/I59.jpg" class="pic" alt=""></div></div></div></div>
+<div id="m52-s0" class="clip" data-start="4.74" data-duration="3.24" style="z-index:13"><div id="m52-s0-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m52-s0-fin" class="fin"><div id="m52-s0-cam" class="cam"><div class="fill diag"><div class="wcard"></div><div class="wrow" id="m52-s0-dg-r0" style="top:90px"><div class="wbg" id="m52-s0-dg-bg0"></div><div class="wlet" id="m52-s0-dg-L0" style="background:#F2C230;color:#1A1A1A">W</div><div class="wlab" id="m52-s0-dg-lb0">WISH</div><div class="wslot" id="m52-s0-dg-sl0"><div class="wans" id="m52-s0-dg-a0"></div></div><div class="wtick" id="m52-s0-dg-tk0"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m52-s0-dg-r1" style="top:325px"><div class="wbg" id="m52-s0-dg-bg1"></div><div class="wlet" id="m52-s0-dg-L1" style="background:#F2C230;color:#1A1A1A">O</div><div class="wlab" id="m52-s0-dg-lb1">OUTCOME</div><div class="wslot" id="m52-s0-dg-sl1"><div class="wans" id="m52-s0-dg-a1"></div></div><div class="wtick" id="m52-s0-dg-tk1"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m52-s0-dg-r2" style="top:560px"><div class="wbg" id="m52-s0-dg-bg2"></div><div class="wlet" id="m52-s0-dg-L2" style="background:#D64545;color:#fff">O</div><div class="wlab" id="m52-s0-dg-lb2">OBSTACLE</div><div class="wslot" id="m52-s0-dg-sl2"><div class="wans" id="m52-s0-dg-a2"></div></div><div class="wtick" id="m52-s0-dg-tk2"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m52-s0-dg-r3" style="top:795px"><div class="wbg" id="m52-s0-dg-bg3"></div><div class="wlet" id="m52-s0-dg-L3" style="background:#9CC08B;color:#1A1A1A">P</div><div class="wlab" id="m52-s0-dg-lb3">PLAN</div><div class="wslot" id="m52-s0-dg-sl3"><div class="wans" id="m52-s0-dg-a3"></div></div><div class="wtick" id="m52-s0-dg-tk3"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m52-s1" class="clip" data-start="7.98" data-duration="3.74" style="z-index:14"><div id="m52-s1-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m52-s1-fin" class="fin"><div id="m52-s1-cam" class="cam"><div class="fill diag"><div class="wcard"></div><div class="wrow" id="m52-s1-dg-r0" style="top:90px"><div class="wbg" id="m52-s1-dg-bg0"></div><div class="wlet" id="m52-s1-dg-L0" style="background:#F2C230;color:#1A1A1A">W</div><div class="wlab" id="m52-s1-dg-lb0">WISH</div><div class="wslot" id="m52-s1-dg-sl0"><div class="wans" id="m52-s1-dg-a0"></div></div><div class="wtick" id="m52-s1-dg-tk0"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m52-s1-dg-r1" style="top:325px"><div class="wbg" id="m52-s1-dg-bg1"></div><div class="wlet" id="m52-s1-dg-L1" style="background:#F2C230;color:#1A1A1A">O</div><div class="wlab" id="m52-s1-dg-lb1">OUTCOME</div><div class="wslot" id="m52-s1-dg-sl1"><div class="wans" id="m52-s1-dg-a1"></div></div><div class="wtick" id="m52-s1-dg-tk1"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m52-s1-dg-r2" style="top:560px"><div class="wbg" id="m52-s1-dg-bg2"></div><div class="wlet" id="m52-s1-dg-L2" style="background:#D64545;color:#fff">O</div><div class="wlab" id="m52-s1-dg-lb2">OBSTACLE</div><div class="wslot" id="m52-s1-dg-sl2"><div class="wans" id="m52-s1-dg-a2"></div></div><div class="wtick" id="m52-s1-dg-tk2"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m52-s1-dg-r3" style="top:795px"><div class="wbg" id="m52-s1-dg-bg3"></div><div class="wlet" id="m52-s1-dg-L3" style="background:#9CC08B;color:#1A1A1A">P</div><div class="wlab" id="m52-s1-dg-lb3">PLAN</div><div class="wslot" id="m52-s1-dg-sl3"><div class="wans" id="m52-s1-dg-a3"></div></div><div class="wtick" id="m52-s1-dg-tk3"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m53-s0" class="clip" data-start="11.72" data-duration="3.18" style="z-index:15"><div id="m53-s0-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m53-s0-fin" class="fin"><div id="m53-s0-cam" class="cam"><div class="fill diag"><div class="wcard"></div><div class="wrow" id="m53-s0-dg-r0" style="top:90px"><div class="wbg" id="m53-s0-dg-bg0"></div><div class="wlet" id="m53-s0-dg-L0" style="background:#F2C230;color:#1A1A1A">W</div><div class="wlab" id="m53-s0-dg-lb0">WISH</div><div class="wslot" id="m53-s0-dg-sl0"><div class="wans" id="m53-s0-dg-a0">CHALLENGING BUT<br><span class="badge yellow">POSSIBLE</span></div></div><div class="wtick" id="m53-s0-dg-tk0"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m53-s0-dg-r1" style="top:325px"><div class="wbg" id="m53-s0-dg-bg1"></div><div class="wlet" id="m53-s0-dg-L1" style="background:#F2C230;color:#1A1A1A">O</div><div class="wlab" id="m53-s0-dg-lb1">OUTCOME</div><div class="wslot" id="m53-s0-dg-sl1"><div class="wans" id="m53-s0-dg-a1"></div></div><div class="wtick" id="m53-s0-dg-tk1"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m53-s0-dg-r2" style="top:560px"><div class="wbg" id="m53-s0-dg-bg2"></div><div class="wlet" id="m53-s0-dg-L2" style="background:#D64545;color:#fff">O</div><div class="wlab" id="m53-s0-dg-lb2">OBSTACLE</div><div class="wslot" id="m53-s0-dg-sl2"><div class="wans" id="m53-s0-dg-a2"></div></div><div class="wtick" id="m53-s0-dg-tk2"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m53-s0-dg-r3" style="top:795px"><div class="wbg" id="m53-s0-dg-bg3"></div><div class="wlet" id="m53-s0-dg-L3" style="background:#9CC08B;color:#1A1A1A">P</div><div class="wlab" id="m53-s0-dg-lb3">PLAN</div><div class="wslot" id="m53-s0-dg-sl3"><div class="wans" id="m53-s0-dg-a3"></div></div><div class="wtick" id="m53-s0-dg-tk3"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></div></div></div></div></div><div class="fborder"></div><div id="m53-s0-so0" class="scr row" data-layout-allow-overlap><div class="pill big">STEP 1</div><div class="spill2">WISH</div></div></div></div>
+<div id="m53-s1" class="clip" data-start="14.9" data-duration="2.5" style="z-index:16"><div id="m53-s1-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m53-s1-fin" class="fin"><div id="m53-s1-cam" class="cam"><div class="fill diag"><div class="wcard"></div><div class="wrow" id="m53-s1-dg-r0" style="top:90px"><div class="wbg" id="m53-s1-dg-bg0"></div><div class="wlet" id="m53-s1-dg-L0" style="background:#F2C230;color:#1A1A1A">W</div><div class="wlab" id="m53-s1-dg-lb0">WISH</div><div class="wslot" id="m53-s1-dg-sl0"><div class="wans" id="m53-s1-dg-a0">CHALLENGING BUT<br><span class="badge yellow">POSSIBLE</span></div></div><div class="wtick" id="m53-s1-dg-tk0"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m53-s1-dg-r1" style="top:325px"><div class="wbg" id="m53-s1-dg-bg1"></div><div class="wlet" id="m53-s1-dg-L1" style="background:#F2C230;color:#1A1A1A">O</div><div class="wlab" id="m53-s1-dg-lb1">OUTCOME</div><div class="wslot" id="m53-s1-dg-sl1"><div class="wans" id="m53-s1-dg-a1"></div></div><div class="wtick" id="m53-s1-dg-tk1"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m53-s1-dg-r2" style="top:560px"><div class="wbg" id="m53-s1-dg-bg2"></div><div class="wlet" id="m53-s1-dg-L2" style="background:#D64545;color:#fff">O</div><div class="wlab" id="m53-s1-dg-lb2">OBSTACLE</div><div class="wslot" id="m53-s1-dg-sl2"><div class="wans" id="m53-s1-dg-a2"></div></div><div class="wtick" id="m53-s1-dg-tk2"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m53-s1-dg-r3" style="top:795px"><div class="wbg" id="m53-s1-dg-bg3"></div><div class="wlet" id="m53-s1-dg-L3" style="background:#9CC08B;color:#1A1A1A">P</div><div class="wlab" id="m53-s1-dg-lb3">PLAN</div><div class="wslot" id="m53-s1-dg-sl3"><div class="wans" id="m53-s1-dg-a3"></div></div><div class="wtick" id="m53-s1-dg-tk3"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m53-s2" class="clip" data-start="17.4" data-duration="1.88" style="z-index:17"><div id="m53-s2-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m53-s2-fin" class="fin"><div id="m53-s2-cam" class="cam"><div class="fill diag"><div class="wcard"></div><div class="wrow" id="m53-s2-dg-r0" style="top:90px"><div class="wbg" id="m53-s2-dg-bg0"></div><div class="wlet" id="m53-s2-dg-L0" style="background:#F2C230;color:#1A1A1A">W</div><div class="wlab" id="m53-s2-dg-lb0">WISH</div><div class="wslot" id="m53-s2-dg-sl0"><div class="wans" id="m53-s2-dg-a0">CHALLENGING BUT<br><span class="badge yellow">POSSIBLE</span></div></div><div class="wtick" id="m53-s2-dg-tk0"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m53-s2-dg-r1" style="top:325px"><div class="wbg" id="m53-s2-dg-bg1"></div><div class="wlet" id="m53-s2-dg-L1" style="background:#F2C230;color:#1A1A1A">O</div><div class="wlab" id="m53-s2-dg-lb1">OUTCOME</div><div class="wslot" id="m53-s2-dg-sl1"><div class="wans" id="m53-s2-dg-a1"></div></div><div class="wtick" id="m53-s2-dg-tk1"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m53-s2-dg-r2" style="top:560px"><div class="wbg" id="m53-s2-dg-bg2"></div><div class="wlet" id="m53-s2-dg-L2" style="background:#D64545;color:#fff">O</div><div class="wlab" id="m53-s2-dg-lb2">OBSTACLE</div><div class="wslot" id="m53-s2-dg-sl2"><div class="wans" id="m53-s2-dg-a2"></div></div><div class="wtick" id="m53-s2-dg-tk2"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m53-s2-dg-r3" style="top:795px"><div class="wbg" id="m53-s2-dg-bg3"></div><div class="wlet" id="m53-s2-dg-L3" style="background:#9CC08B;color:#1A1A1A">P</div><div class="wlab" id="m53-s2-dg-lb3">PLAN</div><div class="wslot" id="m53-s2-dg-sl3"><div class="wans" id="m53-s2-dg-a3"></div></div><div class="wtick" id="m53-s2-dg-tk3"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m53-s3" class="clip" data-start="19.28" data-duration="2.3" style="z-index:18"><div id="m53-s3-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m53-s3-fin" class="fin"><div class="fill card"><div id="m53-s3-in" class="cardtxt"><div class="ln" id="m53-s3-l0">NOT</div><div class="ln" id="m53-s3-l1"><span class="badge red">BE RICH</span></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m53-s4" class="clip" data-start="21.58" data-duration="1.16" style="z-index:19"><div id="m53-s4-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m53-s4-fin" class="fin"><div id="m53-s4-cam" class="cam"><div class="fill diag"><div class="wcard"></div><div class="wrow" id="m53-s4-dg-r0" style="top:90px"><div class="wbg" id="m53-s4-dg-bg0"></div><div class="wlet" id="m53-s4-dg-L0" style="background:#F2C230;color:#1A1A1A">W</div><div class="wlab" id="m53-s4-dg-lb0">WISH</div><div class="wslot" id="m53-s4-dg-sl0"><div class="wans" id="m53-s4-dg-a0">CHALLENGING BUT<br><span class="badge yellow">POSSIBLE</span></div></div><div class="wtick" id="m53-s4-dg-tk0"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m53-s4-dg-r1" style="top:325px"><div class="wbg" id="m53-s4-dg-bg1"></div><div class="wlet" id="m53-s4-dg-L1" style="background:#F2C230;color:#1A1A1A">O</div><div class="wlab" id="m53-s4-dg-lb1">OUTCOME</div><div class="wslot" id="m53-s4-dg-sl1"><div class="wans" id="m53-s4-dg-a1"></div></div><div class="wtick" id="m53-s4-dg-tk1"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m53-s4-dg-r2" style="top:560px"><div class="wbg" id="m53-s4-dg-bg2"></div><div class="wlet" id="m53-s4-dg-L2" style="background:#D64545;color:#fff">O</div><div class="wlab" id="m53-s4-dg-lb2">OBSTACLE</div><div class="wslot" id="m53-s4-dg-sl2"><div class="wans" id="m53-s4-dg-a2"></div></div><div class="wtick" id="m53-s4-dg-tk2"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m53-s4-dg-r3" style="top:795px"><div class="wbg" id="m53-s4-dg-bg3"></div><div class="wlet" id="m53-s4-dg-L3" style="background:#9CC08B;color:#1A1A1A">P</div><div class="wlab" id="m53-s4-dg-lb3">PLAN</div><div class="wslot" id="m53-s4-dg-sl3"><div class="wans" id="m53-s4-dg-a3"></div></div><div class="wtick" id="m53-s4-dg-tk3"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m53-s5" class="clip" data-start="22.74" data-duration="1.68" style="z-index:20"><div id="m53-s5-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m53-s5-fin" class="fin"><div class="fill iconbg"><img id="m53-s5-img" src="assets/icons/I60.jpg" class="pic" alt=""></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m53-s6" class="clip" data-start="24.42" data-duration="2.72" style="z-index:21"><div id="m53-s6-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m53-s6-fin" class="fin"><div id="m53-s6-cam" class="cam"><div class="fill diag"><div class="wcard"></div><div class="wrow" id="m53-s6-dg-r0" style="top:90px"><div class="wbg" id="m53-s6-dg-bg0"></div><div class="wlet" id="m53-s6-dg-L0" style="background:#F2C230;color:#1A1A1A">W</div><div class="wlab" id="m53-s6-dg-lb0">WISH</div><div class="wslot" id="m53-s6-dg-sl0"><div class="wans" id="m53-s6-dg-a0">CHALLENGING BUT<br><span class="badge yellow">POSSIBLE</span></div></div><div class="wtick" id="m53-s6-dg-tk0"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m53-s6-dg-r1" style="top:325px"><div class="wbg" id="m53-s6-dg-bg1"></div><div class="wlet" id="m53-s6-dg-L1" style="background:#F2C230;color:#1A1A1A">O</div><div class="wlab" id="m53-s6-dg-lb1">OUTCOME</div><div class="wslot" id="m53-s6-dg-sl1"><div class="wans" id="m53-s6-dg-a1"></div></div><div class="wtick" id="m53-s6-dg-tk1"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m53-s6-dg-r2" style="top:560px"><div class="wbg" id="m53-s6-dg-bg2"></div><div class="wlet" id="m53-s6-dg-L2" style="background:#D64545;color:#fff">O</div><div class="wlab" id="m53-s6-dg-lb2">OBSTACLE</div><div class="wslot" id="m53-s6-dg-sl2"><div class="wans" id="m53-s6-dg-a2"></div></div><div class="wtick" id="m53-s6-dg-tk2"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m53-s6-dg-r3" style="top:795px"><div class="wbg" id="m53-s6-dg-bg3"></div><div class="wlet" id="m53-s6-dg-L3" style="background:#9CC08B;color:#1A1A1A">P</div><div class="wlab" id="m53-s6-dg-lb3">PLAN</div><div class="wslot" id="m53-s6-dg-sl3"><div class="wans" id="m53-s6-dg-a3"></div></div><div class="wtick" id="m53-s6-dg-tk3"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m53-s7" class="clip" data-start="27.14" data-duration="1.96" style="z-index:22"><div id="m53-s7-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m53-s7-fin" class="fin"><div class="fill card"><div id="m53-s7-in" class="cardtxt"><div class="ln" id="m53-s7-l0">ACTUALLY</div><div class="ln" id="m53-s7-l1"><span class="badge yellow">UP TO YOU</span></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m54-s0" class="clip" data-start="28.6" data-duration="2.38" style="z-index:23"><div id="m54-s0-t" class="tt"><div id="m54-s0-fin" class="fin"><div id="m54-s0-cam" class="cam"><img src="assets/pictures/S31.jpg" class="pic" alt=""><div id="m54-s0-ov1" class="sweepbox" data-layout-allow-overlap style="left:0px;top:0px;width:1920px;height:540px"><div id="m54-s0-ov1-b" class="sweepband"></div></div></div></div><div id="m54-s0-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 2</div><div class="spill2">OUTCOME</div></div></div></div>
+<div id="m54-s1" class="clip" data-start="30.98" data-duration="3.54" style="z-index:24"><div id="m54-s1-t" class="tt"><div id="m54-s1-fin" class="fin"><div id="m54-s1-cam" class="cam"><img src="assets/pictures/S31.jpg" class="pic" alt=""><div id="m54-s1-ov1" class="sweepbox" data-layout-allow-overlap style="left:0px;top:0px;width:1920px;height:540px"><div id="m54-s1-ov1-b" class="sweepband"></div></div></div></div><div id="m54-s1-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 2</div><div class="spill2">OUTCOME</div></div></div></div>
+<div id="m54-s2" class="clip" data-start="34.52" data-duration="2.96" style="z-index:25"><div id="m54-s2-t" class="tt"><div id="m54-s2-fin" class="fin"><div id="m54-s2-cam" class="cam"><img src="assets/pictures/S31.jpg" class="pic" alt=""><div id="m54-s2-ov1" class="sweepbox" data-layout-allow-overlap style="left:0px;top:0px;width:1920px;height:540px"><div id="m54-s2-ov1-b" class="sweepband"></div></div></div></div></div></div>
+<div id="m54-s3" class="clip" data-start="37.48" data-duration="1.4" style="z-index:26"><div id="m54-s3-t" class="tt"><div id="m54-s3-fin" class="fin"><div id="m54-s3-cam" class="cam"><img src="assets/pictures/S31.jpg" class="pic" alt=""><div id="m54-s3-ov1" class="sweepbox" data-layout-allow-overlap style="left:0px;top:0px;width:1920px;height:540px"><div id="m54-s3-ov1-b" class="sweepband"></div></div></div></div></div></div>
+<div id="m54-s4" class="clip" data-start="38.88" data-duration="1.22" style="z-index:27"><div id="m54-s4-t" class="tt"><div id="m54-s4-fin" class="fin"><div class="fill card"><div id="m54-s4-in" class="cardtxt"><div class="ln" id="m54-s4-l0">THIS PART IS</div><div class="ln" id="m54-s4-l1"><span class="badge yellow">FINE</span></div></div></div></div></div></div>
+<div id="m55-s0" class="clip" data-start="40.1" data-duration="1.58" style="z-index:28"><div id="m55-s0-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m55-s0-fin" class="fin"><div id="m55-s0-cam" class="cam"><div class="fill diag"><div class="wcard"></div><div class="wrow" id="m55-s0-dg-r0" style="top:90px"><div class="wbg" id="m55-s0-dg-bg0"></div><div class="wlet" id="m55-s0-dg-L0" style="background:#F2C230;color:#1A1A1A">W</div><div class="wlab" id="m55-s0-dg-lb0">WISH</div><div class="wslot" id="m55-s0-dg-sl0"><div class="wans" id="m55-s0-dg-a0">CHALLENGING BUT<br><span class="badge yellow">POSSIBLE</span></div></div><div class="wtick" id="m55-s0-dg-tk0"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m55-s0-dg-r1" style="top:325px"><div class="wbg" id="m55-s0-dg-bg1"></div><div class="wlet" id="m55-s0-dg-L1" style="background:#F2C230;color:#1A1A1A">O</div><div class="wlab" id="m55-s0-dg-lb1">OUTCOME</div><div class="wslot" id="m55-s0-dg-sl1"><div class="wans" id="m55-s0-dg-a1"></div></div><div class="wtick" id="m55-s0-dg-tk1"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m55-s0-dg-r2" style="top:560px"><div class="wbg" id="m55-s0-dg-bg2"></div><div class="wlet" id="m55-s0-dg-L2" style="background:#D64545;color:#fff">O</div><div class="wlab" id="m55-s0-dg-lb2">OBSTACLE</div><div class="wslot" id="m55-s0-dg-sl2"><div class="wans" id="m55-s0-dg-a2"></div></div><div class="wtick" id="m55-s0-dg-tk2"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m55-s0-dg-r3" style="top:795px"><div class="wbg" id="m55-s0-dg-bg3"></div><div class="wlet" id="m55-s0-dg-L3" style="background:#9CC08B;color:#1A1A1A">P</div><div class="wlab" id="m55-s0-dg-lb3">PLAN</div><div class="wslot" id="m55-s0-dg-sl3"><div class="wans" id="m55-s0-dg-a3"></div></div><div class="wtick" id="m55-s0-dg-tk3"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m55-s1" class="clip" data-start="41.68" data-duration="2.66" style="z-index:29"><div id="m55-s1-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m55-s1-fin" class="fin"><div id="m55-s1-cam" class="cam"><div class="fill diag"><div class="wcard"></div><div class="wrow" id="m55-s1-dg-r0" style="top:90px"><div class="wbg" id="m55-s1-dg-bg0"></div><div class="wlet" id="m55-s1-dg-L0" style="background:#F2C230;color:#1A1A1A">W</div><div class="wlab" id="m55-s1-dg-lb0">WISH</div><div class="wslot" id="m55-s1-dg-sl0"><div class="wans" id="m55-s1-dg-a0">CHALLENGING BUT<br><span class="badge yellow">POSSIBLE</span></div></div><div class="wtick" id="m55-s1-dg-tk0"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m55-s1-dg-r1" style="top:325px"><div class="wbg" id="m55-s1-dg-bg1"></div><div class="wlet" id="m55-s1-dg-L1" style="background:#F2C230;color:#1A1A1A">O</div><div class="wlab" id="m55-s1-dg-lb1">OUTCOME</div><div class="wslot" id="m55-s1-dg-sl1"><div class="wans" id="m55-s1-dg-a1"></div></div><div class="wtick" id="m55-s1-dg-tk1"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m55-s1-dg-r2" style="top:560px"><div class="wbg" id="m55-s1-dg-bg2"></div><div class="wlet" id="m55-s1-dg-L2" style="background:#D64545;color:#fff">O</div><div class="wlab" id="m55-s1-dg-lb2">OBSTACLE</div><div class="wslot" id="m55-s1-dg-sl2"><div class="wans" id="m55-s1-dg-a2"></div></div><div class="wtick" id="m55-s1-dg-tk2"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m55-s1-dg-r3" style="top:795px"><div class="wbg" id="m55-s1-dg-bg3"></div><div class="wlet" id="m55-s1-dg-L3" style="background:#9CC08B;color:#1A1A1A">P</div><div class="wlab" id="m55-s1-dg-lb3">PLAN</div><div class="wslot" id="m55-s1-dg-sl3"><div class="wans" id="m55-s1-dg-a3"></div></div><div class="wtick" id="m55-s1-dg-tk3"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m56-s0" class="clip" data-start="44.34" data-duration="2.7" style="z-index:30"><div id="m56-s0-t" class="tt"><div id="m56-s0-fin" class="fin"><div id="m56-s0-cam" class="cam"><img src="assets/pictures/S11b.jpg" class="pic" alt=""></div></div><div id="m56-s0-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 3</div><div class="spill2">OBSTACLE</div></div></div></div>
+<div id="m56-s1" class="clip" data-start="47.04" data-duration="3.08" style="z-index:31"><div id="m56-s1-t" class="tt"><div id="m56-s1-fin" class="fin"><div id="m56-s1-cam" class="cam"><img src="assets/pictures/S11b.jpg" class="pic" alt=""></div></div><div id="m56-s1-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 3</div><div class="spill2">OBSTACLE</div></div><div id="m56-s1-so1" class="scr" data-layout-allow-overlap><div class="spill2 tagp"><span>THE ONE</span> <span class="badge red">EVERYONE SKIPS</span></div></div></div></div>
+<div id="m56-s2" class="clip" data-start="50.12" data-duration="3.18" style="z-index:32"><div id="m56-s2-t" class="tt"><div id="m56-s2-fin" class="fin"><div id="m56-s2-cam" class="cam"><img src="assets/pictures/S11b.jpg" class="pic" alt=""></div></div><div id="m56-s2-so1" class="scr" data-layout-allow-overlap><div class="spill2 tagp"><span>THE ONE</span> <span class="badge red">EVERYONE SKIPS</span></div></div></div></div>
+<div id="m56-s3" class="clip" data-start="53.3" data-duration="1.94" style="z-index:33"><div id="m56-s3-t" class="tt"><div id="m56-s3-fin" class="fin"><div id="m56-s3-cam" class="cam"><img src="assets/pictures/S11b.jpg" class="pic" alt=""></div></div></div></div>
+<div id="m57-s0" class="clip" data-start="55.24" data-duration="3.12" style="z-index:34"><div id="m57-s0-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m57-s0-fin" class="fin"><div id="m57-s0-cam" class="cam"><div class="fill diag cardc"><div class="cardtxt st" id="m57-s0-dg-st0"><div class="ln" id="m57-s0-dgs0-l0">NOT</div><div class="ln" id="m57-s0-dgs0-l1"><span class="badge red">OTHER PEOPLE</span></div></div><div class="cardtxt st" id="m57-s0-dg-st1"><div class="ln" id="m57-s0-dgs1-l0">NOT</div><div class="ln" id="m57-s0-dgs1-l1"><span class="badge red">BAD LUCK</span></div></div><div class="cardtxt st" id="m57-s0-dg-st2"><div class="ln" id="m57-s0-dgs2-l0"><span class="badge yellow">YOU.</span></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m57-s1" class="clip" data-start="58.36" data-duration="2.16" style="z-index:35"><div id="m57-s1-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m57-s1-fin" class="fin"><div id="m57-s1-cam" class="cam"><div class="fill diag cardc"><div class="cardtxt st" id="m57-s1-dg-st0"><div class="ln" id="m57-s1-dgs0-l0">NOT</div><div class="ln" id="m57-s1-dgs0-l1"><span class="badge red">OTHER PEOPLE</span></div></div><div class="cardtxt st" id="m57-s1-dg-st1"><div class="ln" id="m57-s1-dgs1-l0">NOT</div><div class="ln" id="m57-s1-dgs1-l1"><span class="badge red">BAD LUCK</span></div></div><div class="cardtxt st" id="m57-s1-dg-st2"><div class="ln" id="m57-s1-dgs2-l0"><span class="badge yellow">YOU.</span></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m58-s0" class="clip" data-start="60.52" data-duration="3.68" style="z-index:36"><div id="m58-s0-t" class="tt"><div id="m58-s0-fin" class="fin"><div id="m58-s0-cam" class="cam"><img src="assets/pictures/S22.jpg" class="pic" alt=""></div></div></div></div>
+<div id="m58-s1" class="clip" data-start="64.2" data-duration="1.34" style="z-index:37"><div id="m58-s1-t" class="tt"><div id="m58-s1-fin" class="fin"><div id="m58-s1-cam" class="cam"><img src="assets/pictures/S22.jpg" class="pic" alt=""></div></div></div></div>
+<div id="m58-s2" class="clip" data-start="65.54" data-duration="2.02" style="z-index:38"><div id="m58-s2-t" class="tt"><div id="m58-s2-fin" class="fin"><div class="fill iconbg"><img id="m58-s2-img" src="assets/icons/I06.jpg" class="pic" alt=""></div></div></div></div>
+<div id="m59-s0" class="clip" data-start="67.56" data-duration="2.66" style="z-index:39"><div id="m59-s0-t" class="tt"><div id="m59-s0-fin" class="fin"><div id="m59-s0-cam" class="cam"><img src="assets/pictures/S11b.jpg" class="pic" alt=""></div></div></div></div>
+<div id="m59-s1" class="clip" data-start="70.22" data-duration="1.46" style="z-index:40"><div id="m59-s1-t" class="tt"><div id="m59-s1-fin" class="fin"><div id="m59-s1-cam" class="cam"><img src="assets/pictures/S11b.jpg" class="pic" alt=""></div></div></div></div>
+<div id="m60-s0" class="clip" data-start="71.68" data-duration="2.56" style="z-index:41"><div id="m60-s0-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m60-s0-fin" class="fin"><div class="fill card"><div id="m60-s0-in" class="cardtxt"><div class="ln" id="m60-s0-l0">DOESN'T</div><div class="ln" id="m60-s0-l1"><span class="badge red">KILL</span></div><div class="ln" id="m60-s0-l2">MOTIVATION</div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m60-s1" class="clip" data-start="74.24" data-duration="3.46" style="z-index:42"><div id="m60-s1-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m60-s1-fin" class="fin"><div id="m60-s1-cam" class="cam"><div class="fill diag"><div class="wcard"></div><div class="wrow" id="m60-s1-dg-r0" style="top:90px"><div class="wbg" id="m60-s1-dg-bg0"></div><div class="wlet" id="m60-s1-dg-L0" style="background:#F2C230;color:#1A1A1A">W</div><div class="wlab" id="m60-s1-dg-lb0">WISH</div><div class="wslot" id="m60-s1-dg-sl0"><div class="wans" id="m60-s1-dg-a0"></div></div><div class="wtick" id="m60-s1-dg-tk0"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m60-s1-dg-r1" style="top:325px"><div class="wbg" id="m60-s1-dg-bg1"></div><div class="wlet" id="m60-s1-dg-L1" style="background:#F2C230;color:#1A1A1A">O</div><div class="wlab" id="m60-s1-dg-lb1">OUTCOME</div><div class="wslot" id="m60-s1-dg-sl1"><div class="wans" id="m60-s1-dg-a1"></div></div><div class="wtick" id="m60-s1-dg-tk1"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m60-s1-dg-r2" style="top:560px"><div class="wbg" id="m60-s1-dg-bg2"></div><div class="wlet" id="m60-s1-dg-L2" style="background:#D64545;color:#fff">O</div><div class="wlab" id="m60-s1-dg-lb2">OBSTACLE</div><div class="wslot" id="m60-s1-dg-sl2"><div class="wans" id="m60-s1-dg-a2">TIME TO<br><span class="badge yellow">GET READY</span></div></div><div class="wtick" id="m60-s1-dg-tk2"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m60-s1-dg-r3" style="top:795px"><div class="wbg" id="m60-s1-dg-bg3"></div><div class="wlet" id="m60-s1-dg-L3" style="background:#9CC08B;color:#1A1A1A">P</div><div class="wlab" id="m60-s1-dg-lb3">PLAN</div><div class="wslot" id="m60-s1-dg-sl3"><div class="wans" id="m60-s1-dg-a3"></div></div><div class="wtick" id="m60-s1-dg-tk3"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m60-s2" class="clip" data-start="77.7" data-duration="3.1" style="z-index:43"><div id="m60-s2-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m60-s2-fin" class="fin"><div id="m60-s2-cam" class="cam"><div class="fill diag"><div class="wcard"></div><div class="wrow" id="m60-s2-dg-r0" style="top:90px"><div class="wbg" id="m60-s2-dg-bg0"></div><div class="wlet" id="m60-s2-dg-L0" style="background:#F2C230;color:#1A1A1A">W</div><div class="wlab" id="m60-s2-dg-lb0">WISH</div><div class="wslot" id="m60-s2-dg-sl0"><div class="wans" id="m60-s2-dg-a0"></div></div><div class="wtick" id="m60-s2-dg-tk0"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m60-s2-dg-r1" style="top:325px"><div class="wbg" id="m60-s2-dg-bg1"></div><div class="wlet" id="m60-s2-dg-L1" style="background:#F2C230;color:#1A1A1A">O</div><div class="wlab" id="m60-s2-dg-lb1">OUTCOME</div><div class="wslot" id="m60-s2-dg-sl1"><div class="wans" id="m60-s2-dg-a1"></div></div><div class="wtick" id="m60-s2-dg-tk1"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m60-s2-dg-r2" style="top:560px"><div class="wbg" id="m60-s2-dg-bg2"></div><div class="wlet" id="m60-s2-dg-L2" style="background:#D64545;color:#fff">O</div><div class="wlab" id="m60-s2-dg-lb2">OBSTACLE</div><div class="wslot" id="m60-s2-dg-sl2"><div class="wans" id="m60-s2-dg-a2">TIME TO<br><span class="badge yellow">GET READY</span></div></div><div class="wtick" id="m60-s2-dg-tk2"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m60-s2-dg-r3" style="top:795px"><div class="wbg" id="m60-s2-dg-bg3"></div><div class="wlet" id="m60-s2-dg-L3" style="background:#9CC08B;color:#1A1A1A">P</div><div class="wlab" id="m60-s2-dg-lb3">PLAN</div><div class="wslot" id="m60-s2-dg-sl3"><div class="wans" id="m60-s2-dg-a3"></div></div><div class="wtick" id="m60-s2-dg-tk3"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m60-s3" class="clip" data-start="80.8" data-duration="1.84" style="z-index:44"><div id="m60-s3-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m60-s3-fin" class="fin"><div id="m60-s3-cam" class="cam"><div class="fill diag"><div class="wcard"></div><div class="wrow" id="m60-s3-dg-r0" style="top:90px"><div class="wbg" id="m60-s3-dg-bg0"></div><div class="wlet" id="m60-s3-dg-L0" style="background:#F2C230;color:#1A1A1A">W</div><div class="wlab" id="m60-s3-dg-lb0">WISH</div><div class="wslot" id="m60-s3-dg-sl0"><div class="wans" id="m60-s3-dg-a0"></div></div><div class="wtick" id="m60-s3-dg-tk0"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m60-s3-dg-r1" style="top:325px"><div class="wbg" id="m60-s3-dg-bg1"></div><div class="wlet" id="m60-s3-dg-L1" style="background:#F2C230;color:#1A1A1A">O</div><div class="wlab" id="m60-s3-dg-lb1">OUTCOME</div><div class="wslot" id="m60-s3-dg-sl1"><div class="wans" id="m60-s3-dg-a1"></div></div><div class="wtick" id="m60-s3-dg-tk1"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m60-s3-dg-r2" style="top:560px"><div class="wbg" id="m60-s3-dg-bg2"></div><div class="wlet" id="m60-s3-dg-L2" style="background:#D64545;color:#fff">O</div><div class="wlab" id="m60-s3-dg-lb2">OBSTACLE</div><div class="wslot" id="m60-s3-dg-sl2"><div class="wans" id="m60-s3-dg-a2">TIME TO<br><span class="badge yellow">GET READY</span></div></div><div class="wtick" id="m60-s3-dg-tk2"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m60-s3-dg-r3" style="top:795px"><div class="wbg" id="m60-s3-dg-bg3"></div><div class="wlet" id="m60-s3-dg-L3" style="background:#9CC08B;color:#1A1A1A">P</div><div class="wlab" id="m60-s3-dg-lb3">PLAN</div><div class="wslot" id="m60-s3-dg-sl3"><div class="wans" id="m60-s3-dg-a3"></div></div><div class="wtick" id="m60-s3-dg-tk3"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m61-s0" class="clip" data-start="82.64" data-duration="1.82" style="z-index:45"><div id="m61-s0-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m61-s0-fin" class="fin"><div id="m61-s0-cam" class="cam"><div class="fill diag"><div class="wcard"></div><div class="wrow" id="m61-s0-dg-r0" style="top:90px"><div class="wbg" id="m61-s0-dg-bg0"></div><div class="wlet" id="m61-s0-dg-L0" style="background:#F2C230;color:#1A1A1A">W</div><div class="wlab" id="m61-s0-dg-lb0">WISH</div><div class="wslot" id="m61-s0-dg-sl0"><div class="wans" id="m61-s0-dg-a0"></div></div><div class="wtick" id="m61-s0-dg-tk0"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m61-s0-dg-r1" style="top:325px"><div class="wbg" id="m61-s0-dg-bg1"></div><div class="wlet" id="m61-s0-dg-L1" style="background:#F2C230;color:#1A1A1A">O</div><div class="wlab" id="m61-s0-dg-lb1">OUTCOME</div><div class="wslot" id="m61-s0-dg-sl1"><div class="wans" id="m61-s0-dg-a1"></div></div><div class="wtick" id="m61-s0-dg-tk1"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m61-s0-dg-r2" style="top:560px"><div class="wbg" id="m61-s0-dg-bg2"></div><div class="wlet" id="m61-s0-dg-L2" style="background:#D64545;color:#fff">O</div><div class="wlab" id="m61-s0-dg-lb2">OBSTACLE</div><div class="wslot" id="m61-s0-dg-sl2"><div class="wans" id="m61-s0-dg-a2"></div></div><div class="wtick" id="m61-s0-dg-tk2"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m61-s0-dg-r3" style="top:795px"><div class="wbg" id="m61-s0-dg-bg3"></div><div class="wlet" id="m61-s0-dg-L3" style="background:#9CC08B;color:#1A1A1A">P</div><div class="wlab" id="m61-s0-dg-lb3">PLAN</div><div class="wslot" id="m61-s0-dg-sl3"><div class="wans" id="m61-s0-dg-a3"></div></div><div class="wtick" id="m61-s0-dg-tk3"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></div></div></div></div></div><div class="fborder"></div><div id="m61-s0-so0" class="scr row" data-layout-allow-overlap><div class="pill big">STEP 4</div><div class="spill2">PLAN</div></div></div></div>
+<div id="m61-s1" class="clip" data-start="84.46" data-duration="2.44" style="z-index:46"><div id="m61-s1-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m61-s1-fin" class="fin"><div id="m61-s1-cam" class="cam"><div class="fill diag"><div class="wcard"></div><div class="wrow" id="m61-s1-dg-r0" style="top:90px"><div class="wbg" id="m61-s1-dg-bg0"></div><div class="wlet" id="m61-s1-dg-L0" style="background:#F2C230;color:#1A1A1A">W</div><div class="wlab" id="m61-s1-dg-lb0">WISH</div><div class="wslot" id="m61-s1-dg-sl0"><div class="wans" id="m61-s1-dg-a0"></div></div><div class="wtick" id="m61-s1-dg-tk0"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m61-s1-dg-r1" style="top:325px"><div class="wbg" id="m61-s1-dg-bg1"></div><div class="wlet" id="m61-s1-dg-L1" style="background:#F2C230;color:#1A1A1A">O</div><div class="wlab" id="m61-s1-dg-lb1">OUTCOME</div><div class="wslot" id="m61-s1-dg-sl1"><div class="wans" id="m61-s1-dg-a1"></div></div><div class="wtick" id="m61-s1-dg-tk1"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m61-s1-dg-r2" style="top:560px"><div class="wbg" id="m61-s1-dg-bg2"></div><div class="wlet" id="m61-s1-dg-L2" style="background:#D64545;color:#fff">O</div><div class="wlab" id="m61-s1-dg-lb2">OBSTACLE</div><div class="wslot" id="m61-s1-dg-sl2"><div class="wans" id="m61-s1-dg-a2"></div></div><div class="wtick" id="m61-s1-dg-tk2"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m61-s1-dg-r3" style="top:795px"><div class="wbg" id="m61-s1-dg-bg3"></div><div class="wlet" id="m61-s1-dg-L3" style="background:#9CC08B;color:#1A1A1A">P</div><div class="wlab" id="m61-s1-dg-lb3">PLAN</div><div class="wslot" id="m61-s1-dg-sl3"><div class="wans" id="m61-s1-dg-a3"></div></div><div class="wtick" id="m61-s1-dg-tk3"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></div></div></div></div></div><div class="fborder"></div><div id="m61-s1-so0" class="scr row" data-layout-allow-overlap><div class="pill big">STEP 4</div><div class="spill2">PLAN</div></div></div></div>
+<div id="m61-s2" class="clip" data-start="86.9" data-duration="1.58" style="z-index:47"><div id="m61-s2-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m61-s2-fin" class="fin"><div id="m61-s2-cam" class="cam"><div class="fill diag"><div class="wcard"></div><div class="wrow" id="m61-s2-dg-r0" style="top:90px"><div class="wbg" id="m61-s2-dg-bg0"></div><div class="wlet" id="m61-s2-dg-L0" style="background:#F2C230;color:#1A1A1A">W</div><div class="wlab" id="m61-s2-dg-lb0">WISH</div><div class="wslot" id="m61-s2-dg-sl0"><div class="wans" id="m61-s2-dg-a0"></div></div><div class="wtick" id="m61-s2-dg-tk0"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m61-s2-dg-r1" style="top:325px"><div class="wbg" id="m61-s2-dg-bg1"></div><div class="wlet" id="m61-s2-dg-L1" style="background:#F2C230;color:#1A1A1A">O</div><div class="wlab" id="m61-s2-dg-lb1">OUTCOME</div><div class="wslot" id="m61-s2-dg-sl1"><div class="wans" id="m61-s2-dg-a1"></div></div><div class="wtick" id="m61-s2-dg-tk1"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m61-s2-dg-r2" style="top:560px"><div class="wbg" id="m61-s2-dg-bg2"></div><div class="wlet" id="m61-s2-dg-L2" style="background:#D64545;color:#fff">O</div><div class="wlab" id="m61-s2-dg-lb2">OBSTACLE</div><div class="wslot" id="m61-s2-dg-sl2"><div class="wans" id="m61-s2-dg-a2"></div></div><div class="wtick" id="m61-s2-dg-tk2"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m61-s2-dg-r3" style="top:795px"><div class="wbg" id="m61-s2-dg-bg3"></div><div class="wlet" id="m61-s2-dg-L3" style="background:#9CC08B;color:#1A1A1A">P</div><div class="wlab" id="m61-s2-dg-lb3">PLAN</div><div class="wslot" id="m61-s2-dg-sl3"><div class="wans" id="m61-s2-dg-a3"></div></div><div class="wtick" id="m61-s2-dg-tk3"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m62-s0" class="clip" data-start="88.48" data-duration="2.24" style="z-index:48"><div id="m62-s0-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m62-s0-fin" class="fin"><div id="m62-s0-cam" class="cam"><div class="fill diag"><div class="half" id="m62-s0-dg-L" style="left:0"><div class="ln" style="font-size:100px">IF:</div><div class="ln" style="font-size:100px"><span class="badge yellow">TIRED + PHONE</span></div></div><div class="vdiv"></div><div class="half" id="m62-s0-dg-R" style="left:960px"><div class="ln" style="font-size:100px">THEN:</div><div class="ln" style="font-size:100px"><span class="badge yellow">OTHER ROOM</span></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m62-s1" class="clip" data-start="90.72" data-duration="1.74" style="z-index:49"><div id="m62-s1-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m62-s1-fin" class="fin"><div id="m62-s1-cam" class="cam"><div class="fill diag"><div class="half" id="m62-s1-dg-L" style="left:0"><div class="ln" style="font-size:100px">IF:</div><div class="ln" style="font-size:100px"><span class="badge yellow">TIRED + PHONE</span></div></div><div class="vdiv"></div><div class="half" id="m62-s1-dg-R" style="left:960px"><div class="ln" style="font-size:100px">THEN:</div><div class="ln" style="font-size:100px"><span class="badge yellow">OTHER ROOM</span></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m62-s2" class="clip" data-start="92.46" data-duration="2.1" style="z-index:50"><div id="m62-s2-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m62-s2-fin" class="fin"><div class="fill iconbg"><img id="m62-s2-img" src="assets/icons/I43.jpg" class="pic" alt=""></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m63-s0" class="clip" data-start="94.56" data-duration="3.14" style="z-index:51"><div id="m63-s0-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m63-s0-fin" class="fin"><div id="m63-s0-cam" class="cam"><div class="fill diag"><div class="bar" id="m63-s0-dg-b0" style="left:420px;top:830px;width:380px;height:0px;background:#F2C230"><div class="btag"><span class="badge yellow" id="m63-s0-dg-v0" style="">0</span></div></div><div class="blab" id="m63-s0-dg-bl0" style="left:280px;top:860px;width:660px">USED WOOP</div><div class="bar" id="m63-s0-dg-b1" style="left:1120px;top:830px;width:380px;height:0px;background:#E6E1D6"><div class="btag"><span class="badge yellow" id="m63-s0-dg-v1" style="background:#fff">0</span></div></div><div class="blab" id="m63-s0-dg-bl1" style="left:980px;top:860px;width:660px">DIDN'T</div><div class="ctitle">PRACTICE QUESTIONS</div><div class="qby" style="top:975px;font-size:46px">Duckworth et al., 2011</div><div class="plusb" id="m63-s0-dg-pl"><span class="badge yellow">+60%</span></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m63-s1" class="clip" data-start="97.7" data-duration="3.16" style="z-index:52"><div id="m63-s1-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m63-s1-fin" class="fin"><div id="m63-s1-cam" class="cam"><div class="fill diag"><div class="bar" id="m63-s1-dg-b0" style="left:420px;top:830px;width:380px;height:0px;background:#F2C230"><div class="btag"><span class="badge yellow" id="m63-s1-dg-v0" style="">0</span></div></div><div class="blab" id="m63-s1-dg-bl0" style="left:280px;top:860px;width:660px">USED WOOP</div><div class="bar" id="m63-s1-dg-b1" style="left:1120px;top:830px;width:380px;height:0px;background:#E6E1D6"><div class="btag"><span class="badge yellow" id="m63-s1-dg-v1" style="background:#fff">0</span></div></div><div class="blab" id="m63-s1-dg-bl1" style="left:980px;top:860px;width:660px">DIDN'T</div><div class="ctitle">PRACTICE QUESTIONS</div><div class="qby" style="top:975px;font-size:46px">Duckworth et al., 2011</div><div class="plusb" id="m63-s1-dg-pl"><span class="badge yellow">+60%</span></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m63-s2" class="clip" data-start="100.86" data-duration="1.68" style="z-index:53"><div id="m63-s2-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m63-s2-fin" class="fin"><div id="m63-s2-cam" class="cam"><div class="fill diag"><div class="bar" id="m63-s2-dg-b0" style="left:420px;top:830px;width:380px;height:0px;background:#F2C230"><div class="btag"><span class="badge yellow" id="m63-s2-dg-v0" style="">0</span></div></div><div class="blab" id="m63-s2-dg-bl0" style="left:280px;top:860px;width:660px">USED WOOP</div><div class="bar" id="m63-s2-dg-b1" style="left:1120px;top:830px;width:380px;height:0px;background:#E6E1D6"><div class="btag"><span class="badge yellow" id="m63-s2-dg-v1" style="background:#fff">0</span></div></div><div class="blab" id="m63-s2-dg-bl1" style="left:980px;top:860px;width:660px">DIDN'T</div><div class="ctitle">PRACTICE QUESTIONS</div><div class="qby" style="top:975px;font-size:46px">Duckworth et al., 2011</div><div class="plusb" id="m63-s2-dg-pl"><span class="badge yellow">+60%</span></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m63-s3" class="clip" data-start="102.54" data-duration="3.5" style="z-index:54"><div id="m63-s3-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m63-s3-fin" class="fin"><div id="m63-s3-cam" class="cam"><div class="fill diag"><div class="bar" id="m63-s3-dg-b0" style="left:420px;top:830px;width:380px;height:0px;background:#F2C230"><div class="btag"><span class="badge yellow" id="m63-s3-dg-v0" style="">0</span></div></div><div class="blab" id="m63-s3-dg-bl0" style="left:280px;top:860px;width:660px">USED WOOP</div><div class="bar" id="m63-s3-dg-b1" style="left:1120px;top:830px;width:380px;height:0px;background:#E6E1D6"><div class="btag"><span class="badge yellow" id="m63-s3-dg-v1" style="background:#fff">0</span></div></div><div class="blab" id="m63-s3-dg-bl1" style="left:980px;top:860px;width:660px">DIDN'T</div><div class="ctitle">PRACTICE QUESTIONS</div><div class="qby" style="top:975px;font-size:46px">Duckworth et al., 2011</div><div class="plusb" id="m63-s3-dg-pl"><span class="badge yellow">+60%</span></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m63-s4" class="clip" data-start="106.04" data-duration="0.62" style="z-index:55"><div id="m63-s4-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m63-s4-fin" class="fin"><div id="m63-s4-cam" class="cam"><div class="fill diag"><div class="bar" id="m63-s4-dg-b0" style="left:420px;top:830px;width:380px;height:0px;background:#F2C230"><div class="btag"><span class="badge yellow" id="m63-s4-dg-v0" style="">0</span></div></div><div class="blab" id="m63-s4-dg-bl0" style="left:280px;top:860px;width:660px">USED WOOP</div><div class="bar" id="m63-s4-dg-b1" style="left:1120px;top:830px;width:380px;height:0px;background:#E6E1D6"><div class="btag"><span class="badge yellow" id="m63-s4-dg-v1" style="background:#fff">0</span></div></div><div class="blab" id="m63-s4-dg-bl1" style="left:980px;top:860px;width:660px">DIDN'T</div><div class="ctitle">PRACTICE QUESTIONS</div><div class="qby" style="top:975px;font-size:46px">Duckworth et al., 2011</div><div class="plusb" id="m63-s4-dg-pl"><span class="badge yellow">+60%</span></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m64-s0" class="clip" data-start="106.66" data-duration="3" style="z-index:56"><div id="m64-s0-t" class="tt"><div id="m64-s0-fin" class="fin"><div id="m64-s0-cam" class="cam"><img src="assets/pictures/S11.jpg" class="pic" alt=""></div></div><div id="m64-s0-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 5</div><div class="spill2">PICTURE THE PROCESS</div></div></div></div>
+<div id="m64-s1" class="clip" data-start="109.66" data-duration="3.2" style="z-index:57"><div id="m64-s1-t" class="tt"><div id="m64-s1-fin" class="fin"><div id="m64-s1-cam" class="cam"><img src="assets/pictures/S11.jpg" class="pic" alt=""></div></div><div id="m64-s1-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 5</div><div class="spill2">PICTURE THE PROCESS</div></div></div></div>
+<div id="m65-s0" class="clip" data-start="112.86" data-duration="3.26" style="z-index:58"><div id="m65-s0-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m65-s0-fin" class="fin"><div id="m65-s0-cam" class="cam"><div class="fill diag cardc"><div class="irow"><div class="icol"><div id="m65-s0-dg-ic0" class="itile slot"><img id="m65-s0-dg-im0" src="assets/icons/I60.jpg" alt=""></div><div class="ilab" id="m65-s0-dg-il0">OPEN THE LAPTOP</div></div><div class="icol"><div id="m65-s0-dg-ic1" class="itile slot"><img id="m65-s0-dg-im1" src="assets/icons/I49.jpg" alt=""></div><div class="ilab" id="m65-s0-dg-il1">LACE UP</div></div><div class="icol"><div id="m65-s0-dg-ic2" class="itile slot"><img id="m65-s0-dg-im2" src="assets/icons/I62.jpg" alt=""></div><div class="ilab" id="m65-s0-dg-il2">HIT RECORD</div></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m65-s1" class="clip" data-start="116.12" data-duration="1.74" style="z-index:59"><div id="m65-s1-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m65-s1-fin" class="fin"><div class="fill iconbg"><img id="m65-s1-img" src="assets/icons/I52.jpg" class="pic" alt=""></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m65-s2" class="clip" data-start="117.86" data-duration="0.52" style="z-index:60"><div id="m65-s2-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m65-s2-fin" class="fin"><div id="m65-s2-cam" class="cam"><div class="fill diag cardc"><div class="irow"><div class="icol"><div id="m65-s2-dg-ic0" class="itile slot"><img id="m65-s2-dg-im0" src="assets/icons/I60.jpg" alt=""></div><div class="ilab" id="m65-s2-dg-il0">OPEN THE LAPTOP</div></div><div class="icol"><div id="m65-s2-dg-ic1" class="itile slot"><img id="m65-s2-dg-im1" src="assets/icons/I49.jpg" alt=""></div><div class="ilab" id="m65-s2-dg-il1">LACE UP</div></div><div class="icol"><div id="m65-s2-dg-ic2" class="itile slot"><img id="m65-s2-dg-im2" src="assets/icons/I62.jpg" alt=""></div><div class="ilab" id="m65-s2-dg-il2">HIT RECORD</div></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m65-s3" class="clip" data-start="118.38" data-duration="1.9" style="z-index:61"><div id="m65-s3-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m65-s3-fin" class="fin"><div class="fill card"><div id="m65-s3-in" class="cardtxt"><div class="ln" id="m65-s3-l0">THE</div><div class="ln" id="m65-s3-l1"><span class="badge yellow">BORING PART</span></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m65-s4" class="clip" data-start="120.28" data-duration="2.72" style="z-index:62"><div id="m65-s4-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m65-s4-fin" class="fin"><div id="m65-s4-cam" class="cam"><div class="fill diag cardc"><div class="irow"><div class="icol"><div id="m65-s4-dg-ic0" class="itile slot"><img id="m65-s4-dg-im0" src="assets/icons/I60.jpg" alt=""></div><div class="ilab" id="m65-s4-dg-il0">OPEN THE LAPTOP</div></div><div class="icol"><div id="m65-s4-dg-ic1" class="itile slot"><img id="m65-s4-dg-im1" src="assets/icons/I49.jpg" alt=""></div><div class="ilab" id="m65-s4-dg-il1">LACE UP</div></div><div class="icol"><div id="m65-s4-dg-ic2" class="itile slot"><img id="m65-s4-dg-im2" src="assets/icons/I62.jpg" alt=""></div><div class="ilab" id="m65-s4-dg-il2">HIT RECORD</div></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m65-s5" class="clip" data-start="123" data-duration="1.94" style="z-index:63"><div id="m65-s5-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m65-s5-fin" class="fin"><div id="m65-s5-cam" class="cam"><div class="fill diag cardc"><div class="irow"><div class="icol"><div id="m65-s5-dg-ic0" class="itile slot"><img id="m65-s5-dg-im0" src="assets/icons/I60.jpg" alt=""></div><div class="ilab" id="m65-s5-dg-il0">OPEN THE LAPTOP</div></div><div class="icol"><div id="m65-s5-dg-ic1" class="itile slot"><img id="m65-s5-dg-im1" src="assets/icons/I49.jpg" alt=""></div><div class="ilab" id="m65-s5-dg-il1">LACE UP</div></div><div class="icol"><div id="m65-s5-dg-ic2" class="itile slot"><img id="m65-s5-dg-im2" src="assets/icons/I62.jpg" alt=""></div><div class="ilab" id="m65-s5-dg-il2">HIT RECORD</div></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m66-s0" class="clip" data-start="124.94" data-duration="3.38" style="z-index:64"><div id="m66-s0-t" class="tt"><div id="m66-s0-fin" class="fin"><div id="m66-s0-cam" class="cam"><img src="assets/pictures/S35.jpg" class="pic" alt=""></div></div></div></div>
+<div id="m67-s0" class="clip" data-start="128.32" data-duration="3.34" style="z-index:65"><div id="m67-s0-t" class="tt"><div id="m67-s0-fin" class="fin"><div id="m67-s0-cam" class="cam"><img src="assets/pictures/S10.jpg" class="pic" alt=""></div></div></div></div>
+<div id="m68-s0" class="clip" data-start="131.66" data-duration="2.74" style="z-index:66"><div id="m68-s0-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m68-s0-fin" class="fin"><div id="m68-s0-cam" class="cam"><div class="fill diag"><div class="wcard"></div><div class="wrow" id="m68-s0-dg-r0" style="top:90px"><div class="wbg" id="m68-s0-dg-bg0"></div><div class="wlet" id="m68-s0-dg-L0" style="background:#F2C230;color:#1A1A1A">W</div><div class="wlab" id="m68-s0-dg-lb0">WISH</div><div class="wslot" id="m68-s0-dg-sl0"><div class="wans" id="m68-s0-dg-a0">1 VIDEO<br><span class="badge yellow">EVERY WEEK</span></div></div><div class="wtick" id="m68-s0-dg-tk0"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m68-s0-dg-r1" style="top:325px"><div class="wbg" id="m68-s0-dg-bg1"></div><div class="wlet" id="m68-s0-dg-L1" style="background:#F2C230;color:#1A1A1A">O</div><div class="wlab" id="m68-s0-dg-lb1">OUTCOME</div><div class="wslot" id="m68-s0-dg-sl1"><div class="wans" id="m68-s0-dg-a1">A CHANNEL<br>I'M <span class="badge yellow">PROUD OF</span></div></div><div class="wtick" id="m68-s0-dg-tk1"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m68-s0-dg-r2" style="top:560px"><div class="wbg" id="m68-s0-dg-bg2"></div><div class="wlet" id="m68-s0-dg-L2" style="background:#D64545;color:#fff">O</div><div class="wlab" id="m68-s0-dg-lb2">OBSTACLE</div><div class="wslot" id="m68-s0-dg-sl2"><div class="wans" id="m68-s0-dg-a2"><span class="badge red">"IT'S NOT READY"</span></div></div><div class="wtick" id="m68-s0-dg-tk2"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m68-s0-dg-r3" style="top:795px"><div class="wbg" id="m68-s0-dg-bg3"></div><div class="wlet" id="m68-s0-dg-L3" style="background:#9CC08B;color:#1A1A1A">P</div><div class="wlab" id="m68-s0-dg-lb3">PLAN</div><div class="wslot" id="m68-s0-dg-sl3"><div class="wans" id="m68-s0-dg-a3">POST IT<br><span class="ulw"><span class="badge yellow">ANYWAY</span><svg class="ul" viewBox="0 0 400 30" preserveAspectRatio="none"><path id="m68-s0-dg-ul" d="M6 18 C60 6 110 26 170 14 S300 8 394 16" fill="none" stroke="#D64545" stroke-width="9" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg></span></div></div><div class="wtick" id="m68-s0-dg-tk3"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m68-s1" class="clip" data-start="134.4" data-duration="2.18" style="z-index:67"><div id="m68-s1-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m68-s1-fin" class="fin"><div class="fill iconbg"><img id="m68-s1-img" src="assets/icons/I13.jpg" class="pic" alt=""></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m68-s2" class="clip" data-start="136.58" data-duration="2.22" style="z-index:68"><div id="m68-s2-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m68-s2-fin" class="fin"><div id="m68-s2-cam" class="cam"><div class="fill diag"><div class="wcard"></div><div class="wrow" id="m68-s2-dg-r0" style="top:90px"><div class="wbg" id="m68-s2-dg-bg0"></div><div class="wlet" id="m68-s2-dg-L0" style="background:#F2C230;color:#1A1A1A">W</div><div class="wlab" id="m68-s2-dg-lb0">WISH</div><div class="wslot" id="m68-s2-dg-sl0"><div class="wans" id="m68-s2-dg-a0">1 VIDEO<br><span class="badge yellow">EVERY WEEK</span></div></div><div class="wtick" id="m68-s2-dg-tk0"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m68-s2-dg-r1" style="top:325px"><div class="wbg" id="m68-s2-dg-bg1"></div><div class="wlet" id="m68-s2-dg-L1" style="background:#F2C230;color:#1A1A1A">O</div><div class="wlab" id="m68-s2-dg-lb1">OUTCOME</div><div class="wslot" id="m68-s2-dg-sl1"><div class="wans" id="m68-s2-dg-a1">A CHANNEL<br>I'M <span class="badge yellow">PROUD OF</span></div></div><div class="wtick" id="m68-s2-dg-tk1"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m68-s2-dg-r2" style="top:560px"><div class="wbg" id="m68-s2-dg-bg2"></div><div class="wlet" id="m68-s2-dg-L2" style="background:#D64545;color:#fff">O</div><div class="wlab" id="m68-s2-dg-lb2">OBSTACLE</div><div class="wslot" id="m68-s2-dg-sl2"><div class="wans" id="m68-s2-dg-a2"><span class="badge red">"IT'S NOT READY"</span></div></div><div class="wtick" id="m68-s2-dg-tk2"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m68-s2-dg-r3" style="top:795px"><div class="wbg" id="m68-s2-dg-bg3"></div><div class="wlet" id="m68-s2-dg-L3" style="background:#9CC08B;color:#1A1A1A">P</div><div class="wlab" id="m68-s2-dg-lb3">PLAN</div><div class="wslot" id="m68-s2-dg-sl3"><div class="wans" id="m68-s2-dg-a3">POST IT<br><span class="ulw"><span class="badge yellow">ANYWAY</span><svg class="ul" viewBox="0 0 400 30" preserveAspectRatio="none"><path id="m68-s2-dg-ul" d="M6 18 C60 6 110 26 170 14 S300 8 394 16" fill="none" stroke="#D64545" stroke-width="9" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg></span></div></div><div class="wtick" id="m68-s2-dg-tk3"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m68-s3" class="clip" data-start="138.8" data-duration="1.88" style="z-index:69"><div id="m68-s3-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m68-s3-fin" class="fin"><div class="fill iconbg"><img id="m68-s3-img" src="assets/icons/I41.jpg" class="pic" alt=""></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m68-s4" class="clip" data-start="140.68" data-duration="2.26" style="z-index:70"><div id="m68-s4-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m68-s4-fin" class="fin"><div id="m68-s4-cam" class="cam"><div class="fill diag"><div class="wcard"></div><div class="wrow" id="m68-s4-dg-r0" style="top:90px"><div class="wbg" id="m68-s4-dg-bg0"></div><div class="wlet" id="m68-s4-dg-L0" style="background:#F2C230;color:#1A1A1A">W</div><div class="wlab" id="m68-s4-dg-lb0">WISH</div><div class="wslot" id="m68-s4-dg-sl0"><div class="wans" id="m68-s4-dg-a0">1 VIDEO<br><span class="badge yellow">EVERY WEEK</span></div></div><div class="wtick" id="m68-s4-dg-tk0"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m68-s4-dg-r1" style="top:325px"><div class="wbg" id="m68-s4-dg-bg1"></div><div class="wlet" id="m68-s4-dg-L1" style="background:#F2C230;color:#1A1A1A">O</div><div class="wlab" id="m68-s4-dg-lb1">OUTCOME</div><div class="wslot" id="m68-s4-dg-sl1"><div class="wans" id="m68-s4-dg-a1">A CHANNEL<br>I'M <span class="badge yellow">PROUD OF</span></div></div><div class="wtick" id="m68-s4-dg-tk1"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m68-s4-dg-r2" style="top:560px"><div class="wbg" id="m68-s4-dg-bg2"></div><div class="wlet" id="m68-s4-dg-L2" style="background:#D64545;color:#fff">O</div><div class="wlab" id="m68-s4-dg-lb2">OBSTACLE</div><div class="wslot" id="m68-s4-dg-sl2"><div class="wans" id="m68-s4-dg-a2"><span class="badge red">"IT'S NOT READY"</span></div></div><div class="wtick" id="m68-s4-dg-tk2"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m68-s4-dg-r3" style="top:795px"><div class="wbg" id="m68-s4-dg-bg3"></div><div class="wlet" id="m68-s4-dg-L3" style="background:#9CC08B;color:#1A1A1A">P</div><div class="wlab" id="m68-s4-dg-lb3">PLAN</div><div class="wslot" id="m68-s4-dg-sl3"><div class="wans" id="m68-s4-dg-a3">POST IT<br><span class="ulw"><span class="badge yellow">ANYWAY</span><svg class="ul" viewBox="0 0 400 30" preserveAspectRatio="none"><path id="m68-s4-dg-ul" d="M6 18 C60 6 110 26 170 14 S300 8 394 16" fill="none" stroke="#D64545" stroke-width="9" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg></span></div></div><div class="wtick" id="m68-s4-dg-tk3"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m68-s5" class="clip" data-start="142.94" data-duration="1.8" style="z-index:71"><div id="m68-s5-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m68-s5-fin" class="fin"><div id="m68-s5-cam" class="cam"><div class="fill diag"><div class="wcard"></div><div class="wrow" id="m68-s5-dg-r0" style="top:90px"><div class="wbg" id="m68-s5-dg-bg0"></div><div class="wlet" id="m68-s5-dg-L0" style="background:#F2C230;color:#1A1A1A">W</div><div class="wlab" id="m68-s5-dg-lb0">WISH</div><div class="wslot" id="m68-s5-dg-sl0"><div class="wans" id="m68-s5-dg-a0">1 VIDEO<br><span class="badge yellow">EVERY WEEK</span></div></div><div class="wtick" id="m68-s5-dg-tk0"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m68-s5-dg-r1" style="top:325px"><div class="wbg" id="m68-s5-dg-bg1"></div><div class="wlet" id="m68-s5-dg-L1" style="background:#F2C230;color:#1A1A1A">O</div><div class="wlab" id="m68-s5-dg-lb1">OUTCOME</div><div class="wslot" id="m68-s5-dg-sl1"><div class="wans" id="m68-s5-dg-a1">A CHANNEL<br>I'M <span class="badge yellow">PROUD OF</span></div></div><div class="wtick" id="m68-s5-dg-tk1"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m68-s5-dg-r2" style="top:560px"><div class="wbg" id="m68-s5-dg-bg2"></div><div class="wlet" id="m68-s5-dg-L2" style="background:#D64545;color:#fff">O</div><div class="wlab" id="m68-s5-dg-lb2">OBSTACLE</div><div class="wslot" id="m68-s5-dg-sl2"><div class="wans" id="m68-s5-dg-a2"><span class="badge red">"IT'S NOT READY"</span></div></div><div class="wtick" id="m68-s5-dg-tk2"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m68-s5-dg-r3" style="top:795px"><div class="wbg" id="m68-s5-dg-bg3"></div><div class="wlet" id="m68-s5-dg-L3" style="background:#9CC08B;color:#1A1A1A">P</div><div class="wlab" id="m68-s5-dg-lb3">PLAN</div><div class="wslot" id="m68-s5-dg-sl3"><div class="wans" id="m68-s5-dg-a3">POST IT<br><span class="ulw"><span class="badge yellow">ANYWAY</span><svg class="ul" viewBox="0 0 400 30" preserveAspectRatio="none"><path id="m68-s5-dg-ul" d="M6 18 C60 6 110 26 170 14 S300 8 394 16" fill="none" stroke="#D64545" stroke-width="9" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg></span></div></div><div class="wtick" id="m68-s5-dg-tk3"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m68-s6" class="clip" data-start="144.74" data-duration="2.72" style="z-index:72"><div id="m68-s6-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m68-s6-fin" class="fin"><div class="fill card"><div id="m68-s6-in" class="cardtxt"><div class="ln mid" id="m68-s6-l0"><span class="badge red">NOT GOOD ENOUGH</span></div><div class="ln" id="m68-s6-l1">YET</div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m68-s7" class="clip" data-start="147.46" data-duration="2.18" style="z-index:73"><div id="m68-s7-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m68-s7-fin" class="fin"><div id="m68-s7-cam" class="cam"><div class="fill diag"><div class="wcard"></div><div class="wrow" id="m68-s7-dg-r0" style="top:90px"><div class="wbg" id="m68-s7-dg-bg0"></div><div class="wlet" id="m68-s7-dg-L0" style="background:#F2C230;color:#1A1A1A">W</div><div class="wlab" id="m68-s7-dg-lb0">WISH</div><div class="wslot" id="m68-s7-dg-sl0"><div class="wans" id="m68-s7-dg-a0">1 VIDEO<br><span class="badge yellow">EVERY WEEK</span></div></div><div class="wtick" id="m68-s7-dg-tk0"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m68-s7-dg-r1" style="top:325px"><div class="wbg" id="m68-s7-dg-bg1"></div><div class="wlet" id="m68-s7-dg-L1" style="background:#F2C230;color:#1A1A1A">O</div><div class="wlab" id="m68-s7-dg-lb1">OUTCOME</div><div class="wslot" id="m68-s7-dg-sl1"><div class="wans" id="m68-s7-dg-a1">A CHANNEL<br>I'M <span class="badge yellow">PROUD OF</span></div></div><div class="wtick" id="m68-s7-dg-tk1"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m68-s7-dg-r2" style="top:560px"><div class="wbg" id="m68-s7-dg-bg2"></div><div class="wlet" id="m68-s7-dg-L2" style="background:#D64545;color:#fff">O</div><div class="wlab" id="m68-s7-dg-lb2">OBSTACLE</div><div class="wslot" id="m68-s7-dg-sl2"><div class="wans" id="m68-s7-dg-a2"><span class="badge red">"IT'S NOT READY"</span></div></div><div class="wtick" id="m68-s7-dg-tk2"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m68-s7-dg-r3" style="top:795px"><div class="wbg" id="m68-s7-dg-bg3"></div><div class="wlet" id="m68-s7-dg-L3" style="background:#9CC08B;color:#1A1A1A">P</div><div class="wlab" id="m68-s7-dg-lb3">PLAN</div><div class="wslot" id="m68-s7-dg-sl3"><div class="wans" id="m68-s7-dg-a3">POST IT<br><span class="ulw"><span class="badge yellow">ANYWAY</span><svg class="ul" viewBox="0 0 400 30" preserveAspectRatio="none"><path id="m68-s7-dg-ul" d="M6 18 C60 6 110 26 170 14 S300 8 394 16" fill="none" stroke="#D64545" stroke-width="9" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg></span></div></div><div class="wtick" id="m68-s7-dg-tk3"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m68-s8" class="clip" data-start="149.64" data-duration="2.8" style="z-index:74"><div id="m68-s8-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m68-s8-fin" class="fin"><div id="m68-s8-cam" class="cam"><div class="fill diag"><div class="wcard"></div><div class="wrow" id="m68-s8-dg-r0" style="top:90px"><div class="wbg" id="m68-s8-dg-bg0"></div><div class="wlet" id="m68-s8-dg-L0" style="background:#F2C230;color:#1A1A1A">W</div><div class="wlab" id="m68-s8-dg-lb0">WISH</div><div class="wslot" id="m68-s8-dg-sl0"><div class="wans" id="m68-s8-dg-a0">1 VIDEO<br><span class="badge yellow">EVERY WEEK</span></div></div><div class="wtick" id="m68-s8-dg-tk0"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m68-s8-dg-r1" style="top:325px"><div class="wbg" id="m68-s8-dg-bg1"></div><div class="wlet" id="m68-s8-dg-L1" style="background:#F2C230;color:#1A1A1A">O</div><div class="wlab" id="m68-s8-dg-lb1">OUTCOME</div><div class="wslot" id="m68-s8-dg-sl1"><div class="wans" id="m68-s8-dg-a1">A CHANNEL<br>I'M <span class="badge yellow">PROUD OF</span></div></div><div class="wtick" id="m68-s8-dg-tk1"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m68-s8-dg-r2" style="top:560px"><div class="wbg" id="m68-s8-dg-bg2"></div><div class="wlet" id="m68-s8-dg-L2" style="background:#D64545;color:#fff">O</div><div class="wlab" id="m68-s8-dg-lb2">OBSTACLE</div><div class="wslot" id="m68-s8-dg-sl2"><div class="wans" id="m68-s8-dg-a2"><span class="badge red">"IT'S NOT READY"</span></div></div><div class="wtick" id="m68-s8-dg-tk2"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m68-s8-dg-r3" style="top:795px"><div class="wbg" id="m68-s8-dg-bg3"></div><div class="wlet" id="m68-s8-dg-L3" style="background:#9CC08B;color:#1A1A1A">P</div><div class="wlab" id="m68-s8-dg-lb3">PLAN</div><div class="wslot" id="m68-s8-dg-sl3"><div class="wans" id="m68-s8-dg-a3">POST IT<br><span class="ulw"><span class="badge yellow">ANYWAY</span><svg class="ul" viewBox="0 0 400 30" preserveAspectRatio="none"><path id="m68-s8-dg-ul" d="M6 18 C60 6 110 26 170 14 S300 8 394 16" fill="none" stroke="#D64545" stroke-width="9" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg></span></div></div><div class="wtick" id="m68-s8-dg-tk3"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m68-s9" class="clip" data-start="152.44" data-duration="3.78" style="z-index:75"><div id="m68-s9-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m68-s9-fin" class="fin"><div id="m68-s9-cam" class="cam"><div class="fill diag"><div class="wcard"></div><div class="wrow" id="m68-s9-dg-r0" style="top:90px"><div class="wbg" id="m68-s9-dg-bg0"></div><div class="wlet" id="m68-s9-dg-L0" style="background:#F2C230;color:#1A1A1A">W</div><div class="wlab" id="m68-s9-dg-lb0">WISH</div><div class="wslot" id="m68-s9-dg-sl0"><div class="wans" id="m68-s9-dg-a0">1 VIDEO<br><span class="badge yellow">EVERY WEEK</span></div></div><div class="wtick" id="m68-s9-dg-tk0"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m68-s9-dg-r1" style="top:325px"><div class="wbg" id="m68-s9-dg-bg1"></div><div class="wlet" id="m68-s9-dg-L1" style="background:#F2C230;color:#1A1A1A">O</div><div class="wlab" id="m68-s9-dg-lb1">OUTCOME</div><div class="wslot" id="m68-s9-dg-sl1"><div class="wans" id="m68-s9-dg-a1">A CHANNEL<br>I'M <span class="badge yellow">PROUD OF</span></div></div><div class="wtick" id="m68-s9-dg-tk1"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m68-s9-dg-r2" style="top:560px"><div class="wbg" id="m68-s9-dg-bg2"></div><div class="wlet" id="m68-s9-dg-L2" style="background:#D64545;color:#fff">O</div><div class="wlab" id="m68-s9-dg-lb2">OBSTACLE</div><div class="wslot" id="m68-s9-dg-sl2"><div class="wans" id="m68-s9-dg-a2"><span class="badge red">"IT'S NOT READY"</span></div></div><div class="wtick" id="m68-s9-dg-tk2"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m68-s9-dg-r3" style="top:795px"><div class="wbg" id="m68-s9-dg-bg3"></div><div class="wlet" id="m68-s9-dg-L3" style="background:#9CC08B;color:#1A1A1A">P</div><div class="wlab" id="m68-s9-dg-lb3">PLAN</div><div class="wslot" id="m68-s9-dg-sl3"><div class="wans" id="m68-s9-dg-a3">POST IT<br><span class="ulw"><span class="badge yellow">ANYWAY</span><svg class="ul" viewBox="0 0 400 30" preserveAspectRatio="none"><path id="m68-s9-dg-ul" d="M6 18 C60 6 110 26 170 14 S300 8 394 16" fill="none" stroke="#D64545" stroke-width="9" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg></span></div></div><div class="wtick" id="m68-s9-dg-tk3"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m69-s0" class="clip" data-start="156.22" data-duration="3.24" style="z-index:76"><div id="m69-s0-t" class="tt"><div id="m69-s0-fin" class="fin"><div id="m69-s0-cam" class="cam"><img src="assets/pictures/S10.jpg" class="pic" alt=""><svg id="m69-s0-ov0" class="ovsvg" data-layout-allow-overlap viewBox="0 0 1920 1080"><ellipse id="m69-s0-ov0-e" cx="556.8" cy="734.4" rx="96" ry="81" transform="rotate(-4 556.8 734.4)" fill="none" stroke="#D64545" stroke-width="12" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg></div></div></div></div>
+<div id="m69-s1" class="clip" data-start="159.46" data-duration="3.16" style="z-index:77"><div id="m69-s1-t" class="tt"><div id="m69-s1-fin" class="fin"><div id="m69-s1-cam" class="cam"><img src="assets/pictures/S10.jpg" class="pic" alt=""><svg id="m69-s1-ov0" class="ovsvg" data-layout-allow-overlap viewBox="0 0 1920 1080"><ellipse id="m69-s1-ov0-e" cx="556.8" cy="734.4" rx="96" ry="81" transform="rotate(-4 556.8 734.4)" fill="none" stroke="#D64545" stroke-width="12" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg></div></div></div></div>
+<div id="m69-s2" class="clip" data-start="162.62" data-duration="1.64" style="z-index:78"><div id="m69-s2-t" class="tt"><div id="m69-s2-fin" class="fin"><div class="fill card"><div id="m69-s2-in" class="cardtxt"><div class="ln" id="m69-s2-l0">NOT THE</div><div class="ln" id="m69-s2-l1"><span class="badge red">MILLION VIEWS</span></div></div></div></div></div></div>
+<div id="m69-s3" class="clip" data-start="164.26" data-duration="2.49" style="z-index:79"><div id="m69-s3-t" class="tt"><div id="m69-s3-fin" class="fin"><div id="m69-s3-cam" class="cam"><img src="assets/pictures/S10.jpg" class="pic" alt=""><svg id="m69-s3-ov0" class="ovsvg" data-layout-allow-overlap viewBox="0 0 1920 1080"><ellipse id="m69-s3-ov0-e" cx="556.8" cy="734.4" rx="96" ry="81" transform="rotate(-4 556.8 734.4)" fill="none" stroke="#D64545" stroke-width="12" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg></div></div></div></div>
+<div id="m70-s0" class="clip" data-start="166.5" data-duration="2.96" style="z-index:80"><div id="m70-s0-t" class="tt"><div id="m70-s0-fin" class="fin"><div id="m70-s0-cam" class="cam"><img src="assets/pictures/S37.jpg" class="pic" alt=""></div></div></div></div>
+<div id="m70-s1" class="clip" data-start="169.46" data-duration="3.02" style="z-index:81"><div id="m70-s1-t" class="tt"><div id="m70-s1-fin" class="fin"><div id="m70-s1-cam" class="cam"><img src="assets/pictures/S37.jpg" class="pic" alt=""></div></div></div></div>
+<div id="m70-s2" class="clip" data-start="172.48" data-duration="2.02" style="z-index:82"><div id="m70-s2-t" class="tt"><div id="m70-s2-fin" class="fin"><div id="m70-s2-cam" class="cam"><img src="assets/pictures/S37.jpg" class="pic" alt=""></div></div></div></div>
+<div id="m70-s3" class="clip" data-start="174.5" data-duration="2.72" style="z-index:83"><div id="m70-s3-t" class="tt"><div id="m70-s3-fin" class="fin"><div class="fill card"><div id="m70-s3-in" class="cardtxt"><div class="ln" id="m70-s3-l0">WHERE</div><div class="ln" id="m70-s3-l1"><span class="badge yellow">IT ALL STARTS</span></div></div></div></div></div></div>
+<div id="m71-s0" class="clip" data-start="177.22" data-duration="2.9" style="z-index:84"><div id="m71-s0-t" class="tt"><div id="m71-s0-fin" class="fin"><div id="m71-s0-cam" class="cam"><img src="assets/pictures/S12.jpg" class="pic" alt=""></div></div></div></div>
+<div id="m71-s1" class="clip" data-start="180.12" data-duration="3.04" style="z-index:85"><div id="m71-s1-t" class="tt"><div id="m71-s1-fin" class="fin"><div id="m71-s1-cam" class="cam"><img src="assets/pictures/S12.jpg" class="pic" alt=""></div></div></div></div>
+<div id="m72-s0" class="clip" data-start="183.16" data-duration="3.18" style="z-index:86"><div id="m72-s0-t" class="tt"><div id="m72-s0-fin" class="fin"><div id="m72-s0-cam" class="cam"><img src="assets/pictures/S26.jpg" class="pic" alt=""></div></div></div></div>
+<div id="m72-s1" class="clip" data-start="186.34" data-duration="3.16" style="z-index:87"><div id="m72-s1-t" class="tt"><div id="m72-s1-fin" class="fin"><div id="m72-s1-cam" class="cam"><img src="assets/pictures/S26.jpg" class="pic" alt=""></div></div></div></div>
+<div id="m72-s2" class="clip" data-start="189.5" data-duration="1.1" style="z-index:88"><div id="m72-s2-t" class="tt"><div id="m72-s2-fin" class="fin"><div id="m72-s2-cam" class="cam"><img src="assets/pictures/S26.jpg" class="pic" alt=""></div></div></div></div>
+<div id="m72-s3" class="clip" data-start="190.6" data-duration="2.36" style="z-index:89"><div id="m72-s3-t" class="tt"><div id="m72-s3-fin" class="fin"><div class="fill card"><div id="m72-s3-in" class="cardtxt"><div class="ln" id="m72-s3-l0"><span class="badge yellow">OVER AND OVER</span></div></div></div></div></div></div>
+<div id="m73-s0" class="clip" data-start="192.96" data-duration="2.86" style="z-index:90"><div id="m73-s0-t" class="tt"><div id="m73-s0-fin" class="fin"><div id="m73-s0-cam" class="cam"><img src="assets/pictures/S11.jpg" class="pic" alt=""><div id="m73-s0-ov0" class="sweepbox" data-layout-allow-overlap style="left:0px;top:0px;width:1920px;height:540px"><div id="m73-s0-ov0-b" class="sweepband"></div></div></div></div></div></div>
+<div id="m73-s1" class="clip" data-start="195.82" data-duration="2.16" style="z-index:91"><div id="m73-s1-t" class="tt"><div id="m73-s1-fin" class="fin"><div class="fill diag cardc"><div class="cardtxt st" id="m73-s1-dg-st0"><div class="ln" id="m73-s1-dgs0-l0">NOT THE</div><div class="ln" id="m73-s1-dgs0-l1"><span class="badge red">FINISH LINE</span></div></div><div class="cardtxt st" id="m73-s1-dg-st1"><div class="ln" id="m73-s1-dgs1-l0">THE</div><div class="ln" id="m73-s1-dgs1-l1"><span class="badge yellow">STARTING LINE</span></div></div></div></div></div></div>
+<div id="m73-s2" class="clip" data-start="197.98" data-duration="1.68" style="z-index:92"><div id="m73-s2-t" class="tt"><div id="m73-s2-fin" class="fin"><div id="m73-s2-cam" class="cam"><img src="assets/pictures/S11.jpg" class="pic" alt=""><div id="m73-s2-ov0" class="sweepbox" data-layout-allow-overlap style="left:0px;top:0px;width:1920px;height:540px"><div id="m73-s2-ov0-b" class="sweepband"></div></div></div></div></div></div>
+<div id="m74-s0" class="clip" data-start="199.66" data-duration="3.46" style="z-index:93"><div id="m74-s0-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m74-s0-fin" class="fin"><div id="m74-s0-cam" class="cam"><div class="fill diag"><div class="wcard"></div><div class="wrow" id="m74-s0-dg-r0" style="top:90px"><div class="wbg" id="m74-s0-dg-bg0"></div><div class="wlet" id="m74-s0-dg-L0" style="background:#F2C230;color:#1A1A1A">W</div><div class="wlab" id="m74-s0-dg-lb0">WISH</div><div class="wslot" id="m74-s0-dg-sl0"><div class="wans" id="m74-s0-dg-a0"></div></div><div class="wtick" id="m74-s0-dg-tk0"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m74-s0-dg-r1" style="top:325px"><div class="wbg" id="m74-s0-dg-bg1"></div><div class="wlet" id="m74-s0-dg-L1" style="background:#F2C230;color:#1A1A1A">O</div><div class="wlab" id="m74-s0-dg-lb1">OUTCOME</div><div class="wslot" id="m74-s0-dg-sl1"><div class="wans" id="m74-s0-dg-a1"></div></div><div class="wtick" id="m74-s0-dg-tk1"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m74-s0-dg-r2" style="top:560px"><div class="wbg" id="m74-s0-dg-bg2"></div><div class="wlet" id="m74-s0-dg-L2" style="background:#D64545;color:#fff">O</div><div class="wlab" id="m74-s0-dg-lb2">OBSTACLE</div><div class="wslot" id="m74-s0-dg-sl2"><div class="wans" id="m74-s0-dg-a2"></div></div><div class="wtick" id="m74-s0-dg-tk2"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m74-s0-dg-r3" style="top:795px"><div class="wbg" id="m74-s0-dg-bg3"></div><div class="wlet" id="m74-s0-dg-L3" style="background:#9CC08B;color:#1A1A1A">P</div><div class="wlab" id="m74-s0-dg-lb3">PLAN</div><div class="wslot" id="m74-s0-dg-sl3"><div class="wans" id="m74-s0-dg-a3"></div></div><div class="wtick" id="m74-s0-dg-tk3"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m74-s1" class="clip" data-start="203.12" data-duration="3.02" style="z-index:94"><div id="m74-s1-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m74-s1-fin" class="fin"><div id="m74-s1-cam" class="cam"><div class="fill diag"><div class="wcard"></div><div class="wrow" id="m74-s1-dg-r0" style="top:90px"><div class="wbg" id="m74-s1-dg-bg0"></div><div class="wlet" id="m74-s1-dg-L0" style="background:#F2C230;color:#1A1A1A">W</div><div class="wlab" id="m74-s1-dg-lb0">WISH</div><div class="wslot" id="m74-s1-dg-sl0"><div class="wans" id="m74-s1-dg-a0"></div></div><div class="wtick" id="m74-s1-dg-tk0"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m74-s1-dg-r1" style="top:325px"><div class="wbg" id="m74-s1-dg-bg1"></div><div class="wlet" id="m74-s1-dg-L1" style="background:#F2C230;color:#1A1A1A">O</div><div class="wlab" id="m74-s1-dg-lb1">OUTCOME</div><div class="wslot" id="m74-s1-dg-sl1"><div class="wans" id="m74-s1-dg-a1"></div></div><div class="wtick" id="m74-s1-dg-tk1"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m74-s1-dg-r2" style="top:560px"><div class="wbg" id="m74-s1-dg-bg2"></div><div class="wlet" id="m74-s1-dg-L2" style="background:#D64545;color:#fff">O</div><div class="wlab" id="m74-s1-dg-lb2">OBSTACLE</div><div class="wslot" id="m74-s1-dg-sl2"><div class="wans" id="m74-s1-dg-a2"></div></div><div class="wtick" id="m74-s1-dg-tk2"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m74-s1-dg-r3" style="top:795px"><div class="wbg" id="m74-s1-dg-bg3"></div><div class="wlet" id="m74-s1-dg-L3" style="background:#9CC08B;color:#1A1A1A">P</div><div class="wlab" id="m74-s1-dg-lb3">PLAN</div><div class="wslot" id="m74-s1-dg-sl3"><div class="wans" id="m74-s1-dg-a3"></div></div><div class="wtick" id="m74-s1-dg-tk3"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m74-s2" class="clip" data-start="206.14" data-duration="2.9" style="z-index:95"><div id="m74-s2-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m74-s2-fin" class="fin"><div id="m74-s2-cam" class="cam"><div class="fill diag"><div class="wcard"></div><div class="wrow" id="m74-s2-dg-r0" style="top:90px"><div class="wbg" id="m74-s2-dg-bg0"></div><div class="wlet" id="m74-s2-dg-L0" style="background:#F2C230;color:#1A1A1A">W</div><div class="wlab" id="m74-s2-dg-lb0">WISH</div><div class="wslot" id="m74-s2-dg-sl0"><div class="wans" id="m74-s2-dg-a0"></div></div><div class="wtick" id="m74-s2-dg-tk0"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m74-s2-dg-r1" style="top:325px"><div class="wbg" id="m74-s2-dg-bg1"></div><div class="wlet" id="m74-s2-dg-L1" style="background:#F2C230;color:#1A1A1A">O</div><div class="wlab" id="m74-s2-dg-lb1">OUTCOME</div><div class="wslot" id="m74-s2-dg-sl1"><div class="wans" id="m74-s2-dg-a1"></div></div><div class="wtick" id="m74-s2-dg-tk1"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m74-s2-dg-r2" style="top:560px"><div class="wbg" id="m74-s2-dg-bg2"></div><div class="wlet" id="m74-s2-dg-L2" style="background:#D64545;color:#fff">O</div><div class="wlab" id="m74-s2-dg-lb2">OBSTACLE</div><div class="wslot" id="m74-s2-dg-sl2"><div class="wans" id="m74-s2-dg-a2"></div></div><div class="wtick" id="m74-s2-dg-tk2"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m74-s2-dg-r3" style="top:795px"><div class="wbg" id="m74-s2-dg-bg3"></div><div class="wlet" id="m74-s2-dg-L3" style="background:#9CC08B;color:#1A1A1A">P</div><div class="wlab" id="m74-s2-dg-lb3">PLAN</div><div class="wslot" id="m74-s2-dg-sl3"><div class="wans" id="m74-s2-dg-a3"></div></div><div class="wtick" id="m74-s2-dg-tk3"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m74-s3" class="clip" data-start="209.04" data-duration="1.33" style="z-index:96"><div id="m74-s3-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m74-s3-fin" class="fin"><div id="m74-s3-cam" class="cam"><div class="fill diag"><div class="wcard"></div><div class="wrow" id="m74-s3-dg-r0" style="top:90px"><div class="wbg" id="m74-s3-dg-bg0"></div><div class="wlet" id="m74-s3-dg-L0" style="background:#F2C230;color:#1A1A1A">W</div><div class="wlab" id="m74-s3-dg-lb0">WISH</div><div class="wslot" id="m74-s3-dg-sl0"><div class="wans" id="m74-s3-dg-a0"></div></div><div class="wtick" id="m74-s3-dg-tk0"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m74-s3-dg-r1" style="top:325px"><div class="wbg" id="m74-s3-dg-bg1"></div><div class="wlet" id="m74-s3-dg-L1" style="background:#F2C230;color:#1A1A1A">O</div><div class="wlab" id="m74-s3-dg-lb1">OUTCOME</div><div class="wslot" id="m74-s3-dg-sl1"><div class="wans" id="m74-s3-dg-a1"></div></div><div class="wtick" id="m74-s3-dg-tk1"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m74-s3-dg-r2" style="top:560px"><div class="wbg" id="m74-s3-dg-bg2"></div><div class="wlet" id="m74-s3-dg-L2" style="background:#D64545;color:#fff">O</div><div class="wlab" id="m74-s3-dg-lb2">OBSTACLE</div><div class="wslot" id="m74-s3-dg-sl2"><div class="wans" id="m74-s3-dg-a2"></div></div><div class="wtick" id="m74-s3-dg-tk2"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="wrow" id="m74-s3-dg-r3" style="top:795px"><div class="wbg" id="m74-s3-dg-bg3"></div><div class="wlet" id="m74-s3-dg-L3" style="background:#9CC08B;color:#1A1A1A">P</div><div class="wlab" id="m74-s3-dg-lb3">PLAN</div><div class="wslot" id="m74-s3-dg-sl3"><div class="wans" id="m74-s3-dg-a3"></div></div><div class="wtick" id="m74-s3-dg-tk3"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="#9CC08B" stroke="#1A1A1A" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m75-s0" class="clip" data-start="210.12" data-duration="1.88" style="z-index:97"><div id="m75-s0-t" class="tt"><div id="m75-s0-fin" class="fin"><div class="fill iconbg"><img id="m75-s0-img" src="assets/icons/I51.jpg" class="pic" alt=""></div></div></div></div>
+<div id="m75-s1" class="clip" data-start="212" data-duration="3.06" style="z-index:98"><div id="m75-s1-t" class="tt"><div id="m75-s1-fin" class="fin"><div id="m75-s1-cam" class="cam"><img src="assets/pictures/S27.jpg" class="pic" alt=""></div></div></div></div>
+<div id="m75-s2" class="clip" data-start="215.06" data-duration="2.92" style="z-index:99"><div id="m75-s2-t" class="tt"><div id="m75-s2-fin" class="fin"><div id="m75-s2-cam" class="cam"><img src="assets/pictures/S27.jpg" class="pic" alt=""></div></div></div></div>
+<div id="m75-s3" class="clip" data-start="217.98" data-duration="1.4" style="z-index:100"><div id="m75-s3-t" class="tt"><div id="m75-s3-fin" class="fin"><div id="m75-s3-cam" class="cam"><img src="assets/pictures/S27.jpg" class="pic" alt=""></div></div></div></div>
+<div id="m76-s0" class="clip" data-start="219.38" data-duration="2.4" style="z-index:101"><div id="m76-s0-t" class="tt"><div id="m76-s0-fin" class="fin"><div id="m76-s0-cam" class="cam"><img src="assets/pictures/S29.jpg" class="pic" alt=""></div></div></div></div>
+<div id="m76-s1" class="clip" data-start="221.78" data-duration="2.14" style="z-index:102"><div id="m76-s1-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m76-s1-fin" class="fin"><div class="fill card"><div id="m76-s1-in" class="cardtxt"><div class="ln" id="m76-s1-l0">WHICH</div><div class="ln" id="m76-s1-l1"><span class="badge yellow">NUMBER?</span></div></div></div></div></div></div><div class="fborder"></div></div><div id="m76-s1-nw" class="nw"><div class="nshadow" style="left:240.20000000000005px;width:281px"></div><img class="narr" style="left:250.20000000000005px;height:648px" src="assets/narrator/N08.png" alt=""></div></div>
+<div id="m76-s2" class="clip" data-start="223.92" data-duration="0.92" style="z-index:103"><div id="m76-s2-t" class="tt"><div id="m76-s2-fin" class="fin"><div id="m76-s2-cam" class="cam"><img src="assets/pictures/S29.jpg" class="pic" alt=""></div></div></div></div>
+<div id="m76-s3" class="clip" data-start="224.84" data-duration="2.82" style="z-index:104"><div id="m76-s3-t" class="tt"><div id="m76-s3-fin" class="fin"><div class="fill"><div id="m76-s3-cam" class="cam"><img src="assets/pictures/S28.jpg" class="pic" alt=""></div></div></div></div></div>
+<div id="m76-s4" class="clip" data-start="227.66" data-duration="3.86" style="z-index:105"><div id="m76-s4-t" class="tt"><div id="m76-s4-fin" class="fin"><div id="m76-s4-cam" class="cam"><img src="assets/pictures/S29.jpg" class="pic" alt=""></div></div></div></div>
+<div id="m76-s5" class="clip" data-start="231.52" data-duration="4.874" style="z-index:106"><div id="m76-s5-t" class="tt"><div id="m76-s5-fin" class="fin"><div id="m76-s5-cam" class="cam"><img src="assets/pictures/S29.jpg" class="pic" alt=""></div></div></div></div>
+<div id="nar1" class="clip" data-start="4.74" data-duration="6.98" style="z-index:900"><div id="nar1-w" class="nw"><div class="nshadow" style="left:196.20000000000005px;width:325px"></div><img class="narr" style="left:206.20000000000005px;height:648px" src="assets/narrator/N01.png" alt=""></div></div>
+<div id="nar2" class="clip" data-start="11.72" data-duration="1.78" style="z-index:900"><div id="nar2-w" class="nw"><div class="nshadow" style="left:215.20000000000005px;width:306px"></div><img class="narr" style="left:225.20000000000005px;height:648px" src="assets/narrator/N07.png" alt=""></div></div>
+<div id="nar3" class="clip" data-start="13.5" data-duration="13.64" style="z-index:900"><div id="nar3-w" class="nw"><div class="nshadow" style="left:196.20000000000005px;width:325px"></div><img class="narr" style="left:206.20000000000005px;height:648px" src="assets/narrator/N01.png" alt=""></div></div>
+<div id="nar4" class="clip" data-start="27.14" data-duration="1.46" style="z-index:900"><div id="nar4-w" class="nw"><div class="nshadow" style="left:298.20000000000005px;width:223px"></div><img class="narr" style="left:308.20000000000005px;height:648px" src="assets/narrator/N11.png" alt=""></div></div>
+<div id="nar5" class="clip" data-start="40.1" data-duration="4.24" style="z-index:900"><div id="nar5-w" class="nw"><div class="nshadow" style="left:196.20000000000005px;width:325px"></div><img class="narr" style="left:206.20000000000005px;height:648px" src="assets/narrator/N01.png" alt=""></div></div>
+<div id="nar6" class="clip" data-start="55.24" data-duration="5.28" style="z-index:900"><div id="nar6-w" class="nw"><div class="nshadow" style="left:255.20000000000005px;width:266px"></div><img class="narr" style="left:265.20000000000005px;height:648px" src="assets/narrator/N02.png" alt=""></div></div>
+<div id="nar7" class="clip" data-start="71.68" data-duration="2.56" style="z-index:900"><div id="nar7-w" class="nw"><div class="nshadow" style="left:192.20000000000005px;width:329px"></div><img class="narr" style="left:202.20000000000005px;height:648px" src="assets/narrator/N09.png" alt=""></div></div>
+<div id="nar8" class="clip" data-start="74.24" data-duration="8.4" style="z-index:900"><div id="nar8-w" class="nw"><div class="nshadow" style="left:196.20000000000005px;width:325px"></div><img class="narr" style="left:206.20000000000005px;height:648px" src="assets/narrator/N01.png" alt=""></div></div>
+<div id="nar9" class="clip" data-start="82.64" data-duration="1.82" style="z-index:900"><div id="nar9-w" class="nw"><div class="nshadow" style="left:215.20000000000005px;width:306px"></div><img class="narr" style="left:225.20000000000005px;height:648px" src="assets/narrator/N07.png" alt=""></div></div>
+<div id="nar10" class="clip" data-start="84.46" data-duration="10.1" style="z-index:900"><div id="nar10-w" class="nw"><div class="nshadow" style="left:196.20000000000005px;width:325px"></div><img class="narr" style="left:206.20000000000005px;height:648px" src="assets/narrator/N01.png" alt=""></div></div>
+<div id="nar11" class="clip" data-start="94.56" data-duration="12.1" style="z-index:900"><div id="nar11-w" class="nw"><div class="nshadow" style="left:255.20000000000005px;width:266px"></div><img class="narr" style="left:265.20000000000005px;height:648px" src="assets/narrator/N02.png" alt=""></div></div>
+<div id="nar12" class="clip" data-start="112.86" data-duration="12.08" style="z-index:900"><div id="nar12-w" class="nw"><div class="nshadow" style="left:196.20000000000005px;width:325px"></div><img class="narr" style="left:206.20000000000005px;height:648px" src="assets/narrator/N01.png" alt=""></div></div>
+<div id="nar13" class="clip" data-start="131.66" data-duration="13.08" style="z-index:900"><div id="nar13-w" class="nw"><div class="nshadow" style="left:196.20000000000005px;width:325px"></div><img class="narr" style="left:206.20000000000005px;height:648px" src="assets/narrator/N01.png" alt=""></div></div>
+<div id="nar14" class="clip" data-start="144.74" data-duration="2.72" style="z-index:900"><div id="nar14-w" class="nw"><div class="nshadow" style="left:288.20000000000005px;width:233px"></div><img class="narr" style="left:298.20000000000005px;height:648px" src="assets/narrator/N10.png" alt=""></div></div>
+<div id="nar15" class="clip" data-start="147.46" data-duration="8.76" style="z-index:900"><div id="nar15-w" class="nw"><div class="nshadow" style="left:196.20000000000005px;width:325px"></div><img class="narr" style="left:206.20000000000005px;height:648px" src="assets/narrator/N01.png" alt=""></div></div>
+<div id="nar16" class="clip" data-start="199.66" data-duration="3.46" style="z-index:900"><div id="nar16-w" class="nw"><div class="nshadow" style="left:196.20000000000005px;width:325px"></div><img class="narr" style="left:206.20000000000005px;height:648px" src="assets/narrator/N01.png" alt=""></div></div>
+<div id="nar17" class="clip" data-start="203.12" data-duration="7" style="z-index:900"><div id="nar17-w" class="nw"><div class="nshadow" style="left:255.20000000000005px;width:266px"></div><img class="narr" style="left:265.20000000000005px;height:648px" src="assets/narrator/N02.png" alt=""></div></div>
+<audio id="vo" src="assets/part4.wav" data-start="0" data-duration="236.394" data-track-index="0"></audio>
+</div>
+<script>
+const pp=(cx,cy,r,pct)=>{const p=Math.min(Math.max(pct,0.01),99.99),a=p/100*2*Math.PI;return "M"+cx+" "+cy+" L"+cx+" "+(cy-r)+" A"+r+" "+r+" 0 "+(a>Math.PI?1:0)+" 1 "+(cx+r*Math.sin(a)).toFixed(2)+" "+(cy-r*Math.cos(a)).toFixed(2)+" Z";};
+const tl = gsap.timeline({ paused: true });
+tl.set("#m51-s0-cam",{x:0,y:0,scale:1},0);
+tl.fromTo("#m51-s0-cam",{x:0,y:0,scale:1},{x:0,y:-162,scale:1.3,duration:0.25,ease:"expo.out"},2.9);
+tl.fromTo("#m51-s1-img",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},3.18);
+tl.set("#m52-s0-dg-r0",{opacity:1},0);
+tl.set("#m52-s0-dg-tk0",{opacity:0},0);
+tl.set("#m52-s0-dg-r1",{opacity:1},0);
+tl.set("#m52-s0-dg-tk1",{opacity:0},0);
+tl.set("#m52-s0-dg-r2",{opacity:1},0);
+tl.set("#m52-s0-dg-tk2",{opacity:0},0);
+tl.set("#m52-s0-dg-r3",{opacity:1},0);
+tl.set("#m52-s0-dg-tk3",{opacity:0},0);
+tl.set("#m52-s0-dg-L0",{opacity:0,scale:0.3},0);
+tl.set("#m52-s0-dg-lb0,#m52-s0-dg-sl0",{opacity:0},0);
+tl.fromTo("#m52-s0-dg-L0",{opacity:0,scale:0.3},{opacity:1,scale:1,duration:0.28,ease:"back.out(2)"},9.67);
+tl.fromTo("#m52-s0-dg-lb0,#m52-s0-dg-sl0",{opacity:0,x:40},{opacity:1,x:0,duration:0.3,ease:"power2.out"},10.45);
+tl.set("#m52-s0-dg-L1",{opacity:0,scale:0.3},0);
+tl.set("#m52-s0-dg-lb1,#m52-s0-dg-sl1",{opacity:0},0);
+tl.fromTo("#m52-s0-dg-L1",{opacity:0,scale:0.3},{opacity:1,scale:1,duration:0.28,ease:"back.out(2)"},9.79);
+tl.fromTo("#m52-s0-dg-lb1,#m52-s0-dg-sl1",{opacity:0,x:40},{opacity:1,x:0,duration:0.3,ease:"power2.out"},10.55);
+tl.set("#m52-s0-dg-L2",{opacity:0,scale:0.3},0);
+tl.set("#m52-s0-dg-lb2,#m52-s0-dg-sl2",{opacity:0},0);
+tl.fromTo("#m52-s0-dg-L2",{opacity:0,scale:0.3},{opacity:1,scale:1,duration:0.28,ease:"back.out(2)"},9.91);
+tl.fromTo("#m52-s0-dg-lb2,#m52-s0-dg-sl2",{opacity:0,x:40},{opacity:1,x:0,duration:0.3,ease:"power2.out"},10.65);
+tl.set("#m52-s0-dg-L3",{opacity:0,scale:0.3},0);
+tl.set("#m52-s0-dg-lb3,#m52-s0-dg-sl3",{opacity:0},0);
+tl.fromTo("#m52-s0-dg-L3",{opacity:0,scale:0.3},{opacity:1,scale:1,duration:0.28,ease:"back.out(2)"},10.03);
+tl.fromTo("#m52-s0-dg-lb3,#m52-s0-dg-sl3",{opacity:0,x:40},{opacity:1,x:0,duration:0.3,ease:"power2.out"},10.75);
+tl.set("#m52-s1-dg-r0",{opacity:1},0);
+tl.set("#m52-s1-dg-tk0",{opacity:0},0);
+tl.set("#m52-s1-dg-r1",{opacity:1},0);
+tl.set("#m52-s1-dg-tk1",{opacity:0},0);
+tl.set("#m52-s1-dg-r2",{opacity:1},0);
+tl.set("#m52-s1-dg-tk2",{opacity:0},0);
+tl.set("#m52-s1-dg-r3",{opacity:1},0);
+tl.set("#m52-s1-dg-tk3",{opacity:0},0);
+tl.set("#m52-s1-dg-L0",{opacity:0,scale:0.3},0);
+tl.set("#m52-s1-dg-lb0,#m52-s1-dg-sl0",{opacity:0},0);
+tl.fromTo("#m52-s1-dg-L0",{opacity:0,scale:0.3},{opacity:1,scale:1,duration:0.28,ease:"back.out(2)"},9.67);
+tl.fromTo("#m52-s1-dg-lb0,#m52-s1-dg-sl0",{opacity:0,x:40},{opacity:1,x:0,duration:0.3,ease:"power2.out"},10.45);
+tl.set("#m52-s1-dg-L1",{opacity:0,scale:0.3},0);
+tl.set("#m52-s1-dg-lb1,#m52-s1-dg-sl1",{opacity:0},0);
+tl.fromTo("#m52-s1-dg-L1",{opacity:0,scale:0.3},{opacity:1,scale:1,duration:0.28,ease:"back.out(2)"},9.79);
+tl.fromTo("#m52-s1-dg-lb1,#m52-s1-dg-sl1",{opacity:0,x:40},{opacity:1,x:0,duration:0.3,ease:"power2.out"},10.55);
+tl.set("#m52-s1-dg-L2",{opacity:0,scale:0.3},0);
+tl.set("#m52-s1-dg-lb2,#m52-s1-dg-sl2",{opacity:0},0);
+tl.fromTo("#m52-s1-dg-L2",{opacity:0,scale:0.3},{opacity:1,scale:1,duration:0.28,ease:"back.out(2)"},9.91);
+tl.fromTo("#m52-s1-dg-lb2,#m52-s1-dg-sl2",{opacity:0,x:40},{opacity:1,x:0,duration:0.3,ease:"power2.out"},10.65);
+tl.set("#m52-s1-dg-L3",{opacity:0,scale:0.3},0);
+tl.set("#m52-s1-dg-lb3,#m52-s1-dg-sl3",{opacity:0},0);
+tl.fromTo("#m52-s1-dg-L3",{opacity:0,scale:0.3},{opacity:1,scale:1,duration:0.28,ease:"back.out(2)"},10.03);
+tl.fromTo("#m52-s1-dg-lb3,#m52-s1-dg-sl3",{opacity:0,x:40},{opacity:1,x:0,duration:0.3,ease:"power2.out"},10.75);
+tl.set("#m53-s0-dg-r0",{opacity:1},0);
+tl.set("#m53-s0-dg-tk0",{opacity:0},0);
+tl.set("#m53-s0-dg-r1",{opacity:0.4},0);
+tl.set("#m53-s0-dg-tk1",{opacity:0},0);
+tl.set("#m53-s0-dg-r2",{opacity:0.4},0);
+tl.set("#m53-s0-dg-tk2",{opacity:0},0);
+tl.set("#m53-s0-dg-r3",{opacity:0.4},0);
+tl.set("#m53-s0-dg-tk3",{opacity:0},0);
+tl.set("#m53-s0-dg-a0",{opacity:0},0);
+tl.fromTo("#m53-s0-dg-a0",{opacity:0,clipPath:"inset(0 100% 0 0)"},{opacity:1,clipPath:"inset(0 0% 0 0)",duration:0.3,ease:"power1.out"},17.37);
+tl.to("#m53-s0-so0",{opacity:0,duration:0.2},14.87);
+tl.set("#m53-s1-dg-r0",{opacity:1},0);
+tl.set("#m53-s1-dg-tk0",{opacity:0},0);
+tl.set("#m53-s1-dg-r1",{opacity:0.4},0);
+tl.set("#m53-s1-dg-tk1",{opacity:0},0);
+tl.set("#m53-s1-dg-r2",{opacity:0.4},0);
+tl.set("#m53-s1-dg-tk2",{opacity:0},0);
+tl.set("#m53-s1-dg-r3",{opacity:0.4},0);
+tl.set("#m53-s1-dg-tk3",{opacity:0},0);
+tl.set("#m53-s1-dg-a0",{opacity:0},0);
+tl.fromTo("#m53-s1-dg-a0",{opacity:0,clipPath:"inset(0 100% 0 0)"},{opacity:1,clipPath:"inset(0 0% 0 0)",duration:0.3,ease:"power1.out"},17.37);
+tl.set("#m53-s2-dg-r0",{opacity:1},0);
+tl.set("#m53-s2-dg-tk0",{opacity:0},0);
+tl.set("#m53-s2-dg-r1",{opacity:0.4},0);
+tl.set("#m53-s2-dg-tk1",{opacity:0},0);
+tl.set("#m53-s2-dg-r2",{opacity:0.4},0);
+tl.set("#m53-s2-dg-tk2",{opacity:0},0);
+tl.set("#m53-s2-dg-r3",{opacity:0.4},0);
+tl.set("#m53-s2-dg-tk3",{opacity:0},0);
+tl.set("#m53-s2-dg-a0",{opacity:0},0);
+tl.fromTo("#m53-s2-dg-a0",{opacity:0,clipPath:"inset(0 100% 0 0)"},{opacity:1,clipPath:"inset(0 0% 0 0)",duration:0.3,ease:"power1.out"},17.37);
+tl.fromTo("#m53-s3-in",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},19.28);
+tl.set("#m53-s4-dg-r0",{opacity:1},0);
+tl.set("#m53-s4-dg-tk0",{opacity:0},0);
+tl.set("#m53-s4-dg-r1",{opacity:0.4},0);
+tl.set("#m53-s4-dg-tk1",{opacity:0},0);
+tl.set("#m53-s4-dg-r2",{opacity:0.4},0);
+tl.set("#m53-s4-dg-tk2",{opacity:0},0);
+tl.set("#m53-s4-dg-r3",{opacity:0.4},0);
+tl.set("#m53-s4-dg-tk3",{opacity:0},0);
+tl.set("#m53-s4-dg-a0",{opacity:0},0);
+tl.fromTo("#m53-s4-dg-a0",{opacity:0,clipPath:"inset(0 100% 0 0)"},{opacity:1,clipPath:"inset(0 0% 0 0)",duration:0.3,ease:"power1.out"},17.37);
+tl.fromTo("#m53-s5-img",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},22.74);
+tl.set("#m53-s6-dg-r0",{opacity:1},0);
+tl.set("#m53-s6-dg-tk0",{opacity:0},0);
+tl.set("#m53-s6-dg-r1",{opacity:0.4},0);
+tl.set("#m53-s6-dg-tk1",{opacity:0},0);
+tl.set("#m53-s6-dg-r2",{opacity:0.4},0);
+tl.set("#m53-s6-dg-tk2",{opacity:0},0);
+tl.set("#m53-s6-dg-r3",{opacity:0.4},0);
+tl.set("#m53-s6-dg-tk3",{opacity:0},0);
+tl.set("#m53-s6-dg-a0",{opacity:0},0);
+tl.fromTo("#m53-s6-dg-a0",{opacity:0,clipPath:"inset(0 100% 0 0)"},{opacity:1,clipPath:"inset(0 0% 0 0)",duration:0.3,ease:"power1.out"},17.37);
+tl.fromTo("#m53-s7-in",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},27.24);
+tl.set("#m54-s0-cam",{x:0,y:0,scale:1},28.6);
+tl.fromTo("#m54-s0-cam",{x:-14.4,y:-8.1,scale:1.015},{x:0,y:0,scale:1,duration:2.38,ease:"none"},28.6);
+tl.fromTo("#m54-s0-ov1-b",{x:-900,opacity:1},{x:1300,duration:0.9,ease:"power1.inOut"},36.65);
+tl.set("#m54-s0-ov1-b",{opacity:0},37.6);
+tl.set("#m54-s0-ov1-b",{opacity:0},0);
+tl.fromTo("#m54-s0-t",{clipPath:"circle(0% at 83% 22%)"},{clipPath:"circle(150% at 83% 22%)",duration:0.7,ease:"power2.out"},28.6);
+tl.set("#m54-s1-cam",{x:0,y:0,scale:1},30.98);
+tl.fromTo("#m54-s1-cam",{x:0,y:0,scale:1},{x:0,y:-162,scale:1.3,duration:0.25,ease:"expo.out"},30.98);
+tl.fromTo("#m54-s1-cam",{x:0,y:-162,scale:1.3},{x:0,y:-172.53,scale:1.319,duration:3.29,ease:"none"},31.23);
+tl.fromTo("#m54-s1-ov1-b",{x:-900,opacity:1},{x:1300,duration:0.9,ease:"power1.inOut"},36.65);
+tl.set("#m54-s1-ov1-b",{opacity:0},37.6);
+tl.set("#m54-s1-ov1-b",{opacity:0},0);
+tl.to("#m54-s1-so0",{opacity:0,duration:0.2},31.75);
+tl.set("#m54-s2-cam",{x:0,y:-162,scale:1.3},34.52);
+tl.fromTo("#m54-s2-cam",{x:0,y:-162,scale:1.3},{x:0,y:0,scale:1,duration:0.4,ease:"power2.out"},34.52);
+tl.fromTo("#m54-s2-cam",{x:-14.4,y:-8.1,scale:1.015},{x:0,y:0,scale:1,duration:2.56,ease:"none"},34.92);
+tl.fromTo("#m54-s2-ov1-b",{x:-900,opacity:1},{x:1300,duration:0.9,ease:"power1.inOut"},36.65);
+tl.set("#m54-s2-ov1-b",{opacity:0},37.6);
+tl.set("#m54-s2-ov1-b",{opacity:0},0);
+tl.set("#m54-s3-cam",{x:0,y:0,scale:1},37.48);
+tl.fromTo("#m54-s3-cam",{x:0,y:0,scale:1},{x:-384,y:0,scale:1.2,duration:0.25,ease:"expo.out"},37.48);
+tl.fromTo("#m54-s3-cam",{x:-384,y:0,scale:1.2},{x:-418.56,y:0,scale:1.218,duration:1.15,ease:"none"},37.73);
+tl.fromTo("#m54-s3-ov1-b",{x:-900,opacity:1},{x:1300,duration:0.9,ease:"power1.inOut"},36.65);
+tl.set("#m54-s3-ov1-b",{opacity:0},37.6);
+tl.set("#m54-s3-ov1-b",{opacity:0},0);
+tl.fromTo("#m54-s4-in",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},38.88);
+tl.set("#m55-s0-dg-r0",{opacity:1},0);
+tl.set("#m55-s0-dg-tk0",{opacity:1},0);
+tl.fromTo("#m55-s0-dg-tk0",{scale:0.4},{scale:1,duration:0.3,ease:"back.out(1.7)"},40.3);
+tl.set("#m55-s0-dg-r1",{opacity:1},0);
+tl.set("#m55-s0-dg-tk1",{opacity:1},0);
+tl.fromTo("#m55-s0-dg-tk1",{scale:0.4},{scale:1,duration:0.3,ease:"back.out(1.7)"},40.3);
+tl.set("#m55-s0-dg-r2",{opacity:1},0);
+tl.set("#m55-s0-dg-tk2",{opacity:0},0);
+tl.set("#m55-s0-dg-r3",{opacity:1},0);
+tl.set("#m55-s0-dg-tk3",{opacity:0},0);
+tl.set("#m55-s0-dg-bg2",{opacity:0},0);
+tl.fromTo("#m55-s0-dg-bg2",{opacity:0},{opacity:0.9,duration:0.22,yoyo:true,repeat:3,ease:"power1.inOut"},40.55);
+tl.set("#m55-s1-dg-r0",{opacity:1},0);
+tl.set("#m55-s1-dg-tk0",{opacity:1},0);
+tl.fromTo("#m55-s1-dg-tk0",{scale:0.4},{scale:1,duration:0.3,ease:"back.out(1.7)"},40.3);
+tl.set("#m55-s1-dg-r1",{opacity:1},0);
+tl.set("#m55-s1-dg-tk1",{opacity:1},0);
+tl.fromTo("#m55-s1-dg-tk1",{scale:0.4},{scale:1,duration:0.3,ease:"back.out(1.7)"},40.3);
+tl.set("#m55-s1-dg-r2",{opacity:1},0);
+tl.set("#m55-s1-dg-tk2",{opacity:0},0);
+tl.set("#m55-s1-dg-r3",{opacity:1},0);
+tl.set("#m55-s1-dg-tk3",{opacity:0},0);
+tl.set("#m55-s1-dg-bg2",{opacity:0},0);
+tl.fromTo("#m55-s1-dg-bg2",{opacity:0},{opacity:0.9,duration:0.22,yoyo:true,repeat:3,ease:"power1.inOut"},40.55);
+tl.set("#m56-s0-cam",{x:0,y:0,scale:1},44.34);
+tl.fromTo("#m56-s0-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:2.7,ease:"none"},44.34);
+tl.set("#m56-s1-cam",{x:0,y:0,scale:1},47.04);
+tl.fromTo("#m56-s1-cam",{x:0,y:0,scale:1},{x:-768,y:-246.24,scale:1.4,duration:0.25,ease:"expo.out"},48.74);
+tl.fromTo("#m56-s1-cam",{x:-768,y:-246.24,scale:1.4},{x:-808.32,y:-258.034,scale:1.421,duration:1.13,ease:"none"},48.99);
+tl.to("#m56-s1-so0",{opacity:0,duration:0.2},48.74);
+tl.set("#m56-s1-so1",{opacity:0},0);
+tl.fromTo("#m56-s1-so1",{opacity:0,y:-20},{opacity:1,y:0,duration:0.3,ease:"back.out(1.4)"},48.69);
+tl.set("#m56-s2-cam",{x:-768,y:-246.24,scale:1.4},50.12);
+tl.fromTo("#m56-s2-cam",{x:-768,y:-246.24,scale:1.4},{x:0,y:-216,scale:1.2,duration:0.26,ease:"power3.inOut"},52.46);
+tl.set("#m56-s2-cam",{filter:"url(#mb)"},52.46);
+tl.fromTo("#mbb",{attr:{stdDeviation:"0 0"}},{attr:{stdDeviation:"38 0"},duration:0.13,ease:"power2.in"},52.46);
+tl.to("#mbb",{attr:{stdDeviation:"0 0"},duration:0.13,ease:"power2.out"},52.59);
+tl.set("#m56-s2-cam",{filter:"none"},52.74);
+tl.fromTo("#m56-s2-cam",{x:0,y:-216,scale:1.2},{x:0,y:-235.44,scale:1.218,duration:0.58,ease:"none"},52.72);
+tl.to("#m56-s2-so1",{opacity:0,duration:0.2},51.29);
+tl.set("#m56-s3-cam",{x:0,y:-216,scale:1.2},53.3);
+tl.fromTo("#m56-s3-cam",{x:0,y:-216,scale:1.2},{x:0,y:-235.44,scale:1.218,duration:1.94,ease:"none"},53.3);
+tl.set("#m57-s0-dg-st0",{opacity:1},0);
+tl.fromTo("#m57-s0-dg-st0",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},55.24);
+tl.to("#m57-s0-dg-st0",{opacity:0,y:-80,duration:0.22,ease:"power2.in"},57.23);
+tl.set("#m57-s0-dg-st1",{opacity:0},0);
+tl.fromTo("#m57-s0-dg-st1",{opacity:0,y:(1 === 0 ? 70 : 90)},{opacity:1,y:0,duration:0.34,ease:"back.out(1.6)"},57.23);
+tl.to("#m57-s0-dg-st1",{opacity:0,y:-80,duration:0.22,ease:"power2.in"},58.37);
+tl.set("#m57-s0-dg-st2",{opacity:0},0);
+tl.fromTo("#m57-s0-dg-st2",{opacity:0,y:(2 === 0 ? 70 : 90)},{opacity:1,y:0,duration:0.34,ease:"back.out(1.6)"},58.37);
+tl.set("#m57-s1-dg-st0",{opacity:1},0);
+tl.fromTo("#m57-s1-dg-st0",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},55.24);
+tl.to("#m57-s1-dg-st0",{opacity:0,y:-80,duration:0.22,ease:"power2.in"},57.23);
+tl.set("#m57-s1-dg-st1",{opacity:0},0);
+tl.fromTo("#m57-s1-dg-st1",{opacity:0,y:(1 === 0 ? 70 : 90)},{opacity:1,y:0,duration:0.34,ease:"back.out(1.6)"},57.23);
+tl.to("#m57-s1-dg-st1",{opacity:0,y:-80,duration:0.22,ease:"power2.in"},58.37);
+tl.set("#m57-s1-dg-st2",{opacity:0},0);
+tl.fromTo("#m57-s1-dg-st2",{opacity:0,y:(2 === 0 ? 70 : 90)},{opacity:1,y:0,duration:0.34,ease:"back.out(1.6)"},58.37);
+tl.set("#m58-s0-cam",{x:0,y:0,scale:1},60.52);
+tl.fromTo("#m58-s0-cam",{x:0,y:0,scale:1},{x:-768,y:-291.6,scale:1.4,duration:0.25,ease:"expo.out"},62.44);
+tl.fromTo("#m58-s0-cam",{x:-768,y:-291.6,scale:1.4},{x:-808.32,y:-304.074,scale:1.421,duration:1.51,ease:"none"},62.69);
+tl.set("#m58-s1-cam",{x:-768,y:-291.6,scale:1.4},64.2);
+tl.fromTo("#m58-s1-cam",{x:-768,y:-291.6,scale:1.4},{x:-808.32,y:-304.074,scale:1.421,duration:1.34,ease:"none"},64.2);
+tl.fromTo("#m58-s2-img",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},65.54);
+tl.set("#m59-s0-cam",{x:0,y:0,scale:1},67.56);
+tl.fromTo("#m59-s0-cam",{x:0,y:0,scale:1},{x:-768,y:-246.24,scale:1.4,duration:0.25,ease:"expo.out"},67.96);
+tl.fromTo("#m59-s0-cam",{x:-768,y:-246.24,scale:1.4},{x:-808.32,y:-258.034,scale:1.421,duration:2.01,ease:"none"},68.21);
+tl.set("#m59-s1-cam",{x:-768,y:-246.24,scale:1.4},70.22);
+tl.fromTo("#m59-s1-cam",{x:-768,y:-246.24,scale:1.4},{x:-768,y:0,scale:1.4,duration:0.26,ease:"power3.inOut"},70.22);
+tl.set("#m59-s1-cam",{filter:"url(#mb)"},70.22);
+tl.fromTo("#mbb",{attr:{stdDeviation:"0 0"}},{attr:{stdDeviation:"38 0"},duration:0.13,ease:"power2.in"},70.22);
+tl.to("#mbb",{attr:{stdDeviation:"0 0"},duration:0.13,ease:"power2.out"},70.35);
+tl.set("#m59-s1-cam",{filter:"none"},70.5);
+tl.fromTo("#m59-s1-cam",{x:-768,y:0,scale:1.4},{x:-808.32,y:0,scale:1.421,duration:1.2,ease:"none"},70.48);
+tl.fromTo("#m60-s0-in",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},71.78);
+tl.set("#m60-s1-dg-r0",{opacity:0.4},0);
+tl.set("#m60-s1-dg-tk0",{opacity:0},0);
+tl.set("#m60-s1-dg-r1",{opacity:0.4},0);
+tl.set("#m60-s1-dg-tk1",{opacity:0},0);
+tl.set("#m60-s1-dg-r2",{opacity:1},0);
+tl.set("#m60-s1-dg-tk2",{opacity:0},0);
+tl.set("#m60-s1-dg-r3",{opacity:0.4},0);
+tl.set("#m60-s1-dg-tk3",{opacity:0},0);
+tl.set("#m60-s1-dg-a2",{opacity:0},0);
+tl.fromTo("#m60-s1-dg-a2",{opacity:0,clipPath:"inset(0 100% 0 0)"},{opacity:1,clipPath:"inset(0 0% 0 0)",duration:0.3,ease:"power1.out"},80.77);
+tl.set("#m60-s2-dg-r0",{opacity:0.4},0);
+tl.set("#m60-s2-dg-tk0",{opacity:0},0);
+tl.set("#m60-s2-dg-r1",{opacity:0.4},0);
+tl.set("#m60-s2-dg-tk1",{opacity:0},0);
+tl.set("#m60-s2-dg-r2",{opacity:1},0);
+tl.set("#m60-s2-dg-tk2",{opacity:0},0);
+tl.set("#m60-s2-dg-r3",{opacity:0.4},0);
+tl.set("#m60-s2-dg-tk3",{opacity:0},0);
+tl.set("#m60-s2-dg-a2",{opacity:0},0);
+tl.fromTo("#m60-s2-dg-a2",{opacity:0,clipPath:"inset(0 100% 0 0)"},{opacity:1,clipPath:"inset(0 0% 0 0)",duration:0.3,ease:"power1.out"},80.77);
+tl.set("#m60-s3-dg-r0",{opacity:0.4},0);
+tl.set("#m60-s3-dg-tk0",{opacity:0},0);
+tl.set("#m60-s3-dg-r1",{opacity:0.4},0);
+tl.set("#m60-s3-dg-tk1",{opacity:0},0);
+tl.set("#m60-s3-dg-r2",{opacity:1},0);
+tl.set("#m60-s3-dg-tk2",{opacity:0},0);
+tl.set("#m60-s3-dg-r3",{opacity:0.4},0);
+tl.set("#m60-s3-dg-tk3",{opacity:0},0);
+tl.set("#m60-s3-dg-a2",{opacity:0},0);
+tl.fromTo("#m60-s3-dg-a2",{opacity:0,clipPath:"inset(0 100% 0 0)"},{opacity:1,clipPath:"inset(0 0% 0 0)",duration:0.3,ease:"power1.out"},80.77);
+tl.set("#m61-s0-dg-r0",{opacity:0.4},0);
+tl.set("#m61-s0-dg-tk0",{opacity:0},0);
+tl.set("#m61-s0-dg-r1",{opacity:0.4},0);
+tl.set("#m61-s0-dg-tk1",{opacity:0},0);
+tl.set("#m61-s0-dg-r2",{opacity:0.4},0);
+tl.set("#m61-s0-dg-tk2",{opacity:0},0);
+tl.set("#m61-s0-dg-r3",{opacity:1},0);
+tl.set("#m61-s0-dg-tk3",{opacity:0},0);
+tl.set("#m61-s1-dg-r0",{opacity:0.4},0);
+tl.set("#m61-s1-dg-tk0",{opacity:0},0);
+tl.set("#m61-s1-dg-r1",{opacity:0.4},0);
+tl.set("#m61-s1-dg-tk1",{opacity:0},0);
+tl.set("#m61-s1-dg-r2",{opacity:0.4},0);
+tl.set("#m61-s1-dg-tk2",{opacity:0},0);
+tl.set("#m61-s1-dg-r3",{opacity:1},0);
+tl.set("#m61-s1-dg-tk3",{opacity:0},0);
+tl.to("#m61-s1-so0",{opacity:0,duration:0.2},85.79);
+tl.set("#m61-s2-dg-r0",{opacity:0.4},0);
+tl.set("#m61-s2-dg-tk0",{opacity:0},0);
+tl.set("#m61-s2-dg-r1",{opacity:0.4},0);
+tl.set("#m61-s2-dg-tk1",{opacity:0},0);
+tl.set("#m61-s2-dg-r2",{opacity:0.4},0);
+tl.set("#m61-s2-dg-tk2",{opacity:0},0);
+tl.set("#m61-s2-dg-r3",{opacity:1},0);
+tl.set("#m61-s2-dg-tk3",{opacity:0},0);
+tl.set("#m62-s0-dg-L",{opacity:0},0);
+tl.set("#m62-s0-dg-R",{opacity:0},0);
+tl.fromTo("#m62-s0-dg-L",{opacity:0,scale:0.9},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},88.45);
+tl.fromTo("#m62-s0-dg-R",{opacity:0,scale:0.9},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},90.73);
+tl.set("#m62-s1-dg-L",{opacity:0},0);
+tl.set("#m62-s1-dg-R",{opacity:0},0);
+tl.fromTo("#m62-s1-dg-L",{opacity:0,scale:0.9},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},88.45);
+tl.fromTo("#m62-s1-dg-R",{opacity:0,scale:0.9},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},90.73);
+tl.fromTo("#m62-s2-img",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},92.46);
+const m63_s0_dg_b0={v:0};
+tl.fromTo("#m63-s0-dg-b0",{top:830,height:0},{top:360,height:470,duration:0.7,ease:"power2.out"},96.83);
+tl.fromTo(m63_s0_dg_b0,{v:0},{v:140,duration:0.7,ease:"power2.out",onUpdate:function(){var e=document.getElementById("m63-s0-dg-v0");if(e)e.textContent=Math.round(m63_s0_dg_b0.v);}},96.83);
+tl.set("#m63-s0-dg-v0",{opacity:0},0);
+tl.set("#m63-s0-dg-v0",{opacity:1},96.83);
+const m63_s0_dg_b1={v:0};
+tl.fromTo("#m63-s0-dg-b1",{top:830,height:0},{top:548,height:282,duration:0.7,ease:"power2.out"},96.83);
+tl.fromTo(m63_s0_dg_b1,{v:0},{v:84,duration:0.7,ease:"power2.out",onUpdate:function(){var e=document.getElementById("m63-s0-dg-v1");if(e)e.textContent=Math.round(m63_s0_dg_b1.v);}},96.83);
+tl.set("#m63-s0-dg-v1",{opacity:0},0);
+tl.set("#m63-s0-dg-v1",{opacity:1},96.83);
+tl.set("#m63-s0-dg-pl",{opacity:0},0);
+tl.fromTo("#m63-s0-dg-pl",{opacity:0,scale:0.7},{opacity:1,scale:1,duration:0.35,ease:"back.out(1.7)"},98.59);
+const m63_s1_dg_b0={v:0};
+tl.fromTo("#m63-s1-dg-b0",{top:830,height:0},{top:360,height:470,duration:0.7,ease:"power2.out"},96.83);
+tl.fromTo(m63_s1_dg_b0,{v:0},{v:140,duration:0.7,ease:"power2.out",onUpdate:function(){var e=document.getElementById("m63-s1-dg-v0");if(e)e.textContent=Math.round(m63_s1_dg_b0.v);}},96.83);
+tl.set("#m63-s1-dg-v0",{opacity:0},0);
+tl.set("#m63-s1-dg-v0",{opacity:1},96.83);
+const m63_s1_dg_b1={v:0};
+tl.fromTo("#m63-s1-dg-b1",{top:830,height:0},{top:548,height:282,duration:0.7,ease:"power2.out"},96.83);
+tl.fromTo(m63_s1_dg_b1,{v:0},{v:84,duration:0.7,ease:"power2.out",onUpdate:function(){var e=document.getElementById("m63-s1-dg-v1");if(e)e.textContent=Math.round(m63_s1_dg_b1.v);}},96.83);
+tl.set("#m63-s1-dg-v1",{opacity:0},0);
+tl.set("#m63-s1-dg-v1",{opacity:1},96.83);
+tl.set("#m63-s1-dg-pl",{opacity:0},0);
+tl.fromTo("#m63-s1-dg-pl",{opacity:0,scale:0.7},{opacity:1,scale:1,duration:0.35,ease:"back.out(1.7)"},98.59);
+const m63_s2_dg_b0={v:0};
+tl.fromTo("#m63-s2-dg-b0",{top:830,height:0},{top:360,height:470,duration:0.7,ease:"power2.out"},96.83);
+tl.fromTo(m63_s2_dg_b0,{v:0},{v:140,duration:0.7,ease:"power2.out",onUpdate:function(){var e=document.getElementById("m63-s2-dg-v0");if(e)e.textContent=Math.round(m63_s2_dg_b0.v);}},96.83);
+tl.set("#m63-s2-dg-v0",{opacity:0},0);
+tl.set("#m63-s2-dg-v0",{opacity:1},96.83);
+const m63_s2_dg_b1={v:0};
+tl.fromTo("#m63-s2-dg-b1",{top:830,height:0},{top:548,height:282,duration:0.7,ease:"power2.out"},96.83);
+tl.fromTo(m63_s2_dg_b1,{v:0},{v:84,duration:0.7,ease:"power2.out",onUpdate:function(){var e=document.getElementById("m63-s2-dg-v1");if(e)e.textContent=Math.round(m63_s2_dg_b1.v);}},96.83);
+tl.set("#m63-s2-dg-v1",{opacity:0},0);
+tl.set("#m63-s2-dg-v1",{opacity:1},96.83);
+tl.set("#m63-s2-dg-pl",{opacity:0},0);
+tl.fromTo("#m63-s2-dg-pl",{opacity:0,scale:0.7},{opacity:1,scale:1,duration:0.35,ease:"back.out(1.7)"},98.59);
+const m63_s3_dg_b0={v:0};
+tl.fromTo("#m63-s3-dg-b0",{top:830,height:0},{top:360,height:470,duration:0.7,ease:"power2.out"},96.83);
+tl.fromTo(m63_s3_dg_b0,{v:0},{v:140,duration:0.7,ease:"power2.out",onUpdate:function(){var e=document.getElementById("m63-s3-dg-v0");if(e)e.textContent=Math.round(m63_s3_dg_b0.v);}},96.83);
+tl.set("#m63-s3-dg-v0",{opacity:0},0);
+tl.set("#m63-s3-dg-v0",{opacity:1},96.83);
+const m63_s3_dg_b1={v:0};
+tl.fromTo("#m63-s3-dg-b1",{top:830,height:0},{top:548,height:282,duration:0.7,ease:"power2.out"},96.83);
+tl.fromTo(m63_s3_dg_b1,{v:0},{v:84,duration:0.7,ease:"power2.out",onUpdate:function(){var e=document.getElementById("m63-s3-dg-v1");if(e)e.textContent=Math.round(m63_s3_dg_b1.v);}},96.83);
+tl.set("#m63-s3-dg-v1",{opacity:0},0);
+tl.set("#m63-s3-dg-v1",{opacity:1},96.83);
+tl.set("#m63-s3-dg-pl",{opacity:0},0);
+tl.fromTo("#m63-s3-dg-pl",{opacity:0,scale:0.7},{opacity:1,scale:1,duration:0.35,ease:"back.out(1.7)"},98.59);
+const m63_s4_dg_b0={v:0};
+tl.fromTo("#m63-s4-dg-b0",{top:830,height:0},{top:360,height:470,duration:0.7,ease:"power2.out"},96.83);
+tl.fromTo(m63_s4_dg_b0,{v:0},{v:140,duration:0.7,ease:"power2.out",onUpdate:function(){var e=document.getElementById("m63-s4-dg-v0");if(e)e.textContent=Math.round(m63_s4_dg_b0.v);}},96.83);
+tl.set("#m63-s4-dg-v0",{opacity:0},0);
+tl.set("#m63-s4-dg-v0",{opacity:1},96.83);
+const m63_s4_dg_b1={v:0};
+tl.fromTo("#m63-s4-dg-b1",{top:830,height:0},{top:548,height:282,duration:0.7,ease:"power2.out"},96.83);
+tl.fromTo(m63_s4_dg_b1,{v:0},{v:84,duration:0.7,ease:"power2.out",onUpdate:function(){var e=document.getElementById("m63-s4-dg-v1");if(e)e.textContent=Math.round(m63_s4_dg_b1.v);}},96.83);
+tl.set("#m63-s4-dg-v1",{opacity:0},0);
+tl.set("#m63-s4-dg-v1",{opacity:1},96.83);
+tl.set("#m63-s4-dg-pl",{opacity:0},0);
+tl.fromTo("#m63-s4-dg-pl",{opacity:0,scale:0.7},{opacity:1,scale:1,duration:0.35,ease:"back.out(1.7)"},98.59);
+tl.set("#m64-s0-cam",{x:0,y:0,scale:1},106.66);
+tl.fromTo("#m64-s0-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:3,ease:"none"},106.66);
+tl.set("#m64-s1-cam",{x:0,y:0,scale:1},109.66);
+tl.fromTo("#m64-s1-cam",{x:0,y:0,scale:1},{x:-768,y:0,scale:1.4,duration:0.25,ease:"expo.out"},110.58);
+tl.fromTo("#m64-s1-cam",{x:-768,y:0,scale:1.4},{x:-808.32,y:0,scale:1.421,duration:2.03,ease:"none"},110.83);
+tl.to("#m64-s1-so0",{opacity:0,duration:0.2},110.01);
+tl.set("#m65-s0-dg-im0",{opacity:0},0);
+tl.set("#m65-s0-dg-il0",{opacity:0},0);
+tl.set("#m65-s0-dg-ic0",{borderColor:"#CFC8B8",backgroundColor:"#F2EEE4"},0);
+tl.set("#m65-s0-dg-ic0",{borderColor:"#1A1A1A",backgroundColor:"#F8F5EE"},120.25);
+tl.fromTo("#m65-s0-dg-ic0",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},120.25);
+tl.set("#m65-s0-dg-im0",{opacity:1},120.25);
+tl.fromTo("#m65-s0-dg-il0",{opacity:0,y:14},{opacity:1,y:0,duration:0.25,ease:"power2.out"},120.3);
+tl.set("#m65-s0-dg-im1",{opacity:0},0);
+tl.set("#m65-s0-dg-il1",{opacity:0},0);
+tl.set("#m65-s0-dg-ic1",{borderColor:"#CFC8B8",backgroundColor:"#F2EEE4"},0);
+tl.set("#m65-s0-dg-ic1",{borderColor:"#1A1A1A",backgroundColor:"#F8F5EE"},121.97);
+tl.fromTo("#m65-s0-dg-ic1",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},121.97);
+tl.set("#m65-s0-dg-im1",{opacity:1},121.97);
+tl.fromTo("#m65-s0-dg-il1",{opacity:0,y:14},{opacity:1,y:0,duration:0.25,ease:"power2.out"},122.02);
+tl.set("#m65-s0-dg-im2",{opacity:0},0);
+tl.set("#m65-s0-dg-il2",{opacity:0},0);
+tl.set("#m65-s0-dg-ic2",{borderColor:"#CFC8B8",backgroundColor:"#F2EEE4"},0);
+tl.set("#m65-s0-dg-ic2",{borderColor:"#1A1A1A",backgroundColor:"#F8F5EE"},123.27);
+tl.fromTo("#m65-s0-dg-ic2",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},123.27);
+tl.set("#m65-s0-dg-im2",{opacity:1},123.27);
+tl.fromTo("#m65-s0-dg-il2",{opacity:0,y:14},{opacity:1,y:0,duration:0.25,ease:"power2.out"},123.32);
+tl.fromTo("#m65-s1-img",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},116.12);
+tl.set("#m65-s2-dg-im0",{opacity:0},0);
+tl.set("#m65-s2-dg-il0",{opacity:0},0);
+tl.set("#m65-s2-dg-ic0",{borderColor:"#CFC8B8",backgroundColor:"#F2EEE4"},0);
+tl.set("#m65-s2-dg-ic0",{borderColor:"#1A1A1A",backgroundColor:"#F8F5EE"},120.25);
+tl.fromTo("#m65-s2-dg-ic0",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},120.25);
+tl.set("#m65-s2-dg-im0",{opacity:1},120.25);
+tl.fromTo("#m65-s2-dg-il0",{opacity:0,y:14},{opacity:1,y:0,duration:0.25,ease:"power2.out"},120.3);
+tl.set("#m65-s2-dg-im1",{opacity:0},0);
+tl.set("#m65-s2-dg-il1",{opacity:0},0);
+tl.set("#m65-s2-dg-ic1",{borderColor:"#CFC8B8",backgroundColor:"#F2EEE4"},0);
+tl.set("#m65-s2-dg-ic1",{borderColor:"#1A1A1A",backgroundColor:"#F8F5EE"},121.97);
+tl.fromTo("#m65-s2-dg-ic1",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},121.97);
+tl.set("#m65-s2-dg-im1",{opacity:1},121.97);
+tl.fromTo("#m65-s2-dg-il1",{opacity:0,y:14},{opacity:1,y:0,duration:0.25,ease:"power2.out"},122.02);
+tl.set("#m65-s2-dg-im2",{opacity:0},0);
+tl.set("#m65-s2-dg-il2",{opacity:0},0);
+tl.set("#m65-s2-dg-ic2",{borderColor:"#CFC8B8",backgroundColor:"#F2EEE4"},0);
+tl.set("#m65-s2-dg-ic2",{borderColor:"#1A1A1A",backgroundColor:"#F8F5EE"},123.27);
+tl.fromTo("#m65-s2-dg-ic2",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},123.27);
+tl.set("#m65-s2-dg-im2",{opacity:1},123.27);
+tl.fromTo("#m65-s2-dg-il2",{opacity:0,y:14},{opacity:1,y:0,duration:0.25,ease:"power2.out"},123.32);
+tl.fromTo("#m65-s3-in",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},118.38);
+tl.set("#m65-s4-dg-im0",{opacity:0},0);
+tl.set("#m65-s4-dg-il0",{opacity:0},0);
+tl.set("#m65-s4-dg-ic0",{borderColor:"#CFC8B8",backgroundColor:"#F2EEE4"},0);
+tl.set("#m65-s4-dg-ic0",{borderColor:"#1A1A1A",backgroundColor:"#F8F5EE"},120.25);
+tl.fromTo("#m65-s4-dg-ic0",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},120.25);
+tl.set("#m65-s4-dg-im0",{opacity:1},120.25);
+tl.fromTo("#m65-s4-dg-il0",{opacity:0,y:14},{opacity:1,y:0,duration:0.25,ease:"power2.out"},120.3);
+tl.set("#m65-s4-dg-im1",{opacity:0},0);
+tl.set("#m65-s4-dg-il1",{opacity:0},0);
+tl.set("#m65-s4-dg-ic1",{borderColor:"#CFC8B8",backgroundColor:"#F2EEE4"},0);
+tl.set("#m65-s4-dg-ic1",{borderColor:"#1A1A1A",backgroundColor:"#F8F5EE"},121.97);
+tl.fromTo("#m65-s4-dg-ic1",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},121.97);
+tl.set("#m65-s4-dg-im1",{opacity:1},121.97);
+tl.fromTo("#m65-s4-dg-il1",{opacity:0,y:14},{opacity:1,y:0,duration:0.25,ease:"power2.out"},122.02);
+tl.set("#m65-s4-dg-im2",{opacity:0},0);
+tl.set("#m65-s4-dg-il2",{opacity:0},0);
+tl.set("#m65-s4-dg-ic2",{borderColor:"#CFC8B8",backgroundColor:"#F2EEE4"},0);
+tl.set("#m65-s4-dg-ic2",{borderColor:"#1A1A1A",backgroundColor:"#F8F5EE"},123.27);
+tl.fromTo("#m65-s4-dg-ic2",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},123.27);
+tl.set("#m65-s4-dg-im2",{opacity:1},123.27);
+tl.fromTo("#m65-s4-dg-il2",{opacity:0,y:14},{opacity:1,y:0,duration:0.25,ease:"power2.out"},123.32);
+tl.set("#m65-s5-dg-im0",{opacity:0},0);
+tl.set("#m65-s5-dg-il0",{opacity:0},0);
+tl.set("#m65-s5-dg-ic0",{borderColor:"#CFC8B8",backgroundColor:"#F2EEE4"},0);
+tl.set("#m65-s5-dg-ic0",{borderColor:"#1A1A1A",backgroundColor:"#F8F5EE"},120.25);
+tl.fromTo("#m65-s5-dg-ic0",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},120.25);
+tl.set("#m65-s5-dg-im0",{opacity:1},120.25);
+tl.fromTo("#m65-s5-dg-il0",{opacity:0,y:14},{opacity:1,y:0,duration:0.25,ease:"power2.out"},120.3);
+tl.set("#m65-s5-dg-im1",{opacity:0},0);
+tl.set("#m65-s5-dg-il1",{opacity:0},0);
+tl.set("#m65-s5-dg-ic1",{borderColor:"#CFC8B8",backgroundColor:"#F2EEE4"},0);
+tl.set("#m65-s5-dg-ic1",{borderColor:"#1A1A1A",backgroundColor:"#F8F5EE"},121.97);
+tl.fromTo("#m65-s5-dg-ic1",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},121.97);
+tl.set("#m65-s5-dg-im1",{opacity:1},121.97);
+tl.fromTo("#m65-s5-dg-il1",{opacity:0,y:14},{opacity:1,y:0,duration:0.25,ease:"power2.out"},122.02);
+tl.set("#m65-s5-dg-im2",{opacity:0},0);
+tl.set("#m65-s5-dg-il2",{opacity:0},0);
+tl.set("#m65-s5-dg-ic2",{borderColor:"#CFC8B8",backgroundColor:"#F2EEE4"},0);
+tl.set("#m65-s5-dg-ic2",{borderColor:"#1A1A1A",backgroundColor:"#F8F5EE"},123.27);
+tl.fromTo("#m65-s5-dg-ic2",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},123.27);
+tl.set("#m65-s5-dg-im2",{opacity:1},123.27);
+tl.fromTo("#m65-s5-dg-il2",{opacity:0,y:14},{opacity:1,y:0,duration:0.25,ease:"power2.out"},123.32);
+tl.set("#m66-s0-cam",{x:0,y:0,scale:1},124.94);
+tl.fromTo("#m66-s0-cam",{x:0,y:0,scale:1},{x:-38.4,y:-274.32,scale:1.3,duration:0.25,ease:"expo.out"},126.92);
+tl.fromTo("#m66-s0-cam",{x:-38.4,y:-274.32,scale:1.3},{x:-53.376,y:-286.535,scale:1.319,duration:1.15,ease:"none"},127.17);
+tl.set("#m67-s0-cam",{x:0,y:0,scale:1},128.32);
+tl.fromTo("#m67-s0-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:3.34,ease:"none"},128.32);
+tl.set("#m68-s0-dg-r0",{opacity:1},0);
+tl.set("#m68-s0-dg-tk0",{opacity:0},0);
+tl.set("#m68-s0-dg-r1",{opacity:1},0);
+tl.set("#m68-s0-dg-tk1",{opacity:0},0);
+tl.set("#m68-s0-dg-r2",{opacity:1},0);
+tl.set("#m68-s0-dg-tk2",{opacity:0},0);
+tl.set("#m68-s0-dg-r3",{opacity:1},0);
+tl.set("#m68-s0-dg-tk3",{opacity:0},0);
+tl.set("#m68-s0-dg-a0",{opacity:0},0);
+tl.fromTo("#m68-s0-dg-a0",{opacity:0,clipPath:"inset(0 100% 0 0)"},{opacity:1,clipPath:"inset(0 0% 0 0)",duration:0.3,ease:"power1.out"},131.83);
+tl.set("#m68-s0-dg-a1",{opacity:0},0);
+tl.fromTo("#m68-s0-dg-a1",{opacity:0,clipPath:"inset(0 100% 0 0)"},{opacity:1,clipPath:"inset(0 0% 0 0)",duration:0.3,ease:"power1.out"},135.67);
+tl.set("#m68-s0-dg-a2",{opacity:0},0);
+tl.fromTo("#m68-s0-dg-a2",{opacity:0,clipPath:"inset(0 100% 0 0)"},{opacity:1,clipPath:"inset(0 0% 0 0)",duration:0.3,ease:"power1.out"},141.83);
+tl.set("#m68-s0-dg-a3",{opacity:0},0);
+tl.fromTo("#m68-s0-dg-a3",{opacity:0,clipPath:"inset(0 100% 0 0)"},{opacity:1,clipPath:"inset(0 0% 0 0)",duration:0.3,ease:"power1.out"},148.71);
+tl.to("#m68-s0-dg-ul",{strokeDashoffset:0,duration:0.5,ease:"power2.out"},153.47);
+tl.fromTo("#m68-s1-img",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},134.4);
+tl.set("#m68-s2-dg-r0",{opacity:1},0);
+tl.set("#m68-s2-dg-tk0",{opacity:0},0);
+tl.set("#m68-s2-dg-r1",{opacity:1},0);
+tl.set("#m68-s2-dg-tk1",{opacity:0},0);
+tl.set("#m68-s2-dg-r2",{opacity:1},0);
+tl.set("#m68-s2-dg-tk2",{opacity:0},0);
+tl.set("#m68-s2-dg-r3",{opacity:1},0);
+tl.set("#m68-s2-dg-tk3",{opacity:0},0);
+tl.set("#m68-s2-dg-a0",{opacity:0},0);
+tl.fromTo("#m68-s2-dg-a0",{opacity:0,clipPath:"inset(0 100% 0 0)"},{opacity:1,clipPath:"inset(0 0% 0 0)",duration:0.3,ease:"power1.out"},131.83);
+tl.set("#m68-s2-dg-a1",{opacity:0},0);
+tl.fromTo("#m68-s2-dg-a1",{opacity:0,clipPath:"inset(0 100% 0 0)"},{opacity:1,clipPath:"inset(0 0% 0 0)",duration:0.3,ease:"power1.out"},135.67);
+tl.set("#m68-s2-dg-a2",{opacity:0},0);
+tl.fromTo("#m68-s2-dg-a2",{opacity:0,clipPath:"inset(0 100% 0 0)"},{opacity:1,clipPath:"inset(0 0% 0 0)",duration:0.3,ease:"power1.out"},141.83);
+tl.set("#m68-s2-dg-a3",{opacity:0},0);
+tl.fromTo("#m68-s2-dg-a3",{opacity:0,clipPath:"inset(0 100% 0 0)"},{opacity:1,clipPath:"inset(0 0% 0 0)",duration:0.3,ease:"power1.out"},148.71);
+tl.to("#m68-s2-dg-ul",{strokeDashoffset:0,duration:0.5,ease:"power2.out"},153.47);
+tl.fromTo("#m68-s3-img",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},138.8);
+tl.set("#m68-s4-dg-r0",{opacity:1},0);
+tl.set("#m68-s4-dg-tk0",{opacity:0},0);
+tl.set("#m68-s4-dg-r1",{opacity:1},0);
+tl.set("#m68-s4-dg-tk1",{opacity:0},0);
+tl.set("#m68-s4-dg-r2",{opacity:1},0);
+tl.set("#m68-s4-dg-tk2",{opacity:0},0);
+tl.set("#m68-s4-dg-r3",{opacity:1},0);
+tl.set("#m68-s4-dg-tk3",{opacity:0},0);
+tl.set("#m68-s4-dg-a0",{opacity:0},0);
+tl.fromTo("#m68-s4-dg-a0",{opacity:0,clipPath:"inset(0 100% 0 0)"},{opacity:1,clipPath:"inset(0 0% 0 0)",duration:0.3,ease:"power1.out"},131.83);
+tl.set("#m68-s4-dg-a1",{opacity:0},0);
+tl.fromTo("#m68-s4-dg-a1",{opacity:0,clipPath:"inset(0 100% 0 0)"},{opacity:1,clipPath:"inset(0 0% 0 0)",duration:0.3,ease:"power1.out"},135.67);
+tl.set("#m68-s4-dg-a2",{opacity:0},0);
+tl.fromTo("#m68-s4-dg-a2",{opacity:0,clipPath:"inset(0 100% 0 0)"},{opacity:1,clipPath:"inset(0 0% 0 0)",duration:0.3,ease:"power1.out"},141.83);
+tl.set("#m68-s4-dg-a3",{opacity:0},0);
+tl.fromTo("#m68-s4-dg-a3",{opacity:0,clipPath:"inset(0 100% 0 0)"},{opacity:1,clipPath:"inset(0 0% 0 0)",duration:0.3,ease:"power1.out"},148.71);
+tl.to("#m68-s4-dg-ul",{strokeDashoffset:0,duration:0.5,ease:"power2.out"},153.47);
+tl.set("#m68-s5-dg-r0",{opacity:1},0);
+tl.set("#m68-s5-dg-tk0",{opacity:0},0);
+tl.set("#m68-s5-dg-r1",{opacity:1},0);
+tl.set("#m68-s5-dg-tk1",{opacity:0},0);
+tl.set("#m68-s5-dg-r2",{opacity:1},0);
+tl.set("#m68-s5-dg-tk2",{opacity:0},0);
+tl.set("#m68-s5-dg-r3",{opacity:1},0);
+tl.set("#m68-s5-dg-tk3",{opacity:0},0);
+tl.set("#m68-s5-dg-a0",{opacity:0},0);
+tl.fromTo("#m68-s5-dg-a0",{opacity:0,clipPath:"inset(0 100% 0 0)"},{opacity:1,clipPath:"inset(0 0% 0 0)",duration:0.3,ease:"power1.out"},131.83);
+tl.set("#m68-s5-dg-a1",{opacity:0},0);
+tl.fromTo("#m68-s5-dg-a1",{opacity:0,clipPath:"inset(0 100% 0 0)"},{opacity:1,clipPath:"inset(0 0% 0 0)",duration:0.3,ease:"power1.out"},135.67);
+tl.set("#m68-s5-dg-a2",{opacity:0},0);
+tl.fromTo("#m68-s5-dg-a2",{opacity:0,clipPath:"inset(0 100% 0 0)"},{opacity:1,clipPath:"inset(0 0% 0 0)",duration:0.3,ease:"power1.out"},141.83);
+tl.set("#m68-s5-dg-a3",{opacity:0},0);
+tl.fromTo("#m68-s5-dg-a3",{opacity:0,clipPath:"inset(0 100% 0 0)"},{opacity:1,clipPath:"inset(0 0% 0 0)",duration:0.3,ease:"power1.out"},148.71);
+tl.to("#m68-s5-dg-ul",{strokeDashoffset:0,duration:0.5,ease:"power2.out"},153.47);
+tl.fromTo("#m68-s6-in",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},144.84);
+tl.set("#m68-s7-dg-r0",{opacity:1},0);
+tl.set("#m68-s7-dg-tk0",{opacity:0},0);
+tl.set("#m68-s7-dg-r1",{opacity:1},0);
+tl.set("#m68-s7-dg-tk1",{opacity:0},0);
+tl.set("#m68-s7-dg-r2",{opacity:1},0);
+tl.set("#m68-s7-dg-tk2",{opacity:0},0);
+tl.set("#m68-s7-dg-r3",{opacity:1},0);
+tl.set("#m68-s7-dg-tk3",{opacity:0},0);
+tl.set("#m68-s7-dg-a0",{opacity:0},0);
+tl.fromTo("#m68-s7-dg-a0",{opacity:0,clipPath:"inset(0 100% 0 0)"},{opacity:1,clipPath:"inset(0 0% 0 0)",duration:0.3,ease:"power1.out"},131.83);
+tl.set("#m68-s7-dg-a1",{opacity:0},0);
+tl.fromTo("#m68-s7-dg-a1",{opacity:0,clipPath:"inset(0 100% 0 0)"},{opacity:1,clipPath:"inset(0 0% 0 0)",duration:0.3,ease:"power1.out"},135.67);
+tl.set("#m68-s7-dg-a2",{opacity:0},0);
+tl.fromTo("#m68-s7-dg-a2",{opacity:0,clipPath:"inset(0 100% 0 0)"},{opacity:1,clipPath:"inset(0 0% 0 0)",duration:0.3,ease:"power1.out"},141.83);
+tl.set("#m68-s7-dg-a3",{opacity:0},0);
+tl.fromTo("#m68-s7-dg-a3",{opacity:0,clipPath:"inset(0 100% 0 0)"},{opacity:1,clipPath:"inset(0 0% 0 0)",duration:0.3,ease:"power1.out"},148.71);
+tl.to("#m68-s7-dg-ul",{strokeDashoffset:0,duration:0.5,ease:"power2.out"},153.47);
+tl.set("#m68-s8-dg-r0",{opacity:1},0);
+tl.set("#m68-s8-dg-tk0",{opacity:0},0);
+tl.set("#m68-s8-dg-r1",{opacity:1},0);
+tl.set("#m68-s8-dg-tk1",{opacity:0},0);
+tl.set("#m68-s8-dg-r2",{opacity:1},0);
+tl.set("#m68-s8-dg-tk2",{opacity:0},0);
+tl.set("#m68-s8-dg-r3",{opacity:1},0);
+tl.set("#m68-s8-dg-tk3",{opacity:0},0);
+tl.set("#m68-s8-dg-a0",{opacity:0},0);
+tl.fromTo("#m68-s8-dg-a0",{opacity:0,clipPath:"inset(0 100% 0 0)"},{opacity:1,clipPath:"inset(0 0% 0 0)",duration:0.3,ease:"power1.out"},131.83);
+tl.set("#m68-s8-dg-a1",{opacity:0},0);
+tl.fromTo("#m68-s8-dg-a1",{opacity:0,clipPath:"inset(0 100% 0 0)"},{opacity:1,clipPath:"inset(0 0% 0 0)",duration:0.3,ease:"power1.out"},135.67);
+tl.set("#m68-s8-dg-a2",{opacity:0},0);
+tl.fromTo("#m68-s8-dg-a2",{opacity:0,clipPath:"inset(0 100% 0 0)"},{opacity:1,clipPath:"inset(0 0% 0 0)",duration:0.3,ease:"power1.out"},141.83);
+tl.set("#m68-s8-dg-a3",{opacity:0},0);
+tl.fromTo("#m68-s8-dg-a3",{opacity:0,clipPath:"inset(0 100% 0 0)"},{opacity:1,clipPath:"inset(0 0% 0 0)",duration:0.3,ease:"power1.out"},148.71);
+tl.to("#m68-s8-dg-ul",{strokeDashoffset:0,duration:0.5,ease:"power2.out"},153.47);
+tl.set("#m68-s9-dg-r0",{opacity:1},0);
+tl.set("#m68-s9-dg-tk0",{opacity:0},0);
+tl.set("#m68-s9-dg-r1",{opacity:1},0);
+tl.set("#m68-s9-dg-tk1",{opacity:0},0);
+tl.set("#m68-s9-dg-r2",{opacity:1},0);
+tl.set("#m68-s9-dg-tk2",{opacity:0},0);
+tl.set("#m68-s9-dg-r3",{opacity:1},0);
+tl.set("#m68-s9-dg-tk3",{opacity:0},0);
+tl.set("#m68-s9-dg-a0",{opacity:0},0);
+tl.fromTo("#m68-s9-dg-a0",{opacity:0,clipPath:"inset(0 100% 0 0)"},{opacity:1,clipPath:"inset(0 0% 0 0)",duration:0.3,ease:"power1.out"},131.83);
+tl.set("#m68-s9-dg-a1",{opacity:0},0);
+tl.fromTo("#m68-s9-dg-a1",{opacity:0,clipPath:"inset(0 100% 0 0)"},{opacity:1,clipPath:"inset(0 0% 0 0)",duration:0.3,ease:"power1.out"},135.67);
+tl.set("#m68-s9-dg-a2",{opacity:0},0);
+tl.fromTo("#m68-s9-dg-a2",{opacity:0,clipPath:"inset(0 100% 0 0)"},{opacity:1,clipPath:"inset(0 0% 0 0)",duration:0.3,ease:"power1.out"},141.83);
+tl.set("#m68-s9-dg-a3",{opacity:0},0);
+tl.fromTo("#m68-s9-dg-a3",{opacity:0,clipPath:"inset(0 100% 0 0)"},{opacity:1,clipPath:"inset(0 0% 0 0)",duration:0.3,ease:"power1.out"},148.71);
+tl.to("#m68-s9-dg-ul",{strokeDashoffset:0,duration:0.5,ease:"power2.out"},153.47);
+tl.set("#m69-s0-cam",{x:0,y:0,scale:1},156.22);
+tl.fromTo("#m69-s0-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:3.24,ease:"none"},156.22);
+tl.set("#m69-s0-ov0",{opacity:0},0);
+tl.set("#m69-s0-ov0",{opacity:1},161.09);
+tl.to("#m69-s0-ov0-e",{strokeDashoffset:0,duration:0.55,ease:"power2.out"},161.09);
+tl.set("#m69-s1-cam",{x:0,y:0,scale:1},159.46);
+tl.fromTo("#m69-s1-cam",{x:0,y:0,scale:1},{x:0,y:-432,scale:1.4,duration:0.25,ease:"expo.out"},160.12);
+tl.fromTo("#m69-s1-cam",{x:0,y:-432,scale:1.4},{x:0,y:-454.68,scale:1.421,duration:2.25,ease:"none"},160.37);
+tl.set("#m69-s1-ov0",{opacity:0},0);
+tl.set("#m69-s1-ov0",{opacity:1},161.09);
+tl.to("#m69-s1-ov0-e",{strokeDashoffset:0,duration:0.55,ease:"power2.out"},161.09);
+tl.fromTo("#m69-s2-in",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},162.62);
+tl.set("#m69-s3-cam",{x:-576,y:0,scale:1.3},164.26);
+tl.fromTo("#m69-s3-cam",{x:-576,y:0,scale:1.3},{x:-613.44,y:0,scale:1.319,duration:2.24,ease:"none"},164.26);
+tl.set("#m69-s3-ov0",{opacity:0},0);
+tl.set("#m69-s3-ov0",{opacity:1},161.09);
+tl.to("#m69-s3-ov0-e",{strokeDashoffset:0,duration:0.55,ease:"power2.out"},161.09);
+tl.set("#m70-s0-cam",{x:0,y:0,scale:1},166.5);
+tl.fromTo("#m70-s0-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:2.96,ease:"none"},166.5);
+tl.fromTo("#m70-s0-t",{opacity:0},{opacity:1,duration:0.25,ease:"none"},166.5);
+tl.set("#m70-s1-cam",{x:0,y:0,scale:1},169.46);
+tl.fromTo("#m70-s1-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:3.02,ease:"none"},169.46);
+tl.set("#m70-s2-cam",{x:0,y:0,scale:1},172.48);
+tl.fromTo("#m70-s2-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:2.02,ease:"none"},172.48);
+tl.fromTo("#m70-s3-in",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},174.5);
+tl.set("#m71-s0-cam",{x:0,y:0,scale:1},177.22);
+tl.fromTo("#m71-s0-cam",{x:0,y:0,scale:1},{x:-518.4,y:-170.64,scale:1.4,duration:0.25,ease:"expo.out"},179.68);
+tl.set("#m71-s1-cam",{x:-518.4,y:-170.64,scale:1.4},180.12);
+tl.fromTo("#m71-s1-cam",{x:-518.4,y:-170.64,scale:1.4},{x:-168.96,y:-432,scale:1.4,duration:0.26,ease:"power3.inOut"},181.84);
+tl.set("#m71-s1-cam",{filter:"url(#mb)"},181.84);
+tl.fromTo("#mbb",{attr:{stdDeviation:"0 0"}},{attr:{stdDeviation:"38 0"},duration:0.13,ease:"power2.in"},181.84);
+tl.to("#mbb",{attr:{stdDeviation:"0 0"},duration:0.13,ease:"power2.out"},181.97);
+tl.set("#m71-s1-cam",{filter:"none"},182.12);
+tl.fromTo("#m71-s1-cam",{x:-168.96,y:-432,scale:1.4},{x:-185.894,y:-454.68,scale:1.421,duration:1.06,ease:"none"},182.1);
+tl.set("#m72-s0-cam",{x:0,y:0,scale:1},183.16);
+tl.fromTo("#m72-s0-cam",{x:0,y:0,scale:1},{x:0,y:-189,scale:1.35,duration:0.25,ease:"expo.out"},183.72);
+tl.fromTo("#m72-s0-cam",{x:0,y:-189,scale:1.35},{x:0,y:-199.935,scale:1.37,duration:2.37,ease:"none"},183.97);
+tl.set("#m72-s1-cam",{x:0,y:-189,scale:1.35},186.34);
+tl.fromTo("#m72-s1-cam",{x:0,y:-189,scale:1.35},{x:-537.6,y:-162,scale:1.3,duration:0.26,ease:"power3.inOut"},188.96);
+tl.set("#m72-s1-cam",{filter:"url(#mb)"},188.96);
+tl.fromTo("#mbb",{attr:{stdDeviation:"0 0"}},{attr:{stdDeviation:"38 0"},duration:0.13,ease:"power2.in"},188.96);
+tl.to("#mbb",{attr:{stdDeviation:"0 0"},duration:0.13,ease:"power2.out"},189.09);
+tl.set("#m72-s1-cam",{filter:"none"},189.24);
+tl.set("#m72-s2-cam",{x:-537.6,y:-162,scale:1.3},189.5);
+tl.fromTo("#m72-s2-cam",{x:-537.6,y:-162,scale:1.3},{x:-560.064,y:-172.53,scale:1.319,duration:1.1,ease:"none"},189.5);
+tl.fromTo("#m72-s3-in",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},190.6);
+tl.set("#m73-s0-cam",{x:0,y:0,scale:1},192.96);
+tl.fromTo("#m73-s0-cam",{x:0,y:0,scale:1},{x:-768,y:0,scale:1.4,duration:0.25,ease:"expo.out"},193.72);
+tl.fromTo("#m73-s0-cam",{x:-768,y:0,scale:1.4},{x:0,y:-216,scale:1.2,duration:0.26,ease:"power3.inOut"},194.6);
+tl.set("#m73-s0-cam",{filter:"url(#mb)"},194.6);
+tl.fromTo("#mbb",{attr:{stdDeviation:"0 0"}},{attr:{stdDeviation:"38 0"},duration:0.13,ease:"power2.in"},194.6);
+tl.to("#mbb",{attr:{stdDeviation:"0 0"},duration:0.13,ease:"power2.out"},194.73);
+tl.set("#m73-s0-cam",{filter:"none"},194.88);
+tl.fromTo("#m73-s0-cam",{x:0,y:-216,scale:1.2},{x:0,y:-235.44,scale:1.218,duration:0.96,ease:"none"},194.86);
+tl.fromTo("#m73-s0-ov0-b",{x:-900,opacity:1},{x:1300,duration:0.9,ease:"power1.inOut"},194.59);
+tl.set("#m73-s0-ov0-b",{opacity:0},195.54);
+tl.set("#m73-s0-ov0-b",{opacity:0},0);
+tl.set("#m73-s1-dg-st0",{opacity:1},0);
+tl.fromTo("#m73-s1-dg-st0",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},195.82);
+tl.to("#m73-s1-dg-st0",{opacity:0,y:-80,duration:0.22,ease:"power2.in"},197.59);
+tl.set("#m73-s1-dg-st1",{opacity:0},0);
+tl.fromTo("#m73-s1-dg-st1",{opacity:0,y:(1 === 0 ? 70 : 90)},{opacity:1,y:0,duration:0.34,ease:"back.out(1.6)"},197.59);
+tl.set("#m73-s2-cam",{x:0,y:-216,scale:1.2},197.98);
+tl.fromTo("#m73-s2-cam",{x:0,y:-216,scale:1.2},{x:0,y:-235.44,scale:1.218,duration:1.68,ease:"none"},197.98);
+tl.fromTo("#m73-s2-ov0-b",{x:-900,opacity:1},{x:1300,duration:0.9,ease:"power1.inOut"},194.59);
+tl.set("#m73-s2-ov0-b",{opacity:0},195.54);
+tl.set("#m73-s2-ov0-b",{opacity:0},0);
+tl.set("#m74-s0-dg-r0",{opacity:0.35},0);
+tl.set("#m74-s0-dg-tk0",{opacity:0},0);
+tl.set("#m74-s0-dg-r1",{opacity:0.35},0);
+tl.set("#m74-s0-dg-tk1",{opacity:0},0);
+tl.set("#m74-s0-dg-r2",{opacity:0.35},0);
+tl.set("#m74-s0-dg-tk2",{opacity:0},0);
+tl.set("#m74-s0-dg-r3",{opacity:0.35},0);
+tl.set("#m74-s0-dg-tk3",{opacity:0},0);
+tl.to("#m74-s0-dg-r0",{opacity:1,duration:0.3,ease:"power2.out"},203.73);
+tl.fromTo("#m74-s0-dg-L0",{scale:1.2},{scale:1,duration:0.3,ease:"back.out(1.7)"},203.73);
+tl.to("#m74-s0-dg-r1",{opacity:1,duration:0.3,ease:"power2.out"},203.73);
+tl.fromTo("#m74-s0-dg-L1",{scale:1.2},{scale:1,duration:0.3,ease:"back.out(1.7)"},203.73);
+tl.to("#m74-s0-dg-r2",{opacity:1,duration:0.3,ease:"power2.out"},206.11);
+tl.fromTo("#m74-s0-dg-L2",{scale:1.2},{scale:1,duration:0.3,ease:"back.out(1.7)"},206.11);
+tl.to("#m74-s0-dg-r3",{opacity:1,duration:0.3,ease:"power2.out"},208.03);
+tl.fromTo("#m74-s0-dg-L3",{scale:1.2},{scale:1,duration:0.3,ease:"back.out(1.7)"},208.03);
+tl.set("#m74-s1-dg-r0",{opacity:0.35},0);
+tl.set("#m74-s1-dg-tk0",{opacity:0},0);
+tl.set("#m74-s1-dg-r1",{opacity:0.35},0);
+tl.set("#m74-s1-dg-tk1",{opacity:0},0);
+tl.set("#m74-s1-dg-r2",{opacity:0.35},0);
+tl.set("#m74-s1-dg-tk2",{opacity:0},0);
+tl.set("#m74-s1-dg-r3",{opacity:0.35},0);
+tl.set("#m74-s1-dg-tk3",{opacity:0},0);
+tl.to("#m74-s1-dg-r0",{opacity:1,duration:0.3,ease:"power2.out"},203.73);
+tl.fromTo("#m74-s1-dg-L0",{scale:1.2},{scale:1,duration:0.3,ease:"back.out(1.7)"},203.73);
+tl.to("#m74-s1-dg-r1",{opacity:1,duration:0.3,ease:"power2.out"},203.73);
+tl.fromTo("#m74-s1-dg-L1",{scale:1.2},{scale:1,duration:0.3,ease:"back.out(1.7)"},203.73);
+tl.to("#m74-s1-dg-r2",{opacity:1,duration:0.3,ease:"power2.out"},206.11);
+tl.fromTo("#m74-s1-dg-L2",{scale:1.2},{scale:1,duration:0.3,ease:"back.out(1.7)"},206.11);
+tl.to("#m74-s1-dg-r3",{opacity:1,duration:0.3,ease:"power2.out"},208.03);
+tl.fromTo("#m74-s1-dg-L3",{scale:1.2},{scale:1,duration:0.3,ease:"back.out(1.7)"},208.03);
+tl.set("#m74-s2-dg-r0",{opacity:0.35},0);
+tl.set("#m74-s2-dg-tk0",{opacity:0},0);
+tl.set("#m74-s2-dg-r1",{opacity:0.35},0);
+tl.set("#m74-s2-dg-tk1",{opacity:0},0);
+tl.set("#m74-s2-dg-r2",{opacity:0.35},0);
+tl.set("#m74-s2-dg-tk2",{opacity:0},0);
+tl.set("#m74-s2-dg-r3",{opacity:0.35},0);
+tl.set("#m74-s2-dg-tk3",{opacity:0},0);
+tl.to("#m74-s2-dg-r0",{opacity:1,duration:0.3,ease:"power2.out"},203.73);
+tl.fromTo("#m74-s2-dg-L0",{scale:1.2},{scale:1,duration:0.3,ease:"back.out(1.7)"},203.73);
+tl.to("#m74-s2-dg-r1",{opacity:1,duration:0.3,ease:"power2.out"},203.73);
+tl.fromTo("#m74-s2-dg-L1",{scale:1.2},{scale:1,duration:0.3,ease:"back.out(1.7)"},203.73);
+tl.to("#m74-s2-dg-r2",{opacity:1,duration:0.3,ease:"power2.out"},206.11);
+tl.fromTo("#m74-s2-dg-L2",{scale:1.2},{scale:1,duration:0.3,ease:"back.out(1.7)"},206.11);
+tl.to("#m74-s2-dg-r3",{opacity:1,duration:0.3,ease:"power2.out"},208.03);
+tl.fromTo("#m74-s2-dg-L3",{scale:1.2},{scale:1,duration:0.3,ease:"back.out(1.7)"},208.03);
+tl.set("#m74-s3-dg-r0",{opacity:0.35},0);
+tl.set("#m74-s3-dg-tk0",{opacity:0},0);
+tl.set("#m74-s3-dg-r1",{opacity:0.35},0);
+tl.set("#m74-s3-dg-tk1",{opacity:0},0);
+tl.set("#m74-s3-dg-r2",{opacity:0.35},0);
+tl.set("#m74-s3-dg-tk2",{opacity:0},0);
+tl.set("#m74-s3-dg-r3",{opacity:0.35},0);
+tl.set("#m74-s3-dg-tk3",{opacity:0},0);
+tl.to("#m74-s3-dg-r0",{opacity:1,duration:0.3,ease:"power2.out"},203.73);
+tl.fromTo("#m74-s3-dg-L0",{scale:1.2},{scale:1,duration:0.3,ease:"back.out(1.7)"},203.73);
+tl.to("#m74-s3-dg-r1",{opacity:1,duration:0.3,ease:"power2.out"},203.73);
+tl.fromTo("#m74-s3-dg-L1",{scale:1.2},{scale:1,duration:0.3,ease:"back.out(1.7)"},203.73);
+tl.to("#m74-s3-dg-r2",{opacity:1,duration:0.3,ease:"power2.out"},206.11);
+tl.fromTo("#m74-s3-dg-L2",{scale:1.2},{scale:1,duration:0.3,ease:"back.out(1.7)"},206.11);
+tl.to("#m74-s3-dg-r3",{opacity:1,duration:0.3,ease:"power2.out"},208.03);
+tl.fromTo("#m74-s3-dg-L3",{scale:1.2},{scale:1,duration:0.3,ease:"back.out(1.7)"},208.03);
+tl.fromTo("#m75-s0-img",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},210.12);
+tl.fromTo("#m75-s0-t",{opacity:0},{opacity:1,duration:0.25,ease:"none"},210.12);
+tl.set("#m75-s1-cam",{x:0,y:0,scale:1},212);
+tl.fromTo("#m75-s1-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:3.06,ease:"none"},212);
+tl.set("#m75-s2-cam",{x:0,y:0,scale:1},215.06);
+tl.fromTo("#m75-s2-cam",{x:0,y:0,scale:1},{x:-768,y:-170.64,scale:1.4,duration:0.25,ease:"expo.out"},216.8);
+tl.fromTo("#m75-s2-cam",{x:-768,y:-170.64,scale:1.4},{x:-808.32,y:-181.3,scale:1.421,duration:0.93,ease:"none"},217.05);
+tl.set("#m75-s3-cam",{x:-768,y:-170.64,scale:1.4},217.98);
+tl.fromTo("#m75-s3-cam",{x:-768,y:-170.64,scale:1.4},{x:-808.32,y:-181.3,scale:1.421,duration:1.4,ease:"none"},217.98);
+tl.set("#m76-s0-cam",{x:0,y:0,scale:1},219.38);
+tl.fromTo("#m76-s0-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:2.4,ease:"none"},219.38);
+tl.fromTo("#m76-s1-in",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},221.88);
+tl.fromTo("#m76-s1-nw",{x:-520},{x:0,duration:0.25,ease:"power2.out"},221.78);
+tl.to("#m76-s1-nw",{x:-520,duration:0.2,ease:"power2.in"},223.7);
+tl.set("#m76-s2-cam",{x:0,y:0,scale:1},223.92);
+tl.fromTo("#m76-s2-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:0.92,ease:"none"},223.92);
+tl.fromTo("#m76-s3-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:2.82,ease:"none"},224.84);
+tl.set("#m76-s4-cam",{x:0,y:0,scale:1},227.66);
+tl.fromTo("#m76-s4-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:3.86,ease:"none"},227.66);
+tl.set("#m76-s5-cam",{x:0,y:0,scale:1},231.52);
+tl.fromTo("#m57-s1-fin",{scale:1.06},{scale:1,duration:0.2,ease:"power2.out"},58.4);
+tl.set("#m57-s1-fin",{x:5},58.4);
+tl.set("#m57-s1-fin",{x:-4},58.433);
+tl.set("#m57-s1-fin",{x:3},58.466);
+tl.set("#m57-s1-fin",{x:0},58.5);
+tl.fromTo("#m63-s1-fin",{scale:1.06},{scale:1,duration:0.2,ease:"power2.out"},98.62);
+tl.set("#m63-s1-fin",{x:5},98.62);
+tl.set("#m63-s1-fin",{x:-4},98.653);
+tl.set("#m63-s1-fin",{x:3},98.686);
+tl.set("#m63-s1-fin",{x:0},98.72);
+tl.fromTo("#nar1-w",{x:-520},{x:0,duration:0.25,ease:"power2.out"},4.74);
+tl.to("#nar4-w",{x:-520,duration:0.2,ease:"power2.in"},28.38);
+tl.fromTo("#nar5-w",{x:-520},{x:0,duration:0.25,ease:"power2.out"},40.1);
+tl.to("#nar5-w",{x:-520,duration:0.2,ease:"power2.in"},44.12);
+tl.fromTo("#nar6-w",{x:-520},{x:0,duration:0.25,ease:"power2.out"},55.24);
+tl.to("#nar6-w",{x:-520,duration:0.2,ease:"power2.in"},60.3);
+tl.fromTo("#nar7-w",{x:-520},{x:0,duration:0.25,ease:"power2.out"},71.68);
+tl.to("#nar11-w",{x:-520,duration:0.2,ease:"power2.in"},106.44);
+tl.fromTo("#nar12-w",{x:-520},{x:0,duration:0.25,ease:"power2.out"},112.86);
+tl.to("#nar12-w",{x:-520,duration:0.2,ease:"power2.in"},124.72);
+tl.fromTo("#nar13-w",{x:-520},{x:0,duration:0.25,ease:"power2.out"},131.66);
+tl.to("#nar15-w",{x:-520,duration:0.2,ease:"power2.in"},156);
+tl.fromTo("#nar16-w",{x:-520},{x:0,duration:0.25,ease:"power2.out"},199.66);
+tl.to("#nar17-w",{x:-520,duration:0.2,ease:"power2.in"},209.9);
+window.__timelines["part4"] = tl;
+</script></body></html>

@@ -1,0 +1,511 @@
+[
+ {
+  "scene": "M16",
+  "kind": "main",
+  "a": 0,
+  "e": 2.1,
+  "host": true
+ },
+ {
+  "scene": "M16",
+  "kind": "main",
+  "a": 2.1,
+  "e": 4.12,
+  "host": true
+ },
+ {
+  "scene": "M16",
+  "kind": "main",
+  "a": 4.12,
+  "e": 7.16,
+  "host": true
+ },
+ {
+  "scene": "M16",
+  "kind": "icon",
+  "a": 7.16,
+  "e": 9.06,
+  "host": true
+ },
+ {
+  "scene": "M16",
+  "kind": "main",
+  "a": 9.06,
+  "e": 12.4,
+  "host": true
+ },
+ {
+  "scene": "M17",
+  "kind": "main",
+  "a": 12.4,
+  "e": 14.4,
+  "host": false
+ },
+ {
+  "scene": "M17",
+  "kind": "main",
+  "a": 14.4,
+  "e": 16.44,
+  "host": false
+ },
+ {
+  "scene": "M17",
+  "kind": "main",
+  "a": 16.44,
+  "e": 19.18,
+  "host": false
+ },
+ {
+  "scene": "M17",
+  "kind": "main",
+  "a": 19.18,
+  "e": 20.8,
+  "host": false
+ },
+ {
+  "scene": "M18",
+  "kind": "main",
+  "a": 20.8,
+  "e": 22.22,
+  "host": true
+ },
+ {
+  "scene": "M18",
+  "kind": "card",
+  "a": 22.22,
+  "e": 23.96,
+  "host": true
+ },
+ {
+  "scene": "M18",
+  "kind": "main",
+  "a": 23.96,
+  "e": 27.14,
+  "host": true
+ },
+ {
+  "scene": "M18",
+  "kind": "main",
+  "a": 27.14,
+  "e": 29.58,
+  "host": true
+ },
+ {
+  "scene": "M18",
+  "kind": "main",
+  "a": 29.58,
+  "e": 32.76,
+  "host": true
+ },
+ {
+  "scene": "M18",
+  "kind": "main",
+  "a": 32.76,
+  "e": 35.18,
+  "host": true
+ },
+ {
+  "scene": "M18",
+  "kind": "main",
+  "a": 35.18,
+  "e": 37.94,
+  "host": true
+ },
+ {
+  "scene": "M19",
+  "kind": "main",
+  "a": 37.94,
+  "e": 41.16,
+  "host": false
+ },
+ {
+  "scene": "M19",
+  "kind": "main",
+  "a": 41.16,
+  "e": 43.36,
+  "host": false
+ },
+ {
+  "scene": "M19",
+  "kind": "main",
+  "a": 43.36,
+  "e": 45.54,
+  "host": false
+ },
+ {
+  "scene": "M20",
+  "kind": "main",
+  "a": 45.54,
+  "e": 48.48,
+  "host": false
+ },
+ {
+  "scene": "M20",
+  "kind": "main",
+  "a": 48.48,
+  "e": 51.04,
+  "host": false
+ },
+ {
+  "scene": "M20",
+  "kind": "main",
+  "a": 51.04,
+  "e": 52.76,
+  "host": false
+ },
+ {
+  "scene": "M21",
+  "kind": "main",
+  "a": 52.76,
+  "e": 56.14,
+  "host": true
+ },
+ {
+  "scene": "M21",
+  "kind": "main",
+  "a": 56.14,
+  "e": 59.4,
+  "host": true
+ },
+ {
+  "scene": "M21",
+  "kind": "main",
+  "a": 59.4,
+  "e": 60.98,
+  "host": true
+ },
+ {
+  "scene": "M22",
+  "kind": "main",
+  "a": 60.98,
+  "e": 63.7,
+  "host": false
+ },
+ {
+  "scene": "M22",
+  "kind": "main",
+  "a": 63.7,
+  "e": 67.6,
+  "host": false
+ },
+ {
+  "scene": "M23",
+  "kind": "card",
+  "a": 67.6,
+  "e": 69.42,
+  "host": false
+ },
+ {
+  "scene": "M23",
+  "kind": "main",
+  "a": 69.42,
+  "e": 71.98,
+  "host": false
+ },
+ {
+  "scene": "M23",
+  "kind": "main",
+  "a": 71.98,
+  "e": 74.86,
+  "host": false
+ },
+ {
+  "scene": "M24",
+  "kind": "main",
+  "a": 74.86,
+  "e": 77.68,
+  "host": true
+ },
+ {
+  "scene": "M24",
+  "kind": "main",
+  "a": 77.68,
+  "e": 80.78,
+  "host": true
+ },
+ {
+  "scene": "M24",
+  "kind": "main",
+  "a": 80.78,
+  "e": 83.6,
+  "host": true
+ },
+ {
+  "scene": "M25",
+  "kind": "main",
+  "a": 83.6,
+  "e": 86.94,
+  "host": false
+ },
+ {
+  "scene": "M25",
+  "kind": "pop",
+  "a": 86.94,
+  "e": 89.44,
+  "host": true
+ },
+ {
+  "scene": "M25",
+  "kind": "main",
+  "a": 89.44,
+  "e": 91.6,
+  "host": false
+ },
+ {
+  "scene": "M25",
+  "kind": "card",
+  "a": 91.6,
+  "e": 93.16,
+  "host": false
+ },
+ {
+  "scene": "M25",
+  "kind": "main",
+  "a": 93.16,
+  "e": 95.18,
+  "host": false
+ },
+ {
+  "scene": "M25",
+  "kind": "main",
+  "a": 95.18,
+  "e": 97.7,
+  "host": false
+ },
+ {
+  "scene": "M26",
+  "kind": "main",
+  "a": 97.7,
+  "e": 99.46,
+  "host": true
+ },
+ {
+  "scene": "M26",
+  "kind": "main",
+  "a": 99.46,
+  "e": 101.92,
+  "host": true
+ },
+ {
+  "scene": "M26",
+  "kind": "main",
+  "a": 101.92,
+  "e": 103.86,
+  "host": true
+ },
+ {
+  "scene": "M26",
+  "kind": "main",
+  "a": 103.86,
+  "e": 106.52,
+  "host": true
+ },
+ {
+  "scene": "M27",
+  "kind": "main",
+  "a": 106.52,
+  "e": 109.18,
+  "host": false
+ },
+ {
+  "scene": "M27",
+  "kind": "main",
+  "a": 109.18,
+  "e": 112.78,
+  "host": false
+ },
+ {
+  "scene": "M27",
+  "kind": "icon",
+  "a": 112.78,
+  "e": 115.46,
+  "host": false
+ },
+ {
+  "scene": "M28",
+  "kind": "main",
+  "a": 115.46,
+  "e": 118.72,
+  "host": false
+ },
+ {
+  "scene": "M28",
+  "kind": "icon",
+  "a": 118.72,
+  "e": 120.56,
+  "host": false
+ },
+ {
+  "scene": "M28",
+  "kind": "main",
+  "a": 120.56,
+  "e": 123.72,
+  "host": false
+ },
+ {
+  "scene": "M28",
+  "kind": "main",
+  "a": 123.72,
+  "e": 125.52,
+  "host": false
+ },
+ {
+  "scene": "M29",
+  "kind": "main",
+  "a": 125.52,
+  "e": 128.9,
+  "host": true
+ },
+ {
+  "scene": "M29",
+  "kind": "main",
+  "a": 128.9,
+  "e": 130.86,
+  "host": true
+ },
+ {
+  "scene": "M30",
+  "kind": "main",
+  "a": 130.86,
+  "e": 132.98,
+  "host": false
+ },
+ {
+  "scene": "M30",
+  "kind": "main",
+  "a": 132.98,
+  "e": 136.16,
+  "host": false
+ },
+ {
+  "scene": "M31",
+  "kind": "main",
+  "a": 136.16,
+  "e": 139.38,
+  "host": false
+ },
+ {
+  "scene": "M31",
+  "kind": "main",
+  "a": 139.38,
+  "e": 140.8,
+  "host": false
+ },
+ {
+  "scene": "M31",
+  "kind": "icon",
+  "a": 140.8,
+  "e": 142.6,
+  "host": false
+ },
+ {
+  "scene": "M31",
+  "kind": "main",
+  "a": 142.6,
+  "e": 144.34,
+  "host": false
+ },
+ {
+  "scene": "M31",
+  "kind": "card",
+  "a": 144.34,
+  "e": 146.54,
+  "host": false
+ },
+ {
+  "scene": "M31",
+  "kind": "main",
+  "a": 146.54,
+  "e": 147.6,
+  "host": false
+ },
+ {
+  "scene": "M32",
+  "kind": "pop",
+  "a": 147.6,
+  "e": 149.84,
+  "host": true
+ },
+ {
+  "scene": "M32",
+  "kind": "main",
+  "a": 149.84,
+  "e": 153.74,
+  "host": false
+ },
+ {
+  "scene": "M32",
+  "kind": "icon",
+  "a": 153.74,
+  "e": 155.7,
+  "host": false
+ },
+ {
+  "scene": "M32",
+  "kind": "main",
+  "a": 155.7,
+  "e": 158.38,
+  "host": false
+ },
+ {
+  "scene": "M32",
+  "kind": "main",
+  "a": 158.38,
+  "e": 160.314,
+  "host": false
+ },
+ {
+  "scene": "host",
+  "kind": "pose:N01",
+  "a": 0,
+  "e": 4.12
+ },
+ {
+  "scene": "host",
+  "kind": "pose:N06",
+  "a": 4.12,
+  "e": 12.4
+ },
+ {
+  "scene": "host",
+  "kind": "pose:N06",
+  "a": 20.8,
+  "e": 32.76
+ },
+ {
+  "scene": "host",
+  "kind": "pose:N02",
+  "a": 32.76,
+  "e": 37.94
+ },
+ {
+  "scene": "host",
+  "kind": "pose:N06",
+  "a": 52.76,
+  "e": 60.98
+ },
+ {
+  "scene": "host",
+  "kind": "pose:N01",
+  "a": 74.86,
+  "e": 83.6
+ },
+ {
+  "scene": "host",
+  "kind": "pose:N06",
+  "a": 97.7,
+  "e": 101.92
+ },
+ {
+  "scene": "host",
+  "kind": "pose:N02",
+  "a": 101.92,
+  "e": 106.52
+ },
+ {
+  "scene": "host",
+  "kind": "pose:N06",
+  "a": 125.52,
+  "e": 130.86
+ }
+]

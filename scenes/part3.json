@@ -1,0 +1,865 @@
+{
+ "part": 3,
+ "audio": "audio/padded/part3.wav",
+ "scenes": [
+  {
+   "id": "M33",
+   "camera": "hold",
+   "narration": "So if daydreaming can backfire, why does manifestation seem to work for so many people? Because some of it really does. Just not for the reasons people think. Here are three.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "NOT",
+       "badge": "red"
+      },
+      {
+       "t": "WHY YOU THINK"
+      }
+     ],
+     "word": "not",
+     "occ": 1,
+     "dur": 1.9
+    }
+   ],
+   "diagram": {
+    "kind": "grid",
+    "pop": true,
+    "lit": {
+     "n": 6
+    },
+    "badge": {
+     "parts": [
+      {
+       "t": "3",
+       "badge": "yellow"
+      },
+      {
+       "t": "REASONS"
+      }
+     ]
+    },
+    "at": {
+     "pop": {
+      "word": "many",
+      "occ": 1
+     },
+     "lit": {
+      "word": "some",
+      "occ": 1
+     },
+     "badge": {
+      "word": "three",
+      "occ": 1
+     }
+    }
+   }
+  },
+  {
+   "id": "M34",
+   "camera": "zoom-in",
+   "narration": "One. You start noticing things. A psychologist named Richard Wiseman once gave people a newspaper and asked them to count the photos inside.",
+   "events": [],
+   "picture": "S08",
+   "trans": "whip",
+   "host": [
+    [
+     "N08"
+    ],
+    [
+     "N01",
+     "a"
+    ]
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "newspaper",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.5,
+      1.25
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "count",
+     "occ": 1,
+     "f": [
+      0.68,
+      0.45,
+      1.4
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "step",
+     "step": "REASON 1",
+     "text": "YOU START NOTICING",
+     "word": "one",
+     "occ": 1,
+     "dur": 3.0
+    },
+    {
+     "type": "pill",
+     "text": "RICHARD WISEMAN",
+     "word": "wiseman",
+     "occ": 1,
+     "dur": 2.4,
+     "pos": "bottom"
+    }
+   ]
+  },
+  {
+   "id": "M35",
+   "camera": "zoom-in",
+   "narration": "On the second page, in big letters, was a message: \"Stop counting. There are forty-three photographs in this newspaper.\"",
+   "events": [],
+   "picture": "S08",
+   "host": [
+    [
+     "N05"
+    ]
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "second",
+     "occ": 1,
+     "f": [
+      0.38,
+      0.48,
+      1.4
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "sign",
+     "text": "STOP COUNTING.<br>THERE ARE<br>{N} PHOTOS.",
+     "word": "message",
+     "cnt": 43,
+     "cntWord": "forty",
+     "card": true,
+     "box": {
+      "x": 0.26,
+      "y": 0.33,
+      "w": 0.24,
+      "h": 0.26
+     },
+     "rot": -2,
+     "fs": 40
+    }
+   ]
+  },
+  {
+   "id": "M36",
+   "camera": "zoom-in",
+   "narration": "The people who called themselves lucky usually spotted it in seconds. The people who called themselves unlucky were so focused on counting, they flew right past it.",
+   "events": [],
+   "picture": "S08",
+   "host": [
+    [
+     "N01"
+    ],
+    [
+     "N05",
+     "the",
+     2
+    ]
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "lucky",
+     "occ": 1,
+     "f": [
+      0.34,
+      0.42,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "unlucky",
+     "occ": 1,
+     "f": [
+      0.68,
+      0.45,
+      1.4
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "tag",
+     "parts": [
+      {
+       "t": "SECONDS",
+       "badge": "yellow"
+      }
+     ],
+     "word": "seconds",
+     "occ": 1,
+     "dur": 2.2
+    },
+    {
+     "type": "tag",
+     "parts": [
+      {
+       "t": "MISSED IT",
+       "badge": "red"
+      }
+     ],
+     "word": "past",
+     "occ": 1,
+     "dur": 2.4
+    }
+   ]
+  },
+  {
+   "id": "M37",
+   "camera": "zoom-in",
+   "narration": "When you decide something matters to you, you start seeing chances you used to miss.",
+   "events": [],
+   "picture": "S27",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "chances",
+     "occ": 1,
+     "f": [
+      0.72,
+      0.47,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "M38",
+   "camera": "hold",
+   "narration": "That's not the universe. That's your attention.",
+   "events": [],
+   "host": [
+    [
+     "N06"
+    ]
+   ],
+   "diagram": {
+    "kind": "cards",
+    "states": [
+     {
+      "parts": [
+       {
+        "t": "NOT THE"
+       },
+       {
+        "t": "UNIVERSE",
+        "badge": "red"
+       }
+      ]
+     },
+     {
+      "parts": [
+       {
+        "t": "YOUR"
+       },
+       {
+        "t": "ATTENTION",
+        "mk": true
+       }
+      ],
+      "w": {
+       "word": "attention",
+       "occ": 1
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": "M39",
+   "camera": "zoom-out",
+   "narration": "The lucky people in that experiment didn't get more chances. They just saw more of the ones that were already there.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "THEY JUST"
+      },
+      {
+       "t": "SAW MORE",
+       "badge": "yellow"
+      }
+     ],
+     "word": "saw",
+     "occ": 1,
+     "dur": 1.9
+    }
+   ],
+   "picture": "S08",
+   "host": [
+    [
+     "N01"
+    ]
+   ],
+   "overlays": [
+    {
+     "type": "circle",
+     "cx": 0.38,
+     "cy": 0.48,
+     "rx": 0.1,
+     "ry": 0.13,
+     "word": "already",
+     "occ": 1
+    }
+   ]
+  },
+  {
+   "id": "M40",
+   "camera": "hold",
+   "narration": "Two. Belief changes what you do. Remember those studies. Expecting that something is possible made people try harder and keep going.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I49",
+     "word": "going",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "host": [
+    [
+     "N08"
+    ],
+    [
+     "N01",
+     "remember"
+    ]
+   ],
+   "diagram": {
+    "kind": "split",
+    "left": [
+     "BELIEVING IT",
+     "CAN HAPPEN:",
+     "HELPS"
+    ],
+    "right": [
+     "DAYDREAMING IT",
+     "HAPPENED:",
+     "HURTS"
+    ],
+    "fs": 100,
+    "at": {
+     "left": {
+      "word": "remember",
+      "occ": 1
+     },
+     "right": {
+      "word": "remember",
+      "occ": 1
+     }
+    },
+    "lb": "yellow",
+    "rb": "red",
+    "dimRight": true
+   },
+   "overlays": [
+    {
+     "type": "step",
+     "step": "REASON 2",
+     "text": "BELIEF CHANGES WHAT YOU DO",
+     "word": "two",
+     "occ": 1,
+     "dur": 4.0
+    }
+   ]
+  },
+  {
+   "id": "M41",
+   "camera": "zoom-in",
+   "narration": "So the \"believe it\" part of manifestation? That part is real. Believing you can do something makes you act like someone who can. That's honestly such a big topic that I'm making a whole video on it next.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "THAT PART IS"
+      },
+      {
+       "t": "REAL",
+       "badge": "yellow"
+      }
+     ],
+     "word": "real",
+     "occ": 1,
+     "dur": 1.9
+    },
+    {
+     "kind": "pop",
+     "pose": "N05",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "NEXT",
+        "badge": "yellow"
+       },
+       {
+        "t": "VIDEO"
+       }
+      ]
+     },
+     "word": "whole",
+     "occ": 1,
+     "dur": 2.4
+    }
+   ],
+   "picture": "S26",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "so",
+     "occ": 1,
+     "f": [
+      0.6,
+      0.5,
+      1.3
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "act",
+     "occ": 1,
+     "f": [
+      0.33,
+      0.5,
+      1.35
+     ]
+    }
+   ]
+  },
+  {
+   "id": "M42",
+   "camera": "hold",
+   "narration": "Three. You remember the hits. When you manifest something and it happens, it feels like magic, and you tell everyone. When you manifest something and it doesn't happen... you just quietly forget about it.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I57",
+     "word": "magic",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "host": [
+    [
+     "N08"
+    ],
+    [
+     "N01",
+     "when"
+    ],
+    [
+     "N05",
+     "when",
+     2
+    ]
+   ],
+   "diagram": {
+    "kind": "grid",
+    "lit": {
+     "n": 6
+    },
+    "dim": true,
+    "at": {
+     "lit": {
+      "word": "happens",
+      "occ": 1
+     },
+     "dim": {
+      "word": "forget",
+      "occ": 1
+     }
+    }
+   },
+   "overlays": [
+    {
+     "type": "step",
+     "step": "REASON 3",
+     "text": "YOU REMEMBER THE HITS",
+     "word": "three",
+     "occ": 1,
+     "dur": 4.0
+    }
+   ]
+  },
+  {
+   "id": "M43",
+   "camera": "zoom-in",
+   "narration": "So every success story you hear has a lot of silent ones behind it.",
+   "events": [],
+   "picture": "S28",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "success",
+     "occ": 1,
+     "f": [
+      0.32,
+      0.52,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "silent",
+     "occ": 1,
+     "f": [
+      0.3,
+      0.82,
+      1.3
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "behind",
+     "occ": 1,
+     "f": [
+      0.75,
+      0.82,
+      1.3
+     ]
+    }
+   ]
+  },
+  {
+   "id": "M44",
+   "camera": "zoom-in",
+   "narration": "Someone manifests a new job, gets it, and posts about it. Nobody posts, \"I manifested this for a year and nothing happened.\"",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I41",
+     "word": "posts",
+     "occ": 1,
+     "dur": 1.8
+    },
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "NOBODY POSTS"
+      },
+      {
+       "t": "THE MISSES",
+       "badge": "red"
+      }
+     ],
+     "word": "nobody",
+     "occ": 1,
+     "dur": 1.9
+    }
+   ],
+   "picture": "S02",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "manifests",
+     "occ": 1,
+     "f": [
+      0.34,
+      0.28,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "M45",
+   "camera": "hold",
+   "narration": "Which brings us to the one part everyone gets wrong.",
+   "events": [],
+   "host": [
+    [
+     "N02"
+    ]
+   ],
+   "diagram": {
+    "kind": "cards",
+    "states": [
+     {
+      "parts": [
+       {
+        "t": "THE PART EVERYONE",
+        "sz": "mid"
+       },
+       {
+        "t": "GETS WRONG",
+        "mk": true
+       }
+      ],
+      "w": {
+       "word": "which",
+       "occ": 1
+      },
+      "mk": {
+       "word": "gets",
+       "occ": 1
+      }
+     }
+    ]
+   },
+   "fx": [
+    {
+     "type": "riser",
+     "word": "which"
+    }
+   ]
+  },
+  {
+   "id": "M46",
+   "camera": "zoom-in",
+   "narration": "Manifestation tells you to picture the outcome. The finish line. The moment you've already made it. But that's exactly the kind of picture that drains your energy.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I56",
+     "word": "drains",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "picture": "S25",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "outcome",
+     "occ": 1,
+     "f": [
+      0.58,
+      0.25,
+      1.4
+     ]
+    },
+    {
+     "kind": "zoom",
+     "word": "but",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.5,
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "id": "M47",
+   "camera": "zoom-in",
+   "narration": "Researchers at UCLA, Lien Pham and Shelley Taylor, tested this with students before a big midterm. One group spent a few minutes a day picturing themselves getting a great grade. Another group pictured the process. Where they'd sit. When they'd study. What they'd go over.",
+   "events": [],
+   "picture": "S09",
+   "trans": "whip",
+   "host": [
+    [
+     "N01"
+    ],
+    [
+     "N06",
+     "one"
+    ]
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "one",
+     "occ": 1,
+     "f": [
+      0.18,
+      0.4,
+      1.3
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "another",
+     "occ": 1,
+     "f": [
+      0.8,
+      0.55,
+      1.3
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "pill",
+     "text": "PHAM & TAYLOR, UCLA",
+     "word": "pham",
+     "occ": 1,
+     "dur": 2.6
+    },
+    {
+     "type": "sweep",
+     "word": "midterm",
+     "occ": 1,
+     "box": {
+      "x": 0.0,
+      "y": 0.0,
+      "w": 1.0,
+      "h": 1.0
+     }
+    },
+    {
+     "type": "circle",
+     "cx": 0.86,
+     "cy": 0.72,
+     "rx": 0.07,
+     "ry": 0.1,
+     "word": "sit",
+     "occ": 1
+    },
+    {
+     "type": "circle",
+     "cx": 0.76,
+     "cy": 0.14,
+     "rx": 0.06,
+     "ry": 0.09,
+     "word": "when",
+     "occ": 1
+    },
+    {
+     "type": "circle",
+     "cx": 0.57,
+     "cy": 0.83,
+     "rx": 0.08,
+     "ry": 0.07,
+     "word": "what",
+     "occ": 1
+    }
+   ]
+  },
+  {
+   "id": "M48",
+   "camera": "hold",
+   "narration": "The students who pictured the process studied longer... and did better on the exam.",
+   "events": [],
+   "host": [
+    [
+     "N02"
+    ]
+   ],
+   "diagram": {
+    "kind": "drops",
+    "header": "PICTURED THE PROCESS",
+    "dir": "up",
+    "rows": [
+     {
+      "label": "STUDIED LONGER",
+      "word": "longer",
+      "occ": 1
+     },
+     {
+      "label": "BETTER GRADES",
+      "word": "better",
+      "occ": 1
+     }
+    ]
+   },
+   "fx": [
+    {
+     "type": "impact",
+     "word": "better"
+    }
+   ]
+  },
+  {
+   "id": "M49",
+   "camera": "hold",
+   "narration": "Picturing the grade felt good. Picturing the process made them actually plan.",
+   "events": [],
+   "host": [
+    [
+     "N06"
+    ]
+   ],
+   "diagram": {
+    "kind": "cards",
+    "states": [
+     {
+      "parts": [
+       {
+        "t": "THE GRADE: FELT",
+        "sz": "mid"
+       },
+       {
+        "t": "GOOD",
+        "badge": "yellow"
+       }
+      ]
+     },
+     {
+      "parts": [
+       {
+        "t": "THE PROCESS: MADE A",
+        "sz": "mid"
+       },
+       {
+        "t": "PLAN",
+        "badge": "yellow",
+        "ul": true
+       }
+      ],
+      "w": {
+       "word": "process",
+       "occ": 1
+      },
+      "ul": {
+       "word": "plan",
+       "occ": 1
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": "M50",
+   "camera": "zoom-in",
+   "narration": "So the problem isn't that you're picturing your goal. It's that you're only picturing the ending. And you're skipping the most important part of the picture... the part where something gets in your way.",
+   "events": [],
+   "picture": "S11",
+   "pictureB": "S11b",
+   "swap": {
+    "word": "way"
+   },
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "ending",
+     "occ": 1,
+     "f": [
+      0.78,
+      0.21,
+      1.4
+     ]
+    },
+    {
+     "kind": "zoom",
+     "word": "skipping",
+     "occ": 1,
+     "f": [
+      0.3,
+      0.6,
+      1.2
+     ]
+    }
+   ]
+  }
+ ]
+}

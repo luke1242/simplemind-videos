@@ -1,0 +1,1062 @@
+{
+ "part": 4,
+ "audio": "audio/padded/part4.wav",
+ "scenes": [
+  {
+   "id": "M51",
+   "camera": "zoom-in",
+   "narration": "So here's how I actually manifest now. Five steps.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I59",
+     "word": "steps",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "picture": "S36",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "five",
+     "occ": 1,
+     "f": [
+      0.3,
+      0.5,
+      1.3
+     ]
+    }
+   ]
+  },
+  {
+   "id": "M52",
+   "camera": "hold",
+   "narration": "The first four come from a method Oettingen built out of all this research. It's called WOOP.",
+   "events": [],
+   "host": [
+    [
+     "N01"
+    ]
+   ],
+   "diagram": {
+    "kind": "woop",
+    "intro": {
+     "word": "woop",
+     "occ": 1
+    }
+   }
+  },
+  {
+   "id": "M53",
+   "camera": "hold",
+   "narration": "One. Wish. Pick one thing you really want, that's challenging but actually possible. Not \"be rich\" or \"be happy.\" Something like \"start my YouTube channel,\" or \"run a 5K by spring.\" Something that's actually up to you.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "NOT"
+      },
+      {
+       "t": "BE RICH",
+       "badge": "red"
+      }
+     ],
+     "word": "rich",
+     "occ": 1,
+     "dur": 1.9
+    },
+    {
+     "kind": "icon",
+     "icon": "I60",
+     "word": "youtube",
+     "occ": 1,
+     "dur": 1.8
+    },
+    {
+     "kind": "pop",
+     "pose": "N11",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "ACTUALLY"
+       },
+       {
+        "t": "UP TO YOU",
+        "badge": "yellow"
+       }
+      ]
+     },
+     "word": "up",
+     "occ": 1,
+     "dur": 2.4
+    }
+   ],
+   "host": [
+    [
+     "N07"
+    ],
+    [
+     "N01",
+     "pick"
+    ]
+   ],
+   "diagram": {
+    "kind": "woop",
+    "active": "WISH",
+    "answers": {
+     "WISH": [
+      "CHALLENGING BUT|**POSSIBLE**",
+      "possible",
+      1
+     ]
+    }
+   },
+   "overlays": [
+    {
+     "type": "step",
+     "step": "STEP 1",
+     "text": "WISH",
+     "word": "one",
+     "occ": 1,
+     "dur": 3.2
+    }
+   ]
+  },
+  {
+   "id": "M54",
+   "camera": "zoom-out",
+   "narration": "Two. Outcome. Now picture the best result. How would it feel? What would change? Go ahead and enjoy it for a moment. This part is fine.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "THIS PART IS"
+      },
+      {
+       "t": "FINE",
+       "badge": "yellow"
+      }
+     ],
+     "word": "fine",
+     "occ": 1,
+     "dur": 1.9
+    }
+   ],
+   "picture": "S31",
+   "trans": "iris",
+   "irisAt": [
+    0.83,
+    0.22
+   ],
+   "overlays": [
+    {
+     "type": "step",
+     "step": "STEP 2",
+     "text": "OUTCOME",
+     "word": "two",
+     "occ": 1,
+     "dur": 3.2
+    },
+    {
+     "type": "sweep",
+     "word": "enjoy",
+     "occ": 1,
+     "box": {
+      "x": 0.0,
+      "y": 0.0,
+      "w": 1.0,
+      "h": 0.5
+     }
+    }
+   ]
+  },
+  {
+   "id": "M55",
+   "camera": "hold",
+   "narration": "It's the next step that makes it work.",
+   "events": [],
+   "host": [
+    [
+     "N01"
+    ]
+   ],
+   "diagram": {
+    "kind": "woop",
+    "ticks": [
+     "WISH",
+     "OUTCOME"
+    ],
+    "pulse": [
+     "OBSTACLE",
+     "next"
+    ],
+    "answers": {
+     "WISH": [
+      "CHALLENGING BUT|**POSSIBLE**",
+      null,
+      1
+     ]
+    }
+   }
+  },
+  {
+   "id": "M56",
+   "camera": "zoom-in",
+   "narration": "Three. Obstacle. This is the step everyone skips. Ask yourself: what's the main thing inside me that's going to get in the way?",
+   "events": [],
+   "picture": "S11b",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "skips",
+     "occ": 1,
+     "f": [
+      0.72,
+      0.52,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "inside",
+     "occ": 1,
+     "f": [
+      0.3,
+      0.62,
+      1.2
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "step",
+     "step": "STEP 3",
+     "text": "OBSTACLE",
+     "word": "three",
+     "occ": 1,
+     "until": "skips"
+    },
+    {
+     "type": "tag",
+     "parts": [
+      {
+       "t": "THE ONE"
+      },
+      {
+       "t": "EVERYONE SKIPS",
+       "badge": "red"
+      }
+     ],
+     "word": "skips",
+     "occ": 1,
+     "dur": 2.6
+    }
+   ]
+  },
+  {
+   "id": "M57",
+   "camera": "hold",
+   "narration": "Not other people. Not bad luck. You.",
+   "events": [],
+   "host": [
+    [
+     "N02"
+    ]
+   ],
+   "diagram": {
+    "kind": "cards",
+    "states": [
+     {
+      "parts": [
+       {
+        "t": "NOT"
+       },
+       {
+        "t": "OTHER PEOPLE",
+        "badge": "red"
+       }
+      ]
+     },
+     {
+      "parts": [
+       {
+        "t": "NOT"
+       },
+       {
+        "t": "BAD LUCK",
+        "badge": "red"
+       }
+      ],
+      "w": {
+       "word": "luck",
+       "occ": 1
+      }
+     },
+     {
+      "parts": [
+       {
+        "t": "YOU.",
+        "badge": "yellow"
+       }
+      ],
+      "w": {
+       "word": "you",
+       "occ": 1
+      }
+     }
+    ]
+   },
+   "fx": [
+    {
+     "type": "impact",
+     "word": "you"
+    }
+   ]
+  },
+  {
+   "id": "M58",
+   "camera": "zoom-in",
+   "narration": "Maybe it's that you get home tired and scroll instead. Maybe it's that you're scared of what people will think.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I06",
+     "word": "people",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "picture": "S22",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "scroll",
+     "occ": 1,
+     "f": [
+      0.76,
+      0.55,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "M59",
+   "camera": "zoom-in",
+   "narration": "Picture that obstacle as clearly as you pictured the dream.",
+   "events": [],
+   "picture": "S11b",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "obstacle",
+     "occ": 1,
+     "f": [
+      0.72,
+      0.52,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "dream",
+     "occ": 1,
+     "f": [
+      0.78,
+      0.21,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "M60",
+   "camera": "hold",
+   "narration": "And here's the surprising part. This doesn't kill your motivation. When the wish is realistic, seeing the obstacle is what tells your brain it's time to get ready.",
+   "events": [
+    {
+     "kind": "pop",
+     "pose": "N09",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "DOESN'T"
+       },
+       {
+        "t": "KILL",
+        "badge": "red"
+       },
+       {
+        "t": "MOTIVATION"
+       }
+      ]
+     },
+     "word": "surprising",
+     "occ": 1,
+     "dur": 2.6
+    }
+   ],
+   "host": [
+    [
+     "N01"
+    ]
+   ],
+   "diagram": {
+    "kind": "woop",
+    "active": "OBSTACLE",
+    "answers": {
+     "OBSTACLE": [
+      "TIME TO|**GET READY**",
+      "ready",
+      1
+     ]
+    }
+   }
+  },
+  {
+   "id": "M61",
+   "camera": "hold",
+   "narration": "Four. Plan. Make one simple if-then plan for that obstacle.",
+   "events": [],
+   "host": [
+    [
+     "N07"
+    ],
+    [
+     "N01",
+     "make"
+    ]
+   ],
+   "diagram": {
+    "kind": "woop",
+    "active": "PLAN"
+   },
+   "overlays": [
+    {
+     "type": "step",
+     "step": "STEP 4",
+     "text": "PLAN",
+     "word": "four",
+     "occ": 1,
+     "dur": 3.2
+    }
+   ]
+  },
+  {
+   "id": "M62",
+   "camera": "hold",
+   "narration": "\"If I get home tired and grab my phone, then I'll put it in the other room and do ten minutes first.\"",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I43",
+     "word": "ten",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "host": [
+    [
+     "N01"
+    ]
+   ],
+   "diagram": {
+    "kind": "split",
+    "left": [
+     "IF:",
+     "TIRED + PHONE"
+    ],
+    "right": [
+     "THEN:",
+     "OTHER ROOM"
+    ],
+    "fs": 100,
+    "at": {
+     "left": {
+      "word": "if",
+      "occ": 1
+     },
+     "right": {
+      "word": "then",
+      "occ": 1
+     }
+    },
+    "rb": "yellow"
+   }
+  },
+  {
+   "id": "M63",
+   "camera": "hold",
+   "narration": "In one study, high school students who used this method completed more than sixty percent more practice questions for a big exam than students who didn't.",
+   "events": [],
+   "host": [
+    [
+     "N02"
+    ]
+   ],
+   "diagram": {
+    "kind": "bars",
+    "raw": true,
+    "colorA": "#F2C230",
+    "bars": [
+     {
+      "label": "USED WOOP",
+      "v": 140
+     },
+     {
+      "label": "DIDN'T",
+      "v": 84
+     }
+    ],
+    "title": "PRACTICE QUESTIONS",
+    "source": "Duckworth et al., 2011",
+    "plus": "+60%",
+    "at": {
+     "grow": {
+      "word": "used",
+      "occ": 1
+     },
+     "plus": {
+      "word": "sixty",
+      "occ": 1
+     }
+    }
+   },
+   "fx": [
+    {
+     "type": "riser",
+     "word": "sixty"
+    },
+    {
+     "type": "impact",
+     "word": "sixty"
+    }
+   ]
+  },
+  {
+   "id": "M64",
+   "camera": "zoom-in",
+   "narration": "Five. Picture the process, not just the finish line.",
+   "events": [],
+   "picture": "S11",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "finish",
+     "occ": 1,
+     "f": [
+      0.78,
+      0.21,
+      1.4
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "step",
+     "step": "STEP 5",
+     "text": "PICTURE THE PROCESS",
+     "word": "five",
+     "occ": 1,
+     "dur": 3.4
+    }
+   ]
+  },
+  {
+   "id": "M65",
+   "camera": "hold",
+   "narration": "When you visualize, don't just see yourself holding the trophy. See yourself doing the boring part. Opening the laptop. Lacing up your shoes. Hitting record.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I52",
+     "word": "trophy",
+     "occ": 1,
+     "dur": 1.8
+    },
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "THE"
+      },
+      {
+       "t": "BORING PART",
+       "badge": "yellow"
+      }
+     ],
+     "word": "boring",
+     "occ": 1,
+     "dur": 1.9
+    }
+   ],
+   "host": [
+    [
+     "N01"
+    ]
+   ],
+   "diagram": {
+    "kind": "iconrow",
+    "items": [
+     {
+      "icon": "I60",
+      "word": "laptop",
+      "label": "OPEN THE LAPTOP"
+     },
+     {
+      "icon": "I49",
+      "word": "shoes",
+      "label": "LACE UP"
+     },
+     {
+      "icon": "I62",
+      "word": "record",
+      "label": "HIT RECORD"
+     }
+    ]
+   }
+  },
+  {
+   "id": "M66",
+   "camera": "zoom-in",
+   "narration": "That's the picture that actually gets you moving.",
+   "events": [],
+   "picture": "S35",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "moving",
+     "occ": 1,
+     "f": [
+      0.4,
+      0.58,
+      1.3
+     ]
+    }
+   ]
+  },
+  {
+   "id": "M67",
+   "camera": "zoom-in",
+   "narration": "Let me show you how this sounds for me.",
+   "events": [],
+   "picture": "S10"
+  },
+  {
+   "id": "M68",
+   "camera": "hold",
+   "narration": "My wish: post one video every week. The outcome: a channel I'm proud of, and people in the comments saying a video actually helped them. The obstacle... honestly? It's me deciding a video isn't good enough yet, and not posting it. So my plan: if I catch myself thinking \"it's not ready,\" then I post it anyway and make the next one better.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I13",
+     "word": "week",
+     "occ": 1,
+     "dur": 1.8
+    },
+    {
+     "kind": "icon",
+     "icon": "I41",
+     "word": "comments",
+     "occ": 1,
+     "dur": 1.8
+    },
+    {
+     "kind": "pop",
+     "pose": "N10",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "NOT GOOD ENOUGH",
+        "badge": "red",
+        "sz": "mid"
+       },
+       {
+        "t": "YET"
+       }
+      ]
+     },
+     "word": "deciding",
+     "occ": 1,
+     "dur": 2.8
+    }
+   ],
+   "host": [
+    [
+     "N01"
+    ]
+   ],
+   "diagram": {
+    "kind": "woop",
+    "answers": {
+     "WISH": [
+      "1 VIDEO|**EVERY WEEK**",
+      "wish",
+      1
+     ],
+     "OUTCOME": [
+      "A CHANNEL|I'M **PROUD OF**",
+      "outcome",
+      1
+     ],
+     "OBSTACLE": [
+      "~~\"IT'S NOT READY\"~~",
+      "obstacle",
+      1
+     ],
+     "PLAN": [
+      "POST IT|**ANYWAY**",
+      "plan",
+      1
+     ]
+    },
+    "ul": [
+     "PLAN",
+     "anyway"
+    ]
+   }
+  },
+  {
+   "id": "M69",
+   "camera": "zoom-in",
+   "narration": "And the process? I picture Sunday night. Me, the laptop, hitting upload. Not the million views. Just the upload.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "NOT THE"
+      },
+      {
+       "t": "MILLION VIEWS",
+       "badge": "red"
+      }
+     ],
+     "word": "million",
+     "occ": 1,
+     "dur": 1.9
+    }
+   ],
+   "picture": "S10",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "laptop",
+     "occ": 1,
+     "f": [
+      0.3,
+      0.68,
+      1.4
+     ]
+    },
+    {
+     "kind": "zoom",
+     "word": "just",
+     "occ": 1,
+     "f": [
+      0.64,
+      0.3,
+      1.3
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "circle",
+     "cx": 0.29,
+     "cy": 0.68,
+     "rx": 0.05,
+     "ry": 0.075,
+     "word": "upload",
+     "occ": 1
+    }
+   ]
+  },
+  {
+   "id": "M70",
+   "camera": "zoom-in",
+   "narration": "Here's what I keep coming back to. I don't think wanting things and dreaming big is the problem. Dreaming is where everything starts.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "WHERE"
+      },
+      {
+       "t": "IT ALL STARTS",
+       "badge": "yellow"
+      }
+     ],
+     "word": "dreaming",
+     "occ": 2,
+     "dur": 1.9
+    }
+   ],
+   "picture": "S37",
+   "trans": "fade",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "dreaming",
+     "occ": 2,
+     "f": [
+      0.5,
+      0.22,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "M71",
+   "camera": "zoom-in",
+   "narration": "The problem is when the dream feels so good... that it replaces the doing.",
+   "events": [],
+   "picture": "S12",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "good",
+     "occ": 1,
+     "f": [
+      0.55,
+      0.47,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "doing",
+     "occ": 1,
+     "f": [
+      0.42,
+      0.87,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "M72",
+   "camera": "zoom-in",
+   "narration": "Because the version of you in the daydream isn't someone you become by picturing. It's someone you become by doing the boring part, over and over.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "OVER AND OVER",
+       "badge": "yellow"
+      }
+     ],
+     "word": "over",
+     "occ": 1,
+     "dur": 1.9
+    }
+   ],
+   "picture": "S26",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "version",
+     "occ": 1,
+     "f": [
+      0.33,
+      0.5,
+      1.35
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "doing",
+     "occ": 1,
+     "f": [
+      0.6,
+      0.5,
+      1.3
+     ]
+    }
+   ]
+  },
+  {
+   "id": "M73",
+   "camera": "zoom-out",
+   "narration": "So keep the dream. Just stop letting it be the finish line. Let it be the starting line.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "NOT THE"
+      },
+      {
+       "t": "FINISH LINE",
+       "badge": "red"
+      }
+     ],
+     "word": "finish",
+     "occ": 1,
+     "dur": 3.2,
+     "max": 3.6,
+     "swap": {
+      "word": "starting",
+      "parts": [
+       {
+        "t": "THE"
+       },
+       {
+        "t": "STARTING LINE",
+        "badge": "yellow"
+       }
+      ]
+     }
+    }
+   ],
+   "picture": "S11",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "dream",
+     "occ": 1,
+     "f": [
+      0.78,
+      0.21,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "just",
+     "occ": 1,
+     "f": [
+      0.3,
+      0.65,
+      1.2
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "sweep",
+     "word": "just",
+     "occ": 1,
+     "box": {
+      "x": 0.0,
+      "y": 0.0,
+      "w": 1.0,
+      "h": 0.5
+     }
+    }
+   ]
+  },
+  {
+   "id": "M74",
+   "camera": "hold",
+   "narration": "Dream big. Then get specific. Picture what you want. Then picture what's in your way. Then make a plan to get past it.",
+   "events": [],
+   "host": [
+    [
+     "N01"
+    ],
+    [
+     "N02",
+     "picture"
+    ]
+   ],
+   "diagram": {
+    "kind": "woop",
+    "lights": [
+     [
+      [
+       "WISH",
+       "OUTCOME"
+      ],
+      "want"
+     ],
+     [
+      [
+       "OBSTACLE"
+      ],
+      "way"
+     ],
+     [
+      [
+       "PLAN"
+      ],
+      "plan"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "M75",
+   "camera": "zoom-in",
+   "narration": "That's not as magical as the universe handing it to you. But it's a version of manifesting that actually works... and you're the one making it happen.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I51",
+     "word": "magical",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "picture": "S27",
+   "trans": "fade",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "you're",
+     "occ": 1,
+     "f": [
+      0.72,
+      0.47,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "M76",
+   "camera": "hold",
+   "narration": "Which step do you usually skip? Tell me the number in the comments. And if your biggest obstacle is that voice in your head saying everyone's watching, I made a whole video on why that's not true. I'll leave it right here.",
+   "events": [
+    {
+     "kind": "pop",
+     "pose": "N08",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "WHICH"
+       },
+       {
+        "t": "NUMBER?",
+        "badge": "yellow"
+       }
+      ]
+     },
+     "word": "number",
+     "occ": 1,
+     "dur": 2.2
+    },
+    {
+     "kind": "flash",
+     "pic": "S28",
+     "word": "voice",
+     "occ": 1,
+     "until": "made"
+    }
+   ],
+   "picture": "S29",
+   "holdEnd": true
+  }
+ ]
+}

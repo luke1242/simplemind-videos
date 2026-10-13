@@ -33,16 +33,22 @@ const partHtml = (p, extra = "") => {
   return p.ul ? `<span class="ulw">${inner}<svg class="ul" viewBox="0 0 400 30" preserveAspectRatio="none"><path id="${extra}-ul" d="M6 18 C60 6 110 26 170 14 S300 8 394 16" fill="none" stroke="${RED}" stroke-width="9" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg></span>` : inner;
 };
 const linesHtml = (parts, pre, cls = "ln") => parts.map((p, i) => `<div class="${cls}${p.small ? " small" : ""}${p.sz === "big" ? " big" : ""}${p.sz === "mid" ? " mid" : ""}" id="${pre}-l${i}">${partHtml(p, `${pre}-p${i}`)}</div>`).join("");
-const partTweens = (parts, pre, t0) => { const r = []; parts.forEach((p, i) => {
-  if (p.mk) r.push(`tl.fromTo("#${pre}-p${i}-mk",{scaleX:0},{scaleX:1,duration:0.45,ease:"power2.out"},${f3(t0 + 0.2)});`);
+const partTweens = (parts, pre, t0, ov = {}) => { const r = []; parts.forEach((p, i) => {
+  if (p.mk) r.push(`tl.fromTo("#${pre}-p${i}-mk",{scaleX:0},{scaleX:1,duration:0.45,ease:"power2.out"},${f3(ov.mk ?? t0 + 0.2)});`);
   if (p.circ) r.push(`tl.to("#${pre}-p${i}-ci",{strokeDashoffset:0,duration:0.5,ease:"power2.out"},${f3(t0 + 0.35)});`);
-  if (p.ul) r.push(`tl.to("#${pre}-p${i}-ul",{strokeDashoffset:0,duration:0.5,ease:"power2.out"},${f3(t0 + 0.4)});`);
+  if (p.ul) r.push(`tl.to("#${pre}-p${i}-ul",{strokeDashoffset:0,duration:0.5,ease:"power2.out"},${f3(ov.ul ?? t0 + 0.4)});`);
 }); return r; };
 const countTw = (id, obj, to, t, d, fmt) => `tl.fromTo(${obj},{v:0},{v:${to},duration:${d},ease:"power2.out",onUpdate:function(){var e=document.getElementById("${id}");if(e)e.textContent=${fmt};}},${f3(t)});`;
 let cuid = 0;
 const person = (x, y, id, fill) => `<g id="${id}" transform="translate(${x} ${y}) scale(1.2)"><circle cx="0" cy="-34" r="21" class="pp" fill="${fill}" stroke="${INK}" stroke-width="6"/><path class="pp" d="M-27 40 V0 Q-27 -12 -15 -12 H15 Q27 -12 27 0 V40 Z" fill="${fill}" stroke="${INK}" stroke-width="6" stroke-linejoin="round"/></g>`;
 const ICONS = {};
-const SCREEN = new Set(["label", "pill", "step"]);
+const SCREEN = new Set(["label", "pill", "step", "tag"]);
+const symSvg = (inner) => `<svg viewBox="0 0 100 100" width="160" height="160">${inner}</svg>`;
+const arrowP = (path, col) => `<path d="${path}" fill="none" stroke="${INK}" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/><path d="${path}" fill="none" stroke="${col}" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>`;
+const SYM = { up: symSvg(arrowP("M50 90 V28 M22 54 L50 20 L78 54", SAGE)), down: symSvg(arrowP("M50 10 V72 M22 46 L50 80 L78 46", RED)),
+  tick: symSvg(`<circle cx="50" cy="50" r="42" fill="${SAGE}" stroke="${INK}" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>`),
+  cross: symSvg(`<circle cx="50" cy="50" r="42" fill="${RED}" stroke="${INK}" stroke-width="7"/><path d="M32 32 L68 68 M68 32 L32 68" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round"/>`) };
+const tagHtml = (o, id) => (o.parts || []).map((p, i) => { const t = o.count && i === 0 ? `<span id="${id}-n">${o.count}${o.suffix || ""}</span>` : p.t; return p.badge ? `<span class="badge ${p.badge}">${t}</span>` : `<span>${t}</span>`; }).join(" ");
 
 // diagram -> {html, tw}. t = absolute trigger times (already resolved by the caller via d.at)
 function diagram(d, pre, T, S0 = 0) {
@@ -65,27 +71,35 @@ function diagram(d, pre, T, S0 = 0) {
     return { html: h, tw };
   }
   if (d.kind === "grid") {
-    let g = ""; const nred = d.fill || 0;
-    for (let r = 0; r < 6; r++) for (let c = 0; c < 10; c++) g += person(960 + (c - 4.5) * 150, 175 + r * 120, `${pre}-g${r * 10 + c}`, "#fff");
-    const h = `<div class="fill diag">${svgWrap(g)}<div class="dlabel" id="${pre}-lab" style="top:810px">${d.label}</div></div>`;
-    // draw in row by row
-    if (d.draw) for (let r = 0; r < 6; r++) tw.push(`tl.fromTo("#${pre}-g${r * 10}, #${pre}-g${r * 10 + 1}, #${pre}-g${r * 10 + 2}, #${pre}-g${r * 10 + 3}, #${pre}-g${r * 10 + 4}, #${pre}-g${r * 10 + 5}, #${pre}-g${r * 10 + 6}, #${pre}-g${r * 10 + 7}, #${pre}-g${r * 10 + 8}, #${pre}-g${r * 10 + 9}",{opacity:0,scale:0.6},{opacity:1,scale:1,duration:0.22,ease:"back.out(1.7)"},${f3(S0 + r * 0.2)});`);
+    let g = ""; const nred = d.fill || 0, ALL = Array.from({ length: 60 }, (_, i) => `#${pre}-g${i}`).join(","), LIT = [4, 17, 23, 38, 45, 52];
+    for (let r = 0; r < 6; r++) for (let c = 0; c < 10; c++) g += person(960 + (c - 4.5) * 150, 160 + r * 105, `${pre}-g${r * 10 + c}`, "#fff");
+    const labHtml = d.count ? `<span class="badge ${d.count.badge}" id="${pre}-cv">0${d.count.suffix || ""}</span><span>${d.count.text}</span>` : (d.label || "");
+    const bd = d.badge ? `<div class="dlabel" id="${pre}-bd" style="top:790px">${d.badge.parts.map((p) => (p.badge ? `<span class="badge ${p.badge}">${p.t}</span>` : `<span>${p.t}</span>`)).join("")}</div>` : "";
+    const h = `<div class="fill diag">${svgWrap(g)}<div class="dlabel" id="${pre}-lab" style="top:810px">${labHtml}</div>${bd}</div>`;
+    if (d.draw) for (let r = 0; r < 6; r++) tw.push(`tl.fromTo("${Array.from({ length: 10 }, (_, c) => `#${pre}-g${r * 10 + c}`).join(", ")}",{opacity:0,scale:0.6},{opacity:1,scale:1,duration:0.22,ease:"back.out(1.7)"},${f3(S0 + r * 0.2)});`);
+    if (d.pop) { const t1 = at("pop", 0); tw.push(`tl.set("${ALL}",{opacity:0.2},0);`); for (let r = 0; r < 6; r++) tw.push(`tl.fromTo("${Array.from({ length: 10 }, (_, c) => `#${pre}-g${r * 10 + c}`).join(", ")}",{opacity:0.2,scale:0.9},{opacity:1,scale:1.2,duration:0.25,ease:"back.out(1.7)"},${f3(t1 + r * 0.14)});`); sfx.push({ t: f3(t1), kind: "pop" }); }
     if (nred) { const t0 = at("red", 0); for (let i = 0; i < nred; i++) tw.push(`tl.to("#${pre}-g${i} .pp",{fill:"${RED}",duration:0.12,ease:"none"},${f3(t0 + (i / nred) * 0.6)});`); }
     if (d.count) { const c = d.count, t0 = at("count", 0), o = vid(`${pre}_c`); tw.push(`const ${o}={v:0};`, `tl.set("#${pre}-lab",{opacity:0},0);`, `tl.set("#${pre}-lab",{opacity:1},${f3(t0)});`,
       `tl.fromTo(${o},{v:0},{v:${c.to},duration:0.6,ease:"power2.out",onUpdate:function(){var e=document.getElementById("${pre}-cv");if(e)e.textContent=Math.round(${o}.v)+${JSON.stringify(c.suffix || "")};}},${f3(t0)});`); }
-    return { html: h.replace(`id="${pre}-lab" style="top:810px">${d.label}`, `id="${pre}-lab" style="top:810px">${d.count ? `<span class="badge ${d.count.badge}" id="${pre}-cv">0${d.count.suffix || ""}</span><span>${d.count.text}</span>` : d.label}`), tw };
+    if (d.lit) { const t1 = at("lit", 0); LIT.slice(0, d.lit.n).forEach((i, k) => tw.push(`tl.to("#${pre}-g${i} .pp",{fill:"${YEL}",duration:0.2,ease:"none"},${f3(t1 + k * 0.08)});`, `tl.fromTo("#${pre}-g${i}",{scale:1.2},{scale:1.42,duration:0.16,yoyo:true,repeat:1,ease:"power2.out"},${f3(t1 + k * 0.08)});`)); sfx.push({ t: f3(t1), kind: "ding" }); }
+    if (d.dim) { const t1 = at("dim", 0), keep = new Set(LIT.slice(0, (d.lit || { n: 6 }).n)); for (let i = 0; i < 60; i++) if (!keep.has(i)) tw.push(`tl.to("#${pre}-g${i} .pp",{fill:"${GREY}",duration:0.5,ease:"power1.inOut"},${f3(t1)});`); }
+    if (d.badge) { const tb = at("badge", 0); tw.push(`tl.set("#${pre}-bd",{opacity:0},0);`, `tl.set("#${pre}-lab",{opacity:0},0);`, `tl.fromTo("#${pre}-bd",{opacity:0,scale:0.8},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},${f3(tb)});`); sfx.push({ t: f3(tb), kind: "pop" }); }
+    return { html: h, tw };
   }
   if (d.kind === "bars") {
-    const t0 = at("grow", 0), base = 830, MAXH = 560, xs = [610, 1310], BW = 380;
+    const t0 = at("grow", 0), base = 830, MAXH = d.raw ? 470 : 560, xs = [610, 1310], BW = 380, mx = Math.max(...d.bars.map((b) => b.v ?? b.pct));
     let h = `<div class="fill diag">`;
     d.bars.forEach((b, i) => {
-      const o = vid(`${pre}_b${i}`);
-      h += `<div class="bar" id="${pre}-b${i}" style="left:${xs[i] - BW / 2}px;top:${base}px;width:${BW}px;height:0px;background:${i === 0 ? RED : GREY}"><div class="btag"><span class="badge ${i === 0 ? "red" : "yellow"}" id="${pre}-v${i}" style="${i === 0 ? "" : "background:#fff"}">0%</span></div></div><div class="blab" id="${pre}-bl${i}" style="left:${xs[i] - 330}px;top:${base + 30}px;width:660px">${b.label}</div>`;
-      const hh = MAXH * b.pct / 100;
+      const o = vid(`${pre}_b${i}`), val = b.v ?? b.pct, A = i === 0, fmt = d.raw ? `Math.round(${o}.v)` : `Math.round(${o}.v)+"%"`;
+      h += `<div class="bar" id="${pre}-b${i}" style="left:${xs[i] - BW / 2}px;top:${base}px;width:${BW}px;height:0px;background:${A ? (d.colorA || RED) : GREY}"><div class="btag"><span class="badge ${A ? (d.colorA ? "yellow" : "red") : "yellow"}" id="${pre}-v${i}" style="${A ? "" : "background:#fff"}">0${d.raw ? "" : "%"}</span></div></div><div class="blab" id="${pre}-bl${i}" style="left:${xs[i] - 330}px;top:${base + 30}px;width:660px">${b.label}</div>`;
+      const hh = MAXH * val / (d.raw ? mx : 100);
       tw.push(`const ${o}={v:0};`, `tl.fromTo("#${pre}-b${i}",{top:${base},height:0},{top:${f3(base - hh)},height:${f3(hh)},duration:0.7,ease:"power2.out"},${f3(t0)});`,
-        `tl.fromTo(${o},{v:0},{v:${b.pct},duration:0.7,ease:"power2.out",onUpdate:function(){var e=document.getElementById("${pre}-v${i}");if(e)e.textContent=Math.round(${o}.v)+"%";}},${f3(t0)});`);
+        `tl.fromTo(${o},{v:0},{v:${val},duration:0.7,ease:"power2.out",onUpdate:function(){var e=document.getElementById("${pre}-v${i}");if(e)e.textContent=${fmt};}},${f3(t0)});`);
       tw.push(`tl.set("#${pre}-v${i}",{opacity:0},0);`, `tl.set("#${pre}-v${i}",{opacity:1},${f3(t0)});`);
     });
+    if (d.title) h += `<div class="ctitle">${d.title}</div>`;
+    if (d.source) h += `<div class="qby" style="top:975px;font-size:46px">${d.source}</div>`;
+    if (d.plus) { const tp = at("plus", 0); h += `<div class="plusb" id="${pre}-pl"><span class="badge yellow">${d.plus}</span></div>`; tw.push(`tl.set("#${pre}-pl",{opacity:0},0);`, `tl.fromTo("#${pre}-pl",{opacity:0,scale:0.7},{opacity:1,scale:1,duration:0.35,ease:"back.out(1.7)"},${f3(tp)});`); }
     if (d.rack) { const tr = at("rack", 0); const f0 = d.rackFirst || 0, f1 = 1 - f0; tw.push(`tl.set("#${pre}-bl${f0}",{filter:"blur(0px)",opacity:1},0);`, `tl.set("#${pre}-bl${f1}",{filter:"blur(12px)",opacity:0.45},0);`, `tl.to("#${pre}-bl${f0}",{filter:"blur(12px)",opacity:0.45,duration:0.35,ease:"power2.inOut"},${f3(tr)});`, `tl.to("#${pre}-bl${f1}",{filter:"blur(0px)",opacity:1,duration:0.35,ease:"power2.inOut"},${f3(tr)});`); }
     if (d.badge) { const tb = at("badge", 0); h += `<div class="topbadge" id="${pre}-tb">${d.badge.map((p) => (p.b ? `<span class="badge ${p.b}">${p.t}</span>` : `<span>${p.t}</span>`)).join("")}</div>`; tw.push(`tl.set("#${pre}-tb",{opacity:0},0);`, `tl.fromTo("#${pre}-tb",{opacity:0,scale:0.8},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},${f3(tb)});`); }
     return { html: h + `</div>`, tw };
@@ -110,11 +124,14 @@ function diagram(d, pre, T, S0 = 0) {
     return { html: h, tw };
   }
   if (d.kind === "split") {
-    const tl0 = at("left", 0), tr0 = at("right", 0), tr = at("rack", tr0);
-    const h = `<div class="fill diag"><div class="half" id="${pre}-L" style="left:0"><div class="ln">${d.left[0]}</div><div class="ln"><span class="badge yellow">${d.left[1]}</span></div></div><div class="vdiv"></div><div class="half" id="${pre}-R" style="left:960px"><div class="ln">${d.right[0]}</div><div class="ln"><span class="badge red">${d.right[1]}</span></div></div></div>`;
-    tw.push(`tl.set("#${pre}-L",{opacity:0},0);`, `tl.set("#${pre}-R",{opacity:0},0);`, `tl.fromTo("#${pre}-L",{opacity:0,scale:0.9},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},${f3(tl0)});`,
-      `tl.fromTo("#${pre}-R",{opacity:0,scale:0.9},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},${f3(tr0)});`,
-      `tl.to("#${pre}-L",{filter:"blur(10px)",opacity:0.5,duration:0.35,ease:"power2.inOut"},${f3(tr + 0.3)});`);
+    const tl0 = at("left", 0), tr0 = at("right", 0), tr = at("rack", tr0), fs = d.fs || 128;
+    const ln = (arr, bc) => arr.map((x, i) => `<div class="ln" style="font-size:${fs}px">${i === arr.length - 1 ? `<span class="badge ${bc}">${x}</span>` : x}</div>`).join("");
+    const syms = (d.syms || []).map((s, k) => `<div class="sym" id="${pre}-sy${k}" style="left:${s.side === "L" ? 400 : 1360}px">${SYM[s.sym]}</div>`).join("");
+    const h = `<div class="fill diag"><div class="half" id="${pre}-L" style="left:0">${ln(d.left, d.lb || "yellow")}</div><div class="vdiv"></div><div class="half" id="${pre}-R" style="left:960px">${ln(d.right, d.rb || "red")}</div>${syms}</div>`;
+    tw.push(`tl.set("#${pre}-L",{opacity:0},0);`, `tl.set("#${pre}-R",{opacity:0},0);`, `tl.fromTo("#${pre}-L",{opacity:0,scale:0.9},{opacity:${d.dimLeft ? 0.28 : 1},scale:1,duration:0.3,ease:"back.out(1.4)"},${f3(tl0)});`,
+      `tl.fromTo("#${pre}-R",{opacity:0,scale:0.9},{opacity:${d.dimRight ? 0.28 : 1},scale:1,duration:0.3,ease:"back.out(1.4)"},${f3(tr0)});`);
+    if (d.rack) tw.push(`tl.to("#${pre}-L",{filter:"blur(10px)",opacity:0.5,duration:0.35,ease:"power2.inOut"},${f3(tr + 0.3)});`);
+    (d.syms || []).forEach((s, k) => { const ts = T({ word: s.word, occ: s.occ }); tw.push(`tl.set("#${pre}-sy${k}",{opacity:0},0);`, `tl.fromTo("#${pre}-sy${k}",{opacity:0,scale:0.4},{opacity:1,scale:1,duration:0.35,ease:"back.out(1.7)"},${f3(ts + 0.08)});`); sfx.push({ t: f3(ts), kind: s.sym === "up" || s.sym === "down" ? "ding" : "pop" }); });
     return { html: h, tw };
   }
   if (d.kind === "quote") {
@@ -123,18 +140,88 @@ function diagram(d, pre, T, S0 = 0) {
     d.times.forEach((t, i) => tw.push(`tl.fromTo("#${pre}-w${i}",{y:44,opacity:0},{y:0,opacity:1,duration:0.32,ease:"power2.out"},${f3(t - 0.04)});`));
     return { html: h, tw };
   }
+  if (d.kind === "cards") {
+    const n = d.states.length; let h = `<div class="fill diag cardc">`;
+    d.states.forEach((s, k) => { h += `<div class="cardtxt st" id="${pre}-st${k}">${linesHtml(s.parts, `${pre}s${k}`)}</div>`; });
+    h += `</div>`;
+    const ts = d.states.map((s) => (s.w ? T(s.w) : null));
+    d.states.forEach((s, k) => {
+      const t = ts[k], first = t === null;
+      tw.push(`tl.set("#${pre}-st${k}",{opacity:${first ? 1 : 0}},0);`);
+      if (first) { if (S0 !== undefined) tw.push(`tl.fromTo("#${pre}-st${k}",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},${f3(S0)});`); }
+      else tw.push(`tl.fromTo("#${pre}-st${k}",{opacity:0,y:(${k} === 0 ? 70 : 90)},{opacity:1,y:0,duration:0.34,ease:"back.out(1.6)"},${f3(t)});`);
+      if (k + 1 < n) tw.push(`tl.to("#${pre}-st${k}",{opacity:0,y:-80,duration:0.22,ease:"power2.in"},${f3(ts[k + 1])});`);
+      tw.push(...partTweens(s.parts, `${pre}s${k}`, t ?? S0, { mk: s.mk ? T(s.mk) : undefined, ul: s.ul ? T(s.ul) : undefined }));
+      if (!first) sfx.push({ t: f3(t), kind: "click" });
+    });
+    return { html: h, tw };
+  }
+  if (d.kind === "drops") {
+    const n = d.rows.length, up = d.dir === "up", top0 = n === 3 ? 285 : 360, step = n === 3 ? 245 : 300, col = up ? SAGE : RED;
+    const path = up ? "M50 90 V28 M22 54 L50 20 L78 54" : "M50 10 V72 M22 46 L50 80 L78 46";
+    let h = `<div class="fill diag"><div class="dhead"><span class="badge yellow">${d.header}</span></div>`;
+    d.rows.forEach((r, i) => { h += `<div class="drow" style="top:${top0 + i * step}px"><div class="dlab">${r.label}</div><div class="dbox"><svg id="${pre}-ar${i}" viewBox="0 0 100 100" width="170" height="170"><path d="${path}" fill="none" stroke="${INK}" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/><path d="${path}" fill="none" stroke="${col}" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>`; });
+    h += `</div>`;
+    d.rows.forEach((r, i) => { const t = T({ word: r.word, occ: r.occ }); tw.push(`tl.set("#${pre}-ar${i}",{opacity:0},0);`, `tl.fromTo("#${pre}-ar${i}",{opacity:0,y:${up ? 190 : -190}},{opacity:1,y:0,duration:0.42,ease:"back.out(1.4)"},${f3(t)});`); sfx.push({ t: f3(t), kind: "pop" }); });
+    return { html: h, tw };
+  }
+  if (d.kind === "woop") {
+    const ROWS = ["WISH", "OUTCOME", "OBSTACLE", "PLAN"], LET = ["W", "O", "O", "P"], COL = [YEL, YEL, RED, SAGE], tops = [90, 325, 560, 795];
+    const mkup = (txt, ulw) => txt.replace(/\|/g, "<br>").replace(/\*\*(.+?)\*\*/g, (m, x) => (ulw ? `<span class="ulw"><span class="badge yellow">${x}</span><svg class="ul" viewBox="0 0 400 30" preserveAspectRatio="none"><path id="${pre}-ul" d="M6 18 C60 6 110 26 170 14 S300 8 394 16" fill="none" stroke="${RED}" stroke-width="9" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg></span>` : `<span class="badge yellow">${x}</span>`)).replace(/~~(.+?)~~/g, `<span class="badge red">$1</span>`);
+    const ans = d.answers || {};
+    let h = `<div class="fill diag"><div class="wcard"></div>`;
+    ROWS.forEach((r, i) => {
+      const a = ans[r]; h += `<div class="wrow" id="${pre}-r${i}" style="top:${tops[i]}px"><div class="wbg" id="${pre}-bg${i}"></div><div class="wlet" id="${pre}-L${i}" style="background:${COL[i]};color:${i === 2 ? "#fff" : INK}">${LET[i]}</div><div class="wlab" id="${pre}-lb${i}">${r}</div><div class="wslot" id="${pre}-sl${i}"><div class="wans" id="${pre}-a${i}">${a ? mkup(a[0], d.ul && d.ul[0] === r) : ""}</div></div><div class="wtick" id="${pre}-tk${i}"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="42" fill="${SAGE}" stroke="${INK}" stroke-width="7"/><path d="M28 52 L44 68 L74 34" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>`;
+    });
+    h += `</div>`;
+    const act = d.active !== undefined ? ROWS.indexOf(d.active) : -1, lights = d.lights || [];
+    const base = (i) => (lights.length ? 0.35 : act >= 0 ? (i === act ? 1 : 0.4) : 1);
+    ROWS.forEach((r, i) => {
+      tw.push(`tl.set("#${pre}-r${i}",{opacity:${base(i)}},0);`);
+      tw.push(`tl.set("#${pre}-tk${i}",{opacity:${(d.ticks || []).includes(r) ? 1 : 0}},0);`);
+      if ((d.ticks || []).includes(r)) tw.push(`tl.fromTo("#${pre}-tk${i}",{scale:0.4},{scale:1,duration:0.3,ease:"back.out(1.7)"},${f3(S0 + 0.2)});`);
+    });
+    if (d.intro) {
+      const ti = T(d.intro);
+      ROWS.forEach((r, i) => {
+        tw.push(`tl.set("#${pre}-L${i}",{opacity:0,scale:0.3},0);`, `tl.set("#${pre}-lb${i},#${pre}-sl${i}",{opacity:0},0);`,
+          `tl.fromTo("#${pre}-L${i}",{opacity:0,scale:0.3},{opacity:1,scale:1,duration:0.28,ease:"back.out(2)"},${f3(ti + i * 0.12)});`,
+          `tl.fromTo("#${pre}-lb${i},#${pre}-sl${i}",{opacity:0,x:40},{opacity:1,x:0,duration:0.3,ease:"power2.out"},${f3(ti + 0.12 * 4 + 0.3 + i * 0.1)});`);
+      });
+      sfx.push({ t: f3(ti), kind: "pop" });
+    }
+    Object.entries(ans).forEach(([r, a]) => {
+      const i = ROWS.indexOf(r); if (!a[1]) return; const t = T({ word: a[1], occ: a[2] });
+      tw.push(`tl.set("#${pre}-a${i}",{opacity:0},0);`, `tl.fromTo("#${pre}-a${i}",{opacity:0,clipPath:"inset(0 100% 0 0)"},{opacity:1,clipPath:"inset(0 0% 0 0)",duration:0.3,ease:"power1.out"},${f3(t)});`);
+      if (d.ul && d.ul[0] === r) tw.push(`tl.to("#${pre}-ul",{strokeDashoffset:0,duration:0.5,ease:"power2.out"},${f3(T({ word: d.ul[1] }) + 0.1)});`);
+      sfx.push({ t: f3(t), kind: "click" });
+    });
+    if (d.pulse) { const i = ROWS.indexOf(d.pulse[0]), t = T({ word: d.pulse[1] }); tw.push(`tl.set("#${pre}-bg${i}",{opacity:0},0);`, `tl.fromTo("#${pre}-bg${i}",{opacity:0},{opacity:0.9,duration:0.22,yoyo:true,repeat:3,ease:"power1.inOut"},${f3(t)});`); sfx.push({ t: f3(t), kind: "pop" }); }
+    lights.forEach(([rows, word]) => { const t = T({ word }); rows.forEach((r) => { const i = ROWS.indexOf(r); tw.push(`tl.to("#${pre}-r${i}",{opacity:1,duration:0.3,ease:"power2.out"},${f3(t)});`, `tl.fromTo("#${pre}-L${i}",{scale:1.2},{scale:1,duration:0.3,ease:"back.out(1.7)"},${f3(t)});`); }); sfx.push({ t: f3(t), kind: "pop" }); });
+    return { html: h, tw };
+  }
+  if (d.kind === "iconrow") {
+    let h = `<div class="fill diag cardc"><div class="irow">`;
+    d.items.forEach((it, k) => { h += `<div class="icol"><div id="${pre}-ic${k}" class="itile slot"><img id="${pre}-im${k}" src="assets/icons/${it.icon}.jpg" alt=""></div><div class="ilab" id="${pre}-il${k}">${it.label || ""}</div></div>`; });
+    h += `</div></div>`;
+    d.items.forEach((it, k) => { const t = T({ word: it.word, occ: it.occ }) - 0.0; tw.push(`tl.set("#${pre}-im${k}",{opacity:0},0);`, `tl.set("#${pre}-il${k}",{opacity:0},0);`, `tl.set("#${pre}-ic${k}",{borderColor:"#CFC8B8",backgroundColor:"#F2EEE4"},0);`,
+      `tl.set("#${pre}-ic${k}",{borderColor:"${INK}",backgroundColor:"#F8F5EE"},${f3(t)});`, `tl.fromTo("#${pre}-ic${k}",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},${f3(t)});`, `tl.set("#${pre}-im${k}",{opacity:1},${f3(t)});`, `tl.fromTo("#${pre}-il${k}",{opacity:0,y:14},{opacity:1,y:0,duration:0.25,ease:"power2.out"},${f3(t + 0.05)});`); sfx.push({ t: f3(t), kind: "pop" }); });
+    return { html: h, tw };
+  }
   throw new Error("diagram " + d.kind);
 }
 function screenOv(id, o, host) {
   const ul = o.ul ? `<svg class="ulp" viewBox="0 0 400 30" preserveAspectRatio="none"><path id="${id}-ul" d="M6 18 C60 6 110 26 170 14 S300 8 394 16" fill="none" stroke="${RED}" stroke-width="9" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg>` : "";
+  const pos = o.pos === "bottom" ? ` style="top:auto;bottom:${host ? 150 : 70}px"` : "";
+  if (o.type === "tag") return `<div id="${id}" class="scr${host ? " row" : ""}" data-layout-allow-overlap${pos}><div class="spill2 tagp">${tagHtml(o, id)}</div></div>`;
   if (o.type === "step") return `<div id="${id}" class="scr${host ? " row" : ""}" data-layout-allow-overlap><div class="pill big">${o.step}</div><div class="spill2">${o.text}</div></div>`;
-  if (o.type === "pill") return `<div id="${id}" class="scr${host ? " row" : ""}" data-layout-allow-overlap><div class="pill big">${o.text}</div></div>`;
-  return `<div id="${id}" class="scr" data-layout-allow-overlap><div class="spill2">${o.text}${ul}</div></div>`;
+  if (o.type === "pill") return `<div id="${id}" class="scr${host ? " row" : ""}" data-layout-allow-overlap${pos}><div class="pill big">${o.text}</div></div>`;
+  return `<div id="${id}" class="scr" data-layout-allow-overlap${pos}><div class="spill2">${o.text}${ul}</div></div>`;
 }
 function picOv(id, o) {
   const b = o.box, pos = b ? `left:${f3(b.x * 1920)}px;top:${f3(b.y * 1080)}px;width:${f3(b.w * 1920)}px;height:${f3(b.h * 1080)}px` : "";
   if (o.type === "bubble") return `<div id="${id}" class="sbub" data-layout-allow-overlap style="${pos}"><span>${o.text}</span><i></i></div>`;
-  if (o.type === "sign") return `<div id="${id}" class="sign" data-layout-allow-overlap style="${pos};transform:rotate(${o.rot || 0}deg);font-size:${o.fs || 64}px">${o.text}</div>`;
+  if (o.type === "sign") return `<div id="${id}" class="sign${o.card ? " scard" : ""}" data-layout-allow-overlap style="${pos};transform:rotate(${o.rot || 0}deg);font-size:${o.fs || 64}px">${o.text.replace("{N}", `<span class="badge yellow cnb" id="${id}-n">${o.cnt}</span>`)}</div>`;
   if (o.type === "sweep") return `<div id="${id}" class="sweepbox" data-layout-allow-overlap style="${pos}"><div id="${id}-b" class="sweepband"></div></div>`;
   if (o.type === "badge") return `<div id="${id}" class="tagbox" data-layout-allow-overlap style="${pos};font-size:${o.fs || 110}px"><span class="badge ${o.badge}" id="${id}-t">${o.text}</span></div>`;
   if (o.type === "wheel") return `<div id="${id}" class="tagbox" data-layout-allow-overlap style="${pos};font-size:230px"><span class="badge yellow wheel" id="${id}-t" style="display:flex">${[0, 1, 2].map((k) => `<span class="dig"><span class="col" id="${id}-c${k}">${[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((x) => `<span>${x}</span>`).join("")}</span></span>`).join("")}</span></div>`;
@@ -160,8 +247,9 @@ function planScene(sc, i) {
   const evs = [];
   for (const { e, k } of order) {
     if (e.kind === "title") { const prev = evs[evs.length - 1]; if (prev && prev.e > E - e.dur) { warn.push(`${sc.id}: dropped ${prev.kind} (${prev.word}) for title`); evs.pop(); } evs.push({ ...e, a: E - e.dur, e: E }); continue; }
+    if (e.kind === "flash") { evs.push({ ...e, a: cutAt(k), e: cutAt(W(e.until, e.untilOcc || 1)), k }); continue; }
     if (e.kind === "quote") { evs.push({ ...e, a: cutAt(k), e: cutAt(W(e.until, e.untilOcc || 1)), k }); continue; }
-    const [mn, mx] = LIM[e.kind];
+    const [mn, mx] = e.max ? [LIM[e.kind][0], e.max] : LIM[e.kind];
     let a = cutAt(k); if (a - S < 1.0) a = S;
     const prev = evs[evs.length - 1];
     if (prev) {
@@ -237,6 +325,7 @@ G.forEach((sh, gi) => {
   const sc = sh.P.sc; let tr = null;
   if (sh.si === 0 && gi > 0 && sc.trans && sc.trans !== "cut") tr = { kind: sc.trans, dur: TRANS[sc.trans], pt: sc.irisAt || [0.5, 0.5] };
   if (sc.swap && sc.swap.kind === "iris" && sh.side === "B" && sh.si > 0 && G[gi - 1].side === "A" && G[gi - 1].P === sh.P) tr = { kind: "iris", dur: TRANS.iris, pt: sc.swap.pt || [0.5, 0.5] };
+  if (!tr && sh.ev && sh.ev.trans && gi > 0 && sh.type !== "main") tr = { kind: sh.ev.trans, dur: TRANS[sh.ev.trans], pt: [0.5, 0.5] };
   sh.trans = tr;
   if (tr && gi > 0) G[gi - 1].ext = Math.max(G[gi - 1].ext || 0, tr.dur);
 });
@@ -281,8 +370,8 @@ G.forEach((sh, gi) => {
   const first = sh.si === 0, zi = ++z;
   const tr = sh.trans, ext = sh.ext || 0, cd = d + ext;
   const prevSh = gi > 0 ? G[gi - 1] : null;
-  if (d > MAXSHOT + 0.02 && !sh.exempt && sh.type !== "title" && sh.type !== "iconrow" && !(sh.type === "quote" && d <= 7.05)) warn.push(`${sc.id}: shot ${f3(a)}-${f3(e)} (${sh.type}) is ${f3(d)}s`);
-  if (sh.type === "icon" && d > 3.05 || sh.type === "card" && d > 2.55) warn.push(`${sc.id}: ${sh.type} lasts ${f3(d)}s`);
+  if (d > MAXSHOT + 0.02 && !sh.exempt && sh.type !== "title" && sh.type !== "iconrow" && !(sh.type === "quote" && d <= 7.05) && !(sh.type === "flash" && d <= 4.6)) warn.push(`${sc.id}: shot ${f3(a)}-${f3(e)} (${sh.type}) is ${f3(d)}s`);
+  if (sh.type === "icon" && d > 3.05 || sh.type === "card" && d > (sh.ev.max || 2.5) + 0.05) warn.push(`${sc.id}: ${sh.type} lasts ${f3(d)}s`);
   if (gi > 0) {
     let bi = 0; ws.forEach((w, k) => { if (Math.abs(w.s - a) < Math.abs(ws[bi].s - a)) bi = k; });
     let bd = Math.abs(ws[bi].s - a), bw = ws[bi].w;
@@ -301,10 +390,11 @@ G.forEach((sh, gi) => {
     const picOvs = ovs.filter(([o]) => !SCREEN.has(o.type)), scrOvs = ovs.filter(([o]) => SCREEN.has(o.type));
     let inner;
     const picHtml = picOvs.map(([o, k]) => picOv(`${id}-ov${k}`, o)).join("");
+    if (isDiag && dg.kind === "iconrow") dg.items.forEach((it) => usedIcons.add(it.icon));
     if (isDiag) { const dr = diagram(mapAt({ ...dg, rise: sh.side === "B" ? P.T : undefined }), `${id}-dg`, T, sc.t.start); inner = dr.html + picHtml; dr.tw.forEach((x) => tl.push(x)); }
     else { usedPics.add(sh.pic); inner = `<img src="assets/pictures/${sh.pic}.jpg" class="pic" alt="">${picHtml}`; }
     content = `<div id="${id}-cam" class="cam">${sc.bleed ? `<div class="bleed" style="background:${sc.bleed}"></div>` : ""}${inner}</div>`;
-    extra = scrOvs.map(([o, k]) => screenOv(`${id}-so${k}`, o, host)).join("");
+    extra = scrOvs.filter(([o]) => { const [t0, t1] = overlayWin(sc, ws, W, o); return t1 > a && t0 < e; }).map(([o, k]) => screenOv(`${id}-so${k}`, o, host)).join("");
     // camera tweens
     if (!isDiag || sc.camMove) {
       const cp = sh.cam; let cur = cp.start, tcur = a; const drv = sc.camera || "zoom-in";
@@ -340,6 +430,7 @@ G.forEach((sh, gi) => {
         String(o.value).split("").forEach((dgt, c) => tl.push(`tl.fromTo("#${oid}-c${c}",{y:0},{y:-${(+dgt) * 253},duration:${f3(0.9 + c * 0.2)},ease:"power3.out"},${f3(w0 + 0.05)});`));
       } else {
         tl.push(`tl.set("#${oid}",{opacity:0},0);`, `tl.fromTo("#${oid}",{opacity:0,scale:0.85},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},${f3(w0)});`);
+        if (o.cnt && o.cntWord) { const ob = vid(`${oid}_c`), tc = ws[W(o.cntWord, 1)].s; tl.push(`const ${ob}={v:0};`, `tl.fromTo(${ob},{v:0},{v:${o.cnt},duration:0.7,ease:"power2.out",onUpdate:function(){var e=document.getElementById("${oid}-n");if(e)e.textContent=Math.round(${ob}.v);}},${f3(Math.max(tc - 0.03, w0)) });`); }
         if (o.count) { const ob = vid(`${oid}_o`); tl.push(`const ${ob}={v:0};`, `tl.fromTo(${ob},{v:0},{v:${o.count},duration:0.7,ease:"power2.out",onUpdate:function(){var e=document.getElementById("${oid}-t");if(e)e.textContent=Math.round(${ob}.v)+"%";}},${f3(w0)});`); }
       }
       if (["badge", "circle", "arrow", "wheel"].includes(o.type)) sfx.push({ t: f3(w0), kind: "pop" });
@@ -350,6 +441,8 @@ G.forEach((sh, gi) => {
       if (!vis) continue;
       if (t0 >= a - 0.001) { tl.push(`tl.set("#${oid}",{opacity:0},0);`, `tl.fromTo("#${oid}",{opacity:0,y:-20},{opacity:1,y:0,duration:0.3,ease:"back.out(1.4)"},${f3(t0)});`); if (o.ul) tl.push(`tl.to("#${oid}-ul",{strokeDashoffset:0,duration:0.5,ease:"power2.out"},${f3(t0 + 0.5)});`); }
       if (t1 < e - 0.01) tl.push(`tl.to("#${oid}",{opacity:0,duration:0.2},${f3(t1)});`);
+      if (o.type === "tag" && o.count) { const ob = vid(`${oid}_o`); tl.push(`const ${ob}={v:0};`, `tl.fromTo(${ob},{v:${o.from || 0}},{v:${o.count},duration:0.7,ease:"power2.out",onUpdate:function(){var e=document.getElementById("${oid}-n");if(e)e.textContent=Math.round(${ob}.v)+${JSON.stringify(o.suffix || "")};}},${f3(t0)});`); }
+      sfx.push({ t: f3(t0), kind: "pop" });
     }
   } else if (sh.type === "quote") {
     const q = sh.ev, toks = q.text.split(" "), s0 = W(q.word, q.occ || 1) - 1; let html2 = "", ti = 0, times = [], inB = false;
@@ -357,6 +450,9 @@ G.forEach((sh, gi) => {
       html2 += `<span class="w" id="${id}-dg-w${ti}">${w}</span>${close ? "" : " "}`; times.push(ws[Math.min(s0 + ti, ws.length - 1)].s); ti++; if (close) { html2 += `</span> `; inB = false; } }
     const dr = diagram({ kind: "quote", html: html2, times, by: q.by }, `${id}-dg`, T); dr.tw.forEach((x) => tl.push(x)); bt.forEach((t0, bi) => tl.push(`tl.set("#${id}-dg-b${bi}",{opacity:0},0);`, `tl.fromTo("#${id}-dg-b${bi}",{opacity:0},{opacity:1,duration:0.2},${f3(t0 - 0.04)});`));
     content = dr.html; sfx.push({ t: f3(a), kind: "click" });
+  } else if (sh.type === "flash") {
+    usedPics.add(sh.ev.pic); content = `<div class="fill"><div id="${id}-cam" class="cam"><img src="assets/pictures/${sh.ev.pic}.jpg" class="pic" alt=""></div></div>`;
+    tl.push(`tl.fromTo("#${id}-cam",{${trSt(FULL, 1)}},{${trSt(FULL, 1.015)},duration:${f3(d)},ease:"none"},${f3(a)});`); sfx.push({ t: f3(a), kind: "pop" });
   } else if (sh.type === "icon") {
     usedIcons.add(sh.ev.icon);
     content = `<div class="fill iconbg"><img id="${id}-img" src="assets/icons/${sh.ev.icon}.jpg" class="pic" alt=""></div>`;
@@ -366,12 +462,15 @@ G.forEach((sh, gi) => {
     const items = sh.ev.items; items.forEach((it) => usedIcons.add(it.icon));
     content = `<div class="fill diag cardc"><div class="irow">${items.map((it, k) => `<div id="${id}-ic${k}" class="itile"><img src="assets/icons/${it.icon}.jpg" alt=""></div>`).join("")}</div></div>`;
     items.forEach((it, k) => { const t0 = ws[W(it.word)].s - 0.03; tl.push(`tl.set("#${id}-ic${k}",{opacity:0},0);`, `tl.fromTo("#${id}-ic${k}",{opacity:0,scale:0.92},{opacity:1,scale:1,duration:0.2,ease:"power2.out"},${f3(t0)});`); sfx.push({ t: f3(t0), kind: "pop" }); });
+  } else if (sh.type === "card" && sh.ev.swap) {
+    const dr = diagram({ kind: "cards", states: [{ parts: sh.ev.parts }, { parts: sh.ev.swap.parts, w: { word: sh.ev.swap.word, occ: sh.ev.swap.occ || 1 } }] }, `${id}-dg`, T, a);
+    content = dr.html; dr.tw.forEach((x) => tl.push(x)); sfx.push({ t: f3(a), kind: "click" });
   } else if (sh.type === "card") {
     content = `<div class="fill card"><div id="${id}-in" class="cardtxt">${linesHtml(sh.ev.parts, id)}</div></div>`;
     tl.push(`tl.fromTo("#${id}-in",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},${f3(a)});`, ...partTweens(sh.ev.parts, id, a));
     sfx.push({ t: f3(a), kind: "click" });
   } else if (sh.type === "title") {
-    content = `<div class="fill card"><div id="${id}-in" class="cardtxt"><div class="pill">LESSON</div><div class="ln big">PSYCHOLOGY OF</div><div class="ln big"><span class="org">REGRET</span></div></div></div>`;
+    content = `<div class="fill card"><div id="${id}-in" class="cardtxt"><div class="pill">LESSON</div><div class="ln big">${sh.ev.l1}</div><div class="ln big"><span class="org">${sh.ev.l2}</span></div></div></div>`;
     tl.push(`tl.fromTo("#${id}-in",{scale:0.94},{scale:1,duration:0.3,ease:"back.out(1.4)"},${f3(a)});`);
     sfx.push({ t: f3(a), kind: "click" });
   } else if (sh.type === "pop") {
@@ -518,6 +617,24 @@ html,body{margin:0;background:${PAPER}}
 .tagbox{position:absolute;display:flex;align-items:center;justify-content:center;white-space:nowrap}
 .scr{position:absolute;left:0;right:0;top:24px;display:flex;flex-direction:column;align-items:center;gap:14px;z-index:6}.scr.row{flex-direction:row;justify-content:center;gap:20px;top:22px}
 .spill2{background:${PAPER};border:6px solid ${INK};border-radius:44px;font-size:60px;line-height:1.05;padding:4px 40px 10px;white-space:nowrap;position:relative}
+.st{position:absolute;left:0;right:0;top:0;bottom:0;justify-content:center}
+.dhead{position:absolute;left:0;right:0;top:50px;display:flex;justify-content:center;font-size:100px;white-space:nowrap}
+.drow{position:absolute;left:0;right:0;display:flex;justify-content:center;align-items:center;gap:60px}
+.dlab{font-size:96px;white-space:nowrap}.dbox{width:210px;height:210px;box-sizing:border-box;border:9px solid ${INK};border-radius:30px;background:#fff;overflow:hidden;display:flex;align-items:center;justify-content:center;box-shadow:8px 8px 0 rgba(26,26,26,.18)}
+.sym{position:absolute;top:800px;width:160px;height:160px;transform-origin:50% 50%}
+.wcard{position:absolute;left:150px;top:50px;width:1620px;height:980px;box-sizing:border-box;border:9px solid ${INK};border-radius:44px;background:#FFFDF8;box-shadow:12px 12px 0 rgba(26,26,26,.16)}
+.wrow{position:absolute;left:190px;width:1540px;height:200px}
+.wbg{position:absolute;left:-14px;right:-14px;top:-10px;bottom:-10px;border-radius:40px;background:${YEL};opacity:0}
+.wlet{position:absolute;left:10px;top:15px;width:170px;height:170px;border-radius:50%;box-sizing:border-box;border:9px solid ${INK};display:flex;align-items:center;justify-content:center;font-size:120px;line-height:1;padding-bottom:8px;transform-origin:50% 50%}
+.wlab{position:absolute;left:215px;top:0;height:200px;display:flex;align-items:center;font-size:84px;white-space:nowrap}
+.wslot{position:absolute;left:700px;top:15px;width:790px;height:170px;box-sizing:border-box;border:6px solid ${INK};border-radius:28px;background:#fff;display:flex;align-items:center;justify-content:center}
+.wans{font-size:58px;line-height:1.12;text-align:center;white-space:nowrap}.wans .badge{padding:0 16px 3px;border-width:6px;border-radius:22px;box-shadow:5px 5px 0 ${INK}}
+.wtick{position:absolute;left:1500px;top:40px;width:100px;height:100px;opacity:0}
+.icol{display:flex;flex-direction:column;align-items:center;gap:30px}.ilab{width:540px;text-align:center;font-size:62px;line-height:1.05}
+.itile.slot{border-color:#CFC8B8;background:#F2EEE4;box-shadow:none}
+.plusb{position:absolute;left:0;right:0;top:360px;display:flex;justify-content:center;font-size:120px;white-space:nowrap}
+.tagp{font-size:70px;display:flex;gap:18px;align-items:center}.tagp .badge{padding:0 22px 4px;border-width:6px;border-radius:26px;box-shadow:5px 5px 0 ${INK}}
+.sign.scard{background:#fff;border:6px solid ${INK};border-radius:16px;box-sizing:border-box;padding:4px 10px 8px;line-height:1.12;box-shadow:5px 5px 0 rgba(26,26,26,.25)}.sign .cnb{padding:0 12px 2px;border-width:4px;border-radius:14px;box-shadow:3px 3px 0 ${INK}}
 .sbub{position:absolute;background:#fff;border:7px solid ${INK};border-radius:42px;box-sizing:border-box;display:flex;align-items:center;justify-content:center;text-align:center;font-size:64px;line-height:1.05;padding:6px 18px}
 .sbub i{position:absolute;right:-34px;bottom:-30px;width:40px;height:40px;background:#fff;border:7px solid ${INK};border-radius:50%;box-sizing:border-box}
 .sign{position:absolute;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1;color:${INK};white-space:nowrap}
@@ -543,7 +660,7 @@ html,body{margin:0;background:${PAPER}}
 .irow{display:flex;gap:70px;align-items:center}
 .itile{width:520px;height:520px;border:9px solid ${INK};border-radius:36px;overflow:hidden;background:#F8F5EE;box-shadow:10px 10px 0 rgba(26,26,26,.2)}.itile img{width:924px;height:520px;margin-left:-202px;display:block}
 .sweepbox{position:absolute;overflow:hidden}.sweepband{position:absolute;left:0;top:-20%;width:35%;height:140%;transform:skewX(-18deg);background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,247,200,.9),rgba(255,255,255,0));opacity:0}
-.leak{position:absolute;inset:0;mix-blend-mode:screen;background:radial-gradient(ellipse 60% 70% at 95% 10%,rgba(255,170,70,.95),rgba(255,120,40,0) 70%),radial-gradient(ellipse 50% 60% at 5% 95%,rgba(255,210,120,.75),rgba(255,160,60,0) 70%)}
+.leak{position:absolute;inset:0;opacity:0;mix-blend-mode:screen;background:radial-gradient(ellipse 60% 70% at 95% 10%,rgba(255,170,70,.95),rgba(255,120,40,0) 70%),radial-gradient(ellipse 50% 60% at 5% 95%,rgba(255,210,120,.75),rgba(255,160,60,0) 70%)}
 </style></head><body>
 <div id="root" data-composition-id="part${N}" data-start="0" data-width="1920" data-height="1080" data-duration="${f3(dur)}">
 <svg width="0" height="0" style="position:absolute"><filter id="mb" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB"><feGaussianBlur id="mbb" stdDeviation="0 0"/></filter></svg>

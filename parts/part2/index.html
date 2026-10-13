@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=1920, height=1080"><title>Part 2</title>
+<script src="assets/gsap.min.js"></script>
+<style>
+@font-face{font-family:"Nunito";font-weight:800;src:url("assets/fonts/nunito-800.woff2") format("woff2")}
+html,body{margin:0;background:#FAF7F0}
+#root{position:relative;width:100%;height:100%;overflow:hidden;background:#FAF7F0;font-family:"Nunito",sans-serif;font-weight:800;color:#1A1A1A}
+.clip{position:absolute;inset:0;overflow:hidden}
+.tt,.fill{position:absolute;inset:0}
+.tt{background:#FAF7F0}
+.fin{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:50% 50%}
+.bleed{position:absolute;left:-1920px;top:-1080px;width:5760px;height:3240px}
+.cam{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0}
+.pic{position:absolute;left:0;top:0;width:1920px;height:1080px;display:block}
+.iconbg{background:#F8F5EE}
+.card{background:#FAF7F0;display:flex;align-items:center;justify-content:center}
+.cardtxt{display:flex;flex-direction:column;align-items:center;gap:26px;text-align:center}
+.ln{font-size:170px;line-height:1.05;letter-spacing:1px;white-space:nowrap;position:relative}
+.ln.big{font-size:130px}.ln.small{font-size:84px}.ln.mid{font-size:112px}
+.badge{display:inline-block;padding:4px 40px 12px;border:9px solid #1A1A1A;border-radius:34px;box-shadow:8px 8px 0 #1A1A1A}
+.badge.yellow{background:#F2C230;color:#1A1A1A} .badge.red{background:#D64545;color:#fff}
+.pill{background:#2F6B2F;color:#fff;border:7px solid #1A1A1A;border-radius:60px;font-size:64px;padding:2px 54px 8px;letter-spacing:4px;margin-bottom:18px}
+.pill.big{margin:0;border-width:6px;font-size:64px;padding:2px 50px 8px}
+.org{color:#F2A65A;-webkit-text-stroke:6px #1A1A1A;paint-order:stroke fill}
+.mk{position:relative;display:inline-block}.mk i{position:absolute;left:-14px;right:-14px;top:22%;bottom:2%;background:#F2C230;transform-origin:0 50%;z-index:0;border-radius:10px}.mk b{position:relative;z-index:1;font-weight:800}
+.circw{position:relative;display:inline-block}.circ{position:absolute;left:-60px;top:-34px;width:calc(100% + 120px);height:calc(100% + 68px);overflow:visible}
+.ulw{position:relative;display:inline-block}.ul{position:absolute;left:0;bottom:-26px;width:100%;height:30px;overflow:visible}
+.ulp{position:absolute;left:0;bottom:-24px;width:100%;height:26px;overflow:visible}
+.hbg{position:absolute;inset:0;background:#FAF7F0}
+.frame{position:absolute;left:455.2px;top:140px;width:1420.8px;height:799.2px;border-radius:28px;overflow:hidden;background:#FAF7F0}
+.hs{position:absolute;left:0;top:0;width:1920px;height:1080px;transform:scale(0.74);transform-origin:0 0}
+.fborder{position:absolute;left:455.2px;top:140px;width:1420.8px;height:799.2px;box-sizing:border-box;border:6px solid #1A1A1A;border-radius:28px;pointer-events:none}
+.nw{position:absolute;inset:0;z-index:5}
+.narr{position:absolute;bottom:48px;display:block}
+.nshadow{position:absolute;bottom:26px;height:46px;background:radial-gradient(ellipse at center,rgba(26,26,26,.28),rgba(26,26,26,0) 70%)}
+.diag{background:#FAF7F0}
+.cardc{display:flex;align-items:center;justify-content:center}
+.dlabel{position:absolute;left:0;right:0;top:830px;display:flex;justify-content:center;align-items:center;gap:36px;font-size:130px;white-space:nowrap}
+.sclab{position:absolute;width:500px;display:flex;justify-content:center;font-size:84px}
+.tagbox{position:absolute;display:flex;align-items:center;justify-content:center;white-space:nowrap}
+.scr{position:absolute;left:0;right:0;top:24px;display:flex;flex-direction:column;align-items:center;gap:14px;z-index:6}.scr.row{flex-direction:row;justify-content:center;gap:20px;top:22px}
+.spill2{background:#FAF7F0;border:6px solid #1A1A1A;border-radius:44px;font-size:60px;line-height:1.05;padding:4px 40px 10px;white-space:nowrap;position:relative}
+.st{position:absolute;left:0;right:0;top:0;bottom:0;justify-content:center}
+.dhead{position:absolute;left:0;right:0;top:50px;display:flex;justify-content:center;font-size:100px;white-space:nowrap}
+.drow{position:absolute;left:0;right:0;display:flex;justify-content:center;align-items:center;gap:60px}
+.dlab{font-size:96px;white-space:nowrap}.dbox{width:210px;height:210px;box-sizing:border-box;border:9px solid #1A1A1A;border-radius:30px;background:#fff;overflow:hidden;display:flex;align-items:center;justify-content:center;box-shadow:8px 8px 0 rgba(26,26,26,.18)}
+.sym{position:absolute;top:800px;width:160px;height:160px;transform-origin:50% 50%}
+.wcard{position:absolute;left:150px;top:50px;width:1620px;height:980px;box-sizing:border-box;border:9px solid #1A1A1A;border-radius:44px;background:#FFFDF8;box-shadow:12px 12px 0 rgba(26,26,26,.16)}
+.wrow{position:absolute;left:190px;width:1540px;height:200px}
+.wbg{position:absolute;left:-14px;right:-14px;top:-10px;bottom:-10px;border-radius:40px;background:#F2C230;opacity:0}
+.wlet{position:absolute;left:10px;top:15px;width:170px;height:170px;border-radius:50%;box-sizing:border-box;border:9px solid #1A1A1A;display:flex;align-items:center;justify-content:center;font-size:120px;line-height:1;padding-bottom:8px;transform-origin:50% 50%}
+.wlab{position:absolute;left:215px;top:0;height:200px;display:flex;align-items:center;font-size:84px;white-space:nowrap}
+.wslot{position:absolute;left:700px;top:15px;width:790px;height:170px;box-sizing:border-box;border:6px solid #1A1A1A;border-radius:28px;background:#fff;display:flex;align-items:center;justify-content:center}
+.wans{font-size:58px;line-height:1.12;text-align:center;white-space:nowrap}.wans .badge{padding:0 16px 3px;border-width:6px;border-radius:22px;box-shadow:5px 5px 0 #1A1A1A}
+.wtick{position:absolute;left:1500px;top:40px;width:100px;height:100px;opacity:0}
+.icol{display:flex;flex-direction:column;align-items:center;gap:30px}.ilab{width:540px;text-align:center;font-size:62px;line-height:1.05}
+.itile.slot{border-color:#CFC8B8;background:#F2EEE4;box-shadow:none}
+.plusb{position:absolute;left:0;right:0;top:360px;display:flex;justify-content:center;font-size:120px;white-space:nowrap}
+.tagp{font-size:70px;display:flex;gap:18px;align-items:center}.tagp .badge{padding:0 22px 4px;border-width:6px;border-radius:26px;box-shadow:5px 5px 0 #1A1A1A}
+.sign.scard{background:#fff;border:6px solid #1A1A1A;border-radius:16px;box-sizing:border-box;padding:4px 10px 8px;line-height:1.12;box-shadow:5px 5px 0 rgba(26,26,26,.25)}.sign .cnb{padding:0 12px 2px;border-width:4px;border-radius:14px;box-shadow:3px 3px 0 #1A1A1A}
+.sbub{position:absolute;background:#fff;border:7px solid #1A1A1A;border-radius:42px;box-sizing:border-box;display:flex;align-items:center;justify-content:center;text-align:center;font-size:64px;line-height:1.05;padding:6px 18px}
+.sbub i{position:absolute;right:-34px;bottom:-30px;width:40px;height:40px;background:#fff;border:7px solid #1A1A1A;border-radius:50%;box-sizing:border-box}
+.sign{position:absolute;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1;color:#1A1A1A;white-space:nowrap}
+.ovsvg{position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:visible}
+.clab{position:absolute;white-space:nowrap}
+.wheel{padding:0 26px 4px;overflow:hidden}.dig{display:block;height:253px;overflow:hidden;width:130px}.col{display:flex;flex-direction:column;line-height:253px;text-align:center}
+.bar{position:absolute;border:9px solid #1A1A1A;border-radius:26px 26px 0 0;box-sizing:border-box;box-shadow:8px 8px 0 rgba(26,26,26,.18)}
+.btag{position:absolute;left:-40px;right:-40px;top:-130px;text-align:center;font-size:100px;white-space:nowrap}
+.blab{position:absolute;text-align:center;font-size:66px;line-height:1.05}
+.topbadge{position:absolute;left:0;right:0;top:48px;display:flex;justify-content:center;align-items:center;gap:28px;font-size:94px;white-space:nowrap}
+.ctitle{position:absolute;left:0;right:0;top:36px;text-align:center;font-size:100px;letter-spacing:3px}
+.axl{position:absolute;font-size:62px}
+.llab{position:absolute;font-size:62px;white-space:nowrap;-webkit-text-stroke:2px #1A1A1A;paint-order:stroke fill}
+.tag{position:absolute;font-size:70px}.tag .badge{padding:0 30px 8px}
+.sweep{position:absolute;width:300px;height:300px;opacity:0;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,247,200,.95),rgba(255,255,255,0));filter:blur(8px);border-radius:50%}
+.half{position:absolute;top:0;width:960px;height:1080px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px}
+.half .ln{font-size:128px}
+.vdiv{position:absolute;left:956px;top:120px;width:8px;height:840px;background:#1A1A1A;border-radius:4px}
+.qmark{position:absolute;left:210px;top:60px;font-size:420px;line-height:1;color:#F2A65A;-webkit-text-stroke:5px #1A1A1A;paint-order:stroke fill}
+.qtext{position:absolute;left:200px;top:250px;width:1540px;font-size:90px;line-height:1.42;text-align:left}
+.qtext .w{display:inline-block;margin-right:16px}.qtext .badge{padding:0 20px 6px;box-shadow:6px 6px 0 #1A1A1A;border-width:7px;border-radius:24px;margin-right:16px}.qtext .badge .w{margin-right:14px}.qtext .badge .w:last-child{margin-right:0}
+.qby{position:absolute;left:0;right:0;top:880px;text-align:center;font-size:58px;color:#6a6454}
+.irow{display:flex;gap:70px;align-items:center}
+.itile{width:520px;height:520px;border:9px solid #1A1A1A;border-radius:36px;overflow:hidden;background:#F8F5EE;box-shadow:10px 10px 0 rgba(26,26,26,.2)}.itile img{width:924px;height:520px;margin-left:-202px;display:block}
+.sweepbox{position:absolute;overflow:hidden}.sweepband{position:absolute;left:0;top:-20%;width:35%;height:140%;transform:skewX(-18deg);background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,247,200,.9),rgba(255,255,255,0));opacity:0}
+.leak{position:absolute;inset:0;opacity:0;mix-blend-mode:screen;background:radial-gradient(ellipse 60% 70% at 95% 10%,rgba(255,170,70,.95),rgba(255,120,40,0) 70%),radial-gradient(ellipse 50% 60% at 5% 95%,rgba(255,210,120,.75),rgba(255,160,60,0) 70%)}
+</style></head><body>
+<div id="root" data-composition-id="part2" data-start="0" data-width="1920" data-height="1080" data-duration="160.314">
+<svg width="0" height="0" style="position:absolute"><filter id="mb" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB"><feGaussianBlur id="mbb" stdDeviation="0 0"/></filter></svg>
+<div id="m16-s0" class="clip" data-start="0" data-duration="2.1" style="z-index:11"><div id="m16-s0-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m16-s0-fin" class="fin"><div id="m16-s0-cam" class="cam"><img src="assets/pictures/S20.jpg" class="pic" alt=""></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m16-s1" class="clip" data-start="2.1" data-duration="2.02" style="z-index:12"><div id="m16-s1-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m16-s1-fin" class="fin"><div id="m16-s1-cam" class="cam"><img src="assets/pictures/S20.jpg" class="pic" alt=""></div></div></div></div><div class="fborder"></div><div id="m16-s1-so0" class="scr row" data-layout-allow-overlap><div class="pill big">OETTINGEN & MAYER</div></div></div></div>
+<div id="m16-s2" class="clip" data-start="4.12" data-duration="3.04" style="z-index:13"><div id="m16-s2-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m16-s2-fin" class="fin"><div id="m16-s2-cam" class="cam"><img src="assets/pictures/S20.jpg" class="pic" alt=""></div></div></div></div><div class="fborder"></div><div id="m16-s2-so0" class="scr row" data-layout-allow-overlap><div class="pill big">OETTINGEN & MAYER</div></div></div></div>
+<div id="m16-s3" class="clip" data-start="7.16" data-duration="1.9" style="z-index:14"><div id="m16-s3-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m16-s3-fin" class="fin"><div class="fill iconbg"><img id="m16-s3-img" src="assets/icons/I53.jpg" class="pic" alt=""></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m16-s4" class="clip" data-start="9.06" data-duration="3.34" style="z-index:15"><div id="m16-s4-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m16-s4-fin" class="fin"><div id="m16-s4-cam" class="cam"><img src="assets/pictures/S20.jpg" class="pic" alt=""></div></div></div></div><div class="fborder"></div><div id="m16-s4-so1" class="scr row" data-layout-allow-overlap style="top:auto;bottom:150px"><div class="spill2 tagp"><span class="badge yellow"><span id="m16-s4-so1-n">4</span></span> <span>GROUPS</span></div></div></div></div>
+<div id="m17-s0" class="clip" data-start="12.4" data-duration="2" style="z-index:16"><div id="m17-s0-t" class="tt"><div id="m17-s0-fin" class="fin"><div id="m17-s0-cam" class="cam"><div class="fill diag cardc"><div class="irow"><div class="icol"><div id="m17-s0-dg-ic0" class="itile slot"><img id="m17-s0-dg-im0" src="assets/icons/I54.jpg" alt=""></div><div class="ilab" id="m17-s0-dg-il0">THE CRUSH</div></div><div class="icol"><div id="m17-s0-dg-ic1" class="itile slot"><img id="m17-s0-dg-im1" src="assets/icons/I46.jpg" alt=""></div><div class="ilab" id="m17-s0-dg-il1">THE EXAM</div></div><div class="icol"><div id="m17-s0-dg-ic2" class="itile slot"><img id="m17-s0-dg-im2" src="assets/icons/I55.jpg" alt=""></div><div class="ilab" id="m17-s0-dg-il2">THE SURGERY</div></div></div></div></div></div></div></div>
+<div id="m17-s1" class="clip" data-start="14.4" data-duration="2.04" style="z-index:17"><div id="m17-s1-t" class="tt"><div id="m17-s1-fin" class="fin"><div id="m17-s1-cam" class="cam"><div class="fill diag cardc"><div class="irow"><div class="icol"><div id="m17-s1-dg-ic0" class="itile slot"><img id="m17-s1-dg-im0" src="assets/icons/I54.jpg" alt=""></div><div class="ilab" id="m17-s1-dg-il0">THE CRUSH</div></div><div class="icol"><div id="m17-s1-dg-ic1" class="itile slot"><img id="m17-s1-dg-im1" src="assets/icons/I46.jpg" alt=""></div><div class="ilab" id="m17-s1-dg-il1">THE EXAM</div></div><div class="icol"><div id="m17-s1-dg-ic2" class="itile slot"><img id="m17-s1-dg-im2" src="assets/icons/I55.jpg" alt=""></div><div class="ilab" id="m17-s1-dg-il2">THE SURGERY</div></div></div></div></div></div></div></div>
+<div id="m17-s2" class="clip" data-start="16.44" data-duration="2.74" style="z-index:18"><div id="m17-s2-t" class="tt"><div id="m17-s2-fin" class="fin"><div id="m17-s2-cam" class="cam"><div class="fill diag cardc"><div class="irow"><div class="icol"><div id="m17-s2-dg-ic0" class="itile slot"><img id="m17-s2-dg-im0" src="assets/icons/I54.jpg" alt=""></div><div class="ilab" id="m17-s2-dg-il0">THE CRUSH</div></div><div class="icol"><div id="m17-s2-dg-ic1" class="itile slot"><img id="m17-s2-dg-im1" src="assets/icons/I46.jpg" alt=""></div><div class="ilab" id="m17-s2-dg-il1">THE EXAM</div></div><div class="icol"><div id="m17-s2-dg-ic2" class="itile slot"><img id="m17-s2-dg-im2" src="assets/icons/I55.jpg" alt=""></div><div class="ilab" id="m17-s2-dg-il2">THE SURGERY</div></div></div></div></div></div></div></div>
+<div id="m17-s3" class="clip" data-start="19.18" data-duration="1.62" style="z-index:19"><div id="m17-s3-t" class="tt"><div id="m17-s3-fin" class="fin"><div id="m17-s3-cam" class="cam"><div class="fill diag cardc"><div class="irow"><div class="icol"><div id="m17-s3-dg-ic0" class="itile slot"><img id="m17-s3-dg-im0" src="assets/icons/I54.jpg" alt=""></div><div class="ilab" id="m17-s3-dg-il0">THE CRUSH</div></div><div class="icol"><div id="m17-s3-dg-ic1" class="itile slot"><img id="m17-s3-dg-im1" src="assets/icons/I46.jpg" alt=""></div><div class="ilab" id="m17-s3-dg-il1">THE EXAM</div></div><div class="icol"><div id="m17-s3-dg-ic2" class="itile slot"><img id="m17-s3-dg-im2" src="assets/icons/I55.jpg" alt=""></div><div class="ilab" id="m17-s3-dg-il2">THE SURGERY</div></div></div></div></div></div></div></div>
+<div id="m18-s0" class="clip" data-start="20.8" data-duration="1.42" style="z-index:20"><div id="m18-s0-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m18-s0-fin" class="fin"><div id="m18-s0-cam" class="cam"><div class="fill diag"><div class="half" id="m18-s0-dg-L" style="left:0"><div class="ln" style="font-size:100px">HOW</div><div class="ln" style="font-size:100px"><span class="badge yellow">LIKELY?</span></div></div><div class="vdiv"></div><div class="half" id="m18-s0-dg-R" style="left:960px"><div class="ln" style="font-size:100px">HOW MUCH</div><div class="ln" style="font-size:100px"><span class="badge yellow">DAYDREAMING?</span></div></div><div class="sym" id="m18-s0-dg-sy0" style="left:400px"><svg viewBox="0 0 100 100" width="160" height="160"><path d="M50 90 V28 M22 54 L50 20 L78 54" fill="none" stroke="#1A1A1A" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/><path d="M50 90 V28 M22 54 L50 20 L78 54" fill="none" stroke="#9CC08B" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="sym" id="m18-s0-dg-sy1" style="left:1360px"><svg viewBox="0 0 100 100" width="160" height="160"><path d="M50 10 V72 M22 46 L50 80 L78 46" fill="none" stroke="#1A1A1A" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/><path d="M50 10 V72 M22 46 L50 80 L78 46" fill="none" stroke="#D64545" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m18-s1" class="clip" data-start="22.22" data-duration="1.74" style="z-index:21"><div id="m18-s1-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m18-s1-fin" class="fin"><div class="fill card"><div id="m18-s1-in" class="cardtxt"><div class="ln" id="m18-s1-l0"><span class="badge yellow">TWO</span></div><div class="ln" id="m18-s1-l1">THINGS</div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m18-s2" class="clip" data-start="23.96" data-duration="3.18" style="z-index:22"><div id="m18-s2-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m18-s2-fin" class="fin"><div id="m18-s2-cam" class="cam"><div class="fill diag"><div class="half" id="m18-s2-dg-L" style="left:0"><div class="ln" style="font-size:100px">HOW</div><div class="ln" style="font-size:100px"><span class="badge yellow">LIKELY?</span></div></div><div class="vdiv"></div><div class="half" id="m18-s2-dg-R" style="left:960px"><div class="ln" style="font-size:100px">HOW MUCH</div><div class="ln" style="font-size:100px"><span class="badge yellow">DAYDREAMING?</span></div></div><div class="sym" id="m18-s2-dg-sy0" style="left:400px"><svg viewBox="0 0 100 100" width="160" height="160"><path d="M50 90 V28 M22 54 L50 20 L78 54" fill="none" stroke="#1A1A1A" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/><path d="M50 90 V28 M22 54 L50 20 L78 54" fill="none" stroke="#9CC08B" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="sym" id="m18-s2-dg-sy1" style="left:1360px"><svg viewBox="0 0 100 100" width="160" height="160"><path d="M50 10 V72 M22 46 L50 80 L78 46" fill="none" stroke="#1A1A1A" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/><path d="M50 10 V72 M22 46 L50 80 L78 46" fill="none" stroke="#D64545" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m18-s3" class="clip" data-start="27.14" data-duration="2.44" style="z-index:23"><div id="m18-s3-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m18-s3-fin" class="fin"><div id="m18-s3-cam" class="cam"><div class="fill diag"><div class="half" id="m18-s3-dg-L" style="left:0"><div class="ln" style="font-size:100px">HOW</div><div class="ln" style="font-size:100px"><span class="badge yellow">LIKELY?</span></div></div><div class="vdiv"></div><div class="half" id="m18-s3-dg-R" style="left:960px"><div class="ln" style="font-size:100px">HOW MUCH</div><div class="ln" style="font-size:100px"><span class="badge yellow">DAYDREAMING?</span></div></div><div class="sym" id="m18-s3-dg-sy0" style="left:400px"><svg viewBox="0 0 100 100" width="160" height="160"><path d="M50 90 V28 M22 54 L50 20 L78 54" fill="none" stroke="#1A1A1A" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/><path d="M50 90 V28 M22 54 L50 20 L78 54" fill="none" stroke="#9CC08B" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="sym" id="m18-s3-dg-sy1" style="left:1360px"><svg viewBox="0 0 100 100" width="160" height="160"><path d="M50 10 V72 M22 46 L50 80 L78 46" fill="none" stroke="#1A1A1A" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/><path d="M50 10 V72 M22 46 L50 80 L78 46" fill="none" stroke="#D64545" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m18-s4" class="clip" data-start="29.58" data-duration="3.18" style="z-index:24"><div id="m18-s4-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m18-s4-fin" class="fin"><div id="m18-s4-cam" class="cam"><div class="fill diag"><div class="half" id="m18-s4-dg-L" style="left:0"><div class="ln" style="font-size:100px">HOW</div><div class="ln" style="font-size:100px"><span class="badge yellow">LIKELY?</span></div></div><div class="vdiv"></div><div class="half" id="m18-s4-dg-R" style="left:960px"><div class="ln" style="font-size:100px">HOW MUCH</div><div class="ln" style="font-size:100px"><span class="badge yellow">DAYDREAMING?</span></div></div><div class="sym" id="m18-s4-dg-sy0" style="left:400px"><svg viewBox="0 0 100 100" width="160" height="160"><path d="M50 90 V28 M22 54 L50 20 L78 54" fill="none" stroke="#1A1A1A" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/><path d="M50 90 V28 M22 54 L50 20 L78 54" fill="none" stroke="#9CC08B" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="sym" id="m18-s4-dg-sy1" style="left:1360px"><svg viewBox="0 0 100 100" width="160" height="160"><path d="M50 10 V72 M22 46 L50 80 L78 46" fill="none" stroke="#1A1A1A" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/><path d="M50 10 V72 M22 46 L50 80 L78 46" fill="none" stroke="#D64545" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m18-s5" class="clip" data-start="32.76" data-duration="2.42" style="z-index:25"><div id="m18-s5-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m18-s5-fin" class="fin"><div id="m18-s5-cam" class="cam"><div class="fill diag"><div class="half" id="m18-s5-dg-L" style="left:0"><div class="ln" style="font-size:100px">HOW</div><div class="ln" style="font-size:100px"><span class="badge yellow">LIKELY?</span></div></div><div class="vdiv"></div><div class="half" id="m18-s5-dg-R" style="left:960px"><div class="ln" style="font-size:100px">HOW MUCH</div><div class="ln" style="font-size:100px"><span class="badge yellow">DAYDREAMING?</span></div></div><div class="sym" id="m18-s5-dg-sy0" style="left:400px"><svg viewBox="0 0 100 100" width="160" height="160"><path d="M50 90 V28 M22 54 L50 20 L78 54" fill="none" stroke="#1A1A1A" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/><path d="M50 90 V28 M22 54 L50 20 L78 54" fill="none" stroke="#9CC08B" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="sym" id="m18-s5-dg-sy1" style="left:1360px"><svg viewBox="0 0 100 100" width="160" height="160"><path d="M50 10 V72 M22 46 L50 80 L78 46" fill="none" stroke="#1A1A1A" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/><path d="M50 10 V72 M22 46 L50 80 L78 46" fill="none" stroke="#D64545" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m18-s6" class="clip" data-start="35.18" data-duration="2.76" style="z-index:26"><div id="m18-s6-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m18-s6-fin" class="fin"><div id="m18-s6-cam" class="cam"><div class="fill diag"><div class="half" id="m18-s6-dg-L" style="left:0"><div class="ln" style="font-size:100px">HOW</div><div class="ln" style="font-size:100px"><span class="badge yellow">LIKELY?</span></div></div><div class="vdiv"></div><div class="half" id="m18-s6-dg-R" style="left:960px"><div class="ln" style="font-size:100px">HOW MUCH</div><div class="ln" style="font-size:100px"><span class="badge yellow">DAYDREAMING?</span></div></div><div class="sym" id="m18-s6-dg-sy0" style="left:400px"><svg viewBox="0 0 100 100" width="160" height="160"><path d="M50 90 V28 M22 54 L50 20 L78 54" fill="none" stroke="#1A1A1A" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/><path d="M50 90 V28 M22 54 L50 20 L78 54" fill="none" stroke="#9CC08B" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="sym" id="m18-s6-dg-sy1" style="left:1360px"><svg viewBox="0 0 100 100" width="160" height="160"><path d="M50 10 V72 M22 46 L50 80 L78 46" fill="none" stroke="#1A1A1A" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/><path d="M50 10 V72 M22 46 L50 80 L78 46" fill="none" stroke="#D64545" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m19-s0" class="clip" data-start="37.94" data-duration="3.22" style="z-index:27"><div id="m19-s0-t" class="tt"><div id="m19-s0-fin" class="fin"><div id="m19-s0-cam" class="cam"><img src="assets/pictures/S05.jpg" class="pic" alt=""></div></div><div id="m19-s0-so0" class="scr" data-layout-allow-overlap><div class="spill2 tagp"><span class="badge red">LESS</span> <span>LIKELY</span></div></div></div></div>
+<div id="m19-s1" class="clip" data-start="41.16" data-duration="2.2" style="z-index:28"><div id="m19-s1-t" class="tt"><div id="m19-s1-fin" class="fin"><div id="m19-s1-cam" class="cam"><img src="assets/pictures/S05.jpg" class="pic" alt=""></div></div><div id="m19-s1-so0" class="scr" data-layout-allow-overlap><div class="spill2 tagp"><span class="badge red">LESS</span> <span>LIKELY</span></div></div></div></div>
+<div id="m19-s2" class="clip" data-start="43.36" data-duration="2.18" style="z-index:29"><div id="m19-s2-t" class="tt"><div id="m19-s2-fin" class="fin"><div id="m19-s2-cam" class="cam"><img src="assets/pictures/S05.jpg" class="pic" alt=""></div></div><div id="m19-s2-so0" class="scr" data-layout-allow-overlap><div class="spill2 tagp"><span class="badge red">LESS</span> <span>LIKELY</span></div></div></div></div>
+<div id="m20-s0" class="clip" data-start="45.54" data-duration="2.94" style="z-index:30"><div id="m20-s0-t" class="tt"><div id="m20-s0-fin" class="fin"><div id="m20-s0-cam" class="cam"><img src="assets/pictures/S06.jpg" class="pic" alt=""><svg id="m20-s0-ov0" class="ovsvg" data-layout-allow-overlap viewBox="0 0 1920 1080"><path id="m20-s0-ov0-e" d="M960 561.6 Q1000 609.6 960 777.6 M988.766 724.945 L960 777.6 L931.234 724.945" fill="none" stroke="#D64545" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg></div></div></div></div>
+<div id="m20-s1" class="clip" data-start="48.48" data-duration="2.56" style="z-index:31"><div id="m20-s1-t" class="tt"><div id="m20-s1-fin" class="fin"><div id="m20-s1-cam" class="cam"><img src="assets/pictures/S06.jpg" class="pic" alt=""><svg id="m20-s1-ov0" class="ovsvg" data-layout-allow-overlap viewBox="0 0 1920 1080"><path id="m20-s1-ov0-e" d="M960 561.6 Q1000 609.6 960 777.6 M988.766 724.945 L960 777.6 L931.234 724.945" fill="none" stroke="#D64545" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg></div></div></div></div>
+<div id="m20-s2" class="clip" data-start="51.04" data-duration="1.72" style="z-index:32"><div id="m20-s2-t" class="tt"><div id="m20-s2-fin" class="fin"><div id="m20-s2-cam" class="cam"><img src="assets/pictures/S06.jpg" class="pic" alt=""><svg id="m20-s2-ov0" class="ovsvg" data-layout-allow-overlap viewBox="0 0 1920 1080"><path id="m20-s2-ov0-e" d="M960 561.6 Q1000 609.6 960 777.6 M988.766 724.945 L960 777.6 L931.234 724.945" fill="none" stroke="#D64545" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg></div></div></div></div>
+<div id="m21-s0" class="clip" data-start="52.76" data-duration="3.38" style="z-index:33"><div id="m21-s0-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m21-s0-fin" class="fin"><div id="m21-s0-cam" class="cam"><img src="assets/pictures/S21.jpg" class="pic" alt=""></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m21-s1" class="clip" data-start="56.14" data-duration="3.26" style="z-index:34"><div id="m21-s1-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m21-s1-fin" class="fin"><div id="m21-s1-cam" class="cam"><img src="assets/pictures/S21.jpg" class="pic" alt=""></div></div></div></div><div class="fborder"></div><div id="m21-s1-so0" class="scr row" data-layout-allow-overlap><div class="spill2 tagp"><span class="badge red">WORSE</span> <span>AT 2 WEEKS</span></div></div></div></div>
+<div id="m21-s2" class="clip" data-start="59.4" data-duration="1.58" style="z-index:35"><div id="m21-s2-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m21-s2-fin" class="fin"><div id="m21-s2-cam" class="cam"><img src="assets/pictures/S21.jpg" class="pic" alt=""></div></div></div></div><div class="fborder"></div><div id="m21-s2-so0" class="scr row" data-layout-allow-overlap><div class="spill2 tagp"><span class="badge red">WORSE</span> <span>AT 2 WEEKS</span></div></div></div></div>
+<div id="m22-s0" class="clip" data-start="60.98" data-duration="2.72" style="z-index:36"><div id="m22-s0-t" class="tt"><div id="m22-s0-fin" class="fin"><div id="m22-s0-cam" class="cam"><img src="assets/pictures/S20.jpg" class="pic" alt=""><svg id="m22-s0-ov0" class="ovsvg" data-layout-allow-overlap viewBox="0 0 1920 1080"><ellipse id="m22-s0-ov0-e" cx="998.4" cy="939.6" rx="115.2" ry="75.6" transform="rotate(-4 998.4 939.6)" fill="none" stroke="#D64545" stroke-width="12" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg></div></div></div></div>
+<div id="m22-s1" class="clip" data-start="63.7" data-duration="3.9" style="z-index:37"><div id="m22-s1-t" class="tt"><div id="m22-s1-fin" class="fin"><div id="m22-s1-cam" class="cam"><img src="assets/pictures/S20.jpg" class="pic" alt=""><svg id="m22-s1-ov0" class="ovsvg" data-layout-allow-overlap viewBox="0 0 1920 1080"><ellipse id="m22-s1-ov0-e" cx="998.4" cy="939.6" rx="115.2" ry="75.6" transform="rotate(-4 998.4 939.6)" fill="none" stroke="#D64545" stroke-width="12" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg></div></div></div></div>
+<div id="m23-s0" class="clip" data-start="67.6" data-duration="1.82" style="z-index:38"><div id="m23-s0-t" class="tt"><div id="m23-s0-fin" class="fin"><div class="fill card"><div id="m23-s0-in" class="cardtxt"><div class="ln" id="m23-s0-l0">ALWAYS</div><div class="ln" id="m23-s0-l1"><span class="badge yellow">EFFORTLESS</span></div></div></div></div></div></div>
+<div id="m23-s1" class="clip" data-start="69.42" data-duration="2.56" style="z-index:39"><div id="m23-s1-t" class="tt"><div id="m23-s1-fin" class="fin"><div id="m23-s1-cam" class="cam"><img src="assets/pictures/S24.jpg" class="pic" alt=""></div></div><div id="m23-s1-so0" class="scr" data-layout-allow-overlap><div class="spill2">NO SETBACKS</div></div><div id="m23-s1-so1" class="scr" data-layout-allow-overlap><div class="spill2">NO HARD DAYS</div></div></div></div>
+<div id="m23-s2" class="clip" data-start="71.98" data-duration="2.88" style="z-index:40"><div id="m23-s2-t" class="tt"><div id="m23-s2-fin" class="fin"><div id="m23-s2-cam" class="cam"><img src="assets/pictures/S24.jpg" class="pic" alt=""></div></div><div id="m23-s2-so1" class="scr" data-layout-allow-overlap><div class="spill2">NO HARD DAYS</div></div></div></div>
+<div id="m24-s0" class="clip" data-start="74.86" data-duration="2.82" style="z-index:41"><div id="m24-s0-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m24-s0-fin" class="fin"><div id="m24-s0-cam" class="cam"><div class="fill diag cardc"><div class="cardtxt st" id="m24-s0-dg-st0"><div class="ln" id="m24-s0-dgs0-l0">A</div><div class="ln" id="m24-s0-dgs0-l1"><span class="mk"><i id="m24-s0-dgs0-p1-mk"></i><b>LINK,</b></span></div><div class="ln" id="m24-s0-dgs0-l2">NOT PROOF.</div></div><div class="cardtxt st" id="m24-s0-dg-st1"><div class="ln" id="m24-s0-dgs1-l0">SAME</div><div class="ln" id="m24-s0-dgs1-l1"><span class="badge yellow">PATTERN</span></div><div class="ln" id="m24-s0-dgs1-l2">EVERY TIME.</div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m24-s1" class="clip" data-start="77.68" data-duration="3.1" style="z-index:42"><div id="m24-s1-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m24-s1-fin" class="fin"><div id="m24-s1-cam" class="cam"><div class="fill diag cardc"><div class="cardtxt st" id="m24-s1-dg-st0"><div class="ln" id="m24-s1-dgs0-l0">A</div><div class="ln" id="m24-s1-dgs0-l1"><span class="mk"><i id="m24-s1-dgs0-p1-mk"></i><b>LINK,</b></span></div><div class="ln" id="m24-s1-dgs0-l2">NOT PROOF.</div></div><div class="cardtxt st" id="m24-s1-dg-st1"><div class="ln" id="m24-s1-dgs1-l0">SAME</div><div class="ln" id="m24-s1-dgs1-l1"><span class="badge yellow">PATTERN</span></div><div class="ln" id="m24-s1-dgs1-l2">EVERY TIME.</div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m24-s2" class="clip" data-start="80.78" data-duration="2.82" style="z-index:43"><div id="m24-s2-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m24-s2-fin" class="fin"><div id="m24-s2-cam" class="cam"><div class="fill diag cardc"><div class="cardtxt st" id="m24-s2-dg-st0"><div class="ln" id="m24-s2-dgs0-l0">A</div><div class="ln" id="m24-s2-dgs0-l1"><span class="mk"><i id="m24-s2-dgs0-p1-mk"></i><b>LINK,</b></span></div><div class="ln" id="m24-s2-dgs0-l2">NOT PROOF.</div></div><div class="cardtxt st" id="m24-s2-dg-st1"><div class="ln" id="m24-s2-dgs1-l0">SAME</div><div class="ln" id="m24-s2-dgs1-l1"><span class="badge yellow">PATTERN</span></div><div class="ln" id="m24-s2-dgs1-l2">EVERY TIME.</div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m25-s0" class="clip" data-start="83.6" data-duration="3.34" style="z-index:44"><div id="m25-s0-t" class="tt"><div id="m25-s0-fin" class="fin"><div id="m25-s0-cam" class="cam"><img src="assets/pictures/S35.jpg" class="pic" alt=""></div></div></div></div>
+<div id="m25-s1" class="clip" data-start="86.94" data-duration="2.5" style="z-index:45"><div id="m25-s1-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m25-s1-fin" class="fin"><div class="fill card"><div id="m25-s1-in" class="cardtxt"><div class="ln mid" id="m25-s1-l0">BELIEVED IT WAS</div><div class="ln" id="m25-s1-l1"><span class="badge yellow">LIKELY</span></div></div></div></div></div></div><div class="fborder"></div></div><div id="m25-s1-nw" class="nw"><div class="nshadow" style="left:298.20000000000005px;width:223px"></div><img class="narr" style="left:308.20000000000005px;height:648px" src="assets/narrator/N11.png" alt=""></div></div>
+<div id="m25-s2" class="clip" data-start="89.44" data-duration="2.16" style="z-index:46"><div id="m25-s2-t" class="tt"><div id="m25-s2-fin" class="fin"><div id="m25-s2-cam" class="cam"><img src="assets/pictures/S35.jpg" class="pic" alt=""></div></div></div></div>
+<div id="m25-s3" class="clip" data-start="91.6" data-duration="1.56" style="z-index:47"><div id="m25-s3-t" class="tt"><div id="m25-s3-fin" class="fin"><div class="fill card"><div id="m25-s3-in" class="cardtxt"><div class="ln" id="m25-s3-l0">THEY DID</div><div class="ln" id="m25-s3-l1"><span class="badge yellow">BETTER</span></div></div></div></div></div></div>
+<div id="m25-s4" class="clip" data-start="93.16" data-duration="2.02" style="z-index:48"><div id="m25-s4-t" class="tt"><div id="m25-s4-fin" class="fin"><div id="m25-s4-cam" class="cam"><img src="assets/pictures/S35.jpg" class="pic" alt=""></div></div></div></div>
+<div id="m25-s5" class="clip" data-start="95.18" data-duration="2.52" style="z-index:49"><div id="m25-s5-t" class="tt"><div id="m25-s5-fin" class="fin"><div id="m25-s5-cam" class="cam"><img src="assets/pictures/S35.jpg" class="pic" alt=""></div></div></div></div>
+<div id="m26-s0" class="clip" data-start="97.7" data-duration="1.76" style="z-index:50"><div id="m26-s0-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m26-s0-fin" class="fin"><div id="m26-s0-cam" class="cam"><div class="fill diag"><div class="half" id="m26-s0-dg-L" style="left:0"><div class="ln" style="font-size:100px">BELIEVING IT</div><div class="ln" style="font-size:100px">CAN HAPPEN:</div><div class="ln" style="font-size:100px"><span class="badge yellow">HELPS</span></div></div><div class="vdiv"></div><div class="half" id="m26-s0-dg-R" style="left:960px"><div class="ln" style="font-size:100px">DAYDREAMING IT</div><div class="ln" style="font-size:100px">HAPPENED:</div><div class="ln" style="font-size:100px"><span class="badge red">HURTS</span></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m26-s1" class="clip" data-start="99.46" data-duration="2.46" style="z-index:51"><div id="m26-s1-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m26-s1-fin" class="fin"><div id="m26-s1-cam" class="cam"><div class="fill diag"><div class="half" id="m26-s1-dg-L" style="left:0"><div class="ln" style="font-size:100px">BELIEVING IT</div><div class="ln" style="font-size:100px">CAN HAPPEN:</div><div class="ln" style="font-size:100px"><span class="badge yellow">HELPS</span></div></div><div class="vdiv"></div><div class="half" id="m26-s1-dg-R" style="left:960px"><div class="ln" style="font-size:100px">DAYDREAMING IT</div><div class="ln" style="font-size:100px">HAPPENED:</div><div class="ln" style="font-size:100px"><span class="badge red">HURTS</span></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m26-s2" class="clip" data-start="101.92" data-duration="1.94" style="z-index:52"><div id="m26-s2-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m26-s2-fin" class="fin"><div id="m26-s2-cam" class="cam"><div class="fill diag"><div class="half" id="m26-s2-dg-L" style="left:0"><div class="ln" style="font-size:100px">BELIEVING IT</div><div class="ln" style="font-size:100px">CAN HAPPEN:</div><div class="ln" style="font-size:100px"><span class="badge yellow">HELPS</span></div></div><div class="vdiv"></div><div class="half" id="m26-s2-dg-R" style="left:960px"><div class="ln" style="font-size:100px">DAYDREAMING IT</div><div class="ln" style="font-size:100px">HAPPENED:</div><div class="ln" style="font-size:100px"><span class="badge red">HURTS</span></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m26-s3" class="clip" data-start="103.86" data-duration="2.66" style="z-index:53"><div id="m26-s3-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m26-s3-fin" class="fin"><div id="m26-s3-cam" class="cam"><div class="fill diag"><div class="half" id="m26-s3-dg-L" style="left:0"><div class="ln" style="font-size:100px">BELIEVING IT</div><div class="ln" style="font-size:100px">CAN HAPPEN:</div><div class="ln" style="font-size:100px"><span class="badge yellow">HELPS</span></div></div><div class="vdiv"></div><div class="half" id="m26-s3-dg-R" style="left:960px"><div class="ln" style="font-size:100px">DAYDREAMING IT</div><div class="ln" style="font-size:100px">HAPPENED:</div><div class="ln" style="font-size:100px"><span class="badge red">HURTS</span></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m27-s0" class="clip" data-start="106.52" data-duration="2.66" style="z-index:54"><div id="m27-s0-t" class="tt"><div id="m27-s0-fin" class="fin"><div id="m27-s0-cam" class="cam"><img src="assets/pictures/S33.jpg" class="pic" alt=""></div></div></div></div>
+<div id="m27-s1" class="clip" data-start="109.18" data-duration="3.6" style="z-index:55"><div id="m27-s1-t" class="tt"><div id="m27-s1-fin" class="fin"><div id="m27-s1-cam" class="cam"><img src="assets/pictures/S33.jpg" class="pic" alt=""></div></div><div id="m27-s1-so0" class="scr" data-layout-allow-overlap><div class="pill big">HEATHER KAPPES</div></div></div></div>
+<div id="m27-s2" class="clip" data-start="112.78" data-duration="2.68" style="z-index:56"><div id="m27-s2-t" class="tt"><div id="m27-s2-fin" class="fin"><div class="fill iconbg"><img id="m27-s2-img" src="assets/icons/I25.jpg" class="pic" alt=""></div></div></div></div>
+<div id="m28-s0" class="clip" data-start="115.46" data-duration="3.26" style="z-index:57"><div id="m28-s0-t" class="tt"><div id="m28-s0-fin" class="fin"><div id="m28-s0-cam" class="cam"><img src="assets/pictures/S07.jpg" class="pic" alt=""><div id="m28-s0-ov0" class="sweepbox" data-layout-allow-overlap style="left:1056px;top:54px;width:422.4px;height:486px"><div id="m28-s0-ov0-b" class="sweepband"></div></div></div></div></div></div>
+<div id="m28-s1" class="clip" data-start="118.72" data-duration="1.84" style="z-index:58"><div id="m28-s1-t" class="tt"><div id="m28-s1-fin" class="fin"><div class="fill iconbg"><img id="m28-s1-img" src="assets/icons/I11.jpg" class="pic" alt=""></div></div></div></div>
+<div id="m28-s2" class="clip" data-start="120.56" data-duration="3.16" style="z-index:59"><div id="m28-s2-t" class="tt"><div id="m28-s2-fin" class="fin"><div id="m28-s2-cam" class="cam"><img src="assets/pictures/S07.jpg" class="pic" alt=""><div id="m28-s2-ov0" class="sweepbox" data-layout-allow-overlap style="left:1056px;top:54px;width:422.4px;height:486px"><div id="m28-s2-ov0-b" class="sweepband"></div></div></div></div></div></div>
+<div id="m28-s3" class="clip" data-start="123.72" data-duration="1.8" style="z-index:60"><div id="m28-s3-t" class="tt"><div id="m28-s3-fin" class="fin"><div id="m28-s3-cam" class="cam"><img src="assets/pictures/S07.jpg" class="pic" alt=""><div id="m28-s3-ov0" class="sweepbox" data-layout-allow-overlap style="left:1056px;top:54px;width:422.4px;height:486px"><div id="m28-s3-ov0-b" class="sweepband"></div></div></div></div></div></div>
+<div id="m29-s0" class="clip" data-start="125.52" data-duration="3.38" style="z-index:61"><div id="m29-s0-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m29-s0-fin" class="fin"><div id="m29-s0-cam" class="cam"><div class="fill diag"><div class="dhead"><span class="badge yellow">PICTURING THE WATER</span></div><div class="drow" style="top:360px"><div class="dlab">BLOOD PRESSURE</div><div class="dbox"><svg id="m29-s0-dg-ar0" viewBox="0 0 100 100" width="170" height="170"><path d="M50 10 V72 M22 46 L50 80 L78 46" fill="none" stroke="#1A1A1A" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/><path d="M50 10 V72 M22 46 L50 80 L78 46" fill="none" stroke="#D64545" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="drow" style="top:660px"><div class="dlab">ENERGY</div><div class="dbox"><svg id="m29-s0-dg-ar1" viewBox="0 0 100 100" width="170" height="170"><path d="M50 10 V72 M22 46 L50 80 L78 46" fill="none" stroke="#1A1A1A" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/><path d="M50 10 V72 M22 46 L50 80 L78 46" fill="none" stroke="#D64545" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m29-s1" class="clip" data-start="128.9" data-duration="1.96" style="z-index:62"><div id="m29-s1-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m29-s1-fin" class="fin"><div id="m29-s1-cam" class="cam"><div class="fill diag"><div class="dhead"><span class="badge yellow">PICTURING THE WATER</span></div><div class="drow" style="top:360px"><div class="dlab">BLOOD PRESSURE</div><div class="dbox"><svg id="m29-s1-dg-ar0" viewBox="0 0 100 100" width="170" height="170"><path d="M50 10 V72 M22 46 L50 80 L78 46" fill="none" stroke="#1A1A1A" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/><path d="M50 10 V72 M22 46 L50 80 L78 46" fill="none" stroke="#D64545" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="drow" style="top:660px"><div class="dlab">ENERGY</div><div class="dbox"><svg id="m29-s1-dg-ar1" viewBox="0 0 100 100" width="170" height="170"><path d="M50 10 V72 M22 46 L50 80 L78 46" fill="none" stroke="#1A1A1A" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/><path d="M50 10 V72 M22 46 L50 80 L78 46" fill="none" stroke="#D64545" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="m30-s0" class="clip" data-start="130.86" data-duration="2.12" style="z-index:63"><div id="m30-s0-t" class="tt"><div id="m30-s0-fin" class="fin"><div id="m30-s0-cam" class="cam"><img src="assets/pictures/S07.jpg" class="pic" alt=""><svg id="m30-s0-ov0" class="ovsvg" data-layout-allow-overlap viewBox="0 0 1920 1080"><ellipse id="m30-s0-ov0-e" cx="1267.2" cy="216" rx="192" ry="216" transform="rotate(-4 1267.2 216)" fill="none" stroke="#D64545" stroke-width="12" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg></div></div></div></div>
+<div id="m30-s1" class="clip" data-start="132.98" data-duration="3.18" style="z-index:64"><div id="m30-s1-t" class="tt"><div id="m30-s1-fin" class="fin"><div id="m30-s1-cam" class="cam"><img src="assets/pictures/S07.jpg" class="pic" alt=""><svg id="m30-s1-ov0" class="ovsvg" data-layout-allow-overlap viewBox="0 0 1920 1080"><ellipse id="m30-s1-ov0-e" cx="1267.2" cy="216" rx="192" ry="216" transform="rotate(-4 1267.2 216)" fill="none" stroke="#D64545" stroke-width="12" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg></div></div><div id="m30-s1-so1" class="scr" data-layout-allow-overlap><div class="spill2 tagp"><span>ALREADY</span> <span class="badge yellow">HAD IT</span></div></div></div></div>
+<div id="m31-s0" class="clip" data-start="136.16" data-duration="3.22" style="z-index:65"><div id="m31-s0-t" class="tt"><div id="m31-s0-fin" class="fin"><div id="m31-s0-cam" class="cam"><img src="assets/pictures/S22.jpg" class="pic" alt=""></div></div></div></div>
+<div id="m31-s1" class="clip" data-start="139.38" data-duration="1.42" style="z-index:66"><div id="m31-s1-t" class="tt"><div id="m31-s1-fin" class="fin"><div id="m31-s1-cam" class="cam"><img src="assets/pictures/S22.jpg" class="pic" alt=""></div></div></div></div>
+<div id="m31-s2" class="clip" data-start="140.8" data-duration="1.8" style="z-index:67"><div id="m31-s2-t" class="tt"><div id="m31-s2-fin" class="fin"><div class="fill iconbg"><img id="m31-s2-img" src="assets/icons/I56.jpg" class="pic" alt=""></div></div></div></div>
+<div id="m31-s3" class="clip" data-start="142.6" data-duration="1.74" style="z-index:68"><div id="m31-s3-t" class="tt"><div id="m31-s3-fin" class="fin"><div id="m31-s3-cam" class="cam"><img src="assets/pictures/S22.jpg" class="pic" alt=""></div></div></div></div>
+<div id="m31-s4" class="clip" data-start="144.34" data-duration="2.2" style="z-index:69"><div id="m31-s4-t" class="tt"><div id="m31-s4-fin" class="fin"><div class="fill card"><div id="m31-s4-in" class="cardtxt"><div class="ln" id="m31-s4-l0"><span class="badge red">FEWER</span></div><div class="ln" id="m31-s4-l1">GOALS DONE</div></div></div></div></div></div>
+<div id="m31-s5" class="clip" data-start="146.54" data-duration="1.06" style="z-index:70"><div id="m31-s5-t" class="tt"><div id="m31-s5-fin" class="fin"><div id="m31-s5-cam" class="cam"><img src="assets/pictures/S22.jpg" class="pic" alt=""></div></div></div></div>
+<div id="m32-s0" class="clip" data-start="147.6" data-duration="2.24" style="z-index:71"><div id="m32-s0-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="m32-s0-fin" class="fin"><div class="fill card"><div id="m32-s0-in" class="cardtxt"><div class="ln" id="m32-s0-l0">THAT'S</div><div class="ln" id="m32-s0-l1"><span class="badge yellow">THE TRAP</span></div></div></div></div></div></div><div class="fborder"></div></div><div id="m32-s0-nw" class="nw"><div class="nshadow" style="left:255.20000000000005px;width:266px"></div><img class="narr" style="left:265.20000000000005px;height:648px" src="assets/narrator/N02.png" alt=""></div></div>
+<div id="m32-s1" class="clip" data-start="149.84" data-duration="3.9" style="z-index:72"><div id="m32-s1-t" class="tt"><div id="m32-s1-fin" class="fin"><div id="m32-s1-cam" class="cam"><img src="assets/pictures/S12.jpg" class="pic" alt=""></div></div></div></div>
+<div id="m32-s2" class="clip" data-start="153.74" data-duration="1.96" style="z-index:73"><div id="m32-s2-t" class="tt"><div id="m32-s2-fin" class="fin"><div class="fill iconbg"><img id="m32-s2-img" src="assets/icons/I52.jpg" class="pic" alt=""></div></div></div></div>
+<div id="m32-s3" class="clip" data-start="155.7" data-duration="2.68" style="z-index:74"><div id="m32-s3-t" class="tt"><div id="m32-s3-fin" class="fin"><div id="m32-s3-cam" class="cam"><img src="assets/pictures/S12.jpg" class="pic" alt=""></div></div></div></div>
+<div id="m32-s4" class="clip" data-start="158.38" data-duration="1.934" style="z-index:75"><div id="m32-s4-t" class="tt"><div id="m32-s4-fin" class="fin"><div id="m32-s4-cam" class="cam"><img src="assets/pictures/S12.jpg" class="pic" alt=""></div></div></div></div>
+<div id="nar1" class="clip" data-start="0" data-duration="4.12" style="z-index:900"><div id="nar1-w" class="nw"><div class="nshadow" style="left:196.20000000000005px;width:325px"></div><img class="narr" style="left:206.20000000000005px;height:648px" src="assets/narrator/N01.png" alt=""></div></div>
+<div id="nar2" class="clip" data-start="4.12" data-duration="8.28" style="z-index:900"><div id="nar2-w" class="nw"><div class="nshadow" style="left:296.20000000000005px;width:225px"></div><img class="narr" style="left:306.20000000000005px;height:648px" src="assets/narrator/N06.png" alt=""></div></div>
+<div id="nar3" class="clip" data-start="20.8" data-duration="11.96" style="z-index:900"><div id="nar3-w" class="nw"><div class="nshadow" style="left:296.20000000000005px;width:225px"></div><img class="narr" style="left:306.20000000000005px;height:648px" src="assets/narrator/N06.png" alt=""></div></div>
+<div id="nar4" class="clip" data-start="32.76" data-duration="5.18" style="z-index:900"><div id="nar4-w" class="nw"><div class="nshadow" style="left:255.20000000000005px;width:266px"></div><img class="narr" style="left:265.20000000000005px;height:648px" src="assets/narrator/N02.png" alt=""></div></div>
+<div id="nar5" class="clip" data-start="52.76" data-duration="8.22" style="z-index:900"><div id="nar5-w" class="nw"><div class="nshadow" style="left:296.20000000000005px;width:225px"></div><img class="narr" style="left:306.20000000000005px;height:648px" src="assets/narrator/N06.png" alt=""></div></div>
+<div id="nar6" class="clip" data-start="74.86" data-duration="8.74" style="z-index:900"><div id="nar6-w" class="nw"><div class="nshadow" style="left:196.20000000000005px;width:325px"></div><img class="narr" style="left:206.20000000000005px;height:648px" src="assets/narrator/N01.png" alt=""></div></div>
+<div id="nar7" class="clip" data-start="97.7" data-duration="4.22" style="z-index:900"><div id="nar7-w" class="nw"><div class="nshadow" style="left:296.20000000000005px;width:225px"></div><img class="narr" style="left:306.20000000000005px;height:648px" src="assets/narrator/N06.png" alt=""></div></div>
+<div id="nar8" class="clip" data-start="101.92" data-duration="4.6" style="z-index:900"><div id="nar8-w" class="nw"><div class="nshadow" style="left:255.20000000000005px;width:266px"></div><img class="narr" style="left:265.20000000000005px;height:648px" src="assets/narrator/N02.png" alt=""></div></div>
+<div id="nar9" class="clip" data-start="125.52" data-duration="5.34" style="z-index:900"><div id="nar9-w" class="nw"><div class="nshadow" style="left:296.20000000000005px;width:225px"></div><img class="narr" style="left:306.20000000000005px;height:648px" src="assets/narrator/N06.png" alt=""></div></div>
+<audio id="vo" src="assets/part2.wav" data-start="0" data-duration="160.314" data-track-index="0"></audio>
+</div>
+<script>
+const pp=(cx,cy,r,pct)=>{const p=Math.min(Math.max(pct,0.01),99.99),a=p/100*2*Math.PI;return "M"+cx+" "+cy+" L"+cx+" "+(cy-r)+" A"+r+" "+r+" 0 "+(a>Math.PI?1:0)+" 1 "+(cx+r*Math.sin(a)).toFixed(2)+" "+(cy-r*Math.cos(a)).toFixed(2)+" Z";};
+const tl = gsap.timeline({ paused: true });
+tl.set("#m16-s0-cam",{x:0,y:0,scale:1},0);
+tl.fromTo("#m16-s0-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:2.1,ease:"none"},0);
+tl.set("#m16-s1-cam",{x:0,y:0,scale:1},2.1);
+tl.fromTo("#m16-s1-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:2.02,ease:"none"},2.1);
+tl.set("#m16-s1-so0",{opacity:0},0);
+tl.fromTo("#m16-s1-so0",{opacity:0,y:-20},{opacity:1,y:0,duration:0.3,ease:"back.out(1.4)"},4.11);
+tl.set("#m16-s2-cam",{x:0,y:0,scale:1},4.12);
+tl.fromTo("#m16-s2-cam",{x:0,y:0,scale:1},{x:-276.48,y:-64.8,scale:1.4,duration:0.25,ease:"expo.out"},4.12);
+tl.fromTo("#m16-s2-cam",{x:-276.48,y:-64.8,scale:1.4},{x:-295.027,y:-73.872,scale:1.421,duration:2.79,ease:"none"},4.37);
+tl.to("#m16-s2-so0",{opacity:0,duration:0.2},6.51);
+tl.fromTo("#m16-s3-img",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},7.16);
+tl.set("#m16-s4-cam",{x:-276.48,y:-64.8,scale:1.4},9.06);
+tl.fromTo("#m16-s4-cam",{x:-276.48,y:-64.8,scale:1.4},{x:-295.027,y:-73.872,scale:1.421,duration:3.34,ease:"none"},9.06);
+tl.to("#m16-s4-so1",{opacity:0,duration:0.2},11.41);
+const m16_s4_so1_o={v:0};
+tl.fromTo(m16_s4_so1_o,{v:1},{v:4,duration:0.7,ease:"power2.out",onUpdate:function(){var e=document.getElementById("m16-s4-so1-n");if(e)e.textContent=Math.round(m16_s4_so1_o.v)+"";}},9.01);
+tl.set("#m17-s0-dg-im0",{opacity:0},0);
+tl.set("#m17-s0-dg-il0",{opacity:0},0);
+tl.set("#m17-s0-dg-ic0",{borderColor:"#CFC8B8",backgroundColor:"#F2EEE4"},0);
+tl.set("#m17-s0-dg-ic0",{borderColor:"#1A1A1A",backgroundColor:"#F8F5EE"},12.81);
+tl.fromTo("#m17-s0-dg-ic0",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},12.81);
+tl.set("#m17-s0-dg-im0",{opacity:1},12.81);
+tl.fromTo("#m17-s0-dg-il0",{opacity:0,y:14},{opacity:1,y:0,duration:0.25,ease:"power2.out"},12.86);
+tl.set("#m17-s0-dg-im1",{opacity:0},0);
+tl.set("#m17-s0-dg-il1",{opacity:0},0);
+tl.set("#m17-s0-dg-ic1",{borderColor:"#CFC8B8",backgroundColor:"#F2EEE4"},0);
+tl.set("#m17-s0-dg-ic1",{borderColor:"#1A1A1A",backgroundColor:"#F8F5EE"},15.43);
+tl.fromTo("#m17-s0-dg-ic1",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},15.43);
+tl.set("#m17-s0-dg-im1",{opacity:1},15.43);
+tl.fromTo("#m17-s0-dg-il1",{opacity:0,y:14},{opacity:1,y:0,duration:0.25,ease:"power2.out"},15.48);
+tl.set("#m17-s0-dg-im2",{opacity:0},0);
+tl.set("#m17-s0-dg-il2",{opacity:0},0);
+tl.set("#m17-s0-dg-ic2",{borderColor:"#CFC8B8",backgroundColor:"#F2EEE4"},0);
+tl.set("#m17-s0-dg-ic2",{borderColor:"#1A1A1A",backgroundColor:"#F8F5EE"},18.47);
+tl.fromTo("#m17-s0-dg-ic2",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},18.47);
+tl.set("#m17-s0-dg-im2",{opacity:1},18.47);
+tl.fromTo("#m17-s0-dg-il2",{opacity:0,y:14},{opacity:1,y:0,duration:0.25,ease:"power2.out"},18.52);
+tl.set("#m17-s1-dg-im0",{opacity:0},0);
+tl.set("#m17-s1-dg-il0",{opacity:0},0);
+tl.set("#m17-s1-dg-ic0",{borderColor:"#CFC8B8",backgroundColor:"#F2EEE4"},0);
+tl.set("#m17-s1-dg-ic0",{borderColor:"#1A1A1A",backgroundColor:"#F8F5EE"},12.81);
+tl.fromTo("#m17-s1-dg-ic0",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},12.81);
+tl.set("#m17-s1-dg-im0",{opacity:1},12.81);
+tl.fromTo("#m17-s1-dg-il0",{opacity:0,y:14},{opacity:1,y:0,duration:0.25,ease:"power2.out"},12.86);
+tl.set("#m17-s1-dg-im1",{opacity:0},0);
+tl.set("#m17-s1-dg-il1",{opacity:0},0);
+tl.set("#m17-s1-dg-ic1",{borderColor:"#CFC8B8",backgroundColor:"#F2EEE4"},0);
+tl.set("#m17-s1-dg-ic1",{borderColor:"#1A1A1A",backgroundColor:"#F8F5EE"},15.43);
+tl.fromTo("#m17-s1-dg-ic1",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},15.43);
+tl.set("#m17-s1-dg-im1",{opacity:1},15.43);
+tl.fromTo("#m17-s1-dg-il1",{opacity:0,y:14},{opacity:1,y:0,duration:0.25,ease:"power2.out"},15.48);
+tl.set("#m17-s1-dg-im2",{opacity:0},0);
+tl.set("#m17-s1-dg-il2",{opacity:0},0);
+tl.set("#m17-s1-dg-ic2",{borderColor:"#CFC8B8",backgroundColor:"#F2EEE4"},0);
+tl.set("#m17-s1-dg-ic2",{borderColor:"#1A1A1A",backgroundColor:"#F8F5EE"},18.47);
+tl.fromTo("#m17-s1-dg-ic2",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},18.47);
+tl.set("#m17-s1-dg-im2",{opacity:1},18.47);
+tl.fromTo("#m17-s1-dg-il2",{opacity:0,y:14},{opacity:1,y:0,duration:0.25,ease:"power2.out"},18.52);
+tl.set("#m17-s2-dg-im0",{opacity:0},0);
+tl.set("#m17-s2-dg-il0",{opacity:0},0);
+tl.set("#m17-s2-dg-ic0",{borderColor:"#CFC8B8",backgroundColor:"#F2EEE4"},0);
+tl.set("#m17-s2-dg-ic0",{borderColor:"#1A1A1A",backgroundColor:"#F8F5EE"},12.81);
+tl.fromTo("#m17-s2-dg-ic0",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},12.81);
+tl.set("#m17-s2-dg-im0",{opacity:1},12.81);
+tl.fromTo("#m17-s2-dg-il0",{opacity:0,y:14},{opacity:1,y:0,duration:0.25,ease:"power2.out"},12.86);
+tl.set("#m17-s2-dg-im1",{opacity:0},0);
+tl.set("#m17-s2-dg-il1",{opacity:0},0);
+tl.set("#m17-s2-dg-ic1",{borderColor:"#CFC8B8",backgroundColor:"#F2EEE4"},0);
+tl.set("#m17-s2-dg-ic1",{borderColor:"#1A1A1A",backgroundColor:"#F8F5EE"},15.43);
+tl.fromTo("#m17-s2-dg-ic1",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},15.43);
+tl.set("#m17-s2-dg-im1",{opacity:1},15.43);
+tl.fromTo("#m17-s2-dg-il1",{opacity:0,y:14},{opacity:1,y:0,duration:0.25,ease:"power2.out"},15.48);
+tl.set("#m17-s2-dg-im2",{opacity:0},0);
+tl.set("#m17-s2-dg-il2",{opacity:0},0);
+tl.set("#m17-s2-dg-ic2",{borderColor:"#CFC8B8",backgroundColor:"#F2EEE4"},0);
+tl.set("#m17-s2-dg-ic2",{borderColor:"#1A1A1A",backgroundColor:"#F8F5EE"},18.47);
+tl.fromTo("#m17-s2-dg-ic2",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},18.47);
+tl.set("#m17-s2-dg-im2",{opacity:1},18.47);
+tl.fromTo("#m17-s2-dg-il2",{opacity:0,y:14},{opacity:1,y:0,duration:0.25,ease:"power2.out"},18.52);
+tl.set("#m17-s3-dg-im0",{opacity:0},0);
+tl.set("#m17-s3-dg-il0",{opacity:0},0);
+tl.set("#m17-s3-dg-ic0",{borderColor:"#CFC8B8",backgroundColor:"#F2EEE4"},0);
+tl.set("#m17-s3-dg-ic0",{borderColor:"#1A1A1A",backgroundColor:"#F8F5EE"},12.81);
+tl.fromTo("#m17-s3-dg-ic0",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},12.81);
+tl.set("#m17-s3-dg-im0",{opacity:1},12.81);
+tl.fromTo("#m17-s3-dg-il0",{opacity:0,y:14},{opacity:1,y:0,duration:0.25,ease:"power2.out"},12.86);
+tl.set("#m17-s3-dg-im1",{opacity:0},0);
+tl.set("#m17-s3-dg-il1",{opacity:0},0);
+tl.set("#m17-s3-dg-ic1",{borderColor:"#CFC8B8",backgroundColor:"#F2EEE4"},0);
+tl.set("#m17-s3-dg-ic1",{borderColor:"#1A1A1A",backgroundColor:"#F8F5EE"},15.43);
+tl.fromTo("#m17-s3-dg-ic1",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},15.43);
+tl.set("#m17-s3-dg-im1",{opacity:1},15.43);
+tl.fromTo("#m17-s3-dg-il1",{opacity:0,y:14},{opacity:1,y:0,duration:0.25,ease:"power2.out"},15.48);
+tl.set("#m17-s3-dg-im2",{opacity:0},0);
+tl.set("#m17-s3-dg-il2",{opacity:0},0);
+tl.set("#m17-s3-dg-ic2",{borderColor:"#CFC8B8",backgroundColor:"#F2EEE4"},0);
+tl.set("#m17-s3-dg-ic2",{borderColor:"#1A1A1A",backgroundColor:"#F8F5EE"},18.47);
+tl.fromTo("#m17-s3-dg-ic2",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},18.47);
+tl.set("#m17-s3-dg-im2",{opacity:1},18.47);
+tl.fromTo("#m17-s3-dg-il2",{opacity:0,y:14},{opacity:1,y:0,duration:0.25,ease:"power2.out"},18.52);
+tl.set("#m18-s0-dg-L",{opacity:0},0);
+tl.set("#m18-s0-dg-R",{opacity:0},0);
+tl.fromTo("#m18-s0-dg-L",{opacity:0,scale:0.9},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},25.21);
+tl.fromTo("#m18-s0-dg-R",{opacity:0,scale:0.9},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},30.37);
+tl.set("#m18-s0-dg-sy0",{opacity:0},0);
+tl.fromTo("#m18-s0-dg-sy0",{opacity:0,scale:0.4},{opacity:1,scale:1,duration:0.35,ease:"back.out(1.7)"},34.77);
+tl.set("#m18-s0-dg-sy1",{opacity:0},0);
+tl.fromTo("#m18-s0-dg-sy1",{opacity:0,scale:0.4},{opacity:1,scale:1,duration:0.35,ease:"back.out(1.7)"},34.77);
+tl.fromTo("#m18-s1-in",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},22.22);
+tl.set("#m18-s2-dg-L",{opacity:0},0);
+tl.set("#m18-s2-dg-R",{opacity:0},0);
+tl.fromTo("#m18-s2-dg-L",{opacity:0,scale:0.9},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},25.21);
+tl.fromTo("#m18-s2-dg-R",{opacity:0,scale:0.9},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},30.37);
+tl.set("#m18-s2-dg-sy0",{opacity:0},0);
+tl.fromTo("#m18-s2-dg-sy0",{opacity:0,scale:0.4},{opacity:1,scale:1,duration:0.35,ease:"back.out(1.7)"},34.77);
+tl.set("#m18-s2-dg-sy1",{opacity:0},0);
+tl.fromTo("#m18-s2-dg-sy1",{opacity:0,scale:0.4},{opacity:1,scale:1,duration:0.35,ease:"back.out(1.7)"},34.77);
+tl.set("#m18-s3-dg-L",{opacity:0},0);
+tl.set("#m18-s3-dg-R",{opacity:0},0);
+tl.fromTo("#m18-s3-dg-L",{opacity:0,scale:0.9},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},25.21);
+tl.fromTo("#m18-s3-dg-R",{opacity:0,scale:0.9},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},30.37);
+tl.set("#m18-s3-dg-sy0",{opacity:0},0);
+tl.fromTo("#m18-s3-dg-sy0",{opacity:0,scale:0.4},{opacity:1,scale:1,duration:0.35,ease:"back.out(1.7)"},34.77);
+tl.set("#m18-s3-dg-sy1",{opacity:0},0);
+tl.fromTo("#m18-s3-dg-sy1",{opacity:0,scale:0.4},{opacity:1,scale:1,duration:0.35,ease:"back.out(1.7)"},34.77);
+tl.set("#m18-s4-dg-L",{opacity:0},0);
+tl.set("#m18-s4-dg-R",{opacity:0},0);
+tl.fromTo("#m18-s4-dg-L",{opacity:0,scale:0.9},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},25.21);
+tl.fromTo("#m18-s4-dg-R",{opacity:0,scale:0.9},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},30.37);
+tl.set("#m18-s4-dg-sy0",{opacity:0},0);
+tl.fromTo("#m18-s4-dg-sy0",{opacity:0,scale:0.4},{opacity:1,scale:1,duration:0.35,ease:"back.out(1.7)"},34.77);
+tl.set("#m18-s4-dg-sy1",{opacity:0},0);
+tl.fromTo("#m18-s4-dg-sy1",{opacity:0,scale:0.4},{opacity:1,scale:1,duration:0.35,ease:"back.out(1.7)"},34.77);
+tl.set("#m18-s5-dg-L",{opacity:0},0);
+tl.set("#m18-s5-dg-R",{opacity:0},0);
+tl.fromTo("#m18-s5-dg-L",{opacity:0,scale:0.9},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},25.21);
+tl.fromTo("#m18-s5-dg-R",{opacity:0,scale:0.9},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},30.37);
+tl.set("#m18-s5-dg-sy0",{opacity:0},0);
+tl.fromTo("#m18-s5-dg-sy0",{opacity:0,scale:0.4},{opacity:1,scale:1,duration:0.35,ease:"back.out(1.7)"},34.77);
+tl.set("#m18-s5-dg-sy1",{opacity:0},0);
+tl.fromTo("#m18-s5-dg-sy1",{opacity:0,scale:0.4},{opacity:1,scale:1,duration:0.35,ease:"back.out(1.7)"},34.77);
+tl.set("#m18-s6-dg-L",{opacity:0},0);
+tl.set("#m18-s6-dg-R",{opacity:0},0);
+tl.fromTo("#m18-s6-dg-L",{opacity:0,scale:0.9},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},25.21);
+tl.fromTo("#m18-s6-dg-R",{opacity:0,scale:0.9},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},30.37);
+tl.set("#m18-s6-dg-sy0",{opacity:0},0);
+tl.fromTo("#m18-s6-dg-sy0",{opacity:0,scale:0.4},{opacity:1,scale:1,duration:0.35,ease:"back.out(1.7)"},34.77);
+tl.set("#m18-s6-dg-sy1",{opacity:0},0);
+tl.fromTo("#m18-s6-dg-sy1",{opacity:0,scale:0.4},{opacity:1,scale:1,duration:0.35,ease:"back.out(1.7)"},34.77);
+tl.set("#m19-s0-cam",{x:0,y:0,scale:1},37.94);
+tl.fromTo("#m19-s0-cam",{x:0,y:0,scale:1},{x:-768,y:0,scale:1.4,duration:0.25,ease:"expo.out"},38.86);
+tl.fromTo("#m19-s0-cam",{x:-768,y:0,scale:1.4},{x:-808.32,y:0,scale:1.421,duration:2.05,ease:"none"},39.11);
+tl.set("#m19-s0-so0",{opacity:0},0);
+tl.fromTo("#m19-s0-so0",{opacity:0,y:-20},{opacity:1,y:0,duration:0.3,ease:"back.out(1.4)"},41.11);
+tl.set("#m19-s1-cam",{x:-768,y:0,scale:1.4},41.16);
+tl.fromTo("#m19-s1-cam",{x:-768,y:0,scale:1.4},{x:-115.2,y:-291.6,scale:1.4,duration:0.26,ease:"power3.inOut"},41.16);
+tl.set("#m19-s1-cam",{filter:"url(#mb)"},41.16);
+tl.fromTo("#mbb",{attr:{stdDeviation:"0 0"}},{attr:{stdDeviation:"38 0"},duration:0.13,ease:"power2.in"},41.16);
+tl.to("#mbb",{attr:{stdDeviation:"0 0"},duration:0.13,ease:"power2.out"},41.29);
+tl.set("#m19-s1-cam",{filter:"none"},41.44);
+tl.fromTo("#m19-s1-cam",{x:-115.2,y:-291.6,scale:1.4},{x:-131.328,y:-304.074,scale:1.421,duration:1.94,ease:"none"},41.42);
+tl.set("#m19-s2-cam",{x:-115.2,y:-291.6,scale:1.4},43.36);
+tl.fromTo("#m19-s2-cam",{x:-115.2,y:-291.6,scale:1.4},{x:-131.328,y:-304.074,scale:1.421,duration:2.18,ease:"none"},43.36);
+tl.to("#m19-s2-so0",{opacity:0,duration:0.2},43.71);
+tl.set("#m20-s0-cam",{x:0,y:0,scale:1},45.54);
+tl.fromTo("#m20-s0-cam",{x:0,y:0,scale:1},{x:-652.8,y:0,scale:1.4,duration:0.25,ease:"expo.out"},47.5);
+tl.fromTo("#m20-s0-cam",{x:-652.8,y:0,scale:1.4},{x:-676.992,y:0,scale:1.421,duration:0.73,ease:"none"},47.75);
+tl.set("#m20-s0-ov0",{opacity:0},0);
+tl.set("#m20-s0-ov0",{opacity:1},50.47);
+tl.to("#m20-s0-ov0-e",{strokeDashoffset:0,duration:0.55,ease:"power2.out"},50.47);
+tl.set("#m20-s1-cam",{x:-652.8,y:0,scale:1.4},48.48);
+tl.fromTo("#m20-s1-cam",{x:-652.8,y:0,scale:1.4},{x:-768,y:-432,scale:1.4,duration:0.26,ease:"power3.inOut"},48.48);
+tl.set("#m20-s1-cam",{filter:"url(#mb)"},48.48);
+tl.fromTo("#mbb",{attr:{stdDeviation:"0 0"}},{attr:{stdDeviation:"38 0"},duration:0.13,ease:"power2.in"},48.48);
+tl.to("#mbb",{attr:{stdDeviation:"0 0"},duration:0.13,ease:"power2.out"},48.61);
+tl.set("#m20-s1-cam",{filter:"none"},48.76);
+tl.fromTo("#m20-s1-cam",{x:-768,y:-432,scale:1.4},{x:-808.32,y:-454.68,scale:1.421,duration:2.3,ease:"none"},48.74);
+tl.set("#m20-s1-ov0",{opacity:0},0);
+tl.set("#m20-s1-ov0",{opacity:1},50.47);
+tl.to("#m20-s1-ov0-e",{strokeDashoffset:0,duration:0.55,ease:"power2.out"},50.47);
+tl.set("#m20-s2-cam",{x:-768,y:-432,scale:1.4},51.04);
+tl.fromTo("#m20-s2-cam",{x:-768,y:-432,scale:1.4},{x:-808.32,y:-454.68,scale:1.421,duration:1.72,ease:"none"},51.04);
+tl.set("#m20-s2-ov0",{opacity:0},0);
+tl.set("#m20-s2-ov0",{opacity:1},50.47);
+tl.to("#m20-s2-ov0-e",{strokeDashoffset:0,duration:0.55,ease:"power2.out"},50.47);
+tl.set("#m21-s0-cam",{x:0,y:0,scale:1},52.76);
+tl.fromTo("#m21-s0-cam",{x:0,y:0,scale:1},{x:-768,y:-216,scale:1.4,duration:0.25,ease:"expo.out"},54.7);
+tl.fromTo("#m21-s0-cam",{x:-768,y:-216,scale:1.4},{x:-808.32,y:-227.34,scale:1.421,duration:1.19,ease:"none"},54.95);
+tl.set("#m21-s1-cam",{x:-768,y:-216,scale:1.4},56.14);
+tl.fromTo("#m21-s1-cam",{x:-768,y:-216,scale:1.4},{x:-808.32,y:-227.34,scale:1.421,duration:3.26,ease:"none"},56.14);
+tl.set("#m21-s1-so0",{opacity:0},0);
+tl.fromTo("#m21-s1-so0",{opacity:0,y:-20},{opacity:1,y:0,duration:0.3,ease:"back.out(1.4)"},58.37);
+tl.set("#m21-s2-cam",{x:-768,y:-216,scale:1.4},59.4);
+tl.fromTo("#m21-s2-cam",{x:-768,y:-216,scale:1.4},{x:-808.32,y:-227.34,scale:1.421,duration:1.58,ease:"none"},59.4);
+tl.set("#m22-s0-cam",{x:0,y:0,scale:1},60.98);
+tl.fromTo("#m22-s0-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:2.72,ease:"none"},60.98);
+tl.set("#m22-s0-ov0",{opacity:0},0);
+tl.set("#m22-s0-ov0",{opacity:1},65.79);
+tl.to("#m22-s0-ov0-e",{strokeDashoffset:0,duration:0.55,ease:"power2.out"},65.79);
+tl.set("#m22-s1-cam",{x:0,y:0,scale:1},63.7);
+tl.fromTo("#m22-s1-cam",{x:0,y:0,scale:1},{x:-576,y:-21.6,scale:1.3,duration:0.25,ease:"expo.out"},63.7);
+tl.fromTo("#m22-s1-cam",{x:-576,y:-21.6,scale:1.3},{x:-613.44,y:-30.024,scale:1.319,duration:3.65,ease:"none"},63.95);
+tl.set("#m22-s1-ov0",{opacity:0},0);
+tl.set("#m22-s1-ov0",{opacity:1},65.79);
+tl.to("#m22-s1-ov0-e",{strokeDashoffset:0,duration:0.55,ease:"power2.out"},65.79);
+tl.fromTo("#m23-s0-in",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},67.6);
+tl.set("#m23-s1-cam",{x:0,y:0,scale:1},69.42);
+tl.fromTo("#m23-s1-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:2.56,ease:"none"},69.42);
+tl.set("#m23-s1-so0",{opacity:0},0);
+tl.fromTo("#m23-s1-so0",{opacity:0,y:-20},{opacity:1,y:0,duration:0.3,ease:"back.out(1.4)"},69.59);
+tl.to("#m23-s1-so0",{opacity:0,duration:0.2},70.84);
+tl.set("#m23-s1-so1",{opacity:0},0);
+tl.fromTo("#m23-s1-so1",{opacity:0,y:-20},{opacity:1,y:0,duration:0.3,ease:"back.out(1.4)"},70.79);
+tl.set("#m23-s2-cam",{x:0,y:0,scale:1},71.98);
+tl.fromTo("#m23-s2-cam",{x:0,y:0,scale:1},{x:-384,y:0,scale:1.4,duration:0.26,ease:"power3.inOut"},72.52);
+tl.set("#m23-s2-cam",{filter:"url(#mb)"},72.52);
+tl.fromTo("#mbb",{attr:{stdDeviation:"0 0"}},{attr:{stdDeviation:"38 0"},duration:0.13,ease:"power2.in"},72.52);
+tl.to("#mbb",{attr:{stdDeviation:"0 0"},duration:0.13,ease:"power2.out"},72.65);
+tl.set("#m23-s2-cam",{filter:"none"},72.8);
+tl.fromTo("#m23-s2-cam",{x:-384,y:0,scale:1.4},{x:-404.16,y:0,scale:1.421,duration:2.08,ease:"none"},72.78);
+tl.to("#m23-s2-so1",{opacity:0,duration:0.2},72.39);
+tl.set("#m24-s0-dg-st0",{opacity:0},0);
+tl.fromTo("#m24-s0-dg-st0",{opacity:0,y:(0 === 0 ? 70 : 90)},{opacity:1,y:0,duration:0.34,ease:"back.out(1.6)"},76.33);
+tl.to("#m24-s0-dg-st0",{opacity:0,y:-80,duration:0.22,ease:"power2.in"},79.37);
+tl.fromTo("#m24-s0-dgs0-p1-mk",{scaleX:0},{scaleX:1,duration:0.45,ease:"power2.out"},77.07);
+tl.set("#m24-s0-dg-st1",{opacity:0},0);
+tl.fromTo("#m24-s0-dg-st1",{opacity:0,y:(1 === 0 ? 70 : 90)},{opacity:1,y:0,duration:0.34,ease:"back.out(1.6)"},79.37);
+tl.set("#m24-s1-dg-st0",{opacity:0},0);
+tl.fromTo("#m24-s1-dg-st0",{opacity:0,y:(0 === 0 ? 70 : 90)},{opacity:1,y:0,duration:0.34,ease:"back.out(1.6)"},76.33);
+tl.to("#m24-s1-dg-st0",{opacity:0,y:-80,duration:0.22,ease:"power2.in"},79.37);
+tl.fromTo("#m24-s1-dgs0-p1-mk",{scaleX:0},{scaleX:1,duration:0.45,ease:"power2.out"},77.07);
+tl.set("#m24-s1-dg-st1",{opacity:0},0);
+tl.fromTo("#m24-s1-dg-st1",{opacity:0,y:(1 === 0 ? 70 : 90)},{opacity:1,y:0,duration:0.34,ease:"back.out(1.6)"},79.37);
+tl.set("#m24-s2-dg-st0",{opacity:0},0);
+tl.fromTo("#m24-s2-dg-st0",{opacity:0,y:(0 === 0 ? 70 : 90)},{opacity:1,y:0,duration:0.34,ease:"back.out(1.6)"},76.33);
+tl.to("#m24-s2-dg-st0",{opacity:0,y:-80,duration:0.22,ease:"power2.in"},79.37);
+tl.fromTo("#m24-s2-dgs0-p1-mk",{scaleX:0},{scaleX:1,duration:0.45,ease:"power2.out"},77.07);
+tl.set("#m24-s2-dg-st1",{opacity:0},0);
+tl.fromTo("#m24-s2-dg-st1",{opacity:0,y:(1 === 0 ? 70 : 90)},{opacity:1,y:0,duration:0.34,ease:"back.out(1.6)"},79.37);
+tl.set("#m25-s0-cam",{x:0,y:0,scale:1},83.6);
+tl.fromTo("#m25-s0-cam",{x:0,y:0,scale:1},{x:-38.4,y:-274.32,scale:1.3,duration:0.25,ease:"expo.out"},84.64);
+tl.fromTo("#m25-s0-cam",{x:-38.4,y:-274.32,scale:1.3},{x:-53.376,y:-286.535,scale:1.319,duration:2.05,ease:"none"},84.89);
+tl.fromTo("#m25-s1-in",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},87.04);
+tl.fromTo("#m25-s1-nw",{x:-520},{x:0,duration:0.25,ease:"power2.out"},86.94);
+tl.to("#m25-s1-nw",{x:-520,duration:0.2,ease:"power2.in"},89.22);
+tl.set("#m25-s2-cam",{x:-38.4,y:-274.32,scale:1.3},89.44);
+tl.fromTo("#m25-s2-cam",{x:-38.4,y:-274.32,scale:1.3},{x:-53.376,y:-286.535,scale:1.319,duration:2.16,ease:"none"},89.44);
+tl.fromTo("#m25-s3-in",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},91.6);
+tl.set("#m25-s4-cam",{x:-38.4,y:-274.32,scale:1.3},93.16);
+tl.fromTo("#m25-s4-cam",{x:-38.4,y:-274.32,scale:1.3},{x:-576,y:-91.8,scale:1.3,duration:0.26,ease:"power3.inOut"},93.16);
+tl.set("#m25-s4-cam",{filter:"url(#mb)"},93.16);
+tl.fromTo("#mbb",{attr:{stdDeviation:"0 0"}},{attr:{stdDeviation:"38 0"},duration:0.13,ease:"power2.in"},93.16);
+tl.to("#mbb",{attr:{stdDeviation:"0 0"},duration:0.13,ease:"power2.out"},93.29);
+tl.set("#m25-s4-cam",{filter:"none"},93.44);
+tl.fromTo("#m25-s4-cam",{x:-576,y:-91.8,scale:1.3},{x:-610.733,y:-101.277,scale:1.319,duration:1.76,ease:"none"},93.42);
+tl.set("#m25-s5-cam",{x:-576,y:-91.8,scale:1.3},95.18);
+tl.fromTo("#m25-s5-cam",{x:-576,y:-91.8,scale:1.3},{x:-610.733,y:-101.277,scale:1.319,duration:2.52,ease:"none"},95.18);
+tl.set("#m26-s0-dg-L",{opacity:0},0);
+tl.set("#m26-s0-dg-R",{opacity:0},0);
+tl.fromTo("#m26-s0-dg-L",{opacity:0,scale:0.9},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},99.43);
+tl.fromTo("#m26-s0-dg-R",{opacity:0,scale:0.9},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},103.83);
+tl.set("#m26-s1-dg-L",{opacity:0},0);
+tl.set("#m26-s1-dg-R",{opacity:0},0);
+tl.fromTo("#m26-s1-dg-L",{opacity:0,scale:0.9},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},99.43);
+tl.fromTo("#m26-s1-dg-R",{opacity:0,scale:0.9},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},103.83);
+tl.set("#m26-s2-dg-L",{opacity:0},0);
+tl.set("#m26-s2-dg-R",{opacity:0},0);
+tl.fromTo("#m26-s2-dg-L",{opacity:0,scale:0.9},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},99.43);
+tl.fromTo("#m26-s2-dg-R",{opacity:0,scale:0.9},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},103.83);
+tl.set("#m26-s3-dg-L",{opacity:0},0);
+tl.set("#m26-s3-dg-R",{opacity:0},0);
+tl.fromTo("#m26-s3-dg-L",{opacity:0,scale:0.9},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},99.43);
+tl.fromTo("#m26-s3-dg-R",{opacity:0,scale:0.9},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},103.83);
+tl.set("#m27-s0-cam",{x:0,y:0,scale:1},106.52);
+tl.fromTo("#m27-s0-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:2.66,ease:"none"},106.52);
+tl.set("#m27-s1-cam",{x:0,y:0,scale:1},109.18);
+tl.fromTo("#m27-s1-cam",{x:0,y:0,scale:1},{x:-652.8,y:0,scale:1.4,duration:0.25,ease:"expo.out"},111.24);
+tl.fromTo("#m27-s1-cam",{x:-652.8,y:0,scale:1.4},{x:-676.992,y:0,scale:1.421,duration:1.29,ease:"none"},111.49);
+tl.set("#m27-s1-so0",{opacity:0},0);
+tl.fromTo("#m27-s1-so0",{opacity:0,y:-20},{opacity:1,y:0,duration:0.3,ease:"back.out(1.4)"},111.19);
+tl.fromTo("#m27-s2-img",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},112.78);
+tl.set("#m28-s0-cam",{x:0,y:0,scale:1},115.46);
+tl.fromTo("#m28-s0-cam",{x:0,y:0,scale:1},{x:-491.52,y:-432,scale:1.4,duration:0.25,ease:"expo.out"},117.1);
+tl.fromTo("#m28-s0-cam",{x:-491.52,y:-432,scale:1.4},{x:-513.293,y:-454.68,scale:1.421,duration:1.37,ease:"none"},117.35);
+tl.fromTo("#m28-s0-ov0-b",{x:-900,opacity:1},{x:1300,duration:0.9,ease:"power1.inOut"},123.31);
+tl.set("#m28-s0-ov0-b",{opacity:0},124.26);
+tl.set("#m28-s0-ov0-b",{opacity:0},0);
+tl.fromTo("#m28-s1-img",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},118.72);
+tl.set("#m28-s2-cam",{x:-491.52,y:-432,scale:1.4},120.56);
+tl.fromTo("#m28-s2-cam",{x:-491.52,y:-432,scale:1.4},{x:-768,y:0,scale:1.4,duration:0.26,ease:"power3.inOut"},122.42);
+tl.set("#m28-s2-cam",{filter:"url(#mb)"},122.42);
+tl.fromTo("#mbb",{attr:{stdDeviation:"0 0"}},{attr:{stdDeviation:"38 0"},duration:0.13,ease:"power2.in"},122.42);
+tl.to("#mbb",{attr:{stdDeviation:"0 0"},duration:0.13,ease:"power2.out"},122.55);
+tl.set("#m28-s2-cam",{filter:"none"},122.7);
+tl.fromTo("#m28-s2-cam",{x:-768,y:0,scale:1.4},{x:-808.32,y:0,scale:1.421,duration:1.04,ease:"none"},122.68);
+tl.fromTo("#m28-s2-ov0-b",{x:-900,opacity:1},{x:1300,duration:0.9,ease:"power1.inOut"},123.31);
+tl.set("#m28-s2-ov0-b",{opacity:0},124.26);
+tl.set("#m28-s2-ov0-b",{opacity:0},0);
+tl.set("#m28-s3-cam",{x:-768,y:0,scale:1.4},123.72);
+tl.fromTo("#m28-s3-cam",{x:-768,y:0,scale:1.4},{x:-808.32,y:0,scale:1.421,duration:1.8,ease:"none"},123.72);
+tl.fromTo("#m28-s3-ov0-b",{x:-900,opacity:1},{x:1300,duration:0.9,ease:"power1.inOut"},123.31);
+tl.set("#m28-s3-ov0-b",{opacity:0},124.26);
+tl.set("#m28-s3-ov0-b",{opacity:0},0);
+tl.set("#m29-s0-dg-ar0",{opacity:0},0);
+tl.fromTo("#m29-s0-dg-ar0",{opacity:0,y:-190},{opacity:1,y:0,duration:0.42,ease:"back.out(1.4)"},127.89);
+tl.set("#m29-s0-dg-ar1",{opacity:0},0);
+tl.fromTo("#m29-s0-dg-ar1",{opacity:0,y:-190},{opacity:1,y:0,duration:0.42,ease:"back.out(1.4)"},129.47);
+tl.set("#m29-s1-dg-ar0",{opacity:0},0);
+tl.fromTo("#m29-s1-dg-ar0",{opacity:0,y:-190},{opacity:1,y:0,duration:0.42,ease:"back.out(1.4)"},127.89);
+tl.set("#m29-s1-dg-ar1",{opacity:0},0);
+tl.fromTo("#m29-s1-dg-ar1",{opacity:0,y:-190},{opacity:1,y:0,duration:0.42,ease:"back.out(1.4)"},129.47);
+tl.set("#m30-s0-cam",{x:0,y:0,scale:1},130.86);
+tl.fromTo("#m30-s0-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:2.12,ease:"none"},130.86);
+tl.set("#m30-s0-ov0",{opacity:0},0);
+tl.set("#m30-s0-ov0",{opacity:1},133.83);
+tl.to("#m30-s0-ov0-e",{strokeDashoffset:0,duration:0.55,ease:"power2.out"},133.83);
+tl.set("#m30-s1-cam",{x:0,y:0,scale:1},132.98);
+tl.fromTo("#m30-s1-cam",{x:0,y:0,scale:1},{x:-768,y:0,scale:1.4,duration:0.25,ease:"expo.out"},132.98);
+tl.fromTo("#m30-s1-cam",{x:-768,y:0,scale:1.4},{x:-808.32,y:0,scale:1.421,duration:2.93,ease:"none"},133.23);
+tl.set("#m30-s1-ov0",{opacity:0},0);
+tl.set("#m30-s1-ov0",{opacity:1},133.83);
+tl.to("#m30-s1-ov0-e",{strokeDashoffset:0,duration:0.55,ease:"power2.out"},133.83);
+tl.set("#m30-s1-so1",{opacity:0},0);
+tl.fromTo("#m30-s1-so1",{opacity:0,y:-20},{opacity:1,y:0,duration:0.3,ease:"back.out(1.4)"},133.83);
+tl.set("#m31-s0-cam",{x:0,y:0,scale:1},136.16);
+tl.fromTo("#m31-s0-cam",{x:0,y:0,scale:1},{x:-768,y:-397.44,scale:1.4,duration:0.25,ease:"expo.out"},138.22);
+tl.fromTo("#m31-s0-cam",{x:-768,y:-397.44,scale:1.4},{x:-808.32,y:-411.502,scale:1.421,duration:0.91,ease:"none"},138.47);
+tl.set("#m31-s1-cam",{x:-768,y:-397.44,scale:1.4},139.38);
+tl.fromTo("#m31-s1-cam",{x:-768,y:-397.44,scale:1.4},{x:-808.32,y:-411.502,scale:1.421,duration:1.42,ease:"none"},139.38);
+tl.fromTo("#m31-s2-img",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},140.8);
+tl.set("#m31-s3-cam",{x:-768,y:-397.44,scale:1.4},142.6);
+tl.fromTo("#m31-s3-cam",{x:-768,y:-397.44,scale:1.4},{x:-808.32,y:-411.502,scale:1.421,duration:1.74,ease:"none"},142.6);
+tl.fromTo("#m31-s4-in",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},144.34);
+tl.set("#m31-s5-cam",{x:-768,y:-397.44,scale:1.4},146.54);
+tl.fromTo("#m31-s5-cam",{x:-768,y:-397.44,scale:1.4},{x:-808.32,y:-411.502,scale:1.421,duration:1.06,ease:"none"},146.54);
+tl.fromTo("#m32-s0-in",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},147.7);
+tl.fromTo("#m32-s0-nw",{x:-520},{x:0,duration:0.25,ease:"power2.out"},147.6);
+tl.to("#m32-s0-nw",{x:-520,duration:0.2,ease:"power2.in"},149.62);
+tl.set("#m32-s1-cam",{x:0,y:0,scale:1},149.84);
+tl.fromTo("#m32-s1-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:3.9,ease:"none"},149.84);
+tl.fromTo("#m32-s2-img",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},153.74);
+tl.set("#m32-s3-cam",{x:-518.4,y:-170.64,scale:1.4},155.7);
+tl.fromTo("#m32-s3-cam",{x:-518.4,y:-170.64,scale:1.4},{x:0,y:0,scale:1,duration:0.4,ease:"power2.out"},155.82);
+tl.fromTo("#m32-s3-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:2.16,ease:"none"},156.22);
+tl.set("#m32-s4-cam",{x:0,y:0,scale:1},158.38);
+tl.fromTo("#m32-s4-cam",{x:0,y:0,scale:1},{x:-168.96,y:-432,scale:1.4,duration:0.26,ease:"power3.inOut"},158.38);
+tl.set("#m32-s4-cam",{filter:"url(#mb)"},158.38);
+tl.fromTo("#mbb",{attr:{stdDeviation:"0 0"}},{attr:{stdDeviation:"38 0"},duration:0.13,ease:"power2.in"},158.38);
+tl.to("#mbb",{attr:{stdDeviation:"0 0"},duration:0.13,ease:"power2.out"},158.51);
+tl.set("#m32-s4-cam",{filter:"none"},158.66);
+tl.fromTo("#m32-s4-cam",{x:-168.96,y:-432,scale:1.4},{x:-185.894,y:-454.68,scale:1.421,duration:1.674,ease:"none"},158.64);
+tl.fromTo("#m26-s3-fin",{scale:1.06},{scale:1,duration:0.2,ease:"power2.out"},103.86);
+tl.set("#m26-s3-fin",{x:5},103.86);
+tl.set("#m26-s3-fin",{x:-4},103.893);
+tl.set("#m26-s3-fin",{x:3},103.926);
+tl.set("#m26-s3-fin",{x:0},103.96);
+tl.fromTo("#nar1-w",{x:-520},{x:0,duration:0.25,ease:"power2.out"},0);
+tl.to("#nar2-w",{x:-520,duration:0.2,ease:"power2.in"},12.18);
+tl.fromTo("#nar3-w",{x:-520},{x:0,duration:0.25,ease:"power2.out"},20.8);
+tl.to("#nar4-w",{x:-520,duration:0.2,ease:"power2.in"},37.72);
+tl.fromTo("#nar5-w",{x:-520},{x:0,duration:0.25,ease:"power2.out"},52.76);
+tl.to("#nar5-w",{x:-520,duration:0.2,ease:"power2.in"},60.76);
+tl.fromTo("#nar6-w",{x:-520},{x:0,duration:0.25,ease:"power2.out"},74.86);
+tl.to("#nar6-w",{x:-520,duration:0.2,ease:"power2.in"},83.38);
+tl.fromTo("#nar7-w",{x:-520},{x:0,duration:0.25,ease:"power2.out"},97.7);
+tl.to("#nar8-w",{x:-520,duration:0.2,ease:"power2.in"},106.3);
+tl.fromTo("#nar9-w",{x:-520},{x:0,duration:0.25,ease:"power2.out"},125.52);
+tl.to("#nar9-w",{x:-520,duration:0.2,ease:"power2.in"},130.64);
+window.__timelines["part2"] = tl;
+</script></body></html>

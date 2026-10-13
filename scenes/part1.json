@@ -1,0 +1,730 @@
+{
+ "part": 1,
+ "audio": "audio/padded/part1.wav",
+ "scenes": [
+  {
+   "id": "M01",
+   "camera": "zoom-in",
+   "narration": "You've probably heard it a hundred times. Picture your dream life. See it clearly. Feel it like it's already yours... and the universe will bring it to you.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I57",
+     "word": "universe",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "picture": "S01",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "picture",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.26,
+      1.25
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "sweep",
+     "word": "feel",
+     "occ": 1,
+     "box": {
+      "x": 0.02,
+      "y": 0.02,
+      "w": 0.95,
+      "h": 0.5
+     }
+    }
+   ]
+  },
+  {
+   "id": "M02",
+   "camera": "pan-right",
+   "narration": "Vision boards. Scripting. Saying it out loud every morning. It's everywhere. TikTok, YouTube, half the books in the self-help section.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I46",
+     "word": "books",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "picture": "S02",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "vision",
+     "occ": 1,
+     "f": [
+      0.16,
+      0.38,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "scripting",
+     "occ": 1,
+     "f": [
+      0.34,
+      0.28,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "saying",
+     "occ": 1,
+     "f": [
+      0.53,
+      0.2,
+      1.4
+     ]
+    },
+    {
+     "kind": "zoom",
+     "word": "everywhere",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.5,
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "id": "M03",
+   "camera": "zoom-in",
+   "narration": "But a psychologist named Gabriele Oettingen spent more than twenty years actually testing what happens when people daydream about their goals. Not in theory. In real people, with real goals, followed for months and even years.",
+   "events": [],
+   "picture": "S20",
+   "trans": "whip",
+   "host": [
+    [
+     "N02"
+    ],
+    [
+     "N06",
+     "not"
+    ]
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "psychologist",
+     "occ": 1,
+     "f": [
+      0.46,
+      0.4,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "real",
+     "occ": 1,
+     "f": [
+      0.78,
+      0.4,
+      1.3
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "pill",
+     "text": "GABRIELE OETTINGEN",
+     "word": "oettingen",
+     "occ": 1,
+     "dur": 2.2
+    },
+    {
+     "type": "tag",
+     "parts": [
+      {
+       "t": "20+",
+       "badge": "yellow"
+      },
+      {
+       "t": "YEARS OF TESTS"
+      }
+     ],
+     "word": "twenty",
+     "occ": 1,
+     "dur": 2.6,
+     "count": 20,
+     "suffix": "+",
+     "pos": "bottom"
+    }
+   ]
+  },
+  {
+   "id": "M04",
+   "camera": "zoom-in",
+   "narration": "And what she found... is not what most manifestation videos tell you.",
+   "events": [
+    {
+     "kind": "pop",
+     "pose": "N09",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "NOT",
+        "badge": "red"
+       },
+       {
+        "t": "WHAT YOU'VE HEARD",
+        "sz": "mid"
+       }
+      ]
+     },
+     "word": "not",
+     "occ": 1,
+     "dur": 2.4
+    }
+   ],
+   "picture": "S02",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "found",
+     "occ": 1,
+     "f": [
+      0.55,
+      0.45,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "M05",
+   "camera": "pan-right",
+   "narration": "In one study, she followed college students who were about to graduate and look for their first job. She asked how often they had positive daydreams about landing that dream job. Then she checked back two years later.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I53",
+     "word": "job",
+     "occ": 1,
+     "dur": 1.8
+    },
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "2 YEARS",
+       "badge": "yellow"
+      },
+      {
+       "t": "LATER"
+      }
+     ],
+     "word": "two",
+     "occ": 1,
+     "dur": 1.9,
+     "trans": "push"
+    }
+   ],
+   "picture": "S04",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "college",
+     "occ": 1,
+     "f": [
+      0.2,
+      0.5,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "graduate",
+     "occ": 1,
+     "f": [
+      0.82,
+      0.6,
+      1.4
+     ]
+    },
+    {
+     "kind": "snap",
+     "word": "daydreams",
+     "occ": 1,
+     "f": [
+      0.17,
+      0.55,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "landing",
+     "occ": 1,
+     "f": [
+      0.41,
+      0.2,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "M06",
+   "camera": "hold",
+   "narration": "The students who daydreamed the most... had sent out fewer applications. Gotten fewer job offers. And were earning lower salaries.",
+   "events": [],
+   "host": [
+    [
+     "N02"
+    ]
+   ],
+   "diagram": {
+    "kind": "drops",
+    "header": "THE BIGGEST DAYDREAMERS",
+    "dir": "down",
+    "rows": [
+     {
+      "label": "APPLICATIONS",
+      "word": "applications",
+      "occ": 1
+     },
+     {
+      "label": "JOB OFFERS",
+      "word": "offers",
+      "occ": 1
+     },
+     {
+      "label": "SALARY",
+      "word": "salaries",
+      "occ": 1
+     }
+    ]
+   },
+   "fx": [
+    {
+     "type": "riser",
+     "word": "fewer"
+    },
+    {
+     "type": "impact",
+     "word": "salaries"
+    }
+   ]
+  },
+  {
+   "id": "M07",
+   "camera": "zoom-in",
+   "narration": "Picturing the dream... had made them less likely to get it.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "LESS",
+       "badge": "red"
+      },
+      {
+       "t": "LIKELY"
+      },
+      {
+       "t": "TO GET IT"
+      }
+     ],
+     "word": "less",
+     "occ": 1,
+     "dur": 1.9
+    }
+   ],
+   "picture": "S04",
+   "overlays": [
+    {
+     "type": "circle",
+     "cx": 0.17,
+     "cy": 0.64,
+     "rx": 0.14,
+     "ry": 0.26,
+     "word": "picturing",
+     "occ": 1
+    }
+   ]
+  },
+  {
+   "id": "M08",
+   "camera": "hold",
+   "narration": "And honestly, that one stung a little.",
+   "events": [],
+   "picture": "S34"
+  },
+  {
+   "id": "M09",
+   "camera": "zoom-in",
+   "narration": "Because I used to be big on manifesting. I'd lie in bed at night and picture everything. The body I wanted. The channel I wanted to build. The version of me who had it all figured out.",
+   "events": [],
+   "picture": "S01",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "picture",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.26,
+      1.25
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "body",
+     "occ": 1,
+     "f": [
+      0.15,
+      0.25,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "channel",
+     "occ": 1,
+     "f": [
+      0.45,
+      0.25,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "version",
+     "occ": 1,
+     "f": [
+      0.78,
+      0.28,
+      1.4
+     ]
+    },
+    {
+     "kind": "zoom",
+     "word": "figured",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.5,
+      1
+     ]
+    }
+   ],
+   "fx": [
+    {
+     "type": "leak",
+     "word": "used"
+    }
+   ]
+  },
+  {
+   "id": "M10",
+   "camera": "zoom-in",
+   "narration": "And it felt amazing. Like I was already halfway there.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "ALREADY"
+      },
+      {
+       "t": "HALFWAY",
+       "badge": "yellow"
+      },
+      {
+       "t": "THERE"
+      }
+     ],
+     "word": "halfway",
+     "occ": 1,
+     "dur": 1.9
+    }
+   ],
+   "picture": "S25",
+   "overlays": [
+    {
+     "type": "sweep",
+     "word": "amazing",
+     "occ": 1,
+     "box": {
+      "x": 0.45,
+      "y": 0.28,
+      "w": 0.4,
+      "h": 0.4
+     }
+    }
+   ]
+  },
+  {
+   "id": "M11",
+   "camera": "zoom-in",
+   "narration": "And then the next morning... I'd do basically nothing. Because somehow, my brain felt like I'd already done the work.",
+   "events": [
+    {
+     "kind": "pop",
+     "pose": "N10",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "ALREADY"
+       },
+       {
+        "t": "DONE THE WORK",
+        "badge": "yellow"
+       }
+      ]
+     },
+     "word": "brain",
+     "occ": 1,
+     "dur": 2.6
+    }
+   ],
+   "picture": "S23",
+   "trans": "push",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "nothing",
+     "occ": 1,
+     "f": [
+      0.85,
+      0.86,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "M12",
+   "camera": "zoom-in",
+   "narration": "I even made a vision board once. Pictures of the gym body, a big subscriber count, the whole thing. I hung it right over my desk. It stayed there for months... looking at me... while I didn't do much of anything on it.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I13",
+     "word": "months",
+     "occ": 1,
+     "dur": 1.8
+    },
+    {
+     "kind": "pop",
+     "pose": "N05",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "MONTHS OF"
+       },
+       {
+        "t": "NOTHING",
+        "badge": "yellow"
+       }
+      ]
+     },
+     "word": "didn't",
+     "occ": 1,
+     "dur": 2.6
+    }
+   ],
+   "picture": "S03",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "vision",
+     "occ": 1,
+     "f": [
+      0.72,
+      0.28,
+      1.3
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "gym",
+     "occ": 1,
+     "f": [
+      0.6,
+      0.3,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "subscriber",
+     "occ": 1,
+     "f": [
+      0.84,
+      0.4,
+      1.4
+     ]
+    },
+    {
+     "kind": "zoom",
+     "word": "hung",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.5,
+      1
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "arrow",
+     "x0": 0.72,
+     "y0": 0.47,
+     "x1": 0.58,
+     "y1": 0.57,
+     "word": "looking",
+     "occ": 1
+    }
+   ]
+  },
+  {
+   "id": "M13",
+   "camera": "hold",
+   "narration": "But here's the thing. Manifestation isn't completely wrong. There's one part of it that's backed by real science. And one part that quietly works against you.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "NOT COMPLETELY"
+      },
+      {
+       "t": "WRONG",
+       "badge": "yellow"
+      }
+     ],
+     "word": "isn't",
+     "occ": 1,
+     "dur": 1.9
+    }
+   ],
+   "host": [
+    [
+     "N06"
+    ],
+    [
+     "N02",
+     "there's"
+    ]
+   ],
+   "diagram": {
+    "kind": "split",
+    "left": [
+     "BACKED BY",
+     "SCIENCE"
+    ],
+    "right": [
+     "WORKS",
+     "AGAINST YOU"
+    ],
+    "fs": 100,
+    "at": {
+     "left": {
+      "word": "science",
+      "occ": 1
+     },
+     "right": {
+      "word": "against",
+      "occ": 1
+     }
+    },
+    "rb": "red",
+    "syms": [
+     {
+      "side": "L",
+      "sym": "tick",
+      "word": "science"
+     },
+     {
+      "side": "R",
+      "sym": "cross",
+      "word": "against"
+     }
+    ]
+   }
+  },
+  {
+   "id": "M14",
+   "camera": "hold",
+   "narration": "By the end of this video, you'll know why manifesting feels like it works, the one part everyone gets wrong, and the five-step version that researchers have actually tested.",
+   "events": [],
+   "host": [
+    [
+     "N01"
+    ]
+   ],
+   "diagram": {
+    "kind": "iconrow",
+    "items": [
+     {
+      "icon": "I61",
+      "word": "feels",
+      "label": "WHY IT FEELS REAL"
+     },
+     {
+      "icon": "I58",
+      "word": "wrong",
+      "label": "THE MISTAKE"
+     },
+     {
+      "icon": "I59",
+      "word": "five",
+      "label": "5 STEPS"
+     }
+    ]
+   }
+  },
+  {
+   "id": "M15",
+   "camera": "zoom-in",
+   "narration": "It takes about five minutes. And it's the only kind of manifesting I still do.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I11",
+     "word": "five",
+     "occ": 1,
+     "dur": 1.8
+    },
+    {
+     "kind": "title",
+     "dur": 2.5,
+     "l1": "PSYCHOLOGY OF",
+     "l2": "MANIFESTATION"
+    }
+   ],
+   "picture": "S36",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "only",
+     "occ": 1,
+     "f": [
+      0.3,
+      0.5,
+      1.3
+     ]
+    }
+   ]
+  }
+ ]
+}

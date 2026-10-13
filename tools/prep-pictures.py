@@ -21,7 +21,10 @@ for sc in cfg["scenes"]:
     for e in sc.get("events", []):
         if e["kind"] == "icon": icons.add(e["icon"])
         if e["kind"] == "iconrow": icons.update(i["icon"] for i in e["items"])
+        if e["kind"] == "flash": pics.add(e["pic"])
         if e["kind"] == "pop" and e["content"]["type"] == "icon": icons.add(e["content"]["icon"])
+    dg = sc.get("diagram")
+    if dg and dg.get("kind") == "iconrow": icons.update(i["icon"] for i in dg["items"])
 for name in sorted(pics):
     im = load(name)
     if im is None: print("MISSING", name); continue
