@@ -44,7 +44,8 @@ scenes/                   ← generated specs, word timestamps and timing for th
 parts/partN/  renders/    ← HyperFrames projects and renders
 reference/                ← style references (the look of coded diagrams, the narrator)
 prompts/                  ← Luke's Nano Banana prompts for this video
-videos/01-spotlight/      ← video 1, archived; its make-specs.py and scenes/ are working spec examples
+videos/01-spotlight/      ← video 1, archived
+videos/02-regret/         ← video 2, archived; its make-specs.py and scenes/ are the newest spec examples (host mode and edits)
 ```
 
 ## 2. Setup (once per cloud session, quietly)
@@ -61,7 +62,7 @@ videos/01-spotlight/      ← video 1, archived; its make-specs.py and scenes/ a
 ## 3. Pipeline (in `tools/`)
 
 1. **Specs.** Write `tools/make-specs.py` for the current video from `VIDEO.md`.
-   - Copy the helpers (`sc`, `icon`, `card`, `pop`, `title`, overlays, `foci`) from `videos/01-spotlight/make-specs.py`.
+   - Copy the helpers (`sc`, `icon`, `card`, `pop`, `title`, `mv`, `step`, `quote`, `iconrow`, overlays, `foci`, host tracks) from `videos/02-regret/make-specs.py`, the most recent build. It already supports host mode and the editing toolkit.
    - It outputs `scenes/partN.json` and `scenes/foci.json`.
    - Add any new diagram kinds that `VIDEO.md` asks for to `tools/build-part.mjs`.
 2. **Pause padding.** `tools/pad-audio.py` lengthens silences only (see section 10) and outputs `audio/padded/partN.wav`.

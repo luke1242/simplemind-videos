@@ -1,17 +1,17 @@
-# Nano Banana picture prompts: "The Biggest Regret Almost Everyone Has"
+# Nano Banana picture prompts: "Psychology of Manifestation"
 
-**26 new pictures** (S58 and S59 were added for the longer script). The other 13 are reused from the spotlight video and are already in place.
+**13 new pictures** (S01–S12, plus S11b, an edit of S11). The other 16 (S20–S37) are reused from videos 1 and 2 and are already in place.
 
 ## How to use
 
 1. Open **one** new Nano Banana chat, so everything stays consistent.
-2. **Attach:** `reference/characters/narrator.png` plus 2 or 3 pictures from your spotlight video as style examples (for example S08 bedroom, S12 T-shirt student, S27 cafeteria).
+2. **Attach:** `reference/characters/narrator.png` plus 2 or 3 of your old pictures as style examples (for example the bedroom at night, the cafeteria and the hilltop sunrise).
 3. Paste the **SETUP** message and wait for "ready".
 4. Paste the prompts **one at a time**, in this order. Choose **2K** for each one.
 5. Download each image and name it **exactly** as shown (e.g. `S01.png`).
-6. Prompts marked **(edit of …)** are "same image, but…" edits. Paste them right after the picture they edit.
+6. **S11b is an edit:** paste it right after S11, so it's "the same picture, plus a wall".
 7. If the narrator drifts, reply: *"Redo it. The narrator must match the reference exactly: glowing peach brain head, two white oval eyes, no mouth, black hoodie, black pants, white sneakers with a red stripe."*
-8. Send them all to Claude in a chat (a zip works), and Claude adds them to GitHub.
+8. Put them all in one folder (for example **Pictures Vid3** in Downloads) and tell Claude. Claude adds them to GitHub.
 
 ---
 
@@ -31,136 +31,67 @@ Reply "ready" and wait for my first prompt.
 
 ---
 
-**S59.png** *(new: the opening shot)*
+**S01.png** *(the opening shot)*
 ```
-A tall indoor swimming pool seen from the side. The narrator stands frozen at the very end of a high diving board, far above the water, knees slightly bent, gripping the air, with small scared round eyes and a sweat drop. Far below, the blue pool. Dramatic height, warm light from big windows.
-```
-
-**S58.png** *(new)*
-```
-A simple bedroom in soft early-morning light. The narrator sits on the edge of his unmade bed, shoulders slumped, staring at a pair of brand-new running sneakers and a packed sports bag waiting by the open bedroom door. Small, worried, guilty eyes. A wall calendar with one day circled hangs on the wall (no readable text).
-```
-
-**S01.png**
-```
-A cozy living room with warm lamp light. A researcher stickman in a sage-green shirt sits at a small round table holding a clipboard, leaning forward with interest. Across from him sits an elderly stickman with grey hair, round glasses and a brown knit cardigan, thinking about his answer. Above the researcher floats a speech bubble with a big question mark (symbol only, no words).
+A cozy bedroom at night, dark blue tones, a warm bedside lamp. The narrator sits cross-legged in the middle of his bed, eyes closed as calm happy arcs, hands resting on his knees. Above him floats a BIG glowing golden dream bubble (cloud-shaped, with small trailing bubbles down to his head). Inside the bubble, three little scenes side by side, clearly separated: on the left, a muscular, confident version of the narrator flexing; in the middle, a big screen with a cheering crowd of stickmen; on the right, the narrator standing on a winner's podium holding a gold trophy, with a sunny house behind him. Leave clear space between the three scenes.
 ```
 
 **S02.png**
 ```
-A plain warm cream background with soft ground shadows. Four stickmen stand side by side in a row facing the viewer, evenly spaced with clear gaps between them: (1) a college student in a sky-blue hoodie with a backpack, (2) an office worker in a terracotta shirt and tie holding a coffee cup, (3) a retired professor with round glasses, a short grey beard and a tweed jacket, holding a book, (4) an elderly woman with white hair in a bun and a cardigan, leaning on a cane. All calm and thoughtful.
+The narrator stands in a dim room at night, looking down at a glowing smartphone in his hand, his face lit by the screen. Around him, floating in the air in a loose arc, five glowing rounded cards with soft sparkles: (1) a mini vision board with tiny pinned pictures, (2) an open journal with a pen, (3) a sunrise with a small speech bubble, (4) a cluster of purple crystals, (5) a crescent moon with little stars. Each card is clearly separate, with space around it. Dreamy, slightly mystical mood.
 ```
 
 **S03.png**
 ```
-A researcher stickman in a sage-green shirt sits at a wooden desk covered in hundreds of small paper notes. He is sorting them into two piles: on the left a small, short pile; on the right a huge towering pile, taller than his head. He stares at the big pile with surprised eyebrows. Warm office light, a window behind him. The notes have only squiggly lines, no readable text.
+A small bedroom desk in the afternoon. The narrator is slouched low in a desk chair, scrolling his phone, bored half-closed eyes. On the wall right above the desk is a BIG cork vision board covered in pinned pictures: a muscular stickman flexing, a shiny gold trophy, a red sports car, and a cheering crowd. The board is large, colorful and clearly visible; the narrator is clearly ignoring it. A dusty dumbbell sits on the floor.
 ```
 
 **S04.png**
 ```
-A wooden front porch at golden-hour sunset. An elderly stickman with grey hair and a knit cardigan sits in a wooden rocking chair, gazing into the distance, a little wistful. Above him float four thought bubbles in an arc, each with one simple drawing (no words): an open schoolbook, a smiling person waving, a small airplane, an acoustic guitar. Warm orange sky, potted plants, soft hatching on the wood.
+A sunny college campus lawn on graduation day. Two stickmen graduates in caps and gowns. LEFT: one sits relaxed under a big tree, eyes dreamy and happy, with a large dream bubble above him showing a fancy glass office with a city skyline view. RIGHT: the other sits at a picnic table with an open laptop, focused, next to a tall stack of white envelopes. Clear space between the two.
+```
+
+**S05.png**
+```
+A cozy school library. A stickman student sits at a table with open books he isn't reading, chin resting on his hand, dreamy eyes, with a pink heart-shaped dream bubble above him showing two stickmen holding hands on a park bench. In the background, another stickman student (his crush) walks past carrying books, not noticing him at all.
+```
+
+**S06.png**
+```
+A living room. A stickman student is stretched out on a couch, eyes closed, smiling, hands behind his head. Above him, a dream bubble with a test paper that has a big shiny gold star on it (no letters or numbers). On the coffee table in front of him, a neat stack of unopened textbooks with a small cobweb on top. Clear space between the dream bubble and the textbooks.
 ```
 
 **S07.png**
 ```
-A bedroom at night in deep navy colors, moonlight through the window. The narrator lies in bed on his back, holding a glowing phone above his face with both hands, his thumb hovering over the screen. The phone's light glows on his brain head. Small worried eyes.
+A small bright room. A tired, thirsty stickman student is slumped at a table, tongue slightly out, droopy eyes. Above him, a glowing dream bubble with a tall ice-cold glass of water, ice cubes and cold droplets on the glass. On the table: an empty plate with a few crumbs and an empty water bottle lying on its side. A wall clock in the background.
+```
+
+**S08.png**
+```
+Two stickmen sit side by side at a small cafe table, each holding a big open newspaper. LEFT: relaxed and smiling, pointing at a large EMPTY rectangle box in the middle of his newspaper page (the box is completely blank inside, no text). RIGHT: stressed, sweat drop, squinting eyes, counting the many tiny photos in his newspaper with one finger. The newspapers show only tiny grey photo squares and grey lines, no readable text.
 ```
 
 **S09.png**
 ```
-A plain cool-grey hallway. The narrator stands in front of a closed wooden door, seen from the side. Warm golden light glows through the gap under the door. His hand hovers near the door handle but does not touch it. Small worried eyes, leaning back slightly. Leave clear empty space above and to the left of his head.
-```
-
-**S47b.png** *(edit of S09)*
-```
-Same image, but now the door is slightly open, with warm golden light spilling out across the floor and onto the narrator. His hand is on the handle, pulling it open. Hopeful, happy eyes (^ ^).
+One picture split into two halves by a thin vertical black line. LEFT half: a stickman student lying on a bed, eyes closed, smiling, with a dream bubble of a test paper with a big gold star. RIGHT half: another stickman student sitting at a tidy desk under a desk lamp, focused, with an open planner, open textbooks and notes, and a round wall clock on the wall above the desk.
 ```
 
 **S10.png**
 ```
-The narrator stands on the front step of a house next to a mailbox, holding a ridiculously long paper bill that unrolls down the steps and all the way across the sidewalk. Big surprised round eyes. Bright daytime, warm colors. The bill has only squiggly lines, no readable text or numbers.
+The narrator sits at his desk at night, warm desk lamp, a mug beside him, a window with stars behind. His laptop is open and the screen shows a big simple upload arrow icon (an arrow pointing up into a tray). His hand is on the trackpad, about to click. His eyes are happy, proud upward arcs.
 ```
 
-**S15.png**
+**S11.png**
 ```
-A sunny meadow with a dirt path that splits into two paths, one curving left and one curving right, toward rolling green hills. At the split stands a wooden signpost with two large BLANK wooden arrow signs, one pointing left and one pointing right. The narrator stands at the split with his hand on his chin, one eye narrowed, thinking. The signs must be completely blank.
-```
-
-**S25.png**
-```
-The front steps of a red-brick college building in autumn, orange leaves on the ground. Two stickman college students sit on the steps, both slumped and unhappy, chins resting on their hands: one in a terracotta shirt, one in a sky-blue shirt. Soft cloudy light.
+A running track at sunrise, seen from a low angle along the lanes. The narrator is crouched at the starting line in his lane, ready to run, determined eyes. Far down his lane, at the finish line in the distance, floats a big glowing golden dream bubble showing a gold trophy and a cheering crowd. Warm orange sky, long shadows. Leave the middle of his lane empty and clear.
 ```
 
-**S26.png**
+**S11b.png** *(edit of S11: paste right after it)*
 ```
-The same college steps in autumn. The student in the terracotta shirt walks away toward a bus waiting at the curb, carrying a cardboard moving box and glancing back over his shoulder. The student in the sky-blue shirt still sits on the steps, watching him go.
-```
-
-**S28.png**
-```
-The same college steps, many years later, in the evening. The student in the sky-blue shirt is now an older man with grey hair and a cardigan over his sky-blue shirt. He sits alone on the steps, looking off into the distance, wistful. Soft fading orange light, long shadows, a few leaves falling.
+Exactly the same picture, same angle, same narrator, same dream bubble, same sky. Change only one thing: a low, solid red-brick wall now stands across his lane, halfway between him and the dream bubble, blocking the way.
 ```
 
-**S30.png**
+**S12.png**
 ```
-A warm living room. The narrator kneels on a rug, carefully gluing a broken ceramic vase back together with a small glue bottle. A few broken pieces lie beside him. Calm, relieved eyes (^ ^).
+A sunny backyard in the afternoon. The narrator lies relaxed in a hammock between two trees, eyes closed as content, sleepy arcs, one arm hanging lazily over the side. A small shiny gold trophy rests on his chest. On the grass right under the hammock, his pair of running sneakers sit unused, laces untied.
 ```
-
-**S33.png**
-```
-Night. The narrator sits at a desk in a dark room. On the desk lies a giant open book glowing with warm light, its pages fluttering. Rising out of the book like a dream are small glowing scenes: a stage with a spotlight, a golden trophy, two people laughing together, a city skyline. The narrator watches with wide, wistful eyes.
-```
-
-**S34.png**
-```
-A grey, overcast hillside path. The narrator trudges uphill, bent forward, carrying on his back a huge heavy object shaped like a giant question mark, strapped on like a backpack. Tired, droopy eyes. Small rocks and dry grass along the path.
-```
-
-**S35.png**
-```
-A simple bedroom in cool, dim colors. The narrator stands small in the middle of the room, worried, with a sweat drop. Behind him a giant dark shadow-monster fills the whole room, looming over him, with big glowing white eyes and long shadowy arms. Dramatic but cartoonish, not too scary.
-```
-
-**S35b.png** *(edit of S35)*
-```
-Same image, but the shadow-monster is now tiny, the size of a mouse, sitting on the floor in front of the narrator. The narrator looks down at it, unimpressed, with calm half-closed eyes. The room is brighter and warmer now.
-```
-
-**S37.png**
-```
-A bedroom at night in deep navy colors, moonlight through the window. The narrator lies awake in bed, eyes open, staring at the ceiling. A thought bubble above him shows a closed wooden door with warm golden light glowing underneath it.
-```
-
-**S39.png**
-```
-A long grey office hallway with fluorescent lights. The narrator (wearing a simple tie over his black hoodie) carries a tall, wobbly stack of heavy cardboard boxes, bent under the weight, tired eyes. Cool, desaturated colors.
-```
-
-**S40.png**
-```
-A warm bedroom. The narrator stands in front of a tall full-length mirror, seen slightly from behind. In the mirror his reflection is different: the same narrator, standing confidently on a small stage under warm spotlights, holding an acoustic guitar, happy eyes (^ ^). The real narrator looks at his reflection with wonder.
-```
-
-**S42.png**
-```
-A sunny, peaceful hospital room with a big window and plants. A kind stickman nurse in sky-blue scrubs sits on a chair beside the bed, gently writing in a small notebook and listening. In the bed, an elderly stickman with white hair rests against pillows, smiling softly while talking. Warm light.
-```
-
-**S44.png**
-```
-A wooden porch at golden-hour sunset. The narrator, but OLD: the same brain head with a few soft grey wisps on top, round glasses, a cozy brown knit cardigan over his black hoodie, and his white sneakers. He sits in a wooden rocking chair holding a mug, relaxed, with calm eyes. Warm orange sky.
-```
-
-**S44b.png** *(edit of S44)*
-```
-Same image, but the old narrator has put the mug down and crossed his arms, with annoyed eyes (flat, half-closed, with short slanted brow lines above them).
-```
-
-**S47.png**
-```
-A giant rocky mountain fills the background, so tall its peak disappears into the clouds. The narrator stands tiny at the bottom, looking up at it, overwhelmed, worried eyes. Right in front of his feet is one small stone step. Wide shot, blue sky.
-```
-
----
-
-**Total: 26 pictures.** Reused from video 1 (nothing to make): S05, S06, S08, S12, S13, S20, S23, S36, S50, S54, S55, S56, S57.

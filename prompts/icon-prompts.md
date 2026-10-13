@@ -1,13 +1,13 @@
-# Icon prompts: "The Biggest Regret Almost Everyone Has"
+# Icon prompts: "Psychology of Manifestation"
 
-**11 new icons (I40–I50).** The others (I06, I08, I09, I11, I13, I14, I16, I17, I26, I29, I30) are reused from video 1 and are already in `icons/`.
+**12 new icons (I51–I62).** The others (I06, I11, I13, I25, I41, I43, I46, I49) are reused and are already in `icons/`.
 
 ## How to use
 
-1. Open a **new** Nano Banana chat. Attach 2 of your old icons as examples (for example I09 lightbulb and I23 lunch tray).
+1. Open a **new** Nano Banana chat. Attach 2 of your old icons as examples (for example `reference/style/icon-example-1.jpg` and `icon-example-2.jpg`).
 2. Paste the **SETUP** message.
-3. Paste the prompts one at a time, choosing **2K**, and name each file exactly as shown (`I40.jpg` …).
-4. **I45 and I46 are shown full-screen**, so make sure those two are 2K.
+3. Paste the prompts one at a time, choosing **2K**, and name each file exactly as shown (`I51.jpg` …).
+4. Put them in one folder (for example **Icons Vid3** in Downloads) and tell Claude.
 
 ## SETUP
 
@@ -21,14 +21,15 @@ Reply "ready" and wait for my first prompt.
 
 | File | Prompt |
 |---|---|
-| I40 | A wooden rocking chair standing on a small patch of porch boards. |
-| I41 | A smartphone showing a chat screen with one typed message bubble and a round send-arrow button, a thumb hovering over the send button. |
-| I42 | A shiny gold coin spinning in mid-air with little motion lines, as if just flipped. |
-| I43 | An hourglass with sand running from the top to the bottom. |
-| I44 | A simple adhesive bandage (band-aid) in a cross shape. |
-| I45 | An unopened gift box with a ribbon bow, covered in dust and a few cobwebs, sitting alone on a wooden shelf. |
-| I46 | A closed hardcover book lying flat, with a ribbon bookmark hanging out of it. |
-| I47 | A clipboard checklist where every box is checked in green except one empty box at the bottom. |
-| I48 | A snowball rolling down a snowy slope, getting bigger as it goes, with a trail behind it. |
-| I49 | A single running shoe with little motion lines. |
-| I50 | An acoustic guitar standing slightly tilted. |
+| I51 | A glowing crystal ball on a small wooden stand, with soft purple swirls inside. |
+| I52 | A shiny gold trophy cup with two handles, on a small dark base. |
+| I53 | A tall, slightly messy stack of white envelopes. |
+| I54 | A big red cartoon heart with a small white shine. |
+| I55 | A small hospital bed with a white pillow and a light blue blanket, with a wooden walking cane leaning against it. |
+| I56 | A phone-style battery icon, almost empty, with one small red bar at the bottom. |
+| I57 | A golden shooting star with a sparkly curved trail. |
+| I58 | A short, solid red-brick wall. |
+| I59 | An unfolded paper map with a dotted path winding across it to a red X. |
+| I60 | An open laptop whose screen shows a big upward arrow going into a tray (an upload icon). |
+| I61 | A red horseshoe magnet with little yellow sparkles at its tips. |
+| I62 | A small video camera on a tripod with a glowing red record light. |
