@@ -168,7 +168,7 @@ P3 = [
  sc("M49", '''Picturing the grade felt good. Picturing the process made them actually plan.''', None, "hold", host=[["N06"]],
     diagram=cards(st([P("THE GRADE: FELT", sz="mid"), P("GOOD", Y)]), st([P("THE PROCESS: MADE A", sz="mid"), P("PLAN", Y, ul=True)], W_("process"), ul=W_("plan")))),
  sc("M50", '''So the problem isn't that you're picturing your goal. It's that you're only picturing the ending. And you're skipping the most important part of the picture... the part where something gets in your way.''', "S11",
-    pictureB="S11b", swap={"word": "way"}, moves=[mv("snap", "ending", [0.78, 0.21, 1.4]), mv("zoom", "skipping", [0.3, 0.6, 1.2])]),
+    pictureB="S11b", swap={"word": "way"}, moves=[mv("snap", "ending", [0.78, 0.21, 1.4]), mv("zoom", "skipping", [0.3, 0.5, 1.15])]),
 ]
 P4 = [
  sc("M51", '''So here's how I actually manifest now. Five steps.''', "S36",
@@ -184,7 +184,7 @@ P4 = [
  sc("M55", '''It's the next step that makes it work.''', None, "hold", host=[["N01"]],
     diagram={"kind": "woop", "ticks": ["WISH", "OUTCOME"], "pulse": ["OBSTACLE", "next"], "answers": {"WISH": [WISH_A, None, 1]}}),
  sc("M56", '''Three. Obstacle. This is the step everyone skips. Ask yourself: what's the main thing inside me that's going to get in the way?''', "S11b",
-    moves=[mv("snap", "skips", [0.72, 0.52, 1.4]), mv("whip", "inside", [0.3, 0.62, 1.2])],
+    moves=[mv("snap", "skips", [0.72, 0.52, 1.4]), mv("whip", "inside", [0.3, 0.5, 1.15])],
     overlays=[step("STEP 3", "OBSTACLE", "three", until="skips"), tag("skips", [("THE ONE",), ("EVERYONE SKIPS", R)], dur=2.6)]),
  sc("M57", '''Not other people. Not bad luck. You.''', None, "hold", host=[["N02"]],
     diagram=cards(st([("NOT",), ("OTHER PEOPLE", R)]), st([("NOT",), ("BAD LUCK", R)], W_("luck")), st([P("YOU.", Y)], W_("you"))), fx=[{"type": "impact", "word": "you"}]),
@@ -198,7 +198,7 @@ P4 = [
  sc("M61", '''Four. Plan. Make one simple if-then plan for that obstacle.''', None, "hold", host=[["N07"], ["N01", "make"]],
     diagram={"kind": "woop", "active": "PLAN"}, overlays=[step("STEP 4", "PLAN", "four", dur=3.2)]),
  sc("M62", '''"If I get home tired and grab my phone, then I'll put it in the other room and do ten minutes first."''', None, "hold",
-    ev=[icon("ten", "I43")], host=[["N01"]], diagram=split(["IF:", "TIRED + PHONE"], ["THEN:", "OTHER ROOM"], W_("if"), W_("then"), rb="yellow")),
+    ev=[icon("ten", "I43")], host=[["N01"]], diagram=split(["IF:", "TIRED + PHONE"], ["THEN:", "OTHER ROOM"], W_("if"), W_("then"), fs=92, rb="yellow")),
  sc("M63", '''In one study, high school students who used this method completed more than sixty percent more practice questions for a big exam than students who didn't.''', None, "hold", host=[["N02"]],
     diagram={"kind": "bars", "raw": True, "colorA": "#F2C230", "bars": [{"label": "USED WOOP", "v": 140}, {"label": "DIDN'T", "v": 84}], "title": "PRACTICE QUESTIONS", "source": "Duckworth et al., 2011", "plus": "+60%",
              "at": {"grow": W_("used"), "plus": W_("sixty")}},
@@ -223,12 +223,12 @@ P4 = [
     ev=[card("over", [P("OVER AND OVER", Y)])], moves=[mv("snap", "version", [0.33, 0.5, 1.35]), mv("whip", "doing", [0.6, 0.5, 1.3])]),
  sc("M73", '''So keep the dream. Just stop letting it be the finish line. Let it be the starting line.''', "S11", "zoom-out",
     ev=[card("finish", [("NOT THE",), ("FINISH LINE", R)], max=3.6, dur=3.2, swap={"word": "starting", "parts": _parts([("THE",), ("STARTING LINE", Y)])})],
-    moves=[mv("snap", "dream", [0.78, 0.21, 1.4]), mv("whip", "just", [0.3, 0.65, 1.2])], overlays=[sweep("just", 0.0, 0.0, 1.0, 0.5)]),
+    moves=[mv("snap", "dream", [0.78, 0.21, 1.4]), mv("whip", "just", [0.3, 0.5, 1.15])], overlays=[sweep("just", 0.0, 0.0, 1.0, 0.5)]),
  sc("M74", '''Dream big. Then get specific. Picture what you want. Then picture what's in your way. Then make a plan to get past it.''', None, "hold", host=[["N01"], ["N02", "picture"]],
     diagram={"kind": "woop", "lights": [[["WISH", "OUTCOME"], "want"], [["OBSTACLE"], "way"], [["PLAN"], "plan"]]}),
  sc("M75", '''That's not as magical as the universe handing it to you. But it's a version of manifesting that actually works... and you're the one making it happen.''', "S27", trans="fade",
     ev=[icon("magical", "I51")], moves=[mv("snap", "you're", [0.72, 0.47, 1.4])]),
- sc("M76", '''Which step do you usually skip? Tell me the number in the comments. And if your biggest obstacle is that voice in your head saying everyone's watching, I made a whole video on why that's not true. I'll leave it right here.''', "S29", "hold",
+ sc("M76", '''Which step do you usually skip? Tell me the number in the comments. And if your biggest obstacle is that voice in your head saying everyone's watching, I made a whole video on why that's not true. I'll leave it right here.''', "S29", "hold", moves=[mv("zoom", "which", [0.5, 0.5, 1])],
     ev=[pop("number", "N08", [("WHICH",), ("NUMBER?", Y)], dur=2.2), flash("S28", "voice", "made")], holdEnd=True),
 ]
 for n, sc_ in ((1, P1), (2, P2), (3, P3), (4, P4)):
@@ -237,7 +237,7 @@ for n, sc_ in ((1, P1), (2, P2), (3, P3), (4, P4)):
 FOCI = {
  "S01": [[.15, .25, 1.4], [.78, .28, 1.4], [.55, .62, 1.4]], "S02": [[.16, .38, 1.4], [.53, .2, 1.4], [.53, .5, 1.3]], "S03": [[.6, .3, 1.4], [.5, .55, 1.3]], "S04": [[.2, .55, 1.4], [.82, .6, 1.4]],
  "S05": [[.68, .22, 1.4], [.4, .55, 1.4]], "S06": [[.6, .25, 1.4], [.65, .8, 1.4]], "S07": [[.67, .22, 1.4], [.54, .82, 1.4]], "S08": [[.34, .42, 1.4], [.68, .45, 1.4]], "S09": [[.18, .4, 1.3], [.8, .55, 1.3]],
- "S10": [[.3, .68, 1.4], [.64, .3, 1.3]], "S11": [[.78, .21, 1.4], [.3, .65, 1.2]], "S11b": [[.72, .52, 1.4], [.3, .62, 1.2]], "S12": [[.55, .47, 1.4], [.42, .87, 1.4]],
+ "S10": [[.3, .68, 1.4], [.64, .3, 1.3]], "S11": [[.78, .21, 1.4], [.3, .5, 1.15]], "S11b": [[.72, .52, 1.4], [.3, .5, 1.15]], "S12": [[.55, .47, 1.4], [.42, .87, 1.4]],
  "S20": [[.46, .4, 1.4], [.78, .4, 1.3]], "S21": [[.76, .5, 1.4]], "S22": [[.78, .62, 1.4]], "S23": [[.85, .86, 1.4], [.45, .58, 1.3]], "S24": [[.5, .15, 1.4], [.39, .8, 1.4]],
  "S25": [[.58, .25, 1.4], [.6, .5, 1.3]], "S26": [[.33, .5, 1.35], [.6, .5, 1.3]], "S27": [[.72, .47, 1.4], [.55, .55, 1.2]], "S28": [[.32, .52, 1.4], [.5, .85, 1.3]],
  "S29": [[.85, .5, 1.3]], "S31": [[.35, .5, 1.3], [.6, .25, 1.2]], "S33": [[.6, .2, 1.4], [.5, .6, 1.2]], "S34": [[.5, .5, 1.2]], "S35": [[.4, .58, 1.3], [.62, .45, 1.3]],

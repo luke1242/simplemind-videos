@@ -40,7 +40,7 @@ const partTweens = (parts, pre, t0, ov = {}) => { const r = []; parts.forEach((p
 }); return r; };
 const countTw = (id, obj, to, t, d, fmt) => `tl.fromTo(${obj},{v:0},{v:${to},duration:${d},ease:"power2.out",onUpdate:function(){var e=document.getElementById("${id}");if(e)e.textContent=${fmt};}},${f3(t)});`;
 let cuid = 0;
-const person = (x, y, id, fill) => `<g id="${id}" transform="translate(${x} ${y}) scale(1.2)"><circle cx="0" cy="-34" r="21" class="pp" fill="${fill}" stroke="${INK}" stroke-width="6"/><path class="pp" d="M-27 40 V0 Q-27 -12 -15 -12 H15 Q27 -12 27 0 V40 Z" fill="${fill}" stroke="${INK}" stroke-width="6" stroke-linejoin="round"/></g>`;
+const person = (x, y, id, fill) => `<g id="${id}" transform="translate(${x} ${y}) scale(1)"><circle cx="0" cy="-34" r="21" class="pp" fill="${fill}" stroke="${INK}" stroke-width="6"/><path class="pp" d="M-27 40 V0 Q-27 -12 -15 -12 H15 Q27 -12 27 0 V40 Z" fill="${fill}" stroke="${INK}" stroke-width="6" stroke-linejoin="round"/></g>`;
 const ICONS = {};
 const SCREEN = new Set(["label", "pill", "step", "tag"]);
 const symSvg = (inner) => `<svg viewBox="0 0 100 100" width="160" height="160">${inner}</svg>`;
@@ -72,16 +72,16 @@ function diagram(d, pre, T, S0 = 0) {
   }
   if (d.kind === "grid") {
     let g = ""; const nred = d.fill || 0, ALL = Array.from({ length: 60 }, (_, i) => `#${pre}-g${i}`).join(","), LIT = [4, 17, 23, 38, 45, 52];
-    for (let r = 0; r < 6; r++) for (let c = 0; c < 10; c++) g += person(960 + (c - 4.5) * 150, 160 + r * 105, `${pre}-g${r * 10 + c}`, "#fff");
+    for (let r = 0; r < 6; r++) for (let c = 0; c < 10; c++) g += person(960 + (c - 4.5) * 150, 150 + r * 108, `${pre}-g${r * 10 + c}`, "#fff");
     const labHtml = d.count ? `<span class="badge ${d.count.badge}" id="${pre}-cv">0${d.count.suffix || ""}</span><span>${d.count.text}</span>` : (d.label || "");
     const bd = d.badge ? `<div class="dlabel" id="${pre}-bd" style="top:790px">${d.badge.parts.map((p) => (p.badge ? `<span class="badge ${p.badge}">${p.t}</span>` : `<span>${p.t}</span>`)).join("")}</div>` : "";
     const h = `<div class="fill diag">${svgWrap(g)}<div class="dlabel" id="${pre}-lab" style="top:810px">${labHtml}</div>${bd}</div>`;
     if (d.draw) for (let r = 0; r < 6; r++) tw.push(`tl.fromTo("${Array.from({ length: 10 }, (_, c) => `#${pre}-g${r * 10 + c}`).join(", ")}",{opacity:0,scale:0.6},{opacity:1,scale:1,duration:0.22,ease:"back.out(1.7)"},${f3(S0 + r * 0.2)});`);
-    if (d.pop) { const t1 = at("pop", 0); tw.push(`tl.set("${ALL}",{opacity:0.2},0);`); for (let r = 0; r < 6; r++) tw.push(`tl.fromTo("${Array.from({ length: 10 }, (_, c) => `#${pre}-g${r * 10 + c}`).join(", ")}",{opacity:0.2,scale:0.9},{opacity:1,scale:1.2,duration:0.25,ease:"back.out(1.7)"},${f3(t1 + r * 0.14)});`); sfx.push({ t: f3(t1), kind: "pop" }); }
+    if (d.pop) { const t1 = at("pop", 0); tw.push(`tl.set("${ALL}",{opacity:0.2},0);`); for (let r = 0; r < 6; r++) tw.push(`tl.fromTo("${Array.from({ length: 10 }, (_, c) => `#${pre}-g${r * 10 + c}`).join(", ")}",{opacity:0.2,scale:0.85},{opacity:1,scale:1,duration:0.25,ease:"back.out(1.7)"},${f3(t1 + r * 0.14)});`); sfx.push({ t: f3(t1), kind: "pop" }); }
     if (nred) { const t0 = at("red", 0); for (let i = 0; i < nred; i++) tw.push(`tl.to("#${pre}-g${i} .pp",{fill:"${RED}",duration:0.12,ease:"none"},${f3(t0 + (i / nred) * 0.6)});`); }
     if (d.count) { const c = d.count, t0 = at("count", 0), o = vid(`${pre}_c`); tw.push(`const ${o}={v:0};`, `tl.set("#${pre}-lab",{opacity:0},0);`, `tl.set("#${pre}-lab",{opacity:1},${f3(t0)});`,
       `tl.fromTo(${o},{v:0},{v:${c.to},duration:0.6,ease:"power2.out",onUpdate:function(){var e=document.getElementById("${pre}-cv");if(e)e.textContent=Math.round(${o}.v)+${JSON.stringify(c.suffix || "")};}},${f3(t0)});`); }
-    if (d.lit) { const t1 = at("lit", 0); LIT.slice(0, d.lit.n).forEach((i, k) => tw.push(`tl.to("#${pre}-g${i} .pp",{fill:"${YEL}",duration:0.2,ease:"none"},${f3(t1 + k * 0.08)});`, `tl.fromTo("#${pre}-g${i}",{scale:1.2},{scale:1.42,duration:0.16,yoyo:true,repeat:1,ease:"power2.out"},${f3(t1 + k * 0.08)});`)); sfx.push({ t: f3(t1), kind: "ding" }); }
+    if (d.lit) { const t1 = at("lit", 0); LIT.slice(0, d.lit.n).forEach((i, k) => tw.push(`tl.to("#${pre}-g${i} .pp",{fill:"${YEL}",duration:0.2,ease:"none"},${f3(t1 + k * 0.08)});`, `tl.fromTo("#${pre}-g${i}",{scale:1},{scale:1.3,duration:0.16,yoyo:true,repeat:1,ease:"power2.out"},${f3(t1 + k * 0.08)});`)); sfx.push({ t: f3(t1), kind: "ding" }); }
     if (d.dim) { const t1 = at("dim", 0), keep = new Set(LIT.slice(0, (d.lit || { n: 6 }).n)); for (let i = 0; i < 60; i++) if (!keep.has(i)) tw.push(`tl.to("#${pre}-g${i} .pp",{fill:"${GREY}",duration:0.5,ease:"power1.inOut"},${f3(t1)});`); }
     if (d.badge) { const tb = at("badge", 0); tw.push(`tl.set("#${pre}-bd",{opacity:0},0);`, `tl.set("#${pre}-lab",{opacity:0},0);`, `tl.fromTo("#${pre}-bd",{opacity:0,scale:0.8},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},${f3(tb)});`); sfx.push({ t: f3(tb), kind: "pop" }); }
     return { html: h, tw };
@@ -184,9 +184,9 @@ function diagram(d, pre, T, S0 = 0) {
     if (d.intro) {
       const ti = T(d.intro);
       ROWS.forEach((r, i) => {
-        tw.push(`tl.set("#${pre}-L${i}",{opacity:0,scale:0.3},0);`, `tl.set("#${pre}-lb${i},#${pre}-sl${i}",{opacity:0},0);`,
+        tw.push(`tl.set("#${pre}-L${i}",{opacity:0,scale:0.3},0);`, `tl.set("#${pre}-lb${i},#${pre}-sl${i}",{opacity:0.18},0);`,
           `tl.fromTo("#${pre}-L${i}",{opacity:0,scale:0.3},{opacity:1,scale:1,duration:0.28,ease:"back.out(2)"},${f3(ti + i * 0.12)});`,
-          `tl.fromTo("#${pre}-lb${i},#${pre}-sl${i}",{opacity:0,x:40},{opacity:1,x:0,duration:0.3,ease:"power2.out"},${f3(ti + 0.12 * 4 + 0.3 + i * 0.1)});`);
+          `tl.fromTo("#${pre}-lb${i},#${pre}-sl${i}",{opacity:0.18},{opacity:1,duration:0.3,ease:"power2.out"},${f3(ti + 0.12 * 4 + 0.1 + i * 0.1)});`);
       });
       sfx.push({ t: f3(ti), kind: "pop" });
     }
@@ -221,7 +221,7 @@ function screenOv(id, o, host) {
 function picOv(id, o) {
   const b = o.box, pos = b ? `left:${f3(b.x * 1920)}px;top:${f3(b.y * 1080)}px;width:${f3(b.w * 1920)}px;height:${f3(b.h * 1080)}px` : "";
   if (o.type === "bubble") return `<div id="${id}" class="sbub" data-layout-allow-overlap style="${pos}"><span>${o.text}</span><i></i></div>`;
-  if (o.type === "sign") return `<div id="${id}" class="sign${o.card ? " scard" : ""}" data-layout-allow-overlap style="${pos};transform:rotate(${o.rot || 0}deg);font-size:${o.fs || 64}px">${o.text.replace("{N}", `<span class="badge yellow cnb" id="${id}-n">${o.cnt}</span>`)}</div>`;
+  if (o.type === "sign") return `<div id="${id}" class="sign${o.card ? " scard" : ""}" data-layout-allow-overlap style="${pos};transform:rotate(${o.rot || 0}deg);font-size:${o.fs || 64}px"><div style="text-align:center">${o.text.replace("{N}", `<span class="badge yellow cnb" id="${id}-n">${o.cnt}</span>`)}</div></div>`;
   if (o.type === "sweep") return `<div id="${id}" class="sweepbox" data-layout-allow-overlap style="${pos}"><div id="${id}-b" class="sweepband"></div></div>`;
   if (o.type === "badge") return `<div id="${id}" class="tagbox" data-layout-allow-overlap style="${pos};font-size:${o.fs || 110}px"><span class="badge ${o.badge}" id="${id}-t">${o.text}</span></div>`;
   if (o.type === "wheel") return `<div id="${id}" class="tagbox" data-layout-allow-overlap style="${pos};font-size:230px"><span class="badge yellow wheel" id="${id}-t" style="display:flex">${[0, 1, 2].map((k) => `<span class="dig"><span class="col" id="${id}-c${k}">${[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((x) => `<span>${x}</span>`).join("")}</span></span>`).join("")}</span></div>`;
