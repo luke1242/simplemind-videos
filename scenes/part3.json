@@ -1,0 +1,549 @@
+{
+ "part": 3,
+ "audio": "audio/padded/part3.wav",
+ "scenes": [
+  {
+   "id": "R32",
+   "camera": "zoom-out",
+   "narration": "So why does this happen? Why do the things we don't do follow us around for so much longer? The researchers pointed to a few reasons. And once you see them, it's hard to unsee them.",
+   "events": [
+    {
+     "kind": "pop",
+     "pose": "N06",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "WHY?",
+        "badge": "yellow"
+       }
+      ]
+     },
+     "word": "why",
+     "occ": 1,
+     "dur": 2.0
+    },
+    {
+     "kind": "pop",
+     "pose": "N08",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "4",
+        "badge": "yellow"
+       },
+       {
+        "t": "REASONS"
+       }
+      ]
+     },
+     "word": "few",
+     "occ": 1,
+     "dur": 2.4
+    }
+   ],
+   "picture": "S09"
+  },
+  {
+   "id": "R33",
+   "camera": "zoom-in",
+   "narration": "One. When you make a mistake, you do something about it. You apologize. You fix it. You laugh about it later. Or you find the silver lining. \"Well, at least I learned something.\" Your brain does a lot of quiet repair work on the things you did.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I44",
+     "word": "fix",
+     "occ": 1,
+     "dur": 1.8
+    },
+    {
+     "kind": "icon",
+     "icon": "I09",
+     "word": "learned",
+     "occ": 1,
+     "dur": 1.8
+    },
+    {
+     "kind": "crop",
+     "focus": [
+      0.5,
+      0.5,
+      1.35
+     ],
+     "word": "repair",
+     "occ": 1,
+     "dur": 2.4
+    }
+   ],
+   "picture": "S30",
+   "overlays": [
+    {
+     "type": "step",
+     "step": "REASON 1",
+     "text": "YOU REPAIR MISTAKES",
+     "word": "one",
+     "occ": 1
+    }
+   ]
+  },
+  {
+   "id": "R34",
+   "camera": "zoom-in",
+   "narration": "But there's nothing to repair when nothing happened. So it just... sits there.",
+   "events": [],
+   "picture": "I45",
+   "host": [
+    [
+     "N06"
+    ]
+   ]
+  },
+  {
+   "id": "R35",
+   "camera": "zoom-in",
+   "narration": "Two. A mistake has an ending. A missed chance doesn't. If you try something and it goes badly, you know exactly how bad it was. The story is over.",
+   "events": [
+    {
+     "kind": "pop",
+     "pose": "N01",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "THE STORY IS"
+       },
+       {
+        "t": "OVER",
+        "badge": "yellow"
+       }
+      ]
+     },
+     "word": "badly",
+     "occ": 1,
+     "dur": 2.4
+    }
+   ],
+   "picture": "I46",
+   "host": [
+    [
+     "N08"
+    ],
+    [
+     "N01",
+     "if"
+    ]
+   ],
+   "overlays": [
+    {
+     "type": "step",
+     "step": "REASON 2",
+     "text": "A MISTAKE HAS AN ENDING",
+     "word": "two",
+     "occ": 1
+    }
+   ]
+  },
+  {
+   "id": "R36",
+   "camera": "zoom-in",
+   "narration": "But if you never try, the story stays open. And your imagination keeps writing new endings. Maybe it would have worked. Maybe it would have changed everything.",
+   "events": [],
+   "picture": "S33",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "imagination",
+     "occ": 1,
+     "f": [
+      0.58,
+      0.3,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "maybe",
+     "occ": 1,
+     "f": [
+      0.75,
+      0.22,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "changed",
+     "occ": 1,
+     "f": [
+      0.6,
+      0.3,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "R37",
+   "camera": "zoom-in",
+   "narration": "You'll never know. And \"I'll never know\" is a heavy thing to carry.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "YOU'LL"
+      },
+      {
+       "t": "NEVER",
+       "badge": "red"
+      },
+      {
+       "t": "KNOW"
+      }
+     ],
+     "word": "never",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "picture": "S34"
+  },
+  {
+   "id": "R38",
+   "camera": "zoom-in",
+   "narration": "Three. Over time, you forget why you were scared. In the moment, the fear feels huge. Like the most important thing in the room. But ten years later, you can barely remember it. You remember the reasons you had to go. You just can't remember the reasons you had to stay. And from far away, the thing that stopped you looks... kind of small.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "THE FEAR FEELS"
+      },
+      {
+       "t": "HUGE",
+       "badge": "yellow"
+      }
+     ],
+     "word": "huge",
+     "occ": 1,
+     "dur": 1.9
+    },
+    {
+     "kind": "icon",
+     "icon": "I43",
+     "word": "ten",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "picture": "S35",
+   "pictureB": "S35b",
+   "swap": {
+    "word": "small",
+    "kind": "iris",
+    "pt": [
+     0.45,
+     0.8
+    ]
+   },
+   "overlays": [
+    {
+     "type": "step",
+     "step": "REASON 3",
+     "text": "YOU FORGET THE FEAR",
+     "word": "three",
+     "occ": 1
+    }
+   ],
+   "fx": [
+    {
+     "type": "impact",
+     "word": "huge"
+    }
+   ]
+  },
+  {
+   "id": "R39",
+   "camera": "zoom-out",
+   "narration": "Which, if you saw my last video, makes a lot of sense. Most of the time, the fear was about people watching... who weren't really watching.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I06",
+     "word": "watching",
+     "occ": 1,
+     "dur": 1.6
+    },
+    {
+     "kind": "icon",
+     "icon": "I29",
+     "word": "weren't",
+     "occ": 1,
+     "dur": 1.6
+    }
+   ],
+   "picture": "S36",
+   "host": [
+    [
+     "N05"
+    ]
+   ]
+  },
+  {
+   "id": "R40",
+   "camera": "zoom-in",
+   "narration": "Four. Unfinished things stay on your mind. Your brain is good at letting go of things that are done. It's much worse at letting go of things that never got finished, or never even got started. So the door you never opened... keeps coming back.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I47",
+     "word": "finished",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "picture": "S37",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "door",
+     "occ": 1,
+     "f": [
+      0.58,
+      0.2,
+      1.4
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "step",
+     "step": "REASON 4",
+     "text": "UNFINISHED THINGS STAY",
+     "word": "four",
+     "occ": 1
+    }
+   ]
+  },
+  {
+   "id": "R41",
+   "camera": "zoom-out",
+   "narration": "And there's one more study, from two thousand eighteen, that I think is the most important part of all of this. Gilovich and another researcher, Shai Davidai, asked people about their regrets again. But this time, they sorted them differently.",
+   "events": [
+    {
+     "kind": "pop",
+     "pose": "N02",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "THE"
+       },
+       {
+        "t": "MOST IMPORTANT",
+        "badge": "yellow"
+       },
+       {
+        "t": "PART"
+       }
+      ]
+     },
+     "word": "important",
+     "occ": 1,
+     "dur": 2.6
+    }
+   ],
+   "picture": "S03",
+   "host": [
+    [
+     "N02"
+    ],
+    [
+     "N01",
+     "gilovich"
+    ]
+   ],
+   "overlays": [
+    {
+     "type": "label",
+     "text": "Davidai & Gilovich, 2018",
+     "word": "davidai",
+     "ul": true,
+     "dur": 5
+    }
+   ]
+  },
+  {
+   "id": "R42",
+   "camera": "zoom-in",
+   "narration": "Were they about who you felt you should be? Your duties. Your responsibilities.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "WHO YOU"
+      },
+      {
+       "t": "SHOULD",
+       "badge": "yellow"
+      },
+      {
+       "t": "BE"
+      }
+     ],
+     "word": "should",
+     "occ": 1,
+     "dur": 1.9
+    }
+   ],
+   "picture": "S39"
+  },
+  {
+   "id": "R43",
+   "camera": "zoom-in",
+   "narration": "Or were they about who you wanted to be? Your dreams. Your goals. The person you hoped you'd become.",
+   "events": [],
+   "picture": "S40",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "become",
+     "occ": 1,
+     "f": [
+      0.33,
+      0.5,
+      1.4
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "sweep",
+     "word": "become",
+     "box": {
+      "x": 0.17,
+      "y": 0.2,
+      "w": 0.3,
+      "h": 0.62
+     }
+    }
+   ]
+  },
+  {
+   "id": "R44",
+   "camera": "hold",
+   "narration": "Seventy-six percent of people said their single biggest regret was about not becoming the person they wanted to be.",
+   "events": [],
+   "host": [
+    [
+     "N02"
+    ]
+   ],
+   "lead": 1.0,
+   "diagram": {
+    "kind": "bars",
+    "bars": [
+     {
+      "label": "WHO I<br>WANTED TO BE",
+      "pct": 76
+     },
+     {
+      "label": "WHO I<br>SHOULD BE",
+      "pct": 24
+     }
+    ],
+    "rack": true,
+    "rackFirst": 1,
+    "at": {
+     "grow": {
+      "word": "seventy",
+      "occ": 1
+     },
+     "rack": {
+      "word": "seventy",
+      "occ": 1
+     }
+    }
+   },
+   "fx": [
+    {
+     "type": "riser",
+     "word": "seventy"
+    },
+    {
+     "type": "impact",
+     "word": "seventy",
+     "off": 0.0
+    }
+   ]
+  },
+  {
+   "id": "R45",
+   "camera": "zoom-out",
+   "narration": "Think about that. The regrets that last the longest aren't about the times you messed up. They're about the version of you that never got a chance to show up.",
+   "events": [
+    {
+     "kind": "pop",
+     "pose": "N02",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "NEVER GOT"
+       },
+       {
+        "t": "A CHANCE",
+        "badge": "yellow"
+       }
+      ]
+     },
+     "word": "version",
+     "occ": 1,
+     "dur": 2.6
+    }
+   ],
+   "picture": "S40"
+  },
+  {
+   "id": "R46",
+   "camera": "zoom-in",
+   "narration": "A nurse named Bronnie Ware spent years caring for people in the last weeks of their lives, and she wrote down what they told her. The regret she heard most often was this: \"I wish I'd had the courage to live a life true to myself, not the life others expected of me.\" Notice what that regret is about. It's not about a mistake. It's about courage.",
+   "events": [
+    {
+     "kind": "quote",
+     "word": "wish",
+     "until": "notice",
+     "text": "I wish I'd had the [[courage]] to live a life [[true to myself,]] not the life others expected of me.",
+     "by": "Bronnie Ware, palliative care nurse"
+    },
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "IT'S ABOUT"
+      },
+      {
+       "t": "COURAGE",
+       "mk": true
+      }
+     ],
+     "word": "courage",
+     "occ": 2,
+     "dur": 1.9
+    }
+   ],
+   "picture": "S42",
+   "host": [
+    [
+     "N06"
+    ],
+    [
+     "N02",
+     "notice"
+    ]
+   ]
+  }
+ ]
+}

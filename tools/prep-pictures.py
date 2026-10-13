@@ -5,8 +5,7 @@ from PIL import Image
 n = sys.argv[1]; cfg = json.load(open(f"scenes/part{n}.json")); FOCI = json.load(open("scenes/foci.json"))
 os.makedirs("assets/pictures", exist_ok=True); os.makedirs("assets/icons", exist_ok=True)
 def load(name):
-    for ext in ("png", "jpg"):
-        p = f"pictures/{name}.{ext}"
+    for p in (f"pictures/{name}.png", f"pictures/{name}.jpg", f"icons/{name}.jpg"):  # an icon can be used as a full-frame picture
         if os.path.exists(p): return Image.open(p).convert("RGB")
 def to169(im):
     w, h = im.size; tw = round(h * 16 / 9)
@@ -21,18 +20,13 @@ for sc in cfg["scenes"]:
         if sc.get(k): pics.add(sc[k])
     for e in sc.get("events", []):
         if e["kind"] == "icon": icons.add(e["icon"])
+        if e["kind"] == "iconrow": icons.update(i["icon"] for i in e["items"])
         if e["kind"] == "pop" and e["content"]["type"] == "icon": icons.add(e["content"]["icon"])
-    if sc.get("foci"): resolved["__" + sc["id"]] = [rect(*f) for f in sc["foci"]]
 for name in sorted(pics):
     im = load(name)
     if im is None: print("MISSING", name); continue
-    full = to169(im); full.resize((1920, 1080), Image.LANCZOS).save(f"assets/pictures/{name}.jpg", quality=95)
-    rs = []
-    for i, f in enumerate(FOCI.get(name, [])):
-        r = rect(*f); rs.append(r); W, H = full.size
-        full.crop((round(r[0] * W), round(r[1] * H), round((r[0] + r[2]) * W), round((r[1] + r[2]) * H))).resize((1920, 1080), Image.LANCZOS).save(f"assets/pictures/{name}-f{i}.jpg", quality=95)
-    resolved[name] = rs
+    full = to169(im); full.resize((2560, 1440), Image.LANCZOS).save(f"assets/pictures/{name}.jpg", quality=93)  # 2560 wide so camera zooms up to 1.4x stay sharp; shown at 1920
 for ic in sorted(icons):
     Image.open(f"icons/{ic}.jpg").convert("RGB").resize((1920, 1080), Image.LANCZOS).save(f"assets/icons/{ic}.jpg", quality=95)
-json.dump(resolved, open(f"scenes/part{n}.foci.json", "w"))
+json.dump({k: v for k, v in FOCI.items()}, open(f"scenes/part{n}.foci.json", "w"))
 print("pictures", len(pics), "icons", len(icons))

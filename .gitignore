@@ -11,3 +11,8 @@ audio/padded/
 parts/*/assets/*.wav
 preview/
 review/
+assets/pictures/
+assets/icons/
+audio/raw/
+parts/*/assets/
+parts/*/snapshots/

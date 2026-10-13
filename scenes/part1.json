@@ -1,0 +1,598 @@
+{
+ "part": 1,
+ "audio": "audio/padded/part1.wav",
+ "scenes": [
+  {
+   "id": "R01",
+   "camera": "zoom-in",
+   "narration": "Most people think the choice they'll regret is the risky one. Saying the wrong thing. Trying and failing. Looking stupid in front of everyone.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "THE"
+      },
+      {
+       "t": "RISKY",
+       "badge": "yellow"
+      },
+      {
+       "t": "ONE?"
+      }
+     ],
+     "word": "risky",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "picture": "S59",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "trying",
+     "occ": 1,
+     "f": [
+      0.45,
+      0.2,
+      1.4
+     ]
+    }
+   ],
+   "fx": [
+    {
+     "type": "impact",
+     "word": "stupid"
+    }
+   ]
+  },
+  {
+   "id": "R02",
+   "camera": "zoom-in",
+   "narration": "But when researchers actually asked people about their biggest regrets... that's not what they found.",
+   "events": [
+    {
+     "kind": "pop",
+     "pose": "N09",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "THAT'S"
+       },
+       {
+        "t": "NOT",
+        "badge": "red"
+       },
+       {
+        "t": "IT"
+       }
+      ]
+     },
+     "word": "not",
+     "occ": 1,
+     "dur": 2.4
+    }
+   ],
+   "picture": "S03",
+   "host": [
+    [
+     "N02"
+    ]
+   ],
+   "trans": "whip"
+  },
+  {
+   "id": "R03",
+   "camera": "pan-right",
+   "narration": "They asked college students. Office workers. Retired professors. People living in nursing homes, looking back on almost their whole lives. One simple question.",
+   "events": [],
+   "picture": "S02",
+   "host": [
+    [
+     "N06"
+    ]
+   ],
+   "bleed": "#FDEACD",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "college",
+     "occ": 1,
+     "f": [
+      0.2,
+      0.42,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "office",
+     "occ": 1,
+     "f": [
+      0.39,
+      0.42,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "retired",
+     "occ": 1,
+     "f": [
+      0.62,
+      0.42,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "nursing",
+     "occ": 1,
+     "f": [
+      0.83,
+      0.42,
+      1.4
+     ]
+    },
+    {
+     "kind": "zoom",
+     "word": "one",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.5,
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "id": "R04",
+   "camera": "zoom-in",
+   "narration": "What's the biggest regret of your life? And most people's biggest regrets... weren't about the things they did. They were about the things they didn't do.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I17",
+     "word": "what's",
+     "occ": 1,
+     "dur": 1.8
+    },
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "WHAT THEY"
+      },
+      {
+       "t": "DIDN'T",
+       "badge": "red"
+      },
+      {
+       "t": "DO"
+      }
+     ],
+     "word": "didn't",
+     "occ": 1,
+     "dur": 1.9
+    }
+   ],
+   "picture": "S01",
+   "host": [
+    [
+     "N06"
+    ],
+    [
+     "N02",
+     "and"
+    ],
+    [
+     "N06",
+     "they",
+     2
+    ]
+   ]
+  },
+  {
+   "id": "R05",
+   "camera": "zoom-in",
+   "narration": "The class they never took. The person they never talked to. The trip they kept putting off. The thing they always wanted to try... but never did, because it felt too risky, too embarrassing, or like it just wasn't the right time.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "NOT THE"
+      },
+      {
+       "t": "RIGHT TIME",
+       "badge": "yellow"
+      }
+     ],
+     "word": "right",
+     "occ": 1,
+     "dur": 1.9
+    }
+   ],
+   "picture": "S04",
+   "host": [
+    [
+     "N06"
+    ]
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "class",
+     "occ": 1,
+     "f": [
+      0.17,
+      0.17,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "person",
+     "occ": 1,
+     "f": [
+      0.38,
+      0.17,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "trip",
+     "occ": 1,
+     "f": [
+      0.57,
+      0.17,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "thing",
+     "occ": 1,
+     "f": [
+      0.74,
+      0.17,
+      1.4
+     ]
+    },
+    {
+     "kind": "zoom",
+     "word": "because",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.5,
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "id": "R06",
+   "camera": "zoom-in",
+   "narration": "When I first read that, it hit me pretty hard. Because I had a whole list of those.",
+   "events": [
+    {
+     "kind": "pop",
+     "pose": "N10",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "A WHOLE"
+       },
+       {
+        "t": "LIST",
+        "badge": "yellow"
+       }
+      ]
+     },
+     "word": "whole",
+     "occ": 1,
+     "dur": 2.6
+    }
+   ],
+   "picture": "S05"
+  },
+  {
+   "id": "R07",
+   "camera": "zoom-in",
+   "narration": "There was a tryout I talked myself out of. I had the date written down. I even bought the shoes.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I49",
+     "word": "shoes",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "picture": "S06",
+   "host": [
+    [
+     "N01"
+    ]
+   ]
+  },
+  {
+   "id": "R08",
+   "camera": "zoom-in",
+   "narration": "And the morning of, I just sat on the edge of my bed... and didn't go. I told myself I wasn't good enough yet. That I'd try next year. Next year, I didn't go either.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "NEXT YEAR:"
+      },
+      {
+       "t": "DIDN'T GO",
+       "badge": "red"
+      }
+     ],
+     "word": "either",
+     "occ": 1,
+     "dur": 1.9
+    }
+   ],
+   "picture": "S58",
+   "moves": [
+    {
+     "kind": "slow",
+     "word": "sat",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.5,
+      1.08
+     ],
+     "dur": 2.0
+    },
+    {
+     "kind": "cut",
+     "word": "next",
+     "occ": 1,
+     "f": [
+      0.86,
+      0.86,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "R09",
+   "camera": "zoom-in",
+   "narration": "There was a message I typed out three times... and deleted three times.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "DELETED",
+       "badge": "red"
+      },
+      {
+       "t": "3 TIMES"
+      }
+     ],
+     "word": "deleted",
+     "occ": 1,
+     "dur": 1.9
+    }
+   ],
+   "picture": "S07"
+  },
+  {
+   "id": "R10",
+   "camera": "zoom-in",
+   "narration": "There was a question I didn't ask in class, and then heard someone else ask five minutes later. And the teacher said, \"Great question.\"",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I17",
+     "word": "question",
+     "occ": 1,
+     "dur": 1.8
+    },
+    {
+     "kind": "pop",
+     "pose": "N10",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "GREAT"
+       },
+       {
+        "t": "QUESTION.",
+        "badge": "yellow"
+       }
+      ]
+     },
+     "word": "great",
+     "occ": 1,
+     "dur": 2.6
+    }
+   ],
+   "picture": "S08"
+  },
+  {
+   "id": "R11",
+   "camera": "zoom-in",
+   "narration": "Every time, my brain had a really good reason. \"You'll look dumb.\" \"It's not worth it.\" \"Maybe next time.\" And every time, it felt like the safe choice.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "THE"
+      },
+      {
+       "t": "SAFE",
+       "badge": "yellow"
+      },
+      {
+       "t": "CHOICE"
+      }
+     ],
+     "word": "safe",
+     "occ": 1,
+     "dur": 1.9
+    }
+   ],
+   "picture": "S09",
+   "overlays": [
+    {
+     "type": "bubble",
+     "text": "YOU'LL LOOK DUMB",
+     "word": "dumb",
+     "box": {
+      "x": 0.05,
+      "y": 0.06,
+      "w": 0.36,
+      "h": 0.17
+     }
+    },
+    {
+     "type": "bubble",
+     "text": "NOT WORTH IT",
+     "word": "worth",
+     "box": {
+      "x": 0.03,
+      "y": 0.3,
+      "w": 0.3,
+      "h": 0.15
+     }
+    },
+    {
+     "type": "bubble",
+     "text": "MAYBE NEXT TIME",
+     "word": "next",
+     "box": {
+      "x": 0.09,
+      "y": 0.52,
+      "w": 0.34,
+      "h": 0.15
+     }
+    }
+   ]
+  },
+  {
+   "id": "R12",
+   "camera": "zoom-in",
+   "narration": "But here's what the research shows. The safe choice isn't always safe. It just sends you the bill later.",
+   "events": [
+    {
+     "kind": "pop",
+     "pose": "N02",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "ISN'T ALWAYS"
+       },
+       {
+        "t": "SAFE",
+        "badge": "red"
+       }
+      ]
+     },
+     "word": "safe",
+     "occ": 2,
+     "dur": 2.4
+    }
+   ],
+   "picture": "S10",
+   "moves": [
+    {
+     "kind": "whip",
+     "word": "bill",
+     "occ": 1,
+     "f": [
+      0.82,
+      0.82,
+      1.4
+     ]
+    }
+   ],
+   "trans": "whip"
+  },
+  {
+   "id": "R13",
+   "camera": "zoom-out",
+   "narration": "By the end of this video, you'll know exactly what those researchers found, why the things we don't do stay with us so much longer than our mistakes, and the five steps I now use whenever I'm about to talk myself out of something. The first one takes about ten seconds. And it's changed a lot of my decisions.",
+   "events": [
+    {
+     "kind": "pop",
+     "pose": "N08",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "WHAT THEY"
+       },
+       {
+        "t": "FOUND",
+        "badge": "yellow"
+       }
+      ]
+     },
+     "word": "found",
+     "occ": 1,
+     "dur": 2.4
+    },
+    {
+     "kind": "icon",
+     "icon": "I43",
+     "word": "longer",
+     "occ": 1,
+     "dur": 1.8
+    },
+    {
+     "kind": "pop",
+     "pose": "N07",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "5",
+        "badge": "yellow"
+       },
+       {
+        "t": "STEPS"
+       }
+      ]
+     },
+     "word": "five",
+     "occ": 1,
+     "dur": 2.4
+    },
+    {
+     "kind": "icon",
+     "icon": "I11",
+     "word": "ten",
+     "occ": 1,
+     "dur": 1.8
+    },
+    {
+     "kind": "title",
+     "dur": 2.5
+    }
+   ],
+   "picture": "S04",
+   "host": [
+    [
+     "N01"
+    ]
+   ]
+  }
+ ]
+}
