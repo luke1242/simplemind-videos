@@ -39,6 +39,28 @@ Researchers asked people a simple question: what's the biggest regret of your li
 
 If you've ever typed a message three times and deleted it three times, this one's for you.
 
+⏱️ Chapters
+0:00 The choice everyone thinks they'll regret
+1:03 My list of missed chances
+2:18 The regret study
+2:37 What 75% of people said
+3:20 The detail I didn't expect
+3:36 This week vs. your whole life
+4:27 Two students, one choice
+5:01 Why missed chances stick
+5:14 Reason 1: You repair mistakes
+5:40 Reason 2: A mistake has an ending
+6:12 Reason 3: You forget the fear
+6:47 Reason 4: Unfinished things stay
+7:04 The "ideal self" study
+7:52 What people say at the end
+8:22 Step 1: The rocking chair test
+8:55 Step 2: Remember which regret fades
+9:25 Step 3: Make it smaller
+9:45 Step 4: Should or want?
+10:10 Step 5: Decide before the fear
+10:29 The lesson
+
 Which of the 5 steps do you need most? Tell me the number in the comments.
 
 You were watching SimpleMindMotivation. I'll see you in the next one.
