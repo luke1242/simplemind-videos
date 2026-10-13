@@ -30,6 +30,8 @@
 
 ## The narrator host
 
+**Note on Luke's pictures:** in S04, S05, S06 and S07 the narrator himself plays the student (instead of a stickman), so those scenes (M05, M07, M19, M20, M28, M30) are full-frame with no host.
+
 Same as video 2. The narrator **stands at the side of scenes and "explains" them**, and his pose hard-cuts with the tone of the voice, even inside one scene.
 
 - **`host:` lines** list his pose track for that scene: a pose, then the word where he hard-cuts to the next pose. They come from the tone tags in Luke's script:
@@ -43,7 +45,7 @@ Same as video 2. The narrator **stands at the side of scenes and "explains" them
   - At most 3 poses per scene, each held at least 2s.
 - **Layout ("host frame"):** cream background; the scene's picture, diagram, card or icon goes in a **rounded frame on the right** (about 74% of the width, 6px ink outline, radius 28px, vertically centered). The narrator stands **lower-left**, about 60% of the frame height, overlapping the frame edge slightly, with a soft ground shadow. Crops and camera moves happen *inside* the frame.
 - **Motion:** he slides in from the left (0.25s, ease-out) when a host stretch starts and out (0.2s) when it ends. Between consecutive host scenes **he stays put** and only the frame content changes. Pose changes are **hard cuts, never animated**.
-- **When he's off:** scenes without a `host:` line are full-frame. Most of them are pictures that already show the narrator, so he's never on screen twice. Host time is about 52% of the video, and no host stretch runs longer than about 40s.
+- **When he's off:** scenes without a `host:` line are full-frame. Most of them are pictures that already show the narrator, so he's never on screen twice. Host time is about 45% of the video, and no host stretch runs longer than about 40s.
 - **Pop-ups inside a host scene** don't add a second narrator. Their content goes in the frame and his pose switches to the pop's pose for that moment.
 
 ---
@@ -73,7 +75,6 @@ beats: pop N09 "not" → card ~~NOT~~ WHAT YOU'VE HEARD
 
 **M05** · picture S04 (NEW: two graduates in caps and gowns: one daydreaming under a tree with a bubble of a fancy office, one at a picnic table with a laptop and a stack of envelopes) · camera pan-right
 edit: tour: wide on both graduates → snap zoom to the graduates' caps on "college" → whip slide to the laptop graduate on "graduate" → (icon) → snap zoom to the daydreaming graduate on "daydreams" → whip slide up into his office bubble on "landing" → push wipe into the card on "two"
-host: N06 "in" → N01 "she" (2nd occurrence)
 narration: "In one study, she followed college students who were about to graduate and look for their first job. She asked how often they had positive daydreams about landing that dream job. Then she checked back two years later."
 beats: icon I53 "job" (1st occurrence) · card "two" → **2 YEARS** LATER
 
@@ -85,7 +86,6 @@ narration: "The students who daydreamed the most... had sent out fewer applicati
 
 **M07** · picture S04 · camera zoom-in · **reveal: at least 2s of silence after**
 edit: hand-drawn callout circle around the daydreaming graduate on "picturing"
-host: N06 "picturing"
 narration: "Picturing the dream... had made them less likely to get it."
 beats: card "less" → ~~LESS~~ LIKELY TO GET IT
 
@@ -151,13 +151,11 @@ beats: card "two" (1st occurrence) → **TWO** THINGS
 
 **M19** · picture S05 (NEW: library: a student daydreaming with a heart bubble, the crush walking past) · camera zoom-in
 edit: snap zoom to the heart bubble on "daydreamed" → whip slide to the crush walking past on "less"
-host: N01 "the"
 narration: "The students who daydreamed the most about their crush were less likely to actually end up together months later."
 beats: badge "less" → ~~LESS~~ LIKELY
 
 **M20** · picture S06 (NEW: student on a couch daydreaming of a gold-star test, textbooks unopened) · camera zoom-in
 edit: snap zoom to the gold-star dream on "acing" → whip slide to the unopened textbooks on "studied" · hand-drawn red arrow pointing down on "grades"
-host: N01 "the"
 narration: "The students who daydreamed most about acing the exam studied less... and their grades went down."
 
 **M21** · picture S21 (COPY: nurse beside a patient in a hospital bed) · camera zoom-in
@@ -199,7 +197,6 @@ beats: icon I25 "clue"
 
 **M28** · picture S07 (NEW: thirsty student slumped at a table, bubble with an ice-cold glass of water, empty plate) · camera zoom-in
 edit: snap zoom to the empty plate on "skip" → whip slide to the icy water bubble on "picture" · light sweep across the glass on "ice-cold"
-host: N01 "in"
 narration: "In one study, they had students skip food and water for a few hours. Then some of the thirstiest students were asked to picture a glass of ice-cold water."
 beats: icon I11 "hours"
 
@@ -211,7 +208,6 @@ narration: "And when they did... their blood pressure dropped. Their energy drop
 
 **M30** · picture S07 · camera zoom-in
 edit: hand-drawn callout circle around the dream glass on "already"
-host: N02 "their"
 narration: "Their bodies relaxed, almost as if they'd already had the drink."
 beats: badge "already" → ALREADY **HAD IT**
 
