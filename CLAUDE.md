@@ -46,6 +46,7 @@ reference/                ← style references (the look of coded diagrams, the 
 prompts/                  ← Luke's Nano Banana prompts for this video
 videos/01-spotlight/      ← video 1, archived
 videos/02-regret/         ← video 2, archived; its make-specs.py and scenes/ are the newest spec examples (host mode and edits)
+videos/03-manifestation/  ← video 3, archived (its build branch was not pushed, so its new diagram kinds — drops, woop — may need re-adding)
 ```
 
 ## 2. Setup (once per cloud session, quietly)
