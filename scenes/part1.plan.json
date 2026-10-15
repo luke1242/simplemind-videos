@@ -1,0 +1,364 @@
+[
+ {
+  "scene": "E01",
+  "kind": "main",
+  "a": 0,
+  "e": 3.94,
+  "host": false
+ },
+ {
+  "scene": "E01",
+  "kind": "main",
+  "a": 3.94,
+  "e": 8.52,
+  "host": false
+ },
+ {
+  "scene": "E02",
+  "kind": "main",
+  "a": 8.52,
+  "e": 11.6,
+  "host": false
+ },
+ {
+  "scene": "E02",
+  "kind": "main",
+  "a": 11.6,
+  "e": 15.8,
+  "host": false
+ },
+ {
+  "scene": "E02",
+  "kind": "main",
+  "a": 15.8,
+  "e": 18.64,
+  "host": false
+ },
+ {
+  "scene": "E02",
+  "kind": "main",
+  "a": 18.64,
+  "e": 22.52,
+  "host": false
+ },
+ {
+  "scene": "E02",
+  "kind": "main",
+  "a": 22.52,
+  "e": 25.78,
+  "host": false
+ },
+ {
+  "scene": "E03",
+  "kind": "main",
+  "a": 25.78,
+  "e": 29.36,
+  "host": false
+ },
+ {
+  "scene": "E03",
+  "kind": "main",
+  "a": 29.36,
+  "e": 32.06,
+  "host": false
+ },
+ {
+  "scene": "E03",
+  "kind": "main",
+  "a": 32.06,
+  "e": 35.62,
+  "host": false
+ },
+ {
+  "scene": "E03",
+  "kind": "main",
+  "a": 35.62,
+  "e": 37.38,
+  "host": false
+ },
+ {
+  "scene": "E04",
+  "kind": "main",
+  "a": 37.38,
+  "e": 41.28,
+  "host": false
+ },
+ {
+  "scene": "E04",
+  "kind": "main",
+  "a": 41.28,
+  "e": 44.62,
+  "host": false
+ },
+ {
+  "scene": "E04",
+  "kind": "main",
+  "a": 44.62,
+  "e": 47.18,
+  "host": false
+ },
+ {
+  "scene": "E04",
+  "kind": "main",
+  "a": 47.18,
+  "e": 51.72,
+  "host": false
+ },
+ {
+  "scene": "E04",
+  "kind": "main",
+  "a": 51.72,
+  "e": 55.5,
+  "host": false
+ },
+ {
+  "scene": "E05",
+  "kind": "main",
+  "a": 55.5,
+  "e": 59.92,
+  "host": false
+ },
+ {
+  "scene": "E05",
+  "kind": "main",
+  "a": 59.92,
+  "e": 63.92,
+  "host": false
+ },
+ {
+  "scene": "E05",
+  "kind": "title",
+  "a": 63.92,
+  "e": 66.42,
+  "host": false
+ },
+ {
+  "scene": "E06",
+  "kind": "main",
+  "a": 66.42,
+  "e": 69.74,
+  "host": false
+ },
+ {
+  "scene": "E06",
+  "kind": "main",
+  "a": 69.74,
+  "e": 72.2,
+  "host": false
+ },
+ {
+  "scene": "E06",
+  "kind": "icon",
+  "a": 72.2,
+  "e": 74.36,
+  "host": false
+ },
+ {
+  "scene": "E06",
+  "kind": "main",
+  "a": 74.36,
+  "e": 77.82,
+  "host": false
+ },
+ {
+  "scene": "E06",
+  "kind": "main",
+  "a": 77.82,
+  "e": 80.78,
+  "host": false
+ },
+ {
+  "scene": "E06",
+  "kind": "main",
+  "a": 80.78,
+  "e": 83.569,
+  "host": false
+ },
+ {
+  "scene": "E06",
+  "kind": "card",
+  "a": 83.569,
+  "e": 85.14,
+  "host": false
+ },
+ {
+  "scene": "E07",
+  "kind": "main",
+  "a": 85.14,
+  "e": 88.14,
+  "host": false
+ },
+ {
+  "scene": "E07",
+  "kind": "main",
+  "a": 88.14,
+  "e": 91.26,
+  "host": false
+ },
+ {
+  "scene": "E07",
+  "kind": "main",
+  "a": 91.26,
+  "e": 94.78,
+  "host": false
+ },
+ {
+  "scene": "E07",
+  "kind": "main",
+  "a": 94.78,
+  "e": 98.04,
+  "host": false
+ },
+ {
+  "scene": "E07",
+  "kind": "main",
+  "a": 98.04,
+  "e": 100.56,
+  "host": false
+ },
+ {
+  "scene": "E07",
+  "kind": "main",
+  "a": 100.56,
+  "e": 103.9,
+  "host": false
+ },
+ {
+  "scene": "E07",
+  "kind": "main",
+  "a": 103.9,
+  "e": 106.86,
+  "host": false
+ },
+ {
+  "scene": "E07",
+  "kind": "card",
+  "a": 106.86,
+  "e": 108.76,
+  "host": false
+ },
+ {
+  "scene": "E08",
+  "kind": "main",
+  "a": 108.76,
+  "e": 111.58,
+  "host": true
+ },
+ {
+  "scene": "E08",
+  "kind": "main",
+  "a": 111.58,
+  "e": 112.94,
+  "host": true
+ },
+ {
+  "scene": "E08",
+  "kind": "icon",
+  "a": 112.94,
+  "e": 114.56,
+  "host": true
+ },
+ {
+  "scene": "E08",
+  "kind": "main",
+  "a": 114.56,
+  "e": 117.64,
+  "host": true
+ },
+ {
+  "scene": "E08",
+  "kind": "main",
+  "a": 117.64,
+  "e": 121.3,
+  "host": true
+ },
+ {
+  "scene": "E09",
+  "kind": "main",
+  "a": 121.3,
+  "e": 124.36,
+  "host": true
+ },
+ {
+  "scene": "E09",
+  "kind": "main",
+  "a": 124.36,
+  "e": 127.68,
+  "host": true
+ },
+ {
+  "scene": "E09",
+  "kind": "main",
+  "a": 127.68,
+  "e": 130.88,
+  "host": true
+ },
+ {
+  "scene": "E09",
+  "kind": "main",
+  "a": 130.88,
+  "e": 132.2,
+  "host": true
+ },
+ {
+  "scene": "E10",
+  "kind": "main",
+  "a": 132.2,
+  "e": 133.24,
+  "host": false
+ },
+ {
+  "scene": "E10",
+  "kind": "icon",
+  "a": 133.24,
+  "e": 135.62,
+  "host": false
+ },
+ {
+  "scene": "E10",
+  "kind": "main",
+  "a": 135.62,
+  "e": 138.76,
+  "host": false
+ },
+ {
+  "scene": "E10",
+  "kind": "main",
+  "a": 138.76,
+  "e": 141.28,
+  "host": false
+ },
+ {
+  "scene": "E10",
+  "kind": "card",
+  "a": 141.28,
+  "e": 143.54,
+  "host": false
+ },
+ {
+  "scene": "E10",
+  "kind": "main",
+  "a": 143.54,
+  "e": 146.24,
+  "host": false
+ },
+ {
+  "scene": "E10",
+  "kind": "main",
+  "a": 146.24,
+  "e": 148.231,
+  "host": false
+ },
+ {
+  "scene": "host",
+  "kind": "pose:N06",
+  "a": 108.76,
+  "e": 121.3
+ },
+ {
+  "scene": "host",
+  "kind": "pose:N01",
+  "a": 121.3,
+  "e": 132.2
+ }
+]

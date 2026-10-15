@@ -6,3 +6,4 @@ ffmpeg -v error -y -f lavfi -i "sine=f=620:d=0.14:r=44100" -af "afade=t=out:st=0
 ffmpeg -v error -y -f lavfi -i "anoisesrc=d=0.05:c=white:r=44100" -af "highpass=f=1500,afade=t=out:st=0.005:d=0.045,volume=0.7" click.wav
 ffmpeg -v error -y -f lavfi -i "sine=f=1320:d=0.9:r=44100" -af "afade=t=in:d=0.01,afade=t=out:st=0.05:d=0.85,volume=0.6" ding.wav
 ffmpeg -v error -y -f lavfi -i "anoisesrc=d=0.6:c=pink:r=44100" -af "highpass=f=400,lowpass=f=6000,afade=t=in:d=0.55:curve=exp,afade=t=out:st=0.55:d=0.05,volume=0.6" riser.wav
+ffmpeg -v error -y -f lavfi -i "sine=f=330:d=1.4:r=44100" -af "afade=t=in:d=0.02,afade=t=out:st=0.1:d=1.3,volume=0.6" dingLow.wav

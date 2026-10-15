@@ -29,5 +29,14 @@ for s in segs:
     for w in s.words:
         sp = spell(w.word).split(); n = len(sp); d = (w.end - w.start) / n
         for i, p in enumerate(sp): words.append({"w":p,"s":round(w.start + i*d,3),"e":round(w.start + (i+1)*d,3)})
+# whisper sometimes gives a word zero length and the word before it a too-long one: spread them over the same span
+i = 1
+while i < len(words) - 1:
+    if words[i]["e"] - words[i]["s"] < 0.04 and words[i-1]["e"] - words[i-1]["s"] > 0.4:
+        j = i + 1 if (words[i+1]["e"] - words[i+1]["s"] < 0.25 and words[i+1]["s"] - words[i]["e"] < 0.05) else i
+        grp = words[i-1:j+1]; t0, t1 = grp[0]["s"], grp[-1]["e"]; ln = [max(1, len(re.sub(r"[^a-z0-9]", "", g["w"].lower()))) for g in grp]; tot = sum(ln); c = t0
+        for g, l in zip(grp, ln): g["s"] = round(c, 3); c += (t1 - t0) * l / tot; g["e"] = round(c, 3)
+        i = j + 1
+    else: i += 1
 json.dump({"duration":info.duration,"words":words}, open(out,"w"), indent=0)
 print(len(words), info.duration)

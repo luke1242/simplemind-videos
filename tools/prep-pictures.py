@@ -18,6 +18,9 @@ pics = set(); icons = set(); resolved = {}
 for sc in cfg["scenes"]:
     for k in ("picture", "pictureB"):
         if sc.get(k): pics.add(sc[k])
+    dg = sc.get("diagram") or {}
+    if dg.get("kind") == "battery": icons.update(["I63", "I64", "I65", "I66"])
+    if dg.get("kind") == "irow": icons.update(i["icon"] for i in dg["items"])
     for e in sc.get("events", []):
         if e["kind"] == "icon": icons.add(e["icon"])
         if e["kind"] == "iconrow": icons.update(i["icon"] for i in e["items"])

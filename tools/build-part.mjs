@@ -29,7 +29,8 @@ const piePath = (cx, cy, r, pct) => { const p = Math.min(Math.max(pct, 0.01), 99
 const partHtml = (p, extra = "") => {
   if (p.mk) return `<span class="mk"><i id="${extra}-mk"></i><b>${p.t}</b></span>`;
   if (p.circ) return `<span class="circw"><span class="badge ${p.badge || "yellow"}" id="${extra}-cw">${p.t}</span><svg class="circ" viewBox="0 0 400 200" preserveAspectRatio="none"><ellipse id="${extra}-ci" cx="200" cy="100" rx="185" ry="88" fill="none" stroke="${RED}" stroke-width="9" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg></span>${p.after || ""}`;
-  const inner = p.badge ? `<span class="badge ${p.badge}">${p.t}</span>` : p.t;
+  if (p.x) return `<span class="xw"><span class="badge ${p.badge || "red"}">${p.t}</span><svg class="xs" viewBox="0 0 400 200" preserveAspectRatio="none"><path id="${extra}-x" d="M24 22 L376 178 M376 22 L24 178" fill="none" stroke="${INK}" stroke-width="16" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg></span>`;
+  const inner = p.cnt ? `<span class="badge ${p.badge || "yellow"}" id="${extra}-cnt">0${p.cnt.suffix || ""}</span>` : p.badge ? `<span class="badge ${p.badge}">${p.t}</span>` : p.t;
   return p.ul ? `<span class="ulw">${inner}<svg class="ul" viewBox="0 0 400 30" preserveAspectRatio="none"><path id="${extra}-ul" d="M6 18 C60 6 110 26 170 14 S300 8 394 16" fill="none" stroke="${RED}" stroke-width="9" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg></span>` : inner;
 };
 const linesHtml = (parts, pre, cls = "ln") => parts.map((p, i) => `<div class="${cls}${p.small ? " small" : ""}${p.sz === "big" ? " big" : ""}${p.sz === "mid" ? " mid" : ""}" id="${pre}-l${i}">${partHtml(p, `${pre}-p${i}`)}</div>`).join("");
@@ -42,7 +43,7 @@ const countTw = (id, obj, to, t, d, fmt) => `tl.fromTo(${obj},{v:0},{v:${to},dur
 let cuid = 0;
 const person = (x, y, id, fill) => `<g id="${id}" transform="translate(${x} ${y}) scale(1.2)"><circle cx="0" cy="-34" r="21" class="pp" fill="${fill}" stroke="${INK}" stroke-width="6"/><path class="pp" d="M-27 40 V0 Q-27 -12 -15 -12 H15 Q27 -12 27 0 V40 Z" fill="${fill}" stroke="${INK}" stroke-width="6" stroke-linejoin="round"/></g>`;
 const ICONS = {};
-const SCREEN = new Set(["label", "pill", "step"]);
+const SCREEN = new Set(["label", "pill", "step", "serif"]);
 
 // diagram -> {html, tw}. t = absolute trigger times (already resolved by the caller via d.at)
 function diagram(d, pre, T, S0 = 0) {
@@ -51,13 +52,17 @@ function diagram(d, pre, T, S0 = 0) {
   if (d.kind === "card") {
     const h = `<div class="fill diag cardc"><div class="cardtxt" id="${pre}-ct">${linesHtml(d.parts, pre)}</div>${d.sweep ? `<div class="sweep" id="${pre}-sw" style="left:760px;top:240px;width:400px;height:600px;border-radius:0;transform:skewX(-20deg)"></div>` : ""}</div>`;
     tw.push(...partTweens(d.parts, pre, d.rise !== undefined ? d.rise : S0));
+    d.parts.forEach((p, i) => {
+      if (p.x) { const tx = at("x", S0 + 0.5); tw.push(`tl.to("#${pre}-p${i}-x",{strokeDashoffset:0,duration:0.22,ease:"power2.out"},${f3(tx)});`, `tl.fromTo("#${pre}-p${i}-x",{opacity:0},{opacity:1,duration:0.05},${f3(tx)});`, `tl.set("#${pre}-p${i}-x",{opacity:0},0);`); }
+      if (p.cnt) { const tc = at("cnt", S0), o = vid(`${pre}_cn${i}`); tw.push(`const ${o}={v:0};`, `tl.fromTo(${o},{v:0},{v:${p.cnt.to},duration:0.8,ease:"power2.out",onUpdate:function(){var e=document.getElementById("${pre}-p${i}-cnt");if(e)e.textContent=Math.round(${o}.v)+${JSON.stringify(p.cnt.suffix || "")};}},${f3(tc)});`); }
+    });
     if (d.sweep) tw.push(`tl.set("#${pre}-sw",{opacity:0},0);`, `tl.fromTo("#${pre}-sw",{opacity:1,x:-1300},{x:1300,duration:0.8,ease:"power1.inOut"},${f3((d.rise !== undefined ? d.rise : S0) + 0.45)});`, `tl.set("#${pre}-sw",{opacity:0},${f3((d.rise !== undefined ? d.rise : S0) + 1.3)});`);
     if (d.rise !== undefined) tw.push(`tl.fromTo("#${pre}-ct .ln",{y:70,opacity:0},{y:0,opacity:1,duration:0.34,ease:"back.out(1.6)",stagger:0.07},${f3(d.rise)});`);
     return { html: h, tw };
   }
   if (d.kind === "pie") {
-    const t0 = at("fill", 0), cx = 960, cy = 440, r = 310;
-    let h = `<div class="fill diag">${svgWrap(pieSvg(pre + "-pp", cx, cy, r, d.from !== undefined ? d.from : d.pct))}<div class="dlabel"><span>${d.label}</span><span class="badge ${d.badge}" id="${pre}-val">${d.from !== undefined ? d.from + "%" : d.value}</span></div></div>`;
+    const t0 = at("fill", 0), cx = 960, cy = 400, r = 310;
+    let h = `<div class="fill diag">${svgWrap(pieSvg(pre + "-pp", cx, cy, r, d.from !== undefined ? d.from : d.pct))}<div class="dlabel" style="top:785px"><span>${d.label}</span><span class="badge ${d.badge}" id="${pre}-val">${d.from !== undefined ? d.from + "%" : d.value}</span></div>${d.sub ? `<div class="dsub">${d.sub}</div>` : ""}</div>`;
     if (d.from !== undefined) {
       const o = vid(`${pre}_o`); tw.push(`const ${o}={v:0};`);
       tw.push(`tl.fromTo(${o},{v:${d.from}},{v:${d.pct},duration:1.1,ease:"power2.out",onUpdate:function(){var e=document.getElementById("${pre}-pp");if(e)e.setAttribute("d",${JSON.stringify("")}+pp(${cx},${cy},${r},${o}.v));var l=document.getElementById("${pre}-val");if(l)l.textContent=Math.round(${o}.v)+"%";}},${f3(t0)});`);
@@ -111,10 +116,55 @@ function diagram(d, pre, T, S0 = 0) {
   }
   if (d.kind === "split") {
     const tl0 = at("left", 0), tr0 = at("right", 0), tr = at("rack", tr0);
-    const h = `<div class="fill diag"><div class="half" id="${pre}-L" style="left:0"><div class="ln">${d.left[0]}</div><div class="ln"><span class="badge yellow">${d.left[1]}</span></div></div><div class="vdiv"></div><div class="half" id="${pre}-R" style="left:960px"><div class="ln">${d.right[0]}</div><div class="ln"><span class="badge red">${d.right[1]}</span></div></div></div>`;
+    const h = `<div class="fill diag"><div class="half" id="${pre}-L" style="left:0;--fs:${d.fs || 128}px"><div class="ln">${d.left[0]}</div><div class="ln"><span class="badge yellow">${d.left[1]}</span></div></div><div class="vdiv"></div><div class="half" id="${pre}-R" style="left:960px;--fs:${d.fs || 128}px"><div class="ln">${d.right[0]}</div><div class="ln"><span class="badge ${d.rightBadge || "red"}">${d.right[1]}</span></div></div></div>`;
     tw.push(`tl.set("#${pre}-L",{opacity:0},0);`, `tl.set("#${pre}-R",{opacity:0},0);`, `tl.fromTo("#${pre}-L",{opacity:0,scale:0.9},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},${f3(tl0)});`,
       `tl.fromTo("#${pre}-R",{opacity:0,scale:0.9},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},${f3(tr0)});`,
       `tl.to("#${pre}-L",{filter:"blur(10px)",opacity:0.5,duration:0.35,ease:"power2.inOut"},${f3(tr + 0.3)});`);
+    return { html: h, tw };
+  }
+  if (d.kind === "irow") {
+    const h = `<div class="fill diag cardc"><div class="irow2">${d.items.map((it, k) => { usedIcons.add(it.icon); return `<div id="${pre}-ic${k}" class="itile2"><div class="itile"><img src="assets/icons/${it.icon}.jpg" alt=""></div><div class="ilab">${it.label}</div></div>`; }).join("")}</div></div>`;
+    d.items.forEach((it, k) => { const t0 = at("it" + k, 0); tw.push(`tl.set("#${pre}-ic${k}",{opacity:0},0);`, `tl.fromTo("#${pre}-ic${k}",{opacity:0,scale:0.92},{opacity:1,scale:1,duration:0.25,ease:"back.out(1.4)"},${f3(t0)});`); sfx.push({ t: f3(t0), kind: "pop" }); });
+    return { html: h, tw };
+  }
+  if (d.kind === "loop") {
+    const cx = 960, cy = 520, r = 280, g = 24, a0 = g, a1 = 360 - g, rad = (a) => (a * Math.PI) / 180;
+    const P = (a) => [f3(cx + r * Math.sin(rad(a))), f3(cy - r * Math.cos(rad(a)))];
+    const [x0, y0] = P(a0), [x1, y1] = P(a1);
+    const main = `M${x0} ${y0} A${r} ${r} 0 1 1 ${x1} ${y1}`, gap = `M${x1} ${y1} A${r} ${r} 0 0 1 ${x0} ${y0}`;
+    const h = `<div class="fill diag">${svgWrap(`<path id="${pre}-lp" d="${main}" fill="none" stroke="${INK}" stroke-width="26" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/><path id="${pre}-gp" d="${gap}" fill="none" stroke="${INK}" stroke-width="26" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/><g id="${pre}-ar" opacity="0"><path d="M-30 -34 L34 0 L-30 34 Z" fill="${YEL}" stroke="${INK}" stroke-width="9" stroke-linejoin="round"/></g>`)}</div>`;
+    const td = at("draw", S0), tn = at("nudge", -1), tc = at("close", -1);
+    tw.push(`tl.to("#${pre}-lp",{strokeDashoffset:0,duration:1,ease:"power1.inOut"},${f3(td)});`);
+    const o = vid(`${pre}_ar`);
+    const pos = `var a=${a0}+(${a1 - a0})*${o}.v,e=document.getElementById("${pre}-ar");if(e){e.setAttribute("opacity",${o}.v>0?1:0);e.setAttribute("transform","translate("+(${cx}+${r}*Math.sin(a*Math.PI/180)).toFixed(1)+" "+(${cy}-${r}*Math.cos(a*Math.PI/180)).toFixed(1)+") rotate("+a.toFixed(1)+")");}`;
+    tw.push(`const ${o}={v:0};`);
+    if (tn >= 0) tw.push(`tl.fromTo(${o},{v:0.45},{v:0.93,duration:0.9,ease:"power2.inOut",onUpdate:function(){${pos}}},${f3(tn)});`, `tl.set(${o},{v:0},${f3(tn + 0.95)});`);
+    if (tc >= 0) { tw.push(`tl.to("#${pre}-gp",{strokeDashoffset:0,duration:0.35,ease:"power2.out"},${f3(tc)});`, `tl.set("#${pre}-lp",{opacity:1},${f3(tc)});`); sfx.push({ t: f3(tc), kind: "ding" }); }
+    return { html: h, tw };
+  }
+  if (d.kind === "battery") {
+    const ROWS = [["replay", "REPLAY", "I63"], ["decision", "DECISION", "I64"], ["halfdone", "HALF-DONE", "I65"], ["ending", "ENDING", "I66"]];
+    const MAXW = 560, PX = 540, PY = 135, RH = 220, RT = 190, idx = (k) => ROWS.findIndex((r) => r[0] === k);
+    const init = d.init || {}, act = d.active;
+    let h = `<div class="fill diag"><div id="${pre}-ph" class="phone" style="left:${PX}px;top:${PY}px;width:840px;height:925px"></div>`;
+    ROWS.forEach(([k, lab, ic], i) => {
+      usedIcons.add(ic);
+      const w0 = Math.round(MAXW * (init[k] ?? 0));
+      h += `<div id="${pre}-r${i}" class="brow" style="left:${PX + 40}px;top:${RT + i * RH}px;opacity:${act && act !== k ? 0.4 : 1}"><div class="bi"><img src="assets/icons/${ic}.jpg" alt=""></div><div class="bt"><div class="bl">${lab}</div><div class="bbar"><div id="${pre}-b${i}" class="bfill" style="width:${w0}px"></div></div></div></div>`;
+    });
+    h += `</div>`;
+    const tF = at("frame", -1), tA = at("appear", -1);
+    if (tF >= 0) tw.push(`tl.set("#${pre}-ph",{opacity:0},0);`, `tl.fromTo("#${pre}-ph",{opacity:0,scale:0.9},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},${f3(tF)});`);
+    ROWS.forEach(([k], i) => {
+      const base = act && act !== k ? 0.4 : 1;
+      if (tA >= 0) tw.push(`tl.set("#${pre}-r${i}",{opacity:0},0);`, `tl.fromTo("#${pre}-r${i}",{opacity:0,y:30},{opacity:${base},y:0,duration:0.25,ease:"back.out(1.4)"},${f3(tA + i * 0.12)});`);
+      else if (tF >= 0) tw.push(`tl.set("#${pre}-r${i}",{opacity:0},0);`, `tl.set("#${pre}-r${i}",{opacity:${base}},${f3(tF + 0.2)});`);
+    });
+    if (tA >= 0) sfx.push({ t: f3(tA), kind: "pop" });
+    (d.grow || []).forEach((g, gi) => { const i = idx(g.row), t0 = T(g.word), f0 = init[g.row] ?? 0; tw.push(`tl.fromTo("#${pre}-b${i}",{width:${Math.round(MAXW * f0)}},{width:${Math.round(MAXW * g.to)},duration:${g.dur || 0.9},ease:"power2.out"},${f3(t0)});`); });
+    (d.pulse || []).forEach((pl) => { const i = idx(pl.row), f0 = init[pl.row] ?? 0.5; pl.words.forEach((w, wi) => { const t0 = T(w); tw.push(`tl.fromTo("#${pre}-b${i}",{width:${Math.round(MAXW * f0)}},{width:${Math.round(MAXW * 0.97)},duration:0.28,ease:"power2.out"},${f3(t0)});`, `tl.to("#${pre}-b${i}",{width:${Math.round(MAXW * f0)},duration:0.45,ease:"power2.inOut"},${f3(t0 + 0.3)});`); }); });
+    if (d.shrinkAll) { const t0 = T(d.shrinkAll.word); ROWS.forEach(([k], i) => tw.push(`tl.to("#${pre}-b${i}",{width:${Math.round(MAXW * (init[k] ?? 0.5) * d.shrinkAll.f)},duration:0.7,ease:"power2.inOut"},${f3(t0)});`)); }
+    if (d.closeRow) { const i = idx(d.closeRow.row), t0 = T(d.closeRow.word), t1 = T(d.closeRow.word2); tw.push(`tl.to("#${pre}-r${i}",{x:140,opacity:0.5,duration:0.3,ease:"power2.in"},${f3(t0)});`, `tl.to("#${pre}-b${i}",{width:0,duration:0.5,ease:"power2.inOut"},${f3(t1)});`, `tl.to("#${pre}-r${i}",{x:900,opacity:0,duration:0.3,ease:"power2.in"},${f3(t1 + 0.45)});`); sfx.push({ t: f3(t0), kind: "swoosh" }); }
     return { html: h, tw };
   }
   if (d.kind === "quote") {
@@ -128,6 +178,7 @@ function diagram(d, pre, T, S0 = 0) {
 function screenOv(id, o, host) {
   const ul = o.ul ? `<svg class="ulp" viewBox="0 0 400 30" preserveAspectRatio="none"><path id="${id}-ul" d="M6 18 C60 6 110 26 170 14 S300 8 394 16" fill="none" stroke="${RED}" stroke-width="9" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg>` : "";
   if (o.type === "step") return `<div id="${id}" class="scr${host ? " row" : ""}" data-layout-allow-overlap><div class="pill big">${o.step}</div><div class="spill2">${o.text}</div></div>`;
+  if (o.type === "serif") return `<div id="${id}" class="serif" data-layout-allow-overlap style="color:${o.color || "#EFE6DA"}">${o.text}</div>`;
   if (o.type === "pill") return `<div id="${id}" class="scr${host ? " row" : ""}" data-layout-allow-overlap><div class="pill big">${o.text}</div></div>`;
   return `<div id="${id}" class="scr" data-layout-allow-overlap><div class="spill2">${o.text}${ul}</div></div>`;
 }
@@ -135,6 +186,8 @@ function picOv(id, o) {
   const b = o.box, pos = b ? `left:${f3(b.x * 1920)}px;top:${f3(b.y * 1080)}px;width:${f3(b.w * 1920)}px;height:${f3(b.h * 1080)}px` : "";
   if (o.type === "bubble") return `<div id="${id}" class="sbub" data-layout-allow-overlap style="${pos}"><span>${o.text}</span><i></i></div>`;
   if (o.type === "sign") return `<div id="${id}" class="sign" data-layout-allow-overlap style="${pos};transform:rotate(${o.rot || 0}deg);font-size:${o.fs || 64}px">${o.text}</div>`;
+  if (o.type === "rect") return `<div id="${id}" class="glowrect" data-layout-allow-overlap style="${pos};transform:rotate(${o.rot || 0}deg)"></div>`;
+  if (o.type === "stamp") return `<div id="${id}" class="stamp" data-layout-allow-overlap style="${pos};transform:rotate(${o.rot || -7}deg);font-size:${o.fs || 84}px"><span>${o.text}</span></div>`;
   if (o.type === "sweep") return `<div id="${id}" class="sweepbox" data-layout-allow-overlap style="${pos}"><div id="${id}-b" class="sweepband"></div></div>`;
   if (o.type === "badge") return `<div id="${id}" class="tagbox" data-layout-allow-overlap style="${pos};font-size:${o.fs || 110}px"><span class="badge ${o.badge}" id="${id}-t">${o.text}</span></div>`;
   if (o.type === "wheel") return `<div id="${id}" class="tagbox" data-layout-allow-overlap style="${pos};font-size:230px"><span class="badge yellow wheel" id="${id}-t" style="display:flex">${[0, 1, 2].map((k) => `<span class="dig"><span class="col" id="${id}-c${k}">${[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((x) => `<span>${x}</span>`).join("")}</span></span>`).join("")}</span></div>`;
@@ -190,13 +243,13 @@ function planScene(sc, i) {
   for (const ev of evs) { if (ev.a - cur > 0.05) gaps.push([cur, ev.a]); cur = ev.e; }
   const tailStart = cur;
   const splitGap = (g0, g1) => {
-    const res = []; let c = g0;
-    while (g1 - c > MAXSHOT - 0.05) {
+    const res = []; let c = g0; const MX = sc.cold ? 5.0 : MAXSHOT, K = MX / MAXSHOT;
+    while (g1 - c > MX - 0.05) {
       let cands = [];
-      for (let j = 1; j < ws.length; j++) { const x = cutAt(j); if (okCut(x) && x >= c + 1.8 && x <= c + 3.8 && g1 - x >= 1.0) cands.push({ x, sc: gapBefore(j) * 2 - Math.abs(x - (c + 3.2)) * 0.6 }); }
-      if (!cands.length) for (let j = 1; j < ws.length; j++) { const x = cutAt(j); if (okCut(x) && x >= c + 1.0 && x <= c + 3.9 && g1 - x >= 0.8) cands.push({ x, sc: gapBefore(j) * 2 - Math.abs(x - (c + 3.2)) * 0.6 }); }
+      for (let j = 1; j < ws.length; j++) { const x = cutAt(j); if (okCut(x) && x >= c + 1.8 * K && x <= c + 3.8 * K && g1 - x >= 1.0) cands.push({ x, sc: gapBefore(j) * 2 - Math.abs(x - (c + 3.2 * K)) * 0.6 }); }
+      if (!cands.length) for (let j = 1; j < ws.length; j++) { const x = cutAt(j); if (okCut(x) && x >= c + 1.0 && x <= c + 3.9 * K && g1 - x >= 0.8) cands.push({ x, sc: gapBefore(j) * 2 - Math.abs(x - (c + 3.2 * K)) * 0.6 }); }
       let x;
-      if (cands.length) { cands.sort((p, q) => q.sc - p.sc); x = cands[0].x; } else { x = c + 3.5; warn.push(`${sc.id}: cut in silence at ${f3(x)}`); }
+      if (cands.length) { cands.sort((p, q) => q.sc - p.sc); x = cands[0].x; } else { x = c + 3.5 * K; warn.push(`${sc.id}: cut in silence at ${f3(x)}`); }
       res.push([c, x]); c = x;
     }
     res.push([c, g1]); return res;
@@ -237,6 +290,7 @@ G.forEach((sh, gi) => {
   const sc = sh.P.sc; let tr = null;
   if (sh.si === 0 && gi > 0 && sc.trans && sc.trans !== "cut") tr = { kind: sc.trans, dur: TRANS[sc.trans], pt: sc.irisAt || [0.5, 0.5] };
   if (sc.swap && sc.swap.kind === "iris" && sh.side === "B" && sh.si > 0 && G[gi - 1].side === "A" && G[gi - 1].P === sh.P) tr = { kind: "iris", dur: TRANS.iris, pt: sc.swap.pt || [0.5, 0.5] };
+  if (sc.swap && sc.swap.kind === "fade" && sh.side === "B" && sh.si > 0 && G[gi - 1].side === "A" && G[gi - 1].P === sh.P) tr = { kind: "fade", dur: 0.3 };
   sh.trans = tr;
   if (tr && gi > 0) G[gi - 1].ext = Math.max(G[gi - 1].ext || 0, tr.dur);
 });
@@ -281,7 +335,7 @@ G.forEach((sh, gi) => {
   const first = sh.si === 0, zi = ++z;
   const tr = sh.trans, ext = sh.ext || 0, cd = d + ext;
   const prevSh = gi > 0 ? G[gi - 1] : null;
-  if (d > MAXSHOT + 0.02 && !sh.exempt && sh.type !== "title" && sh.type !== "iconrow" && !(sh.type === "quote" && d <= 7.05)) warn.push(`${sc.id}: shot ${f3(a)}-${f3(e)} (${sh.type}) is ${f3(d)}s`);
+  if (d > (sc.cold ? 5.0 : MAXSHOT) + 0.02 && !sh.exempt && sh.type !== "title" && sh.type !== "iconrow" && !(sh.type === "quote" && d <= 7.05)) warn.push(`${sc.id}: shot ${f3(a)}-${f3(e)} (${sh.type}) is ${f3(d)}s`);
   if (sh.type === "icon" && d > 3.05 || sh.type === "card" && d > 2.55) warn.push(`${sc.id}: ${sh.type} lasts ${f3(d)}s`);
   if (gi > 0) {
     let bi = 0; ws.forEach((w, k) => { if (Math.abs(w.s - a) < Math.abs(ws[bi].s - a)) bi = k; });
@@ -312,7 +366,7 @@ G.forEach((sh, gi) => {
       let lastEnd = a;
       for (const kf of cp.kfs) {
         const dd = kf.kind === "snap" ? 0.25 : kf.kind === "whip" ? (kf.dur || 0.26) : kf.kind === "zoom" ? 0.4 : kf.kind === "slow" ? (kf.dur || 2) : 0.0001;
-        const ease = kf.kind === "snap" ? "expo.out" : kf.kind === "whip" ? "power3.inOut" : kf.kind === "slow" ? "power1.inOut" : "power2.out";
+        const ease = kf.kind === "snap" ? "expo.out" : kf.kind === "whip" ? "power3.inOut" : kf.kind === "slow" ? "power2.inOut" : "power2.out";
         const start = Math.max(kf.t, a);
         if (kf.kind === "cut") tl.push(`tl.set("#${id}-cam",{${trSt(kf.f, 1, !sc.bleed)}},${f3(start)});`);
         else tl.push(`tl.fromTo("#${id}-cam",{${trSt(cur, 1, !sc.bleed)}},{${trSt(kf.f, 1, !sc.bleed)},duration:${dd},ease:"${ease}"},${f3(start)});`);
@@ -324,7 +378,8 @@ G.forEach((sh, gi) => {
       }
       if (cp.kfs.length === 0 && !sh.hold && !(cur === FULL && drv.startsWith("pan"))) { /* plain drift below */ }
       if (!sh.hold && e - lastEnd > 0.4) {
-        const zf = drv === "zoom-out" && cur === FULL ? [1.015, 1] : [1, 1.015];
+        const zf = sc.cold ? [1, 1.035] : drv === "zoom-out" && cur === FULL ? [1.015, 1] : [1, 1.015];
+        if (sc.cold && sc.push && cur === FULL) cur = [sc.push[0], sc.push[1], 1];
         if (drv.startsWith("pan") && cur === FULL) tl.push(`tl.fromTo("#${id}-cam",{x:${drv === "pan-right" ? -2 : -26},y:${trSt(FULL, 1.015).match(/y:(-?[\d.]+)/)[1]},scale:1.015},{x:${drv === "pan-right" ? -26 : -2},duration:${f3(e - lastEnd)},ease:"none"},${f3(lastEnd)});`);
         else tl.push(`tl.fromTo("#${id}-cam",{${trSt(cur, zf[0], !sc.bleed)}},{${trSt(cur, zf[1], !sc.bleed)},duration:${f3(e - lastEnd)},ease:"none"},${f3(lastEnd)});`);
       }
@@ -338,6 +393,10 @@ G.forEach((sh, gi) => {
       else if (o.type === "wheel") {
         tl.push(`tl.set("#${oid}",{opacity:0},0);`, `tl.fromTo("#${oid}",{opacity:0,scale:0.8},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},${f3(w0)});`);
         String(o.value).split("").forEach((dgt, c) => tl.push(`tl.fromTo("#${oid}-c${c}",{y:0},{y:-${(+dgt) * 253},duration:${f3(0.9 + c * 0.2)},ease:"power3.out"},${f3(w0 + 0.05)});`));
+      } else if (o.type === "rect") {
+        tl.push(`tl.set("#${oid}",{opacity:0},0);`, `tl.fromTo("#${oid}",{opacity:0},{opacity:1,duration:0.4,ease:"power1.out"},${f3(w0)});`);
+      } else if (o.type === "stamp") {
+        tl.push(`tl.set("#${oid}",{opacity:0},0);`, `tl.fromTo("#${oid}",{opacity:0,scale:1.5},{opacity:1,scale:1,duration:0.22,ease:"power3.in"},${f3(w0)});`);
       } else {
         tl.push(`tl.set("#${oid}",{opacity:0},0);`, `tl.fromTo("#${oid}",{opacity:0,scale:0.85},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},${f3(w0)});`);
         if (o.count) { const ob = vid(`${oid}_o`); tl.push(`const ${ob}={v:0};`, `tl.fromTo(${ob},{v:0},{v:${o.count},duration:0.7,ease:"power2.out",onUpdate:function(){var e=document.getElementById("${oid}-t");if(e)e.textContent=Math.round(${ob}.v)+"%";}},${f3(w0)});`); }
@@ -347,7 +406,8 @@ G.forEach((sh, gi) => {
     }
     for (const [o, k] of scrOvs) {
       const [t0, t1] = overlayWin(sc, ws, W, o), oid = `${id}-so${k}`, vis = t1 > a && t0 < e;
-      if (!vis) continue;
+      if (!vis) { tl.push(`tl.set("#${oid}",{opacity:0},0);`); continue; }
+      if (o.type === "serif") { const ts = Math.max(t0, a); tl.push(`tl.set("#${oid}",{opacity:0},0);`, `tl.fromTo("#${oid}",{opacity:0},{opacity:1,duration:0.4,ease:"power1.out"},${f3(ts)});`); continue; }
       if (t0 >= a - 0.001) { tl.push(`tl.set("#${oid}",{opacity:0},0);`, `tl.fromTo("#${oid}",{opacity:0,y:-20},{opacity:1,y:0,duration:0.3,ease:"back.out(1.4)"},${f3(t0)});`); if (o.ul) tl.push(`tl.to("#${oid}-ul",{strokeDashoffset:0,duration:0.5,ease:"power2.out"},${f3(t0 + 0.5)});`); }
       if (t1 < e - 0.01) tl.push(`tl.to("#${oid}",{opacity:0,duration:0.2},${f3(t1)});`);
     }
@@ -371,9 +431,8 @@ G.forEach((sh, gi) => {
     tl.push(`tl.fromTo("#${id}-in",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},${f3(a)});`, ...partTweens(sh.ev.parts, id, a));
     sfx.push({ t: f3(a), kind: "click" });
   } else if (sh.type === "title") {
-    content = `<div class="fill card"><div id="${id}-in" class="cardtxt"><div class="pill">LESSON</div><div class="ln big">PSYCHOLOGY OF</div><div class="ln big"><span class="org">REGRET</span></div></div></div>`;
-    tl.push(`tl.fromTo("#${id}-in",{scale:0.94},{scale:1,duration:0.3,ease:"back.out(1.4)"},${f3(a)});`);
-    sfx.push({ t: f3(a), kind: "click" });
+    content = `<div class="fill" style="background:#000;display:flex;align-items:center;justify-content:center"><div id="${id}-in" style="font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:84px;color:#B5484A;letter-spacing:2px">Open Your Eyes.</div></div>`;
+    tl.push(`tl.fromTo("#${id}-in",{opacity:0},{opacity:1,duration:0.4,ease:"power1.out"},${f3(a)});`);
   } else if (sh.type === "pop") {
     const c = sh.ev.content;
     if (c.type === "icon") { usedIcons.add(c.icon); content = `<div class="fill iconbg"><img src="assets/icons/${c.icon}.jpg" class="pic" alt=""></div>`; }
@@ -394,7 +453,7 @@ G.forEach((sh, gi) => {
     nar = `<div id="${id}-nw" class="nw"><div class="nshadow" style="left:${left - 10}px;width:${w + 40}px"></div><img class="narr" style="left:${left}px;height:${NH}px" src="assets/narrator/${pose}.png" alt=""></div>`;
     tl.push(`tl.fromTo("#${id}-nw",{x:-520},{x:0,duration:0.25,ease:"power2.out"},${f3(a)});`, `tl.to("#${id}-nw",{x:-520,duration:0.2,ease:"power2.in"},${f3(e - 0.22)});`);
   }
-  html.push(`<div id="${id}" class="clip" data-start="${f3(a)}" data-duration="${f3(cd)}" style="z-index:${zi}"><div id="${id}-t" class="tt">${body}${extra}</div>${nar}</div>`);
+  html.push(`<div id="${id}" class="clip" data-start="${f3(a)}" data-duration="${f3(cd)}" style="z-index:${zi}"><div id="${id}-t" class="tt"${sh.type === "title" ? ' style="background:#000"' : ""}>${body}${extra}</div>${nar}</div>`);
   // transitions
   if (tr) {
     const dd = tr.dur, tid = `#${id}-t`, pt = prevSh ? `#${prevSh.sid}-t` : null;
@@ -421,7 +480,8 @@ planned.forEach((P) => {
       tl.push(`tl.fromTo("#${sh.sid}-fin",{scale:1.06},{scale:1,duration:0.2,ease:"power2.out"},${f3(t)});`, `tl.set("#${sh.sid}-fin",{x:5},${f3(t)});`, `tl.set("#${sh.sid}-fin",{x:-4},${f3(t + 0.033)});`, `tl.set("#${sh.sid}-fin",{x:3},${f3(t + 0.066)});`, `tl.set("#${sh.sid}-fin",{x:0},${f3(t + 0.1)});`);
       sfx.push({ t: f3(t), kind: "ding" });
     }
-    if (fx.type === "riser") sfx.push({ t: f3(t - 0.65), kind: "riser" });
+    if (fx.type === "riser") sfx.push({ t: f3(t - 0.65), kind: "riser", keep: true });
+    if (fx.type === "ding") sfx.push({ t: f3(t), kind: fx.low ? "dingLow" : "ding", keep: true });
     if (fx.type === "leak") leaks.push({ t, d: fx.dur || 1.4 });
   }
 });
@@ -534,7 +594,7 @@ html,body{margin:0;background:${PAPER}}
 .tag{position:absolute;font-size:70px}.tag .badge{padding:0 30px 8px}
 .sweep{position:absolute;width:300px;height:300px;opacity:0;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,247,200,.95),rgba(255,255,255,0));filter:blur(8px);border-radius:50%}
 .half{position:absolute;top:0;width:960px;height:1080px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px}
-.half .ln{font-size:128px}
+.half .ln{font-size:var(--fs,128px)}
 .vdiv{position:absolute;left:956px;top:120px;width:8px;height:840px;background:${INK};border-radius:4px}
 .qmark{position:absolute;left:210px;top:60px;font-size:420px;line-height:1;color:${ORG};-webkit-text-stroke:5px ${INK};paint-order:stroke fill}
 .qtext{position:absolute;left:200px;top:250px;width:1540px;font-size:90px;line-height:1.42;text-align:left}
@@ -542,6 +602,17 @@ html,body{margin:0;background:${PAPER}}
 .qby{position:absolute;left:0;right:0;top:880px;text-align:center;font-size:58px;color:#6a6454}
 .irow{display:flex;gap:70px;align-items:center}
 .itile{width:520px;height:520px;border:9px solid ${INK};border-radius:36px;overflow:hidden;background:#F8F5EE;box-shadow:10px 10px 0 rgba(26,26,26,.2)}.itile img{width:924px;height:520px;margin-left:-202px;display:block}
+.serif{position:absolute;left:0;right:0;top:64px;text-align:center;font-family:Georgia,"Times New Roman",serif;font-weight:400;font-size:64px;letter-spacing:1px;text-shadow:0 2px 14px rgba(0,0,0,.65);z-index:6}
+.glowrect{position:absolute;border:10px solid #E04545;border-radius:38px;box-shadow:0 0 38px 8px rgba(224,69,69,.75),inset 0 0 28px rgba(224,69,69,.5)}
+.stamp{position:absolute;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1;white-space:nowrap}.stamp span{background:#fff;border:12px solid ${RED};color:${RED};border-radius:26px;padding:6px 40px 14px;box-shadow:8px 8px 0 ${INK}}
+.xw{position:relative;display:inline-block}.xs{position:absolute;left:-30px;top:-20px;width:calc(100% + 60px);height:calc(100% + 40px);overflow:visible}
+.dsub{position:absolute;left:0;right:0;top:985px;text-align:center;font-size:56px;color:#6a6454}
+.irow2{display:flex;gap:56px;align-items:flex-start}.itile2{display:flex;flex-direction:column;align-items:center;gap:26px;width:540px}.ilab{font-size:62px;line-height:1.08;text-align:center;white-space:nowrap}
+.phone{position:absolute;border:12px solid ${INK};border-radius:90px;background:#fff;box-sizing:border-box;box-shadow:12px 12px 0 rgba(26,26,26,.18)}
+.brow{position:absolute;width:760px;height:190px;display:flex;align-items:center;gap:36px}
+.bi{width:170px;height:170px;border:7px solid ${INK};border-radius:28px;overflow:hidden;background:#F8F5EE;flex:none}.bi img{height:170px;margin-left:-66px;display:block}
+.bt{display:flex;flex-direction:column;gap:12px}.bl{font-size:58px;line-height:1}
+.bbar{width:560px;height:58px;border:9px solid ${INK};border-radius:32px;box-sizing:border-box;background:${GREY};overflow:hidden}.bfill{height:100%;background:${TERRA};border-radius:0 24px 24px 0}
 .sweepbox{position:absolute;overflow:hidden}.sweepband{position:absolute;left:0;top:-20%;width:35%;height:140%;transform:skewX(-18deg);background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,247,200,.9),rgba(255,255,255,0));opacity:0}
 .leak{position:absolute;inset:0;mix-blend-mode:screen;background:radial-gradient(ellipse 60% 70% at 95% 10%,rgba(255,170,70,.95),rgba(255,120,40,0) 70%),radial-gradient(ellipse 50% 60% at 5% 95%,rgba(255,210,120,.75),rgba(255,160,60,0) 70%)}
 </style></head><body>
@@ -557,7 +628,11 @@ ${tl.join("\n")}
 window.__timelines["part${N}"] = tl;
 </script></body></html>`;
 fs.writeFileSync(`${out}/index.html`, page);
-fs.writeFileSync(`scenes/part${N}.sfx.json`, JSON.stringify(sfx.sort((a, b) => a.t - b.t)));
+const coldWin = planned.filter((P) => P.sc.cold).map((P) => [P.sc.t.start, P.sc.t.end]);
+const sfxOut = sfx.filter((x) => x.keep || !coldWin.some(([a, b]) => x.t >= a - 0.01 && x.t < b));
+const titleSh = G.find((x) => x.type === "title" && x.P.sc.cold);
+fs.writeFileSync(`scenes/part${N}.cold.json`, JSON.stringify(titleSh && N === "1" ? { end: titleSh.e } : {}));
+fs.writeFileSync(`scenes/part${N}.sfx.json`, JSON.stringify(sfxOut.sort((a, b) => a.t - b.t)));
 fs.writeFileSync(`scenes/part${N}.plan.json`, JSON.stringify(planOut, null, 1));
 const rows = cutRows.sort((a, b) => a.t - b.t).map((r) => `${r.t.toFixed(2).padStart(7)}s  ${r.scene}  ${r.kind.padEnd(7)}  word "${r.word}"  Δ${(r.delta * 1000).toFixed(0)}ms`);
 fs.writeFileSync(`scenes/part${N}.cuts.txt`, rows.join("\n"));

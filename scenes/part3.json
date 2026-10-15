@@ -1,0 +1,593 @@
+{
+ "part": 3,
+ "audio": "audio/padded/part3.wav",
+ "scenes": [
+  {
+   "id": "E21",
+   "camera": "hold",
+   "narration": "So what's actually running in the background? From all this research, there are four kinds of \"apps\" that seem to drain people the most.",
+   "events": [],
+   "host": [
+    [
+     "N06"
+    ]
+   ],
+   "diagram": {
+    "kind": "battery",
+    "init": {},
+    "at": {
+     "frame": {
+      "word": "running",
+      "occ": 1
+     },
+     "appear": {
+      "word": "four",
+      "occ": 1
+     }
+    }
+   }
+  },
+  {
+   "id": "E22",
+   "camera": "zoom-in",
+   "narration": "One. The replay. The conversation you keep going over. What you said. What you should have said. What they meant by that look.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I63",
+     "word": "going",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "picture": "S11",
+   "overlays": [
+    {
+     "type": "step",
+     "step": "APP 1",
+     "text": "THE REPLAY",
+     "word": "one",
+     "occ": 1
+    }
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "said",
+     "occ": 1,
+     "f": [
+      0.37,
+      0.45,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "meant",
+     "occ": 1,
+     "f": [
+      0.64,
+      0.5,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "E23",
+   "camera": "hold",
+   "narration": "Psychologists call this rumination. And it's strongly linked to having a harder time falling asleep, and to feeling worse the next day.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I68",
+     "word": "asleep",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "host": [
+    [
+     "N06"
+    ]
+   ],
+   "overlays": [
+    {
+     "type": "pill",
+     "text": "RUMINATION",
+     "word": "rumination",
+     "occ": 1
+    }
+   ],
+   "diagram": {
+    "kind": "battery",
+    "init": {
+     "replay": 0.2,
+     "decision": 0.5,
+     "halfdone": 0.35,
+     "ending": 0.7
+    },
+    "active": "replay",
+    "grow": [
+     {
+      "row": "replay",
+      "word": {
+       "word": "rumination",
+       "occ": 1
+      },
+      "to": 0.92
+     }
+    ]
+   }
+  },
+  {
+   "id": "E24",
+   "camera": "zoom-out",
+   "narration": "For me, it was one comment at a party. Something I said that came out wrong. I must have replayed it fifty times that week. The friend I said it to? He didn't even remember it. The worst part? Replaying it never changes how it went. It just runs the same video again.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "REPLAYED"
+      },
+      {
+       "t": "50\u00d7",
+       "badge": "yellow"
+      }
+     ],
+     "word": "fifty",
+     "occ": 1,
+     "dur": 1.9
+    },
+    {
+     "kind": "pop",
+     "pose": "N05",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "HE DIDN'T"
+       },
+       {
+        "t": "EVEN REMEMBER",
+        "badge": "yellow"
+       }
+      ]
+     },
+     "word": "remember",
+     "occ": 1,
+     "dur": 2.8
+    }
+   ],
+   "picture": "S11",
+   "fx": [
+    {
+     "type": "leak",
+     "word": "party"
+    }
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "friend",
+     "occ": 1,
+     "f": [
+      0.64,
+      0.5,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "E25",
+   "camera": "zoom-in",
+   "narration": "Two. The decision you keep avoiding. Should I quit? Should I text them? Should I change what I'm studying? Remember that pull to go back to interrupted things? A decision you keep avoiding is the biggest interruption of all.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I64",
+     "word": "quit",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "picture": "S12",
+   "overlays": [
+    {
+     "type": "step",
+     "step": "APP 2",
+     "text": "THE AVOIDED DECISION",
+     "word": "two",
+     "occ": 1
+    }
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "avoiding",
+     "occ": 1,
+     "f": [
+      0.2,
+      0.7,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "change",
+     "occ": 1,
+     "f": [
+      0.8,
+      0.7,
+      1.4
+     ]
+    },
+    {
+     "kind": "snap",
+     "word": "remember",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.5,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "E26",
+   "camera": "hold",
+   "narration": "An avoided decision isn't closed. It's paused. And every time something reminds you of it, your mind opens it right back up. Then you push it away again. And again. That's not resting. That's running the same app over and over without ever letting it finish.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "NOT",
+       "badge": "red"
+      },
+      {
+       "t": "RESTING"
+      }
+     ],
+     "word": "resting",
+     "occ": 1,
+     "dur": 1.9
+    }
+   ],
+   "host": [
+    [
+     "N06",
+     "an"
+    ],
+    [
+     "N05",
+     "then"
+    ],
+    [
+     "N02",
+     "that's"
+    ]
+   ],
+   "overlays": [
+    {
+     "type": "stamp",
+     "text": "PAUSED, NOT CLOSED",
+     "word": "paused",
+     "box": {
+      "x": 0.27,
+      "y": 0.72,
+      "w": 0.46,
+      "h": 0.14
+     },
+     "rot": -7,
+     "fs": 74
+    }
+   ],
+   "diagram": {
+    "kind": "battery",
+    "init": {
+     "replay": 0.9,
+     "decision": 0.5,
+     "halfdone": 0.35,
+     "ending": 0.7
+    },
+    "active": "decision",
+    "pulse": [
+     {
+      "row": "decision",
+      "words": [
+       {
+        "word": "opens",
+        "occ": 1
+       },
+       {
+        "word": "away",
+        "occ": 1
+       },
+       {
+        "word": "again",
+        "occ": 1
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "E27",
+   "camera": "zoom-in",
+   "narration": "Three. The half-finished task. A researcher named Sophie Leroy found that when people switched to something new while an older task was still unfinished, part of their attention stayed stuck on the first one.",
+   "events": [],
+   "picture": "S13",
+   "overlays": [
+    {
+     "type": "step",
+     "step": "APP 3",
+     "text": "THE HALF-FINISHED TASK",
+     "word": "three",
+     "occ": 1
+    },
+    {
+     "type": "pill",
+     "text": "SOPHIE LEROY",
+     "word": "leroy",
+     "occ": 1,
+     "dur": 3
+    }
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "first",
+     "occ": 1,
+     "f": [
+      0.17,
+      0.62,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "E28",
+   "camera": "hold",
+   "narration": "She called it \"attention residue.\" And those people did worse on the new task.",
+   "events": [],
+   "host": [
+    [
+     "N06"
+    ],
+    [
+     "N01",
+     "and"
+    ]
+   ],
+   "overlays": [
+    {
+     "type": "pill",
+     "text": "ATTENTION RESIDUE",
+     "word": "attention",
+     "occ": 1
+    }
+   ],
+   "diagram": {
+    "kind": "battery",
+    "init": {
+     "replay": 0.9,
+     "decision": 0.7,
+     "halfdone": 0.15,
+     "ending": 0.7
+    },
+    "active": "halfdone",
+    "grow": [
+     {
+      "row": "halfdone",
+      "word": {
+       "word": "worse",
+       "occ": 1
+      },
+      "to": 0.85
+     }
+    ]
+   }
+  },
+  {
+   "id": "E29",
+   "camera": "zoom-in",
+   "narration": "So when you've got ten tabs open, three half-done assignments and an unanswered email... you're never fully anywhere.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I65",
+     "word": "tabs",
+     "occ": 1,
+     "dur": 1.8
+    },
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "NEVER FULLY"
+      },
+      {
+       "t": "ANYWHERE",
+       "badge": "yellow"
+      }
+     ],
+     "word": "anywhere",
+     "occ": 1,
+     "dur": 1.9
+    }
+   ],
+   "picture": "S13",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "ten",
+     "occ": 1,
+     "f": [
+      0.31,
+      0.4,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "E30",
+   "camera": "zoom-in",
+   "narration": "Four. The ending you never accepted. A friendship that faded without a real goodbye. A relationship that ended before you were ready. A version of yourself you thought you'd be by now.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I66",
+     "word": "relationship",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "picture": "S37",
+   "trans": "fade",
+   "overlays": [
+    {
+     "type": "step",
+     "step": "APP 4",
+     "text": "THE ENDING YOU NEVER ACCEPTED",
+     "word": "four",
+     "occ": 1
+    }
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "friendship",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.25,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "E31",
+   "camera": "hold",
+   "narration": "Your mind keeps trying to write the last chapter, because nobody ever wrote it. It's part of why a song, a smell, or a random photo can drag you right back to something that ended years ago. That one usually runs the quietest... and the longest.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I46",
+     "word": "chapter",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "host": [
+    [
+     "N06"
+    ],
+    [
+     "N01",
+     "it's"
+    ],
+    [
+     "N02",
+     "that",
+     2
+    ]
+   ],
+   "diagram": {
+    "kind": "battery",
+    "init": {
+     "replay": 0.9,
+     "decision": 0.7,
+     "halfdone": 0.85,
+     "ending": 0.1
+    },
+    "active": "ending",
+    "grow": [
+     {
+      "row": "ending",
+      "word": {
+       "word": "longest",
+       "occ": 1
+      },
+      "to": 1.0,
+      "dur": 1.6
+     }
+    ]
+   }
+  },
+  {
+   "id": "E32",
+   "camera": "zoom-out",
+   "narration": "Here's what all four have in common. None of them are on your screen. You can be lying in bed, doing nothing at all... and they're still running.",
+   "events": [],
+   "picture": "S06",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "lying",
+     "occ": 1,
+     "f": [
+      0.45,
+      0.62,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "E33",
+   "camera": "hold",
+   "narration": "So how do you close them? Not by forcing them out of your head. Telling yourself \"stop thinking about it\" usually makes you think about it more. You close them the same way you'd close an app. On purpose. One at a time.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "\u201cSTOP THINKING",
+       "badge": "red"
+      },
+      {
+       "t": "ABOUT IT\u201d",
+       "badge": "red"
+      }
+     ],
+     "word": "stop",
+     "occ": 1,
+     "dur": 1.9
+    },
+    {
+     "kind": "icon",
+     "icon": "I69",
+     "word": "same",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "host": [
+    [
+     "N06"
+    ],
+    [
+     "N01",
+     "you"
+    ]
+   ],
+   "diagram": {
+    "kind": "loop",
+    "at": {
+     "close": {
+      "word": "purpose",
+      "occ": 1
+     }
+    }
+   }
+  }
+ ]
+}

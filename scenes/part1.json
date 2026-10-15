@@ -1,0 +1,404 @@
+{
+ "part": 1,
+ "audio": "audio/padded/part1.wav",
+ "scenes": [
+  {
+   "id": "E01",
+   "camera": "zoom-in",
+   "narration": "Imagine your phone is at a hundred percent when you wake up. By lunch, it's almost dead. And you barely touched it.",
+   "events": [],
+   "picture": "S01",
+   "pictureB": "S01b",
+   "swap": {
+    "word": "lunch",
+    "kind": "fade"
+   },
+   "push": [
+    0.58,
+    0.66
+   ],
+   "cold": true,
+   "foci": []
+  },
+  {
+   "id": "E02",
+   "camera": "zoom-in",
+   "narration": "So you open the battery settings to see what happened. And there it is. A list of apps eating your battery... including some you never even opened today. They've been running in the background. All morning. Quietly. So here's a question.",
+   "events": [],
+   "picture": "S02",
+   "overlays": [
+    {
+     "type": "rect",
+     "word": "never",
+     "box": {
+      "x": 0.385,
+      "y": 0.535,
+      "w": 0.165,
+      "h": 0.3
+     },
+     "rot": -16
+    }
+   ],
+   "push": [
+    0.45,
+    0.6
+   ],
+   "cold": true,
+   "foci": []
+  },
+  {
+   "id": "E03",
+   "camera": "hold",
+   "narration": "When you lock your phone and the screen goes black... do those apps close? No. The screen just goes dark. Everything behind it keeps running.",
+   "events": [],
+   "picture": "S03",
+   "overlays": [
+    {
+     "type": "serif",
+     "text": "everything keeps running.",
+     "word": "running",
+     "occ": 1,
+     "dur": 99
+    }
+   ],
+   "push": [
+    0.62,
+    0.67
+   ],
+   "cold": true,
+   "foci": []
+  },
+  {
+   "id": "E04",
+   "camera": "zoom-in",
+   "narration": "Now think about the last time you went to bed exhausted... after a day where you didn't really do that much. What was still running? The conversation you keep replaying. The decision you keep putting off. The text you never answered. The thing that ended... that you never really let end.",
+   "events": [],
+   "picture": "S04",
+   "moves": [
+    {
+     "kind": "slow",
+     "word": "conversation",
+     "occ": 1,
+     "f": [
+      0.19,
+      0.28,
+      1.4
+     ],
+     "dur": 0.6
+    },
+    {
+     "kind": "slow",
+     "word": "decision",
+     "occ": 1,
+     "f": [
+      0.62,
+      0.17,
+      1.4
+     ],
+     "dur": 0.6
+    },
+    {
+     "kind": "slow",
+     "word": "text",
+     "occ": 1,
+     "f": [
+      0.37,
+      0.15,
+      1.4
+     ],
+     "dur": 0.6
+    },
+    {
+     "kind": "slow",
+     "word": "ended",
+     "occ": 1,
+     "f": [
+      0.84,
+      0.3,
+      1.4
+     ],
+     "dur": 0.6
+    },
+    {
+     "kind": "slow",
+     "word": "never",
+     "occ": 2,
+     "f": [
+      0.4,
+      0.58,
+      1.4
+     ],
+     "dur": 0.6
+    }
+   ],
+   "cold": true
+  },
+  {
+   "id": "E05",
+   "camera": "zoom-in",
+   "narration": "Maybe you're not tired because you did too much. Maybe you're tired because too much inside you never finished.",
+   "events": [
+    {
+     "kind": "title",
+     "dur": 2.5
+    }
+   ],
+   "picture": "S05",
+   "overlays": [
+    {
+     "type": "serif",
+     "text": "Open Your Eyes.",
+     "word": "finished",
+     "occ": 1,
+     "dur": 99,
+     "color": "#B5484A"
+    }
+   ],
+   "push": [
+    0.5,
+    0.45
+   ],
+   "lead": 0.8,
+   "fx": [
+    {
+     "type": "riser",
+     "word": "maybe"
+    },
+    {
+     "type": "ding",
+     "word": "maybe",
+     "low": true
+    }
+   ],
+   "cold": true,
+   "foci": []
+  },
+  {
+   "id": "E06",
+   "camera": "zoom-in",
+   "narration": "I know that feeling way too well. A while ago, I went through a stretch where I was tired all the time. Not from working out. Not from long days. Some days I barely left my room. I'd sleep nine hours and wake up like I'd just run a marathon.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I56",
+     "word": "tired",
+     "occ": 1,
+     "dur": 1.8
+    },
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "9 HOURS."
+      },
+      {
+       "t": "STILL"
+      },
+      {
+       "t": "TIRED",
+       "badge": "red"
+      }
+     ],
+     "word": "marathon",
+     "occ": 1,
+     "dur": 1.9
+    }
+   ],
+   "picture": "S23",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "nine",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.38,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "E07",
+   "camera": "zoom-in",
+   "narration": "And at night, I'd lie there going over the same stuff. A dumb thing I said to a friend weeks earlier. A message I was supposed to answer. A decision about what I actually wanted to do with my life, that I kept pushing to \"tomorrow.\" None of it was urgent. But none of it was ever finished either. So it just... stayed open.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "IT JUST"
+      },
+      {
+       "t": "STAYED OPEN",
+       "badge": "yellow"
+      }
+     ],
+     "word": "open",
+     "occ": 1,
+     "dur": 1.9
+    }
+   ],
+   "picture": "S06",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "dumb",
+     "occ": 1,
+     "f": [
+      0.21,
+      0.27,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "message",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.22,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "decision",
+     "occ": 1,
+     "f": [
+      0.8,
+      0.28,
+      1.4
+     ]
+    },
+    {
+     "kind": "zoom",
+     "word": "none",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.5,
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "id": "E08",
+   "camera": "zoom-in",
+   "narration": "It turns out there's real psychology behind this. Researchers have studied what unfinished things do to your mind, and why some thoughts keep coming back no matter how many times you push them away.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I25",
+     "word": "researchers",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "picture": "S20",
+   "host": [
+    [
+     "N06"
+    ]
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "unfinished",
+     "occ": 1,
+     "f": [
+      0.77,
+      0.42,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "E09",
+   "camera": "hold",
+   "narration": "By the end of this video, you'll know what's actually running in the background of your mind, the four \"apps\" that drain people the most, and five simple ways to close them.",
+   "events": [],
+   "host": [
+    [
+     "N01"
+    ]
+   ],
+   "diagram": {
+    "kind": "irow",
+    "items": [
+     {
+      "icon": "I56",
+      "label": "WHAT'S<br>RUNNING"
+     },
+     {
+      "icon": "I65",
+      "label": "4 &ldquo;APPS&rdquo;"
+     },
+     {
+      "icon": "I69",
+      "label": "5 WAYS TO<br>CLOSE THEM"
+     }
+    ],
+    "at": {
+     "it0": {
+      "word": "running",
+      "occ": 1
+     },
+     "it1": {
+      "word": "four",
+      "occ": 1
+     },
+     "it2": {
+      "word": "close",
+      "occ": 1
+     }
+    }
+   }
+  },
+  {
+   "id": "E10",
+   "camera": "zoom-in",
+   "narration": "One of them takes about five minutes before bed. And quick note. If you're exhausted all the time no matter what you do, it's worth talking to a doctor too. This video is about the kind of tired that doesn't come from your body.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I11",
+     "word": "five",
+     "occ": 1,
+     "dur": 1.8
+    },
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "ALWAYS EXHAUSTED?",
+       "sz": "mid"
+      },
+      {
+       "t": "SEE A DOCTOR",
+       "badge": "yellow"
+      }
+     ],
+     "word": "doctor",
+     "occ": 1,
+     "dur": 2.4
+    }
+   ],
+   "picture": "S33",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "note",
+     "occ": 1,
+     "f": [
+      0.55,
+      0.28,
+      1.4
+     ]
+    }
+   ]
+  }
+ ]
+}

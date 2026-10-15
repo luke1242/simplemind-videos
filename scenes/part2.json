@@ -1,0 +1,442 @@
+{
+ "part": 2,
+ "audio": "audio/padded/part2.wav",
+ "scenes": [
+  {
+   "id": "E11",
+   "camera": "zoom-in",
+   "narration": "As the story goes, it started in the nineteen-twenties, in a caf\u00e9 in Berlin. A psychologist named Kurt Lewin noticed something about a waiter. The waiter could remember every unpaid order at a busy table, without writing anything down.",
+   "events": [],
+   "picture": "S07",
+   "host": [
+    [
+     "N01"
+    ],
+    [
+     "N06",
+     "a",
+     2
+    ]
+   ],
+   "trans": "push",
+   "overlays": [
+    {
+     "type": "pill",
+     "text": "BERLIN, 1920s",
+     "word": "berlin",
+     "occ": 1
+    }
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "waiter",
+     "occ": 1,
+     "f": [
+      0.66,
+      0.45,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "every",
+     "occ": 1,
+     "f": [
+      0.55,
+      0.2,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "unpaid",
+     "occ": 1,
+     "f": [
+      0.66,
+      0.14,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "order",
+     "occ": 1,
+     "f": [
+      0.76,
+      0.24,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "E12",
+   "camera": "hold",
+   "narration": "But as soon as the bill was paid... it was gone. He couldn't remember any of it.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "PAID ="
+      },
+      {
+       "t": "GONE",
+       "badge": "yellow"
+      }
+     ],
+     "word": "gone",
+     "occ": 1,
+     "dur": 1.9
+    }
+   ],
+   "picture": "S07",
+   "pictureB": "S07b",
+   "swap": {
+    "word": "paid"
+   },
+   "host": [
+    [
+     "N05"
+    ]
+   ]
+  },
+  {
+   "id": "E13",
+   "camera": "zoom-in",
+   "narration": "One of Lewin's students, Bluma Zeigarnik, turned that into an experiment. People worked through a bunch of small tasks, and some of them were interrupted halfway. Later, people seemed to remember the unfinished tasks better than the finished ones. It became known as the Zeigarnik effect. And you've probably seen it all over the internet.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "THE"
+      },
+      {
+       "t": "ZEIGARNIK EFFECT",
+       "badge": "yellow"
+      }
+     ],
+     "word": "effect",
+     "occ": 1,
+     "dur": 1.9
+    }
+   ],
+   "picture": "S08",
+   "overlays": [
+    {
+     "type": "pill",
+     "text": "BLUMA ZEIGARNIK",
+     "word": "zeigarnik",
+     "occ": 1,
+     "dur": 5
+    }
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "interrupted",
+     "occ": 1,
+     "f": [
+      0.72,
+      0.66,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "later",
+     "occ": 1,
+     "f": [
+      0.34,
+      0.55,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "E14",
+   "camera": "hold",
+   "narration": "But to be honest, that memory part hasn't held up very well. A big review in twenty twenty-five found that unfinished tasks aren't reliably remembered better. It did find something else, though. People have a strong pull to go back to things that were interrupted.",
+   "events": [],
+   "host": [
+    [
+     "N02"
+    ],
+    [
+     "N06",
+     "it"
+    ]
+   ],
+   "diagram": {
+    "kind": "card",
+    "parts": [
+     {
+      "t": "UNFINISHED ="
+     },
+     {
+      "t": "REMEMBERED BETTER",
+      "badge": "red",
+      "x": true
+     },
+     {
+      "t": "2025 REVIEW",
+      "small": true
+     }
+    ],
+    "at": {
+     "x": {
+      "word": "aren't",
+      "occ": 1
+     }
+    }
+   },
+   "diagramB": {
+    "kind": "card",
+    "sweep": true,
+    "parts": [
+     {
+      "t": "A PULL TO"
+     },
+     {
+      "t": "GO BACK",
+      "badge": "yellow"
+     }
+    ]
+   },
+   "swap": {
+    "word": "something"
+   }
+  },
+  {
+   "id": "E15",
+   "camera": "hold",
+   "narration": "Your mind doesn't like open loops. It keeps nudging you back toward them. And another study shows what all that nudging actually costs you.",
+   "events": [],
+   "host": [
+    [
+     "N06"
+    ],
+    [
+     "N01",
+     "and"
+    ]
+   ],
+   "diagram": {
+    "kind": "loop",
+    "at": {
+     "draw": {
+      "word": "loops",
+      "occ": 1
+     },
+     "nudge": {
+      "word": "nudging",
+      "occ": 1
+     }
+    }
+   }
+  },
+  {
+   "id": "E16",
+   "camera": "zoom-in",
+   "narration": "In two thousand eleven, psychologists E.J. Masicampo and Roy Baumeister asked people to think about an important goal they hadn't finished yet. Then they gave them something completely different to work on. And the unfinished goal kept sneaking back in. People had more distracting thoughts about it... and they did worse on the task right in front of them.",
+   "events": [],
+   "picture": "S09",
+   "overlays": [
+    {
+     "type": "pill",
+     "text": "MASICAMPO & BAUMEISTER, 2011",
+     "word": "masicampo",
+     "occ": 1,
+     "dur": 5
+    }
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "sneaking",
+     "occ": 1,
+     "f": [
+      0.84,
+      0.24,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "worse",
+     "occ": 1,
+     "f": [
+      0.62,
+      0.67,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "E17",
+   "camera": "zoom-in",
+   "narration": "Then the researchers tried one small change. Before the second task, some people made a specific plan for their unfinished goal. When, where, and how they'd do it. And the distracting thoughts... mostly went away. They hadn't finished anything. They'd only made a plan. And that was enough for the mind to let it go, for now.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "THEY ONLY MADE"
+      },
+      {
+       "t": "A PLAN",
+       "badge": "yellow"
+      }
+     ],
+     "word": "only",
+     "occ": 1,
+     "dur": 1.9
+    }
+   ],
+   "picture": "S09",
+   "pictureB": "S09b",
+   "swap": {
+    "word": "plan"
+   },
+   "host": [
+    [
+     "N02"
+    ],
+    [
+     "N06",
+     "they"
+    ]
+   ],
+   "overlays": [
+    {
+     "type": "circle",
+     "cx": 0.64,
+     "cy": 0.69,
+     "rx": 0.1,
+     "ry": 0.065,
+     "word": "when"
+    },
+    {
+     "type": "sweep",
+     "word": "away",
+     "box": {
+      "x": 0.52,
+      "y": 0.3,
+      "w": 0.45,
+      "h": 0.5
+     }
+    }
+   ]
+  },
+  {
+   "id": "E18",
+   "camera": "pan-right",
+   "narration": "And those distracting thoughts take up more of your day than you'd think. Researchers at Harvard checked in on more than two thousand people through an app on their phones, at random moments during the day. They asked: what are you doing right now? And are you thinking about something else?",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I41",
+     "word": "app",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "picture": "S10",
+   "overlays": [
+    {
+     "type": "pill",
+     "text": "HARVARD",
+     "word": "harvard",
+     "occ": 1,
+     "dur": 3
+    }
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "doing",
+     "occ": 1,
+     "f": [
+      0.1,
+      0.45,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "else",
+     "occ": 1,
+     "f": [
+      0.64,
+      0.4,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "E19",
+   "camera": "hold",
+   "narration": "Almost half the time... people's minds were somewhere else. And when their minds wandered, they were usually less happy than when they were focused on what they were doing.",
+   "events": [],
+   "host": [
+    [
+     "N02"
+    ],
+    [
+     "N06",
+     "and"
+    ]
+   ],
+   "lead": 0.8,
+   "diagram": {
+    "kind": "pie",
+    "pct": 47,
+    "from": 0,
+    "label": "MIND ELSEWHERE:",
+    "badge": "yellow",
+    "value": "47%",
+    "sub": "Killingsworth &amp; Gilbert, 2010",
+    "at": {
+     "fill": {
+      "word": "almost",
+      "occ": 1
+     }
+    }
+   },
+   "fx": [
+    {
+     "type": "riser",
+     "word": "almost"
+    },
+    {
+     "type": "impact",
+     "word": "almost"
+    }
+   ]
+  },
+  {
+   "id": "E20",
+   "camera": "zoom-in",
+   "narration": "So your mind isn't lazy when it feels drained. It might just be running too many things you can't see.",
+   "events": [],
+   "picture": "S22",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "running",
+     "occ": 1,
+     "f": [
+      0.79,
+      0.6,
+      1.4
+     ]
+    }
+   ]
+  }
+ ]
+}

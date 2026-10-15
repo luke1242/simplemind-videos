@@ -22,6 +22,7 @@ m = [None] * len(nt)
 for a, b, size in sm.get_matching_blocks():
     for k in range(size): m[a + k] = tw[b + k][1]
 # fill gaps by interpolation between matched neighbours
+um = [v is None for v in m]
 idx = [i for i, v in enumerate(m) if v is not None]
 assert idx, "no match"
 for i in range(len(m)):
@@ -44,6 +45,27 @@ for i, s in enumerate(scenes):  # optional lead: start a reveal scene a little b
     if ld and i > 0: s["start"] = max(s["start"] - ld, scenes[i - 1]["narrationEnd"] + 0.25)
 for i, s in enumerate(scenes):
     s["end"] = scenes[i + 1]["start"] if i + 1 < len(scenes) else dur
+# a scene whose first word(s) whisper dropped: start at the real speech onset (silencedetect), never inside the previous scene's last word
+import subprocess
+def onsets():
+    log = subprocess.run(["ffmpeg", "-i", cfg["audio"], "-af", "silencedetect=noise=-35dB:d=0.12", "-f", "null", "-"], capture_output=True, text=True).stderr
+    return [float(x) for x in re.findall(r"silence_end: ([\d.]+)", log)]
+ON = None
+for si, sc in enumerate(cfg["scenes"]):
+    toks = [i for i in range(len(nt)) if scene_of[i] == si]
+    if si > 0 and um[toks[0]]:
+        ON = ON or onsets(); lead_n = 0
+        for i in toks:
+            if um[i]: lead_n += 1
+            else: break
+        nxt = W[m[toks[lead_n]]]["s"] if lead_n < len(toks) else scenes[si]["narrationEnd"]
+        pe = scenes[si - 1]["narrationEnd"]
+        c = [t for t in ON if pe + 0.15 <= t <= nxt - 0.05]
+        if c:
+            st = c[0]; scenes[si]["start"] = st; w0 = scenes[si]["words"]
+            for k in range(lead_n): w0[k]["s"] = round(st + k * (nxt - st) / lead_n, 3); w0[k]["e"] = round(st + (k + 1) * (nxt - st) / lead_n, 3) if k + 1 < lead_n else round(min(st + 0.5, nxt), 3)
+            print("fixed dropped scene-start word for", sc["id"], "->", round(st, 2))
+for i, s_ in enumerate(scenes): s_["end"] = scenes[i + 1]["start"] if i + 1 < len(scenes) else dur
 scenes[0]["start"] = 0.0
 json.dump({"duration": dur, "scenes": scenes}, open(f"scenes/part{n}.timing.json", "w"), indent=1)
 print("scene  start    end    dur  sentences")

@@ -1,0 +1,553 @@
+{
+ "part": 4,
+ "audio": "audio/padded/part4.wav",
+ "scenes": [
+  {
+   "id": "E34",
+   "camera": "zoom-in",
+   "narration": "So here's how I actually close them now. Five steps. One. Check your battery usage. Grab a piece of paper and write down everything that's still open in your head. Every conversation, every decision, every half-done thing. Don't fix anything yet. Just list it.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I67",
+     "word": "write",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "picture": "S14",
+   "overlays": [
+    {
+     "type": "step",
+     "step": "STEP 1",
+     "text": "CHECK YOUR BATTERY USAGE",
+     "word": "one",
+     "occ": 1
+    }
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "paper",
+     "occ": 1,
+     "f": [
+      0.34,
+      0.6,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "E35",
+   "camera": "hold",
+   "narration": "It sounds too simple, but a lot of these apps get quieter the second you can actually see them.",
+   "events": [],
+   "host": [
+    [
+     "N01"
+    ]
+   ],
+   "diagram": {
+    "kind": "battery",
+    "init": {
+     "replay": 0.9,
+     "decision": 0.7,
+     "halfdone": 0.85,
+     "ending": 1.0
+    },
+    "shrinkAll": {
+     "word": {
+      "word": "quieter",
+      "occ": 1
+     },
+     "f": 0.7
+    }
+   }
+  },
+  {
+   "id": "E36",
+   "camera": "zoom-in",
+   "narration": "Two. Write tomorrow's to-do list before bed. In one study, researchers brought people into a sleep lab. Before bed, some of them spent five minutes writing a to-do list for the next few days. Others wrote about things they'd already finished.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I11",
+     "word": "five",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "picture": "S15",
+   "host": [
+    [
+     "N07"
+    ],
+    [
+     "N01",
+     "in"
+    ]
+   ],
+   "overlays": [
+    {
+     "type": "step",
+     "step": "STEP 2",
+     "text": "TO-DO LIST BEFORE BED",
+     "word": "two",
+     "occ": 1
+    }
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "lab",
+     "occ": 1,
+     "f": [
+      0.15,
+      0.52,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "others",
+     "occ": 1,
+     "f": [
+      0.81,
+      0.48,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "E37",
+   "camera": "hold",
+   "narration": "The to-do list group fell asleep faster. About nine minutes faster. And the more specific the list was, the faster they fell asleep. It was a small study. But it's five minutes and a pen.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I67",
+     "word": "pen",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "host": [
+    [
+     "N02"
+    ],
+    [
+     "N05",
+     "it"
+    ]
+   ],
+   "diagram": {
+    "kind": "card",
+    "parts": [
+     {
+      "t": "ABOUT"
+     },
+     {
+      "t": "9 MIN",
+      "badge": "yellow",
+      "cnt": {
+       "to": 9,
+       "suffix": " MIN"
+      }
+     },
+     {
+      "t": "FASTER"
+     },
+     {
+      "t": "Scullin et al., 2018",
+      "small": true
+     }
+    ],
+    "at": {
+     "cnt": {
+      "word": "nine",
+      "occ": 1
+     }
+    }
+   },
+   "fx": [
+    {
+     "type": "riser",
+     "word": "nine"
+    },
+    {
+     "type": "impact",
+     "word": "nine"
+    }
+   ]
+  },
+  {
+   "id": "E38",
+   "camera": "zoom-in",
+   "narration": "Three. Give every open loop a plan. Remember the study where a plan made the distracting thoughts go away? You don't have to finish everything tonight. You just have to decide when, where, and how.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "WHEN. WHERE. HOW.",
+       "badge": "yellow",
+       "sz": "mid"
+      }
+     ],
+     "word": "when",
+     "occ": 1,
+     "dur": 1.9
+    }
+   ],
+   "picture": "S14",
+   "overlays": [
+    {
+     "type": "step",
+     "step": "STEP 3",
+     "text": "GIVE IT A PLAN",
+     "word": "three",
+     "occ": 1
+    }
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "decide",
+     "occ": 1,
+     "f": [
+      0.45,
+      0.56,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "E39",
+   "camera": "hold",
+   "narration": "\"I'll answer that text tomorrow at lunch.\" \"I'll make that decision by Friday, after I talk to my brother.\" That's often enough for your mind to stop nudging you.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I13",
+     "word": "friday",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "host": [
+    [
+     "N01"
+    ]
+   ],
+   "diagram": {
+    "kind": "split",
+    "left": [
+     "THE TEXT",
+     "TOMORROW, LUNCH"
+    ],
+    "right": [
+     "THE DECISION",
+     "BY FRIDAY"
+    ],
+    "rightBadge": "yellow",
+    "at": {
+     "left": {
+      "word": "answer",
+      "occ": 1
+     },
+     "right": {
+      "word": "decision",
+      "occ": 1
+     }
+    }
+   }
+  },
+  {
+   "id": "E40",
+   "camera": "hold",
+   "narration": "Four. Close one small app today. Pick the smallest thing on your list and finish it. Send the reply. Make the easy decision. Delete the thing you're never going to do. Every loop you close is one less thing running in the background.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I41",
+     "word": "reply",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "host": [
+    [
+     "N07"
+    ],
+    [
+     "N01",
+     "pick"
+    ]
+   ],
+   "overlays": [
+    {
+     "type": "step",
+     "step": "STEP 4",
+     "text": "CLOSE ONE SMALL APP",
+     "word": "four",
+     "occ": 1
+    }
+   ],
+   "diagram": {
+    "kind": "battery",
+    "init": {
+     "replay": 0.75,
+     "decision": 0.55,
+     "halfdone": 0.2,
+     "ending": 0.9
+    },
+    "closeRow": {
+     "row": "halfdone",
+     "word": {
+      "word": "finish",
+      "occ": 1
+     },
+     "word2": {
+      "word": "close",
+      "occ": 2
+     }
+    }
+   }
+  },
+  {
+   "id": "E41",
+   "camera": "zoom-in",
+   "narration": "For me, it was finally texting that friend: \"Hey, that thing I said at the party came out wrong.\" It took thirty seconds. He replied, \"lol what?\" And that replay never ran again.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "\u201cLOL"
+      },
+      {
+       "t": "WHAT?\u201d",
+       "badge": "yellow"
+      }
+     ],
+     "word": "lol",
+     "occ": 1,
+     "dur": 1.9
+    }
+   ],
+   "picture": "S16",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "replied",
+     "occ": 1,
+     "f": [
+      0.54,
+      0.57,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "E42",
+   "camera": "zoom-in",
+   "narration": "Five. Let some things end. For the endings you never got, try writing it out. Fifteen minutes. What happened, how it felt, and what you'd want the last chapter to say.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I43",
+     "word": "fifteen",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "picture": "S17",
+   "trans": "fade",
+   "overlays": [
+    {
+     "type": "step",
+     "step": "STEP 5",
+     "text": "LET SOME THINGS END",
+     "word": "five",
+     "occ": 1
+    }
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "writing",
+     "occ": 1,
+     "f": [
+      0.53,
+      0.76,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "E43",
+   "camera": "zoom-in",
+   "narration": "A psychologist named James Pennebaker found that when people wrote about things that were still weighing on them, for a few days in a row, they went to the doctor less often over the next few months. You can't always get a real goodbye. But you can stop waiting for one.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "STOP"
+      },
+      {
+       "t": "WAITING FOR ONE",
+       "badge": "yellow"
+      }
+     ],
+     "word": "stop",
+     "occ": 1,
+     "dur": 1.9
+    }
+   ],
+   "picture": "S20",
+   "host": [
+    [
+     "N06"
+    ]
+   ],
+   "overlays": [
+    {
+     "type": "pill",
+     "text": "JAMES PENNEBAKER",
+     "word": "pennebaker",
+     "occ": 1,
+     "dur": 4
+    }
+   ]
+  },
+  {
+   "id": "E44",
+   "camera": "zoom-in",
+   "narration": "Here's what I keep coming back to. For a long time, I thought I was tired because I wasn't sleeping enough. But I could sleep for nine hours, and I still woke up with all my apps open.",
+   "events": [],
+   "picture": "S23"
+  },
+  {
+   "id": "E45",
+   "camera": "hold",
+   "narration": "Sleep turns the screen off. It doesn't close what's running.",
+   "events": [],
+   "picture": "S03",
+   "trans": "fade",
+   "overlays": [
+    {
+     "type": "serif",
+     "text": "Sleep turns the screen off.",
+     "word": "close",
+     "occ": 1,
+     "dur": 99
+    }
+   ],
+   "push": [
+    0.62,
+    0.67
+   ],
+   "cold": true,
+   "foci": []
+  },
+  {
+   "id": "E46",
+   "camera": "zoom-in",
+   "narration": "So open your eyes to what's running in the background.",
+   "events": [],
+   "picture": "S05",
+   "overlays": [
+    {
+     "type": "serif",
+     "text": "Open Your Eyes.",
+     "word": "eyes",
+     "occ": 1,
+     "dur": 99,
+     "color": "#B5484A"
+    }
+   ],
+   "push": [
+    0.5,
+    0.45
+   ],
+   "cold": true,
+   "foci": []
+  },
+  {
+   "id": "E47",
+   "camera": "zoom-out",
+   "narration": "Close what you can. Plan what you can't. And let go of what's already over. Because sometimes, you don't need more rest. You need fewer things running.",
+   "events": [],
+   "picture": "S31",
+   "trans": "iris",
+   "irisAt": [
+    0.35,
+    0.3
+   ],
+   "overlays": [
+    {
+     "type": "pill",
+     "text": "CLOSE",
+     "word": "close",
+     "occ": 1,
+     "until": "plan"
+    },
+    {
+     "type": "pill",
+     "text": "PLAN",
+     "word": "plan",
+     "occ": 1,
+     "until": "and"
+    },
+    {
+     "type": "pill",
+     "text": "LET GO",
+     "word": "let",
+     "occ": 1,
+     "until": "because"
+    },
+    {
+     "type": "sweep",
+     "word": "fewer",
+     "box": {
+      "x": 0.0,
+      "y": 0.0,
+      "w": 1.0,
+      "h": 1.0
+     }
+    }
+   ]
+  },
+  {
+   "id": "E48",
+   "camera": "hold",
+   "narration": "So what's running in your background right now? Tell me in the comments. Just one word. And if the app that's draining you is a decision you keep avoiding, I made a whole video on why the safe choice isn't always safe. I'll leave it right here.",
+   "events": [
+    {
+     "kind": "pop",
+     "pose": "N06",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "ONE WORD",
+        "badge": "yellow"
+       }
+      ]
+     },
+     "word": "running",
+     "occ": 1,
+     "dur": 2.4
+    }
+   ],
+   "picture": "S29",
+   "holdEnd": true
+  }
+ ]
+}

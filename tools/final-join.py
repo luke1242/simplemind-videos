@@ -24,7 +24,7 @@ for i, n in enumerate(parts):
     for e in json.load(open(f"scenes/part{n}.sfx.json")): ev.append((offs[i] + e["t"], e["kind"]))
 ev.sort(); keep, last = [], -9
 for tt, k in ev:
-    if k == "riser": keep.append((tt, k))   # risers always play (before the biggest reveals)
+    if k in ("riser", "dingLow"): keep.append((tt, k))   # risers always play (before the biggest reveals)
     elif tt - last >= 2.5: keep.append((tt, k)); last = tt
 print("sfx cues:", len(keep), "of", len(ev))
 import wave, numpy as np
@@ -44,7 +44,8 @@ else:
 vd = f"{R}/full-voice.mkv"
 if mus_chain:
     gain = float(sys.argv[1]) if len(sys.argv) > 1 else 0.063  # about -24 dB
-    fc = (f"[1:a]aloop=loop=-1:size=2e9,atrim=0:{total:.2f},asetpts=PTS-STARTPTS,volume={gain},afade=t=in:d=2,afade=t=out:st={total-4:.2f}:d=4,aformat=sample_rates=44100:channel_layouts=mono[m];"
+    cold = json.load(open("scenes/part1.cold.json")).get("end", 0) if os.path.exists("scenes/part1.cold.json") else 0  # cold open: music at its quietest
+    fc = (f"[1:a]aloop=loop=-1:size=2e9,atrim=0:{total:.2f},asetpts=PTS-STARTPTS,volume={gain},volume='if(lt(t,{cold:.2f}),0.5,1)':eval=frame,afade=t=in:d=2,afade=t=out:st={total-4:.2f}:d=4,aformat=sample_rates=44100:channel_layouts=mono[m];"
           f"[0:a]aformat=sample_rates=44100:channel_layouts=mono,asplit=2[vo][vk];"
           f"[m][vk]sidechaincompress=threshold=0.02:ratio=8:attack=20:release=400[md];"
           f"[2:a]aformat=sample_rates=44100:channel_layouts=mono[sf];"
