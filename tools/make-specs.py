@@ -62,7 +62,7 @@ P2 = [
     moves=[mv("snap", "interrupted", [0.72, 0.66, 1.4]), mv("whip", "later", [0.34, 0.55, 1.4])]),
  sc("E14", "But to be honest, that memory part hasn't held up very well. A big review in twenty twenty-five found that unfinished tasks aren't reliably remembered better. It did find something else, though. People have a strong pull to go back to things that were interrupted.", None, "hold",
     host=[["N02"], ["N06", "it"]],
-    diagram={"kind": "card", "parts": [P("UNFINISHED ="), P("REMEMBERED BETTER", R, x=True, sz="mid"), P("2025 REVIEW", small=True)], "at": {"x": W_("aren't")}},
+    diagram={"kind": "card", "parts": [P("UNFINISHED ="), P("REMEMBERED BETTER", R, x=True, sz="sm"), P("2025 REVIEW", small=True)], "at": {"x": W_("aren't")}},
     diagramB={"kind": "card", "sweep": True, "parts": [P("A PULL TO"), P("GO BACK", Y)]}, swap={"word": "something"}),
  sc("E15", "Your mind doesn't like open loops. It keeps nudging you back toward them. And another study shows what all that nudging actually costs you.", None, "hold",
     host=[["N06"], ["N01", "and"]], diagram={"kind": "loop", "at": {"draw": W_("loops"), "nudge": W_("nudging")}}),
@@ -83,7 +83,7 @@ P2 = [
 IN0 = {"replay": 0.2, "decision": 0.5, "halfdone": 0.35, "ending": 0.7}
 P3 = [
  sc("E21", "So what's actually running in the background? From all this research, there are four kinds of \"apps\" that seem to drain people the most.", None, "hold", host=[["N06"]],
-    diagram=BATT(init={}, at={"frame": W_("running"), "appear": W_("four")})),
+    diagram=BATT(init={}, at={"frame": W_("so"), "appear": W_("so")})),
  sc("E22", "One. The replay. The conversation you keep going over. What you said. What you should have said. What they meant by that look.", "S11",
     ev=[icon("going", "I63")], overlays=[step("APP 1", "THE REPLAY", "one")],
     moves=[mv("snap", "said", [0.37, 0.45, 1.4]), mv("whip", "meant", [0.64, 0.5, 1.4])]),

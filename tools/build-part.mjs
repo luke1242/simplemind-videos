@@ -33,7 +33,7 @@ const partHtml = (p, extra = "") => {
   const inner = p.cnt ? `<span class="badge ${p.badge || "yellow"}" id="${extra}-cnt">0${p.cnt.suffix || ""}</span>` : p.badge ? `<span class="badge ${p.badge}">${p.t}</span>` : p.t;
   return p.ul ? `<span class="ulw">${inner}<svg class="ul" viewBox="0 0 400 30" preserveAspectRatio="none"><path id="${extra}-ul" d="M6 18 C60 6 110 26 170 14 S300 8 394 16" fill="none" stroke="${RED}" stroke-width="9" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg></span>` : inner;
 };
-const linesHtml = (parts, pre, cls = "ln") => parts.map((p, i) => `<div class="${cls}${p.small ? " small" : ""}${p.sz === "big" ? " big" : ""}${p.sz === "mid" ? " mid" : ""}" id="${pre}-l${i}">${partHtml(p, `${pre}-p${i}`)}</div>`).join("");
+const linesHtml = (parts, pre, cls = "ln") => parts.map((p, i) => `<div class="${cls}${p.small ? " small" : ""}${p.sz === "big" ? " big" : ""}${p.sz === "mid" ? " mid" : ""}${p.sz === "sm" ? " sm" : ""}" id="${pre}-l${i}">${partHtml(p, `${pre}-p${i}`)}</div>`).join("");
 const partTweens = (parts, pre, t0) => { const r = []; parts.forEach((p, i) => {
   if (p.mk) r.push(`tl.fromTo("#${pre}-p${i}-mk",{scaleX:0},{scaleX:1,duration:0.45,ease:"power2.out"},${f3(t0 + 0.2)});`);
   if (p.circ) r.push(`tl.to("#${pre}-p${i}-ci",{strokeDashoffset:0,duration:0.5,ease:"power2.out"},${f3(t0 + 0.35)});`);
@@ -554,7 +554,7 @@ html,body{margin:0;background:${PAPER}}
 .card{background:${PAPER};display:flex;align-items:center;justify-content:center}
 .cardtxt{display:flex;flex-direction:column;align-items:center;gap:26px;text-align:center}
 .ln{font-size:170px;line-height:1.05;letter-spacing:1px;white-space:nowrap;position:relative}
-.ln.big{font-size:130px}.ln.small{font-size:84px}.ln.mid{font-size:112px}
+.ln.big{font-size:130px}.ln.small{font-size:84px}.ln.mid{font-size:112px}.ln.sm{font-size:92px}
 .badge{display:inline-block;padding:4px 40px 12px;border:9px solid ${INK};border-radius:34px;box-shadow:8px 8px 0 ${INK}}
 .badge.yellow{background:${YEL};color:${INK}} .badge.red{background:${RED};color:#fff}
 .pill{background:${GREEN};color:#fff;border:7px solid ${INK};border-radius:60px;font-size:64px;padding:2px 54px 8px;letter-spacing:4px;margin-bottom:18px}
@@ -611,7 +611,7 @@ html,body{margin:0;background:${PAPER}}
 .phone{position:absolute;border:12px solid ${INK};border-radius:90px;background:#fff;box-sizing:border-box;box-shadow:12px 12px 0 rgba(26,26,26,.18)}
 .brow{position:absolute;width:760px;height:190px;display:flex;align-items:center;gap:36px}
 .bi{width:170px;height:170px;border:7px solid ${INK};border-radius:28px;overflow:hidden;background:#F8F5EE;flex:none}.bi img{height:170px;margin-left:-66px;display:block}
-.bt{display:flex;flex-direction:column;gap:12px}.bl{font-size:58px;line-height:1}
+.bt{display:flex;flex-direction:column;gap:12px}.bl{font-size:80px;line-height:1}
 .bbar{width:560px;height:58px;border:9px solid ${INK};border-radius:32px;box-sizing:border-box;background:${GREY};overflow:hidden}.bfill{height:100%;background:${TERRA};border-radius:0 24px 24px 0}
 .sweepbox{position:absolute;overflow:hidden}.sweepband{position:absolute;left:0;top:-20%;width:35%;height:140%;transform:skewX(-18deg);background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,247,200,.9),rgba(255,255,255,0));opacity:0}
 .leak{position:absolute;inset:0;mix-blend-mode:screen;background:radial-gradient(ellipse 60% 70% at 95% 10%,rgba(255,170,70,.95),rgba(255,120,40,0) 70%),radial-gradient(ellipse 50% 60% at 5% 95%,rgba(255,210,120,.75),rgba(255,160,60,0) 70%)}

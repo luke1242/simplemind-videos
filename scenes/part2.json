@@ -179,7 +179,8 @@
      {
       "t": "REMEMBERED BETTER",
       "badge": "red",
-      "x": true
+      "x": true,
+      "sz": "sm"
      },
      {
       "t": "2025 REVIEW",
