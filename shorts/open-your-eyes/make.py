@@ -1,5 +1,5 @@
 import re, subprocess
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 D = '/tmp/claude-0/eyesshort/'
 SERIF = '/tmp/claude-0/-home-claude/91500ffa-c02b-5439-9cdd-158af1875c8c/scratchpad/th/package/files/eb-garamond-latin-500-normal.woff'
@@ -24,7 +24,8 @@ PHR = [(0.3, 3.00, "Imagine your phone is at a hundred percent when you wake up.
        (59.94, 63.41, "Maybe you're tired because too much inside you never finished.")]
 
 # 1) vertical base: blurred, zoomed fill + full 16:9 frame in the middle; freeze the last frame
-subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', D + 'cold.mp4', '-filter_complex',
+import os
+if not os.path.exists(D + 'base.mp4'): subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', D + 'cold.mp4', '-filter_complex',
     f'[0:v]trim=0:{END},setpts=PTS-STARTPTS,tpad=stop_mode=clone:stop_duration={HOLD},split[a][b];'
     '[a]scale=-2:1920,crop=1080:1920,boxblur=30:3,eq=brightness=-0.32:saturation=0.8[bg];'
     '[b]scale=1080:-2[fg];[bg][fg]overlay=0:(H-h)/2-60[v]',
@@ -39,27 +40,53 @@ def syl(w):
     if w.endswith('e') and n > 1: n -= 1
     return max(1, n) + 0.4
 
-def caption(d, t):
-    for s, e, txt in PHR:
-        if s - 0.05 <= t < e + 0.3:
-            words = txt.split(); ws = [syl(w) for w in words]; tot = sum(ws); acc = 0; hi = 0
-            for j, w in enumerate(ws):
-                if t >= s + (e - s) * acc / tot - 0.05: hi = j
-                acc += w
-            lines, cur = [], []
-            for j, w in enumerate(words):
-                if cur and d.textlength(' '.join(words[k] for k in cur + [j]), font=f_cap) > 940: lines.append(cur); cur = []
-                cur.append(j)
-            lines.append(cur)
-            y = 1400
-            for ln in lines:
-                txtl = ' '.join(words[j] for j in ln)
-                x = (W - d.textlength(txtl, font=f_cap)) / 2
-                for j in ln:
-                    wd = words[j] + ' '
-                    d.text((x, y), wd, font=f_cap, fill=RED if j == hi else OFF, stroke_width=5, stroke_fill=(8, 6, 6))
-                    x += d.textlength(wd, font=f_cap)
-                y += 88
+BOLD = SERIF.replace('500-normal', '700-normal')
+WORDS = []
+for s_, e_, txt in PHR:
+    ws_ = txt.split(); sy = [syl(w) for w in ws_]; tot = sum(sy); acc = 0
+    for w, y_ in zip(ws_, sy):
+        WORDS.append({'w': w, 's': s_ + (e_ - s_) * acc / tot, 'pe': e_}); acc += y_
+CHUNKS, cur = [], []
+for i, w in enumerate(WORDS):
+    cur.append(w)
+    last_of_phrase = i + 1 == len(WORDS) or WORDS[i + 1]['pe'] != w['pe']
+    if len(cur) == 3 or w['w'][-1] in '.,?!' or last_of_phrase or len(' '.join(x['w'] for x in cur)) > 16:
+        CHUNKS.append(cur); cur = []
+for i, c in enumerate(CHUNKS):
+    nxt = CHUNKS[i + 1][0]['s'] if i + 1 < len(CHUNKS) else 999
+    c_end = min(nxt, c[-1]['pe'] + 0.35)
+    for w in c: w['ce'] = c_end
+FONTS = {}
+def font(sz):
+    if sz not in FONTS: FONTS[sz] = ImageFont.truetype(BOLD, sz)
+    return FONTS[sz]
+
+def caption(im, t):
+    for c in CHUNKS:
+        if c[0]['s'] - 0.04 <= t < c[0]['ce']:
+            words = [w['w'].rstrip('.,') if w['w'].endswith((',', '.')) and not w['w'].endswith('...') else w['w'] for w in c]
+            hi = max([i for i, w in enumerate(c) if t >= w['s'] - 0.04] or [0])
+            sz = 124
+            tmp = ImageDraw.Draw(im)
+            while tmp.textlength(' '.join(words), font=font(sz)) > 980 and sz > 70: sz -= 6
+            f = font(sz)
+            p = min(1, (t - c[0]['s'] + 0.04) / 0.16); p = 1 - (1 - p) ** 3
+            y = 1330 + (1 - p) * 22
+            layer = Image.new('RGBA', (W, 360), (0, 0, 0, 0)); ld = ImageDraw.Draw(layer)
+            x = (W - ld.textlength(' '.join(words), font=f)) / 2
+            pos = []
+            for w in words:
+                pos.append(x); x += ld.textlength(w + ' ', font=f)
+            shadow = Image.new('RGBA', (W, 360), (0, 0, 0, 0)); sd = ImageDraw.Draw(shadow)
+            for w, px in zip(words, pos): sd.text((px, 90), w, font=f, fill=(0, 0, 0, 235))
+            shadow = shadow.filter(ImageFilter.GaussianBlur(14))
+            layer.alpha_composite(shadow); layer.alpha_composite(shadow)
+            for i, (w, px) in enumerate(zip(words, pos)):
+                ld.text((px, 90), w, font=f, fill=(214, 78, 74, 255) if i == hi else (246, 241, 233, 255),
+                        stroke_width=2, stroke_fill=(10, 8, 8, 255))
+            if p < 1:
+                al = layer.getchannel('A').point(lambda v: int(v * p)); layer.putalpha(al)
+            im.paste(layer, (0, int(y) - 90), layer)
             return
 
 dec = subprocess.Popen(['ffmpeg', '-v', 'error', '-i', D + 'base.mp4', '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-'], stdout=subprocess.PIPE)
@@ -75,7 +102,7 @@ while True:
     a = 1.0 if t < END else 1.0
     d.text(((W - d.textlength(tt, font=f_title)) / 2, 230), tt, font=f_title, fill=RED)
     if t < END:
-        caption(d, t)
+        caption(im, t)
     else:
         for i, line in enumerate(['Full video on my channel', 'link below']):
             d.text(((W - d.textlength(line, font=f_small)) / 2, 1430 + i * 74), line, font=f_small, fill=OFF if i == 0 else DIM)
