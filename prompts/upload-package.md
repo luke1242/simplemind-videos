@@ -1,7 +1,5 @@
 # Upload package: "The Psychology of Self-Doubt"
 
-Chapters get added after the build.
-
 ## Title
 
 **The Psychology of Self-Doubt: Where It Really Comes From**
@@ -32,12 +30,34 @@ Lots of empty space. Must be readable at phone size.
 
 ## Description
 
-```
-Where does self-doubt really come from? You weren't born with that voice that says "you're not ready." You learned it, and anything learned can be unlearned.
+Keywords are packed into the first 200 words. Chapter times come from the final render (11:02).
 
-In this psychology explained video: Albert Bandura's research on self-efficacy and his famous snake-phobia experiment, why confidence is a conclusion and not a feeling, and the 4 real sources of self-doubt (no proof yet, unfair comparison, the louder critical voice, and misread nerves). Then 5 research-backed ways to build self-confidence, including a 2-second trick to use before anything that scares you.
+```
+Where does self-doubt really come from? This is the psychology of self-doubt, explained simply. You weren't born with that voice that says "you're not ready." You learned it, and anything learned can be unlearned.
+
+In this psychology explained video, you'll learn where self-doubt comes from, why you don't believe in yourself, and how to stop doubting yourself for good. We look at Albert Bandura's research on self-efficacy (your belief that you can do the thing in front of you) and his famous snake-phobia experiment, and why self-confidence is a conclusion your brain reaches, not a feeling you wait for.
+
+Then the 4 real sources of self-doubt, imposter syndrome and overthinking: no proof yet, unfair comparison, the louder critical voice, and misread nerves. Finally, 5 research-backed ways to build self-confidence and self-belief, including a 2-second trick to use before anything that scares you.
 
 What's one thing you doubted you could do, that you ended up doing anyway? Tell me in the comments.
+
+CHAPTERS
+0:00 Where self-doubt starts
+0:59 The voice that almost stopped me
+1:59 Albert Bandura and self-efficacy
+3:02 The snake experiment
+3:59 Confidence is a conclusion, not a feeling
+4:18 Source 1: You don't have proof yet
+5:04 Source 2: Comparing your inside to their outside
+5:41 Source 3: The critical voice is louder
+6:27 Source 4: Misreading your nerves
+7:09 Why "just believe in yourself" fails
+7:22 Step 1: Collect tiny proof
+8:06 Step 2: Watch someone like you
+8:27 Step 3: Talk to yourself by name
+8:57 Step 4: Rename the nerves (the 2-second trick)
+9:29 Step 5: Keep a proof list
+9:53 Self-doubt is learned, so it can be unlearned
 
 Research: Bandura (1977); Bandura, Blanchard & Ritter (1969); Festinger (1954); Baumeister et al. (2001); Amabile & Kramer (2011); Kross et al. (2014); Brooks (2014).
 
