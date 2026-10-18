@@ -3,7 +3,7 @@
 **Topic:** self-doubt is learned, not born. Bandura's self-efficacy: belief is built from evidence. Four sources of bad evidence (no proof yet, unfair comparison, the louder critical voice, misread nerves), and five research-backed ways to collect new proof.
 **Follows:** `PLAYBOOK.md` (cold open → personal story → research → 4 sources → 5 steps → emotional close). It pays off the promise in the manifestation video ("I'm making a whole video on it next") and points to the spotlight video at the end.
 **Length:** the raw voice is about 1,590 words. After pause padding, the target is about **11:00**.
-**Audio:** 13 clips, `audio/part1a.mp3` … (Part 1 a–c, Part 2 a–c, Part 3 a–c, Part 4 a–d). Run `python3 tools/join-clips.py` first.
+**Audio:** 14 clips, `audio/part1a.mp3` … (Part 1 a–c, Part 2 a–c, Part 3 a–d, Part 4 a–d). Run `python3 tools/join-clips.py` first.
 **Music:** `music/track.mp3`, mixed softly. Keep it at its quietest during the cold open (D01–D05) and the final oil scene (D53).
 **Upload kit:** `prompts/upload-package.md`.
 **Spec examples:** copy the helpers from `videos/02-regret/make-specs.py`. Videos 2–4 use the same notation.
