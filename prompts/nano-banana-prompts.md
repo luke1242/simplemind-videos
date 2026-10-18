@@ -1,53 +1,16 @@
 # Nano Banana picture prompts: "The Psychology of Self-Doubt"
 
-**16 new pictures in two styles.** The other 5 (S20, S24, S26, S28, S29) are reused and already in place.
-- **Chat 1, oil painting** (the cold open and the ending): S01, S02, S03, S04, S15.
-- **Chat 2, our normal comic style:** S05 to S14, plus S07b.
+**16 new pictures, all in our normal comic style.** The other 5 (S20, S24, S26, S28, S29) are reused and already in place.
 
 ## How to use
 
-1. **Chat 1:** use the same chat as the "Open Your Eyes" paintings (or attach the "Open Your Eyes" painting as a style example). Paste the **OIL SETUP**, then the oil prompts.
-2. **Chat 2:** a new chat. Attach `reference/characters/narrator.png` plus 2–3 old comic pictures, paste the **COMIC SETUP**, then the comic prompts.
-3. Paste prompts one at a time, choose **2K**, and name each file **exactly** as shown (e.g. `S01.png`).
-4. Put them all in **Pictures Vid5** in Downloads and tell Claude.
+1. Open a new chat. Attach `reference/characters/narrator.png` plus 2–3 old comic pictures, paste the **SETUP**, then the prompts one at a time.
+2. Choose **2K**, and name each file **exactly** as shown (e.g. `S01.png`). *(edit of …)* prompts go right after the picture they edit.
+3. Put them all in **Pictures Vid5** in Downloads and tell Claude.
 
 ---
 
-## Chat 1: OIL SETUP
-
-```
-For the next images, keep the exact style of our "Open Your Eyes" painting: a dark, moody, slightly stylized OIL PAINTING with visible soft brush strokes and canvas texture, deep shadows, muted grey-violet and dusty brown tones, one soft warm light. Simple rounded storybook faces, gentle and quiet, never creepy or gory. The same young adult appears in several images: a slim young man with short dark hair, a plain dark sweater, simple soft features. 16:9, 2K. NO text, NO words, NO letters, NO numbers anywhere.
-Reply "ready".
-```
-
-**S01.png**
-```
-A little kid (about 5 years old, simple rounded features, messy hair) standing in a warm pool of light in a dark room, joyfully holding a crayon drawing up as high as he can with both arms. The drawing shows a big purple sun and a dog with six legs. Huge proud smile, eyes bright. The warm light makes the drawing glow.
-```
-
-**S02.png**
-```
-The young adult sitting at a desk at night under a dim lamp, hugging a closed sketchbook tightly against his chest, eyes looking down, unsure. Crumpled pages of drawings scattered on the desk and floor. Cold, quiet mood.
-```
-
-**S03.png**
-```
-The same young adult sitting with his eyes down. Behind him, a tall, soft, faceless shadow figure leans in close to his ear, as if whispering. The shadow is smooth and simple, more sad than scary. A thin warm light on the young man's face, the rest in darkness.
-```
-
-**S04.png**
-```
-The same young adult kneeling on a wooden floor, gently picking up an old, faded childhood crayon drawing of a purple sun and a six-legged dog. Behind him the tall shadow figure is fading away into the darkness. A soft warm light falls on the drawing and his face, which looks surprised and moved.
-```
-
-**S15.png**
-```
-The same young adult now standing tall in warm golden light, proudly holding his sketchbook drawing up high with both arms, exactly like the kid did. A small, genuine smile. The shadows have pulled back to the edges. Hopeful, quiet, beautiful.
-```
-
----
-
-## Chat 2: COMIC SETUP
+## SETUP
 
 ```
 I'm making a YouTube explainer video. Every image I ask for in this chat must use the SAME style and the SAME main character as the attached images. Please lock these in:
@@ -59,6 +22,26 @@ MAIN CHARACTER "the narrator" (match the attached narrator image exactly): a tal
 SIDE CHARACTERS: classic stickmen: round white heads, dot eyes, expressive curved eyebrows, simple mouths, black stick limbs, simple flat-colored clothes (sky blue, sage green or terracotta shirts).
 
 Reply "ready" and wait for my first prompt.
+```
+
+**S01.png**
+```
+A cozy, sunny kids' bedroom. A LITTLE KID version of the narrator (same brain head and white oval eyes, but small and round like a 5-year-old, a tiny black hoodie, white sneakers) jumps with joy, holding a crayon drawing up as high as he can with both arms. The drawing shows a big purple sun and a dog with six legs. Huge happy upward-arc eyes. Crayons scattered on the floor.
+```
+
+**S02.png**
+```
+The narrator (grown-up, normal design) sitting at a desk at night under a dim lamp, hugging a closed sketchbook tightly against his chest, unsure, downcast eyes. Crumpled pages of drawings scattered on the desk and floor.
+```
+
+**S03.png**
+```
+The narrator sitting with sad, downcast eyes. Behind him, a tall, soft, dark shadow figure (smooth, simple, faceless, more sad than scary) leans in close to the side of his brain-head, as if whispering. Dim bedroom at night.
+```
+
+**S04.png**
+```
+The narrator kneeling on a wooden floor, gently picking up an old, faded childhood crayon drawing of a purple sun and a six-legged dog, surprised and moved eyes. Behind him the tall shadow figure is fading away. A warm ray of light falls on the drawing.
 ```
 
 **S05.png**
@@ -114,4 +97,9 @@ A small cozy karaoke bar stage. The narrator holds a microphone under a warm spo
 **S14.png**
 ```
 The narrator sitting cross-legged on his bed, smiling with happy upward-arc eyes at his phone. The phone screen shows a simple checklist with three big green check marks (no words, just lines). Warm afternoon light through the window.
+```
+
+**S15.png**
+```
+The narrator standing tall on a sunny hilltop, proudly holding his sketchbook drawing up high with both arms, exactly like the kid did, happy upward-arc eyes. Behind him, the faint shadow figure is fading away into the light. Warm, hopeful, golden light.
 ```

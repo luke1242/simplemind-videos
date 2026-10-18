@@ -4,7 +4,7 @@
 **Follows:** `PLAYBOOK.md` (cold open → personal story → research → 4 sources → 5 steps → emotional close). It pays off the promise in the manifestation video ("I'm making a whole video on it next") and points to the spotlight video at the end.
 **Length:** the raw voice is about 1,590 words. After pause padding, the target is about **11:00**.
 **Audio:** 14 clips, `audio/part1a.mp3` … (Part 1 a–c, Part 2 a–c, Part 3 a–d, Part 4 a–d). Run `python3 tools/join-clips.py` first.
-**Music:** `music/track.mp3`, mixed softly. Keep it at its quietest during the cold open (D01–D05) and the final oil scene (D53).
+**Music:** `music/track.mp3`, mixed softly. Keep it at its quietest during the cold open (D01–D05) and the final scene (D53).
 **Upload kit:** `prompts/upload-package.md`.
 **Spec examples:** copy the helpers from `videos/02-regret/make-specs.py`. Videos 2–4 use the same notation.
 
@@ -19,12 +19,9 @@
 
 ---
 
-## The cold open and the oil scenes
+## The cold open
 
-D01–D05 and D51/D53 use **oil-painting pictures** (S01–S04, S15), like the "Open Your Eyes" video.
-- **Pacing exception:** shots may run up to **5s** here. Slow pushes (≤ 4% per shot) that land on words, soft swaps, hard cuts on words. No snap zooms, whips, icons, cards, host or pop-ups.
-- Overlays here are only small **serif** text (Georgia-style, muted red `#B5484A` or off-white), fading in over 0.4s.
-- After D05, show the **title card** right away: black background, serif "The Psychology of Self-Doubt." in muted red, 2.5s, then a hard cut into D06 and the bright style.
+D01–D05 are in the normal comic style, but slightly slower and calmer: shots may run up to **4.5s**, moves are snap zooms and soft pushes on words, and the music stays at its quietest. After D05, show the **title card** right away: green pill **LESSON**, big text PSYCHOLOGY OF / SELF-DOUBT, with "SELF-DOUBT" in orange, 2.5s.
 
 ## The narrator host
 
@@ -34,28 +31,29 @@ Same rules as before (poses from the tone tags, frame on the right, hard-cut pos
 
 ## PART 1: The cold open and my story (`audio/part1.mp3`)
 
-**D01** · picture S01 (NEW, oil: a little kid proudly holding a crayon drawing up high: a purple sun and a dog with six legs) · camera zoom-in
-edit: slow push toward the drawing · drift to the purple sun on "purple", to the dog on "dog"
+**D01** · picture S01 (NEW: a little kid version of the narrator proudly holding a crayon drawing up high: a purple sun and a dog with six legs) · camera zoom-in
+edit: snap zoom to the drawing on "picture" → whip slide to the purple sun on "purple" → whip slide to the six-legged dog on "dog"
 narration: "Think about a little kid who just drew a picture. A purple sun. A dog with six legs."
 
 **D02** · picture S01 · camera zoom-out
-edit: slow pull back to the whole child on "run" · serif text "as high as they can." fades in on "high"
+edit: zoom back out to the whole kid on "run" · light sweep across the drawing on "high"
 narration: "Do they wonder if it's good enough? Do they compare it to anyone else's? No. They run straight to you and hold it up as high as they can."
 
-**D03** · picture S02 (NEW, oil: a young adult at a desk at night, hiding a sketchbook against his chest, crumpled pages on the floor) · camera zoom-in
-edit: hard cut in on "now" · slow push to the hidden sketchbook on "hide"
+**D03** · picture S02 (NEW: the narrator at a desk at night, hugging a sketchbook against his chest, crumpled pages on the floor) · camera zoom-in
+edit: hard cut in on "now" · snap zoom to the hidden sketchbook on "hide"
 narration: "Now think about the last time you made something. A drawing. A song. A business idea. A message to someone you like. Did you hold it up? Or did you hide it... until it was perfect... and then never show anyone at all?"
 
-**D04** · picture S03 (NEW, oil: the same young adult, eyes down, a tall faceless shadow leaning in behind him, whispering into his ear) · camera zoom-in
-edit: slow push to the shadow on "voice" · serif quotes fade in and out one at a time, off-white, top-center: "You're not ready." on "ready", "Who do you think you are?" on "who", "Don't embarrass yourself." on "embarrass"
+**D04** · picture S03 (NEW: the narrator with sad eyes, a tall soft shadow figure leaning in behind him, whispering into his ear) · camera zoom-in
+edit: snap zoom to the shadow on "voice" · three speech-bubble pills pop beside the shadow, one per quote: "YOU'RE NOT READY" on "ready", "WHO DO YOU THINK YOU ARE?" on "who", "DON'T EMBARRASS YOURSELF" on "embarrass"
 narration: "Somewhere between that kid and you, a voice showed up. The one that says, "You're not ready." "Who do you think you are?" "Don't embarrass yourself." And here's the part most people never stop to think about."
 
-**D05** · picture S04 (NEW, oil: the young adult kneeling, picking up an old childhood crayon drawing of a purple sun from the floor, the shadow fading behind him) · camera zoom-in · **reveal: at least 2s of silence after**, then the title card
-edit: soft riser into the scene · slow push to the drawing · serif "You learned it." fades in on "learned"
+**D05** · picture S04 (NEW: the narrator kneeling, picking up his old childhood crayon drawing of a purple sun from the floor, the shadow fading behind him) · camera zoom-in · **reveal: at least 2s of silence after**, then the title card
+edit: soft riser into the scene · snap zoom to the drawing on "born" · impact hit on "learned"
 narration: "You weren't born with that voice. You learned it."
+beats: card "learned" → YOU **LEARNED** IT
 
 **D06** · picture S05 (NEW: narrator at his desk with a microphone and laptop, finger on the delete key, crumpled script pages around him) · camera zoom-in
-edit: hard cut from the title card (bright style starts) · snap zoom to his finger on the key on "deleted"
+edit: hard cut from the title card · snap zoom to his finger on the key on "deleted"
 narration: "I know that voice really well. When I started this channel, I wrote my first script three times. I recorded it, listened back, and deleted it. Twice."
 beats: icon I71 "recorded" · icon I72 "twice"
 
@@ -303,15 +301,15 @@ host: N01 "then" → N05 "it's"
 narration: "Then, the next time the voice says "you can't," you open the list. It's a lot harder for your brain to argue with a receipt."
 beats: badge "receipt" → ARGUE WITH **A RECEIPT**
 
-**D51** · picture S01 (the cold-open painting, callback) · camera zoom-in · crossfade in
-edit: oil-scene rules · slow push to the drawing
+**D51** · picture S01 (the cold-open picture, callback) · camera zoom-in · crossfade in
+edit: snap zoom to the drawing on "drawing" · light leak (memory) on "kid"
 narration: "Here's what I keep coming back to. That little kid with the drawing didn't have more talent than you. They just didn't have any bad evidence yet. Nobody had told them it wasn't good enough. They hadn't compared it to anyone. They hadn't learned to read their nerves as a warning."
 
 **D52** · picture S12 · camera zoom-out · crossfade in
 narration: "Every confident person you've ever met was once a beginner with no proof at all."
 
-**D53** · picture S15 (NEW, oil: the young adult from S02, now standing in warm light, proudly holding up his own sketchbook drawing high, the shadow gone) · camera zoom-in · **at least 2s of silence after "used to"**
-edit: oil-scene rules · slow push · serif "Hold it up." fades in on "hold"
+**D53** · picture S15 (NEW: the narrator standing in warm sunlight, proudly holding his sketchbook drawing up high, exactly like the kid did, the shadow gone) · camera zoom-in · **at least 2s of silence after "used to"**
+edit: iris reveal into the picture on "good" · light sweep on "hold"
 narration: "And the good news is, if self-doubt was learned... it can be unlearned. Not by pretending. By collecting new proof, one small step at a time. So find one thing you've been hiding until it's perfect. And show someone. Hold it up, like you used to."
 
 **D54** · picture S29 (COPY: narrator on the right, pointing left; end screen) · camera hold · hold the last frame 5s after the narration
@@ -328,7 +326,6 @@ Same look as before: cream background, 9px ink outlines, Nunito ExtraBold, yello
 - **list:** pills stacking top to bottom on their words, plus an optional red stamp across them on a word. Used in D36.
 - **bars:** two vertical bars (red SETBACK, sage STEP FORWARD), no y numbers, a **2–3×** badge on a word, plus a count-up badge for 12,000. Used in D32.
 - **pie, split, card → card swap, iconRow, icon-as-main-picture:** the existing kinds.
-- **Oil-scene text:** small serif overlay (Georgia, about 64px, muted red `#B5484A` or off-white), fade in 0.4s. Used in D02, D04, D05, D53 and the title card.
 
 ### Description sources (for Luke, not on screen)
 - Bandura (1977), "Self-efficacy: Toward a unifying theory of behavioral change," *Psychological Review*

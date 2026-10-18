@@ -8,14 +8,26 @@ Chapters get added after the build.
 
 Backup (to test later): Why You Don't Believe in Yourself (Psychology Explained)
 
-## Thumbnail (oil painting, same series look as "Open Your Eyes")
+## Thumbnail: Nano Banana prompts
 
-Use the oil chat. Attach the "Open Your Eyes" painting as a style example.
+Attach `reference/characters/narrator.png`. Make both and test them in YouTube Studio → **Test & Compare**.
+
+**A: "WHO TAUGHT YOU THIS?" (black, main pick)**
 ```
-YouTube thumbnail, 16:9, 2K. Same dark, stylized oil-painting style as the attached painting: soft brush strokes, canvas texture, near-black background, muted grey-violet tones, one warm light.
-A young man (slim, short dark hair, dark sweater, simple soft storybook features) stands in the center holding a crayon drawing of a purple sun up in front of his chest, looking straight at the viewer. Behind him, a tall soft faceless SHADOW leans over his shoulder and covers half the drawing with one dark hand. Warm light on the drawing, darkness on the shadow. Quiet and haunting, not scary.
-TEXT: small elegant serif text in muted red at the top center: "Who taught you to doubt?" Nothing else written anywhere.
-Lots of dark empty space. Readable at phone size.
+YouTube thumbnail, 16:9, 2K. Bold, minimal, high contrast. Clean thick black outlines, flat colors, comic style.
+BACKGROUND: solid plain near-black (#111111), nothing else.
+CHARACTER: the narrator from the attached image, exactly the same design (glowing peach brain head, two white oval eyes, no mouth, black hoodie), BIG and centered, filling about 65% of the image height, holding a small crayon drawing of a purple sun against his chest with worried eyes. Behind him, a tall dark shadow version of himself leans over his shoulder, whispering into his ear.
+TEXT: across the top, in huge heavy bold all-caps sans-serif letters: "WHO TAUGHT YOU THIS?". "THIS?" is red (#D64545), the other words are white. Nothing else written anywhere.
+Lots of empty space. Must be readable at phone size.
+```
+
+**B: "YOU LEARNED THIS" (cream)**
+```
+YouTube thumbnail, 16:9, 2K. Bold, minimal, high contrast. Clean thick black outlines, flat colors, comic style.
+BACKGROUND: solid plain warm cream (#FAF7F0), nothing else.
+CHARACTER: the narrator from the attached image, exactly the same design, BIG and centered, filling about 65% of the image height, looking down sadly at a little kid version of himself who proudly holds up a crayon drawing of a purple sun.
+TEXT: across the top, in huge heavy bold all-caps sans-serif letters: "YOU LEARNED THIS". "LEARNED" is red (#D64545), the other words are black. Nothing else written anywhere.
+Lots of empty space. Must be readable at phone size.
 ```
 
 ## Description
