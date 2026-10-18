@@ -43,8 +43,16 @@ else:
     mus_chain = f"music/{music[0]}"
 vd = f"{R}/full-voice.mkv"
 if mus_chain:
+    # music at its quietest in the cold open (first scenes up to the title card) and in the final scene (D53 onward)
+    dips = []
+    try:
+        t1 = [s for s in json.load(open("scenes/part1.timing.json"))["scenes"] if s["id"] == "D05"][0]["end"]
+        dips.append((0, t1)); d53 = [s for s in json.load(open("scenes/part4.timing.json"))["scenes"] if s["id"] == "D53"][0]["start"]; dips.append((offs[3] + d53, total))
+    except Exception as e: print("no dips", e)
+    DIP = "1"
+    for a, b in reversed(dips): DIP = f"if(between(t,{a:.2f},{b:.2f}),0.6,{DIP})"
     gain = float(sys.argv[1]) if len(sys.argv) > 1 else 0.063  # about -24 dB
-    fc = (f"[1:a]aloop=loop=-1:size=2e9,atrim=0:{total:.2f},asetpts=PTS-STARTPTS,volume={gain},afade=t=in:d=2,afade=t=out:st={total-4:.2f}:d=4,aformat=sample_rates=44100:channel_layouts=mono[m];"
+    fc = (f"[1:a]aloop=loop=-1:size=2e9,atrim=0:{total:.2f},asetpts=PTS-STARTPTS,volume={gain},volume='{DIP}':eval=frame,afade=t=in:d=2,afade=t=out:st={total-4:.2f}:d=4,aformat=sample_rates=44100:channel_layouts=mono[m];"
           f"[0:a]aformat=sample_rates=44100:channel_layouts=mono,asplit=2[vo][vk];"
           f"[m][vk]sidechaincompress=threshold=0.02:ratio=8:attack=20:release=400[md];"
           f"[2:a]aformat=sample_rates=44100:channel_layouts=mono[sf];"

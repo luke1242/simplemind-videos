@@ -1135,5 +1135,18 @@
         "attribution": "unversioned"
       }
     ]
-  }
+  },
+  "renders": {
+    "latest": {
+      "id": "d39cb384-0bae-4b3e-9a23-4d8f0f6e6b4e",
+      "completedAt": 1792294760138,
+      "output": "/home/user/simplemind-videos/renders/part2.mp4",
+      "status": "completed",
+      "revision": "6873e793-4077-4b27-9d91-1fdb4e6deb46"
+    },
+    "retainedRevisions": [
+      "6873e793-4077-4b27-9d91-1fdb4e6deb46"
+    ]
+  },
+  "pendingArtifactCleanup": []
 }
