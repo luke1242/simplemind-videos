@@ -1,63 +1,52 @@
-# Upload package: "Open Your Eyes" (why you're always tired)
+# Upload package: "The Psychology of Self-Doubt"
 
-This follows `PLAYBOOK.md`. Chapters get added after the build.
+Chapters get added after the build.
 
-## Title (pick one)
+## Title
 
-1. **Open Your Eyes: Why You're Always Tired (Even When You Do Nothing)** ← main pick
-2. Why You Wake Up Tired Even After 9 Hours of Sleep (Psychology)
-3. Open Your Eyes: What's Secretly Draining Your Energy
+**The Psychology of Self-Doubt: Where It Really Comes From**
 
-## Thumbnail
+Backup (to test later): Why You Don't Believe in Yourself (Psychology Explained)
 
-Use the "Open Your Eyes" oil painting (the brain narrator behind the pale figure, holding his eyes open, serif "Open Your Eyes." at the top). For a Test & Compare version B, try the same painting with the text "WHY YOU'RE TIRED" in the same serif style.
+## Thumbnail (oil painting, same series look as "Open Your Eyes")
+
+Use the oil chat. Attach the "Open Your Eyes" painting as a style example.
+```
+YouTube thumbnail, 16:9, 2K. Same dark, stylized oil-painting style as the attached painting: soft brush strokes, canvas texture, near-black background, muted grey-violet tones, one warm light.
+A young man (slim, short dark hair, dark sweater, simple soft storybook features) stands in the center holding a crayon drawing of a purple sun up in front of his chest, looking straight at the viewer. Behind him, a tall soft faceless SHADOW leans over his shoulder and covers half the drawing with one dark hand. Warm light on the drawing, darkness on the shadow. Quiet and haunting, not scary.
+TEXT: small elegant serif text in muted red at the top center: "Who taught you to doubt?" Nothing else written anywhere.
+Lots of dark empty space. Readable at phone size.
+```
 
 ## Description
 
 ```
-Open Your Eyes: Why You're Always Tired (Even When You Do Nothing)
+Where does self-doubt really come from? You weren't born with that voice that says "you're not ready." You learned it, and anything learned can be unlearned.
 
-Your phone can die by lunch even if you barely touched it, because apps keep running in the background. Your mind works in a similar way. The conversation you keep replaying, the decision you keep avoiding, the task you never finished, the ending you never accepted: they keep running even when you're lying in bed doing nothing.
+In this psychology explained video: Albert Bandura's research on self-efficacy and his famous snake-phobia experiment, why confidence is a conclusion and not a feeling, and the 4 real sources of self-doubt (no proof yet, unfair comparison, the louder critical voice, and misread nerves). Then 5 research-backed ways to build self-confidence, including a 2-second trick to use before anything that scares you.
 
-In this video we look at the psychology of unfinished things: the famous Zeigarnik effect (and what newer research says about it), Masicampo and Baumeister's study showing that simply making a plan can quiet the thoughts an unfinished goal causes, Harvard's research on how often our minds wander, and Sophie Leroy's "attention residue." Then the 4 "background apps" that drain people the most, and 5 simple ways to close them, including a 5-minute habit before bed.
+What's one thing you doubted you could do, that you ended up doing anyway? Tell me in the comments.
 
-What's running in your background right now? Tell me in one word in the comments.
+Research: Bandura (1977); Bandura, Blanchard & Ritter (1969); Festinger (1954); Baumeister et al. (2001); Amabile & Kramer (2011); Kross et al. (2014); Brooks (2014).
 
-You were watching SimpleMindMotivation. I'll see you in the next one.
+Educational content, not professional psychological advice.
 
-#psychology #openyoureyes #mentalhealth #selfimprovement #psychologyexplained #simplemindmotivation
-
----
-
-Research referenced:
-- Zeigarnik (1927), Psychologische Forschung: recall of finished and unfinished tasks
-- Ghibellini & Meier (2025), Humanities and Social Sciences Communications: meta-analysis of the Zeigarnik and Ovsiankina effects
-- Masicampo & Baumeister (2011), Journal of Personality and Social Psychology: "Consider it done!" Plan making and unfulfilled goals
-- Killingsworth & Gilbert (2010), Science: "A wandering mind is an unhappy mind"
-- Leroy (2009), Organizational Behavior and Human Decision Processes: attention residue
-- Scullin et al. (2018), Journal of Experimental Psychology: General: bedtime writing and falling asleep
-- Pennebaker & Beall (1986), Journal of Abnormal Psychology: expressive writing
-
-If you feel exhausted all the time no matter what you do, please talk to a doctor. Tiredness can have physical causes too.
-
----
-
-Disclaimer: This video is for educational purposes only and is not professional psychological or medical advice. If you're struggling, please reach out to a licensed professional.
+#psychology #selfdoubt #confidence #selfimprovement #psychologyexplained #simplemindmotivation
 ```
 
 ## Tags
 
 ```
-why am i always tired, why do i wake up tired, mental exhaustion, always tired, tired after sleeping, open your eyes, zeigarnik effect, unfinished tasks, rumination, overthinking, how to stop overthinking, attention residue, to do list before bed, mental load, psychology explained, psychology, self improvement, mental health, simplemindmotivation
+self doubt, psychology of self doubt, where does self doubt come from, how to stop doubting yourself, how to build self confidence, self belief, self efficacy, Albert Bandura, imposter syndrome, confidence, overthinking, psychology explained, psychology, self improvement, personal growth, simplemindmotivation
 ```
 
 ## Pinned comment
 
 ```
-What's running in your background right now? One word 👇
-The 5 ways to close it: 1 Check your battery usage · 2 To-do list before bed · 3 Give it a plan · 4 Close one small app · 5 Let some things end
+What's one thing you doubted you could do, that you did anyway? 👇
+The 5 steps: 1 Collect tiny proof · 2 Watch someone like you · 3 Talk to yourself by name · 4 Say "I'm excited" · 5 Keep a proof list
 ```
 
-## Settings
+## End screen
 
-Category **Education**. Type and Problems: leave blank.
+Link the spotlight video ("why they're barely watching").

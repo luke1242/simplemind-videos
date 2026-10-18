@@ -19,6 +19,7 @@ Luke is not a developer. Keep messages to him short and plain. **Don't ask him q
    - Run your own checks and fix problems yourself.
    - Commit and push after each part, so a new session can pick up where you left off if this one runs out.
 4. **Deliver** `renders/full.mp4` as a file in the chat, plus a 3-line report.
+   - **Merge your build branch into `main` and push it** (tools, scenes and the render), so the next video starts from your improved tools. Videos 3 and 4 were never merged, and their new diagram kinds were lost.
    - Also commit and push it. GitHub refuses files over 100 MB, so if it's bigger, push a copy re-encoded under 95 MB as `renders/full-small.mp4` instead.
 5. **Save usage:**
    - Reuse and extend the existing tools; don't rewrite them.
@@ -47,6 +48,7 @@ prompts/                  ← Luke's Nano Banana prompts for this video
 videos/01-spotlight/      ← video 1, archived
 videos/02-regret/         ← video 2, archived; its make-specs.py and scenes/ are the newest spec examples (host mode and edits)
 videos/03-manifestation/  ← video 3, archived (its build branch was not pushed, so its new diagram kinds — drops, woop — may need re-adding)
+videos/04-open-your-eyes/ ← video 4, archived (final video and thumbnail; its build branch was not pushed either)
 ```
 
 ## 2. Setup (once per cloud session, quietly)

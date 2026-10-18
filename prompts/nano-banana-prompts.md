@@ -1,54 +1,48 @@
-# Nano Banana picture prompts: "Open Your Eyes"
+# Nano Banana picture prompts: "The Psychology of Self-Doubt"
 
-**20 new pictures in two styles.** The other 7 (S20, S22, S23, S29, S31, S33, S37) are reused and already in place.
-- **Chat 1, oil painting (the cold open):** S01, S01b, S02, S03, S04, S05. These match the thumbnail.
-- **Chat 2, our normal comic style:** S06 to S17, with S07b and S09b.
+**16 new pictures in two styles.** The other 5 (S20, S24, S26, S28, S29) are reused and already in place.
+- **Chat 1, oil painting** (the cold open and the ending): S01, S02, S03, S04, S15.
+- **Chat 2, our normal comic style:** S05 to S14, plus S07b.
 
 ## How to use
 
-1. **Chat 1:** in the same chat where you made the thumbnail, paste the **OIL SETUP** below, then the oil prompts. Attach `narrator.png` and your final thumbnail as examples.
-2. **Chat 2:** open a new chat, attach `reference/characters/narrator.png` plus 2–3 old pictures, paste the **COMIC SETUP**, then the comic prompts.
-3. Paste prompts **one at a time**, choose **2K**, and name each file **exactly** as shown (e.g. `S01.png`). Prompts marked *(edit of …)* go right after the picture they edit.
-4. If the narrator drifts, reply: *"Redo it. The narrator must match the reference exactly: brain head, two white oval eyes, no mouth, black hoodie, black pants, white sneakers with a red stripe."*
-5. Put them all in **Pictures Vid4** in Downloads and tell Claude.
+1. **Chat 1:** use the same chat as the "Open Your Eyes" paintings (or attach the "Open Your Eyes" painting as a style example). Paste the **OIL SETUP**, then the oil prompts.
+2. **Chat 2:** a new chat. Attach `reference/characters/narrator.png` plus 2–3 old comic pictures, paste the **COMIC SETUP**, then the comic prompts.
+3. Paste prompts one at a time, choose **2K**, and name each file **exactly** as shown (e.g. `S01.png`).
+4. Put them all in **Pictures Vid5** in Downloads and tell Claude.
 
 ---
 
 ## Chat 1: OIL SETUP
 
 ```
-For the next images, keep the exact style of the "Open Your Eyes" painting we just made: a dark, moody, slightly stylized OIL PAINTING with visible soft brush strokes and canvas texture, near-black backgrounds, muted grey-violet and dusty brown tones, one dim soft light. Simple rounded shapes, haunting and quiet, never gory or scary. 16:9, 2K. NO text, NO words, NO letters, NO numbers anywhere (icons and symbols are fine).
+For the next images, keep the exact style of our "Open Your Eyes" painting: a dark, moody, slightly stylized OIL PAINTING with visible soft brush strokes and canvas texture, deep shadows, muted grey-violet and dusty brown tones, one soft warm light. Simple rounded storybook faces, gentle and quiet, never creepy or gory. The same young adult appears in several images: a slim young man with short dark hair, a plain dark sweater, simple soft features. 16:9, 2K. NO text, NO words, NO letters, NO numbers anywhere.
 Reply "ready".
 ```
 
 **S01.png**
 ```
-Dawn in a dark bedroom. A smartphone lies face-up on a wooden nightstand, its screen showing only a big glowing battery symbol that is completely full (bright soft green). Thin morning light through a curtain. Calm, still, almost empty.
-```
-
-**S01b.png** *(edit of S01)*
-```
-Same picture, same angle. Now it's midday light, and the battery symbol on the phone screen is almost empty: one thin red sliver. Everything else identical.
+A little kid (about 5 years old, simple rounded features, messy hair) standing in a warm pool of light in a dark room, joyfully holding a crayon drawing up as high as he can with both arms. The drawing shows a big purple sun and a dog with six legs. Huge proud smile, eyes bright. The warm light makes the drawing glow.
 ```
 
 **S02.png**
 ```
-A close-up of a glowing smartphone screen in the dark, held in a pale hand. The screen shows a vertical list of five simple rounded app icons (abstract shapes, no logos), each with a horizontal bar next to it; some bars are long, some short. Two app icons near the bottom glow faintly red. No letters or numbers.
+The young adult sitting at a desk at night under a dim lamp, hugging a closed sketchbook tightly against his chest, eyes looking down, unsure. Crumpled pages of drawings scattered on the desk and floor. Cold, quiet mood.
 ```
 
 **S03.png**
 ```
-The same smartphone lying in the dark, its screen locked and black. But faintly, behind the dark glass, ghostly glowing app shapes are still moving, like dim lights under black water. Eerie and quiet.
+The same young adult sitting with his eyes down. Behind him, a tall, soft, faceless shadow figure leans in close to his ear, as if whispering. The shadow is smooth and simple, more sad than scary. A thin warm light on the young man's face, the rest in darkness.
 ```
 
 **S04.png**
 ```
-A pale, simple, stylized figure (smooth bald grey-white head, big round tired eyes, simple soft features, like the front figure in the thumbnail) lies in bed in a dark room, eyes wide open, staring at the ceiling. Above him float four faint glowing translucent rounded "windows", spaced apart. Inside each one, a tiny scene: (1) two people talking face to face, (2) a phone with one unanswered message bubble, (3) a fork in a dark road, (4) a photo torn in half.
+The same young adult kneeling on a wooden floor, gently picking up an old, faded childhood crayon drawing of a purple sun and a six-legged dog. Behind him the tall shadow figure is fading away into the darkness. A soft warm light falls on the drawing and his face, which looks surprised and moved.
 ```
 
-**S05.png**
+**S15.png**
 ```
-Recreate our "Open Your Eyes" thumbnail painting exactly (same two figures, same pose, same colors and light), but with NO text at all. Leave the top area empty and dark.
+The same young adult now standing tall in warm golden light, proudly holding his sketchbook drawing up high with both arms, exactly like the kid did. A small, genuine smile. The shadows have pulled back to the edges. Hopeful, quiet, beautiful.
 ```
 
 ---
@@ -67,72 +61,57 @@ SIDE CHARACTERS: classic stickmen: round white heads, dot eyes, expressive curve
 Reply "ready" and wait for my first prompt.
 ```
 
+**S05.png**
+```
+The narrator sitting at his desk at night with a microphone on a small stand and an open laptop, his finger pressing a key with frustrated, unsure eyes. Crumpled script pages all around the desk and on the floor. Warm desk lamp.
+```
+
 **S06.png**
 ```
-The narrator lies awake in bed at night in a dark blue bedroom, eyes wide and tired, staring up. Above him, three separate thought bubbles: LEFT, a tiny scene of him at a party holding a cup, with awkward eyes, next to a stickman friend; MIDDLE, a phone with one unanswered message bubble; RIGHT, a fork in a road with two paths. Clear space between the bubbles.
+The narrator sitting at his laptop, looking discouraged. On his shoulder sits a small, dark shadow version of himself (same shape, but all dark grey with small grumpy white eyes), leaning to whisper into the side of his head. Cozy bedroom at night.
 ```
 
 **S07.png**
 ```
-A busy 1920s European café with wooden tables and old lamps. A stickman waiter in a white apron and a small bow tie stands beside a crowded table of stickmen customers. Above the waiter's head float several small bubbles, each showing a dish or drink (a cake, a coffee cup, soup, a pastry). The waiter looks focused.
+A small research room. On the left, a nervous stickman pressed flat against the wall, sweating, as far as possible from a glass tank in the middle that holds a calm green snake. Next to the tank, a relaxed stickman calmly holding the snake. A stickman researcher with glasses and a clipboard watches from the right.
 ```
 
 **S07b.png** *(edit of S07)*
 ```
-Same café, same waiter. Now the table's customers are standing up and leaving, a few coins lie on the table, and the bubbles above the waiter's head are completely gone. The waiter looks relaxed and blank.
+Same room, same characters. Now the previously nervous stickman is sitting on a chair in the middle of the room with the snake resting calmly across his lap, a small proud smile. The researcher on the right looks impressed.
 ```
 
 **S08.png**
 ```
-A 1920s study room with wooden shelves and soft window light. A young woman researcher (stickman style, hair in a bun, simple long skirt) holds a notebook and watches a stickman sitting at a table doing small puzzles. On the table: a finished puzzle, a half-built block tower, a half-done jigsaw.
+The narrator standing at the start of a long wooden rope bridge that disappears into thick white fog, so the other side can't be seen. He hesitates, one foot forward, unsure eyes. Mountains faintly visible in the mist.
 ```
 
 **S09.png**
 ```
-A stickman sits at a desk trying to read an open book, but a BIG nagging thought bubble beside his head shows a half-built model house with tools around it, and the bubble's tail pulls at his head. He looks distracted and stressed, with a small sweat drop.
-```
-
-**S09b.png** *(edit of S09)*
-```
-Same desk, same stickman. Now he is writing in a small planner with a pen, and the thought bubble of the half-built model house is small and faded, drifting away. His face is relaxed and calm.
+The narrator slumped at a messy desk, scrolling his phone. Towering over him are four giant glowing "highlight" cards floating in the air, spaced apart: a finished masterpiece painting, a muscular stickman gym photo, a gold trophy, and a cheering crowd. His own desk is cluttered with half-finished sketches. He looks small and discouraged.
 ```
 
 **S10.png**
 ```
-A sunny city street full of stickmen doing different things: one cooking at a food stall, one waiting at a bus stop, one working on a laptop at a café table, one walking a dog. Each one is looking at a buzzing phone. About half of them have small thought bubbles drifting away from their heads (a beach, a bed, a sports game), showing their minds are elsewhere.
+The narrator holding a large old-fashioned balance scale in front of him. On one side, ten small shining gold stars. On the other side, one heavy dark stone that pulls that side all the way down. He looks at the stone with sad eyes.
 ```
 
 **S11.png**
 ```
-A cozy house party in a living room with string lights. The narrator holds a red cup, his eyes awkward and embarrassed, as if he just said something wrong. Next to him, a stickman friend smiles politely. Other stickmen chat in the background.
+The narrator backstage behind a heavy red curtain, about to go on stage. His hands shake a little, a small sweat drop on his brain-head, and a glowing heart is visible pounding in his chest with little motion lines. Stage light leaks through the gap in the curtain.
 ```
 
 **S12.png**
 ```
-A fork in a dirt road at dusk, two paths going in different directions, two plain wooden signposts with blank signs. The narrator stands frozen right at the split, holding his phone, looking down at it, unsure. Orange and purple sky.
+A sunny hillside path. The narrator stands at the bottom looking up. A few steps ahead on the path, another brain-head character (same design but with a sage green hoodie) turns back with happy eyes and waves him on, as if saying "come on, you can do it".
 ```
 
 **S13.png**
 ```
-The narrator sits at a cluttered desk, overwhelmed, staring at a laptop whose screen is covered with many overlapping open windows and tabs. Half-done papers, an unfinished drawing and a half-eaten snack are spread across the desk. Tired, scattered eyes.
+A small cozy karaoke bar stage. The narrator holds a microphone under a warm spotlight, eyes wide with a mix of nerves and excitement. A few stickmen at small tables cheer him on.
 ```
 
 **S14.png**
 ```
-The narrator sits at a tidy desk at night under a warm desk lamp, writing a long list on a sheet of paper with a pen, calm and focused. A window with stars behind him. The list shows only simple scribbled lines and small checkboxes.
-```
-
-**S15.png**
-```
-A small sleep lab at night. A stickman sleeps peacefully in a bed with a few thin sensor wires attached to his head. Through a glass window in the wall, a stickman researcher in a lab coat watches a monitor with wavy lines. Soft blue light.
-```
-
-**S16.png**
-```
-The narrator sits on his bed in the afternoon, laughing and relieved, looking at his phone. The phone screen shows one big laughing emoji reply bubble. Happy upward-arc eyes.
-```
-
-**S17.png**
-```
-The narrator sits by a big window at dusk, writing in a notebook on his lap, calm and peaceful. Warm orange light through the window, a mug beside him, a plant on the windowsill.
+The narrator sitting cross-legged on his bed, smiling with happy upward-arc eyes at his phone. The phone screen shows a simple checklist with three big green check marks (no words, just lines). Warm afternoon light through the window.
 ```

@@ -1,12 +1,12 @@
-# Icon prompts: "Open Your Eyes"
+# Icon prompts: "The Psychology of Self-Doubt"
 
-**7 new icons (I63–I69).** The others (I11, I13, I25, I41, I43, I46, I56) are reused and already in `icons/`.
+**8 new icons (I71–I78).** The others (I06, I11, I41, I52, I63, I67) are reused and already in `icons/`.
 
 ## How to use
 
 1. Open a **new** Nano Banana chat. Attach 2 old icons as examples (`reference/style/icon-example-1.jpg` and `icon-example-2.jpg`).
 2. Paste the **SETUP**, then the prompts one at a time, choosing **2K**.
-3. Name each file exactly as shown, **starting with I** (`I63.jpg` …). Put them in **Icons Vid4** in Downloads.
+3. Name each file exactly as shown, **starting with I** (`I71.jpg` …). Put them in **Icons Vid5** in Downloads.
 
 ## SETUP
 
@@ -20,10 +20,11 @@ Reply "ready" and wait for my first prompt.
 
 | File | Prompt |
 |---|---|
-| I63 | A round rewind button with two left-pointing triangles, in soft orange. |
-| I64 | A wooden signpost with two blank arrow signs pointing in opposite directions. |
-| I65 | A stack of many overlapping browser windows, each with a small top bar, slightly messy. |
-| I66 | A small printed photo torn in half, the two halves slightly apart. |
-| I67 | A notepad with a simple checklist (checkboxes and scribbled lines) and a pen lying on it. |
-| I68 | A soft white pillow with a small crescent moon and two little stars above it. |
-| I69 | A simple rounded app card with a big red circular "X" close button on its corner. |
+| I71 | A classic podcast microphone on a small desk stand. |
+| I72 | A small grey trash can with one crumpled paper ball in it. |
+| I73 | A glass tank with a calm green cartoon snake coiled inside. |
+| I74 | An old-fashioned brass balance scale, perfectly level. |
+| I75 | A red cartoon heart with fast pulse lines around it, beating. |
+| I76 | A long paper receipt curling at the bottom, with simple lines and small check marks (no numbers). |
+| I77 | A car steering wheel. |
+| I78 | A single black dumbbell. |
