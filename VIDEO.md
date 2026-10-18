@@ -57,7 +57,7 @@ edit: hard cut from the title card · snap zoom to his finger on the key on "del
 narration: "I know that voice really well. When I started this channel, I wrote my first script three times. I recorded it, listened back, and deleted it. Twice."
 beats: icon I71 "recorded" · icon I72 "twice"
 
-**D07** · picture S06 (NEW: narrator at his laptop while a small dark shadow version of himself sits on his shoulder, whispering) · camera zoom-in
+**D07** · picture S06 (NEW: narrator at his laptop while a dark shadow version of himself leans in beside him, whispering) · camera zoom-in
 edit: snap zoom to the shadow on "voice" · three speech-bubble pills pop beside the shadow, one per quote: "YOUR VOICE SOUNDS WEIRD" on "weird", "NOBODY'S GOING TO WATCH" on "nobody's", "REAL CREATORS DON'T…" on "real" · zoom out on "almost"
 narration: "Every time, the voice had a new reason. "Your voice sounds weird." "Nobody's going to watch this." "Real creators don't make videos like this." I almost didn't post anything at all. And if you're watching this, you already know how that turned out."
 beats: pop N05 "watching" → card YOU KNOW **HOW IT ENDED**
