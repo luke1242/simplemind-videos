@@ -1,0 +1,657 @@
+{
+ "part": 3,
+ "audio": "audio/padded/part3.wav",
+ "scenes": [
+  {
+   "id": "D22",
+   "camera": "zoom-out",
+   "narration": "Bandura and the researchers who followed him point to a few main sources. Here are the four that show up the most.",
+   "events": [],
+   "picture": "S20",
+   "host": [
+    [
+     "N01"
+    ]
+   ]
+  },
+  {
+   "id": "D23",
+   "camera": "zoom-in",
+   "narration": "One. You don't have proof yet. This is the most common one, and the most fixable. If you've never done something, your brain has no evidence that you can. So it fills the gap with doubt.",
+   "events": [],
+   "picture": "S08",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "never",
+     "occ": 1,
+     "f": [
+      0.25,
+      0.5,
+      1.3
+     ]
+    },
+    {
+     "kind": "snap",
+     "word": "gap",
+     "occ": 1,
+     "f": [
+      0.78,
+      0.42,
+      1.4
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "step",
+     "step": "SOURCE 1",
+     "text": "NO PROOF YET",
+     "word": "one",
+     "occ": 1,
+     "dur": 3.6
+    }
+   ]
+  },
+  {
+   "id": "D24",
+   "camera": "hold",
+   "narration": "The first time you drive, give a speech, or walk into a gym, your brain is basically guessing. And when it guesses, it guesses low, to keep you safe.",
+   "events": [],
+   "host": [
+    [
+     "N01"
+    ]
+   ],
+   "diagram": {
+    "kind": "irow",
+    "items": [
+     {
+      "icon": "I77",
+      "word": {
+       "word": "drive",
+       "occ": 1
+      }
+     },
+     {
+      "icon": "I71",
+      "word": {
+       "word": "speech",
+       "occ": 1
+      }
+     },
+     {
+      "icon": "I78",
+      "word": {
+       "word": "gym",
+       "occ": 1
+      }
+     }
+    ],
+    "under": {
+     "html": "YOUR BRAIN IS <span class=\"badge yellow\">GUESSING</span>",
+     "word": {
+      "word": "guesses",
+      "occ": 1
+     }
+    }
+   }
+  },
+  {
+   "id": "D25",
+   "camera": "hold",
+   "narration": "That doesn't mean you can't do it. It means you haven't shown yourself yet. Your brain isn't saying \"you're bad at this.\" It's saying \"I have no idea.\"",
+   "events": [],
+   "host": [
+    [
+     "N06"
+    ],
+    [
+     "N05",
+     "your"
+    ]
+   ],
+   "swap": {
+    "word": "idea"
+   },
+   "diagram": {
+    "kind": "card",
+    "parts": [
+     {
+      "t": "NOT"
+     },
+     {
+      "t": "\"YOU'RE BAD AT THIS\"",
+      "badge": "red",
+      "sz": "mid"
+     }
+    ]
+   },
+   "diagramB": {
+    "kind": "card",
+    "sweep": true,
+    "parts": [
+     {
+      "t": "\"I HAVE NO IDEA\"",
+      "badge": "yellow",
+      "sz": "mid"
+     }
+    ]
+   }
+  },
+  {
+   "id": "D26",
+   "camera": "zoom-out",
+   "narration": "Two. You compare your inside to everyone else's outside.",
+   "events": [],
+   "picture": "S09",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "outside",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.3,
+      1.3
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "step",
+     "step": "SOURCE 2",
+     "text": "UNFAIR COMPARISON",
+     "word": "two",
+     "occ": 1,
+     "dur": 3.4
+    }
+   ]
+  },
+  {
+   "id": "D27",
+   "camera": "zoom-in",
+   "narration": "Back in the nineteen-fifties, a psychologist named Leon Festinger pointed out that we figure out how good we are by comparing ourselves to other people.",
+   "events": [],
+   "picture": "S20",
+   "host": [
+    [
+     "N01"
+    ]
+   ],
+   "trans": "push",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "festinger",
+     "occ": 1,
+     "f": [
+      0.46,
+      0.45,
+      1.4
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "pill",
+     "text": "LEON FESTINGER",
+     "word": "festinger",
+     "occ": 1,
+     "until": null,
+     "dur": 3.0
+    }
+   ]
+  },
+  {
+   "id": "D28",
+   "camera": "pan-right",
+   "narration": "The problem is, today you're comparing yourself to millions of people... and only seeing their best moments. You see their finished painting, not the hundred bad ones before it. You see the gym photo, not the year of showing up tired. So your messy middle always looks worse than their highlight reel.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "YOUR MIDDLE VS"
+      },
+      {
+       "t": "THEIR HIGHLIGHTS",
+       "badge": "yellow",
+       "sz": "mid"
+      }
+     ],
+     "word": "messy",
+     "occ": 1,
+     "dur": 1.9
+    }
+   ],
+   "picture": "S09",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "painting",
+     "occ": 1,
+     "f": [
+      0.4,
+      0.35,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "gym",
+     "occ": 1,
+     "f": [
+      0.2,
+      0.4,
+      1.4
+     ]
+    },
+    {
+     "kind": "snap",
+     "word": "tired",
+     "occ": 1,
+     "f": [
+      0.3,
+      0.85,
+      1.4
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "sbadge",
+     "text": "MILLIONS OF PEOPLE",
+     "word": "millions",
+     "occ": 1,
+     "dur": 2.6
+    }
+   ]
+  },
+  {
+   "id": "D29",
+   "camera": "zoom-in",
+   "narration": "Three. The critical voice is louder than the kind one.",
+   "events": [],
+   "picture": "S10",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "louder",
+     "occ": 1,
+     "f": [
+      0.66,
+      0.78,
+      1.4
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "step",
+     "step": "SOURCE 3",
+     "text": "THE LOUDER VOICE",
+     "word": "three",
+     "occ": 1,
+     "dur": 3.4
+    }
+   ]
+  },
+  {
+   "id": "D30",
+   "camera": "zoom-in",
+   "narration": "In two thousand one, a group of researchers led by Roy Baumeister reviewed hundreds of studies and came to a simple conclusion. Bad is stronger than good.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "BAD IS"
+      },
+      {
+       "t": "STRONGER",
+       "badge": "yellow"
+      },
+      {
+       "t": "THAN GOOD"
+      }
+     ],
+     "word": "stronger",
+     "occ": 1,
+     "dur": 2.0
+    }
+   ],
+   "picture": "S20",
+   "host": [
+    [
+     "N02"
+    ]
+   ],
+   "overlays": [
+    {
+     "type": "pill",
+     "text": "ROY BAUMEISTER, 2001",
+     "word": "baumeister",
+     "occ": 1,
+     "until": null,
+     "dur": 3.0
+    }
+   ]
+  },
+  {
+   "id": "D31",
+   "camera": "zoom-in",
+   "narration": "One harsh comment sticks with you longer than ten compliments.",
+   "events": [],
+   "picture": "S10",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "harsh",
+     "occ": 1,
+     "f": [
+      0.66,
+      0.78,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "ten",
+     "occ": 1,
+     "f": [
+      0.3,
+      0.53,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D32",
+   "camera": "hold",
+   "narration": "In another study, researchers at Harvard collected almost twelve thousand daily diary entries from people at work. A setback hit people's mood about two to three times harder than a step forward helped it.",
+   "events": [],
+   "host": [
+    [
+     "N01"
+    ],
+    [
+     "N02",
+     "a"
+    ]
+   ],
+   "diagram": {
+    "kind": "bars2",
+    "bars": [
+     "SETBACK",
+     "STEP FORWARD"
+    ],
+    "small": "Amabile & Kramer, Harvard",
+    "at": {
+     "count": {
+      "word": "twelve",
+      "occ": 1
+     },
+     "grow": {
+      "word": "setback",
+      "occ": 1
+     },
+     "badge": {
+      "word": "two",
+      "occ": 1
+     }
+    }
+   },
+   "fx": [
+    {
+     "type": "impact",
+     "word": "two"
+    }
+   ]
+  },
+  {
+   "id": "D33",
+   "camera": "zoom-in",
+   "narration": "So if someone once told you that you weren't good at something, that one moment might still be louder than everything good anyone's said since.",
+   "events": [],
+   "picture": "S06",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "someone",
+     "occ": 1,
+     "f": [
+      0.62,
+      0.3,
+      1.3
+     ]
+    },
+    {
+     "kind": "snap",
+     "word": "louder",
+     "occ": 1,
+     "f": [
+      0.62,
+      0.28,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D34",
+   "camera": "zoom-in",
+   "narration": "Four. You misread your own body. Before something big, your heart beats faster. Your hands shake a little. Your stomach drops.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I75",
+     "word": "stomach",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "picture": "S11",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "heart",
+     "occ": 1,
+     "f": [
+      0.53,
+      0.43,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "hands",
+     "occ": 1,
+     "f": [
+      0.52,
+      0.5,
+      1.4
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "step",
+     "step": "SOURCE 4",
+     "text": "MISREAD NERVES",
+     "word": "four",
+     "occ": 1,
+     "dur": 3.4
+    }
+   ]
+  },
+  {
+   "id": "D35",
+   "camera": "hold",
+   "narration": "And your brain takes that feeling as a message: \"See? You can't handle this.\" Bandura listed this as one of the main sources of self-doubt. People treat normal nerves as proof that they're not ready.",
+   "events": [
+    {
+     "kind": "pop",
+     "pose": "N06",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "SEE?"
+       },
+       {
+        "t": "YOU CAN'T",
+        "badge": "yellow"
+       }
+      ]
+     },
+     "word": "see",
+     "occ": 1,
+     "dur": 2.4
+    }
+   ],
+   "host": [
+    [
+     "N06"
+    ],
+    [
+     "N02",
+     "bandura"
+    ]
+   ],
+   "diagram": {
+    "kind": "quad",
+    "tiles": [
+     {
+      "label": "DOING IT",
+      "icon": "I52",
+      "word": null
+     },
+     {
+      "label": "WATCHING OTHERS",
+      "icon": "I06",
+      "word": null
+     },
+     {
+      "label": "WHAT PEOPLE SAY",
+      "icon": "I41",
+      "word": null
+     },
+     {
+      "label": "YOUR BODY",
+      "icon": "I75",
+      "word": null
+     }
+    ],
+    "active": {
+     "idx": 3,
+     "word": {
+      "word": "bandura",
+      "occ": 1
+     }
+    }
+   }
+  },
+  {
+   "id": "D36",
+   "camera": "hold",
+   "narration": "So put those four together. No proof yet. Unfair comparisons. A louder critical voice. And misread nerves. That's not the truth about who you are. That's just a lot of bad evidence.",
+   "events": [],
+   "host": [
+    [
+     "N02"
+    ],
+    [
+     "N06",
+     "that's"
+    ]
+   ],
+   "diagram": {
+    "kind": "list",
+    "items": [
+     {
+      "t": "NO PROOF YET",
+      "word": {
+       "word": "proof",
+       "occ": 1
+      }
+     },
+     {
+      "t": "UNFAIR COMPARISONS",
+      "word": {
+       "word": "unfair",
+       "occ": 1
+      }
+     },
+     {
+      "t": "A LOUDER VOICE",
+      "word": {
+       "word": "louder",
+       "occ": 1
+      }
+     },
+     {
+      "t": "MISREAD NERVES",
+      "word": {
+       "word": "misread",
+       "occ": 1
+      }
+     }
+    ],
+    "stamp": {
+     "text": "BAD EVIDENCE",
+     "word": {
+      "word": "bad",
+      "occ": 1
+     }
+    }
+   }
+  },
+  {
+   "id": "D37",
+   "camera": "zoom-out",
+   "narration": "And that's why \"just believe in yourself\" almost never works. You can't argue your brain out of something it thinks it has evidence for. But you can give it new evidence.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "GIVE IT"
+      },
+      {
+       "t": "NEW EVIDENCE",
+       "badge": "yellow"
+      }
+     ],
+     "word": "new",
+     "occ": 1,
+     "dur": 1.9
+    }
+   ],
+   "picture": "S26",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "believe",
+     "occ": 1,
+     "f": [
+      0.3,
+      0.55,
+      1.4
+     ]
+    },
+    {
+     "kind": "zoom",
+     "word": "argue",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.5,
+      1
+     ]
+    }
+   ]
+  }
+ ]
+}

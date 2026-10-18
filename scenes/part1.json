@@ -1,0 +1,481 @@
+{
+ "part": 1,
+ "audio": "audio/padded/part1.wav",
+ "scenes": [
+  {
+   "id": "D01",
+   "camera": "zoom-in",
+   "narration": "Think about a little kid who just drew a picture. A purple sun. A dog with six legs.",
+   "events": [],
+   "picture": "S01",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "picture",
+     "occ": 1,
+     "f": [
+      0.64,
+      0.25,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "purple",
+     "occ": 1,
+     "f": [
+      0.64,
+      0.17,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "dog",
+     "occ": 1,
+     "f": [
+      0.66,
+      0.33,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D02",
+   "camera": "zoom-out",
+   "narration": "Do they wonder if it's good enough? Do they compare it to anyone else's? No. They run straight to you and hold it up as high as they can.",
+   "events": [],
+   "picture": "S01",
+   "moves": [
+    {
+     "kind": "cut",
+     "word": "do",
+     "occ": 1,
+     "f": [
+      0.64,
+      0.25,
+      1.4
+     ]
+    },
+    {
+     "kind": "zoom",
+     "word": "run",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.5,
+      1
+     ]
+    },
+    {
+     "kind": "snap",
+     "word": "hold",
+     "occ": 1,
+     "f": [
+      0.64,
+      0.22,
+      1.4
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "sweep",
+     "word": "high",
+     "box": {
+      "x": 0.55,
+      "y": 0.04,
+      "w": 0.2,
+      "h": 0.42
+     }
+    }
+   ]
+  },
+  {
+   "id": "D03",
+   "camera": "zoom-in",
+   "narration": "Now think about the last time you made something. A drawing. A song. A business idea. A message to someone you like. Did you hold it up? Or did you hide it... until it was perfect... and then never show anyone at all?",
+   "events": [],
+   "picture": "S02",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "something",
+     "occ": 1,
+     "f": [
+      0.55,
+      0.35,
+      1.3
+     ]
+    },
+    {
+     "kind": "zoom",
+     "word": "business",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.5,
+      1
+     ]
+    },
+    {
+     "kind": "snap",
+     "word": "hide",
+     "occ": 1,
+     "f": [
+      0.52,
+      0.47,
+      1.4
+     ]
+    },
+    {
+     "kind": "zoom",
+     "word": "never",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.5,
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D04",
+   "camera": "zoom-in",
+   "narration": "Somewhere between that kid and you, a voice showed up. The one that says, \"You're not ready.\" \"Who do you think you are?\" \"Don't embarrass yourself.\" And here's the part most people never stop to think about.",
+   "events": [],
+   "picture": "S03",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "voice",
+     "occ": 1,
+     "f": [
+      0.6,
+      0.5,
+      1.25
+     ]
+    },
+    {
+     "kind": "zoom",
+     "word": "here's",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.5,
+      1
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "bubble",
+     "text": "YOU'RE NOT READY",
+     "word": "ready",
+     "box": {
+      "x": 0.66,
+      "y": 0.16,
+      "w": 0.31,
+      "h": 0.17
+     }
+    },
+    {
+     "type": "bubble",
+     "text": "WHO DO YOU THINK YOU ARE?",
+     "word": "who",
+     "box": {
+      "x": 0.64,
+      "y": 0.38,
+      "w": 0.34,
+      "h": 0.2
+     }
+    },
+    {
+     "type": "bubble",
+     "text": "DON'T EMBARRASS YOURSELF",
+     "word": "embarrass",
+     "box": {
+      "x": 0.64,
+      "y": 0.62,
+      "w": 0.34,
+      "h": 0.2
+     }
+    }
+   ]
+  },
+  {
+   "id": "D05",
+   "camera": "zoom-in",
+   "narration": "You weren't born with that voice. You learned it.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "YOU"
+      },
+      {
+       "t": "LEARNED",
+       "badge": "yellow"
+      },
+      {
+       "t": "IT"
+      }
+     ],
+     "word": "learned",
+     "occ": 1,
+     "dur": 1.9
+    },
+    {
+     "kind": "title",
+     "dur": 2.5,
+     "pill": "LESSON",
+     "l1": "PSYCHOLOGY OF",
+     "l2": "SELF-DOUBT"
+    }
+   ],
+   "picture": "S04",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "born",
+     "occ": 1,
+     "f": [
+      0.38,
+      0.8,
+      1.4
+     ]
+    }
+   ],
+   "fx": [
+    {
+     "type": "riser",
+     "word": "you"
+    },
+    {
+     "type": "impact",
+     "word": "learned"
+    }
+   ]
+  },
+  {
+   "id": "D06",
+   "camera": "zoom-in",
+   "narration": "I know that voice really well. When I started this channel, I wrote my first script three times. I recorded it, listened back, and deleted it. Twice.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I71",
+     "word": "recorded",
+     "occ": 1,
+     "dur": 1.8
+    },
+    {
+     "kind": "icon",
+     "icon": "I72",
+     "word": "twice",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "picture": "S05",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "deleted",
+     "occ": 1,
+     "f": [
+      0.43,
+      0.55,
+      1.4
+     ]
+    },
+    {
+     "kind": "snap",
+     "word": "channel",
+     "occ": 1,
+     "f": [
+      0.6,
+      0.35,
+      1.3
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D07",
+   "camera": "zoom-in",
+   "narration": "Every time, the voice had a new reason. \"Your voice sounds weird.\" \"Nobody's going to watch this.\" \"Real creators don't make videos like this.\" I almost didn't post anything at all. And if you're watching this, you already know how that turned out.",
+   "events": [
+    {
+     "kind": "pop",
+     "pose": "N05",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "YOU KNOW"
+       },
+       {
+        "t": "HOW IT ENDED",
+        "badge": "yellow"
+       }
+      ]
+     },
+     "word": "watching",
+     "occ": 1,
+     "dur": 2.6
+    }
+   ],
+   "picture": "S06",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "voice",
+     "occ": 1,
+     "f": [
+      0.6,
+      0.4,
+      1.3
+     ]
+    },
+    {
+     "kind": "zoom",
+     "word": "almost",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.5,
+      1
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "bubble",
+     "text": "YOUR VOICE SOUNDS WEIRD",
+     "word": "weird",
+     "box": {
+      "x": 0.7,
+      "y": 0.08,
+      "w": 0.29,
+      "h": 0.2
+     }
+    },
+    {
+     "type": "bubble",
+     "text": "NOBODY'S GOING TO WATCH",
+     "word": "nobody's",
+     "box": {
+      "x": 0.7,
+      "y": 0.32,
+      "w": 0.29,
+      "h": 0.2
+     }
+    },
+    {
+     "type": "bubble",
+     "text": "REAL CREATORS DON'T\u2026",
+     "word": "real",
+     "box": {
+      "x": 0.7,
+      "y": 0.56,
+      "w": 0.29,
+      "h": 0.2
+     }
+    }
+   ]
+  },
+  {
+   "id": "D08",
+   "camera": "zoom-in",
+   "narration": "But it made me want to understand where that voice actually comes from. So I went looking at what psychologists have found.",
+   "events": [],
+   "picture": "S20",
+   "host": [
+    [
+     "N06"
+    ],
+    [
+     "N01",
+     "so"
+    ]
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "psychologists",
+     "occ": 1,
+     "f": [
+      0.46,
+      0.45,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D09",
+   "camera": "hold",
+   "narration": "By the end of this video, you'll know the four places self-doubt really comes from, why \"just believe in yourself\" almost never works, and five ways to rebuild your confidence that are actually backed by research.",
+   "events": [],
+   "host": [
+    [
+     "N01"
+    ]
+   ],
+   "diagram": {
+    "kind": "irow",
+    "items": [
+     {
+      "icon": "I74",
+      "label": "4 SOURCES",
+      "word": {
+       "word": "four",
+       "occ": 1
+      }
+     },
+     {
+      "icon": "I72",
+      "label": "WHY \"BELIEVE\" FAILS",
+      "word": {
+       "word": "believe",
+       "occ": 1
+      }
+     },
+     {
+      "icon": "I67",
+      "label": "5 FIXES",
+      "word": {
+       "word": "five",
+       "occ": 1
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": "D10",
+   "camera": "hold",
+   "narration": "One of them takes about two seconds, and you can use it before anything that scares you.",
+   "events": [],
+   "picture": "I11",
+   "host": [
+    [
+     "N01"
+    ]
+   ],
+   "overlays": [
+    {
+     "type": "sbadge",
+     "text": "2 SECONDS",
+     "word": "two",
+     "occ": 1,
+     "dur": 3.0
+    }
+   ]
+  }
+ ]
+}

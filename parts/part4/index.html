@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=1920, height=1080"><title>Part 4</title>
+<script src="assets/gsap.min.js"></script>
+<style>
+@font-face{font-family:"Nunito";font-weight:800;src:url("assets/fonts/nunito-800.woff2") format("woff2")}
+html,body{margin:0;background:#FAF7F0}
+#root{position:relative;width:100%;height:100%;overflow:hidden;background:#FAF7F0;font-family:"Nunito",sans-serif;font-weight:800;color:#1A1A1A}
+.clip{position:absolute;inset:0;overflow:hidden}
+.tt,.fill{position:absolute;inset:0}
+.tt{background:#FAF7F0}
+.fin{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:50% 50%}
+.bleed{position:absolute;left:-1920px;top:-1080px;width:5760px;height:3240px}
+.cam{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0}
+.pic{position:absolute;left:0;top:0;width:1920px;height:1080px;display:block}
+.iconbg{background:#F8F5EE}
+.card{background:#FAF7F0;display:flex;align-items:center;justify-content:center}
+.cardtxt{display:flex;flex-direction:column;align-items:center;gap:26px;text-align:center}
+.ln{font-size:170px;line-height:1.05;letter-spacing:1px;white-space:nowrap;position:relative}
+.ln.big{font-size:130px}.ln.small{font-size:84px}.ln.mid{font-size:112px}
+.badge{display:inline-block;padding:4px 40px 12px;border:9px solid #1A1A1A;border-radius:34px;box-shadow:8px 8px 0 #1A1A1A}
+.badge.yellow{background:#F2C230;color:#1A1A1A} .badge.red{background:#D64545;color:#fff}
+.pill{background:#2F6B2F;color:#fff;border:7px solid #1A1A1A;border-radius:60px;font-size:64px;padding:2px 54px 8px;letter-spacing:4px;margin-bottom:18px}
+.pill.big{margin:0;border-width:6px;font-size:64px;padding:2px 50px 8px}
+.org{color:#F2A65A;-webkit-text-stroke:6px #1A1A1A;paint-order:stroke fill}
+.mk{position:relative;display:inline-block}.mk i{position:absolute;left:-14px;right:-14px;top:22%;bottom:2%;background:#F2C230;transform-origin:0 50%;z-index:0;border-radius:10px}.mk b{position:relative;z-index:1;font-weight:800}
+.circw{position:relative;display:inline-block}.circ{position:absolute;left:-60px;top:-34px;width:calc(100% + 120px);height:calc(100% + 68px);overflow:visible}
+.ulw{position:relative;display:inline-block}.ul{position:absolute;left:0;bottom:-26px;width:100%;height:30px;overflow:visible}
+.ulp{position:absolute;left:0;bottom:-24px;width:100%;height:26px;overflow:visible}
+.hbg{position:absolute;inset:0;background:#FAF7F0}
+.frame{position:absolute;left:455.2px;top:140px;width:1420.8px;height:799.2px;border-radius:28px;overflow:hidden;background:#FAF7F0}
+.hs{position:absolute;left:0;top:0;width:1920px;height:1080px;transform:scale(0.74);transform-origin:0 0}
+.fborder{position:absolute;left:455.2px;top:140px;width:1420.8px;height:799.2px;box-sizing:border-box;border:6px solid #1A1A1A;border-radius:28px;pointer-events:none}
+.nw{position:absolute;inset:0;z-index:5}
+.narr{position:absolute;bottom:48px;display:block}
+.nshadow{position:absolute;bottom:26px;height:46px;background:radial-gradient(ellipse at center,rgba(26,26,26,.28),rgba(26,26,26,0) 70%)}
+.diag{background:#FAF7F0}
+.cardc{display:flex;align-items:center;justify-content:center}
+.dlabel{position:absolute;left:0;right:0;top:830px;display:flex;justify-content:center;align-items:center;gap:36px;font-size:130px;white-space:nowrap}
+.sclab{position:absolute;width:500px;display:flex;justify-content:center;font-size:84px}
+.tagbox{position:absolute;display:flex;align-items:center;justify-content:center;white-space:nowrap}
+.scr{position:absolute;left:0;right:0;top:24px;display:flex;flex-direction:column;align-items:center;gap:14px;z-index:6}.scr.row{flex-direction:row;justify-content:center;gap:20px;top:22px}
+.spill2{background:#FAF7F0;border:6px solid #1A1A1A;border-radius:44px;font-size:60px;line-height:1.05;padding:4px 40px 10px;white-space:nowrap;position:relative}
+.sbub{position:absolute;background:#fff;border:7px solid #1A1A1A;border-radius:42px;box-sizing:border-box;display:flex;align-items:center;justify-content:center;text-align:center;font-size:64px;line-height:1.05;padding:6px 18px}
+.sbub i{position:absolute;right:-34px;bottom:-30px;width:40px;height:40px;background:#fff;border:7px solid #1A1A1A;border-radius:50%;box-sizing:border-box}
+.sign{position:absolute;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1;color:#1A1A1A;white-space:nowrap}
+.ovsvg{position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:visible}
+.clab{position:absolute;white-space:nowrap}
+.wheel{padding:0 26px 4px;overflow:hidden}.dig{display:block;height:253px;overflow:hidden;width:130px}.col{display:flex;flex-direction:column;line-height:253px;text-align:center}
+.bar{position:absolute;border:9px solid #1A1A1A;border-radius:26px 26px 0 0;box-sizing:border-box;box-shadow:8px 8px 0 rgba(26,26,26,.18)}
+.btag{position:absolute;left:-40px;right:-40px;top:-130px;text-align:center;font-size:100px;white-space:nowrap}
+.blab{position:absolute;text-align:center;font-size:66px;line-height:1.05}
+.topbadge{position:absolute;left:0;right:0;top:48px;display:flex;justify-content:center;align-items:center;gap:28px;font-size:94px;white-space:nowrap}
+.ctitle{position:absolute;left:0;right:0;top:36px;text-align:center;font-size:100px;letter-spacing:3px}
+.axl{position:absolute;font-size:62px}
+.llab{position:absolute;font-size:62px;white-space:nowrap;-webkit-text-stroke:2px #1A1A1A;paint-order:stroke fill}
+.tag{position:absolute;font-size:70px}.tag .badge{padding:0 30px 8px}
+.sweep{position:absolute;width:300px;height:300px;opacity:0;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,247,200,.95),rgba(255,255,255,0));filter:blur(8px);border-radius:50%}
+.half{position:absolute;top:0;width:960px;height:1080px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px}
+.half .ln{font-size:128px}
+.vdiv{position:absolute;left:956px;top:120px;width:8px;height:840px;background:#1A1A1A;border-radius:4px}
+.qmark{position:absolute;left:210px;top:60px;font-size:420px;line-height:1;color:#F2A65A;-webkit-text-stroke:5px #1A1A1A;paint-order:stroke fill}
+.qtext{position:absolute;left:200px;top:250px;width:1540px;font-size:90px;line-height:1.42;text-align:left}
+.qtext .w{display:inline-block;margin-right:16px}.qtext .badge{padding:0 20px 6px;box-shadow:6px 6px 0 #1A1A1A;border-width:7px;border-radius:24px;margin-right:16px}.qtext .badge .w{margin-right:14px}.qtext .badge .w:last-child{margin-right:0}
+.qby{position:absolute;left:0;right:0;top:880px;text-align:center;font-size:58px;color:#6a6454}
+.irow2{position:absolute;left:0;right:0;top:190px;display:flex;gap:70px;justify-content:center;align-items:flex-start}.icol{display:flex;flex-direction:column;align-items:center;gap:26px;width:540px}.ilab{font-size:84px;line-height:1.05;text-align:center;width:560px}.under{position:absolute;left:0;right:0;top:840px;text-align:center;font-size:90px;white-space:nowrap}
+.qtile{position:absolute;width:800px;height:400px;box-sizing:border-box;border:9px solid #1A1A1A;border-radius:36px;display:flex;align-items:center;gap:30px;padding:0 30px;box-shadow:10px 10px 0 rgba(26,26,26,.2)}.qic{width:300px;height:300px;overflow:hidden;border-radius:24px;border:6px solid #1A1A1A;background:#F8F5EE;flex:none;box-sizing:border-box}.qic img{height:288px;width:512px;margin-left:-112px;display:block}.qlab{font-size:64px;line-height:1.05;flex:1;text-align:left}
+.lrow{position:absolute;left:0;right:0;text-align:center;font-size:100px;white-space:nowrap}.lpill{display:inline-block;padding:4px 56px 14px;border:9px solid #1A1A1A;border-radius:46px;box-shadow:8px 8px 0 #1A1A1A}
+.stamp{position:absolute;left:240px;right:240px;top:420px;text-align:center;font-size:170px;color:#D64545;border:16px solid #D64545;border-radius:30px;background:rgba(250,247,240,.9);padding:0 20px 14px;white-space:nowrap;letter-spacing:4px}
+.ratio{position:absolute;left:0;right:0;top:360px;text-align:center;font-size:150px}.dsmall{position:absolute;left:0;right:0;top:992px;text-align:center;font-size:44px;color:#6a6454}.splsign{position:absolute;left:0;right:0;top:420px;text-align:center;font-size:170px}
+.irow{display:flex;gap:70px;align-items:center}
+.itile{width:520px;height:520px;border:9px solid #1A1A1A;border-radius:36px;overflow:hidden;background:#F8F5EE;box-shadow:10px 10px 0 rgba(26,26,26,.2)}.itile img{width:924px;height:520px;margin-left:-202px;display:block}
+.sweepbox{position:absolute;overflow:hidden}.sweepband{position:absolute;left:0;top:-20%;width:35%;height:140%;transform:skewX(-18deg);background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,247,200,.9),rgba(255,255,255,0));opacity:0}
+.leak{position:absolute;inset:0;mix-blend-mode:screen;background:radial-gradient(ellipse 60% 70% at 95% 10%,rgba(255,170,70,.95),rgba(255,120,40,0) 70%),radial-gradient(ellipse 50% 60% at 5% 95%,rgba(255,210,120,.75),rgba(255,160,60,0) 70%)}
+</style></head><body>
+<div id="root" data-composition-id="part4" data-start="0" data-width="1920" data-height="1080" data-duration="215.667">
+<svg width="0" height="0" style="position:absolute"><filter id="mb" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB"><feGaussianBlur id="mbb" stdDeviation="0 0"/></filter></svg>
+<div id="d38-s0" class="clip" data-start="0" data-duration="2.82" style="z-index:11"><div id="d38-s0-t" class="tt"><div id="d38-s0-fin" class="fin"><div id="d38-s0-cam" class="cam"><img src="assets/pictures/S24.jpg" class="pic" alt=""></div></div><div id="d38-s0-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 1</div><div class="spill2">COLLECT TINY PROOF</div></div></div></div>
+<div id="d38-s1" class="clip" data-start="2.82" data-duration="2.16" style="z-index:12"><div id="d38-s1-t" class="tt"><div id="d38-s1-fin" class="fin"><div id="d38-s1-cam" class="cam"><img src="assets/pictures/S24.jpg" class="pic" alt=""></div></div><div id="d38-s1-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 1</div><div class="spill2">COLLECT TINY PROOF</div></div></div></div>
+<div id="d38-s2" class="clip" data-start="4.98" data-duration="2.04" style="z-index:13"><div id="d38-s2-t" class="tt"><div id="d38-s2-fin" class="fin"><div id="d38-s2-cam" class="cam"><img src="assets/pictures/S24.jpg" class="pic" alt=""></div></div><div id="d38-s2-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 1</div><div class="spill2">COLLECT TINY PROOF</div></div></div></div>
+<div id="d38-s3" class="clip" data-start="7.02" data-duration="1.86" style="z-index:14"><div id="d38-s3-t" class="tt"><div id="d38-s3-fin" class="fin"><div id="d38-s3-cam" class="cam"><img src="assets/pictures/S24.jpg" class="pic" alt=""></div></div><div id="d38-s3-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 1</div><div class="spill2">COLLECT TINY PROOF</div></div></div></div>
+<div id="d38-s4" class="clip" data-start="8.88" data-duration="2.88" style="z-index:15"><div id="d38-s4-t" class="tt"><div id="d38-s4-fin" class="fin"><div id="d38-s4-cam" class="cam"><img src="assets/pictures/S24.jpg" class="pic" alt=""></div></div><div id="d38-s4-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 1</div><div class="spill2">COLLECT TINY PROOF</div></div></div></div>
+<div id="d38-s5" class="clip" data-start="11.76" data-duration="1.52" style="z-index:16"><div id="d38-s5-t" class="tt"><div id="d38-s5-fin" class="fin"><div id="d38-s5-cam" class="cam"><img src="assets/pictures/S24.jpg" class="pic" alt=""></div></div><div id="d38-s5-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 1</div><div class="spill2">COLLECT TINY PROOF</div></div></div></div>
+<div id="d39-s0" class="clip" data-start="13.28" data-duration="3.24" style="z-index:17"><div id="d39-s0-t" class="tt"><div id="d39-s0-fin" class="fin"><div id="d39-s0-cam" class="cam"><img src="assets/pictures/S24.jpg" class="pic" alt=""></div></div></div></div>
+<div id="d39-s1" class="clip" data-start="16.52" data-duration="1.64" style="z-index:18"><div id="d39-s1-t" class="tt"><div id="d39-s1-fin" class="fin"><div id="d39-s1-cam" class="cam"><img src="assets/pictures/S24.jpg" class="pic" alt=""></div></div></div></div>
+<div id="d39-s2" class="clip" data-start="18.16" data-duration="1.76" style="z-index:19"><div id="d39-s2-t" class="tt"><div id="d39-s2-fin" class="fin"><div class="fill card"><div id="d39-s2-in" class="cardtxt"><div class="ln" id="d39-s2-l0">ALMOST</div><div class="ln" id="d39-s2-l1"><span class="badge yellow" id="d39-s2-p1-bd">EMBARRASSING</span></div></div></div></div></div></div>
+<div id="d39-s3" class="clip" data-start="19.92" data-duration="3.4" style="z-index:20"><div id="d39-s3-t" class="tt"><div id="d39-s3-fin" class="fin"><div id="d39-s3-cam" class="cam"><img src="assets/pictures/S24.jpg" class="pic" alt=""></div></div></div></div>
+<div id="d39-s4" class="clip" data-start="23.32" data-duration="2.18" style="z-index:21"><div id="d39-s4-t" class="tt"><div id="d39-s4-fin" class="fin"><div id="d39-s4-cam" class="cam"><img src="assets/pictures/S24.jpg" class="pic" alt=""></div></div></div></div>
+<div id="d39-s5" class="clip" data-start="25.5" data-duration="1.7" style="z-index:22"><div id="d39-s5-t" class="tt"><div id="d39-s5-fin" class="fin"><div class="fill iconbg"><img id="d39-s5-img" src="assets/icons/I52.jpg" class="pic" alt=""></div></div></div></div>
+<div id="d40-s0" class="clip" data-start="27.2" data-duration="2.82" style="z-index:23"><div id="d40-s0-t" class="tt"><div id="d40-s0-fin" class="fin"><div id="d40-s0-cam" class="cam"><img src="assets/pictures/S05.jpg" class="pic" alt=""></div></div><div id="d40-s0-so0" class="scr" data-layout-allow-overlap><span class="badge yellow" style="font-size:78px;padding:0 38px 8px">1 MINUTE. DON'T DELETE.</span></div></div></div>
+<div id="d40-s1" class="clip" data-start="30.02" data-duration="3.34" style="z-index:24"><div id="d40-s1-t" class="tt"><div id="d40-s1-fin" class="fin"><div id="d40-s1-cam" class="cam"><img src="assets/pictures/S05.jpg" class="pic" alt=""></div></div><div id="d40-s1-so0" class="scr" data-layout-allow-overlap><span class="badge yellow" style="font-size:78px;padding:0 38px 8px">1 MINUTE. DON'T DELETE.</span></div></div></div>
+<div id="d40-s2" class="clip" data-start="33.36" data-duration="1.8" style="z-index:25"><div id="d40-s2-t" class="tt"><div id="d40-s2-fin" class="fin"><div id="d40-s2-cam" class="cam"><img src="assets/pictures/S05.jpg" class="pic" alt=""></div></div><div id="d40-s2-so0" class="scr" data-layout-allow-overlap><span class="badge yellow" style="font-size:78px;padding:0 38px 8px">1 MINUTE. DON'T DELETE.</span></div></div></div>
+<div id="d41-s0" class="clip" data-start="35.16" data-duration="3.2" style="z-index:26"><div id="d41-s0-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="d41-s0-fin" class="fin"><div id="d41-s0-cam" class="cam"><div class="fill diag cardc"><div class="cardtxt" id="d41-s0-dg-ct"><div class="ln mid" id="d41-s0-dg-l0">BEST DAYS ≠</div><div class="ln" id="d41-s0-dg-l1"><span class="badge red" id="d41-s0-dg-p1-bd">HUGE WINS</span></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="d41-s1" class="clip" data-start="38.36" data-duration="3.32" style="z-index:27"><div id="d41-s1-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="d41-s1-fin" class="fin"><div id="d41-s1-cam" class="cam"><div class="fill diag cardc"><div class="cardtxt" id="d41-s1-dg-ct"><div class="ln mid" id="d41-s1-dg-l0">BEST DAYS ≠</div><div class="ln" id="d41-s1-dg-l1"><span class="badge red" id="d41-s1-dg-p1-bd">HUGE WINS</span></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="d41-s2" class="clip" data-start="41.68" data-duration="2.22" style="z-index:28"><div id="d41-s2-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="d41-s2-fin" class="fin"><div id="d41-s2-cam" class="cam"><div class="fill diag cardc"><div class="cardtxt" id="d41-s2-dg-ct"><div class="ln mid" id="d41-s2-dg-l0">BEST DAYS =</div><div class="ln mid" id="d41-s2-dg-l1"><span class="badge yellow" id="d41-s2-dg-p1-bd">A LITTLE PROGRESS</span></div></div><div class="sweep" id="d41-s2-dg-sw" style="left:760px;top:240px;width:400px;height:600px;border-radius:0;transform:skewX(-20deg)"></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="d42-s0" class="clip" data-start="43.9" data-duration="2.98" style="z-index:29"><div id="d42-s0-t" class="tt"><div id="d42-s0-fin" class="fin"><div id="d42-s0-cam" class="cam"><img src="assets/pictures/S12.jpg" class="pic" alt=""></div></div><div id="d42-s0-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 2</div><div class="spill2">WATCH SOMEONE LIKE YOU</div></div></div></div>
+<div id="d42-s1" class="clip" data-start="46.88" data-duration="2.52" style="z-index:30"><div id="d42-s1-t" class="tt"><div id="d42-s1-fin" class="fin"><div id="d42-s1-cam" class="cam"><img src="assets/pictures/S12.jpg" class="pic" alt=""></div></div><div id="d42-s1-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 2</div><div class="spill2">WATCH SOMEONE LIKE YOU</div></div></div></div>
+<div id="d42-s2" class="clip" data-start="49.4" data-duration="2.16" style="z-index:31"><div id="d42-s2-t" class="tt"><div id="d42-s2-fin" class="fin"><div id="d42-s2-cam" class="cam"><img src="assets/pictures/S12.jpg" class="pic" alt=""></div></div><div id="d42-s2-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 2</div><div class="spill2">WATCH SOMEONE LIKE YOU</div></div></div></div>
+<div id="d42-s3" class="clip" data-start="51.56" data-duration="2.54" style="z-index:32"><div id="d42-s3-t" class="tt"><div id="d42-s3-fin" class="fin"><div id="d42-s3-cam" class="cam"><img src="assets/pictures/S12.jpg" class="pic" alt=""></div></div><div id="d42-s3-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 2</div><div class="spill2">WATCH SOMEONE LIKE YOU</div></div></div></div>
+<div id="d43-s0" class="clip" data-start="54.1" data-duration="3.18" style="z-index:33"><div id="d43-s0-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="d43-s0-fin" class="fin"><div id="d43-s0-cam" class="cam"><div class="fill diag"><div class="qtile" id="d43-s0-dg-q0" style="left:110px;top:130px;background:#8EC5E8"><div class="qic"><img src="assets/icons/I52.jpg" alt=""></div><div class="qlab">DOING IT</div></div><div class="qtile" id="d43-s0-dg-q1" style="left:1010px;top:130px;background:#9CC08B"><div class="qic"><img src="assets/icons/I06.jpg" alt=""></div><div class="qlab">WATCHING OTHERS</div></div><div class="qtile" id="d43-s0-dg-q2" style="left:110px;top:590px;background:#F2C230"><div class="qic"><img src="assets/icons/I41.jpg" alt=""></div><div class="qlab">WHAT PEOPLE SAY</div></div><div class="qtile" id="d43-s0-dg-q3" style="left:1010px;top:590px;background:#F2A65A"><div class="qic"><img src="assets/icons/I75.jpg" alt=""></div><div class="qlab">YOUR BODY</div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="d43-s1" class="clip" data-start="57.28" data-duration="3.78" style="z-index:34"><div id="d43-s1-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="d43-s1-fin" class="fin"><div id="d43-s1-cam" class="cam"><div class="fill diag"><div class="qtile" id="d43-s1-dg-q0" style="left:110px;top:130px;background:#8EC5E8"><div class="qic"><img src="assets/icons/I52.jpg" alt=""></div><div class="qlab">DOING IT</div></div><div class="qtile" id="d43-s1-dg-q1" style="left:1010px;top:130px;background:#9CC08B"><div class="qic"><img src="assets/icons/I06.jpg" alt=""></div><div class="qlab">WATCHING OTHERS</div></div><div class="qtile" id="d43-s1-dg-q2" style="left:110px;top:590px;background:#F2C230"><div class="qic"><img src="assets/icons/I41.jpg" alt=""></div><div class="qlab">WHAT PEOPLE SAY</div></div><div class="qtile" id="d43-s1-dg-q3" style="left:1010px;top:590px;background:#F2A65A"><div class="qic"><img src="assets/icons/I75.jpg" alt=""></div><div class="qlab">YOUR BODY</div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="d43-s2" class="clip" data-start="61.06" data-duration="1.74" style="z-index:35"><div id="d43-s2-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="d43-s2-fin" class="fin"><div class="fill card"><div id="d43-s2-in" class="cardtxt"><div class="ln" id="d43-s2-l0">IF THEY CAN,</div><div class="ln" id="d43-s2-l1"><span class="badge yellow" id="d43-s2-p1-bd">MAYBE I CAN</span></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="d43-s3" class="clip" data-start="62.8" data-duration="2.64" style="z-index:36"><div id="d43-s3-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="d43-s3-fin" class="fin"><div id="d43-s3-cam" class="cam"><div class="fill diag"><div class="qtile" id="d43-s3-dg-q0" style="left:110px;top:130px;background:#8EC5E8"><div class="qic"><img src="assets/icons/I52.jpg" alt=""></div><div class="qlab">DOING IT</div></div><div class="qtile" id="d43-s3-dg-q1" style="left:1010px;top:130px;background:#9CC08B"><div class="qic"><img src="assets/icons/I06.jpg" alt=""></div><div class="qlab">WATCHING OTHERS</div></div><div class="qtile" id="d43-s3-dg-q2" style="left:110px;top:590px;background:#F2C230"><div class="qic"><img src="assets/icons/I41.jpg" alt=""></div><div class="qlab">WHAT PEOPLE SAY</div></div><div class="qtile" id="d43-s3-dg-q3" style="left:1010px;top:590px;background:#F2A65A"><div class="qic"><img src="assets/icons/I75.jpg" alt=""></div><div class="qlab">YOUR BODY</div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="d44-s0" class="clip" data-start="65.44" data-duration="1.9" style="z-index:37"><div id="d44-s0-t" class="tt"><div id="d44-s0-fin" class="fin"><div id="d44-s0-cam" class="cam"><img src="assets/pictures/S26.jpg" class="pic" alt=""></div></div><div id="d44-s0-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 3</div><div class="spill2">TALK TO YOURSELF BY NAME</div></div><div id="d44-s0-so1" class="scr" data-layout-allow-overlap><div class="pill big">ETHAN KROSS</div></div></div></div>
+<div id="d44-s1" class="clip" data-start="67.34" data-duration="1.98" style="z-index:38"><div id="d44-s1-t" class="tt"><div id="d44-s1-fin" class="fin"><div id="d44-s1-cam" class="cam"><img src="assets/pictures/S26.jpg" class="pic" alt=""></div></div><div id="d44-s1-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 3</div><div class="spill2">TALK TO YOURSELF BY NAME</div></div><div id="d44-s1-so1" class="scr" data-layout-allow-overlap><div class="pill big">ETHAN KROSS</div></div></div></div>
+<div id="d44-s2" class="clip" data-start="69.32" data-duration="3.16" style="z-index:39"><div id="d44-s2-t" class="tt"><div id="d44-s2-fin" class="fin"><div id="d44-s2-cam" class="cam"><img src="assets/pictures/S26.jpg" class="pic" alt=""></div></div><div id="d44-s2-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 3</div><div class="spill2">TALK TO YOURSELF BY NAME</div></div><div id="d44-s2-so1" class="scr" data-layout-allow-overlap><div class="pill big">ETHAN KROSS</div></div></div></div>
+<div id="d44-s3" class="clip" data-start="72.48" data-duration="3.52" style="z-index:40"><div id="d44-s3-t" class="tt"><div id="d44-s3-fin" class="fin"><div id="d44-s3-cam" class="cam"><img src="assets/pictures/S26.jpg" class="pic" alt=""></div></div><div id="d44-s3-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 3</div><div class="spill2">TALK TO YOURSELF BY NAME</div></div><div id="d44-s3-so1" class="scr" data-layout-allow-overlap><div class="pill big">ETHAN KROSS</div></div></div></div>
+<div id="d44-s4" class="clip" data-start="76" data-duration="3.1" style="z-index:41"><div id="d44-s4-t" class="tt"><div id="d44-s4-fin" class="fin"><div id="d44-s4-cam" class="cam"><img src="assets/pictures/S26.jpg" class="pic" alt=""></div></div><div id="d44-s4-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 3</div><div class="spill2">TALK TO YOURSELF BY NAME</div></div><div id="d44-s4-so1" class="scr" data-layout-allow-overlap><div class="pill big">ETHAN KROSS</div></div></div></div>
+<div id="d44-s5" class="clip" data-start="79.1" data-duration="1.82" style="z-index:42"><div id="d44-s5-t" class="tt"><div id="d44-s5-fin" class="fin"><div id="d44-s5-cam" class="cam"><img src="assets/pictures/S26.jpg" class="pic" alt=""></div></div><div id="d44-s5-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 3</div><div class="spill2">TALK TO YOURSELF BY NAME</div></div><div id="d44-s5-so1" class="scr" data-layout-allow-overlap><div class="pill big">ETHAN KROSS</div></div></div></div>
+<div id="d45-s0" class="clip" data-start="80.92" data-duration="2.76" style="z-index:43"><div id="d45-s0-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="d45-s0-fin" class="fin"><div id="d45-s0-cam" class="cam"><div class="fill diag cardc"><div class="cardtxt" id="d45-s0-dg-ct"><div class="ln mid" id="d45-s0-dg-l0"><span class="badge red" id="d45-s0-dg-p0-bd">"I CAN'T DO THIS"</span></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="d45-s1" class="clip" data-start="83.68" data-duration="1.2" style="z-index:44"><div id="d45-s1-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="d45-s1-fin" class="fin"><div id="d45-s1-cam" class="cam"><div class="fill diag cardc"><div class="cardtxt" id="d45-s1-dg-ct"><div class="ln mid" id="d45-s1-dg-l0"><span class="badge red" id="d45-s1-dg-p0-bd">"I CAN'T DO THIS"</span></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="d45-s2" class="clip" data-start="84.88" data-duration="2.82" style="z-index:45"><div id="d45-s2-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="d45-s2-fin" class="fin"><div id="d45-s2-cam" class="cam"><div class="fill diag cardc"><div class="cardtxt" id="d45-s2-dg-ct"><div class="ln" id="d45-s2-dg-l0">"LUKE,</div><div class="ln mid" id="d45-s2-dg-l1"><span class="mk"><i id="d45-s2-dg-p1-mk"></i><b>YOU CAN DO THIS"</b></span></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="d45-s3" class="clip" data-start="87.7" data-duration="2.3" style="z-index:46"><div id="d45-s3-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="d45-s3-fin" class="fin"><div id="d45-s3-cam" class="cam"><div class="fill diag cardc"><div class="cardtxt" id="d45-s3-dg-ct"><div class="ln" id="d45-s3-dg-l0">"LUKE,</div><div class="ln mid" id="d45-s3-dg-l1"><span class="mk"><i id="d45-s3-dg-p1-mk"></i><b>YOU CAN DO THIS"</b></span></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="d45-s4" class="clip" data-start="90" data-duration="2.32" style="z-index:47"><div id="d45-s4-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="d45-s4-fin" class="fin"><div class="fill card"><div id="d45-s4-in" class="cardtxt"><div class="ln" id="d45-s4-l0">LIKE A</div><div class="ln" id="d45-s4-l1"><span class="badge yellow" id="d45-s4-p1-bd">FRIEND</span></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="d45-s5" class="clip" data-start="92.32" data-duration="3.1" style="z-index:48"><div id="d45-s5-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="d45-s5-fin" class="fin"><div id="d45-s5-cam" class="cam"><div class="fill diag cardc"><div class="cardtxt" id="d45-s5-dg-ct"><div class="ln" id="d45-s5-dg-l0">"LUKE,</div><div class="ln mid" id="d45-s5-dg-l1"><span class="mk"><i id="d45-s5-dg-p1-mk"></i><b>YOU CAN DO THIS"</b></span></div></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="d46-s0" class="clip" data-start="95.42" data-duration="3.72" style="z-index:49"><div id="d46-s0-t" class="tt"><div id="d46-s0-fin" class="fin"><div id="d46-s0-cam" class="cam"><img src="assets/pictures/S13.jpg" class="pic" alt=""></div></div><div id="d46-s0-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 4</div><div class="spill2">RENAME THE NERVES</div></div></div></div>
+<div id="d46-s1" class="clip" data-start="99.14" data-duration="1.68" style="z-index:50"><div id="d46-s1-t" class="tt"><div id="d46-s1-fin" class="fin"><div class="fill iconbg"><img id="d46-s1-img" src="assets/icons/I11.jpg" class="pic" alt=""></div></div></div></div>
+<div id="d46-s2" class="clip" data-start="100.82" data-duration="2.14" style="z-index:51"><div id="d46-s2-t" class="tt"><div id="d46-s2-fin" class="fin"><div id="d46-s2-cam" class="cam"><img src="assets/pictures/S13.jpg" class="pic" alt=""></div></div><div id="d46-s2-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 4</div><div class="spill2">RENAME THE NERVES</div></div></div></div>
+<div id="d46-s3" class="clip" data-start="102.96" data-duration="1.82" style="z-index:52"><div id="d46-s3-t" class="tt"><div id="d46-s3-fin" class="fin"><div id="d46-s3-cam" class="cam"><img src="assets/pictures/S13.jpg" class="pic" alt=""></div></div><div id="d46-s3-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 4</div><div class="spill2">RENAME THE NERVES</div></div></div></div>
+<div id="d47-s0" class="clip" data-start="104.78" data-duration="3.28" style="z-index:53"><div id="d47-s0-t" class="tt"><div id="d47-s0-fin" class="fin"><div id="d47-s0-cam" class="cam"><img src="assets/pictures/S28.jpg" class="pic" alt=""></div></div><div id="d47-s0-so0" class="scr" data-layout-allow-overlap><div class="pill big">ALISON WOOD BROOKS</div></div></div></div>
+<div id="d47-s1" class="clip" data-start="108.06" data-duration="3.04" style="z-index:54"><div id="d47-s1-t" class="tt"><div id="d47-s1-fin" class="fin"><div id="d47-s1-cam" class="cam"><img src="assets/pictures/S28.jpg" class="pic" alt=""></div></div><div id="d47-s1-so0" class="scr" data-layout-allow-overlap><div class="pill big">ALISON WOOD BROOKS</div></div></div></div>
+<div id="d47-s2" class="clip" data-start="111.1" data-duration="2.74" style="z-index:55"><div id="d47-s2-t" class="tt"><div id="d47-s2-fin" class="fin"><div id="d47-s2-cam" class="cam"><img src="assets/pictures/S28.jpg" class="pic" alt=""></div></div><div id="d47-s2-so0" class="scr" data-layout-allow-overlap><div class="pill big">ALISON WOOD BROOKS</div></div></div></div>
+<div id="d47-s3" class="clip" data-start="113.84" data-duration="1.24" style="z-index:56"><div id="d47-s3-t" class="tt"><div id="d47-s3-fin" class="fin"><div id="d47-s3-cam" class="cam"><img src="assets/pictures/S28.jpg" class="pic" alt=""></div></div><div id="d47-s3-so0" class="scr" data-layout-allow-overlap><div class="pill big">ALISON WOOD BROOKS</div></div></div></div>
+<div id="d47-s4" class="clip" data-start="115.08" data-duration="2.2" style="z-index:57"><div id="d47-s4-t" class="tt"><div id="d47-s4-fin" class="fin"><div class="fill card"><div id="d47-s4-in" class="cardtxt"><div class="ln" id="d47-s4-l0">"I'M EXCITED"</div><div class="ln" id="d47-s4-l1"><span class="badge yellow" id="d47-s4-p1-bd">WINS</span></div></div></div></div></div></div>
+<div id="d48-s0" class="clip" data-start="117.28" data-duration="3.24" style="z-index:58"><div id="d48-s0-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="d48-s0-fin" class="fin"><div id="d48-s0-cam" class="cam"><div class="fill diag"><div class="half" id="d48-s0-dg-L" style="left:0"><div class="ln" style="font-size:100px"></div><div class="ln" style="font-size:100px"><span class="badge yellow">NERVES</span></div></div><div class="vdiv"></div><div class="half" id="d48-s0-dg-R" style="left:960px"><div class="ln" style="font-size:100px"></div><div class="ln" style="font-size:100px"><span class="badge red">EXCITEMENT</span></div></div><div class="splsign" id="d48-s0-dg-sg" style="font-size:100px;top:450px"><span class="badge yellow">≈</span></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="d48-s1" class="clip" data-start="120.52" data-duration="3.18" style="z-index:59"><div id="d48-s1-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="d48-s1-fin" class="fin"><div id="d48-s1-cam" class="cam"><div class="fill diag"><div class="half" id="d48-s1-dg-L" style="left:0"><div class="ln" style="font-size:100px"></div><div class="ln" style="font-size:100px"><span class="badge yellow">NERVES</span></div></div><div class="vdiv"></div><div class="half" id="d48-s1-dg-R" style="left:960px"><div class="ln" style="font-size:100px"></div><div class="ln" style="font-size:100px"><span class="badge red">EXCITEMENT</span></div></div><div class="splsign" id="d48-s1-dg-sg" style="font-size:100px;top:450px"><span class="badge yellow">≈</span></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="d48-s2" class="clip" data-start="123.7" data-duration="3.26" style="z-index:60"><div id="d48-s2-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="d48-s2-fin" class="fin"><div id="d48-s2-cam" class="cam"><div class="fill diag"><div class="half" id="d48-s2-dg-L" style="left:0"><div class="ln" style="font-size:100px"></div><div class="ln" style="font-size:100px"><span class="badge yellow">NERVES</span></div></div><div class="vdiv"></div><div class="half" id="d48-s2-dg-R" style="left:960px"><div class="ln" style="font-size:100px"></div><div class="ln" style="font-size:100px"><span class="badge red">EXCITEMENT</span></div></div><div class="splsign" id="d48-s2-dg-sg" style="font-size:100px;top:450px"><span class="badge yellow">≈</span></div></div></div></div></div></div><div class="fborder"></div></div></div>
+<div id="d49-s0" class="clip" data-start="126.96" data-duration="2.58" style="z-index:61"><div id="d49-s0-t" class="tt"><div id="d49-s0-fin" class="fin"><div id="d49-s0-cam" class="cam"><img src="assets/pictures/S14.jpg" class="pic" alt=""></div></div><div id="d49-s0-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 5</div><div class="spill2">KEEP A PROOF LIST</div></div><div id="d49-s0-so1" class="scr" data-layout-allow-overlap><div class="pill big">SPOKE UP ✓</div></div><div id="d49-s0-so2" class="scr" data-layout-allow-overlap><div class="pill big">FINISHED THE WORKOUT ✓</div></div><div id="d49-s0-so3" class="scr" data-layout-allow-overlap><div class="pill big">POSTED THE VIDEO ✓</div></div></div></div>
+<div id="d49-s1" class="clip" data-start="129.54" data-duration="3.32" style="z-index:62"><div id="d49-s1-t" class="tt"><div id="d49-s1-fin" class="fin"><div id="d49-s1-cam" class="cam"><img src="assets/pictures/S14.jpg" class="pic" alt=""></div></div><div id="d49-s1-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 5</div><div class="spill2">KEEP A PROOF LIST</div></div><div id="d49-s1-so1" class="scr" data-layout-allow-overlap><div class="pill big">SPOKE UP ✓</div></div><div id="d49-s1-so2" class="scr" data-layout-allow-overlap><div class="pill big">FINISHED THE WORKOUT ✓</div></div><div id="d49-s1-so3" class="scr" data-layout-allow-overlap><div class="pill big">POSTED THE VIDEO ✓</div></div></div></div>
+<div id="d49-s2" class="clip" data-start="132.86" data-duration="2.58" style="z-index:63"><div id="d49-s2-t" class="tt"><div id="d49-s2-fin" class="fin"><div id="d49-s2-cam" class="cam"><img src="assets/pictures/S14.jpg" class="pic" alt=""></div></div><div id="d49-s2-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 5</div><div class="spill2">KEEP A PROOF LIST</div></div><div id="d49-s2-so1" class="scr" data-layout-allow-overlap><div class="pill big">SPOKE UP ✓</div></div><div id="d49-s2-so2" class="scr" data-layout-allow-overlap><div class="pill big">FINISHED THE WORKOUT ✓</div></div><div id="d49-s2-so3" class="scr" data-layout-allow-overlap><div class="pill big">POSTED THE VIDEO ✓</div></div></div></div>
+<div id="d49-s3" class="clip" data-start="135.44" data-duration="3.34" style="z-index:64"><div id="d49-s3-t" class="tt"><div id="d49-s3-fin" class="fin"><div id="d49-s3-cam" class="cam"><img src="assets/pictures/S14.jpg" class="pic" alt=""></div></div><div id="d49-s3-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 5</div><div class="spill2">KEEP A PROOF LIST</div></div><div id="d49-s3-so1" class="scr" data-layout-allow-overlap><div class="pill big">SPOKE UP ✓</div></div><div id="d49-s3-so2" class="scr" data-layout-allow-overlap><div class="pill big">FINISHED THE WORKOUT ✓</div></div><div id="d49-s3-so3" class="scr" data-layout-allow-overlap><div class="pill big">POSTED THE VIDEO ✓</div></div></div></div>
+<div id="d49-s4" class="clip" data-start="138.78" data-duration="3.88" style="z-index:65"><div id="d49-s4-t" class="tt"><div id="d49-s4-fin" class="fin"><div id="d49-s4-cam" class="cam"><img src="assets/pictures/S14.jpg" class="pic" alt=""></div></div><div id="d49-s4-so0" class="scr" data-layout-allow-overlap><div class="pill big">STEP 5</div><div class="spill2">KEEP A PROOF LIST</div></div><div id="d49-s4-so1" class="scr" data-layout-allow-overlap><div class="pill big">SPOKE UP ✓</div></div><div id="d49-s4-so2" class="scr" data-layout-allow-overlap><div class="pill big">FINISHED THE WORKOUT ✓</div></div><div id="d49-s4-so3" class="scr" data-layout-allow-overlap><div class="pill big">POSTED THE VIDEO ✓</div></div></div></div>
+<div id="d50-s0" class="clip" data-start="142.66" data-duration="3.2" style="z-index:66"><div id="d50-s0-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="d50-s0-fin" class="fin"><div id="d50-s0-cam" class="cam"><img src="assets/pictures/I76.jpg" class="pic" alt=""></div></div></div></div><div class="fborder"></div><div id="d50-s0-so0" class="scr" data-layout-allow-overlap><span class="badge yellow" style="font-size:78px;padding:0 38px 8px">ARGUE WITH A RECEIPT</span></div></div></div>
+<div id="d50-s1" class="clip" data-start="145.86" data-duration="3.14" style="z-index:67"><div id="d50-s1-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="d50-s1-fin" class="fin"><div id="d50-s1-cam" class="cam"><img src="assets/pictures/I76.jpg" class="pic" alt=""></div></div></div></div><div class="fborder"></div><div id="d50-s1-so0" class="scr" data-layout-allow-overlap><span class="badge yellow" style="font-size:78px;padding:0 38px 8px">ARGUE WITH A RECEIPT</span></div></div></div>
+<div id="d50-s2" class="clip" data-start="149" data-duration="2.57" style="z-index:68"><div id="d50-s2-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="d50-s2-fin" class="fin"><div id="d50-s2-cam" class="cam"><img src="assets/pictures/I76.jpg" class="pic" alt=""></div></div></div></div><div class="fborder"></div><div id="d50-s2-so0" class="scr" data-layout-allow-overlap><span class="badge yellow" style="font-size:78px;padding:0 38px 8px">ARGUE WITH A RECEIPT</span></div></div></div>
+<div id="d51-s0" class="clip" data-start="151.32" data-duration="2.32" style="z-index:69"><div id="d51-s0-t" class="tt"><div id="d51-s0-fin" class="fin"><div id="d51-s0-cam" class="cam"><img src="assets/pictures/S01.jpg" class="pic" alt=""></div></div></div></div>
+<div id="d51-s1" class="clip" data-start="153.64" data-duration="3.52" style="z-index:70"><div id="d51-s1-t" class="tt"><div id="d51-s1-fin" class="fin"><div id="d51-s1-cam" class="cam"><img src="assets/pictures/S01.jpg" class="pic" alt=""></div></div></div></div>
+<div id="d51-s2" class="clip" data-start="157.16" data-duration="2.84" style="z-index:71"><div id="d51-s2-t" class="tt"><div id="d51-s2-fin" class="fin"><div id="d51-s2-cam" class="cam"><img src="assets/pictures/S01.jpg" class="pic" alt=""></div></div></div></div>
+<div id="d51-s3" class="clip" data-start="160" data-duration="2.48" style="z-index:72"><div id="d51-s3-t" class="tt"><div id="d51-s3-fin" class="fin"><div id="d51-s3-cam" class="cam"><img src="assets/pictures/S01.jpg" class="pic" alt=""></div></div></div></div>
+<div id="d51-s4" class="clip" data-start="162.48" data-duration="2.06" style="z-index:73"><div id="d51-s4-t" class="tt"><div id="d51-s4-fin" class="fin"><div id="d51-s4-cam" class="cam"><img src="assets/pictures/S01.jpg" class="pic" alt=""></div></div></div></div>
+<div id="d51-s5" class="clip" data-start="164.54" data-duration="3.91" style="z-index:74"><div id="d51-s5-t" class="tt"><div id="d51-s5-fin" class="fin"><div id="d51-s5-cam" class="cam"><img src="assets/pictures/S01.jpg" class="pic" alt=""></div></div></div></div>
+<div id="d52-s0" class="clip" data-start="168.2" data-duration="3.14" style="z-index:75"><div id="d52-s0-t" class="tt"><div id="d52-s0-fin" class="fin"><div id="d52-s0-cam" class="cam"><img src="assets/pictures/S12.jpg" class="pic" alt=""></div></div></div></div>
+<div id="d52-s1" class="clip" data-start="171.34" data-duration="3.88" style="z-index:76"><div id="d52-s1-t" class="tt"><div id="d52-s1-fin" class="fin"><div id="d52-s1-cam" class="cam"><img src="assets/pictures/S12.jpg" class="pic" alt=""></div></div></div></div>
+<div id="d53-s0" class="clip" data-start="174.72" data-duration="3.42" style="z-index:77"><div id="d53-s0-t" class="tt"><div id="d53-s0-fin" class="fin"><div id="d53-s0-cam" class="cam"><img src="assets/pictures/S15.jpg" class="pic" alt=""><div id="d53-s0-ov0" class="sweepbox" data-layout-allow-overlap style="left:1056px;top:43.2px;width:384px;height:453.6px"><div id="d53-s0-ov0-b" class="sweepband"></div></div></div></div></div></div>
+<div id="d53-s1" class="clip" data-start="178.14" data-duration="3.5" style="z-index:78"><div id="d53-s1-t" class="tt"><div id="d53-s1-fin" class="fin"><div id="d53-s1-cam" class="cam"><img src="assets/pictures/S15.jpg" class="pic" alt=""><div id="d53-s1-ov0" class="sweepbox" data-layout-allow-overlap style="left:1056px;top:43.2px;width:384px;height:453.6px"><div id="d53-s1-ov0-b" class="sweepband"></div></div></div></div></div></div>
+<div id="d53-s2" class="clip" data-start="181.64" data-duration="2.94" style="z-index:79"><div id="d53-s2-t" class="tt"><div id="d53-s2-fin" class="fin"><div id="d53-s2-cam" class="cam"><img src="assets/pictures/S15.jpg" class="pic" alt=""><div id="d53-s2-ov0" class="sweepbox" data-layout-allow-overlap style="left:1056px;top:43.2px;width:384px;height:453.6px"><div id="d53-s2-ov0-b" class="sweepband"></div></div></div></div></div></div>
+<div id="d53-s3" class="clip" data-start="184.58" data-duration="3.1" style="z-index:80"><div id="d53-s3-t" class="tt"><div id="d53-s3-fin" class="fin"><div id="d53-s3-cam" class="cam"><img src="assets/pictures/S15.jpg" class="pic" alt=""><div id="d53-s3-ov0" class="sweepbox" data-layout-allow-overlap style="left:1056px;top:43.2px;width:384px;height:453.6px"><div id="d53-s3-ov0-b" class="sweepband"></div></div></div></div></div></div>
+<div id="d53-s4" class="clip" data-start="187.68" data-duration="2.78" style="z-index:81"><div id="d53-s4-t" class="tt"><div id="d53-s4-fin" class="fin"><div id="d53-s4-cam" class="cam"><img src="assets/pictures/S15.jpg" class="pic" alt=""><div id="d53-s4-ov0" class="sweepbox" data-layout-allow-overlap style="left:1056px;top:43.2px;width:384px;height:453.6px"><div id="d53-s4-ov0-b" class="sweepband"></div></div></div></div></div></div>
+<div id="d53-s5" class="clip" data-start="190.46" data-duration="1.38" style="z-index:82"><div id="d53-s5-t" class="tt"><div id="d53-s5-fin" class="fin"><div id="d53-s5-cam" class="cam"><img src="assets/pictures/S15.jpg" class="pic" alt=""><div id="d53-s5-ov0" class="sweepbox" data-layout-allow-overlap style="left:1056px;top:43.2px;width:384px;height:453.6px"><div id="d53-s5-ov0-b" class="sweepband"></div></div></div></div></div></div>
+<div id="d53-s6" class="clip" data-start="191.84" data-duration="3.14" style="z-index:83"><div id="d53-s6-t" class="tt"><div id="d53-s6-fin" class="fin"><div id="d53-s6-cam" class="cam"><img src="assets/pictures/S15.jpg" class="pic" alt=""><div id="d53-s6-ov0" class="sweepbox" data-layout-allow-overlap style="left:1056px;top:43.2px;width:384px;height:453.6px"><div id="d53-s6-ov0-b" class="sweepband"></div></div></div></div></div></div>
+<div id="d54-s0" class="clip" data-start="194.98" data-duration="1.06" style="z-index:84"><div id="d54-s0-t" class="tt"><div id="d54-s0-fin" class="fin"><div id="d54-s0-cam" class="cam"><img src="assets/pictures/S29.jpg" class="pic" alt=""></div></div></div></div>
+<div id="d54-s1" class="clip" data-start="196.04" data-duration="3.02" style="z-index:85"><div id="d54-s1-t" class="tt"><div class="hbg"></div><div class="frame"><div class="hs"><div id="d54-s1-fin" class="fin"><div class="fill card"><div id="d54-s1-in" class="cardtxt"><div class="ln" id="d54-s1-l0"><span class="badge yellow" id="d54-s1-p0-bd">YOUR PROOF?</span></div></div></div></div></div></div><div class="fborder"></div></div><div id="d54-s1-nw" class="nw"><div class="nshadow" style="left:296.20000000000005px;width:225px"></div><img class="narr" style="left:306.20000000000005px;height:648px" src="assets/narrator/N06.png" alt=""></div></div>
+<div id="d54-s2" class="clip" data-start="199.06" data-duration="3.24" style="z-index:86"><div id="d54-s2-t" class="tt"><div id="d54-s2-fin" class="fin"><div id="d54-s2-cam" class="cam"><img src="assets/pictures/S29.jpg" class="pic" alt=""></div></div></div></div>
+<div id="d54-s3" class="clip" data-start="202.3" data-duration="3.16" style="z-index:87"><div id="d54-s3-t" class="tt"><div id="d54-s3-fin" class="fin"><div id="d54-s3-cam" class="cam"><img src="assets/pictures/S29.jpg" class="pic" alt=""></div></div></div></div>
+<div id="d54-s4" class="clip" data-start="205.46" data-duration="3.1" style="z-index:88"><div id="d54-s4-t" class="tt"><div id="d54-s4-fin" class="fin"><div id="d54-s4-cam" class="cam"><img src="assets/pictures/S29.jpg" class="pic" alt=""></div></div></div></div>
+<div id="d54-s5" class="clip" data-start="208.56" data-duration="2.26" style="z-index:89"><div id="d54-s5-t" class="tt"><div id="d54-s5-fin" class="fin"><div id="d54-s5-cam" class="cam"><img src="assets/pictures/S29.jpg" class="pic" alt=""></div></div></div></div>
+<div id="d54-s6" class="clip" data-start="210.82" data-duration="4.847" style="z-index:90"><div id="d54-s6-t" class="tt"><div id="d54-s6-fin" class="fin"><div id="d54-s6-cam" class="cam"><img src="assets/pictures/S29.jpg" class="pic" alt=""></div></div></div></div>
+<div id="nar1" class="clip" data-start="35.16" data-duration="8.74" style="z-index:900"><div id="nar1-w" class="nw"><div class="nshadow" style="left:134.20000000000005px;width:387px"></div><img class="narr" style="left:144.20000000000005px;height:648px" src="assets/narrator/N05.png" alt=""></div></div>
+<div id="nar2" class="clip" data-start="54.1" data-duration="11.34" style="z-index:900"><div id="nar2-w" class="nw"><div class="nshadow" style="left:296.20000000000005px;width:225px"></div><img class="narr" style="left:306.20000000000005px;height:648px" src="assets/narrator/N06.png" alt=""></div></div>
+<div id="nar3" class="clip" data-start="80.92" data-duration="8.42" style="z-index:900"><div id="nar3-w" class="nw"><div class="nshadow" style="left:196.20000000000005px;width:325px"></div><img class="narr" style="left:206.20000000000005px;height:648px" src="assets/narrator/N01.png" alt=""></div></div>
+<div id="nar4" class="clip" data-start="89.34" data-duration="6.08" style="z-index:900"><div id="nar4-w" class="nw"><div class="nshadow" style="left:134.20000000000005px;width:387px"></div><img class="narr" style="left:144.20000000000005px;height:648px" src="assets/narrator/N05.png" alt=""></div></div>
+<div id="nar5" class="clip" data-start="117.28" data-duration="9.68" style="z-index:900"><div id="nar5-w" class="nw"><div class="nshadow" style="left:296.20000000000005px;width:225px"></div><img class="narr" style="left:306.20000000000005px;height:648px" src="assets/narrator/N06.png" alt=""></div></div>
+<div id="nar6" class="clip" data-start="142.66" data-duration="4.96" style="z-index:900"><div id="nar6-w" class="nw"><div class="nshadow" style="left:196.20000000000005px;width:325px"></div><img class="narr" style="left:206.20000000000005px;height:648px" src="assets/narrator/N01.png" alt=""></div></div>
+<div id="nar7" class="clip" data-start="147.62" data-duration="3.7" style="z-index:900"><div id="nar7-w" class="nw"><div class="nshadow" style="left:134.20000000000005px;width:387px"></div><img class="narr" style="left:144.20000000000005px;height:648px" src="assets/narrator/N05.png" alt=""></div></div>
+<div id="leak0" class="clip" data-start="153.9" data-duration="1.8" style="z-index:950;pointer-events:none"><div id="leak0-i" class="leak"></div></div>
+<audio id="vo" src="assets/part4.wav" data-start="0" data-duration="215.667" data-track-index="0"></audio>
+</div>
+<script>
+const pp=(cx,cy,r,pct)=>{const p=Math.min(Math.max(pct,0.01),99.99),a=p/100*2*Math.PI;return "M"+cx+" "+cy+" L"+cx+" "+(cy-r)+" A"+r+" "+r+" 0 "+(a>Math.PI?1:0)+" 1 "+(cx+r*Math.sin(a)).toFixed(2)+" "+(cy-r*Math.cos(a)).toFixed(2)+" Z";};
+const tl = gsap.timeline({ paused: true });
+tl.set("#d38-s0-cam",{x:0,y:0,scale:1},0);
+tl.fromTo("#d38-s0-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:2.82,ease:"none"},0);
+tl.set("#d38-s0-so0",{opacity:0},0);
+tl.set("#d38-s1-cam",{x:0,y:0,scale:1},2.82);
+tl.fromTo("#d38-s1-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:2.16,ease:"none"},2.82);
+tl.set("#d38-s1-so0",{opacity:0},0);
+tl.fromTo("#d38-s1-so0",{opacity:0,y:-20},{opacity:1,y:0,duration:0.3,ease:"back.out(1.4)"},4.17);
+tl.set("#d38-s2-cam",{x:0,y:0,scale:1},4.98);
+tl.fromTo("#d38-s2-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:2.04,ease:"none"},4.98);
+tl.set("#d38-s3-cam",{x:0,y:0,scale:1},7.02);
+tl.fromTo("#d38-s3-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:1.86,ease:"none"},7.02);
+tl.to("#d38-s3-so0",{opacity:0,duration:0.2},7.57);
+tl.set("#d38-s4-cam",{x:0,y:0,scale:1},8.88);
+tl.fromTo("#d38-s4-cam",{x:0,y:0,scale:1},{x:-384,y:-432,scale:1.4,duration:0.25,ease:"expo.out"},8.88);
+tl.fromTo("#d38-s4-cam",{x:-384,y:-432,scale:1.4},{x:0,y:0,scale:1,duration:0.4,ease:"power2.out"},9.72);
+tl.fromTo("#d38-s4-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:1.64,ease:"none"},10.12);
+tl.set("#d38-s4-so0",{opacity:0},0);
+tl.set("#d38-s5-cam",{x:0,y:0,scale:1},11.76);
+tl.fromTo("#d38-s5-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:1.52,ease:"none"},11.76);
+tl.set("#d38-s5-so0",{opacity:0},0);
+tl.set("#d39-s0-cam",{x:0,y:0,scale:1},13.28);
+tl.fromTo("#d39-s0-cam",{x:0,y:0,scale:1},{x:-206.4,y:-378,scale:1.35,duration:0.25,ease:"expo.out"},13.28);
+tl.fromTo("#d39-s0-cam",{x:-206.4,y:-378,scale:1.35},{x:-223.896,y:-399.87,scale:1.37,duration:2.99,ease:"none"},13.53);
+tl.set("#d39-s1-cam",{x:-206.4,y:-378,scale:1.35},16.52);
+tl.fromTo("#d39-s1-cam",{x:-206.4,y:-378,scale:1.35},{x:-223.896,y:-399.87,scale:1.37,duration:1.64,ease:"none"},16.52);
+tl.fromTo("#d39-s2-in",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},18.16);
+tl.set("#d39-s3-cam",{x:-206.4,y:-378,scale:1.35},19.92);
+tl.fromTo("#d39-s3-cam",{x:-206.4,y:-378,scale:1.35},{x:-384,y:0,scale:1.4,duration:0.26,ease:"power3.inOut"},22.12);
+tl.set("#d39-s3-cam",{filter:"url(#mb)"},22.12);
+tl.fromTo("#mbb",{attr:{stdDeviation:"0 0"}},{attr:{stdDeviation:"38 0"},duration:0.13,ease:"power2.in"},22.12);
+tl.to("#mbb",{attr:{stdDeviation:"0 0"},duration:0.13,ease:"power2.out"},22.25);
+tl.set("#d39-s3-cam",{filter:"none"},22.4);
+tl.fromTo("#d39-s3-cam",{x:-384,y:0,scale:1.4},{x:-404.16,y:0,scale:1.421,duration:0.94,ease:"none"},22.38);
+tl.set("#d39-s4-cam",{x:-384,y:0,scale:1.4},23.32);
+tl.fromTo("#d39-s4-cam",{x:-384,y:0,scale:1.4},{x:-404.16,y:0,scale:1.421,duration:2.18,ease:"none"},23.32);
+tl.fromTo("#d39-s5-img",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},25.5);
+tl.set("#d40-s0-cam",{x:0,y:0,scale:1},27.2);
+tl.fromTo("#d40-s0-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:2.82,ease:"none"},27.2);
+tl.set("#d40-s0-so0",{opacity:0},0);
+tl.set("#d40-s1-cam",{x:0,y:0,scale:1},30.02);
+tl.fromTo("#d40-s1-cam",{x:0,y:0,scale:1},{x:-537.6,y:0,scale:1.3,duration:0.25,ease:"expo.out"},30.02);
+tl.fromTo("#d40-s1-cam",{x:-537.6,y:0,scale:1.3},{x:-195.84,y:-140.4,scale:1.4,duration:0.25,ease:"expo.out"},31.76);
+tl.fromTo("#d40-s1-cam",{x:-195.84,y:-140.4,scale:1.4},{x:-213.178,y:-150.606,scale:1.421,duration:1.35,ease:"none"},32.01);
+tl.set("#d40-s1-so0",{opacity:0},0);
+tl.fromTo("#d40-s1-so0",{opacity:0,y:-20},{opacity:1,y:0,duration:0.3,ease:"back.out(1.4)"},31.71);
+tl.set("#d40-s2-cam",{x:-195.84,y:-140.4,scale:1.4},33.36);
+tl.fromTo("#d40-s2-cam",{x:-195.84,y:-140.4,scale:1.4},{x:-213.178,y:-150.606,scale:1.421,duration:1.8,ease:"none"},33.36);
+tl.to("#d40-s2-so0",{opacity:0,duration:0.2},34.71);
+tl.set("#d41-s2-dg-sw",{opacity:0},0);
+tl.fromTo("#d41-s2-dg-sw",{opacity:1,x:-1300},{x:1300,duration:0.8,ease:"power1.inOut"},42.13);
+tl.set("#d41-s2-dg-sw",{opacity:0},42.98);
+tl.fromTo("#d41-s2-dg-ct .ln",{y:70,opacity:0},{y:0,opacity:1,duration:0.34,ease:"back.out(1.6)",stagger:0.07},41.68);
+tl.set("#d42-s0-cam",{x:0,y:0,scale:1},43.9);
+tl.fromTo("#d42-s0-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:2.98,ease:"none"},43.9);
+tl.set("#d42-s1-cam",{x:0,y:0,scale:1},46.88);
+tl.fromTo("#d42-s1-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:2.52,ease:"none"},46.88);
+tl.to("#d42-s1-so0",{opacity:0,duration:0.2},47.25);
+tl.set("#d42-s2-cam",{x:0,y:0,scale:1},49.4);
+tl.fromTo("#d42-s2-cam",{x:0,y:0,scale:1},{x:-733.44,y:0,scale:1.4,duration:0.25,ease:"expo.out"},50.36);
+tl.fromTo("#d42-s2-cam",{x:-733.44,y:0,scale:1.4},{x:-758.842,y:0,scale:1.421,duration:0.95,ease:"none"},50.61);
+tl.set("#d42-s2-so0",{opacity:0},0);
+tl.set("#d42-s3-cam",{x:-733.44,y:0,scale:1.4},51.56);
+tl.fromTo("#d42-s3-cam",{x:-733.44,y:0,scale:1.4},{x:0,y:-216,scale:1.4,duration:0.26,ease:"power3.inOut"},52.04);
+tl.set("#d42-s3-cam",{filter:"url(#mb)"},52.04);
+tl.fromTo("#mbb",{attr:{stdDeviation:"0 0"}},{attr:{stdDeviation:"38 0"},duration:0.13,ease:"power2.in"},52.04);
+tl.to("#mbb",{attr:{stdDeviation:"0 0"},duration:0.13,ease:"power2.out"},52.17);
+tl.set("#d42-s3-cam",{filter:"none"},52.32);
+tl.fromTo("#d42-s3-cam",{x:0,y:-216,scale:1.4},{x:0,y:-227.34,scale:1.421,duration:1.8,ease:"none"},52.3);
+tl.set("#d42-s3-so0",{opacity:0},0);
+tl.fromTo("#d43-s0-dg-q0",{opacity:1,scale:1},{opacity:0.4,scale:1,duration:0.3,ease:"power2.out"},55.21);
+tl.fromTo("#d43-s0-dg-q1",{opacity:1,scale:1},{opacity:1,scale:1.05,duration:0.3,ease:"power2.out"},55.21);
+tl.fromTo("#d43-s0-dg-q2",{opacity:1,scale:1},{opacity:0.4,scale:1,duration:0.3,ease:"power2.out"},55.21);
+tl.fromTo("#d43-s0-dg-q3",{opacity:1,scale:1},{opacity:0.4,scale:1,duration:0.3,ease:"power2.out"},55.21);
+tl.fromTo("#d43-s1-dg-q0",{opacity:1,scale:1},{opacity:0.4,scale:1,duration:0.3,ease:"power2.out"},55.21);
+tl.fromTo("#d43-s1-dg-q1",{opacity:1,scale:1},{opacity:1,scale:1.05,duration:0.3,ease:"power2.out"},55.21);
+tl.fromTo("#d43-s1-dg-q2",{opacity:1,scale:1},{opacity:0.4,scale:1,duration:0.3,ease:"power2.out"},55.21);
+tl.fromTo("#d43-s1-dg-q3",{opacity:1,scale:1},{opacity:0.4,scale:1,duration:0.3,ease:"power2.out"},55.21);
+tl.fromTo("#d43-s2-in",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},61.06);
+tl.fromTo("#d43-s3-dg-q0",{opacity:1,scale:1},{opacity:0.4,scale:1,duration:0.3,ease:"power2.out"},55.21);
+tl.fromTo("#d43-s3-dg-q1",{opacity:1,scale:1},{opacity:1,scale:1.05,duration:0.3,ease:"power2.out"},55.21);
+tl.fromTo("#d43-s3-dg-q2",{opacity:1,scale:1},{opacity:0.4,scale:1,duration:0.3,ease:"power2.out"},55.21);
+tl.fromTo("#d43-s3-dg-q3",{opacity:1,scale:1},{opacity:0.4,scale:1,duration:0.3,ease:"power2.out"},55.21);
+tl.set("#d44-s0-cam",{x:0,y:0,scale:1},65.44);
+tl.fromTo("#d44-s0-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:1.9,ease:"none"},65.44);
+tl.set("#d44-s0-so1",{opacity:0},0);
+tl.set("#d44-s1-cam",{x:0,y:0,scale:1},67.34);
+tl.fromTo("#d44-s1-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:1.98,ease:"none"},67.34);
+tl.to("#d44-s1-so0",{opacity:0,duration:0.2},68.39);
+tl.set("#d44-s1-so1",{opacity:0},0);
+tl.set("#d44-s2-cam",{x:0,y:0,scale:1},69.32);
+tl.fromTo("#d44-s2-cam",{x:0,y:0,scale:1},{x:-480,y:-67.5,scale:1.25,duration:0.25,ease:"expo.out"},70.22);
+tl.fromTo("#d44-s2-cam",{x:-480,y:-67.5,scale:1.25},{x:-516,y:-76.612,scale:1.269,duration:2.01,ease:"none"},70.47);
+tl.set("#d44-s2-so0",{opacity:0},0);
+tl.set("#d44-s2-so1",{opacity:0},0);
+tl.fromTo("#d44-s2-so1",{opacity:0,y:-20},{opacity:1,y:0,duration:0.3,ease:"back.out(1.4)"},70.17);
+tl.set("#d44-s3-cam",{x:-480,y:-67.5,scale:1.25},72.48);
+tl.fromTo("#d44-s3-cam",{x:-480,y:-67.5,scale:1.25},{x:0,y:-291.6,scale:1.4,duration:0.25,ease:"expo.out"},73.06);
+tl.fromTo("#d44-s3-cam",{x:0,y:-291.6,scale:1.4},{x:0,y:-304.074,scale:1.421,duration:2.69,ease:"none"},73.31);
+tl.set("#d44-s3-so0",{opacity:0},0);
+tl.to("#d44-s3-so1",{opacity:0,duration:0.2},72.97);
+tl.set("#d44-s4-cam",{x:0,y:-291.6,scale:1.4},76);
+tl.fromTo("#d44-s4-cam",{x:0,y:-291.6,scale:1.4},{x:0,y:0,scale:1,duration:0.4,ease:"power2.out"},77.1);
+tl.fromTo("#d44-s4-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:1.6,ease:"none"},77.5);
+tl.set("#d44-s4-so0",{opacity:0},0);
+tl.set("#d44-s4-so1",{opacity:0},0);
+tl.set("#d44-s5-cam",{x:0,y:0,scale:1},79.1);
+tl.fromTo("#d44-s5-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:1.82,ease:"none"},79.1);
+tl.set("#d44-s5-so0",{opacity:0},0);
+tl.set("#d44-s5-so1",{opacity:0},0);
+tl.fromTo("#d45-s2-dg-p1-mk",{scaleX:0},{scaleX:1,duration:0.45,ease:"power2.out"},85.08);
+tl.fromTo("#d45-s2-dg-ct .ln",{y:70,opacity:0},{y:0,opacity:1,duration:0.34,ease:"back.out(1.6)",stagger:0.07},84.88);
+tl.fromTo("#d45-s3-dg-p1-mk",{scaleX:0},{scaleX:1,duration:0.45,ease:"power2.out"},85.08);
+tl.fromTo("#d45-s3-dg-ct .ln",{y:70,opacity:0},{y:0,opacity:1,duration:0.34,ease:"back.out(1.6)",stagger:0.07},84.88);
+tl.fromTo("#d45-s4-in",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},90.1);
+tl.fromTo("#d45-s5-dg-p1-mk",{scaleX:0},{scaleX:1,duration:0.45,ease:"power2.out"},85.08);
+tl.fromTo("#d45-s5-dg-ct .ln",{y:70,opacity:0},{y:0,opacity:1,duration:0.34,ease:"back.out(1.6)",stagger:0.07},84.88);
+tl.set("#d46-s0-cam",{x:0,y:0,scale:1},95.42);
+tl.fromTo("#d46-s0-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:3.72,ease:"none"},95.42);
+tl.to("#d46-s0-so0",{opacity:0,duration:0.2},98.57);
+tl.fromTo("#d46-s1-img",{scale:0.92},{scale:1,duration:0.2,ease:"power2.out"},99.14);
+tl.set("#d46-s2-cam",{x:0,y:0,scale:1},100.82);
+tl.fromTo("#d46-s2-cam",{x:0,y:0,scale:1},{x:-387.84,y:0,scale:1.3,duration:0.25,ease:"expo.out"},101.14);
+tl.fromTo("#d46-s2-cam",{x:-387.84,y:0,scale:1.3},{x:-408.058,y:0,scale:1.319,duration:1.57,ease:"none"},101.39);
+tl.set("#d46-s2-so0",{opacity:0},0);
+tl.set("#d46-s3-cam",{x:-387.84,y:0,scale:1.3},102.96);
+tl.fromTo("#d46-s3-cam",{x:-387.84,y:0,scale:1.3},{x:-491.52,y:0,scale:1.4,duration:0.25,ease:"expo.out"},103.3);
+tl.fromTo("#d46-s3-cam",{x:-491.52,y:0,scale:1.4},{x:-513.293,y:0,scale:1.421,duration:1.23,ease:"none"},103.55);
+tl.set("#d46-s3-so0",{opacity:0},0);
+tl.set("#d47-s0-cam",{x:0,y:0,scale:1},104.78);
+tl.fromTo("#d47-s0-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:3.28,ease:"none"},104.78);
+tl.set("#d47-s0-so0",{opacity:0},0);
+tl.fromTo("#d47-s0-so0",{opacity:0,y:-20},{opacity:1,y:0,duration:0.3,ease:"back.out(1.4)"},106.93);
+tl.set("#d47-s1-cam",{x:0,y:0,scale:1},108.06);
+tl.fromTo("#d47-s1-cam",{x:0,y:0,scale:1},{x:0,y:-140.4,scale:1.4,duration:0.25,ease:"expo.out"},109.22);
+tl.fromTo("#d47-s1-cam",{x:0,y:-140.4,scale:1.4},{x:0,y:0,scale:1,duration:0.4,ease:"power2.out"},110.68);
+tl.to("#d47-s1-so0",{opacity:0,duration:0.2},109.93);
+tl.set("#d47-s2-cam",{x:0,y:0,scale:1},111.1);
+tl.fromTo("#d47-s2-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:2.74,ease:"none"},111.1);
+tl.set("#d47-s2-so0",{opacity:0},0);
+tl.set("#d47-s3-cam",{x:0,y:0,scale:1},113.84);
+tl.fromTo("#d47-s3-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:1.24,ease:"none"},113.84);
+tl.set("#d47-s3-so0",{opacity:0},0);
+tl.fromTo("#d47-s4-in",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},115.08);
+tl.set("#d48-s0-dg-L",{opacity:0},0);
+tl.set("#d48-s0-dg-R",{opacity:0},0);
+tl.fromTo("#d48-s0-dg-L",{opacity:0,scale:0.9},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},118.41);
+tl.fromTo("#d48-s0-dg-R",{opacity:0,scale:0.9},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},119.07);
+tl.set("#d48-s0-dg-sg",{opacity:0},0);
+tl.fromTo("#d48-s0-dg-sg",{opacity:0,scale:0.5},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.8)"},120.49);
+tl.set("#d48-s1-dg-L",{opacity:0},0);
+tl.set("#d48-s1-dg-R",{opacity:0},0);
+tl.fromTo("#d48-s1-dg-L",{opacity:0,scale:0.9},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},118.41);
+tl.fromTo("#d48-s1-dg-R",{opacity:0,scale:0.9},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},119.07);
+tl.set("#d48-s1-dg-sg",{opacity:0},0);
+tl.fromTo("#d48-s1-dg-sg",{opacity:0,scale:0.5},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.8)"},120.49);
+tl.set("#d48-s2-dg-L",{opacity:0},0);
+tl.set("#d48-s2-dg-R",{opacity:0},0);
+tl.fromTo("#d48-s2-dg-L",{opacity:0,scale:0.9},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},118.41);
+tl.fromTo("#d48-s2-dg-R",{opacity:0,scale:0.9},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},119.07);
+tl.set("#d48-s2-dg-sg",{opacity:0},0);
+tl.fromTo("#d48-s2-dg-sg",{opacity:0,scale:0.5},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.8)"},120.49);
+tl.set("#d49-s0-cam",{x:0,y:0,scale:1},126.96);
+tl.fromTo("#d49-s0-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:2.58,ease:"none"},126.96);
+tl.set("#d49-s0-so1",{opacity:0},0);
+tl.set("#d49-s0-so2",{opacity:0},0);
+tl.set("#d49-s0-so3",{opacity:0},0);
+tl.set("#d49-s1-cam",{x:0,y:0,scale:1},129.54);
+tl.fromTo("#d49-s1-cam",{x:0,y:0,scale:1},{x:-384,y:-185.76,scale:1.4,duration:0.25,ease:"expo.out"},129.96);
+tl.fromTo("#d49-s1-cam",{x:-384,y:-185.76,scale:1.4},{x:-404.16,y:-196.646,scale:1.421,duration:2.65,ease:"none"},130.21);
+tl.to("#d49-s1-so0",{opacity:0,duration:0.2},130.11);
+tl.set("#d49-s1-so1",{opacity:0},0);
+tl.set("#d49-s1-so2",{opacity:0},0);
+tl.set("#d49-s1-so3",{opacity:0},0);
+tl.set("#d49-s2-cam",{x:-384,y:-185.76,scale:1.4},132.86);
+tl.fromTo("#d49-s2-cam",{x:-384,y:-185.76,scale:1.4},{x:-404.16,y:-196.646,scale:1.421,duration:2.58,ease:"none"},132.86);
+tl.set("#d49-s2-so0",{opacity:0},0);
+tl.set("#d49-s2-so1",{opacity:0},0);
+tl.set("#d49-s2-so2",{opacity:0},0);
+tl.set("#d49-s2-so3",{opacity:0},0);
+tl.set("#d49-s3-cam",{x:-384,y:-185.76,scale:1.4},135.44);
+tl.fromTo("#d49-s3-cam",{x:-384,y:-185.76,scale:1.4},{x:0,y:0,scale:1,duration:0.4,ease:"power2.out"},135.44);
+tl.fromTo("#d49-s3-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:2.94,ease:"none"},135.84);
+tl.set("#d49-s3-so0",{opacity:0},0);
+tl.set("#d49-s3-so1",{opacity:0},0);
+tl.fromTo("#d49-s3-so1",{opacity:0,y:-20},{opacity:1,y:0,duration:0.3,ease:"back.out(1.4)"},137.19);
+tl.set("#d49-s3-so2",{opacity:0},0);
+tl.set("#d49-s3-so3",{opacity:0},0);
+tl.set("#d49-s4-cam",{x:0,y:0,scale:1},138.78);
+tl.fromTo("#d49-s4-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:3.88,ease:"none"},138.78);
+tl.set("#d49-s4-so0",{opacity:0},0);
+tl.to("#d49-s4-so1",{opacity:0,duration:0.2},138.94);
+tl.set("#d49-s4-so2",{opacity:0},0);
+tl.fromTo("#d49-s4-so2",{opacity:0,y:-20},{opacity:1,y:0,duration:0.3,ease:"back.out(1.4)"},138.89);
+tl.to("#d49-s4-so2",{opacity:0,duration:0.2},140.58);
+tl.set("#d49-s4-so3",{opacity:0},0);
+tl.fromTo("#d49-s4-so3",{opacity:0,y:-20},{opacity:1,y:0,duration:0.3,ease:"back.out(1.4)"},140.53);
+tl.set("#d50-s0-cam",{x:0,y:0,scale:1},142.66);
+tl.fromTo("#d50-s0-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:3.2,ease:"none"},142.66);
+tl.fromTo("#d50-s0-cam",{clipPath:"inset(0% 0% 62% 0%)"},{clipPath:"inset(0% 0% 0% 0%)",duration:0.6,ease:"power2.out"},146.66);
+tl.set("#d50-s0-so0",{opacity:0},0);
+tl.set("#d50-s1-cam",{x:0,y:0,scale:1},145.86);
+tl.fromTo("#d50-s1-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:3.14,ease:"none"},145.86);
+tl.fromTo("#d50-s1-cam",{clipPath:"inset(0% 0% 62% 0%)"},{clipPath:"inset(0% 0% 0% 0%)",duration:0.6,ease:"power2.out"},146.66);
+tl.set("#d50-s1-so0",{opacity:0},0);
+tl.set("#d50-s2-cam",{x:0,y:0,scale:1},149);
+tl.fromTo("#d50-s2-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:2.32,ease:"none"},149);
+tl.fromTo("#d50-s2-cam",{clipPath:"inset(0% 0% 62% 0%)"},{clipPath:"inset(0% 0% 0% 0%)",duration:0.6,ease:"power2.out"},146.66);
+tl.set("#d50-s2-so0",{opacity:0},0);
+tl.fromTo("#d50-s2-so0",{opacity:0,y:-20},{opacity:1,y:0,duration:0.3,ease:"back.out(1.4)"},149.71);
+tl.set("#d51-s0-cam",{x:0,y:0,scale:1},151.32);
+tl.fromTo("#d51-s0-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:2.32,ease:"none"},151.32);
+tl.fromTo("#d51-s0-t",{opacity:0},{opacity:1,duration:0.25,ease:"none"},151.32);
+tl.set("#d51-s1-cam",{x:0,y:0,scale:1},153.64);
+tl.fromTo("#d51-s1-cam",{x:0,y:0,scale:1},{x:-760.32,y:0,scale:1.4,duration:0.25,ease:"expo.out"},154.64);
+tl.fromTo("#d51-s1-cam",{x:-760.32,y:0,scale:1.4},{x:-786.125,y:0,scale:1.421,duration:2.27,ease:"none"},154.89);
+tl.set("#d51-s2-cam",{x:-760.32,y:0,scale:1.4},157.16);
+tl.fromTo("#d51-s2-cam",{x:-760.32,y:0,scale:1.4},{x:-786.125,y:0,scale:1.421,duration:2.84,ease:"none"},157.16);
+tl.set("#d51-s3-cam",{x:-760.32,y:0,scale:1.4},160);
+tl.fromTo("#d51-s3-cam",{x:-760.32,y:0,scale:1.4},{x:0,y:0,scale:1,duration:0.4,ease:"power2.out"},160);
+tl.fromTo("#d51-s3-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:2.08,ease:"none"},160.4);
+tl.set("#d51-s4-cam",{x:0,y:0,scale:1},162.48);
+tl.fromTo("#d51-s4-cam",{x:0,y:0,scale:1},{x:-288,y:-162,scale:1.3,duration:0.25,ease:"expo.out"},163.02);
+tl.fromTo("#d51-s4-cam",{x:-288,y:-162,scale:1.3},{x:-306.72,y:-172.53,scale:1.319,duration:1.27,ease:"none"},163.27);
+tl.set("#d51-s5-cam",{x:-288,y:-162,scale:1.3},164.54);
+tl.fromTo("#d51-s5-cam",{x:-288,y:-162,scale:1.3},{x:0,y:0,scale:1,duration:0.4,ease:"power2.out"},165.12);
+tl.fromTo("#d51-s5-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:2.68,ease:"none"},165.52);
+tl.set("#d52-s0-cam",{x:0,y:0,scale:1},168.2);
+tl.fromTo("#d52-s0-cam",{x:-14.4,y:-8.1,scale:1.015},{x:0,y:0,scale:1,duration:3.14,ease:"none"},168.2);
+tl.fromTo("#d52-s0-t",{opacity:0},{opacity:1,duration:0.25,ease:"none"},168.2);
+tl.set("#d52-s1-cam",{x:0,y:0,scale:1},171.34);
+tl.fromTo("#d52-s1-cam",{x:0,y:0,scale:1},{x:-733.44,y:0,scale:1.4,duration:0.25,ease:"expo.out"},171.34);
+tl.fromTo("#d52-s1-cam",{x:-733.44,y:0,scale:1.4},{x:-758.842,y:0,scale:1.421,duration:3.13,ease:"none"},171.59);
+tl.set("#d53-s0-cam",{x:0,y:0,scale:1},174.72);
+tl.fromTo("#d53-s0-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:3.42,ease:"none"},174.72);
+tl.fromTo("#d53-s0-ov0-b",{x:-900,opacity:1},{x:1300,duration:0.9,ease:"power1.inOut"},190.45);
+tl.set("#d53-s0-ov0-b",{opacity:0},191.4);
+tl.set("#d53-s0-ov0-b",{opacity:0},0);
+tl.fromTo("#d53-s0-t",{clipPath:"circle(0% at 50% 35%)"},{clipPath:"circle(150% at 50% 35%)",duration:0.7,ease:"power2.out"},174.72);
+tl.set("#d53-s1-cam",{x:0,y:0,scale:1},178.14);
+tl.fromTo("#d53-s1-cam",{x:0,y:0,scale:1},{x:-288,y:-91.8,scale:1.3,duration:0.25,ease:"expo.out"},180.48);
+tl.fromTo("#d53-s1-cam",{x:-288,y:-91.8,scale:1.3},{x:-306.72,y:-101.277,scale:1.319,duration:0.91,ease:"none"},180.73);
+tl.fromTo("#d53-s1-ov0-b",{x:-900,opacity:1},{x:1300,duration:0.9,ease:"power1.inOut"},190.45);
+tl.set("#d53-s1-ov0-b",{opacity:0},191.4);
+tl.set("#d53-s1-ov0-b",{opacity:0},0);
+tl.set("#d53-s2-cam",{x:-288,y:-91.8,scale:1.3},181.64);
+tl.fromTo("#d53-s2-cam",{x:-288,y:-91.8,scale:1.3},{x:0,y:0,scale:1,duration:0.4,ease:"power2.out"},181.9);
+tl.fromTo("#d53-s2-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:2.28,ease:"none"},182.3);
+tl.fromTo("#d53-s2-ov0-b",{x:-900,opacity:1},{x:1300,duration:0.9,ease:"power1.inOut"},190.45);
+tl.set("#d53-s2-ov0-b",{opacity:0},191.4);
+tl.set("#d53-s2-ov0-b",{opacity:0},0);
+tl.set("#d53-s3-cam",{x:0,y:0,scale:1},184.58);
+tl.fromTo("#d53-s3-cam",{x:0,y:0,scale:1},{x:-288,y:-21.6,scale:1.3,duration:0.25,ease:"expo.out"},186.98);
+tl.fromTo("#d53-s3-cam",{x:-288,y:-21.6,scale:1.3},{x:-306.72,y:-30.024,scale:1.319,duration:0.45,ease:"none"},187.23);
+tl.fromTo("#d53-s3-ov0-b",{x:-900,opacity:1},{x:1300,duration:0.9,ease:"power1.inOut"},190.45);
+tl.set("#d53-s3-ov0-b",{opacity:0},191.4);
+tl.set("#d53-s3-ov0-b",{opacity:0},0);
+tl.set("#d53-s4-cam",{x:-288,y:-21.6,scale:1.3},187.68);
+tl.fromTo("#d53-s4-cam",{x:-288,y:-21.6,scale:1.3},{x:0,y:0,scale:1,duration:0.4,ease:"power2.out"},189.24);
+tl.fromTo("#d53-s4-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:0.82,ease:"none"},189.64);
+tl.fromTo("#d53-s4-ov0-b",{x:-900,opacity:1},{x:1300,duration:0.9,ease:"power1.inOut"},190.45);
+tl.set("#d53-s4-ov0-b",{opacity:0},191.4);
+tl.set("#d53-s4-ov0-b",{opacity:0},0);
+tl.set("#d53-s5-cam",{x:0,y:0,scale:1},190.46);
+tl.fromTo("#d53-s5-cam",{x:0,y:0,scale:1},{x:-706.56,y:0,scale:1.4,duration:0.25,ease:"expo.out"},190.46);
+tl.fromTo("#d53-s5-cam",{x:-706.56,y:0,scale:1.4},{x:-731.558,y:0,scale:1.421,duration:1.13,ease:"none"},190.71);
+tl.fromTo("#d53-s5-ov0-b",{x:-900,opacity:1},{x:1300,duration:0.9,ease:"power1.inOut"},190.45);
+tl.set("#d53-s5-ov0-b",{opacity:0},191.4);
+tl.set("#d53-s5-ov0-b",{opacity:0},0);
+tl.set("#d53-s6-cam",{x:-706.56,y:0,scale:1.4},191.84);
+tl.fromTo("#d53-s6-cam",{x:-706.56,y:0,scale:1.4},{x:-731.558,y:0,scale:1.421,duration:3.14,ease:"none"},191.84);
+tl.fromTo("#d53-s6-ov0-b",{x:-900,opacity:1},{x:1300,duration:0.9,ease:"power1.inOut"},190.45);
+tl.set("#d53-s6-ov0-b",{opacity:0},191.4);
+tl.set("#d53-s6-ov0-b",{opacity:0},0);
+tl.set("#d54-s0-cam",{x:0,y:0,scale:1},194.98);
+tl.fromTo("#d54-s0-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:1.06,ease:"none"},194.98);
+tl.fromTo("#d54-s1-in",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},196.14);
+tl.fromTo("#d54-s1-nw",{x:-520},{x:0,duration:0.25,ease:"power2.out"},196.04);
+tl.to("#d54-s1-nw",{x:-520,duration:0.2,ease:"power2.in"},198.84);
+tl.set("#d54-s2-cam",{x:0,y:0,scale:1},199.06);
+tl.fromTo("#d54-s2-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:3.24,ease:"none"},199.06);
+tl.set("#d54-s3-cam",{x:0,y:0,scale:1},202.3);
+tl.fromTo("#d54-s3-cam",{x:0,y:0,scale:1},{x:-384,y:-108,scale:1.2,duration:0.25,ease:"expo.out"},202.3);
+tl.fromTo("#d54-s3-cam",{x:-384,y:-108,scale:1.2},{x:-418.56,y:-117.72,scale:1.218,duration:2.91,ease:"none"},202.55);
+tl.set("#d54-s4-cam",{x:-384,y:-108,scale:1.2},205.46);
+tl.fromTo("#d54-s4-cam",{x:-384,y:-108,scale:1.2},{x:0,y:0,scale:1,duration:0.4,ease:"power2.out"},205.46);
+tl.fromTo("#d54-s4-cam",{x:0,y:0,scale:1},{x:-14.4,y:-8.1,scale:1.015,duration:2.7,ease:"none"},205.86);
+tl.set("#d54-s5-cam",{x:0,y:0,scale:1},208.56);
+tl.fromTo("#d54-s5-cam",{x:0,y:0,scale:1},{x:-384,y:-108,scale:1.2,duration:0.25,ease:"expo.out"},208.56);
+tl.fromTo("#d54-s5-cam",{x:-384,y:-108,scale:1.2},{x:-418.56,y:-117.72,scale:1.218,duration:2.01,ease:"none"},208.81);
+tl.set("#d54-s6-cam",{x:-384,y:-108,scale:1.2},210.82);
+tl.fromTo("#nar1-w",{x:-520},{x:0,duration:0.25,ease:"power2.out"},35.16);
+tl.to("#nar1-w",{x:-520,duration:0.2,ease:"power2.in"},43.68);
+tl.fromTo("#nar2-w",{x:-520},{x:0,duration:0.25,ease:"power2.out"},54.1);
+tl.to("#nar2-w",{x:-520,duration:0.2,ease:"power2.in"},65.22);
+tl.fromTo("#nar3-w",{x:-520},{x:0,duration:0.25,ease:"power2.out"},80.92);
+tl.to("#nar4-w",{x:-520,duration:0.2,ease:"power2.in"},95.2);
+tl.fromTo("#nar5-w",{x:-520},{x:0,duration:0.25,ease:"power2.out"},117.28);
+tl.to("#nar5-w",{x:-520,duration:0.2,ease:"power2.in"},126.74);
+tl.fromTo("#nar6-w",{x:-520},{x:0,duration:0.25,ease:"power2.out"},142.66);
+tl.to("#nar7-w",{x:-520,duration:0.2,ease:"power2.in"},151.1);
+tl.fromTo("#leak0-i",{opacity:0},{opacity:0.85,duration:0.56,ease:"power1.out"},153.9);
+tl.to("#leak0-i",{opacity:0,duration:0.84,ease:"power1.in"},154.46);
+window.__timelines["part4"] = tl;
+</script></body></html>

@@ -29,7 +29,7 @@ const piePath = (cx, cy, r, pct) => { const p = Math.min(Math.max(pct, 0.01), 99
 const partHtml = (p, extra = "") => {
   if (p.mk) return `<span class="mk"><i id="${extra}-mk"></i><b>${p.t}</b></span>`;
   if (p.circ) return `<span class="circw"><span class="badge ${p.badge || "yellow"}" id="${extra}-cw">${p.t}</span><svg class="circ" viewBox="0 0 400 200" preserveAspectRatio="none"><ellipse id="${extra}-ci" cx="200" cy="100" rx="185" ry="88" fill="none" stroke="${RED}" stroke-width="9" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg></span>${p.after || ""}`;
-  const inner = p.badge ? `<span class="badge ${p.badge}">${p.t}</span>` : p.t;
+  const inner = p.badge ? `<span class="badge ${p.badge}" id="${extra}-bd">${p.t}</span>` : p.t;
   return p.ul ? `<span class="ulw">${inner}<svg class="ul" viewBox="0 0 400 30" preserveAspectRatio="none"><path id="${extra}-ul" d="M6 18 C60 6 110 26 170 14 S300 8 394 16" fill="none" stroke="${RED}" stroke-width="9" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg></span>` : inner;
 };
 const linesHtml = (parts, pre, cls = "ln") => parts.map((p, i) => `<div class="${cls}${p.small ? " small" : ""}${p.sz === "big" ? " big" : ""}${p.sz === "mid" ? " mid" : ""}" id="${pre}-l${i}">${partHtml(p, `${pre}-p${i}`)}</div>`).join("");
@@ -42,7 +42,7 @@ const countTw = (id, obj, to, t, d, fmt) => `tl.fromTo(${obj},{v:0},{v:${to},dur
 let cuid = 0;
 const person = (x, y, id, fill) => `<g id="${id}" transform="translate(${x} ${y}) scale(1.2)"><circle cx="0" cy="-34" r="21" class="pp" fill="${fill}" stroke="${INK}" stroke-width="6"/><path class="pp" d="M-27 40 V0 Q-27 -12 -15 -12 H15 Q27 -12 27 0 V40 Z" fill="${fill}" stroke="${INK}" stroke-width="6" stroke-linejoin="round"/></g>`;
 const ICONS = {};
-const SCREEN = new Set(["label", "pill", "step"]);
+const SCREEN = new Set(["label", "pill", "step", "sbadge"]);
 
 // diagram -> {html, tw}. t = absolute trigger times (already resolved by the caller via d.at)
 function diagram(d, pre, T, S0 = 0) {
@@ -51,13 +51,17 @@ function diagram(d, pre, T, S0 = 0) {
   if (d.kind === "card") {
     const h = `<div class="fill diag cardc"><div class="cardtxt" id="${pre}-ct">${linesHtml(d.parts, pre)}</div>${d.sweep ? `<div class="sweep" id="${pre}-sw" style="left:760px;top:240px;width:400px;height:600px;border-radius:0;transform:skewX(-20deg)"></div>` : ""}</div>`;
     tw.push(...partTweens(d.parts, pre, d.rise !== undefined ? d.rise : S0));
+    d.parts.forEach((p, i) => {
+      if (p.at && d.rise === undefined) tw.push(`tl.set("#${pre}-l${i}",{opacity:0},0);`, `tl.fromTo("#${pre}-l${i}",{opacity:0,scale:0.8},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.5)"},${f3(T(p.at))});`);
+      if (p.slam) tw.push(`tl.fromTo("#${pre}-p${i}-bd",{scale:1.5,rotation:-9},{scale:1,rotation:-3,duration:0.28,ease:"back.out(1.7)"},${f3((d.rise !== undefined ? d.rise : S0) + 0.3)});`);
+    });
     if (d.sweep) tw.push(`tl.set("#${pre}-sw",{opacity:0},0);`, `tl.fromTo("#${pre}-sw",{opacity:1,x:-1300},{x:1300,duration:0.8,ease:"power1.inOut"},${f3((d.rise !== undefined ? d.rise : S0) + 0.45)});`, `tl.set("#${pre}-sw",{opacity:0},${f3((d.rise !== undefined ? d.rise : S0) + 1.3)});`);
     if (d.rise !== undefined) tw.push(`tl.fromTo("#${pre}-ct .ln",{y:70,opacity:0},{y:0,opacity:1,duration:0.34,ease:"back.out(1.6)",stagger:0.07},${f3(d.rise)});`);
     return { html: h, tw };
   }
   if (d.kind === "pie") {
     const t0 = at("fill", 0), cx = 960, cy = 440, r = 310;
-    let h = `<div class="fill diag">${svgWrap(pieSvg(pre + "-pp", cx, cy, r, d.from !== undefined ? d.from : d.pct))}<div class="dlabel"><span>${d.label}</span><span class="badge ${d.badge}" id="${pre}-val">${d.from !== undefined ? d.from + "%" : d.value}</span></div></div>`;
+    let h = `<div class="fill diag">${svgWrap(pieSvg(pre + "-pp", cx, cy, r, d.from !== undefined ? d.from : d.pct))}<div class="dlabel" style="font-size:${d.fs || 130}px"><span>${d.label}</span><span class="badge ${d.badge}" id="${pre}-val">${d.from !== undefined ? d.from + "%" : d.value}</span></div>${d.small ? `<div class="dsmall">${d.small}</div>` : ""}</div>`;
     if (d.from !== undefined) {
       const o = vid(`${pre}_o`); tw.push(`const ${o}={v:0};`);
       tw.push(`tl.fromTo(${o},{v:${d.from}},{v:${d.pct},duration:1.1,ease:"power2.out",onUpdate:function(){var e=document.getElementById("${pre}-pp");if(e)e.setAttribute("d",${JSON.stringify("")}+pp(${cx},${cy},${r},${o}.v));var l=document.getElementById("${pre}-val");if(l)l.textContent=Math.round(${o}.v)+"%";}},${f3(t0)});`);
@@ -111,10 +115,47 @@ function diagram(d, pre, T, S0 = 0) {
   }
   if (d.kind === "split") {
     const tl0 = at("left", 0), tr0 = at("right", 0), tr = at("rack", tr0);
-    const h = `<div class="fill diag"><div class="half" id="${pre}-L" style="left:0"><div class="ln">${d.left[0]}</div><div class="ln"><span class="badge yellow">${d.left[1]}</span></div></div><div class="vdiv"></div><div class="half" id="${pre}-R" style="left:960px"><div class="ln">${d.right[0]}</div><div class="ln"><span class="badge red">${d.right[1]}</span></div></div></div>`;
+    const h = `<div class="fill diag"><div class="half" id="${pre}-L" style="left:0"><div class="ln" style="font-size:${d.fs || 128}px">${d.left[0]}</div><div class="ln" style="font-size:${d.fs || 128}px"><span class="badge yellow">${d.left[1]}</span></div></div><div class="vdiv"></div><div class="half" id="${pre}-R" style="left:960px"><div class="ln" style="font-size:${d.fs || 128}px">${d.right[0]}</div><div class="ln" style="font-size:${d.fs || 128}px"><span class="badge red">${d.right[1]}</span></div></div>${d.at.sign ? `<div class="splsign" id="${pre}-sg" style="font-size:${d.fs ? 100 : 170}px;top:${d.fs ? 450 : 420}px"><span class="badge yellow">≈</span></div>` : ""}</div>`;
     tw.push(`tl.set("#${pre}-L",{opacity:0},0);`, `tl.set("#${pre}-R",{opacity:0},0);`, `tl.fromTo("#${pre}-L",{opacity:0,scale:0.9},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},${f3(tl0)});`,
       `tl.fromTo("#${pre}-R",{opacity:0,scale:0.9},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},${f3(tr0)});`,
-      `tl.to("#${pre}-L",{filter:"blur(10px)",opacity:0.5,duration:0.35,ease:"power2.inOut"},${f3(tr + 0.3)});`);
+      ...(d.norack ? [] : [`tl.to("#${pre}-L",{filter:"blur(10px)",opacity:0.5,duration:0.35,ease:"power2.inOut"},${f3(tr + 0.3)});`]));
+    if (d.at.sign) { const ts = at("sign", 0); tw.push(`tl.set("#${pre}-sg",{opacity:0},0);`, `tl.fromTo("#${pre}-sg",{opacity:0,scale:0.5},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.8)"},${f3(ts)});`); sfx.push({ t: f3(ts), kind: "ding" }); }
+    return { html: h, tw };
+  }
+  if (d.kind === "irow") {
+    d.items.forEach((it) => usedIcons.add(it.icon));
+    let h = `<div class="fill diag"><div class="irow2">${d.items.map((it, k) => `<div class="icol" id="${pre}-ic${k}"><div class="itile"><img src="assets/icons/${it.icon}.jpg" alt=""></div>${it.label ? `<div class="ilab">${it.label}</div>` : ""}</div>`).join("")}</div>${d.under ? `<div class="under" id="${pre}-un">${d.under.html}</div>` : ""}</div>`;
+    d.items.forEach((it, k) => { const t0 = T(it.word); tw.push(`tl.set("#${pre}-ic${k}",{opacity:0},0);`, `tl.fromTo("#${pre}-ic${k}",{opacity:0,scale:0.92},{opacity:1,scale:1,duration:0.25,ease:"back.out(1.4)"},${f3(t0)});`); sfx.push({ t: f3(t0), kind: "pop" }); });
+    if (d.under) { const t0 = T(d.under.word); tw.push(`tl.set("#${pre}-un",{opacity:0},0);`, `tl.fromTo("#${pre}-un",{opacity:0,y:30},{opacity:1,y:0,duration:0.3,ease:"back.out(1.4)"},${f3(t0)});`); }
+    return { html: h, tw };
+  }
+  if (d.kind === "quad") {
+    const COL = [SKY, SAGE, YEL, ORG]; let h = `<div class="fill diag">`;
+    d.tiles.forEach((tt, i) => { usedIcons.add(tt.icon); const x = 110 + (i % 2) * 900, y = 130 + Math.floor(i / 2) * 460;
+      h += `<div class="qtile" id="${pre}-q${i}" style="left:${x}px;top:${y}px;background:${COL[i]}"><div class="qic"><img src="assets/icons/${tt.icon}.jpg" alt=""></div><div class="qlab">${tt.label}</div></div>`; });
+    d.tiles.forEach((tt, i) => { if (!tt.word) return; const t0 = T(tt.word); tw.push(`tl.set("#${pre}-q${i}",{opacity:0},0);`, `tl.fromTo("#${pre}-q${i}",{opacity:0,scale:0.8},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.6)"},${f3(t0)});`); sfx.push({ t: f3(t0), kind: "pop" }); });
+    if (d.active) { const t0 = T(d.active.word); d.tiles.forEach((tt, i) => tw.push(`tl.fromTo("#${pre}-q${i}",{opacity:1,scale:1},{opacity:${i === d.active.idx ? 1 : 0.4},scale:${i === d.active.idx ? 1.05 : 1},duration:0.3,ease:"power2.out"},${f3(t0)});`)); sfx.push({ t: f3(t0), kind: "pop" }); }
+    if (d.pulse) { const t0 = T(d.pulse); d.tiles.forEach((tt, i) => tw.push(`tl.fromTo("#${pre}-q${i}",{scale:1},{scale:1.07,duration:0.16,ease:"power2.out"},${f3(t0)});`, `tl.to("#${pre}-q${i}",{scale:1,duration:0.24,ease:"power2.in"},${f3(t0 + 0.16)});`)); sfx.push({ t: f3(t0), kind: "pop" }); }
+    return { html: h + `</div>`, tw };
+  }
+  if (d.kind === "list") {
+    const COL = [YEL, SKY, ORG, SAGE]; let h = `<div class="fill diag">`;
+    d.items.forEach((it, i) => { h += `<div class="lrow" id="${pre}-r${i}" style="top:${110 + i * 190}px"><span class="lpill" style="background:${COL[i % 4]}">${it.t}</span></div>`; });
+    d.items.forEach((it, i) => { const t0 = T(it.word); tw.push(`tl.set("#${pre}-r${i}",{opacity:0},0);`, `tl.fromTo("#${pre}-r${i}",{opacity:0,x:-120},{opacity:1,x:0,duration:0.3,ease:"back.out(1.5)"},${f3(t0)});`); sfx.push({ t: f3(t0), kind: "click" }); });
+    if (d.stamp) { const t0 = T(d.stamp.word); h += `<div class="stamp" id="${pre}-st">${d.stamp.text}</div>`; tw.push(`tl.set("#${pre}-st",{opacity:0},0);`, `tl.fromTo("#${pre}-st",{opacity:0,scale:1.7,rotation:-2},{opacity:1,scale:1,rotation:-8,duration:0.26,ease:"back.out(1.5)"},${f3(t0)});`); sfx.push({ t: f3(t0), kind: "ding" }); }
+    return { html: h + `</div>`, tw };
+  }
+  if (d.kind === "bars2") {
+    const base = 860, MAXH = 520, xs = [620, 1300], BW = 400, hs = [MAXH, 200], cols = [RED, SAGE], t0 = at("grow", 0);
+    let h = `<div class="fill diag"><div class="topbadge" id="${pre}-hd">HARVARD DIARY STUDY</div><div class="topbadge" id="${pre}-tb"><span class="badge yellow" id="${pre}-cnt">0</span><span>DIARY ENTRIES</span></div>`;
+    d.bars.forEach((b, i) => { h += `<div class="bar" id="${pre}-b${i}" style="left:${xs[i] - BW / 2}px;top:${base}px;width:${BW}px;height:0px;background:${cols[i]}"></div><div class="blab" id="${pre}-bl${i}" style="left:${xs[i] - 330}px;top:${base + 28}px;width:660px">${b}</div>`;
+      tw.push(`tl.set("#${pre}-b${i},#${pre}-bl${i}",{opacity:0},0);`, `tl.set("#${pre}-b${i},#${pre}-bl${i}",{opacity:1},${f3(t0)});`, `tl.fromTo("#${pre}-b${i}",{top:${base},height:0},{top:${base - hs[i]},height:${hs[i]},duration:0.7,ease:"power2.out"},${f3(t0)});`); });
+    h += `<div class="ratio" id="${pre}-ra"><span class="badge yellow">2–3×</span></div>${d.small ? `<div class="dsmall">${d.small}</div>` : ""}</div>`;
+    const tc = at("count", 0), o = vid(`${pre}_c`);
+    tw.push(`const ${o}={v:0};`, `tl.to("#${pre}-hd",{opacity:0,duration:0.15},${f3(tc - 0.05)});`, `tl.set("#${pre}-tb",{opacity:0},0);`, `tl.fromTo("#${pre}-tb",{opacity:0,scale:0.85},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},${f3(tc)});`,
+      `tl.fromTo(${o},{v:0},{v:12000,duration:1.3,ease:"power2.out",onUpdate:function(){var e=document.getElementById("${pre}-cnt");if(e)e.textContent=Math.round(${o}.v).toLocaleString("en-US");}},${f3(tc)});`);
+    const tb = at("badge", 0); tw.push(`tl.set("#${pre}-ra",{opacity:0},0);`, `tl.fromTo("#${pre}-ra",{opacity:0,scale:1.6,rotation:-2},{opacity:1,scale:1,rotation:-7,duration:0.26,ease:"back.out(1.6)"},${f3(tb)});`);
+    sfx.push({ t: f3(tc), kind: "pop" }, { t: f3(t0), kind: "swoosh" });
     return { html: h, tw };
   }
   if (d.kind === "quote") {
@@ -128,6 +169,7 @@ function diagram(d, pre, T, S0 = 0) {
 function screenOv(id, o, host) {
   const ul = o.ul ? `<svg class="ulp" viewBox="0 0 400 30" preserveAspectRatio="none"><path id="${id}-ul" d="M6 18 C60 6 110 26 170 14 S300 8 394 16" fill="none" stroke="${RED}" stroke-width="9" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg>` : "";
   if (o.type === "step") return `<div id="${id}" class="scr${host ? " row" : ""}" data-layout-allow-overlap><div class="pill big">${o.step}</div><div class="spill2">${o.text}</div></div>`;
+  if (o.type === "sbadge") return `<div id="${id}" class="scr" data-layout-allow-overlap><span class="badge yellow" style="font-size:78px;padding:0 38px 8px">${o.text}</span></div>`;
   if (o.type === "pill") return `<div id="${id}" class="scr${host ? " row" : ""}" data-layout-allow-overlap><div class="pill big">${o.text}</div></div>`;
   return `<div id="${id}" class="scr" data-layout-allow-overlap><div class="spill2">${o.text}${ul}</div></div>`;
 }
@@ -296,7 +338,7 @@ G.forEach((sh, gi) => {
   const T = (w) => { if (typeof w === "number") return w; const k = W(w.word, w.occ || 1); return ws[k].s - (w.off ?? 0.03); };
   const mapAt = (dg) => { if (!dg.at) return dg; const r = { ...dg, at: {} }; for (const [k, v] of Object.entries(dg.at)) r.at[k] = T(v); return r; };
   if (sh.type === "main" || sh.type === "crop") {
-    const isDiag = !!sc.diagram, dg = isDiag ? (sh.side === "B" && sc.diagramB ? sc.diagramB : sc.diagram) : null;
+    const isDiag = !!sc.diagram && !(sh.side === "B" && sc.pictureB && !sc.diagramB), dg = isDiag ? (sh.side === "B" && sc.diagramB ? sc.diagramB : sc.diagram) : null;
     const ovs = (sc.overlays || []).map((o, k) => [o, k]);
     const picOvs = ovs.filter(([o]) => !SCREEN.has(o.type)), scrOvs = ovs.filter(([o]) => SCREEN.has(o.type));
     let inner;
@@ -329,6 +371,7 @@ G.forEach((sh, gi) => {
         else tl.push(`tl.fromTo("#${id}-cam",{${trSt(cur, zf[0], !sc.bleed)}},{${trSt(cur, zf[1], !sc.bleed)},duration:${f3(e - lastEnd)},ease:"none"},${f3(lastEnd)});`);
       }
     }
+    if (sc.unroll) { const tu = ws[W(sc.unroll.word, sc.unroll.occ || 1)].s; tl.push(`tl.fromTo("#${id}-cam",{clipPath:"inset(0% 0% ${sc.unroll.from || 62}% 0%)"},{clipPath:"inset(0% 0% 0% 0%)",duration:0.6,ease:"power2.out"},${f3(tu)});`); if (tu >= a && tu < e) sfx.push({ t: f3(tu), kind: "swoosh" }); }
     // overlays timing
     for (const [o, k] of picOvs) {
       let w0 = ws[W(o.word, o.occ || 1)].s - 0.05; const oid = `${id}-ov${k}`;
@@ -342,12 +385,13 @@ G.forEach((sh, gi) => {
         tl.push(`tl.set("#${oid}",{opacity:0},0);`, `tl.fromTo("#${oid}",{opacity:0,scale:0.85},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},${f3(w0)});`);
         if (o.count) { const ob = vid(`${oid}_o`); tl.push(`const ${ob}={v:0};`, `tl.fromTo(${ob},{v:0},{v:${o.count},duration:0.7,ease:"power2.out",onUpdate:function(){var e=document.getElementById("${oid}-t");if(e)e.textContent=Math.round(${ob}.v)+"%";}},${f3(w0)});`); }
       }
+      if (o.dur) tl.push(`tl.to("#${oid}",{opacity:0,duration:0.2},${f3(w0 + o.dur)});`);
       if (["badge", "circle", "arrow", "wheel"].includes(o.type)) sfx.push({ t: f3(w0), kind: "pop" });
       else sfx.push({ t: f3(w0), kind: "pop" });
     }
     for (const [o, k] of scrOvs) {
       const [t0, t1] = overlayWin(sc, ws, W, o), oid = `${id}-so${k}`, vis = t1 > a && t0 < e;
-      if (!vis) continue;
+      if (!vis) { tl.push(`tl.set("#${oid}",{opacity:0},0);`); continue; }
       if (t0 >= a - 0.001) { tl.push(`tl.set("#${oid}",{opacity:0},0);`, `tl.fromTo("#${oid}",{opacity:0,y:-20},{opacity:1,y:0,duration:0.3,ease:"back.out(1.4)"},${f3(t0)});`); if (o.ul) tl.push(`tl.to("#${oid}-ul",{strokeDashoffset:0,duration:0.5,ease:"power2.out"},${f3(t0 + 0.5)});`); }
       if (t1 < e - 0.01) tl.push(`tl.to("#${oid}",{opacity:0,duration:0.2},${f3(t1)});`);
     }
@@ -371,7 +415,7 @@ G.forEach((sh, gi) => {
     tl.push(`tl.fromTo("#${id}-in",{scale:0.94},{scale:1,duration:0.25,ease:"back.out(1.4)"},${f3(a)});`, ...partTweens(sh.ev.parts, id, a));
     sfx.push({ t: f3(a), kind: "click" });
   } else if (sh.type === "title") {
-    content = `<div class="fill card"><div id="${id}-in" class="cardtxt"><div class="pill">LESSON</div><div class="ln big">PSYCHOLOGY OF</div><div class="ln big"><span class="org">REGRET</span></div></div></div>`;
+    content = `<div class="fill card"><div id="${id}-in" class="cardtxt"><div class="pill">${sh.ev.pill || "LESSON"}</div><div class="ln big">${sh.ev.l1 || "PSYCHOLOGY OF"}</div><div class="ln big"><span class="org">${sh.ev.l2 || "REGRET"}</span></div></div></div>`;
     tl.push(`tl.fromTo("#${id}-in",{scale:0.94},{scale:1,duration:0.3,ease:"back.out(1.4)"},${f3(a)});`);
     sfx.push({ t: f3(a), kind: "click" });
   } else if (sh.type === "pop") {
@@ -540,6 +584,11 @@ html,body{margin:0;background:${PAPER}}
 .qtext{position:absolute;left:200px;top:250px;width:1540px;font-size:90px;line-height:1.42;text-align:left}
 .qtext .w{display:inline-block;margin-right:16px}.qtext .badge{padding:0 20px 6px;box-shadow:6px 6px 0 ${INK};border-width:7px;border-radius:24px;margin-right:16px}.qtext .badge .w{margin-right:14px}.qtext .badge .w:last-child{margin-right:0}
 .qby{position:absolute;left:0;right:0;top:880px;text-align:center;font-size:58px;color:#6a6454}
+.irow2{position:absolute;left:0;right:0;top:190px;display:flex;gap:70px;justify-content:center;align-items:flex-start}.icol{display:flex;flex-direction:column;align-items:center;gap:26px;width:540px}.ilab{font-size:84px;line-height:1.05;text-align:center;width:560px}.under{position:absolute;left:0;right:0;top:840px;text-align:center;font-size:90px;white-space:nowrap}
+.qtile{position:absolute;width:800px;height:400px;box-sizing:border-box;border:9px solid ${INK};border-radius:36px;display:flex;align-items:center;gap:30px;padding:0 30px;box-shadow:10px 10px 0 rgba(26,26,26,.2)}.qic{width:300px;height:300px;overflow:hidden;border-radius:24px;border:6px solid ${INK};background:#F8F5EE;flex:none;box-sizing:border-box}.qic img{height:288px;width:512px;margin-left:-112px;display:block}.qlab{font-size:64px;line-height:1.05;flex:1;text-align:left}
+.lrow{position:absolute;left:0;right:0;text-align:center;font-size:100px;white-space:nowrap}.lpill{display:inline-block;padding:4px 56px 14px;border:9px solid ${INK};border-radius:46px;box-shadow:8px 8px 0 ${INK}}
+.stamp{position:absolute;left:240px;right:240px;top:420px;text-align:center;font-size:170px;color:${RED};border:16px solid ${RED};border-radius:30px;background:rgba(250,247,240,.9);padding:0 20px 14px;white-space:nowrap;letter-spacing:4px}
+.ratio{position:absolute;left:0;right:0;top:360px;text-align:center;font-size:150px}.dsmall{position:absolute;left:0;right:0;top:992px;text-align:center;font-size:44px;color:#6a6454}.splsign{position:absolute;left:0;right:0;top:420px;text-align:center;font-size:170px}
 .irow{display:flex;gap:70px;align-items:center}
 .itile{width:520px;height:520px;border:9px solid ${INK};border-radius:36px;overflow:hidden;background:#F8F5EE;box-shadow:10px 10px 0 rgba(26,26,26,.2)}.itile img{width:924px;height:520px;margin-left:-202px;display:block}
 .sweepbox{position:absolute;overflow:hidden}.sweepband{position:absolute;left:0;top:-20%;width:35%;height:140%;transform:skewX(-18deg);background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,247,200,.9),rgba(255,255,255,0));opacity:0}

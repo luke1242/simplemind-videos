@@ -1,0 +1,518 @@
+{
+ "part": 2,
+ "audio": "audio/padded/part2.wav",
+ "scenes": [
+  {
+   "id": "D11",
+   "camera": "zoom-in",
+   "narration": "In the nineteen-seventies, a psychologist named Albert Bandura became obsessed with one question. Why do some people keep going when things get hard, while others give up before they even start?",
+   "events": [],
+   "picture": "S20",
+   "host": [
+    [
+     "N01"
+    ],
+    [
+     "N06",
+     "why"
+    ]
+   ],
+   "trans": "push",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "why",
+     "occ": 1,
+     "f": [
+      0.46,
+      0.45,
+      1.4
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "pill",
+     "text": "ALBERT BANDURA",
+     "word": "bandura",
+     "occ": 1,
+     "until": null,
+     "dur": 3.0
+    }
+   ]
+  },
+  {
+   "id": "D12",
+   "camera": "hold",
+   "narration": "It wasn't talent. It wasn't intelligence. It was what he called self-efficacy. Your belief that you can actually do the thing in front of you.",
+   "events": [],
+   "host": [
+    [
+     "N01"
+    ],
+    [
+     "N02",
+     "it",
+     3
+    ]
+   ],
+   "swap": {
+    "word": "self"
+   },
+   "diagram": {
+    "kind": "card",
+    "parts": [
+     {
+      "t": "TALENT",
+      "badge": "red",
+      "at": {
+       "word": "talent",
+       "occ": 1
+      }
+     },
+     {
+      "t": "INTELLIGENCE",
+      "badge": "red",
+      "at": {
+       "word": "intelligence",
+       "occ": 1
+      }
+     }
+    ]
+   },
+   "diagramB": {
+    "kind": "card",
+    "parts": [
+     {
+      "t": "SELF-EFFICACY",
+      "mk": true,
+      "sz": "mid"
+     },
+     {
+      "t": "believing you can do it",
+      "small": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "D13",
+   "camera": "zoom-in",
+   "narration": "And Bandura found something surprising. That belief doesn't come from nowhere. And it doesn't come from repeating \"I can do it\" in the mirror.",
+   "events": [],
+   "picture": "S26",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "belief",
+     "occ": 1,
+     "f": [
+      0.62,
+      0.45,
+      1.25
+     ]
+    },
+    {
+     "kind": "snap",
+     "word": "mirror",
+     "occ": 1,
+     "f": [
+      0.3,
+      0.55,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D14",
+   "camera": "hold",
+   "narration": "It comes from evidence. Your brain is constantly collecting proof about what you can and can't do. And self-doubt is what happens when your brain has collected the wrong proof.",
+   "events": [],
+   "host": [
+    [
+     "N02"
+    ]
+   ],
+   "swap": {
+    "word": "wrong"
+   },
+   "diagram": {
+    "kind": "card",
+    "parts": [
+     {
+      "t": "IT COMES FROM",
+      "sz": "mid"
+     },
+     {
+      "t": "EVIDENCE",
+      "mk": true
+     }
+    ]
+   },
+   "diagramB": {
+    "kind": "card",
+    "parts": [
+     {
+      "t": "SELF-DOUBT =",
+      "sz": "mid"
+     },
+     {
+      "t": "WRONG PROOF",
+      "badge": "red",
+      "slam": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "D15",
+   "camera": "hold",
+   "narration": "He found four main places that belief comes from. Doing something yourself. Watching someone like you do it. What other people tell you. And how your body feels when you try. Keep those four in mind, because they're going to come back.",
+   "events": [],
+   "host": [
+    [
+     "N01"
+    ],
+    [
+     "N06",
+     "keep"
+    ]
+   ],
+   "diagram": {
+    "kind": "quad",
+    "tiles": [
+     {
+      "label": "DOING IT",
+      "icon": "I52",
+      "word": {
+       "word": "doing",
+       "occ": 1
+      }
+     },
+     {
+      "label": "WATCHING OTHERS",
+      "icon": "I06",
+      "word": {
+       "word": "watching",
+       "occ": 1
+      }
+     },
+     {
+      "label": "WHAT PEOPLE SAY",
+      "icon": "I41",
+      "word": {
+       "word": "tell",
+       "occ": 1
+      }
+     },
+     {
+      "label": "YOUR BODY",
+      "icon": "I75",
+      "word": {
+       "word": "body",
+       "occ": 1
+      }
+     }
+    ],
+    "pulse": {
+     "word": "mind",
+     "occ": 1
+    }
+   }
+  },
+  {
+   "id": "D16",
+   "camera": "zoom-in",
+   "narration": "One of his most famous experiments involved people with a serious fear of snakes. Not a little nervous. Some of them couldn't even stand near one in a glass tank.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I73",
+     "word": "snakes",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "picture": "S07",
+   "host": [
+    [
+     "N01"
+    ],
+    [
+     "N05",
+     "not"
+    ]
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "nervous",
+     "occ": 1,
+     "f": [
+      0.17,
+      0.55,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "tank",
+     "occ": 1,
+     "f": [
+      0.42,
+      0.6,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D17",
+   "camera": "zoom-in",
+   "narration": "Bandura didn't tell them to be brave, and he didn't try to talk them out of it. Instead, they watched someone else handle a snake calmly. Then, step by step, they did tiny pieces themselves. Look at the snake. Stand a little closer. Touch it with a glove. Then without one.",
+   "events": [],
+   "picture": "S07",
+   "host": [
+    [
+     "N01"
+    ]
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "watched",
+     "occ": 1,
+     "f": [
+      0.6,
+      0.45,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "step",
+     "occ": 1,
+     "f": [
+      0.17,
+      0.55,
+      1.4
+     ]
+    },
+    {
+     "kind": "zoom",
+     "word": "stand",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.5,
+      1
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "pill",
+     "text": "LOOK",
+     "word": "look",
+     "occ": 1,
+     "until": "closer",
+     "dur": 3.0
+    },
+    {
+     "type": "pill",
+     "text": "CLOSER",
+     "word": "closer",
+     "occ": 1,
+     "until": "glove",
+     "dur": 3.0
+    },
+    {
+     "type": "pill",
+     "text": "GLOVE",
+     "word": "glove",
+     "occ": 1,
+     "until": "without",
+     "dur": 3.0
+    },
+    {
+     "type": "pill",
+     "text": "NO GLOVE",
+     "word": "without",
+     "occ": 1,
+     "until": null,
+     "dur": 2.2
+    }
+   ]
+  },
+  {
+   "id": "D18",
+   "camera": "hold",
+   "narration": "By the end, ninety-two percent of the people in that group could sit with a snake resting in their lap.",
+   "events": [],
+   "host": [
+    [
+     "N02"
+    ]
+   ],
+   "pictureB": "S07b",
+   "swap": {
+    "word": "lap"
+   },
+   "diagram": {
+    "kind": "pie",
+    "pct": 92,
+    "from": 0,
+    "label": "SNAKE IN THEIR LAP:",
+    "fs": 84,
+    "badge": "yellow",
+    "value": "92%",
+    "small": "Bandura, Blanchard & Ritter, 1969",
+    "at": {
+     "fill": {
+      "word": "ninety",
+      "occ": 1
+     }
+    }
+   },
+   "fx": [
+    {
+     "type": "riser",
+     "word": "ninety"
+    },
+    {
+     "type": "impact",
+     "word": "ninety",
+     "off": 0.0
+    }
+   ]
+  },
+  {
+   "id": "D19",
+   "camera": "zoom-in",
+   "narration": "They didn't feel brave first. They became brave by collecting small proof that they could handle it. And a lot of them reported feeling less afraid of other things in their lives too. Proof in one area spilled into others.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "THEY DIDN'T FEEL",
+       "sz": "mid"
+      },
+      {
+       "t": "BRAVE FIRST",
+       "badge": "yellow"
+      }
+     ],
+     "word": "first",
+     "occ": 1,
+     "dur": 1.9
+    }
+   ],
+   "picture": "S07b",
+   "host": [
+    [
+     "N06"
+    ],
+    [
+     "N01",
+     "and"
+    ],
+    [
+     "N06",
+     "proof",
+     2
+    ]
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "brave",
+     "occ": 2,
+     "f": [
+      0.2,
+      0.42,
+      1.4
+     ]
+    },
+    {
+     "kind": "zoom",
+     "word": "and",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.5,
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D20",
+   "camera": "hold",
+   "narration": "That's the key to this whole video. Confidence isn't a feeling you wait for. It's a conclusion your brain reaches after enough evidence.",
+   "events": [],
+   "host": [
+    [
+     "N02"
+    ],
+    [
+     "N06",
+     "confidence"
+    ],
+    [
+     "N01",
+     "it's"
+    ]
+   ],
+   "swap": {
+    "word": "conclusion"
+   },
+   "diagram": {
+    "kind": "card",
+    "parts": [
+     {
+      "t": "CONFIDENCE ISN'T",
+      "sz": "mid"
+     },
+     {
+      "t": "A FEELING",
+      "badge": "red"
+     }
+    ]
+   },
+   "diagramB": {
+    "kind": "card",
+    "sweep": true,
+    "parts": [
+     {
+      "t": "IT'S A"
+     },
+     {
+      "t": "CONCLUSION",
+      "badge": "yellow"
+     }
+    ]
+   }
+  },
+  {
+   "id": "D21",
+   "camera": "zoom-in",
+   "narration": "So if self-belief is built from evidence... where does all the evidence for self-doubt come from?",
+   "events": [],
+   "picture": "S06",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "doubt",
+     "occ": 1,
+     "f": [
+      0.62,
+      0.28,
+      1.4
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -18,6 +18,10 @@ pics = set(); icons = set(); resolved = {}
 for sc in cfg["scenes"]:
     for k in ("picture", "pictureB"):
         if sc.get(k): pics.add(sc[k])
+    dg = [d for d in (sc.get("diagram"), sc.get("diagramB")) if d]
+    for d in dg:
+        for it in d.get("items", []) + d.get("tiles", []):
+            if it.get("icon"): icons.add(it["icon"])
     for e in sc.get("events", []):
         if e["kind"] == "icon": icons.add(e["icon"])
         if e["kind"] == "iconrow": icons.update(i["icon"] for i in e["items"])

@@ -1,0 +1,790 @@
+{
+ "part": 4,
+ "audio": "audio/padded/part4.wav",
+ "scenes": [
+  {
+   "id": "D38",
+   "camera": "zoom-in",
+   "narration": "So here's how I actually do that now. Five steps. One. Collect tiny proof. Remember the snake study. Nobody went from terrified to holding a snake in one jump.",
+   "events": [],
+   "picture": "S24",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "nobody",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.8,
+      1.4
+     ]
+    },
+    {
+     "kind": "zoom",
+     "word": "terrified",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.5,
+      1
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "step",
+     "step": "STEP 1",
+     "text": "COLLECT TINY PROOF",
+     "word": "one",
+     "occ": 1,
+     "dur": 3.4
+    }
+   ]
+  },
+  {
+   "id": "D39",
+   "camera": "zoom-in",
+   "narration": "Pick something you doubt you can do, and break it into a step so small it's almost embarrassing. Then do that step. Then the next one. Every small step is one more piece of evidence for your brain.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "ALMOST"
+      },
+      {
+       "t": "EMBARRASSING",
+       "badge": "yellow"
+      }
+     ],
+     "word": "embarrassing",
+     "occ": 1,
+     "dur": 1.9
+    },
+    {
+     "kind": "icon",
+     "icon": "I52",
+     "word": "evidence",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "picture": "S24",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "pick",
+     "occ": 1,
+     "f": [
+      0.45,
+      0.85,
+      1.35
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "next",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.2,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D40",
+   "camera": "zoom-in",
+   "narration": "For this channel, my first step wasn't \"make a great video.\" It was \"record one minute and don't delete it.\"",
+   "events": [],
+   "picture": "S05",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "great",
+     "occ": 1,
+     "f": [
+      0.6,
+      0.3,
+      1.3
+     ]
+    },
+    {
+     "kind": "snap",
+     "word": "record",
+     "occ": 1,
+     "f": [
+      0.43,
+      0.45,
+      1.4
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "sbadge",
+     "text": "1 MINUTE. DON'T DELETE.",
+     "word": "record",
+     "occ": 1,
+     "dur": 3.0
+    }
+   ]
+  },
+  {
+   "id": "D41",
+   "camera": "hold",
+   "narration": "In that diary study, the days people felt best weren't the days they did something huge. They were the days they made a little progress.",
+   "events": [],
+   "host": [
+    [
+     "N05"
+    ]
+   ],
+   "swap": {
+    "word": "little"
+   },
+   "diagram": {
+    "kind": "card",
+    "parts": [
+     {
+      "t": "BEST DAYS \u2260",
+      "sz": "mid"
+     },
+     {
+      "t": "HUGE WINS",
+      "badge": "red"
+     }
+    ]
+   },
+   "diagramB": {
+    "kind": "card",
+    "sweep": true,
+    "parts": [
+     {
+      "t": "BEST DAYS =",
+      "sz": "mid"
+     },
+     {
+      "t": "A LITTLE PROGRESS",
+      "badge": "yellow",
+      "sz": "mid"
+     }
+    ]
+   }
+  },
+  {
+   "id": "D42",
+   "camera": "zoom-in",
+   "narration": "Two. Watch someone like you do it. Not the most famous person in the world. Someone a few steps ahead of you. Someone who started where you are.",
+   "events": [],
+   "picture": "S12",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "ahead",
+     "occ": 1,
+     "f": [
+      0.63,
+      0.35,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "started",
+     "occ": 1,
+     "f": [
+      0.35,
+      0.5,
+      1.4
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "step",
+     "step": "STEP 2",
+     "text": "WATCH SOMEONE LIKE YOU",
+     "word": "two",
+     "occ": 1,
+     "dur": 3.4
+    }
+   ]
+  },
+  {
+   "id": "D43",
+   "camera": "hold",
+   "narration": "Bandura found that seeing someone similar succeed is one of the strongest ways to build belief. Because your brain thinks, \"If they can, maybe I can.\"",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "IF THEY CAN,"
+      },
+      {
+       "t": "MAYBE I CAN",
+       "badge": "yellow"
+      }
+     ],
+     "word": "if",
+     "occ": 1,
+     "dur": 2.2
+    }
+   ],
+   "host": [
+    [
+     "N06"
+    ]
+   ],
+   "diagram": {
+    "kind": "quad",
+    "tiles": [
+     {
+      "label": "DOING IT",
+      "icon": "I52",
+      "word": null
+     },
+     {
+      "label": "WATCHING OTHERS",
+      "icon": "I06",
+      "word": null
+     },
+     {
+      "label": "WHAT PEOPLE SAY",
+      "icon": "I41",
+      "word": null
+     },
+     {
+      "label": "YOUR BODY",
+      "icon": "I75",
+      "word": null
+     }
+    ],
+    "active": {
+     "idx": 1,
+     "word": {
+      "word": "seeing",
+      "occ": 1
+     }
+    }
+   }
+  },
+  {
+   "id": "D44",
+   "camera": "zoom-in",
+   "narration": "Three. Talk to yourself by name. Psychologist Ethan Kross found that when people talked to themselves using their own name or \"you,\" instead of \"I,\" they felt less anxious and actually performed better under pressure.",
+   "events": [],
+   "picture": "S26",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "kross",
+     "occ": 1,
+     "f": [
+      0.62,
+      0.45,
+      1.25
+     ]
+    },
+    {
+     "kind": "snap",
+     "word": "own",
+     "occ": 1,
+     "f": [
+      0.3,
+      0.55,
+      1.4
+     ]
+    },
+    {
+     "kind": "zoom",
+     "word": "anxious",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.5,
+      1
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "step",
+     "step": "STEP 3",
+     "text": "TALK TO YOURSELF BY NAME",
+     "word": "three",
+     "occ": 1,
+     "dur": 3.0
+    },
+    {
+     "type": "pill",
+     "text": "ETHAN KROSS",
+     "word": "kross",
+     "occ": 1,
+     "until": null,
+     "dur": 2.8
+    }
+   ]
+  },
+  {
+   "id": "D45",
+   "camera": "hold",
+   "narration": "So instead of \"I can't do this,\" try \"Luke, you've done hard things before. You can do this too.\" It sounds a little strange. But it gives you a bit of distance from the panic, like advice from a friend.",
+   "events": [
+    {
+     "kind": "pop",
+     "pose": "N05",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "LIKE A"
+       },
+       {
+        "t": "FRIEND",
+        "badge": "yellow"
+       }
+      ]
+     },
+     "word": "strange",
+     "occ": 1,
+     "dur": 2.4
+    }
+   ],
+   "host": [
+    [
+     "N01"
+    ],
+    [
+     "N05",
+     "it"
+    ]
+   ],
+   "swap": {
+    "word": "luke"
+   },
+   "diagram": {
+    "kind": "card",
+    "parts": [
+     {
+      "t": "\"I CAN'T DO THIS\"",
+      "badge": "red",
+      "sz": "mid"
+     }
+    ]
+   },
+   "diagramB": {
+    "kind": "card",
+    "parts": [
+     {
+      "t": "\"LUKE,"
+     },
+     {
+      "t": "YOU CAN DO THIS\"",
+      "mk": true,
+      "sz": "mid"
+     }
+    ]
+   }
+  },
+  {
+   "id": "D46",
+   "camera": "zoom-in",
+   "narration": "Four. Rename the nerves. This is the two-second one. Before something scary, say out loud, \"I'm excited.\"",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I11",
+     "word": "two",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "picture": "S13",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "scary",
+     "occ": 1,
+     "f": [
+      0.54,
+      0.3,
+      1.3
+     ]
+    },
+    {
+     "kind": "snap",
+     "word": "excited",
+     "occ": 1,
+     "f": [
+      0.54,
+      0.25,
+      1.4
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "step",
+     "step": "STEP 4",
+     "text": "RENAME THE NERVES",
+     "word": "four",
+     "occ": 1,
+     "dur": 3.2
+    }
+   ]
+  },
+  {
+   "id": "D47",
+   "camera": "zoom-in",
+   "narration": "A Harvard researcher named Alison Wood Brooks had people do stressful things like singing in front of others and giving a speech. The people who said \"I'm excited\" first did better than the people who tried to calm down.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "\"I'M EXCITED\""
+      },
+      {
+       "t": "WINS",
+       "badge": "yellow"
+      }
+     ],
+     "word": "better",
+     "occ": 1,
+     "dur": 1.9
+    }
+   ],
+   "picture": "S28",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "singing",
+     "occ": 1,
+     "f": [
+      0.32,
+      0.45,
+      1.4
+     ]
+    },
+    {
+     "kind": "zoom",
+     "word": "giving",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.5,
+      1
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "pill",
+     "text": "ALISON WOOD BROOKS",
+     "word": "brooks",
+     "occ": 1,
+     "until": null,
+     "dur": 3.0
+    }
+   ]
+  },
+  {
+   "id": "D48",
+   "camera": "hold",
+   "narration": "Because nerves and excitement feel almost the same in your body. You're just choosing which story your brain tells about it.",
+   "events": [],
+   "host": [
+    [
+     "N06"
+    ]
+   ],
+   "diagram": {
+    "kind": "split",
+    "left": [
+     "",
+     "NERVES"
+    ],
+    "right": [
+     "",
+     "EXCITEMENT"
+    ],
+    "norack": true,
+    "fs": 100,
+    "at": {
+     "left": {
+      "word": "nerves",
+      "occ": 1
+     },
+     "right": {
+      "word": "excitement",
+      "occ": 1
+     },
+     "sign": {
+      "word": "same",
+      "occ": 1
+     }
+    }
+   }
+  },
+  {
+   "id": "D49",
+   "camera": "zoom-in",
+   "narration": "Five. Keep a proof list. Get a note on your phone, and every time you do something you doubted you could do, write it down. Even small things. You spoke up in class. You finished the workout. You posted the video.",
+   "events": [],
+   "picture": "S14",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "note",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.48,
+      1.4
+     ]
+    },
+    {
+     "kind": "zoom",
+     "word": "even",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.5,
+      1
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "step",
+     "step": "STEP 5",
+     "text": "KEEP A PROOF LIST",
+     "word": "five",
+     "occ": 1,
+     "dur": 3.2
+    },
+    {
+     "type": "pill",
+     "text": "SPOKE UP \u2713",
+     "word": "spoke",
+     "occ": 1,
+     "until": "finished",
+     "dur": 3.0
+    },
+    {
+     "type": "pill",
+     "text": "FINISHED THE WORKOUT \u2713",
+     "word": "finished",
+     "occ": 1,
+     "until": "posted",
+     "dur": 3.0
+    },
+    {
+     "type": "pill",
+     "text": "POSTED THE VIDEO \u2713",
+     "word": "posted",
+     "occ": 1,
+     "until": null,
+     "dur": 2.4
+    }
+   ]
+  },
+  {
+   "id": "D50",
+   "camera": "hold",
+   "narration": "Then, the next time the voice says \"you can't,\" you open the list. It's a lot harder for your brain to argue with a receipt.",
+   "events": [],
+   "picture": "I76",
+   "host": [
+    [
+     "N01"
+    ],
+    [
+     "N05",
+     "it's"
+    ]
+   ],
+   "unroll": {
+    "word": "list",
+    "from": 62
+   },
+   "overlays": [
+    {
+     "type": "sbadge",
+     "text": "ARGUE WITH A RECEIPT",
+     "word": "receipt",
+     "occ": 1,
+     "dur": 2.6
+    }
+   ]
+  },
+  {
+   "id": "D51",
+   "camera": "zoom-in",
+   "narration": "Here's what I keep coming back to. That little kid with the drawing didn't have more talent than you. They just didn't have any bad evidence yet. Nobody had told them it wasn't good enough. They hadn't compared it to anyone. They hadn't learned to read their nerves as a warning.",
+   "events": [],
+   "picture": "S01",
+   "trans": "fade",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "drawing",
+     "occ": 1,
+     "f": [
+      0.64,
+      0.25,
+      1.4
+     ]
+    },
+    {
+     "kind": "zoom",
+     "word": "nobody",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.5,
+      1
+     ]
+    },
+    {
+     "kind": "snap",
+     "word": "compared",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.5,
+      1.3
+     ]
+    },
+    {
+     "kind": "zoom",
+     "word": "learned",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.5,
+      1
+     ]
+    }
+   ],
+   "fx": [
+    {
+     "type": "leak",
+     "word": "kid"
+    }
+   ]
+  },
+  {
+   "id": "D52",
+   "camera": "zoom-out",
+   "narration": "Every confident person you've ever met was once a beginner with no proof at all.",
+   "events": [],
+   "picture": "S12",
+   "trans": "fade"
+  },
+  {
+   "id": "D53",
+   "camera": "zoom-in",
+   "narration": "And the good news is, if self-doubt was learned... it can be unlearned. Not by pretending. By collecting new proof, one small step at a time. So find one thing you've been hiding until it's perfect. And show someone. Hold it up, like you used to.",
+   "events": [],
+   "picture": "S15",
+   "trans": "iris",
+   "irisAt": [
+    0.5,
+    0.35
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "pretending",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.45,
+      1.3
+     ]
+    },
+    {
+     "kind": "zoom",
+     "word": "collecting",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.5,
+      1
+     ]
+    },
+    {
+     "kind": "snap",
+     "word": "hiding",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.4,
+      1.3
+     ]
+    },
+    {
+     "kind": "zoom",
+     "word": "show",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.5,
+      1
+     ]
+    },
+    {
+     "kind": "snap",
+     "word": "hold",
+     "occ": 1,
+     "f": [
+      0.62,
+      0.25,
+      1.4
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "sweep",
+     "word": "hold",
+     "box": {
+      "x": 0.55,
+      "y": 0.04,
+      "w": 0.2,
+      "h": 0.42
+     }
+    }
+   ]
+  },
+  {
+   "id": "D54",
+   "camera": "hold",
+   "narration": "What's one thing you doubted you could do, that you ended up doing anyway? Tell me in the comments. It might be exactly the proof someone else needs. And if your doubt is really about what other people will think, I made a whole video on why they're barely watching. I'll leave it right here.",
+   "events": [
+    {
+     "kind": "pop",
+     "pose": "N06",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "YOUR PROOF?",
+        "badge": "yellow"
+       }
+      ]
+     },
+     "word": "doubted",
+     "occ": 1,
+     "dur": 2.2
+    }
+   ],
+   "picture": "S29",
+   "holdEnd": true
+  }
+ ]
+}

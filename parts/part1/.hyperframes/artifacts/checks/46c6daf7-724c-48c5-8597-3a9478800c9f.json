@@ -1,0 +1,1052 @@
+{
+  "ok": true,
+  "strict": false,
+  "browserSkipped": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 52,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "duplicate_media_discovery_risk",
+        "severity": "warning",
+        "message": "Detected 6 matching img entries with the same source/start/duration.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Avoid duplicated media nodes that can be discovered twice during compilation."
+      },
+      {
+        "code": "duplicate_media_discovery_risk",
+        "severity": "warning",
+        "message": "Detected 5 matching img entries with the same source/start/duration.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Avoid duplicated media nodes that can be discovered twice during compilation."
+      },
+      {
+        "code": "duplicate_media_discovery_risk",
+        "severity": "warning",
+        "message": "Detected 2 matching img entries with the same source/start/duration.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Avoid duplicated media nodes that can be discovered twice during compilation."
+      },
+      {
+        "code": "duplicate_media_discovery_risk",
+        "severity": "warning",
+        "message": "Detected 4 matching img entries with the same source/start/duration.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Avoid duplicated media nodes that can be discovered twice during compilation."
+      },
+      {
+        "code": "duplicate_media_discovery_risk",
+        "severity": "warning",
+        "message": "Detected 3 matching img entries with the same source/start/duration.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Avoid duplicated media nodes that can be discovered twice during compilation."
+      },
+      {
+        "code": "gsap_repeated_fromto_without_baseline",
+        "severity": "warning",
+        "message": "2 tl.fromTo() calls target \"#mbb\" with no stable baseline. The last-authored fromTo \"from\" values become the element's resting state for any seek before the first tween actually runs, because GSAP applies fromTo from-values at authoring time (immediateRender), not at tween position.",
+        "selector": "#mbb",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add `immediateRender: false` to every fromTo except the earliest-positioned one (at 3.26s), so pre-first-tween seeks keep its \"from\" values. A hiding `tl.set(..., 0)` baseline trips gsap_timeline_set_initial_hide, and a `gsap.set` authored before the fromTo calls is overwritten by them."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"d01-s0\"> is a timeline element that contains nested <div id=\"d01-s0-t\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#d01-s0",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"d01-s0\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"d01-s1\"> is a timeline element that contains nested <div id=\"d01-s1-t\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#d01-s1",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"d01-s1\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"d02-s0\"> is a timeline element that contains nested <div id=\"d02-s0-t\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#d02-s0",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"d02-s0\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"d02-s1\"> is a timeline element that contains nested <div id=\"d02-s1-t\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#d02-s1",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"d02-s1\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"d02-s2\"> is a timeline element that contains nested <div id=\"d02-s2-t\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#d02-s2",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"d02-s2\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"d02-s3\"> is a timeline element that contains nested <div id=\"d02-s3-t\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#d02-s3",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"d02-s3\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"d03-s0\"> is a timeline element that contains nested <div id=\"d03-s0-t\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#d03-s0",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"d03-s0\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"d03-s1\"> is a timeline element that contains nested <div id=\"d03-s1-t\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#d03-s1",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"d03-s1\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"d03-s2\"> is a timeline element that contains nested <div id=\"d03-s2-t\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#d03-s2",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"d03-s2\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"d03-s3\"> is a timeline element that contains nested <div id=\"d03-s3-t\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#d03-s3",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"d03-s3\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"d03-s4\"> is a timeline element that contains nested <div id=\"d03-s4-t\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#d03-s4",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"d03-s4\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"d03-s5\"> is a timeline element that contains nested <div id=\"d03-s5-t\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#d03-s5",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"d03-s5\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"d04-s0\"> is a timeline element that contains nested <div id=\"d04-s0-t\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#d04-s0",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"d04-s0\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"d04-s1\"> is a timeline element that contains nested <div id=\"d04-s1-t\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#d04-s1",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"d04-s1\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"d04-s2\"> is a timeline element that contains nested <div id=\"d04-s2-t\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#d04-s2",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"d04-s2\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"d04-s3\"> is a timeline element that contains nested <div id=\"d04-s3-t\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#d04-s3",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"d04-s3\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"d04-s4\"> is a timeline element that contains nested <div id=\"d04-s4-t\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#d04-s4",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"d04-s4\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"d05-s0\"> is a timeline element that contains nested <div id=\"d05-s0-t\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#d05-s0",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"d05-s0\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"d05-s1\"> is a timeline element that contains nested <div id=\"d05-s1-t\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#d05-s1",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"d05-s1\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"d05-s2\"> is a timeline element that contains nested <div id=\"d05-s2-t\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#d05-s2",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"d05-s2\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"d05-s3\"> is a timeline element that contains nested <div id=\"d05-s3-t\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#d05-s3",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"d05-s3\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"d06-s0\"> is a timeline element that contains nested <div id=\"d06-s0-t\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#d06-s0",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"d06-s0\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"d06-s1\"> is a timeline element that contains nested <div id=\"d06-s1-t\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#d06-s1",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"d06-s1\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"d06-s2\"> is a timeline element that contains nested <div id=\"d06-s2-t\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#d06-s2",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"d06-s2\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"d06-s3\"> is a timeline element that contains nested <div id=\"d06-s3-t\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#d06-s3",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"d06-s3\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"d06-s4\"> is a timeline element that contains nested <div id=\"d06-s4-t\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#d06-s4",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"d06-s4\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"d06-s5\"> is a timeline element that contains nested <div id=\"d06-s5-t\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#d06-s5",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"d06-s5\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"d07-s0\"> is a timeline element that contains nested <div id=\"d07-s0-t\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#d07-s0",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"d07-s0\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"d07-s1\"> is a timeline element that contains nested <div id=\"d07-s1-t\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#d07-s1",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"d07-s1\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"d07-s2\"> is a timeline element that contains nested <div id=\"d07-s2-t\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#d07-s2",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"d07-s2\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"d07-s3\"> is a timeline element that contains nested <div id=\"d07-s3-t\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#d07-s3",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"d07-s3\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"d07-s4\"> is a timeline element that contains nested <div id=\"d07-s4-t\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#d07-s4",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"d07-s4\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"d07-s5\"> is a timeline element that contains nested <div id=\"d07-s5-t\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#d07-s5",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"d07-s5\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"d07-s6\"> is a timeline element that contains nested <div id=\"d07-s6-t\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#d07-s6",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"d07-s6\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"d08-s0\"> is a timeline element that contains nested <div id=\"d08-s0-t\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#d08-s0",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"d08-s0\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"d08-s1\"> is a timeline element that contains nested <div id=\"d08-s1-t\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#d08-s1",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"d08-s1\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"d08-s2\"> is a timeline element that contains nested <div id=\"d08-s2-t\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#d08-s2",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"d08-s2\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"d09-s0\"> is a timeline element that contains nested <div id=\"d09-s0-t\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#d09-s0",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"d09-s0\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"d09-s1\"> is a timeline element that contains nested <div id=\"d09-s1-t\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#d09-s1",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"d09-s1\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"d09-s2\"> is a timeline element that contains nested <div id=\"d09-s2-t\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#d09-s2",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"d09-s2\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"d09-s3\"> is a timeline element that contains nested <div id=\"d09-s3-t\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#d09-s3",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"d09-s3\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"d09-s4\"> is a timeline element that contains nested <div id=\"d09-s4-t\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#d09-s4",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"d09-s4\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"d10-s0\"> is a timeline element that contains nested <div id=\"d10-s0-t\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#d10-s0",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"d10-s0\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"d10-s1\"> is a timeline element that contains nested <div id=\"d10-s1-t\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#d10-s1",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"d10-s1\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"nar1\"> is a timeline element that contains nested <div id=\"nar1-w\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#nar1",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"nar1\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      },
+      {
+        "code": "nested_structure_needs_subcomposition",
+        "severity": "warning",
+        "message": "<div id=\"nar2\"> is a timeline element that contains nested <div id=\"nar2-w\">. The timeline shows one row per top-level element, and the root composition is built only from sub-compositions.",
+        "selector": "#nar2",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/simplemind-videos/parts/part1/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move <div id=\"nar2\"> and its contents into a sub-composition file and mount it with data-composition-src."
+      }
+    ],
+    "filesScanned": 1
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 3,
+    "findings": [
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 111.851,
+        "selector": "#d09-s4-dg-ic0 > div:nth-of-type(1) > img:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 372.31,
+          "top": 287.26,
+          "right": 1056.07,
+          "bottom": 672.06,
+          "width": 683.76,
+          "height": 384.8
+        },
+        "containerSelector": "#d09-s4-dg-ic0 > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 515.13,
+          "top": 280.6,
+          "right": 913.25,
+          "bottom": 678.72,
+          "width": 398.12,
+          "height": 398.12
+        },
+        "overflow": {
+          "left": 142.82,
+          "right": 142.82
+        },
+        "dataAttributes": {
+          "data-hf-authored-opacity": ""
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 372.31,
+          "y": 287.26,
+          "width": 683.76,
+          "height": 384.8
+        },
+        "firstSeen": 111.851,
+        "lastSeen": 111.851,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          111.851
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 111.851,
+        "selector": "#d09-s4-dg-ic1 > div:nth-of-type(1) > img:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 823.71,
+          "top": 287.26,
+          "right": 1507.47,
+          "bottom": 672.06,
+          "width": 683.76,
+          "height": 384.8
+        },
+        "containerSelector": "#d09-s4-dg-ic1 > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 966.53,
+          "top": 280.6,
+          "right": 1364.65,
+          "bottom": 678.72,
+          "width": 398.12,
+          "height": 398.12
+        },
+        "overflow": {
+          "left": 142.82,
+          "right": 142.82
+        },
+        "dataAttributes": {
+          "data-hf-authored-opacity": ""
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 823.71,
+          "y": 287.26,
+          "width": 683.76,
+          "height": 384.8
+        },
+        "firstSeen": 111.851,
+        "lastSeen": 111.851,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          111.851
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 111.851,
+        "selector": "#d09-s4-dg-ic2 > div:nth-of-type(1) > img:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 1275.11,
+          "top": 287.26,
+          "right": 1958.87,
+          "bottom": 672.06,
+          "width": 683.76,
+          "height": 384.8
+        },
+        "containerSelector": "#d09-s4-dg-ic2 > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 1417.93,
+          "top": 280.6,
+          "right": 1816.05,
+          "bottom": 678.72,
+          "width": 398.12,
+          "height": 398.12
+        },
+        "overflow": {
+          "left": 142.82,
+          "right": 142.82
+        },
+        "dataAttributes": {
+          "data-hf-authored-opacity": ""
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1275.11,
+          "y": 287.26,
+          "width": 683.76,
+          "height": 384.8
+        },
+        "firstSeen": 111.851,
+        "lastSeen": 111.851,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          111.851
+        ]
+      }
+    ],
+    "duration": 118.43,
+    "samples": [
+      6.579,
+      19.738,
+      32.897,
+      46.056,
+      59.215,
+      72.374,
+      85.533,
+      98.692,
+      111.851
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 3,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      6.579,
+      32.897,
+      59.215,
+      85.533,
+      111.851
+    ],
+    "checked": 9,
+    "passed": 9
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  }
+}
