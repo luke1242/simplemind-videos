@@ -115,7 +115,7 @@ function diagram(d, pre, T, S0 = 0) {
   }
   if (d.kind === "split") {
     const tl0 = at("left", 0), tr0 = at("right", 0), tr = at("rack", tr0);
-    const h = `<div class="fill diag"><div class="half" id="${pre}-L" style="left:0"><div class="ln" style="font-size:${d.fs || 128}px">${d.left[0]}</div><div class="ln" style="font-size:${d.fs || 128}px"><span class="badge yellow">${d.left[1]}</span></div></div><div class="vdiv"></div><div class="half" id="${pre}-R" style="left:960px"><div class="ln" style="font-size:${d.fs || 128}px">${d.right[0]}</div><div class="ln" style="font-size:${d.fs || 128}px"><span class="badge red">${d.right[1]}</span></div></div>${d.at.sign ? `<div class="splsign" id="${pre}-sg" style="font-size:${d.fs ? 100 : 170}px;top:${d.fs ? 450 : 420}px"><span class="badge yellow">≈</span></div>` : ""}</div>`;
+    const h = `<div class="fill diag"><div class="half" id="${pre}-L" style="left:0"><div class="ln" style="font-size:${d.fs0 || d.fs || 128}px">${d.left[0]}</div><div class="ln" style="font-size:${d.fs || 128}px"><span class="badge yellow">${d.left[1]}</span></div></div><div class="vdiv"></div><div class="half" id="${pre}-R" style="left:960px"><div class="ln" style="font-size:${d.fs0 || d.fs || 128}px">${d.right[0]}</div><div class="ln" style="font-size:${d.fs || 128}px"><span class="badge red">${d.right[1]}</span></div></div>${d.at.sign ? `<div class="splsign" id="${pre}-sg" style="font-size:${d.fs ? 100 : 170}px;top:${d.fs ? 450 : 420}px"><span class="badge yellow">≈</span></div>` : ""}</div>`;
     tw.push(`tl.set("#${pre}-L",{opacity:0},0);`, `tl.set("#${pre}-R",{opacity:0},0);`, `tl.fromTo("#${pre}-L",{opacity:0,scale:0.9},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},${f3(tl0)});`,
       `tl.fromTo("#${pre}-R",{opacity:0,scale:0.9},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},${f3(tr0)});`,
       ...(d.norack ? [] : [`tl.to("#${pre}-L",{filter:"blur(10px)",opacity:0.5,duration:0.35,ease:"power2.inOut"},${f3(tr + 0.3)});`]));
@@ -158,6 +158,78 @@ function diagram(d, pre, T, S0 = 0) {
     sfx.push({ t: f3(tc), kind: "pop" }, { t: f3(t0), kind: "swoosh" });
     return { html: h, tw };
   }
+  // ---- video 6 kinds: lines2 (configurable two-line chart), bars3 (configurable bars), loop, people (small grid), dots (count-up dot field)
+  if (d.kind === "lines2") {
+    const t0 = at("draw", 0), A = d.pathA, B = d.pathB, dd = d.drawDur || 1.4;
+    let h = `<div class="fill diag">${svgWrap(`<line x1="200" y1="900" x2="1720" y2="900" stroke="${INK}" stroke-width="9" stroke-linecap="round"/><path d="M1700 876 L1735 900 L1700 924" fill="none" stroke="${INK}" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><line x1="200" y1="150" x2="200" y2="900" stroke="${INK}" stroke-width="9" stroke-linecap="round"/>
+    <path id="${pre}-A" d="${A}" fill="none" stroke="${d.colA || SKY}" stroke-width="16" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/><path id="${pre}-B" d="${B}" fill="none" stroke="${d.colB || RED}" stroke-width="16" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>`)}
+    <div class="ctitle">${d.title}</div><div class="axl" style="left:200px;top:925px">${d.xl}</div><div class="axl" style="left:1120px;top:925px;width:600px;text-align:right">${d.xr}</div>`;
+    for (const k of ["A", "B"]) { const L = d["lab" + k]; h += `<div class="llab" id="${pre}-L${k}" style="left:${L.x}px;top:${L.y}px;color:${k === "A" ? d.colA || SKY : d.colB || RED}">${L.t}</div>`; }
+    (d.tags || []).forEach((tg, k) => { h += `<div class="tag" id="${pre}-tg${k}" style="left:${tg.x}px;top:${tg.y}px"><span class="badge ${tg.badge || "yellow"}">${tg.t}</span></div>`; });
+    h += `</div>`;
+    tw.push(`tl.to("#${pre}-A",{strokeDashoffset:0,duration:${dd},ease:"power1.inOut"},${f3(t0)});`, `tl.to("#${pre}-B",{strokeDashoffset:0,duration:${dd},ease:"power1.inOut"},${f3(t0)});`);
+    tw.push(`tl.set("#${pre}-LA,#${pre}-LB",{opacity:0},0);`, `tl.to("#${pre}-LA,#${pre}-LB",{opacity:1,duration:0.4},${f3(t0 + 0.3)});`);
+    (d.tags || []).forEach((tg, k) => { const tt = T(tg.word); tw.push(`tl.set("#${pre}-tg${k}",{opacity:0},0);`, `tl.fromTo("#${pre}-tg${k}",{opacity:0,scale:0.6},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.6)"},${f3(tt)});`); sfx.push({ t: f3(tt), kind: "pop" }); });
+    sfx.push({ t: f3(t0), kind: "swoosh" });
+    return { html: h, tw };
+  }
+  if (d.kind === "bars3") {
+    const base = 840, MAXH = 520, xs = [620, 1300], BW = 400, t0 = at("grow", 0);
+    let h = `<div class="fill diag"><div class="topbadge" style="font-size:80px">${d.title}</div>`;
+    d.bars.forEach((b, i) => { const hh = Math.round(MAXH * b.h);
+      h += `<div class="bar" id="${pre}-b${i}" style="left:${xs[i] - BW / 2}px;top:${base}px;width:${BW}px;height:0px;background:${b.col}">${b.val ? `<div class="btag"><span class="badge yellow" style="background:#fff">${b.val}</span></div>` : ""}</div><div class="blab" id="${pre}-bl${i}" style="left:${xs[i] - 330}px;top:${base + 28}px;width:660px;font-size:58px">${b.label}</div>`;
+      tw.push(`tl.set("#${pre}-b${i},#${pre}-bl${i}",{opacity:0},0);`, `tl.set("#${pre}-b${i},#${pre}-bl${i}",{opacity:1},${f3(t0)});`, `tl.fromTo("#${pre}-b${i}",{top:${base},height:0},{top:${base - hh},height:${hh},duration:0.7,ease:"power2.out"},${f3(t0 + i * 0.15)});`); });
+    if (d.badge) { const tb = T(d.badge.word); h += `<div class="ratio" id="${pre}-ra" style="top:${d.badge.top || 330}px"><span class="badge ${d.badge.b || "yellow"}">${d.badge.t}</span></div>`; tw.push(`tl.set("#${pre}-ra",{opacity:0},0);`, `tl.fromTo("#${pre}-ra",{opacity:0,scale:1.6,rotation:-2},{opacity:1,scale:1,rotation:-7,duration:0.26,ease:"back.out(1.6)"},${f3(tb)});`); sfx.push({ t: f3(tb), kind: "ding" }); }
+    sfx.push({ t: f3(t0), kind: "swoosh" });
+    return { html: h + `</div>`, tw };
+  }
+  if (d.kind === "loop") {
+    const cx = 960, cy = 560, r = 330, ang = [-90, 30, 150].map((a) => (a * Math.PI) / 180), pts = ang.map((a) => [cx + r * Math.cos(a), cy + r * Math.sin(a)]);
+    const arc = (a0, a1) => { const p0 = [cx + r * Math.cos(a0), cy + r * Math.sin(a0)], p1 = [cx + r * Math.cos(a1), cy + r * Math.sin(a1)]; return `M${f3(p0[0])} ${f3(p0[1])} A${r} ${r} 0 0 1 ${f3(p1[0])} ${f3(p1[1])}`; };
+    const head = (a) => { const p = [cx + r * Math.cos(a), cy + r * Math.sin(a)], tg = a + Math.PI / 2, hl = 46; const q = (s) => `${f3(p[0] - hl * Math.cos(tg + s))} ${f3(p[1] - hl * Math.sin(tg + s))}`; return `M${q(0.55)} L${f3(p[0])} ${f3(p[1])} L${q(-0.55)}`; };
+    const gap = 0.5; let svg = "";
+    for (let k = 0; k < 3; k++) { const a0 = ang[k] + gap, a1 = ang[k] + (2 * Math.PI) / 3 - gap;
+      svg += `<g id="${pre}-ar${k}"><path d="${arc(a0, a1)}" fill="none" stroke="${INK}" stroke-width="12" stroke-linecap="round"/><path d="${head(a1)}" fill="none" stroke="${INK}" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></g>`; }
+    // the broken arrow (node 3 -> node 1), shown on "break"
+    const bm = ang[2] + Math.PI / 3, b0 = ang[2] + gap, b1 = ang[2] + (2 * Math.PI) / 3 - gap;
+    svg += `<g id="${pre}-brk" opacity="0"><path d="${arc(b0, bm - 0.09)}" fill="none" stroke="${INK}" stroke-width="12" stroke-linecap="round"/><path d="${arc(bm + 0.09, b1)}" fill="none" stroke="${INK}" stroke-width="12" stroke-linecap="round"/><path d="${head(b1)}" fill="none" stroke="${INK}" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>`;
+    const bp = [cx + r * Math.cos(bm), cy + r * Math.sin(bm)]; svg += `<path d="M${f3(bp[0] - 40)} ${f3(bp[1] - 46)} L${f3(bp[0] + 12)} ${f3(bp[1] - 10)} L${f3(bp[0] - 14)} ${f3(bp[1] + 8)} L${f3(bp[0] + 40)} ${f3(bp[1] + 48)}" fill="none" stroke="${RED}" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></g>`;
+    svg += `<g id="${pre}-spin" style="transform-origin:${cx}px ${cy}px" opacity="0"><circle cx="${cx}" cy="${cy - r}" r="26" fill="${YEL}" stroke="${INK}" stroke-width="7"/></g>`;
+    const COL = [SKY, ORG, SAGE];
+    let h = `<div class="fill diag">${svgWrap(svg)}`;
+    d.nodes.forEach((nd, k) => { h += `<div class="lnode" id="${pre}-n${k}" style="left:${f3(pts[k][0] - 270)}px;top:${f3(pts[k][1] - 72)}px;background:${nd.col || COL[k]}">${nd.t}</div>`; });
+    if (d.center) h += `<div class="lcenter" id="${pre}-ce"><span class="badge yellow">${d.center.t}</span></div>`;
+    h += `</div>`;
+    d.nodes.forEach((nd, k) => { if (!nd.word) return; const t1 = T(nd.word); tw.push(`tl.set("#${pre}-n${k}",{opacity:0},0);`, `tl.fromTo("#${pre}-n${k}",{opacity:0,scale:0.7},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.6)"},${f3(t1)});`); sfx.push({ t: f3(t1), kind: "pop" }); });
+    if (!d.pre) { const ta = T(d.nodes[0].word); for (let k = 0; k < 3; k++) { const tk = d.nodes[(k + 1) % 3].word ? T(d.nodes[(k + 1) % 3].word) : ta; tw.push(`tl.set("#${pre}-ar${k}",{opacity:0},0);`, `tl.to("#${pre}-ar${k}",{opacity:1,duration:0.25},${f3(k < 2 ? tk : Math.max(tk, T(d.nodes[2].word)) + 0.2)});`); } }
+    if (d.center) { const tc = T(d.center.word); tw.push(`tl.set("#${pre}-ce",{opacity:0},0);`, `tl.fromTo("#${pre}-ce",{opacity:0,scale:1.5,rotation:-2},{opacity:1,scale:1,rotation:-5,duration:0.26,ease:"back.out(1.6)"},${f3(tc)});`); sfx.push({ t: f3(tc), kind: "ding" }); }
+    if (d.pulse) { const tp = T(d.pulse); tw.push(`tl.set("#${pre}-spin",{opacity:1,rotation:0},${f3(tp)});`, `tl.to("#${pre}-spin",{rotation:360,duration:0.5,ease:"power1.inOut"},${f3(tp)});`, `tl.set("#${pre}-spin",{opacity:0},${f3(tp + 0.52)});`); sfx.push({ t: f3(tp), kind: "swoosh" }); }
+    if (d.brk) { const tb = T(d.brk); tw.push(`tl.set("#${pre}-ar2",{opacity:0},${f3(tb)});`, `tl.set("#${pre}-brk",{opacity:1},${f3(tb)});`, `tl.fromTo("#${pre}-brk",{scale:1.08,transformOrigin:"960px 560px"},{scale:1,duration:0.25,ease:"power2.out"},${f3(tb)});`, `tl.to("#${pre}-n0,#${pre}-n1,#${pre}-n2",{opacity:0.45,duration:0.4},${f3(tb + 0.3)});`); sfx.push({ t: f3(tb), kind: "ding" }); }
+    return { html: h, tw };
+  }
+  if (d.kind === "people") {
+    const rows = d.rows, cols = d.cols, sx = 200, sy = 170; let g = "";
+    for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) g += person(960 + (c - (cols - 1) / 2) * sx, 250 + r * sy, `${pre}-g${r * cols + c}`, "#fff");
+    let h = `<div class="fill diag">${svgWrap(g)}<div class="dlabel" id="${pre}-lab" style="top:${250 + rows * sy}px"><span class="badge yellow">${d.label}</span></div></div>`;
+    const tr = at("red", 0), reds = d.redIdx; reds.forEach((ix, k) => tw.push(`tl.to("#${pre}-g${ix} .pp",{fill:"${RED}",duration:0.12,ease:"none"},${f3(tr + k * 0.12)});`)); sfx.push({ t: f3(tr), kind: "pop" });
+    const tb = at("label", tr); tw.push(`tl.set("#${pre}-lab",{opacity:0},0);`, `tl.fromTo("#${pre}-lab",{opacity:0,scale:0.8},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.5)"},${f3(tb)});`); sfx.push({ t: f3(tb), kind: "ding" });
+    if (d.at.pulse !== undefined) { const tp = at("pulse"); tw.push(`tl.fromTo("#${pre}-g0${Array.from({ length: rows * cols - 1 }, (_, i) => `,#${pre}-g${i + 1}`).join("")}",{scale:1.2},{scale:1.32,duration:0.15,ease:"power2.out",yoyo:true,repeat:1},${f3(tp)});`); }
+    return { html: h, tw };
+  }
+  if (d.kind === "dots") {
+    const n = d.n, cols = 16, sp = 92; let g = "";
+    for (let i = 0; i < n; i++) { const r = Math.floor(i / cols), c = i % cols; g += `<circle id="${pre}-d${i}" cx="${f3(960 + (c - (cols - 1) / 2) * sp)}" cy="${270 + r * sp}" r="30" fill="${GREY}" stroke="${INK}" stroke-width="7"/>`; }
+    const tc = at("count", 0), o = vid(`${pre}_c`);
+    let h = `<div class="fill diag">${svgWrap(g)}<div class="dlabel" id="${pre}-lab" style="top:${270 + Math.ceil(n / cols) * sp + 10}px;font-size:110px"><span class="badge yellow" id="${pre}-cv">0</span><span>${d.text}</span></div>`;
+    if (d.badge) h += `<div class="ratio" id="${pre}-bd" style="top:420px;font-size:100px"><span class="badge red">${d.badge.t}</span></div>`;
+    h += `</div>`;
+    tw.push(`const ${o}={v:0};`, `tl.set("#${pre}-lab",{opacity:0},0);`, `tl.set("#${pre}-lab",{opacity:1},${f3(tc)});`,
+      `tl.fromTo(${o},{v:0},{v:${n},duration:1.2,ease:"power1.out",onUpdate:function(){var e=document.getElementById("${pre}-cv");if(e)e.textContent=Math.round(${o}.v);}},${f3(tc)});`);
+    for (let i = 0; i < n; i++) tw.push(`tl.set("#${pre}-d${i}",{attr:{fill:"${SAGE}"}},${f3(tc + 1.2 * Math.sqrt(i / n))});`);
+    sfx.push({ t: f3(tc), kind: "pop" });
+    if (d.badge) { const tb = T(d.badge.word); tw.push(`tl.set("#${pre}-bd",{opacity:0},0);`, `tl.fromTo("#${pre}-bd",{opacity:0,scale:1.6,rotation:-2},{opacity:1,scale:1,rotation:-6,duration:0.26,ease:"back.out(1.6)"},${f3(tb)});`); sfx.push({ t: f3(tb), kind: "ding" }); }
+    return { html: h, tw };
+  }
   if (d.kind === "quote") {
     const wordsHtml = d.html;
     const h = `<div class="fill diag"><div class="qmark">&ldquo;</div><div class="qtext" id="${pre}-q">${wordsHtml}</div><div class="qby">${d.by}</div></div>`;
@@ -169,7 +241,7 @@ function diagram(d, pre, T, S0 = 0) {
 function screenOv(id, o, host) {
   const ul = o.ul ? `<svg class="ulp" viewBox="0 0 400 30" preserveAspectRatio="none"><path id="${id}-ul" d="M6 18 C60 6 110 26 170 14 S300 8 394 16" fill="none" stroke="${RED}" stroke-width="9" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg>` : "";
   if (o.type === "step") return `<div id="${id}" class="scr${host ? " row" : ""}" data-layout-allow-overlap><div class="pill big">${o.step}</div><div class="spill2">${o.text}</div></div>`;
-  if (o.type === "sbadge") return `<div id="${id}" class="scr" data-layout-allow-overlap><span class="badge yellow" style="font-size:78px;padding:0 38px 8px">${o.text}</span></div>`;
+  if (o.type === "sbadge") return `<div id="${id}" class="scr" data-layout-allow-overlap><span class="badge ${o.red ? "red" : "yellow"}" style="font-size:78px;padding:0 38px 8px">${o.text}</span></div>`;
   if (o.type === "pill") return `<div id="${id}" class="scr${host ? " row" : ""}" data-layout-allow-overlap><div class="pill big">${o.text}</div></div>`;
   return `<div id="${id}" class="scr" data-layout-allow-overlap><div class="spill2">${o.text}${ul}</div></div>`;
 }
@@ -519,7 +591,7 @@ fs.copyFileSync("node_modules/@fontsource/nunito/files/nunito-latin-800-normal.w
 fs.copyFileSync("assets/vendor/gsap.min.js", `${out}/assets/gsap.min.js`);
 fs.copyFileSync(cfg.audio, `${out}/assets/part${N}.wav`);
 for (const f of ["hyperframes.json", "package.json"]) if (fs.existsSync(`tools/template/${f}`)) fs.copyFileSync(`tools/template/${f}`, `${out}/${f}`);
-fs.writeFileSync(`${out}/meta.json`, JSON.stringify({ id: `part${N}`, name: `SimpleMindMotivation Part ${N}`, createdAt: "2026-10-12T00:00:00.000Z" }, null, 2));
+fs.writeFileSync(`${out}/meta.json`, JSON.stringify({ id: `part${N}`, name: `Brain Guy Psychology Part ${N}`, createdAt: "2026-10-12T00:00:00.000Z" }, null, 2));
 const page = `<!doctype html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=1920, height=1080"><title>Part ${N}</title>
 <script src="assets/gsap.min.js"></script>
@@ -590,6 +662,8 @@ html,body{margin:0;background:${PAPER}}
 .stamp{position:absolute;left:240px;right:240px;top:420px;text-align:center;font-size:170px;color:${RED};border:16px solid ${RED};border-radius:30px;background:rgba(250,247,240,.9);padding:0 20px 14px;white-space:nowrap;letter-spacing:4px}
 .ratio{position:absolute;left:0;right:0;top:360px;text-align:center;font-size:150px}.dsmall{position:absolute;left:0;right:0;top:992px;text-align:center;font-size:44px;color:#6a6454}.splsign{position:absolute;left:0;right:0;top:420px;text-align:center;font-size:170px}
 .irow{display:flex;gap:70px;align-items:center}
+.lnode{position:absolute;width:540px;height:144px;box-sizing:border-box;border:9px solid ${INK};border-radius:40px;display:flex;align-items:center;justify-content:center;font-size:66px;white-space:nowrap;box-shadow:8px 8px 0 rgba(26,26,26,.2)}
+.lcenter{position:absolute;left:0;right:0;top:500px;text-align:center;font-size:76px;white-space:nowrap}
 .itile{width:520px;height:520px;border:9px solid ${INK};border-radius:36px;overflow:hidden;background:#F8F5EE;box-shadow:10px 10px 0 rgba(26,26,26,.2)}.itile img{width:924px;height:520px;margin-left:-202px;display:block}
 .sweepbox{position:absolute;overflow:hidden}.sweepband{position:absolute;left:0;top:-20%;width:35%;height:140%;transform:skewX(-18deg);background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,247,200,.9),rgba(255,255,255,0));opacity:0}
 .leak{position:absolute;inset:0;mix-blend-mode:screen;background:radial-gradient(ellipse 60% 70% at 95% 10%,rgba(255,170,70,.95),rgba(255,120,40,0) 70%),radial-gradient(ellipse 50% 60% at 5% 95%,rgba(255,210,120,.75),rgba(255,160,60,0) 70%)}

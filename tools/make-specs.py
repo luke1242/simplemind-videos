@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-"""Video 5 (self-doubt): writes scenes/partN.json (scene specs for tools/build-part.mjs) and scenes/foci.json. Scene list = VIDEO.md."""
-import json, os
+"""Video 6 (procrastination): writes scenes/partN.json (scene specs for tools/build-part.mjs) and scenes/foci.json.
+Narration text and host tracks are read straight from VIDEO.md, so they always match it."""
+import json, os, re
 Y, R = "yellow", "red"
 def P(t, b=None, **fl):
     d = {"t": t}
@@ -12,183 +13,171 @@ def card(word, parts, occ=1, dur=1.9): return {"kind": "card", "parts": _parts(p
 def pop(word, pose, content, occ=1, dur=2.8):
     c = {"type": "icon", "icon": content} if isinstance(content, str) else {"type": "card", "parts": _parts(content)}
     return {"kind": "pop", "pose": pose, "content": c, "word": word, "occ": occ, "dur": dur}
-def crop(word, focus, occ=1, dur=2.4): return {"kind": "crop", "focus": focus, "word": word, "occ": occ, "dur": dur}
-def title(pill="LESSON", l1="PSYCHOLOGY OF", l2="SELF-DOUBT"): return {"kind": "title", "dur": 2.5, "pill": pill, "l1": l1, "l2": l2}
-def iconrow(items): return {"kind": "iconrow", "items": [{"icon": i, "word": w} for i, w in items], "word": items[0][1], "dur": 3.5}
-def quote(word, until, text, by): return {"kind": "quote", "word": word, "until": until, "text": text, "by": by}
+def title(pill="LESSON", l1="PSYCHOLOGY OF", l2="PROCRASTINATION"): return {"kind": "title", "dur": 2.5, "pill": pill, "l1": l1, "l2": l2}
 def mv(kind, word, f=None, occ=1, **kw): return {"kind": kind, "word": word, "occ": occ, "f": f, **kw}
 def step(n, text, word, occ=1, **kw): return {"type": "step", "step": n, "text": text, "word": word, "occ": occ, **kw}
-def sc(id, narr, picture=None, camera="zoom-in", ev=None, **kw):
-    d = {"id": id, "camera": camera, "narration": narr, "events": ev or []}
-    if picture: d["picture"] = picture
-    d.update(kw); return d
 W_ = lambda w, o=1: {"word": w, "occ": o}
-
 FULL = [0.5, 0.5, 1]
 def pill(text, word, until=None, dur=3.0, occ=1, **kw): return {"type": "pill", "text": text, "word": word, "occ": occ, "until": until, "dur": dur, **kw}
-def sbadge(text, word, dur=2.6, occ=1): return {"type": "sbadge", "text": text, "word": word, "occ": occ, "dur": dur}
+def sb(text, word, until=None, dur=2.6, occ=1, red=False): return {"type": "sbadge", "text": text, "word": word, "occ": occ, "until": until, "dur": dur, "red": red}
 def bub(text, word, x, y, w=0.31, h=0.17): return {"type": "bubble", "text": text, "word": word, "box": {"x": x, "y": y, "w": w, "h": h}}
-def quad(tiles, **kw): return {"kind": "quad", "tiles": [{"label": l, "icon": i, "word": w_} for l, i, w_ in tiles], **kw}
-Q = [("DOING IT", "I52", W_("doing")), ("WATCHING OTHERS", "I06", W_("watching")), ("WHAT PEOPLE SAY", "I41", W_("tell")), ("YOUR BODY", "I75", W_("body"))]
-Qpre = [(l, i, None) for l, i, _ in Q]
+def pbadge(text, word, x, y, w, h, b=Y, fs=70, dur=None): o = {"type": "badge", "text": text, "word": word, "badge": b, "fs": fs, "box": {"x": x, "y": y, "w": w, "h": h}}; o.update({"dur": dur} if dur else {}); return o
+def circ(word, cx, cy, rx, ry): return {"type": "circle", "word": word, "cx": cx, "cy": cy, "rx": rx, "ry": ry}
+def sweep(word, x, y, w, h): return {"type": "sweep", "word": word, "box": {"x": x, "y": y, "w": w, "h": h}}
+
+# ---- narration + host tracks from VIDEO.md
+V = open("VIDEO.md").read()
+NAR, HOST = {}, {}
+cur = None
+for line in V.split("\n"):
+    m = re.match(r"\*\*(D\d+)\*\*", line)
+    if m: cur = m.group(1); continue
+    if cur and line.startswith("narration: "): NAR[cur] = line[len('narration: "'):-1]
+    if cur and line.startswith("host: "):
+        tr = []
+        for k, seg in enumerate(line[6:].split(" → ")):
+            mm = re.match(r'(N\d\d) "([^"]+)"(?: \((\d)\w\w occurrence\))?', seg.strip())
+            tr.append([mm.group(1)] if k == 0 else [mm.group(1), mm.group(2).lower()] + ([int(mm.group(3))] if mm.group(3) else []))
+        HOST[cur] = tr
+def sc(id, picture=None, camera="zoom-in", ev=None, **kw):
+    d = {"id": id, "camera": camera, "narration": NAR[id], "events": ev or []}
+    if picture: d["picture"] = picture
+    if id in HOST: d["host"] = HOST[id]
+    d.update(kw); return d
+def loop(nodes, **kw): return {"kind": "loop", "nodes": [{"t": t, "word": w} for t, w in nodes], **kw}
+def split(left, right, at, **kw): return {"kind": "split", "left": left, "right": right, "at": at, **kw}
+def bars3(title_, bars, grow, badge=None): return {"kind": "bars3", "title": title_, "bars": bars, "at": {"grow": grow}, **({"badge": badge} if badge else {})}
+SKY, SAGE, RED_ = "#8EC5E8", "#9CC08B", "#D64545"
+GUILT = [("AVOID", W_("avoid")), ("FEEL WORSE", W_("worse")), ("AVOID MORE", W_("more"))]
 
 P1 = [
- sc("D01", "Think about a little kid who just drew a picture. A purple sun. A dog with six legs.", "S01",
-    moves=[mv("snap", "picture", [0.64, 0.25, 1.4]), mv("whip", "purple", [0.64, 0.17, 1.4]), mv("whip", "dog", [0.66, 0.33, 1.4])]),
- sc("D02", "Do they wonder if it's good enough? Do they compare it to anyone else's? No. They run straight to you and hold it up as high as they can.", "S01", "zoom-out",
-    moves=[mv("cut", "do", [0.64, 0.25, 1.4]), mv("zoom", "run", FULL), mv("snap", "hold", [0.64, 0.22, 1.4])],
-    overlays=[{"type": "sweep", "word": "high", "box": {"x": 0.55, "y": 0.04, "w": 0.2, "h": 0.42}}]),
- sc("D03", "Now think about the last time you made something. A drawing. A song. A business idea. A message to someone you like. Did you hold it up? Or did you hide it... until it was perfect... and then never show anyone at all?", "S02",
-    moves=[mv("snap", "something", [0.55, 0.35, 1.3]), mv("zoom", "business", FULL), mv("snap", "hide", [0.52, 0.47, 1.4]), mv("zoom", "never", FULL)]),
- sc("D04", "Somewhere between that kid and you, a voice showed up. The one that says, \"You're not ready.\" \"Who do you think you are?\" \"Don't embarrass yourself.\" And here's the part most people never stop to think about.", "S03",
-    moves=[mv("snap", "voice", [0.6, 0.5, 1.25]), mv("zoom", "here's", FULL)],
-    overlays=[bub("YOU'RE NOT READY", "ready", 0.66, 0.16), bub("WHO DO YOU THINK YOU ARE?", "who", 0.64, 0.38, 0.34, 0.2), bub("DON'T EMBARRASS YOURSELF", "embarrass", 0.64, 0.62, 0.34, 0.2)]),
- sc("D05", "You weren't born with that voice. You learned it.", "S04",
-    ev=[card("learned", [("YOU",), P("LEARNED", Y), ("IT",)], dur=1.9), title()],
-    moves=[mv("snap", "born", [0.38, 0.8, 1.4])], fx=[{"type": "riser", "word": "you"}, {"type": "impact", "word": "learned"}]),
- sc("D06", "I know that voice really well. When I started this channel, I wrote my first script three times. I recorded it, listened back, and deleted it. Twice.", "S05",
-    ev=[icon("recorded", "I71"), icon("twice", "I72")], moves=[mv("snap", "deleted", [0.43, 0.55, 1.4]), mv("snap", "channel", [0.6, 0.35, 1.3])]),
- sc("D07", "Every time, the voice had a new reason. \"Your voice sounds weird.\" \"Nobody's going to watch this.\" \"Real creators don't make videos like this.\" I almost didn't post anything at all. And if you're watching this, you already know how that turned out.", "S06",
-    ev=[pop("watching", "N05", [("YOU KNOW",), P("HOW IT ENDED", Y)], dur=2.6)],
-    moves=[mv("snap", "voice", [0.6, 0.4, 1.3]), mv("zoom", "almost", FULL)],
-    overlays=[bub("YOUR VOICE SOUNDS WEIRD", "weird", 0.7, 0.08, 0.29, 0.2), bub("NOBODY'S GOING TO WATCH", "nobody's", 0.7, 0.32, 0.29, 0.2), bub("REAL CREATORS DON'T…", "real", 0.7, 0.56, 0.29, 0.2)]),
- sc("D08", "But it made me want to understand where that voice actually comes from. So I went looking at what psychologists have found.", "S20",
-    host=[["N06"], ["N01", "so"]], moves=[mv("snap", "psychologists", [0.46, 0.45, 1.4])]),
- sc("D09", "By the end of this video, you'll know the four places self-doubt really comes from, why \"just believe in yourself\" almost never works, and five ways to rebuild your confidence that are actually backed by research.", None, "hold",
-    host=[["N01"]], diagram={"kind": "irow", "items": [{"icon": "I74", "label": "4 SOURCES", "word": W_("four")}, {"icon": "I72", "label": "WHY \"BELIEVE\" FAILS", "word": W_("believe")}, {"icon": "I67", "label": "5 FIXES", "word": W_("five")}]}),
- sc("D10", "One of them takes about two seconds, and you can use it before anything that scares you.", "I11", "hold",
-    host=[["N01"]], overlays=[sbadge("2 SECONDS", "two", dur=3.0)]),
+ sc("D01", "S01", moves=[mv("snap", "nine", [0.42, 0.16, 1.4]), mv("whip", "thing", [0.32, 0.34, 1.4])]),
+ sc("D02", "S02", moves=[mv("snap", "decide", [0.62, 0.3, 1.3]), mv("snap", "clean", [0.62, 0.55, 1.25])]),
+ sc("D03", "S02", "zoom-out", ev=[icon("messages", "I80"), card("procrastinating", [("HOW TO STOP",), P("PROCRASTINATING", Y, sz="mid")])],
+    moves=[mv("snap", "video", [0.62, 0.28, 1.35])]),
+ sc("D04", "S03", moves=[mv("snap", "thing", [0.4, 0.6, 1.3]), mv("whip", "lie", [0.7, 0.52, 1.4]), mv("zoom", "thinking", FULL)],
+    overlays=[bub("WHAT IS WRONG WITH ME?", "wrong", 0.42, 0.05, 0.38, 0.15), bub("WHY AM I SO LAZY?", "lazy", 0.45, 0.25, 0.3, 0.14)]),
+ sc("D05", "S04", trans="push", overlays=[pill("TICE & BAUMEISTER (1997)", "psychologists", dur=3.2)]),
+ sc("D06", "S04", moves=[mv("snap", "procrastinators", [0.27, 0.66, 1.4]), mv("whip", "rushing", [0.75, 0.48, 1.35])],
+    overlays=[sb("LESS STRESS", "less", until="fewer"), sb("FEWER HEALTH PROBLEMS", "fewer", dur=2.4)]),
+ sc("D07", "S04", pictureB="S04b", swap={"word": "flipped"}, moves=[mv("snap", "stressed", [0.36, 0.52, 1.35])],
+    overlays=[sb("MORE STRESS", "stressed", until="sick", red=True), sb("SICKER", "sick", until="grades", red=True), sb("LOWER GRADES", "grades", dur=2.4, red=True)]),
+ sc("D08", None, "hold", ev=[title()],
+    diagram={"kind": "lines2", "title": "STRESS OVER THE TERM", "xl": "START", "xr": "END OF TERM",
+             "pathA": "M260 520 C 700 515, 1200 525, 1660 520", "pathB": "M260 800 C 900 790, 1250 520, 1660 190",
+             "labA": {"t": "EVERYONE ELSE", "x": 300, "y": 430}, "labB": {"t": "PROCRASTINATORS", "x": 300, "y": 815},
+             "tags": [{"t": "BORROWED", "word": W_("borrowed"), "x": 1240, "y": 250}], "at": {"draw": W_("avoided")}},
+    fx=[{"type": "riser", "word": "avoided"}, {"type": "impact", "word": "future"}]),
+ sc("D09", "S05", ev=[icon("week", "I83")], moves=[mv("snap", "idea", [0.2, 0.66, 1.4])]),
+ sc("D10", "S05", moves=[mv("snap", "folder", [0.3, 0.27, 1.4]), mv("whip", "videos", [0.3, 0.44, 1.4]), mv("whip", "made", [0.46, 0.42, 1.4])]),
+ sc("D11", "S05", "zoom-out", ev=[pop("thumbnail", "N10", [("NO SCRIPT",), P("YET", Y)], dur=2.4)],
+    moves=[mv("snap", "lazy", [0.62, 0.3, 1.35]), mv("whip", "working", [0.4, 0.45, 1.3]), mv("snap", "except", [0.22, 0.64, 1.4])], overlays=[circ("except", 0.19, 0.69, 0.11, 0.09)]),
+ sc("D12", "I81", "hold", moves=[mv("snap", "run", [0.5, 0.5, 1.25])]),
+ sc("D13", None, "hold", diagram={"kind": "irow", "items": [{"icon": "I88", "label": "WHAT IT REALLY IS", "word": W_("know")},
+    {"icon": "I84", "label": "4 TRAPS", "word": W_("four")}, {"icon": "I85", "label": "5 WAYS TO START", "word": W_("five")}]}),
+ sc("D14", None, "hold", diagram={"kind": "card", "parts": [P("THE"), P("OPPOSITE", mk=True), P("OF WHAT MOST PEOPLE DO", small=True)]}),
 ]
 P2 = [
- sc("D11", "In the nineteen-seventies, a psychologist named Albert Bandura became obsessed with one question. Why do some people keep going when things get hard, while others give up before they even start?", "S20",
-    host=[["N01"], ["N06", "why"]], trans="push", moves=[mv("snap", "why", [0.46, 0.45, 1.4])], overlays=[pill("ALBERT BANDURA", "bandura", dur=3.0)]),
- sc("D12", "It wasn't talent. It wasn't intelligence. It was what he called self-efficacy. Your belief that you can actually do the thing in front of you.", None, "hold",
-    host=[["N01"], ["N02", "it", 3]], swap={"word": "self"},
-    diagram={"kind": "card", "parts": [P("TALENT", R, at=W_("talent")), P("INTELLIGENCE", R, at=W_("intelligence"))]},
-    diagramB={"kind": "card", "parts": [P("SELF-EFFICACY", mk=True, sz="mid"), P("believing you can do it", small=True)]}),
- sc("D13", "And Bandura found something surprising. That belief doesn't come from nowhere. And it doesn't come from repeating \"I can do it\" in the mirror.", "S26",
-    moves=[mv("snap", "belief", [0.62, 0.45, 1.25]), mv("snap", "mirror", [0.3, 0.55, 1.4])]),
- sc("D14", "It comes from evidence. Your brain is constantly collecting proof about what you can and can't do. And self-doubt is what happens when your brain has collected the wrong proof.", None, "hold",
-    host=[["N02"]], swap={"word": "wrong"},
-    diagram={"kind": "card", "parts": [P("IT COMES FROM", sz="mid"), P("EVIDENCE", mk=True)]},
-    diagramB={"kind": "card", "parts": [P("SELF-DOUBT =", sz="mid"), P("WRONG PROOF", R, slam=True)]}),
- sc("D15", "He found four main places that belief comes from. Doing something yourself. Watching someone like you do it. What other people tell you. And how your body feels when you try. Keep those four in mind, because they're going to come back.", None, "hold",
-    host=[["N01"], ["N06", "keep"]], diagram=quad(Q, pulse=W_("mind"))),
- sc("D16", "One of his most famous experiments involved people with a serious fear of snakes. Not a little nervous. Some of them couldn't even stand near one in a glass tank.", "S07",
-    ev=[icon("snakes", "I73")], host=[["N01"], ["N05", "not"]], moves=[mv("snap", "nervous", [0.17, 0.55, 1.4]), mv("whip", "tank", [0.42, 0.6, 1.4])]),
- sc("D17", "Bandura didn't tell them to be brave, and he didn't try to talk them out of it. Instead, they watched someone else handle a snake calmly. Then, step by step, they did tiny pieces themselves. Look at the snake. Stand a little closer. Touch it with a glove. Then without one.", "S07",
-    host=[["N01"]], moves=[mv("snap", "watched", [0.6, 0.45, 1.4]), mv("whip", "step", [0.17, 0.55, 1.4]), mv("zoom", "stand", FULL)],
-    overlays=[pill("LOOK", "look", until="closer"), pill("CLOSER", "closer", until="glove"), pill("GLOVE", "glove", until="without"), pill("NO GLOVE", "without", dur=2.2)]),
- sc("D18", "By the end, ninety-two percent of the people in that group could sit with a snake resting in their lap.", None, "hold",
-    host=[["N02"]], pictureB="S07b", swap={"word": "lap"},
-    diagram={"kind": "pie", "pct": 92, "from": 0, "label": "SNAKE IN THEIR LAP:", "fs": 84, "badge": "yellow", "value": "92%", "small": "Bandura, Blanchard & Ritter, 1969", "at": {"fill": W_("ninety")}},
-    fx=[{"type": "riser", "word": "ninety"}, {"type": "impact", "word": "ninety", "off": 0.0}]),
- sc("D19", "They didn't feel brave first. They became brave by collecting small proof that they could handle it. And a lot of them reported feeling less afraid of other things in their lives too. Proof in one area spilled into others.", "S07b",
-    ev=[card("first", [P("THEY DIDN'T FEEL", sz="mid"), P("BRAVE FIRST", Y)])], host=[["N06"], ["N01", "and"], ["N06", "proof", 2]],
-    moves=[mv("snap", "brave", [0.2, 0.42, 1.4], occ=2), mv("zoom", "and", FULL)]),
- sc("D20", "That's the key to this whole video. Confidence isn't a feeling you wait for. It's a conclusion your brain reaches after enough evidence.", None, "hold",
-    host=[["N02"], ["N06", "confidence"], ["N01", "it's"]], swap={"word": "conclusion"},
-    diagram={"kind": "card", "parts": [P("CONFIDENCE ISN'T", sz="mid"), P("A FEELING", R)]},
-    diagramB={"kind": "card", "sweep": True, "parts": [P("IT'S A"), P("CONCLUSION", Y)]}),
- sc("D21", "So if self-belief is built from evidence... where does all the evidence for self-doubt come from?", "S06",
-    moves=[mv("snap", "doubt", [0.62, 0.28, 1.4])]),
+ sc("D15", "I79", "hold", moves=[mv("snap", "time", [0.5, 0.5, 1.25], occ=2)],
+    overlays=[sb("BAD PLANNING", "bad", until="not", red=True), sb("NOT ENOUGH DISCIPLINE", "discipline", dur=2.2, red=True)]),
+ sc("D16", "S20", overlays=[pill("TIM PYCHYL", "psychologist", dur=3.0)], moves=[mv("snap", "different", [0.46, 0.4, 1.4])]),
+ sc("D17", None, "hold", swap={"word": "emotion"},
+    diagram={"kind": "card", "parts": [P("A"), P("TIME", R, slam=True), P("PROBLEM?", sz="mid")]},
+    diagramB={"kind": "card", "parts": [P("AN"), P("EMOTION", Y), P("PROBLEM", sz="mid")]}, fx=[{"type": "impact", "word": "emotion"}]),
+ sc("D18", None, "hold", overlays=[pill("SIROIS & PYCHYL (2013)", "psychologist", dur=3.0)],
+    diagram=split(["", "FEEL BETTER NOW"], ["FUTURE YOU", "PAYS"], {"left": W_("better"), "right": W_("expense"), "rack": W_("future")}, fs=88)),
+ sc("D19", "S06", moves=[mv("snap", "boring", [0.13, 0.5, 1.4]), mv("whip", "confusing", [0.27, 0.47, 1.4]), mv("whip", "scary", [0.43, 0.49, 1.4]), mv("zoom", "big", [0.3, 0.42, 1.15])]),
+ sc("D20", "S06", "zoom-out", ev=[icon("way", "I81")], moves=[mv("snap", "feeling", [0.7, 0.32, 1.4])]),
+ sc("D21", "S07", ev=[card("relief", [P("RELIEF", Y)], dur=1.7)], moves=[mv("snap", "avoid", [0.62, 0.45, 1.25]), mv("snap", "close", [0.66, 0.3, 1.4])],
+    overlays=[sweep("instantly", 0.5, 0.05, 0.4, 0.9)]),
+ sc("D22", None, "hold", diagram=loop([("BAD FEELING", W_("every")), ("AVOID", W_("avoid")), ("RELIEF", W_("better"))],
+    center={"t": "\"AVOIDING WORKS\"", "word": W_("avoiding")}, pulse=W_("faster"))),
+ sc("D23", None, "hold", swap={"word": "loop"},
+    diagram={"kind": "card", "parts": [P("NOT"), P("LAZY", R, slam=True)]}, diagramB={"kind": "card", "parts": [P("A"), P("LEARNED LOOP", Y)]}),
+ sc("D24", "S08", trans="push", overlays=[pill("HAL HERSHFIELD", "researcher", dur=3.0), sb("NOW", "now", until="ten"), sb("+10 YEARS", "ten", dur=2.4)],
+    moves=[mv("snap", "scanned", [0.7, 0.42, 1.4])]),
+ sc("D25", "S09", moves=[mv("snap", "people", [0.66, 0.36, 1.4]), mv("whip", "someone", [0.23, 0.45, 1.4])]),
+ sc("D26", "S10", moves=[mv("snap", "tomorrow", [0.22, 0.5, 1.4]), mv("whip", "someone", [0.64, 0.4, 1.4])],
+    overlays=[bub("I'LL DO IT TOMORROW", "tomorrow", 0.03, 0.06, 0.3, 0.16)]),
+ sc("D27", "S10", moves=[mv("snap", "motivated", [0.64, 0.38, 1.3])],
+    overlays=[sb("MORE MOTIVATED", "motivated", until="rested"), sb("MORE RESTED", "rested", until="organized"), sb("MORE ORGANIZED", "organized", dur=2.2)]),
+ sc("D28", "S10", pictureB="S10b", swap={"word": "turn"}, moves=[mv("snap", "until", [0.62, 0.4, 1.25])], fx=[{"type": "impact", "word": "you"}]),
+ sc("D29", None, "hold", swap={"word": "choosing"}, ev=[icon("bill", "I82")],
+    diagram={"kind": "card", "parts": [P("NOT"), P("LAZINESS", R, slam=True)]}, diagramB={"kind": "card", "parts": [P("FEEL BETTER"), P("NOW", Y)]}),
+ sc("D30", None, "hold", overlays=[pill("PIERS STEEL", "researcher", dur=2.8)],
+    diagram={"kind": "people", "rows": 4, "cols": 5, "redIdx": [2, 6, 13, 17], "label": "1 IN 5", "at": {"red": W_("one"), "label": W_("five"), "pulse": W_("alone")}}),
+ sc("D31", "S05", moves=[mv("snap", "stuck", [0.2, 0.66, 1.4])],
+    overlays=[sb("DAYS", "days", until="weeks"), sb("WEEKS", "weeks", until="years"), sb("YEARS", "years", dur=2.0)]),
 ]
 P3 = [
- sc("D22", "Bandura and the researchers who followed him point to a few main sources. Here are the four that show up the most.", "S20", "zoom-out",
-    host=[["N01"]]),
- sc("D23", "One. You don't have proof yet. This is the most common one, and the most fixable. If you've never done something, your brain has no evidence that you can. So it fills the gap with doubt.", "S08",
-    moves=[mv("snap", "never", [0.25, 0.5, 1.3]), mv("snap", "gap", [0.78, 0.42, 1.4])], overlays=[step("SOURCE 1", "NO PROOF YET", "one", dur=3.6)]),
- sc("D24", "The first time you drive, give a speech, or walk into a gym, your brain is basically guessing. And when it guesses, it guesses low, to keep you safe.", None, "hold",
-    host=[["N01"]], diagram={"kind": "irow", "items": [{"icon": "I77", "word": W_("drive")}, {"icon": "I71", "word": W_("speech")}, {"icon": "I78", "word": W_("gym")}],
-                             "under": {"html": 'YOUR BRAIN IS <span class="badge yellow">GUESSING</span>', "word": W_("guesses")}}),
- sc("D25", "That doesn't mean you can't do it. It means you haven't shown yourself yet. Your brain isn't saying \"you're bad at this.\" It's saying \"I have no idea.\"", None, "hold",
-    host=[["N06"], ["N05", "your"]], swap={"word": "idea"},
-    diagram={"kind": "card", "parts": [P("NOT"), P("\"YOU'RE BAD AT THIS\"", R, sz="mid")]},
-    diagramB={"kind": "card", "sweep": True, "parts": [P("\"I HAVE NO IDEA\"", Y, sz="mid")]}),
- sc("D26", "Two. You compare your inside to everyone else's outside.", "S09", "zoom-out",
-    moves=[mv("snap", "outside", [0.5, 0.3, 1.3])], overlays=[step("SOURCE 2", "UNFAIR COMPARISON", "two", dur=3.4)]),
- sc("D27", "Back in the nineteen-fifties, a psychologist named Leon Festinger pointed out that we figure out how good we are by comparing ourselves to other people.", "S20",
-    host=[["N01"]], trans="push", moves=[mv("snap", "festinger", [0.46, 0.45, 1.4])], overlays=[pill("LEON FESTINGER", "festinger", dur=3.0)]),
- sc("D28", "The problem is, today you're comparing yourself to millions of people... and only seeing their best moments. You see their finished painting, not the hundred bad ones before it. You see the gym photo, not the year of showing up tired. So your messy middle always looks worse than their highlight reel.", "S09", "pan-right",
-    ev=[card("messy", [("YOUR MIDDLE VS",), P("THEIR HIGHLIGHTS", Y, sz="mid")])],
-    moves=[mv("snap", "painting", [0.4, 0.35, 1.4]), mv("whip", "gym", [0.2, 0.4, 1.4]), mv("snap", "tired", [0.3, 0.85, 1.4])],
-    overlays=[sbadge("MILLIONS OF PEOPLE", "millions", dur=2.6)]),
- sc("D29", "Three. The critical voice is louder than the kind one.", "S10",
-    moves=[mv("snap", "louder", [0.66, 0.78, 1.4])], overlays=[step("SOURCE 3", "THE LOUDER VOICE", "three", dur=3.4)]),
- sc("D30", "In two thousand one, a group of researchers led by Roy Baumeister reviewed hundreds of studies and came to a simple conclusion. Bad is stronger than good.", "S20",
-    host=[["N02"]], ev=[card("stronger", [("BAD IS",), P("STRONGER", Y), ("THAN GOOD",)], dur=2.0)], overlays=[pill("ROY BAUMEISTER, 2001", "baumeister", dur=3.0)]),
- sc("D31", "One harsh comment sticks with you longer than ten compliments.", "S10",
-    moves=[mv("snap", "harsh", [0.66, 0.78, 1.4]), mv("whip", "ten", [0.3, 0.53, 1.4])]),
- sc("D32", "In another study, researchers at Harvard collected almost twelve thousand daily diary entries from people at work. A setback hit people's mood about two to three times harder than a step forward helped it.", None, "hold",
-    host=[["N01"], ["N02", "a"]],
-    diagram={"kind": "bars2", "bars": ["SETBACK", "STEP FORWARD"], "small": "Amabile & Kramer, Harvard", "at": {"count": W_("twelve"), "grow": W_("setback"), "badge": W_("two")}},
-    fx=[{"type": "impact", "word": "two"}]),
- sc("D33", "So if someone once told you that you weren't good at something, that one moment might still be louder than everything good anyone's said since.", "S06",
-    moves=[mv("snap", "someone", [0.62, 0.3, 1.3]), mv("snap", "louder", [0.62, 0.28, 1.4])]),
- sc("D34", "Four. You misread your own body. Before something big, your heart beats faster. Your hands shake a little. Your stomach drops.", "S11",
-    ev=[icon("stomach", "I75")], moves=[mv("snap", "heart", [0.53, 0.43, 1.4]), mv("whip", "hands", [0.52, 0.5, 1.4])], overlays=[step("SOURCE 4", "MISREAD NERVES", "four", dur=3.4)]),
- sc("D35", "And your brain takes that feeling as a message: \"See? You can't handle this.\" Bandura listed this as one of the main sources of self-doubt. People treat normal nerves as proof that they're not ready.", None, "hold",
-    host=[["N06"], ["N02", "bandura"]], ev=[pop("see", "N06", [("SEE?",), P("YOU CAN'T", Y)], dur=2.4)],
-    diagram=quad(Qpre, active={"idx": 3, "word": W_("bandura")})),
- sc("D36", "So put those four together. No proof yet. Unfair comparisons. A louder critical voice. And misread nerves. That's not the truth about who you are. That's just a lot of bad evidence.", None, "hold",
-    host=[["N02"], ["N06", "that's"]],
-    diagram={"kind": "list", "items": [{"t": "NO PROOF YET", "word": W_("proof")}, {"t": "UNFAIR COMPARISONS", "word": W_("unfair")}, {"t": "A LOUDER VOICE", "word": W_("louder")}, {"t": "MISREAD NERVES", "word": W_("misread")}],
-             "stamp": {"text": "BAD EVIDENCE", "word": W_("bad")}}),
- sc("D37", "And that's why \"just believe in yourself\" almost never works. You can't argue your brain out of something it thinks it has evidence for. But you can give it new evidence.", "S26", "zoom-out",
-    ev=[card("new", [("GIVE IT",), P("NEW EVIDENCE", Y)])], moves=[mv("snap", "believe", [0.3, 0.55, 1.4]), mv("zoom", "argue", FULL)]),
+ sc("D32", "I84", "hold", overlays=[sb("4 TRAPS", "four", dur=2.6)], moves=[mv("snap", "four", [0.5, 0.5, 1.2])]),
+ sc("D33", "S11", overlays=[step("TRAP 1", "TOO BIG & BLURRY", "one", dur=3.0),
+    pbadge("WORK ON THE PROJECT", "work", 0.42, 0.14, 0.42, 0.12), pbadge("GET IN SHAPE", "shape", 0.5, 0.36, 0.3, 0.12), pbadge("FIGURE OUT MY LIFE", "figure", 0.44, 0.58, 0.4, 0.12)]),
+ sc("D34", "S11", "zoom-out", moves=[mv("snap", "brain", [0.25, 0.6, 1.4]), mv("zoom", "giant", FULL)]),
+ sc("D35", "S20", trans="push", ev=[card("unpleasant", [("THE TASK FELT",), P("UNPLEASANT", Y)])],
+    overlays=[pill("SOLOMON & ROTHBLUM (1984)", "psychologists", dur=3.2)], moves=[mv("snap", "hundreds", [0.78, 0.45, 1.35])]),
+ sc("D36", "S11", moves=[mv("snap", "step", [0.24, 0.64, 1.4])]),
+ sc("D37", "S12", overlays=[step("TRAP 2", "A TEST OF YOU", "two", dur=3.0), sb("FEAR OF FAILURE", "fear", dur=2.4, red=True)],
+    moves=[mv("snap", "test", [0.8, 0.52, 1.4]), mv("zoom", "other", FULL)]),
+ sc("D38", None, "hold", diagram={"kind": "card", "parts": [P("NEVER START =", sz="mid"), P("NEVER FAIL", mk=True)]}),
+ sc("D39", "S12", moves=[mv("snap", "tell", [0.25, 0.42, 1.4])], overlays=[bub("I COULD HAVE DONE IT GREAT…", "could", 0.31, 0.03, 0.36, 0.17)]),
+ sc("D40", "S12", "zoom-out", ev=[pop("that's", "N06", [("CARE MOST =",), P("PUT OFF LONGEST", Y, sz="mid")], dur=2.8)],
+    moves=[mv("zoom", "delay", FULL), mv("snap", "finding", [0.25, 0.42, 1.3])]),
+ sc("D41", "S13", overlays=[step("TRAP 3", "THE REWARD IS FAR AWAY", "three", dur=3.0)],
+    moves=[mv("snap", "reward", [0.76, 0.32, 1.4]), mv("whip", "bad", [0.22, 0.28, 1.4])]),
+ sc("D42", None, "hold", diagram=bars3("HOW REAL IT FEELS", [{"label": "RIGHT NOW", "h": 1.0, "col": RED_}, {"label": "LATER", "h": 0.3, "col": SKY}], W_("wins"))),
+ sc("D43", None, "hold", ev=[icon("same", "I86")], fx=[{"type": "impact", "word": "emergency"}],
+    diagram=split(["DEADLINE IN 3 WEEKS", "NOTHING"], ["DEADLINE TOMORROW", "EMERGENCY"], {"left": W_("three"), "right": W_("tomorrow")}, fs=96, fs0=62, norack=True)),
+ sc("D44", "S14", overlays=[step("TRAP 4", "THE GUILT LOOP", "four", dur=3.0)], moves=[mv("snap", "bad", [0.5, 0.55, 1.25])]),
+ sc("D45", None, "hold", diagram=loop(GUILT, pulse=W_("more"))),
+ sc("D46", "S14", "zoom-out", moves=[mv("snap", "shame", [0.5, 0.32, 1.4]), mv("zoom", "standing", FULL)]),
+ sc("D47", None, "hold", diagram={"kind": "list", "items": [{"t": "TOO BLURRY", "word": W_("blurry")}, {"t": "A TEST", "word": W_("test")}, {"t": "TOO FAR AWAY", "word": W_("far")}, {"t": "THE GUILT LOOP", "word": W_("guilt")}]}),
+ sc("D48", "S15", moves=[mv("snap", "lazy", [0.4, 0.45, 1.15]), mv("snap", "protect", [0.3, 0.45, 1.4])], overlays=[circ("protect", 0.36, 0.52, 0.06, 0.15)]),
 ]
 P4 = [
- sc("D38", "So here's how I actually do that now. Five steps. One. Collect tiny proof. Remember the snake study. Nobody went from terrified to holding a snake in one jump.", "S24",
-    moves=[mv("snap", "nobody", [0.5, 0.8, 1.4]), mv("zoom", "terrified", FULL)], overlays=[step("STEP 1", "COLLECT TINY PROOF", "one", dur=3.4)]),
- sc("D39", "Pick something you doubt you can do, and break it into a step so small it's almost embarrassing. Then do that step. Then the next one. Every small step is one more piece of evidence for your brain.", "S24",
-    ev=[card("embarrassing", [("ALMOST",), P("EMBARRASSING", Y)]), icon("evidence", "I52")], moves=[mv("snap", "pick", [0.45, 0.85, 1.35]), mv("whip", "next", [0.5, 0.2, 1.4])]),
- sc("D40", "For this channel, my first step wasn't \"make a great video.\" It was \"record one minute and don't delete it.\"", "S05",
-    moves=[mv("snap", "great", [0.6, 0.3, 1.3]), mv("snap", "record", [0.43, 0.45, 1.4])], overlays=[sbadge("1 MINUTE. DON'T DELETE.", "record", dur=3.0)]),
- sc("D41", "In that diary study, the days people felt best weren't the days they did something huge. They were the days they made a little progress.", None, "hold",
-    host=[["N05"]], swap={"word": "little"},
-    diagram={"kind": "card", "parts": [P("BEST DAYS ≠", sz="mid"), P("HUGE WINS", R)]},
-    diagramB={"kind": "card", "sweep": True, "parts": [P("BEST DAYS =", sz="mid"), P("A LITTLE PROGRESS", Y, sz="mid")]}),
- sc("D42", "Two. Watch someone like you do it. Not the most famous person in the world. Someone a few steps ahead of you. Someone who started where you are.", "S12",
-    moves=[mv("snap", "ahead", [0.63, 0.35, 1.4]), mv("whip", "started", [0.35, 0.5, 1.4])], overlays=[step("STEP 2", "WATCH SOMEONE LIKE YOU", "two", dur=3.4)]),
- sc("D43", "Bandura found that seeing someone similar succeed is one of the strongest ways to build belief. Because your brain thinks, \"If they can, maybe I can.\"", None, "hold",
-    host=[["N06"]], ev=[card("if", [("IF THEY CAN,",), P("MAYBE I CAN", Y)], dur=2.2)],
-    diagram=quad(Qpre, active={"idx": 1, "word": W_("seeing")})),
- sc("D44", "Three. Talk to yourself by name. Psychologist Ethan Kross found that when people talked to themselves using their own name or \"you,\" instead of \"I,\" they felt less anxious and actually performed better under pressure.", "S26",
-    moves=[mv("snap", "kross", [0.62, 0.45, 1.25]), mv("snap", "own", [0.3, 0.55, 1.4]), mv("zoom", "anxious", FULL)],
-    overlays=[step("STEP 3", "TALK TO YOURSELF BY NAME", "three", dur=3.0), pill("ETHAN KROSS", "kross", dur=2.8)]),
- sc("D45", "So instead of \"I can't do this,\" try \"Luke, you've done hard things before. You can do this too.\" It sounds a little strange. But it gives you a bit of distance from the panic, like advice from a friend.", None, "hold",
-    host=[["N01"], ["N05", "it"]], swap={"word": "luke"}, ev=[pop("strange", "N05", [("LIKE A",), P("FRIEND", Y)], dur=2.4)],
-    diagram={"kind": "card", "parts": [P("\"I CAN'T DO THIS\"", R, sz="mid")]},
-    diagramB={"kind": "card", "parts": [P("\"LUKE,"), P("YOU CAN DO THIS\"", mk=True, sz="mid")]}),
- sc("D46", "Four. Rename the nerves. This is the two-second one. Before something scary, say out loud, \"I'm excited.\"", "S13",
-    ev=[icon("two", "I11")], moves=[mv("snap", "scary", [0.54, 0.3, 1.3]), mv("snap", "excited", [0.54, 0.25, 1.4])], overlays=[step("STEP 4", "RENAME THE NERVES", "four", dur=3.2)]),
- sc("D47", "A Harvard researcher named Alison Wood Brooks had people do stressful things like singing in front of others and giving a speech. The people who said \"I'm excited\" first did better than the people who tried to calm down.", "S28",
-    ev=[card("better", [("\"I'M EXCITED\"",), P("WINS", Y)])], moves=[mv("snap", "singing", [0.32, 0.45, 1.4]), mv("zoom", "giving", FULL)], overlays=[pill("ALISON WOOD BROOKS", "brooks", dur=3.0)]),
- sc("D48", "Because nerves and excitement feel almost the same in your body. You're just choosing which story your brain tells about it.", None, "hold",
-    host=[["N06"]], diagram={"kind": "split", "left": ["", "NERVES"], "right": ["", "EXCITEMENT"], "norack": True, "fs": 100, "at": {"left": W_("nerves"), "right": W_("excitement"), "sign": W_("same")}}),
- sc("D49", "Five. Keep a proof list. Get a note on your phone, and every time you do something you doubted you could do, write it down. Even small things. You spoke up in class. You finished the workout. You posted the video.", "S14",
-    moves=[mv("snap", "note", [0.5, 0.48, 1.4]), mv("zoom", "even", FULL)],
-    overlays=[step("STEP 5", "KEEP A PROOF LIST", "five", dur=3.2), pill("SPOKE UP ✓", "spoke", until="finished"), pill("FINISHED THE WORKOUT ✓", "finished", until="posted"), pill("POSTED THE VIDEO ✓", "posted", dur=2.4)]),
- sc("D50", "Then, the next time the voice says \"you can't,\" you open the list. It's a lot harder for your brain to argue with a receipt.", "I76", "hold",
-    host=[["N01"], ["N05", "it's"]], unroll={"word": "list", "from": 62}, overlays=[sbadge("ARGUE WITH A RECEIPT", "receipt", dur=2.6)]),
- sc("D51", "Here's what I keep coming back to. That little kid with the drawing didn't have more talent than you. They just didn't have any bad evidence yet. Nobody had told them it wasn't good enough. They hadn't compared it to anyone. They hadn't learned to read their nerves as a warning.", "S01",
-    trans="fade", moves=[mv("snap", "drawing", [0.64, 0.25, 1.4]), mv("zoom", "nobody", FULL), mv("snap", "compared", [0.5, 0.5, 1.3]), mv("zoom", "learned", FULL)], fx=[{"type": "leak", "word": "kid"}]),
- sc("D52", "Every confident person you've ever met was once a beginner with no proof at all.", "S12", "zoom-out", trans="fade"),
- sc("D53", "And the good news is, if self-doubt was learned... it can be unlearned. Not by pretending. By collecting new proof, one small step at a time. So find one thing you've been hiding until it's perfect. And show someone. Hold it up, like you used to.", "S15",
-    trans="iris", irisAt=[0.5, 0.35], moves=[mv("snap", "pretending", [0.5, 0.45, 1.3]), mv("zoom", "collecting", FULL), mv("snap", "hiding", [0.5, 0.4, 1.3]), mv("zoom", "show", FULL), mv("snap", "hold", [0.62, 0.25, 1.4])],
-    overlays=[{"type": "sweep", "word": "hold", "box": {"x": 0.55, "y": 0.04, "w": 0.2, "h": 0.42}}]),
- sc("D54", "What's one thing you doubted you could do, that you ended up doing anyway? Tell me in the comments. It might be exactly the proof someone else needs. And if your doubt is really about what other people will think, I made a whole video on why they're barely watching. I'll leave it right here.", "S29", "hold",
-    ev=[pop("doubted", "N06", [P("YOUR PROOF?", Y)], dur=2.2)], holdEnd=True),
+ sc("D49", None, "hold", diagram={"kind": "card", "parts": [P("5", Y), P("STEPS")]}),
+ sc("D50", "S01", ev=[icon("shoes", "I85")], overlays=[step("STEP 1", "SHRINK IT", "one", dur=3.0)], moves=[mv("snap", "document", [0.3, 0.45, 1.4])]),
+ sc("D51", "S01", moves=[mv("snap", "small", [0.32, 0.42, 1.35]), mv("zoom", "for", FULL)], overlays=[sb("WRITE THE FIRST LINE", "line", dur=2.2)]),
+ sc("D52", None, "hold", diagram={"kind": "card", "parts": [P("STARTING IS THE", sz="mid"), P("HEAVIEST", mk=True), P("PART", sz="mid")]}),
+ sc("D53", "S20", overlays=[step("STEP 2", "IF-THEN PLAN", "two", dur=2.4), pill("PETER GOLLWITZER", "psychologist", dur=3.0)], moves=[mv("snap", "exactly", [0.46, 0.4, 1.4])]),
+ sc("D54", None, "hold", swap={"word": "then"},
+    diagram={"kind": "card", "parts": [P("IF IT'S"), P("7:00…", Y)]}, diagramB={"kind": "card", "parts": [P("…THEN I OPEN", sz="mid"), P("MY NOTES", Y)]}),
+ sc("D55", None, "hold", overlays=[pill("GOLLWITZER & SHEERAN (2006)", "researchers", dur=3.0)], fx=[{"type": "impact", "word": "goals"}],
+    diagram={"kind": "dots", "n": 94, "text": "STUDIES", "badge": {"t": "MEDIUM-TO-LARGE EFFECT", "word": W_("effect")}, "at": {"count": W_("combined")}}),
+ sc("D56", "S01", "zoom-out", moves=[mv("snap", "show", [0.55, 0.42, 1.3])]),
+ sc("D57", "S16", overlays=[step("STEP 3", "MEET FUTURE YOU", "three", dur=3.0)], moves=[mv("snap", "pictures", [0.6, 0.38, 1.4])]),
+ sc("D58", None, "hold", fx=[{"type": "impact", "word": "twice"}],
+    diagram=bars3("PUT AWAY FOR THE FUTURE", [{"label": "SAW THEIR FACE TODAY", "h": 0.45, "col": SKY, "val": "1×"}, {"label": "SAW THEIR OLDER FACE", "h": 0.9, "col": SAGE, "val": "2×"}], W_("willing"))),
+ sc("D59", "S16", moves=[mv("snap", "ask", [0.44, 0.3, 1.4])], overlays=[bub("HOW WILL TOMORROW-ME FEEL?", "how", 0.08, 0.05, 0.3, 0.18)]),
+ sc("D60", "S09", trans="fade", moves=[mv("snap", "just", [0.24, 0.45, 1.3])]),
+ sc("D61", "S17", ev=[icon("draft", "I87")], overlays=[step("STEP 4", "DO IT BADLY", "four", dur=3.0)], moves=[mv("snap", "permission", [0.46, 0.7, 1.35])]),
+ sc("D62", None, "hold", diagram=split(["A ROUGH DRAFT", "FIXABLE"], ["PERFECT IN YOUR HEAD", "STUCK"], {"left": W_("fix"), "right": W_("perfect"), "rack": W_("can't")}, fs=100, fs0=62)),
+ sc("D63", "S17", "zoom-out", moves=[mv("snap", "messy", [0.4, 0.35, 1.35]), mv("zoom", "allowed", FULL)], overlays=[sweep("allowed", 0.2, 0.05, 0.5, 0.9)]),
+ sc("D64", "S18", overlays=[step("STEP 5", "FORGIVE YOURSELF", "five", dur=3.0)], moves=[mv("snap", "forgive", [0.5, 0.55, 1.3])]),
+ sc("D65", "S04", trans="push", overlays=[pill("CARLETON UNIVERSITY", "researchers", dur=2.6), sb("134 STUDENTS", "students", dur=2.4)], moves=[mv("snap", "exams", [0.75, 0.48, 1.3])]),
+ sc("D66", None, "hold", diagram=bars3("PROCRASTINATION BEFORE EXAM 2", [{"label": "DIDN'T FORGIVE THEMSELVES", "h": 0.85, "col": RED_}, {"label": "FORGAVE THEMSELVES", "h": 0.4, "col": SAGE}], W_("forgave"),
+    badge={"t": "LESS", "word": W_("less"), "top": 300})),
+ sc("D67", None, "hold", diagram=loop([(t, None) for t, _ in GUILT], pre=True, brk=W_("breaks"))),
+ sc("D68", "S18", moves=[mv("snap", "catch", [0.5, 0.55, 1.3]), mv("zoom", "say", FULL)],
+    overlays=[sb("LAZY", "lazy", dur=1.6, red=True), bub("WHAT'S THE SMALLEST NEXT STEP?", "what's", 0.04, 0.05, 0.4, 0.17)]),
+ sc("D69", "S05", trans="fade", ev=[card("lot", [("YOU",), P("CARE A LOT", Y)])], moves=[mv("snap", "care", [0.2, 0.66, 1.4]), mv("zoom", "enough", FULL)]),
+ sc("D70", "S15", overlays=[sweep("protecting", 0.15, 0.25, 0.3, 0.55)], moves=[mv("snap", "brain", [0.3, 0.42, 1.3])]),
+ sc("D71", "S19", trans="iris", irisAt=[0.43, 0.6], moves=[mv("snap", "step", [0.43, 0.58, 1.4])]),
+ sc("D72", "S19", "zoom-out", overlays=[sweep("today", 0.3, 0.45, 0.3, 0.3)], moves=[mv("snap", "smallest", [0.5, 0.45, 1.25]), mv("zoom", "future", FULL)]),
+ sc("D73", "S29", "hold", ev=[pop("what's", "N06", [("YOUR",), P("ONE THING?", Y)], dur=2.4)], holdEnd=True),
 ]
 for n, sc_ in ((1, P1), (2, P2), (3, P3), (4, P4)):
     os.makedirs("scenes", exist_ok=True)
     json.dump({"part": n, "audio": f"audio/padded/part{n}.wav", "scenes": sc_}, open(f"scenes/part{n}.json", "w"), indent=1)
 FOCI = {
- "S01": [[.64, .25, 1.4], [.5, .5, 1.3]], "S02": [[.5, .4, 1.35]], "S03": [[.62, .5, 1.3], [.5, .55, 1.3]], "S04": [[.38, .8, 1.4], [.62, .5, 1.3]],
- "S05": [[.6, .3, 1.3], [.43, .5, 1.4]], "S06": [[.62, .3, 1.4], [.4, .55, 1.3]], "S07": [[.17, .55, 1.4], [.42, .6, 1.4], [.6, .45, 1.4]], "S07b": [[.2, .45, 1.4], [.8, .55, 1.3]],
- "S08": [[.25, .5, 1.3], [.78, .42, 1.4]], "S09": [[.2, .4, 1.4], [.4, .35, 1.4], [.55, .65, 1.3]], "S10": [[.66, .78, 1.4], [.3, .53, 1.4]], "S11": [[.53, .43, 1.4], [.52, .5, 1.4]],
- "S12": [[.63, .35, 1.4], [.35, .5, 1.4]], "S13": [[.54, .3, 1.4]], "S14": [[.5, .48, 1.4], [.56, .3, 1.3]], "S15": [[.62, .25, 1.4], [.5, .5, 1.3]],
- "S20": [[.46, .45, 1.4], [.78, .45, 1.3]], "S24": [[.5, .8, 1.4], [.5, .25, 1.3]], "S26": [[.3, .55, 1.4], [.62, .45, 1.25]], "S28": [[.32, .45, 1.4]], "S29": [[.7, .5, 1.2]],
+ "S01": [[.6, .27, 1.4], [.3, .45, 1.35]], "S02": [[.62, .28, 1.35], [.66, .68, 1.4]], "S03": [[.7, .52, 1.4], [.33, .6, 1.4]],
+ "S04": [[.27, .66, 1.4], [.75, .48, 1.35]], "S04b": [[.36, .52, 1.35], [.85, .55, 1.3]], "S05": [[.6, .28, 1.35], [.2, .66, 1.4]],
+ "S06": [[.7, .32, 1.4], [.28, .45, 1.3]], "S07": [[.66, .3, 1.4], [.4, .55, 1.3]], "S08": [[.7, .42, 1.4], [.3, .5, 1.35]],
+ "S09": [[.66, .36, 1.4], [.23, .45, 1.4]], "S10": [[.22, .5, 1.4], [.64, .4, 1.4]], "S10b": [[.78, .45, 1.35]], "S11": [[.25, .6, 1.4], [.55, .4, 1.2]],
+ "S12": [[.25, .42, 1.4], [.8, .52, 1.4]], "S13": [[.2, .45, 1.4], [.76, .32, 1.4]], "S14": [[.5, .4, 1.35], [.5, .58, 1.2]],
+ "S15": [[.3, .45, 1.4], [.62, .42, 1.25]], "S16": [[.6, .38, 1.4], [.44, .3, 1.4]], "S17": [[.4, .35, 1.35], [.46, .72, 1.35]],
+ "S18": [[.5, .55, 1.3], [.62, .3, 1.35]], "S19": [[.43, .58, 1.4], [.6, .28, 1.35]], "S20": [[.46, .42, 1.4], [.78, .45, 1.3]],
+ "S29": [[.75, .5, 1.2]], "I79": [[.5, .5, 1.2]], "I81": [[.5, .5, 1.2]], "I84": [[.5, .5, 1.2]],
 }
 json.dump(FOCI, open("scenes/foci.json", "w"))
 print("specs written", sum(len(x) for x in (P1, P2, P3, P4)), "scenes")

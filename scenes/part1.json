@@ -1,0 +1,599 @@
+{
+ "part": 1,
+ "audio": "audio/padded/part1.wav",
+ "scenes": [
+  {
+   "id": "D01",
+   "camera": "zoom-in",
+   "narration": "It's nine at night. You have one thing to do. One.",
+   "events": [],
+   "picture": "S01",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "nine",
+     "occ": 1,
+     "f": [
+      0.42,
+      0.16,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "thing",
+     "occ": 1,
+     "f": [
+      0.32,
+      0.34,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D02",
+   "camera": "zoom-in",
+   "narration": "So you sit down... and decide your desk is too messy to work at. So you clean the desk.",
+   "events": [],
+   "picture": "S02",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "decide",
+     "occ": 1,
+     "f": [
+      0.62,
+      0.3,
+      1.3
+     ]
+    },
+    {
+     "kind": "snap",
+     "word": "clean",
+     "occ": 1,
+     "f": [
+      0.62,
+      0.55,
+      1.25
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D03",
+   "camera": "zoom-out",
+   "narration": "Then you reply to a few messages. Then you watch a video. Maybe even a video about how to stop procrastinating.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I80",
+     "word": "messages",
+     "occ": 1,
+     "dur": 1.8
+    },
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "HOW TO STOP"
+      },
+      {
+       "t": "PROCRASTINATING",
+       "badge": "yellow",
+       "sz": "mid"
+      }
+     ],
+     "word": "procrastinating",
+     "occ": 1,
+     "dur": 1.9
+    }
+   ],
+   "picture": "S02",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "video",
+     "occ": 1,
+     "f": [
+      0.62,
+      0.28,
+      1.35
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D04",
+   "camera": "zoom-in",
+   "narration": "And by midnight, the one thing still isn't done. So you lie in bed thinking, \"What is wrong with me? Why am I so lazy?\"",
+   "events": [],
+   "picture": "S03",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "thing",
+     "occ": 1,
+     "f": [
+      0.4,
+      0.6,
+      1.3
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "lie",
+     "occ": 1,
+     "f": [
+      0.7,
+      0.52,
+      1.4
+     ]
+    },
+    {
+     "kind": "zoom",
+     "word": "thinking",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.5,
+      1
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "bubble",
+     "text": "WHAT IS WRONG WITH ME?",
+     "word": "wrong",
+     "box": {
+      "x": 0.42,
+      "y": 0.05,
+      "w": 0.38,
+      "h": 0.15
+     }
+    },
+    {
+     "type": "bubble",
+     "text": "WHY AM I SO LAZY?",
+     "word": "lazy",
+     "box": {
+      "x": 0.45,
+      "y": 0.25,
+      "w": 0.3,
+      "h": 0.14
+     }
+    }
+   ]
+  },
+  {
+   "id": "D05",
+   "camera": "zoom-in",
+   "narration": "Here's the thing. In the nineteen-nineties, two psychologists followed a group of college students through an entire semester.",
+   "events": [],
+   "picture": "S04",
+   "host": [
+    [
+     "N02"
+    ]
+   ],
+   "trans": "push",
+   "overlays": [
+    {
+     "type": "pill",
+     "text": "TICE & BAUMEISTER (1997)",
+     "word": "psychologists",
+     "occ": 1,
+     "until": null,
+     "dur": 3.2
+    }
+   ]
+  },
+  {
+   "id": "D06",
+   "camera": "zoom-in",
+   "narration": "And early on, the procrastinators were actually doing better. Less stress. Fewer health problems. They were relaxed, while everyone else was rushing.",
+   "events": [],
+   "picture": "S04",
+   "host": [
+    [
+     "N06"
+    ]
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "procrastinators",
+     "occ": 1,
+     "f": [
+      0.27,
+      0.66,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "rushing",
+     "occ": 1,
+     "f": [
+      0.75,
+      0.48,
+      1.35
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "sbadge",
+     "text": "LESS STRESS",
+     "word": "less",
+     "occ": 1,
+     "until": "fewer",
+     "dur": 2.6,
+     "red": false
+    },
+    {
+     "type": "sbadge",
+     "text": "FEWER HEALTH PROBLEMS",
+     "word": "fewer",
+     "occ": 1,
+     "until": null,
+     "dur": 2.4,
+     "red": false
+    }
+   ]
+  },
+  {
+   "id": "D07",
+   "camera": "zoom-in",
+   "narration": "But by the end of the semester, everything flipped. The procrastinators were more stressed, they got sick more often, and they got lower grades on every single assignment.",
+   "events": [],
+   "picture": "S04",
+   "host": [
+    [
+     "N02"
+    ]
+   ],
+   "pictureB": "S04b",
+   "swap": {
+    "word": "flipped"
+   },
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "stressed",
+     "occ": 1,
+     "f": [
+      0.36,
+      0.52,
+      1.35
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "sbadge",
+     "text": "MORE STRESS",
+     "word": "stressed",
+     "occ": 1,
+     "until": "sick",
+     "dur": 2.6,
+     "red": true
+    },
+    {
+     "type": "sbadge",
+     "text": "SICKER",
+     "word": "sick",
+     "occ": 1,
+     "until": "grades",
+     "dur": 2.6,
+     "red": true
+    },
+    {
+     "type": "sbadge",
+     "text": "LOWER GRADES",
+     "word": "grades",
+     "occ": 1,
+     "until": null,
+     "dur": 2.4,
+     "red": true
+    }
+   ]
+  },
+  {
+   "id": "D08",
+   "camera": "hold",
+   "narration": "They hadn't avoided the stress. They had just borrowed it... from their future selves.",
+   "events": [
+    {
+     "kind": "title",
+     "dur": 2.5,
+     "pill": "LESSON",
+     "l1": "PSYCHOLOGY OF",
+     "l2": "PROCRASTINATION"
+    }
+   ],
+   "host": [
+    [
+     "N02"
+    ],
+    [
+     "N06",
+     "they",
+     2
+    ]
+   ],
+   "diagram": {
+    "kind": "lines2",
+    "title": "STRESS OVER THE TERM",
+    "xl": "START",
+    "xr": "END OF TERM",
+    "pathA": "M260 520 C 700 515, 1200 525, 1660 520",
+    "pathB": "M260 800 C 900 790, 1250 520, 1660 190",
+    "labA": {
+     "t": "EVERYONE ELSE",
+     "x": 300,
+     "y": 430
+    },
+    "labB": {
+     "t": "PROCRASTINATORS",
+     "x": 300,
+     "y": 815
+    },
+    "tags": [
+     {
+      "t": "BORROWED",
+      "word": {
+       "word": "borrowed",
+       "occ": 1
+      },
+      "x": 1240,
+      "y": 250
+     }
+    ],
+    "at": {
+     "draw": {
+      "word": "avoided",
+      "occ": 1
+     }
+    }
+   },
+   "fx": [
+    {
+     "type": "riser",
+     "word": "avoided"
+    },
+    {
+     "type": "impact",
+     "word": "future"
+    }
+   ]
+  },
+  {
+   "id": "D09",
+   "camera": "zoom-in",
+   "narration": "I know this one really well. I had the idea for this video over a week ago.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I83",
+     "word": "week",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "picture": "S05",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "idea",
+     "occ": 1,
+     "f": [
+      0.2,
+      0.66,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D10",
+   "camera": "zoom-in",
+   "narration": "And in that week, I reorganized every folder on my computer, I watched four videos about other people's productivity systems, and I made a to-do list... for my to-do list.",
+   "events": [],
+   "picture": "S05",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "folder",
+     "occ": 1,
+     "f": [
+      0.3,
+      0.27,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "videos",
+     "occ": 1,
+     "f": [
+      0.3,
+      0.44,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "made",
+     "occ": 1,
+     "f": [
+      0.46,
+      0.42,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D11",
+   "camera": "zoom-out",
+   "narration": "Then I made a thumbnail for a video I hadn't even written yet. And the strange part is, I wasn't being lazy. I was working really hard. Just on everything except the one thing that mattered.",
+   "events": [
+    {
+     "kind": "pop",
+     "pose": "N10",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "NO SCRIPT"
+       },
+       {
+        "t": "YET",
+        "badge": "yellow"
+       }
+      ]
+     },
+     "word": "thumbnail",
+     "occ": 1,
+     "dur": 2.4
+    }
+   ],
+   "picture": "S05",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "lazy",
+     "occ": 1,
+     "f": [
+      0.62,
+      0.3,
+      1.35
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "working",
+     "occ": 1,
+     "f": [
+      0.4,
+      0.45,
+      1.3
+     ]
+    },
+    {
+     "kind": "snap",
+     "word": "except",
+     "occ": 1,
+     "f": [
+      0.22,
+      0.64,
+      1.4
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "circle",
+     "word": "except",
+     "cx": 0.19,
+     "cy": 0.69,
+     "rx": 0.11,
+     "ry": 0.09
+    }
+   ]
+  },
+  {
+   "id": "D12",
+   "camera": "hold",
+   "narration": "So why do we do this? Why does your brain run from the exact things you care about most?",
+   "events": [],
+   "picture": "I81",
+   "host": [
+    [
+     "N06"
+    ]
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "run",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.5,
+      1.25
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D13",
+   "camera": "hold",
+   "narration": "By the end of this video, you'll know what procrastination really is, the four traps that keep you stuck, and five research-backed ways to finally get started.",
+   "events": [],
+   "host": [
+    [
+     "N01"
+    ]
+   ],
+   "diagram": {
+    "kind": "irow",
+    "items": [
+     {
+      "icon": "I88",
+      "label": "WHAT IT REALLY IS",
+      "word": {
+       "word": "know",
+       "occ": 1
+      }
+     },
+     {
+      "icon": "I84",
+      "label": "4 TRAPS",
+      "word": {
+       "word": "four",
+       "occ": 1
+      }
+     },
+     {
+      "icon": "I85",
+      "label": "5 WAYS TO START",
+      "word": {
+       "word": "five",
+       "occ": 1
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": "D14",
+   "camera": "hold",
+   "narration": "And the last one is the opposite of what most people do. It's the one that surprised me the most.",
+   "events": [],
+   "host": [
+    [
+     "N01"
+    ]
+   ],
+   "diagram": {
+    "kind": "card",
+    "parts": [
+     {
+      "t": "THE"
+     },
+     {
+      "t": "OPPOSITE",
+      "mk": true
+     },
+     {
+      "t": "OF WHAT MOST PEOPLE DO",
+      "small": true
+     }
+    ]
+   }
+  }
+ ]
+}

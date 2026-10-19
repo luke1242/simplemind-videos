@@ -1,0 +1,753 @@
+{
+ "part": 2,
+ "audio": "audio/padded/part2.wav",
+ "scenes": [
+  {
+   "id": "D15",
+   "camera": "hold",
+   "narration": "For a long time, people thought procrastination was a time problem. Bad planning. Not enough discipline.",
+   "events": [],
+   "picture": "I79",
+   "host": [
+    [
+     "N01"
+    ]
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "time",
+     "occ": 2,
+     "f": [
+      0.5,
+      0.5,
+      1.25
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "sbadge",
+     "text": "BAD PLANNING",
+     "word": "bad",
+     "occ": 1,
+     "until": "not",
+     "dur": 2.6,
+     "red": true
+    },
+    {
+     "type": "sbadge",
+     "text": "NOT ENOUGH DISCIPLINE",
+     "word": "discipline",
+     "occ": 1,
+     "until": null,
+     "dur": 2.2,
+     "red": true
+    }
+   ]
+  },
+  {
+   "id": "D16",
+   "camera": "zoom-in",
+   "narration": "But psychologist Tim Pychyl has studied procrastination for decades, and he says something different.",
+   "events": [],
+   "picture": "S20",
+   "host": [
+    [
+     "N06"
+    ]
+   ],
+   "overlays": [
+    {
+     "type": "pill",
+     "text": "TIM PYCHYL",
+     "word": "psychologist",
+     "occ": 1,
+     "until": null,
+     "dur": 3.0
+    }
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "different",
+     "occ": 1,
+     "f": [
+      0.46,
+      0.4,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D17",
+   "camera": "hold",
+   "narration": "Procrastination isn't a time management problem. It's an emotion management problem.",
+   "events": [],
+   "host": [
+    [
+     "N02"
+    ]
+   ],
+   "swap": {
+    "word": "emotion"
+   },
+   "diagram": {
+    "kind": "card",
+    "parts": [
+     {
+      "t": "A"
+     },
+     {
+      "t": "TIME",
+      "badge": "red",
+      "slam": true
+     },
+     {
+      "t": "PROBLEM?",
+      "sz": "mid"
+     }
+    ]
+   },
+   "diagramB": {
+    "kind": "card",
+    "parts": [
+     {
+      "t": "AN"
+     },
+     {
+      "t": "EMOTION",
+      "badge": "yellow"
+     },
+     {
+      "t": "PROBLEM",
+      "sz": "mid"
+     }
+    ]
+   },
+   "fx": [
+    {
+     "type": "impact",
+     "word": "emotion"
+    }
+   ]
+  },
+  {
+   "id": "D18",
+   "camera": "hold",
+   "narration": "In two thousand thirteen, he and psychologist Fuschia Sirois described it as choosing to feel better right now, at the expense of your future self.",
+   "events": [],
+   "host": [
+    [
+     "N06"
+    ]
+   ],
+   "overlays": [
+    {
+     "type": "pill",
+     "text": "SIROIS & PYCHYL (2013)",
+     "word": "psychologist",
+     "occ": 1,
+     "until": null,
+     "dur": 3.0
+    }
+   ],
+   "diagram": {
+    "kind": "split",
+    "left": [
+     "",
+     "FEEL BETTER NOW"
+    ],
+    "right": [
+     "FUTURE YOU",
+     "PAYS"
+    ],
+    "at": {
+     "left": {
+      "word": "better",
+      "occ": 1
+     },
+     "right": {
+      "word": "expense",
+      "occ": 1
+     },
+     "rack": {
+      "word": "future",
+      "occ": 1
+     }
+    },
+    "fs": 88
+   }
+  },
+  {
+   "id": "D19",
+   "camera": "zoom-in",
+   "narration": "Think about how a task makes you feel. Boring. Confusing. Scary. Too big.",
+   "events": [],
+   "picture": "S06",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "boring",
+     "occ": 1,
+     "f": [
+      0.13,
+      0.5,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "confusing",
+     "occ": 1,
+     "f": [
+      0.27,
+      0.47,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "scary",
+     "occ": 1,
+     "f": [
+      0.43,
+      0.49,
+      1.4
+     ]
+    },
+    {
+     "kind": "zoom",
+     "word": "big",
+     "occ": 1,
+     "f": [
+      0.3,
+      0.42,
+      1.15
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D20",
+   "camera": "zoom-out",
+   "narration": "Your brain doesn't like that feeling. So it looks for a way out.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I81",
+     "word": "way",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "picture": "S06",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "feeling",
+     "occ": 1,
+     "f": [
+      0.7,
+      0.32,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D21",
+   "camera": "zoom-in",
+   "narration": "And the second you avoid the task, you get a little reward. Relief. Close the laptop, and the bad feeling is gone. Instantly.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "RELIEF",
+       "badge": "yellow"
+      }
+     ],
+     "word": "relief",
+     "occ": 1,
+     "dur": 1.7
+    }
+   ],
+   "picture": "S07",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "avoid",
+     "occ": 1,
+     "f": [
+      0.62,
+      0.45,
+      1.25
+     ]
+    },
+    {
+     "kind": "snap",
+     "word": "close",
+     "occ": 1,
+     "f": [
+      0.66,
+      0.3,
+      1.4
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "sweep",
+     "word": "instantly",
+     "box": {
+      "x": 0.5,
+      "y": 0.05,
+      "w": 0.4,
+      "h": 0.9
+     }
+    }
+   ]
+  },
+  {
+   "id": "D22",
+   "camera": "hold",
+   "narration": "And your brain remembers that. Every time you avoid something hard and feel better, your brain learns, \"Avoiding works.\" So the next time, it reaches for that escape even faster.",
+   "events": [],
+   "host": [
+    [
+     "N02"
+    ],
+    [
+     "N06",
+     "so"
+    ]
+   ],
+   "diagram": {
+    "kind": "loop",
+    "nodes": [
+     {
+      "t": "BAD FEELING",
+      "word": {
+       "word": "every",
+       "occ": 1
+      }
+     },
+     {
+      "t": "AVOID",
+      "word": {
+       "word": "avoid",
+       "occ": 1
+      }
+     },
+     {
+      "t": "RELIEF",
+      "word": {
+       "word": "better",
+       "occ": 1
+      }
+     }
+    ],
+    "center": {
+     "t": "\"AVOIDING WORKS\"",
+     "word": {
+      "word": "avoiding",
+      "occ": 1
+     }
+    },
+    "pulse": {
+     "word": "faster",
+     "occ": 1
+    }
+   }
+  },
+  {
+   "id": "D23",
+   "camera": "hold",
+   "narration": "That's why procrastination can feel almost automatic. You're not deciding to be lazy. You're following a loop your brain learned to keep you comfortable.",
+   "events": [],
+   "host": [
+    [
+     "N02"
+    ],
+    [
+     "N06",
+     "you're",
+     2
+    ]
+   ],
+   "swap": {
+    "word": "loop"
+   },
+   "diagram": {
+    "kind": "card",
+    "parts": [
+     {
+      "t": "NOT"
+     },
+     {
+      "t": "LAZY",
+      "badge": "red",
+      "slam": true
+     }
+    ]
+   },
+   "diagramB": {
+    "kind": "card",
+    "parts": [
+     {
+      "t": "A"
+     },
+     {
+      "t": "LEARNED LOOP",
+      "badge": "yellow"
+     }
+    ]
+   }
+  },
+  {
+   "id": "D24",
+   "camera": "zoom-in",
+   "narration": "And there's another piece to this. In two thousand nine, researcher Hal Hershfield and his team scanned people's brains while they thought about themselves now, and themselves ten years in the future.",
+   "events": [],
+   "picture": "S08",
+   "host": [
+    [
+     "N01"
+    ]
+   ],
+   "trans": "push",
+   "overlays": [
+    {
+     "type": "pill",
+     "text": "HAL HERSHFIELD",
+     "word": "researcher",
+     "occ": 1,
+     "until": null,
+     "dur": 3.0
+    },
+    {
+     "type": "sbadge",
+     "text": "NOW",
+     "word": "now",
+     "occ": 1,
+     "until": "ten",
+     "dur": 2.6,
+     "red": false
+    },
+    {
+     "type": "sbadge",
+     "text": "+10 YEARS",
+     "word": "ten",
+     "occ": 1,
+     "until": null,
+     "dur": 2.4,
+     "red": false
+    }
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "scanned",
+     "occ": 1,
+     "f": [
+      0.7,
+      0.42,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D25",
+   "camera": "zoom-in",
+   "narration": "When people thought about their future selves, their brain activity looked less like thinking about themselves... and more like thinking about someone else.",
+   "events": [],
+   "picture": "S09",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "people",
+     "occ": 1,
+     "f": [
+      0.66,
+      0.36,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "someone",
+     "occ": 1,
+     "f": [
+      0.23,
+      0.45,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D26",
+   "camera": "zoom-in",
+   "narration": "So when you say, \"I'll do it tomorrow,\" part of your brain hears, \"Someone else will do it.\"",
+   "events": [],
+   "picture": "S10",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "tomorrow",
+     "occ": 1,
+     "f": [
+      0.22,
+      0.5,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "someone",
+     "occ": 1,
+     "f": [
+      0.64,
+      0.4,
+      1.4
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "bubble",
+     "text": "I'LL DO IT TOMORROW",
+     "word": "tomorrow",
+     "box": {
+      "x": 0.03,
+      "y": 0.06,
+      "w": 0.3,
+      "h": 0.16
+     }
+    }
+   ]
+  },
+  {
+   "id": "D27",
+   "camera": "zoom-in",
+   "narration": "And that someone else is always more motivated, more rested, and more organized than you.",
+   "events": [],
+   "picture": "S10",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "motivated",
+     "occ": 1,
+     "f": [
+      0.64,
+      0.38,
+      1.3
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "sbadge",
+     "text": "MORE MOTIVATED",
+     "word": "motivated",
+     "occ": 1,
+     "until": "rested",
+     "dur": 2.6,
+     "red": false
+    },
+    {
+     "type": "sbadge",
+     "text": "MORE RESTED",
+     "word": "rested",
+     "occ": 1,
+     "until": "organized",
+     "dur": 2.6,
+     "red": false
+    },
+    {
+     "type": "sbadge",
+     "text": "MORE ORGANIZED",
+     "word": "organized",
+     "occ": 1,
+     "until": null,
+     "dur": 2.2,
+     "red": false
+    }
+   ]
+  },
+  {
+   "id": "D28",
+   "camera": "zoom-in",
+   "narration": "Until tomorrow comes. And they turn out to be you.",
+   "events": [],
+   "picture": "S10",
+   "pictureB": "S10b",
+   "swap": {
+    "word": "turn"
+   },
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "until",
+     "occ": 1,
+     "f": [
+      0.62,
+      0.4,
+      1.25
+     ]
+    }
+   ],
+   "fx": [
+    {
+     "type": "impact",
+     "word": "you"
+    }
+   ]
+  },
+  {
+   "id": "D29",
+   "camera": "hold",
+   "narration": "So put it together. Procrastination isn't laziness. It's your brain choosing to feel better now, and sending the bill to a version of you it doesn't really see as you.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I82",
+     "word": "bill",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "host": [
+    [
+     "N06"
+    ]
+   ],
+   "swap": {
+    "word": "choosing"
+   },
+   "diagram": {
+    "kind": "card",
+    "parts": [
+     {
+      "t": "NOT"
+     },
+     {
+      "t": "LAZINESS",
+      "badge": "red",
+      "slam": true
+     }
+    ]
+   },
+   "diagramB": {
+    "kind": "card",
+    "parts": [
+     {
+      "t": "FEEL BETTER"
+     },
+     {
+      "t": "NOW",
+      "badge": "yellow"
+     }
+    ]
+   }
+  },
+  {
+   "id": "D30",
+   "camera": "hold",
+   "narration": "Researcher Piers Steel estimates that somewhere around one in five adults are chronic procrastinators. So if this sounds like you, you're definitely not alone.",
+   "events": [],
+   "host": [
+    [
+     "N01"
+    ]
+   ],
+   "overlays": [
+    {
+     "type": "pill",
+     "text": "PIERS STEEL",
+     "word": "researcher",
+     "occ": 1,
+     "until": null,
+     "dur": 2.8
+    }
+   ],
+   "diagram": {
+    "kind": "people",
+    "rows": 4,
+    "cols": 5,
+    "redIdx": [
+     2,
+     6,
+     13,
+     17
+    ],
+    "label": "1 IN 5",
+    "at": {
+     "red": {
+      "word": "one",
+      "occ": 1
+     },
+     "label": {
+      "word": "five",
+      "occ": 1
+     },
+     "pulse": {
+      "word": "alone",
+      "occ": 1
+     }
+    }
+   }
+  },
+  {
+   "id": "D31",
+   "camera": "zoom-in",
+   "narration": "But why does it get so stuck? Why do some tasks sit there for days, or weeks, or even years?",
+   "events": [],
+   "picture": "S05",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "stuck",
+     "occ": 1,
+     "f": [
+      0.2,
+      0.66,
+      1.4
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "sbadge",
+     "text": "DAYS",
+     "word": "days",
+     "occ": 1,
+     "until": "weeks",
+     "dur": 2.6,
+     "red": false
+    },
+    {
+     "type": "sbadge",
+     "text": "WEEKS",
+     "word": "weeks",
+     "occ": 1,
+     "until": "years",
+     "dur": 2.6,
+     "red": false
+    },
+    {
+     "type": "sbadge",
+     "text": "YEARS",
+     "word": "years",
+     "occ": 1,
+     "until": null,
+     "dur": 2.0,
+     "red": false
+    }
+   ]
+  }
+ ]
+}

@@ -30,5 +30,6 @@ if tail:
     fc.append(f"anullsrc=r=44100:cl=mono,atrim=0:{tail:.3f}[stail]"); labels.append("[stail]")
 fc.append("".join(labels) + f"concat=n={len(labels)}:v=0:a=1[o]")
 subprocess.run(["ffmpeg","-v","error","-y","-i",src,"-filter_complex",";".join(fc),"-map","[o]","-ar","44100","-ac","1",out],check=True)
+json.dump([[t, e] for t, e in cuts], open(f"audio/padded/part{n}.cuts.json", "w"))
 new = float(subprocess.check_output(["ffprobe","-v","error","-show_entries","format=duration","-of","csv=p=0",out]))
 print(f"part{n}: old {dur:.2f}s -> new {new:.2f}s ({len(cuts)} pauses padded)")

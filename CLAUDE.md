@@ -60,7 +60,7 @@ videos/05-self-doubt/     ← video 5, archived (merged to main; its make-specs.
   - `export HYPERFRAMES_BROWSER_PATH=$(ls -d /opt/pw-browsers/chromium-*/chrome-linux/chrome | head -1)`
   - Then run `npx hyperframes doctor`.
 - **GSAP:** use only the local `assets/vendor/gsap.min.js` (the CDN is blocked).
-- **Whisper:** `pip install faster-whisper --break-system-packages`. The `small.en` model downloads from huggingface.co, which this environment allows.
+- **Whisper:** `pip install faster-whisper --break-system-packages`. The `small.en` model downloads from huggingface.co, which this environment allows. If that download is blocked, use the forced-alignment fallback (`tools/align.py`, PocketSphinx; steps in `VIDEO.md`).
 - `ffmpeg` and `ffprobe` are available.
 
 ## 3. Pipeline (in `tools/`)

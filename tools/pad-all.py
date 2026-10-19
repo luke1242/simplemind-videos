@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Pause padding for video 5 (reveal ids below): scene starts come from the raw word timing; reveals get >= 2.0s of silence after, lead scenes get room before.
+"""Pause padding (video 6) (reveal ids below): scene starts come from the raw word timing; reveals get >= 2.0s of silence after, lead scenes get room before.
 usage: pad-all.py [short_pad]"""
 import json, subprocess, sys
 short = sys.argv[1] if len(sys.argv) > 1 else "0.25"
-REVEAL = {"D18", "D20", "D32", "D36", "D53"}      # >= 2s silence after these scenes
-MINGAP = {"D05": 4.4}                              # card + title card after "learned"
-TAIL = {1: 1.0, 2: 1.0, 3: 1.5, 4: 5.0}                          # title card / part-end holds
+REVEAL = {"D28", "D72"}      # >= 2s silence after these scenes
+MINGAP = {"D08": 3.6}                              # title card after "future selves"
+TAIL = {1: 1.0, 2: 1.0, 3: 1.0, 4: 5.0}                          # title card / part-end holds
 for n in (1, 2, 3, 4):
     cfg = json.load(open(f"scenes/part{n}.json")); raw = json.load(open(f"scenes/part{n}.rawtiming.json"))
     firsts = [s["words"][0]["s"] for s in raw["scenes"]]; ends = [s["narrationEnd"] for s in raw["scenes"]]

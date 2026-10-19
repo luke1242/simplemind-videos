@@ -8,6 +8,20 @@
 **Upload kit:** `prompts/upload-package.md`.
 **Spec examples:** copy the helpers from `videos/05-self-doubt/make-specs.py` (the newest build: quad, list, bars2, irow). It uses the same notation.
 
+## Build status (for Claude Code)
+
+Everything is in place: 15 voice clips (`audio/part*[a-f].mp3`, already joined into `audio/part1-4.mp3`), 21 pictures, 10 icons.
+Already done (Oct 19), so start from these instead of rewriting them:
+- `tools/make-specs.py` for this video (reads narration and host tracks straight from this file). Picture focus points were set by looking at every picture.
+- New diagram kinds in `tools/build-part.mjs`: `loop` (with `pulse`, `pre`, `brk`), `lines2`, `bars3`, `people`, `dots`; `split` takes `fs0`; screen badges take `red`.
+- `scenes/` holds word timings and scene timing for the padded audio. Part 1 was test-built and checked, and the fixes from that check are in the specs.
+- Remaining: build and check Parts 1–4, render, final join with music, merge to `main`.
+
+**If the Whisper model download fails** (huggingface.co blocked), don't stop: use forced alignment of the known script instead.
+`pip download pocketsphinx --no-deps -d /tmp/ps && pip install /tmp/ps/*.whl --break-system-packages`, then for each part:
+`tools/align.py N` → raw words; copy to `scenes/partN.words.json` and run `tools/timing.py N`, rename the result to `partN.rawtiming.json`;
+`tools/pad-all.py`; then `tools/shift-words.py N` and `tools/timing.py N`.
+
 ## How to read this list
 
 - **Scene IDs (D01…) and picture files (S01.png…) are separate.** `(NEW)` = Luke makes it (`prompts/nano-banana-prompts.md`). `(COPY)` = already in `pictures/`. `CODED` = build it in code.
@@ -92,7 +106,7 @@ narration: "So why do we do this? Why does your brain run from the exact things 
 
 **D13** · CODED iconRow · camera hold
 host: N01 "by"
-Icons: I88 on "really", I84 on "four", I85 on "five". Labels: WHAT IT REALLY IS · 4 TRAPS · 5 WAYS TO START.
+Icons: I88 on "know", I84 on "four", I85 on "five". Labels: WHAT IT REALLY IS · 4 TRAPS · 5 WAYS TO START.
 narration: "By the end of this video, you'll know what procrastination really is, the four traps that keep you stuck, and five research-backed ways to finally get started."
 
 **D14** · CODED card · camera hold
