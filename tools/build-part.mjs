@@ -83,10 +83,9 @@ function diagram(d, pre, T, S0 = 0) {
     const t0 = at("grow", 0), base = 830, MAXH = 560, xs = [610, 1310], BW = 380;
     let h = `<div class="fill diag">`;
     d.bars.forEach((b, i) => {
-      const o = vid(`${pre}_b${i}`);
-      h += `<div class="bar" id="${pre}-b${i}" style="left:${xs[i] - BW / 2}px;top:${base}px;width:${BW}px;height:0px;background:${i === 0 ? RED : GREY}"><div class="btag"><span class="badge ${i === 0 ? "red" : "yellow"}" id="${pre}-v${i}" style="${i === 0 ? "" : "background:#fff"}">0%</span></div></div><div class="blab" id="${pre}-bl${i}" style="left:${xs[i] - 330}px;top:${base + 30}px;width:660px">${b.label}</div>`;
-      const hh = MAXH * b.pct / 100;
-      tw.push(`const ${o}={v:0};`, `tl.fromTo("#${pre}-b${i}",{top:${base},height:0},{top:${f3(base - hh)},height:${f3(hh)},duration:0.7,ease:"power2.out"},${f3(t0)});`,
+      const o = vid(`${pre}_b${i}`); const hh = MAXH * b.pct / 100;
+      h += `<div class="bar" id="${pre}-b${i}" style="left:${xs[i] - BW / 2}px;top:${f3(base - hh)}px;width:${BW}px;height:${f3(hh)}px;clip-path:inset(${f3(hh)}px -20px -20px -20px);background:${i === 0 ? RED : GREY}"><div class="btag"><span class="badge ${i === 0 ? "red" : "yellow"}" id="${pre}-v${i}" style="${i === 0 ? "" : "background:#fff"}">0%</span></div></div><div class="blab" id="${pre}-bl${i}" style="left:${xs[i] - 330}px;top:${base + 30}px;width:660px">${b.label}</div>`;
+      tw.push(`const ${o}={v:0};`, `tl.fromTo("#${pre}-b${i}",{clipPath:"inset(${f3(hh)}px -20px -20px -20px)"},{clipPath:"inset(-300px -20px -20px -20px)",duration:0.7,ease:"power2.out"},${f3(t0)});`,
         `tl.fromTo(${o},{v:0},{v:${b.pct},duration:0.7,ease:"power2.out",onUpdate:function(){var e=document.getElementById("${pre}-v${i}");if(e)e.textContent=Math.round(${o}.v)+"%";}},${f3(t0)});`);
       tw.push(`tl.set("#${pre}-v${i}",{opacity:0},0);`, `tl.set("#${pre}-v${i}",{opacity:1},${f3(t0)});`);
     });
@@ -148,8 +147,8 @@ function diagram(d, pre, T, S0 = 0) {
   if (d.kind === "bars2") {
     const base = 860, MAXH = 520, xs = [620, 1300], BW = 400, hs = [MAXH, 200], cols = [RED, SAGE], t0 = at("grow", 0);
     let h = `<div class="fill diag"><div class="topbadge" id="${pre}-hd">HARVARD DIARY STUDY</div><div class="topbadge" id="${pre}-tb"><span class="badge yellow" id="${pre}-cnt">0</span><span>DIARY ENTRIES</span></div>`;
-    d.bars.forEach((b, i) => { h += `<div class="bar" id="${pre}-b${i}" style="left:${xs[i] - BW / 2}px;top:${base}px;width:${BW}px;height:0px;background:${cols[i]}"></div><div class="blab" id="${pre}-bl${i}" style="left:${xs[i] - 330}px;top:${base + 28}px;width:660px">${b}</div>`;
-      tw.push(`tl.set("#${pre}-b${i},#${pre}-bl${i}",{opacity:0},0);`, `tl.set("#${pre}-b${i},#${pre}-bl${i}",{opacity:1},${f3(t0)});`, `tl.fromTo("#${pre}-b${i}",{top:${base},height:0},{top:${base - hs[i]},height:${hs[i]},duration:0.7,ease:"power2.out"},${f3(t0)});`); });
+    d.bars.forEach((b, i) => { h += `<div class="bar" id="${pre}-b${i}" style="left:${xs[i] - BW / 2}px;top:${base - hs[i]}px;width:${BW}px;height:${hs[i]}px;clip-path:inset(${hs[i]}px -20px -20px -20px);background:${cols[i]}"></div><div class="blab" id="${pre}-bl${i}" style="left:${xs[i] - 330}px;top:${base + 28}px;width:660px">${b}</div>`;
+      tw.push(`tl.set("#${pre}-b${i},#${pre}-bl${i}",{opacity:0},0);`, `tl.set("#${pre}-b${i},#${pre}-bl${i}",{opacity:1},${f3(t0)});`, `tl.fromTo("#${pre}-b${i}",{clipPath:"inset(${hs[i]}px -20px -20px -20px)"},{clipPath:"inset(-300px -20px -20px -20px)",duration:0.7,ease:"power2.out"},${f3(t0)});`); });
     h += `<div class="ratio" id="${pre}-ra"><span class="badge yellow">2–3×</span></div>${d.small ? `<div class="dsmall">${d.small}</div>` : ""}</div>`;
     const tc = at("count", 0), o = vid(`${pre}_c`);
     tw.push(`const ${o}={v:0};`, `tl.to("#${pre}-hd",{opacity:0,duration:0.15},${f3(tc - 0.05)});`, `tl.set("#${pre}-tb",{opacity:0},0);`, `tl.fromTo("#${pre}-tb",{opacity:0,scale:0.85},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)"},${f3(tc)});`,
@@ -177,8 +176,8 @@ function diagram(d, pre, T, S0 = 0) {
     const base = 840, MAXH = 520, xs = [620, 1300], BW = 400, t0 = at("grow", 0);
     let h = `<div class="fill diag"><div class="topbadge" style="font-size:80px">${d.title}</div>`;
     d.bars.forEach((b, i) => { const hh = Math.round(MAXH * b.h);
-      h += `<div class="bar" id="${pre}-b${i}" style="left:${xs[i] - BW / 2}px;top:${base}px;width:${BW}px;height:0px;background:${b.col}">${b.val ? `<div class="btag"><span class="badge yellow" style="background:#fff">${b.val}</span></div>` : ""}</div><div class="blab" id="${pre}-bl${i}" style="left:${xs[i] - 330}px;top:${base + 28}px;width:660px;font-size:58px">${b.label}</div>`;
-      tw.push(`tl.set("#${pre}-b${i},#${pre}-bl${i}",{opacity:0},0);`, `tl.set("#${pre}-b${i},#${pre}-bl${i}",{opacity:1},${f3(t0)});`, `tl.fromTo("#${pre}-b${i}",{top:${base},height:0},{top:${base - hh},height:${hh},duration:0.7,ease:"power2.out"},${f3(t0 + i * 0.15)});`); });
+      h += `<div class="bar" id="${pre}-b${i}" style="left:${xs[i] - BW / 2}px;top:${base - hh}px;width:${BW}px;height:${hh}px;clip-path:inset(${hh}px -20px -20px -20px);background:${b.col}">${b.val ? `<div class="btag"><span class="badge yellow" style="background:#fff">${b.val}</span></div>` : ""}</div><div class="blab" id="${pre}-bl${i}" style="left:${xs[i] - 330}px;top:${base + 28}px;width:660px;font-size:58px">${b.label}</div>`;
+      tw.push(`tl.set("#${pre}-b${i},#${pre}-bl${i}",{opacity:0},0);`, `tl.set("#${pre}-b${i},#${pre}-bl${i}",{opacity:1},${f3(t0)});`, `tl.fromTo("#${pre}-b${i}",{clipPath:"inset(${hh}px -20px -20px -20px)"},{clipPath:"inset(-300px -20px -20px -20px)",duration:0.7,ease:"power2.out"},${f3(t0 + i * 0.15)});`); });
     if (d.badge) { const tb = T(d.badge.word); h += `<div class="ratio" id="${pre}-ra" style="top:${d.badge.top || 330}px"><span class="badge ${d.badge.b || "yellow"}">${d.badge.t}</span></div>`; tw.push(`tl.set("#${pre}-ra",{opacity:0},0);`, `tl.fromTo("#${pre}-ra",{opacity:0,scale:1.6,rotation:-2},{opacity:1,scale:1,rotation:-7,duration:0.26,ease:"back.out(1.6)"},${f3(tb)});`); sfx.push({ t: f3(tb), kind: "ding" }); }
     sfx.push({ t: f3(t0), kind: "swoosh" });
     return { html: h + `</div>`, tw };

@@ -1,0 +1,1425 @@
+{
+  "version": 1,
+  "historyId": "dfbba184-cc8c-4b63-a303-1ad4c12c55a7",
+  "currentRevision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+  "pendingChanges": false,
+  "files": {
+    "assets/fonts/nunito-800.woff2": {
+      "hash": "2363d3ed037283ebb961e8c4b4917e40a8bc8853cf9965cf1ea7b4daa1df630a",
+      "content": "/root/.cache/hyperframes/history/dfbba184-cc8c-4b63-a303-1ad4c12c55a7/blobs/23/2363d3ed037283ebb961e8c4b4917e40a8bc8853cf9965cf1ea7b4daa1df630a"
+    },
+    "assets/gsap.min.js": {
+      "hash": "c174bfce53a729418d57a8ad8625e7247c793a22fef8e2851e3cfa3de9cd8280",
+      "content": "/root/.cache/hyperframes/history/dfbba184-cc8c-4b63-a303-1ad4c12c55a7/blobs/c1/c174bfce53a729418d57a8ad8625e7247c793a22fef8e2851e3cfa3de9cd8280"
+    },
+    "assets/icons/I85.jpg": {
+      "hash": "4ad210af21de44ee780cf3af843e7fc483454e6f2f54388308809e048dc4fda6",
+      "content": "/root/.cache/hyperframes/history/dfbba184-cc8c-4b63-a303-1ad4c12c55a7/blobs/4a/4ad210af21de44ee780cf3af843e7fc483454e6f2f54388308809e048dc4fda6"
+    },
+    "assets/icons/I87.jpg": {
+      "hash": "99ff6d29c775d54dea59b64ec9e65a957078965db82091c5b0de8293aec16121",
+      "content": "/root/.cache/hyperframes/history/dfbba184-cc8c-4b63-a303-1ad4c12c55a7/blobs/99/99ff6d29c775d54dea59b64ec9e65a957078965db82091c5b0de8293aec16121"
+    },
+    "assets/narrator/N01.png": {
+      "hash": "7286215c829e161e9900973f1301a5fcc7453862c9956396ea2f5171fab2370f",
+      "content": "/root/.cache/hyperframes/history/dfbba184-cc8c-4b63-a303-1ad4c12c55a7/blobs/72/7286215c829e161e9900973f1301a5fcc7453862c9956396ea2f5171fab2370f"
+    },
+    "assets/narrator/N02.png": {
+      "hash": "3ca6dac097a6a9fb4ef9e4793777e6df134ba100dbf67e872f9e1132fb0c54d1",
+      "content": "/root/.cache/hyperframes/history/dfbba184-cc8c-4b63-a303-1ad4c12c55a7/blobs/3c/3ca6dac097a6a9fb4ef9e4793777e6df134ba100dbf67e872f9e1132fb0c54d1"
+    },
+    "assets/narrator/N05.png": {
+      "hash": "735a95b15cf9b92701fc9bd921fa94d6fa490271dedcd2354a8e54c1eda4a408",
+      "content": "/root/.cache/hyperframes/history/dfbba184-cc8c-4b63-a303-1ad4c12c55a7/blobs/73/735a95b15cf9b92701fc9bd921fa94d6fa490271dedcd2354a8e54c1eda4a408"
+    },
+    "assets/narrator/N06.png": {
+      "hash": "a3b0db2bd7f394c6a59f06953acb561fabf3eebfe07f7c6d89f4674de858a5fe",
+      "content": "/root/.cache/hyperframes/history/dfbba184-cc8c-4b63-a303-1ad4c12c55a7/blobs/a3/a3b0db2bd7f394c6a59f06953acb561fabf3eebfe07f7c6d89f4674de858a5fe"
+    },
+    "assets/narrator/N07.png": {
+      "hash": "59dbcb75a2faf85f94cc7e8a1cb03e3e51274d283de9a814f749ac508f98100b",
+      "content": "/root/.cache/hyperframes/history/dfbba184-cc8c-4b63-a303-1ad4c12c55a7/blobs/59/59dbcb75a2faf85f94cc7e8a1cb03e3e51274d283de9a814f749ac508f98100b"
+    },
+    "assets/pictures/S01.jpg": {
+      "hash": "3c56a4f3ed3500ba53406cbddefff98c582ccb3e1da227b3198aa6a0c058fd13",
+      "content": "/root/.cache/hyperframes/history/dfbba184-cc8c-4b63-a303-1ad4c12c55a7/blobs/3c/3c56a4f3ed3500ba53406cbddefff98c582ccb3e1da227b3198aa6a0c058fd13"
+    },
+    "assets/pictures/S05.jpg": {
+      "hash": "699c3fa847c472402c51f3e286462f390bc70068a9d4fddb4b9e7070f1c73e9e",
+      "content": "/root/.cache/hyperframes/history/dfbba184-cc8c-4b63-a303-1ad4c12c55a7/blobs/69/699c3fa847c472402c51f3e286462f390bc70068a9d4fddb4b9e7070f1c73e9e"
+    },
+    "assets/pictures/S09.jpg": {
+      "hash": "a783857fafc5a132948d141688f72ff7be302b44e162e97e4abb2f3f1c85dc9c",
+      "content": "/root/.cache/hyperframes/history/dfbba184-cc8c-4b63-a303-1ad4c12c55a7/blobs/a7/a783857fafc5a132948d141688f72ff7be302b44e162e97e4abb2f3f1c85dc9c"
+    },
+    "assets/pictures/S15.jpg": {
+      "hash": "7ffa23c9bf2b0af22c1d4d497e8b287ac35f87bdc0e50b4c5279bd664ec85e66",
+      "content": "/root/.cache/hyperframes/history/dfbba184-cc8c-4b63-a303-1ad4c12c55a7/blobs/7f/7ffa23c9bf2b0af22c1d4d497e8b287ac35f87bdc0e50b4c5279bd664ec85e66"
+    },
+    "assets/pictures/S16.jpg": {
+      "hash": "b05508316684bbb9e8dd446cf2c99d71448b7f1353a4670f9a114c36b4270577",
+      "content": "/root/.cache/hyperframes/history/dfbba184-cc8c-4b63-a303-1ad4c12c55a7/blobs/b0/b05508316684bbb9e8dd446cf2c99d71448b7f1353a4670f9a114c36b4270577"
+    },
+    "assets/pictures/S17.jpg": {
+      "hash": "1a4b3b0d61c1a8dacc0946b2cbcc2072207c26f7ebc1d760bda5c0af7553ff18",
+      "content": "/root/.cache/hyperframes/history/dfbba184-cc8c-4b63-a303-1ad4c12c55a7/blobs/1a/1a4b3b0d61c1a8dacc0946b2cbcc2072207c26f7ebc1d760bda5c0af7553ff18"
+    },
+    "assets/pictures/S18.jpg": {
+      "hash": "48db9e824fb6b3d6d25232543a3e6f7d5c24465a9636a0d1e9f367f18bf07467",
+      "content": "/root/.cache/hyperframes/history/dfbba184-cc8c-4b63-a303-1ad4c12c55a7/blobs/48/48db9e824fb6b3d6d25232543a3e6f7d5c24465a9636a0d1e9f367f18bf07467"
+    },
+    "assets/pictures/S19.jpg": {
+      "hash": "d71263f72647433580f03f1437ca3af65d2eb837623f37e5d30086eda9db2d3b",
+      "content": "/root/.cache/hyperframes/history/dfbba184-cc8c-4b63-a303-1ad4c12c55a7/blobs/d7/d71263f72647433580f03f1437ca3af65d2eb837623f37e5d30086eda9db2d3b"
+    },
+    "assets/pictures/S29.jpg": {
+      "hash": "84b526180c5f6cf9d02dc4a1a5de698322cfef5bb530a504e628357c97ace10e",
+      "content": "/root/.cache/hyperframes/history/dfbba184-cc8c-4b63-a303-1ad4c12c55a7/blobs/84/84b526180c5f6cf9d02dc4a1a5de698322cfef5bb530a504e628357c97ace10e"
+    },
+    "hyperframes.json": {
+      "hash": "53dbce1e19aa713cbb12ee0bc4d206143b45ab15e6ffbfcaa8f69572d4d24d50",
+      "content": "/root/.cache/hyperframes/history/dfbba184-cc8c-4b63-a303-1ad4c12c55a7/blobs/53/53dbce1e19aa713cbb12ee0bc4d206143b45ab15e6ffbfcaa8f69572d4d24d50"
+    },
+    "index.html": {
+      "hash": "2243f2c2047336478f85d5eb8e7b1ee63b53b2349ca4b75538e76a302e6387f4",
+      "content": "/root/.cache/hyperframes/history/dfbba184-cc8c-4b63-a303-1ad4c12c55a7/blobs/22/2243f2c2047336478f85d5eb8e7b1ee63b53b2349ca4b75538e76a302e6387f4"
+    },
+    "meta.json": {
+      "hash": "629a69f604a4e193010fa72553d01d3219d7ccfc991611f12f940f52bcbe1223",
+      "content": "/root/.cache/hyperframes/history/dfbba184-cc8c-4b63-a303-1ad4c12c55a7/blobs/62/629a69f604a4e193010fa72553d01d3219d7ccfc991611f12f940f52bcbe1223"
+    },
+    "assets/part4.wav": {
+      "hash": "a1ff769375b4a308e7f9bc289eade19b99ae717368912518816a7d7b7567bd25",
+      "content": "/root/.cache/hyperframes/history/dfbba184-cc8c-4b63-a303-1ad4c12c55a7/blobs/a1/a1ff769375b4a308e7f9bc289eade19b99ae717368912518816a7d7b7567bd25"
+    },
+    "assets/pictures/S04.jpg": {
+      "hash": "6121e78dc14a032b435587f6269803b66f3b049195eddbd0057f58e7d97082a1",
+      "content": "/root/.cache/hyperframes/history/dfbba184-cc8c-4b63-a303-1ad4c12c55a7/blobs/61/6121e78dc14a032b435587f6269803b66f3b049195eddbd0057f58e7d97082a1"
+    },
+    "assets/pictures/S20.jpg": {
+      "hash": "21b4361a878135cf39e3d88ed74db6f5d043cf0b23148149637d1337cf16de78",
+      "content": "/root/.cache/hyperframes/history/dfbba184-cc8c-4b63-a303-1ad4c12c55a7/blobs/21/21b4361a878135cf39e3d88ed74db6f5d043cf0b23148149637d1337cf16de78"
+    }
+  },
+  "revisions": {
+    "43a9a6fd-60ef-4496-a575-f4acd4ea1c03": {
+      "actor": {
+        "kind": "outside",
+        "name": "Outside"
+      },
+      "label": "Changed outside the app",
+      "startedAt": 1792451622947,
+      "endedAt": 1792451622952,
+      "files": {
+        "index.html": {
+          "before": "/root/.cache/hyperframes/history/dfbba184-cc8c-4b63-a303-1ad4c12c55a7/blobs/cb/cb2f202d59b27a952b00c680acea3dcaa08a2d756631d07e0779d5f9abbd8b13",
+          "after": "/root/.cache/hyperframes/history/dfbba184-cc8c-4b63-a303-1ad4c12c55a7/blobs/22/2243f2c2047336478f85d5eb8e7b1ee63b53b2349ca4b75538e76a302e6387f4"
+        }
+      }
+    }
+  },
+  "checks": {
+    "latest": {
+      "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+      "id": "93dba568-a25c-4ba3-b73c-8c4e51009474"
+    },
+    "revisions": {
+      "43a9a6fd-60ef-4496-a575-f4acd4ea1c03": [
+        {
+          "id": "93dba568-a25c-4ba3-b73c-8c4e51009474",
+          "scope": "project",
+          "report": "/home/user/simplemind-videos/parts/part4/.hyperframes/artifacts/checks/93dba568-a25c-4ba3-b73c-8c4e51009474.json",
+          "metadata": {
+            "ok": true,
+            "browserSkipped": false,
+            "options": {
+              "samples": 9,
+              "atTransitions": false,
+              "maxIssues": 80,
+              "collapseStatic": true,
+              "tolerance": 2,
+              "timeout": 3000,
+              "contrast": true,
+              "strict": false,
+              "snapshots": false,
+              "browserGpuMode": "auto"
+            }
+          },
+          "createdAt": 1792451628038,
+          "contentHash": "b0680ea4dd919dd68c88e8a895f9124efa3c8ff6fcc7c567907ef8750187dce0",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        }
+      ]
+    },
+    "unversioned": [
+      {
+        "id": "e4262840-c6ae-462c-8f44-7b4f21804281",
+        "scope": "project",
+        "report": "/home/user/simplemind-videos/parts/part4/.hyperframes/artifacts/checks/e4262840-c6ae-462c-8f44-7b4f21804281.json",
+        "metadata": {
+          "ok": false,
+          "browserSkipped": true,
+          "options": {
+            "samples": 9,
+            "atTransitions": false,
+            "maxIssues": 80,
+            "collapseStatic": true,
+            "tolerance": 2,
+            "timeout": 3000,
+            "contrast": true,
+            "strict": false,
+            "snapshots": false,
+            "browserGpuMode": "auto"
+          }
+        },
+        "createdAt": 1792451520973,
+        "contentHash": "14fd1a2f78c867b5816c6062c32a314cea417eebc059085903176070cb6a1ad3",
+        "revision": null,
+        "inputFingerprint": "c61adec688ab924302909f20a20db48a09ba2cd04ffac20406bdcb3651eaf535",
+        "inputScope": "local-project-files",
+        "attribution": "unversioned"
+      },
+      {
+        "id": "421eecbe-1bec-44a2-a7fc-ff06cd12980a",
+        "scope": "project",
+        "report": "/home/user/simplemind-videos/parts/part4/.hyperframes/artifacts/checks/421eecbe-1bec-44a2-a7fc-ff06cd12980a.json",
+        "metadata": {
+          "ok": false,
+          "browserSkipped": true,
+          "options": {
+            "samples": 9,
+            "atTransitions": false,
+            "maxIssues": 80,
+            "collapseStatic": true,
+            "tolerance": 2,
+            "timeout": 3000,
+            "contrast": true,
+            "strict": false,
+            "snapshots": false,
+            "browserGpuMode": "auto"
+          }
+        },
+        "createdAt": 1792451542172,
+        "contentHash": "14fd1a2f78c867b5816c6062c32a314cea417eebc059085903176070cb6a1ad3",
+        "revision": null,
+        "inputFingerprint": "c61adec688ab924302909f20a20db48a09ba2cd04ffac20406bdcb3651eaf535",
+        "inputScope": "local-project-files",
+        "attribution": "unversioned"
+      }
+    ]
+  },
+  "snapshots": {
+    "latest": {
+      "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+      "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-59"
+    },
+    "revisions": {
+      "43a9a6fd-60ef-4496-a575-f4acd4ea1c03": [
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-0",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-00-at-0.45s.png",
+          "time": 0.45,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733751,
+          "contentHash": "deec28aff5cd5ce8126cb165c46f52b25d9da31a83aac00ee77011f0c9a90a71",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-1",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-01-at-2.37s.png",
+          "time": 2.37,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733751,
+          "contentHash": "deec28aff5cd5ce8126cb165c46f52b25d9da31a83aac00ee77011f0c9a90a71",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-2",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-02-at-8.4s.png",
+          "time": 8.4,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733751,
+          "contentHash": "5b35ef02a20bc33bb6a75283212d5070cc15fad34f38668b70d915ebfd6a2913",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-3",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-03-at-9.87s.png",
+          "time": 9.87,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733751,
+          "contentHash": "ed84a63328c0204f3933cf05af3d9bf3d15fabdc128216cc4d20d681069a10cd",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-4",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-04-at-16.04s.png",
+          "time": 16.04,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733751,
+          "contentHash": "ac63b7dc500399e5c6d66003859cf9a12b18346afb4deac92da50a8a70130a7f",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-5",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-05-at-17.1s.png",
+          "time": 17.1,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733751,
+          "contentHash": "ac63b7dc500399e5c6d66003859cf9a12b18346afb4deac92da50a8a70130a7f",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-6",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-06-at-23.05s.png",
+          "time": 23.05,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733751,
+          "contentHash": "631d1f0fe52d26c97591a16f877f51718fc1fd379f71c3e2c6fd5a3c6e567acb",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-7",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-07-at-24.52s.png",
+          "time": 24.52,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733751,
+          "contentHash": "4513defe1439e95aed1bee740a6e9d496d354821c23e119ce105bc01675c0569",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-8",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-08-at-31.38s.png",
+          "time": 31.38,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733751,
+          "contentHash": "96045e30f29b8ebe893419bfd50ae1a93649665ef441e10295b72014b80e432e",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-9",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-09-at-34.03s.png",
+          "time": 34.03,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733751,
+          "contentHash": "7157bb1ce588a00ec4f383c2df86dffc6646f4e67faceeb607c302f9ed727338",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-10",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-10-at-39.57s.png",
+          "time": 39.57,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733751,
+          "contentHash": "7b10fd24196e73235d85832e15e2baf626a55a49ca4f9ff109ea35bd728c64d4",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-11",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-11-at-42.26s.png",
+          "time": 42.26,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733751,
+          "contentHash": "4b4fc4d77014f379217a37b896529b8ddcf84a560ee2ef318214a8e3ff941926",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-12",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-12-at-47.92s.png",
+          "time": 47.92,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733751,
+          "contentHash": "4cf27cde39def7ece04097e051afbe66f0ceac72e84101b583b585dadee98f5d",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-13",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-13-at-49.78s.png",
+          "time": 49.78,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733751,
+          "contentHash": "cea67f70facaa8e97a54ec83092fc6498bed5ed375cd7899124c13cae61b5bd6",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-14",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-14-at-55.03s.png",
+          "time": 55.03,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733751,
+          "contentHash": "0284e7da3a576433776efe1499190449a7121314383d93092fd67bcc357bc66e",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-15",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-15-at-57.76s.png",
+          "time": 57.76,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733751,
+          "contentHash": "0284e7da3a576433776efe1499190449a7121314383d93092fd67bcc357bc66e",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-16",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-16-at-64.73s.png",
+          "time": 64.73,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733751,
+          "contentHash": "7529bc98360073386b7f181eeabebdc9821207259c9f29639ed4be839fd786b1",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-17",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-17-at-66.65s.png",
+          "time": 66.65,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733751,
+          "contentHash": "7f4836134b3b0b0e0fa113dc8fac318ca151a28403f86082908f9cd64c3739ff",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-18",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-18-at-72.37s.png",
+          "time": 72.37,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733751,
+          "contentHash": "a48acf3464b78da3a7e6ee56d0880b49a8c80e2f9d5c95b7493a32c731b37b0d",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-19",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-19-at-73.68s.png",
+          "time": 73.68,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733751,
+          "contentHash": "b9167f984ef9ba29bdbc9971aae6a94ef2dfe4fc3ff7a60a38a4fa74bd8c5325",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-20",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-20-at-79.68s.png",
+          "time": 79.68,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733751,
+          "contentHash": "2f883e70ce95c0bdd49abfefc9742402400e5a44053db748d6265cf4cd2722df",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-21",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-21-at-82.56s.png",
+          "time": 82.56,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733751,
+          "contentHash": "d4abefa5a18bb49f726362334548f0bd1be9677f03bd2fd1e28bea589f01c3b6",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-22",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-22-at-89.51s.png",
+          "time": 89.51,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733751,
+          "contentHash": "7f72d3497e563d0e4136a601853aa2eb3e5cd721a88e1e38540dbdbb83f35d49",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-23",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-23-at-92.72s.png",
+          "time": 92.72,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733751,
+          "contentHash": "b2d53368ad9ebf3b53d2e8997a584a70244eda9de62dc149fb0b9391fceb4da4",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-24",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-24-at-98.21s.png",
+          "time": 98.21,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733751,
+          "contentHash": "371389505ade6ed8c80c0c19cd425b6d5e02a3a3c93ab9b64107f8c637aa95ee",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-25",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-25-at-101.25s.png",
+          "time": 101.25,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733751,
+          "contentHash": "e418672f6c1fb1819fb5274d105183f0a34ed70d507dc8867ab0158caa703b80",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-26",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-26-at-108.8s.png",
+          "time": 108.8,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733751,
+          "contentHash": "28ba74031205f27bfb0dfd7d7d4d0428afc0c6f49a54573f3d6f86010322cc37",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-27",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-27-at-110.99s.png",
+          "time": 110.99,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733751,
+          "contentHash": "9c30244d9d86f5189939ef4d5727d8ec64319a7d7fba7271735a88c80e4be991",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-28",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-28-at-117.53s.png",
+          "time": 117.53,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733751,
+          "contentHash": "d38d6592e488e8428d0e36f9af52474ae51524f8adcc5215eec81e166cce69ff",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-29",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-29-at-119.52s.png",
+          "time": 119.52,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733751,
+          "contentHash": "9d25b3e9a71c5c929064553aa69cc521301d6229d24aec0f0ab168d3669bdfa1",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-30",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-30-at-124.18s.png",
+          "time": 124.18,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733751,
+          "contentHash": "5954de07f9fc8d6483c7f9a30bb2758dc155513ddaaa83369bc51099ade09eb2",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-31",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-31-at-131.22s.png",
+          "time": 131.22,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733751,
+          "contentHash": "c8a8299a2e8ed8cc409d58dd01e0be1674653fd44f244053c87ff51c1efec464",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-32",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-32-at-132.29s.png",
+          "time": 132.29,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733751,
+          "contentHash": "c7d02c70db58855320b8688f92c9eeaf4f8d59c04400e48a67dac94adf6b66f8",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-33",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-33-at-138.47s.png",
+          "time": 138.47,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733751,
+          "contentHash": "a8b4c5168c44e9e6dae02dd06993ab056927f0f71b2e12fee03d725fdc9f0bd5",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-34",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-34-at-140.68s.png",
+          "time": 140.68,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733751,
+          "contentHash": "dc197fec33b5398ede8c22e58b63269a7d3a43afe993d327f0ddee89d0449ab4",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-35",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-35-at-146.81s.png",
+          "time": 146.81,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733751,
+          "contentHash": "38bd1cec632bd908c5851207d6cf6cdb29d29605e3a81c22c83a458f1c673b83",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-36",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-36-at-149.4s.png",
+          "time": 149.4,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733751,
+          "contentHash": "ea49529c60703ff8fca80d259f4d6f9802b807faa15efbbe4f83bec435f92589",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-37",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-37-at-155.57s.png",
+          "time": 155.57,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733751,
+          "contentHash": "26bdf9b95ad0fde98d32a532fa197d7f26cc740c332106d53ae00426854cd463",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-38",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-38-at-158.1s.png",
+          "time": 158.1,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733751,
+          "contentHash": "2c8f9b6058cc6699444ea5739bbe3365f7afc4417808b4a3b9612e6c60bf6ed5",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-39",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-39-at-162.84s.png",
+          "time": 162.84,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733751,
+          "contentHash": "470ef8d8ee6554f51ff79b9bc6226b1a224686b8a287169474c777132cf7c74f",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-40",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-40-at-164.8s.png",
+          "time": 164.8,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733751,
+          "contentHash": "470ef8d8ee6554f51ff79b9bc6226b1a224686b8a287169474c777132cf7c74f",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-41",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-41-at-169.9s.png",
+          "time": 169.9,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733751,
+          "contentHash": "66bf0fce6cf3d11a7bda94bfec72e18fca0198b6b90e3e7cdbe6a2ebdb386ffb",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-42",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-42-at-172.07s.png",
+          "time": 172.07,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733751,
+          "contentHash": "83f8bc0b70ad416a4a4e62eb9ff80e921751fbe43a3ec99babf73a62577247fc",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-43",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-43-at-178.52s.png",
+          "time": 178.52,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733751,
+          "contentHash": "51b742203ea1cbb4f88ab5bbb09b4bb1da4dd79fc3ce1bad2e9afa7aa6a933c8",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-44",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-44-at-181.12s.png",
+          "time": 181.12,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733751,
+          "contentHash": "3510fee505c7a998b0264d06ebdbddee04e4b212dcc18d8cca12179280ea7781",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-45",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-45-at-185.94s.png",
+          "time": 185.94,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733751,
+          "contentHash": "329180c64b296dbfbd018c2c4e44feaec5501904e377881394157303ab72eeec",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-46",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-46-at-187.98s.png",
+          "time": 187.98,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733751,
+          "contentHash": "4fd7293f7fab9f029caf48e773e65317f18b842290126dff9f4d8ac3b8d15157",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-47",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-47-at-192.83s.png",
+          "time": 192.83,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733752,
+          "contentHash": "a7a187a5055a3f697efedc3de32e0f661e6bfbe5ded9fe487244b7e31775fbb9",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-48",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-48-at-195.01s.png",
+          "time": 195.01,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733752,
+          "contentHash": "0da9b9df18c9f8e0ede998267b53fe708e4ecca5c3840483c7a6ac2ab18135ed",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-49",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-49-at-199.75s.png",
+          "time": 199.75,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733752,
+          "contentHash": "edea17668f049811dc273afc2dc093017c0c11e5f28311b2f7eadae6faa885e8",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-50",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-50-at-202.63s.png",
+          "time": 202.63,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733752,
+          "contentHash": "48db0bec2d6b8bc912ebd433ac40521439670e8e5906ee8e1a89fda13663a730",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-51",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-51-at-208.72s.png",
+          "time": 208.72,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733752,
+          "contentHash": "9a457fd069b04b56d56d61c65eb066112a74ab9de523627e03530a69a072bbdd",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-52",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-52-at-212.01s.png",
+          "time": 212.01,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733752,
+          "contentHash": "c30d0cf72fd3869bc083e42562f342521fc46164b13cb0fa05212e00e4d706f9",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-53",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-53-at-218.56s.png",
+          "time": 218.56,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733752,
+          "contentHash": "58b5d2faced6f671101548a43c40852e3406a7884ebe091d664f8c8645ebe844",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-54",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-54-at-220.34s.png",
+          "time": 220.34,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733752,
+          "contentHash": "61b5d58dd68ca7dd57287c0f05b4c361991cae32576dade05a7ec18f32707874",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-55",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-55-at-227.51s.png",
+          "time": 227.51,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733752,
+          "contentHash": "a4c5517a94c40054622bb25f80b49f4ca0ca137104d6812f69053bfc6dbcc0b9",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-56",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-56-at-230.62s.png",
+          "time": 230.62,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733752,
+          "contentHash": "c488f095cfc431874b4bdab3dba83d96310113257ccb02c1bd9d2924d67b80b2",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-57",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-57-at-236.81s.png",
+          "time": 236.81,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733752,
+          "contentHash": "44cde219b3cb2b2b8dab0de5aa7ebc4975ee4905627f72904a70b8a64c35dc2b",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-58",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-58-at-239.23s.png",
+          "time": 239.23,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733752,
+          "contentHash": "42dcbc8521d05f21b74e719f7980742885ca21f6aed7994e0ceb1925ad9a96fe",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "bcf987d5-abc1-44a9-a50b-432042b04df0-59",
+          "image": "/home/user/simplemind-videos/review/snap4/frame-59-at-238.119s.png",
+          "time": 238.119,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792451733752,
+          "contentHash": "158f83e9dce8673e1be106195365c0ddf2c51f7e3f0e126660f0cfbf1378853a",
+          "revision": "43a9a6fd-60ef-4496-a575-f4acd4ea1c03",
+          "inputFingerprint": "8308d0e7b2ed6406f8b3ddf94d27ea3b7ba5b2352ad37beeee8f97aab7be7e91",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        }
+      ]
+    },
+    "unversioned": []
+  }
+}
