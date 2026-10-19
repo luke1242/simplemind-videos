@@ -1,84 +1,99 @@
-# Upload package: "The Psychology of Self-Doubt"
+# Upload package: "Psychology of Procrastination"
+
+Chapters get added after the build.
 
 ## Title
 
-**The Psychology of Self-Doubt: Where It Really Comes From**
+**Psychology of Procrastination (And How to Trick Your Brain Out of It)**
 
-Backup (to test later): Why You Don't Believe in Yourself (Psychology Explained)
+Backup (to test later): Why You Procrastinate (It's Not Laziness)
 
-## Thumbnail: Nano Banana prompts
+## Thumbnails: a style test
 
-Attach `reference/characters/narrator.png`. Make both and test them in YouTube Studio → **Test & Compare**.
+Make all three and test them together in YouTube Studio → **Test & Compare** (it takes up to 3).
+- **A vs C** use the same hook, so they test the **style**: dark drawn vs our comic narrator.
+- **B** tests a **different hook** in the dark style.
 
-**A: "WHO TAUGHT YOU THIS?" (black, main pick)**
+### Dark drawn style (A and B)
+
+No reference image needed. Paste the style block first, then the thumbnail prompt.
+
+```
+STYLE FOR THIS IMAGE: a dark, moody editorial illustration, hand-drawn ink plus digital painting, semi-realistic proportions, heavy crosshatching and gritty textured shading, muted desaturated colors (charcoal, olive grey, dusty brown) with only ONE warm accent color, dramatic low-key lighting, graphic-novel feel. Original artwork, not a copy of any existing image. YouTube thumbnail, 16:9, 2K. One clear subject, lots of dark empty space, readable at phone size.
+```
+
+**A: "YOU'RE NOT LAZY" (main pick)**
+```
+SUBJECT: an extreme close-up of a young man's tired eyes, filling the middle of the image from edge to edge: heavy dark circles, red veins, half-closed eyelids, staring straight ahead. In both pupils, a tiny glowing reflection of a laptop screen. The only warm color is the pale blue-white glow of that screen in his eyes. Very dark around the edges.
+TEXT: across the top, in huge heavy bold all-caps sans-serif letters: "YOU'RE NOT LAZY". "LAZY" is red (#D64545), "YOU'RE NOT" is white. Nothing else written anywhere.
+```
+
+**B: "FUTURE YOU PAYS"**
+```
+SUBJECT: a young man slumped comfortably on a worn couch in a dark room, scrolling his phone, his face lit by the phone. Standing right behind the couch in the shadows is an older, exhausted version of the same man, grey stubble and hollow eyes, bent forward under a towering stack of papers on his back. The only warm color is the orange glow of a single lamp.
+TEXT: across the top, in huge heavy bold all-caps sans-serif letters: "FUTURE YOU PAYS". "PAYS" is red (#D64545), the other words are white. Nothing else written anywhere.
+```
+
+### Our comic style (C)
+
+Attach `reference/characters/narrator.png`.
+
+**C: "YOU'RE NOT LAZY" (narrator)**
 ```
 YouTube thumbnail, 16:9, 2K. Bold, minimal, high contrast. Clean thick black outlines, flat colors, comic style.
 BACKGROUND: solid plain near-black (#111111), nothing else.
-CHARACTER: the narrator from the attached image, exactly the same design (glowing peach brain head, two white oval eyes, no mouth, black hoodie), BIG and centered, filling about 65% of the image height, holding a small crayon drawing of a purple sun against his chest with worried eyes. Behind him, a tall dark shadow version of himself leans over his shoulder, whispering into his ear.
-TEXT: across the top, in huge heavy bold all-caps sans-serif letters: "WHO TAUGHT YOU THIS?". "THIS?" is red (#D64545), the other words are white. Nothing else written anywhere.
-Lots of empty space. Must be readable at phone size.
+CHARACTER: the narrator from the attached image, exactly the same design (glowing peach brain head, two white oval eyes, no mouth, black hoodie, white sneakers with a red stripe), BIG, filling about 65% of the image height, crouched and hiding behind the right edge of a giant glowing to-do list (lines and empty checkboxes only), peeking out at it with worried eyes. The brain glows softly.
+TEXT: across the top, in huge heavy bold all-caps sans-serif letters: "YOU'RE NOT LAZY". "LAZY" is red (#D64545), the other words are white. Nothing else written anywhere.
+Lots of empty space. No other characters, no small details. Must be readable at phone size.
 ```
 
-**B: "YOU LEARNED THIS" (cream)**
-```
-YouTube thumbnail, 16:9, 2K. Bold, minimal, high contrast. Clean thick black outlines, flat colors, comic style.
-BACKGROUND: solid plain warm cream (#FAF7F0), nothing else.
-CHARACTER: the narrator from the attached image, exactly the same design, BIG and centered, filling about 65% of the image height, looking down sadly at a little kid version of himself who proudly holds up a crayon drawing of a purple sun.
-TEXT: across the top, in huge heavy bold all-caps sans-serif letters: "YOU LEARNED THIS". "LEARNED" is red (#D64545), the other words are black. Nothing else written anywhere.
-Lots of empty space. Must be readable at phone size.
-```
+If the text comes out wrong, ask for the same image **with no text**, then add the hook in Canva (Montserrat Black or Anton, the same colors).
 
 ## Description
 
-Keywords are packed into the first 200 words. Chapter times come from the final render (11:02).
+Keywords go in the first 200 words. Chapters get added after the build.
 
 ```
-Where does self-doubt really come from? This is the psychology of self-doubt, explained simply. You weren't born with that voice that says "you're not ready." You learned it, and anything learned can be unlearned.
+Why do you procrastinate, even on the things you care about most? This is the psychology of procrastination, explained simply. It isn't laziness, and it isn't bad time management. It's your brain trying to escape a bad feeling.
 
-In this psychology explained video, you'll learn where self-doubt comes from, why you don't believe in yourself, and how to stop doubting yourself for good. We look at Albert Bandura's research on self-efficacy (your belief that you can do the thing in front of you) and his famous snake-phobia experiment, and why self-confidence is a conclusion your brain reaches, not a feeling you wait for.
+In this psychology explained video, you'll learn why we procrastinate and how to stop procrastinating: Tice and Baumeister's 1997 study that followed procrastinators through a whole semester, Sirois and Pychyl's research on procrastination as short-term mood repair, and Hal Hershfield's brain scans showing that your future self feels like someone else. Then the 4 traps that keep you stuck (a task that's too big and blurry, fear of failure, a reward that feels too far away, and the guilt loop) and 5 research-backed ways to beat procrastination and finally get started.
 
-Then the 4 real sources of self-doubt, imposter syndrome and overthinking: no proof yet, unfair comparison, the louder critical voice, and misread nerves. Finally, 5 research-backed ways to build self-confidence and self-belief, including a 2-second trick to use before anything that scares you.
+What's the one thing you've been putting off the longest? Tell me in the comments, along with your first tiny step.
 
-What's one thing you doubted you could do, that you ended up doing anyway? Tell me in the comments.
+You were watching Brain Guy Psychology. I'll see you in the next one.
 
-CHAPTERS
-0:00 Where self-doubt starts
-0:59 The voice that almost stopped me
-1:59 Albert Bandura and self-efficacy
-3:02 The snake experiment
-3:59 Confidence is a conclusion, not a feeling
-4:18 Source 1: You don't have proof yet
-5:04 Source 2: Comparing your inside to their outside
-5:41 Source 3: The critical voice is louder
-6:27 Source 4: Misreading your nerves
-7:09 Why "just believe in yourself" fails
-7:22 Step 1: Collect tiny proof
-8:06 Step 2: Watch someone like you
-8:27 Step 3: Talk to yourself by name
-8:57 Step 4: Rename the nerves (the 2-second trick)
-9:29 Step 5: Keep a proof list
-9:53 Self-doubt is learned, so it can be unlearned
+#psychology #procrastination #howtostopprocrastinating #selfimprovement #psychologyexplained #brainguypsychology
 
-Research: Bandura (1977); Bandura, Blanchard & Ritter (1969); Festinger (1954); Baumeister et al. (2001); Amabile & Kramer (2011); Kross et al. (2014); Brooks (2014).
+---
 
-Educational content, not professional psychological advice.
+Research referenced:
+- Tice & Baumeister (1997), Psychological Science: procrastinators had less stress early in the term, but more stress, more illness and lower grades by the end
+- Sirois & Pychyl (2013), Social and Personality Psychology Compass: procrastination as putting short-term mood repair ahead of your future self
+- Ersner-Hershfield, Wimmer & Knutson (2009), Social Cognitive and Affective Neuroscience: brain activity for the future self looks less like the current self
+- Hershfield et al. (2011), Journal of Marketing Research: seeing an aged-up photo of yourself increases saving for the future
+- Steel (2007), Psychological Bulletin: about 15–20% of adults are chronic procrastinators
+- Solomon & Rothblum (1984), Journal of Counseling Psychology: task aversiveness and fear of failure as the main reasons students procrastinate
+- Gollwitzer & Sheeran (2006), Advances in Experimental Social Psychology: a meta-analysis of 94 tests showing if-then plans have a medium-to-large effect on reaching goals
+- Wohl, Pychyl & Bennett (2010), Personality and Individual Differences: students who forgave themselves for procrastinating procrastinated less on the next exam
 
-#psychology #selfdoubt #confidence #selfimprovement #psychologyexplained #simplemindmotivation
+---
+
+Disclaimer: This video is for educational purposes only and is not professional psychological or medical advice. If you're struggling, please reach out to a licensed professional.
 ```
 
 ## Tags
 
 ```
-self doubt, psychology of self doubt, where does self doubt come from, how to stop doubting yourself, how to build self confidence, self belief, self efficacy, Albert Bandura, imposter syndrome, confidence, overthinking, psychology explained, psychology, self improvement, personal growth, simplemindmotivation
+psychology of procrastination, procrastination, how to stop procrastinating, why do we procrastinate, how to stop being lazy, procrastination motivation, how to be disciplined, how to build discipline, fear of failure, Tim Pychyl, implementation intentions, psychology explained, psychology, self improvement, personal development, personal growth, psychology facts, brain guy psychology
 ```
 
 ## Pinned comment
 
 ```
-What's one thing you doubted you could do, that you did anyway? 👇
-The 5 steps: 1 Collect tiny proof · 2 Watch someone like you · 3 Talk to yourself by name · 4 Say "I'm excited" · 5 Keep a proof list
+What's the one thing you've been putting off the longest? Write it below with your first tiny step 👇
+The 5 steps: 1 Shrink it · 2 Make an if-then plan · 3 Meet your future self · 4 Do it badly · 5 Forgive yourself
 ```
 
 ## End screen
 
-Link the spotlight video ("why they're barely watching").
+Link the self-doubt video ("The Psychology of Self-Doubt: Where It Really Comes From").

@@ -1,12 +1,12 @@
-# Icon prompts: "The Psychology of Self-Doubt"
+# Icon prompts: "Psychology of Procrastination"
 
-**8 new icons (I71–I78).** The others (I06, I11, I41, I52, I63, I67) are reused and already in `icons/`.
+**10 new icons (I79–I88).** No reused icons this time.
 
 ## How to use
 
 1. Open a **new** Nano Banana chat. Attach 2 old icons as examples (`reference/style/icon-example-1.jpg` and `icon-example-2.jpg`).
 2. Paste the **SETUP**, then the prompts one at a time, choosing **2K**.
-3. Name each file exactly as shown, **starting with I** (`I71.jpg` …). Put them in **Icons Vid5** in Downloads.
+3. Name each file exactly as shown, **starting with I** (`I79.jpg` …). Put them in **Icons Vid6** in Downloads.
 
 ## SETUP
 
@@ -20,11 +20,13 @@ Reply "ready" and wait for my first prompt.
 
 | File | Prompt |
 |---|---|
-| I71 | A classic podcast microphone on a small desk stand. |
-| I72 | A small grey trash can with one crumpled paper ball in it. |
-| I73 | A glass tank with a calm green cartoon snake coiled inside. |
-| I74 | An old-fashioned brass balance scale, perfectly level. |
-| I75 | A red cartoon heart with fast pulse lines around it, beating. |
-| I76 | A long paper receipt curling at the bottom, with simple lines and small check marks (no numbers). |
-| I77 | A car steering wheel. |
-| I78 | A single black dumbbell. |
+| I79 | A simple round wall clock with a red rim (tick marks only, no numbers). |
+| I80 | A smartphone with three colorful message bubbles popping out of the screen. |
+| I81 | An open wooden door with bright light shining through the doorway. |
+| I82 | A paper bill in an open envelope, with a red stamp mark (no writing). |
+| I83 | A desk calendar with one page flying off the top. |
+| I84 | An old metal bear trap, wide open. |
+| I85 | A pair of white running sneakers with a red stripe. |
+| I86 | A red alarm clock ringing, with shake lines around it. |
+| I87 | A yellow pencil with a pink eraser, a little scribble line under it. |
+| I88 | A cartoon peach-pink brain with a small grey rain cloud above it. |

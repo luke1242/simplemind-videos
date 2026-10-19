@@ -1,4 +1,4 @@
-# SimpleMindMotivation: Upload Playbook
+# Brain Guy Psychology: Upload Playbook
 
 This is how every new video is packaged: the title, thumbnail, description, tags and script shape. It's based on a breakdown of **PsychToons** (171K subscribers, +52% in 30 days, Oct 2026), the closest faceless psychology channel to ours.
 
@@ -60,6 +60,8 @@ If the text comes out wrong, ask for the same image **with no text**, then add t
 
 **Test it:** in YouTube Studio, use **Test & Compare** on 2–3 thumbnails (for example black vs cream, or two different hooks).
 
+**Style test running (video 6, procrastination):** two thumbnails in a dark, drawn, semi-realistic style (like PsychToons' moodier ones, but original compositions) vs our comic narrator, with the same hook. Keep whichever style wins for the next videos.
+
 ## 3. Description template
 
 ```
@@ -71,9 +73,9 @@ If the text comes out wrong, ask for the same image **with no text**, then add t
 
 Which of the [N] [steps] do you need most? Tell me the number in the comments.
 
-You were watching SimpleMindMotivation. I'll see you in the next one.
+You were watching Brain Guy Psychology. I'll see you in the next one.
 
-#psychology #selfimprovement #[topic] #[topic] #psychologyexplained #simplemindmotivation
+#psychology #selfimprovement #[topic] #[topic] #psychologyexplained #brainguypsychology
 
 ---
 
@@ -92,7 +94,7 @@ Disclaimer: This video is for educational purposes only and is not professional 
 
 Use 12–20 tags: the exact title keyword first, then how-to variations, then the researchers' names, then the base tags.
 
-**Base tags (every video):** psychology explained, psychology, self improvement, personal growth, personal development, psychology facts, mental health, simplemindmotivation
+**Base tags (every video):** psychology explained, psychology, self improvement, personal growth, personal development, psychology facts, mental health, brain guy psychology
 
 From vidIQ, Oct 2026: "psychology explained" gets ~470K searches a month with **low competition (33)**. "Personal development" (345K) and "personal growth" (261K, rising) are also low competition.
 

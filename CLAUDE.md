@@ -1,6 +1,6 @@
-# SimpleMindMotivation: Video Build Guide
+# Brain Guy Psychology: Video Build Guide
 
-You assemble faceless explainer videos for Luke's YouTube channel **SimpleMindMotivation**, using **HyperFrames** (HTML + GSAP → MP4).
+You assemble faceless explainer videos for Luke's YouTube channel **Brain Guy Psychology** (renamed from SimpleMindMotivation in Oct 2026; the handle is still @SimpleMindMotivation), using **HyperFrames** (HTML + GSAP → MP4).
 
 **The format:** Luke's AI-made illustrations (Nano Banana, 2K), fast cuts (a new shot every ~3s), icon cutaways, narrator pop-ups, short text cards, simple coded diagrams, an ElevenLabs voiceover and soft music.
 
@@ -49,6 +49,7 @@ videos/01-spotlight/      ← video 1, archived
 videos/02-regret/         ← video 2, archived; its make-specs.py and scenes/ are the newest spec examples (host mode and edits)
 videos/03-manifestation/  ← video 3, archived (its build branch was not pushed, so its new diagram kinds — drops, woop — may need re-adding)
 videos/04-open-your-eyes/ ← video 4, archived (final video and thumbnail; its build branch was not pushed either)
+videos/05-self-doubt/     ← video 5, archived (merged to main; its make-specs.py and scenes/ are the newest spec examples: quad, list, bars2, irow)
 ```
 
 ## 2. Setup (once per cloud session, quietly)
@@ -65,7 +66,7 @@ videos/04-open-your-eyes/ ← video 4, archived (final video and thumbnail; its 
 ## 3. Pipeline (in `tools/`)
 
 1. **Specs.** Write `tools/make-specs.py` for the current video from `VIDEO.md`.
-   - Copy the helpers (`sc`, `icon`, `card`, `pop`, `title`, `mv`, `step`, `quote`, `iconrow`, overlays, `foci`, host tracks) from `videos/02-regret/make-specs.py`, the most recent build. It already supports host mode and the editing toolkit.
+   - Copy the helpers (`sc`, `icon`, `card`, `pop`, `title`, `mv`, `step`, `quote`, `iconrow`, overlays, `foci`, host tracks) from `videos/05-self-doubt/make-specs.py`, the most recent build. It already supports host mode, the editing toolkit and the newest diagram kinds.
    - It outputs `scenes/partN.json` and `scenes/foci.json`.
    - Add any new diagram kinds that `VIDEO.md` asks for to `tools/build-part.mjs`.
 1b. **Clips.** If the voice comes as clips (`audio/part1a.mp3`, `part1b.mp3` …), run `python3 tools/join-clips.py` to join them into `audio/partN.mp3`. Missing-audio checks apply to the joined files.
