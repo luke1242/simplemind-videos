@@ -54,7 +54,7 @@ Keywords go in the first 200 words. Chapter times come from the final render (11
 ```
 Why do you procrastinate, even on the things you care about most? This is the psychology of procrastination, explained simply. Procrastination isn't laziness, and it isn't bad time management. It's your brain trying to escape a bad feeling, and once you see how it works, you can learn how to stop procrastinating.
 
-In this psychology explained video: why we procrastinate, Tice and Baumeister's 1997 study that followed procrastinators through a whole semester, Sirois and Pychyl's research on procrastination as short-term mood repair, and Hal Hershfield's brain scans showing that your future self feels like someone else. Then the 4 traps that keep you stuck (a task that's too big and blurry, fear of failure, a reward that feels too far away, and the guilt loop) and 5 research-backed ways to beat procrastination, stop overthinking and finally get started, without waiting for motivation or discipline.
+In this psychology explained video: why we procrastinate, Tice and Baumeister's 1997 study that followed procrastinators through a whole semester, Sirois and Pychyl's research on procrastination as short-term mood repair, and Hal Hershfield's brain scans showing that your future self feels like someone else. Then the 4 traps that keep you stuck (a task that's too big and blurry, fear of failure, a reward that feels too far away, and the guilt loop) and 5 research-backed ways to beat procrastination and finally get started, without waiting for motivation or discipline.
 
 What's the one thing you've been putting off the longest? Tell me in the comments, along with your first tiny step.
 
