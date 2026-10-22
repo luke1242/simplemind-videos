@@ -1,26 +1,13 @@
-# Current video: "Psychology of Procrastination (And How to Trick Your Brain Out of It)"
+# Current video: "The Psychology of Overthinking" (final title TBD)
 
-**Topic:** procrastination isn't laziness, it's mood repair. Your brain trades a bad feeling now for a worse one later, and treats future you like someone else. Four traps (too big and blurry, a test of who you are, a reward too far away, the guilt loop) and five research-backed ways to start.
-**Follows:** `PLAYBOOK.md` (cold open with a study → personal story → research → 4 traps → 5 steps → emotional close). It points to the self-doubt video at the end.
-**Length:** the raw voice is about 1,600 words. After pause padding, the target is about **11:00**.
+**Working title:** Why You Replay Conversations at 2 AM (Psychology of Overthinking). Luke will pick the final title later; the title card just says PSYCHOLOGY OF / OVERTHINKING.
+**Topic:** overthinking (rumination) feels like problem solving but makes you worse at it. The liking gap, mind-wandering, worry predictions. Four traps (it feels like solving, predicting the worst, everyone's judging me, autopilot habit) and five research-backed ways out.
+**Follows:** `PLAYBOOK.md` (cold open with a study → personal story → research → 4 traps → 5 steps → emotional close). It points to the procrastination video at the end.
+**Length:** the raw voice is about 1,590 words. After pause padding, the target is about **11:00**.
 **Audio:** 15 clips, `audio/part1a.mp3` … (Part 1 a–c, Part 2 a–b, Part 3 a–d, Part 4 a–f). Run `python3 tools/join-clips.py` first.
-**Music:** `music/track.mp3`, mixed softly. Keep it at its quietest during the cold open (D01–D08) and the final scenes (D71–D72).
+**Music:** `music/track.mp3`, mixed softly. Keep it at its quietest during the cold open (D01–D10) and the final scenes (D78–D79).
 **Upload kit:** `prompts/upload-package.md`.
-**Spec examples:** copy the helpers from `videos/05-self-doubt/make-specs.py` (the newest build: quad, list, bars2, irow). It uses the same notation.
-
-## Build status (for Claude Code)
-
-Everything is in place: 15 voice clips (`audio/part*[a-f].mp3`, already joined into `audio/part1-4.mp3`), 21 pictures, 10 icons.
-Already done (Oct 19), so start from these instead of rewriting them:
-- `tools/make-specs.py` for this video (reads narration and host tracks straight from this file). Picture focus points were set by looking at every picture.
-- New diagram kinds in `tools/build-part.mjs`: `loop` (with `pulse`, `pre`, `brk`), `lines2`, `bars3`, `people`, `dots`; `split` takes `fs0`; screen badges take `red`.
-- `scenes/` holds word timings and scene timing for the padded audio. Part 1 was test-built and checked, and the fixes from that check are in the specs.
-- Remaining: build and check Parts 1–4, render, final join with music, merge to `main`.
-
-**If the Whisper model download fails** (huggingface.co blocked), don't stop: use forced alignment of the known script instead.
-`pip download pocketsphinx --no-deps -d /tmp/ps && pip install /tmp/ps/*.whl --break-system-packages`, then for each part:
-`tools/align.py N` → raw words; copy to `scenes/partN.words.json` and run `tools/timing.py N`, rename the result to `partN.rawtiming.json`;
-`tools/pad-all.py`; then `tools/shift-words.py N` and `tools/timing.py N`.
+**Spec examples:** copy the helpers from `videos/06-procrastination/make-specs.py` (the newest build: it reads narration and host tracks straight from VIDEO.md, and uses loop, lines2, bars3, people, dots, split `fs0`, red screen badges). Copy the word-timing steps from `videos/06-procrastination/VIDEO.md` ("Build status") if Whisper can't download its model.
 
 ## How to read this list
 
@@ -28,16 +15,15 @@ Already done (Oct 19), so start from these instead of rewriting them:
 - **beats:** key moments with the exact trigger word in quotes: `icon Ixx "word"`, `pop Nxx "word" → content`, `card "word" → TEXT`, `step "word" → STEP n + TEXT`, `badge "word" → TEXT`. **Bold** = yellow badge, ~~struck~~ = red badge. Fill the rest per CLAUDE.md (every shot ≤ 4s, except the cold-open scenes).
 - **edit:** specific moves (CLAUDE.md section 9). **host:** the narrator-host pose track; no `host:` line = full-frame.
 - **narration** is for timing only and must match the audio. Never show it on screen.
-- **Icons:** I79–I88 are all new (`prompts/icon-prompts.md`). Missing icon → skip that beat.
-- **Numbers:** Whisper may write "nineteen-nineties" as "1990s", "two thousand thirteen" as "2013", "nineteen eighty-four" as "1984", "ninety-four" as "94", "a hundred and thirty-four" as "134", "seven o'clock" as "7 o'clock". Match triggers either way.
-- **Pychyl** is said "PIE-kul". If Whisper writes it differently, match the scene by its other words.
-- **New diagram kind: `loop`.** Three labeled nodes on a circle (cream tiles, 9px ink outline) joined by curved ink arrows that run clockwise. Nodes pop on their words (`back.out`). "Pulse" = the arrows race around once (0.4s) with a swoosh. "Break" = one arrow snaps in two with a small crack line and a ding, and the loop stops. Add it to `tools/build-part.mjs`.
+- **Icons:** I89–I98 are new (`prompts/icon-prompts.md`). I80, I84, I85 and I86 are reused from video 6 (already in `icons/`). Missing icon → skip that beat.
+- **Numbers:** Whisper may write "two thousand eighteen" as "2018", "forty-seven percent" as "47%", "ninety-one percent" as "91%", "thirteen hundred" as "1,300", "two thousand two hundred fifty" as "2,250", "thirty-minute" as "30-minute", "B-plus" as "B+". Match triggers either way.
+- **Names:** Nolen-Hoeksema ("NO-len HOOK-sma"), Beilock ("BYE-lock"), Borkovec ("BOR-ko-vek"). If Whisper writes them differently, match the scene by its other words. The forced-alignment fallback (`tools/align.py`) already has pronunciations for them.
 
 ---
 
 ## The cold open
 
-D01–D08 are in the normal comic style, but slightly slower and calmer: shots may run up to **4.5s**, moves are snap zooms and soft pushes on words, and the music stays at its quietest. After D08, show the **title card** right away: green pill **LESSON**, big text PSYCHOLOGY OF / PROCRASTINATION, with "PROCRASTINATION" in orange (shrink to fit), 2.5s.
+D01–D10 are in the normal comic style, but slightly slower and calmer: shots may run up to **4.5s**, moves are snap zooms and soft pushes on words, and the music stays at its quietest. After D10, show the **title card** right away: green pill **LESSON**, big text PSYCHOLOGY OF / OVERTHINKING, with "OVERTHINKING" in orange, 2.5s.
 
 ## The narrator host
 
@@ -47,373 +33,401 @@ Same rules as before (poses from the tone tags, frame on the right, hard-cut pos
 
 ## PART 1: The cold open and my story (`audio/part1.mp3`)
 
-**D01** · picture S01 (NEW: the narrator sitting at his desk at night, laptop open, one sticky note on the laptop, a wall clock at 9) · camera zoom-in
-edit: snap zoom to the wall clock on "nine" → whip slide to the sticky note on "thing"
-narration: "It's nine at night. You have one thing to do. One."
+**D01** · picture S01 (NEW: the narrator asleep in bed at night, eyes closed, a small glowing bedside clock, dark blue room) · camera zoom-in
+edit: snap zoom to the glowing clock on "two" · snap zoom to his closed eyes on "closed"
+narration: "It's two in the morning. You're exhausted. Your eyes are closed."
 
-**D02** · picture S02 (NEW: the narrator happily spraying and wiping an already tidy desk, laptop pushed to the side) · camera zoom-in
-edit: hard cut in on "so" · snap zoom to the spray bottle on "clean"
-narration: "So you sit down... and decide your desk is too messy to work at. So you clean the desk."
+**D02** · picture S01 · camera zoom-in
+edit: snap zoom to his brain head on "brain" · thought-bubble pill "REMEMBER THAT THING YOU SAID TODAY?" on "remember"
+narration: "And then your brain says, "Hey. Remember that thing you said today?""
 
-**D03** · picture S02 · camera zoom-out
-edit: punch-in crop on his face on "video" (1st occurrence)
-narration: "Then you reply to a few messages. Then you watch a video. Maybe even a video about how to stop procrastinating."
-beats: icon I80 "messages" · card "procrastinating" → HOW TO STOP **PROCRASTINATING**
+**D03** · picture S01, swapping to S01b on "wide" (NEW, edit of S01: the same bed, but his eyes snap wide open, and a thought bubble above his head shows a tiny scene of him talking awkwardly to a stickman) · camera zoom-in
+edit: hard swap to S01b on "wide", with a ding · snap zoom to the thought bubble on "replaying"
+narration: "And now you're wide awake. Replaying it."
 
-**D04** · picture S03 (NEW: the narrator lying in bed in the dark at midnight, eyes open, staring at the ceiling; across the room the closed laptop with the sticky note) · camera zoom-in
-edit: snap zoom to the laptop on "thing" · zoom back to his face on "lie" · two thought-bubble pills pop above him: "WHAT IS WRONG WITH ME?" on "wrong", "WHY AM I SO LAZY?" on "lazy"
-narration: "And by midnight, the one thing still isn't done. So you lie in bed thinking, "What is wrong with me? Why am I so lazy?""
+**D04** · picture S01b · camera zoom-in
+edit: three thought-bubble pills pop beside him: "WHY DID I SAY IT LIKE THAT?" on "say", "DID THEY THINK I WAS WEIRD?" on "weird", "WHY DID I LAUGH AT MY OWN JOKE?" on "laugh"
+narration: ""Why did I say it like that?" "Did they think I was weird?" "Why did I laugh at my own joke?""
 
-**D05** · picture S04 (NEW: a sunny college campus early in the term; one relaxed stickman student lies in a hammock reading a comic while other students rush past carrying books) · camera zoom-in
-edit: push wipe in (time jump) on "in" · name pill TICE & BAUMEISTER (1997) on "psychologists"
+**D05** · picture S02 (NEW: the narrator lying in bed staring up; a beam from his glowing brain projects the same tiny awkward conversation onto the ceiling like a movie, with a film strip of the same frame repeating over and over) · camera zoom-in
+edit: snap zoom to the ceiling movie on "conversation" · badges count up: **10 SECONDS** on "ten", ~~50 TIMES~~ on "fifty"
+narration: "Ten seconds of a conversation... and you've watched it fifty times."
+
+**D06** · picture S03 (NEW: two stickman strangers sitting across a small café table, chatting; one in a sage shirt smiles warmly, the other in a sky-blue shirt looks nervous; a stickman researcher with a clipboard in the background) · camera zoom-in
+edit: push wipe in (time jump) on "in" · name pill BOOTHBY ET AL. (2018) on "researchers" · badge **5 MINUTES** on "five"
 host: N02 "here's"
-narration: "Here's the thing. In the nineteen-nineties, two psychologists followed a group of college students through an entire semester."
+narration: "Here's what's strange. In two thousand eighteen, a team of researchers paired up strangers and had them talk for just five minutes."
 
-**D06** · picture S04 · camera zoom-in
-edit: snap zoom to the stickman in the hammock on "procrastinators" · badges pop beside him: **LESS STRESS** on "less", **FEWER HEALTH PROBLEMS** on "fewer" · whip slide to the rushing students on "rushing"
-host: N06 "and"
-narration: "And early on, the procrastinators were actually doing better. Less stress. Fewer health problems. They were relaxed, while everyone else was rushing."
+**D07** · picture S03 · camera zoom-in
+edit: tour: snap zoom to the warm stickman on "liked" (1st occurrence) → whip slide to the nervous stickman on "thought"
+host: N02 "afterward"
+narration: "Afterward, each person rated how much they liked the other one, and how much they thought the other one liked them."
 
-**D07** · picture S04b (NEW, edit of S04: the same campus at the end of term, grey and rainy; the same stickman now buried in papers at a desk, a thermometer in his mouth, panicking, while the other students relax) · camera zoom-in
-edit: whip-pan cut to S04b on "flipped", with a ding · red badges pop beside him: ~~MORE STRESS~~ on "stressed", ~~SICKER~~ on "sick", ~~LOWER GRADES~~ on "grades"
-host: N02 "but"
-narration: "But by the end of the semester, everything flipped. The procrastinators were more stressed, they got sick more often, and they got lower grades on every single assignment."
+**D08** · CODED bars3 · camera hold
+edit: bars grow on "partner"
+host: N06 "almost" → N02 "their"
+Bars (no numbers): HOW MUCH THEY THOUGHT THEY WERE LIKED (sky, shorter) vs HOW MUCH THEY WERE ACTUALLY LIKED (sage, taller). Title: AFTER 5 MINUTES OF TALKING.
+narration: "Almost everyone made the same mistake. Their partner liked them more than they thought."
 
-**D08** · CODED lines · camera hold · **reveal: at least 2s of silence after**, then the title card
-edit: soft riser into the scene · lines draw on "avoided" · badge **BORROWED** on "borrowed" · impact hit on "future"
-host: N02 "they" → N06 "they" (2nd occurrence)
-Lines (no numbers, just the shape): x-axis START OF TERM → END OF TERM, y-axis STRESS. PROCRASTINATORS (red) starts low and climbs steeply. EVERYONE ELSE (sky) stays flat in the middle. The red line crosses the blue one.
-narration: "They hadn't avoided the stress. They had just borrowed it... from their future selves."
+**D09** · picture S03b (NEW, edit of S03: the same café table; now a thought bubble above the warm stickman shows a big smiling heart, while the nervous one still frowns) · camera zoom-in
+edit: snap zoom to the heart bubble on "called" · badge **THE LIKING GAP** on "liking"
+host: N02 "the"
+narration: "The researchers called it the liking gap."
 
-**D09** · picture S05 (NEW: the narrator very busy at his desk: floating neat folders, a screen full of productivity videos, a stack of to-do lists; in the corner of the desk one closed notebook glows softly under its own little spotlight, untouched) · camera zoom-in
-edit: hard cut from the title card · snap zoom to the glowing notebook on "idea"
-narration: "I know this one really well. I had the idea for this video over a week ago."
-beats: icon I83 "week"
+**D10** · picture S01b · camera zoom-in · **reveal: at least 2s of silence after**, then the title card
+edit: soft riser · snap zoom to his wide eyes on "replaying" · impact hit on "better"
+narration: "The conversation you're replaying at two A.M.? It probably went better than you think."
+beats: card "better" → IT WENT **BETTER** THAN YOU THINK
 
-**D10** · picture S05 · camera zoom-in
-edit: tour: snap zoom to the floating folders on "folder" → whip slide to the videos on the screen on "videos" → whip slide to the stack of to-do lists on "made"
-narration: "And in that week, I reorganized every folder on my computer, I watched four videos about other people's productivity systems, and I made a to-do list... for my to-do list."
+**D11** · picture S04 (NEW: the narrator sitting on a couch staring at his phone, a sweat drop on his brain head; on the phone screen, one sent message bubble and no reply) · camera zoom-in
+edit: hard cut from the title card · snap zoom to the phone on "message"
+narration: "I do this all the time. A few weeks ago, I sent someone a message, and they took a few hours to reply."
+beats: icon I89 "reply"
 
-**D11** · picture S05 · camera zoom-out
-edit: zoom out to the whole desk on "strange" · snap zoom plus a hand-drawn circle around the glowing notebook on "except"
-narration: "Then I made a thumbnail for a video I hadn't even written yet. And the strange part is, I wasn't being lazy. I was working really hard. Just on everything except the one thing that mattered."
-beats: pop N10 "thumbnail" → card NO SCRIPT **YET**
+**D12** · picture S05 (NEW: the narrator surrounded by floating crumpled drafts and little grey thought clouds; in one big thought cloud, a wooden bridge between him and a stickman friend is crumbling) · camera zoom-in
+edit: badge ~~20 TIMES~~ on "twenty" · tour: snap zoom to the floating drafts on "apologies" → whip slide to the crumbling bridge on "friendship"
+narration: "In those few hours, I reread my message about twenty times, decided it sounded rude, wrote three different apologies in my head, and imagined the whole friendship falling apart."
 
-**D12** · icon I81 as the main picture · camera hold
-edit: snap zoom into the open door on "run"
+**D13** · picture S05b (NEW, edit of S05: the clouds are gone; the narrator stares at his phone with flat, deadpan eyes; on the screen a stickman lifting a dumbbell at the gym) · camera zoom-in
+edit: whip-pan cut in on "then" · snap zoom to the phone on "haha" · speech pill "HAHA SORRY, I WAS AT THE GYM" on "haha"
+narration: "Then they replied. "Haha sorry, I was at the gym.""
+
+**D14** · picture S05b · camera zoom-out
+edit: zoom out on "brain"
+narration: "And it wasn't even a big deal. It was one text. My brain had worked for hours... and solved absolutely nothing."
+beats: pop N10 "brain" → card SOLVED **NOTHING**
+
+**D15** · icon I90 as the main picture · camera hold
+edit: snap zoom into the film reel on "replaying"
 host: N06 "so"
-narration: "So why do we do this? Why does your brain run from the exact things you care about most?"
+narration: "So why does your brain do this? Why does it keep replaying things it can't change?"
 
-**D13** · CODED iconRow · camera hold
+**D16** · CODED iconRow · camera hold
 host: N01 "by"
-Icons: I88 on "know", I84 on "four", I85 on "five". Labels: WHAT IT REALLY IS · 4 TRAPS · 5 WAYS TO START.
-narration: "By the end of this video, you'll know what procrastination really is, the four traps that keep you stuck, and five research-backed ways to finally get started."
+Icons: I98 on "know", I84 on "four", I95 on "five". Labels: THINKING VS OVERTHINKING · 4 TRAPS · 5 WAYS OUT.
+narration: "By the end of this video, you'll know the difference between thinking and overthinking, the four traps that keep your mind stuck on repeat, and five research-backed ways to finally turn it off."
 
-**D14** · CODED card · camera hold
-edit: marker highlight on OPPOSITE on "opposite"
-host: N01 "and"
-Card: THE **OPPOSITE** OF WHAT MOST PEOPLE DO (small second line).
-narration: "And the last one is the opposite of what most people do. It's the one that surprised me the most."
+**D17** · CODED card · camera hold
+edit: count-up 10 on "ten"
+host: N01 "one"
+Card: **10 MINUTES** / AND A PIECE OF PAPER (small second line).
+narration: "One of them takes ten minutes and a piece of paper."
 
 ---
 
-## PART 2: What procrastination really is (`audio/part2.mp3`)
+## PART 2: What overthinking really is (`audio/part2.mp3`)
 
-**D15** · icon I79 as the main picture · camera hold
-edit: snap zoom to the clock on "time" (2nd occurrence) · red badges pop top-center: ~~BAD PLANNING~~ on "bad", ~~NOT ENOUGH DISCIPLINE~~ on "discipline"
-host: N01 "for"
-narration: "For a long time, people thought procrastination was a time problem. Bad planning. Not enough discipline."
+**D18** · picture S06 (NEW: the narrator running hard inside a giant hamster wheel in a dim room, sweat drops, the wheel spinning fast, going nowhere) · camera zoom-in
+edit: snap zoom to the wheel on "over" · badge **RUMINATION** on "rumination"
+narration: "Psychologists have a name for this. Rumination. Thinking about the same problem, over and over, without getting anywhere."
 
-**D16** · picture S20 (COPY: researcher at a desk with a huge pile of notes) · camera zoom-in
-edit: name pill TIM PYCHYL on "psychologist" · snap zoom to the researcher on "different"
-host: N06 "but"
-narration: "But psychologist Tim Pychyl has studied procrastination for decades, and he says something different."
+**D19** · picture S20 (COPY: researcher at a desk with a huge pile of notes) · camera zoom-in
+edit: name pill SUSAN NOLEN-HOEKSEMA on "psychologist" · snap zoom to the researcher on "surprising"
+host: N06 "psychologist"
+narration: "Psychologist Susan Nolen-Hoeksema spent decades studying it, and she found something surprising."
 
-**D17** · CODED card, swapping to card B on "emotion" · camera hold
-edit: ~~TIME~~ stamps on "time" · kinetic swap to card B with a ding · impact hit on "emotion"
-host: N02 "procrastination"
-Card A: A ~~TIME~~ PROBLEM? Card B: AN **EMOTION** PROBLEM.
-narration: "Procrastination isn't a time management problem. It's an emotion management problem."
+**D20** · CODED card, swapping to card B on "worse" · camera hold
+edit: kinetic swap to card B with a ding · impact hit on "worse"
+host: N02 "rumination"
+Card A: FEELS LIKE **SOLVING**. Card B: MAKES YOU ~~WORSE~~ AT IT.
+narration: "Rumination feels like problem solving. But it makes you worse at it."
 
-**D18** · CODED split · camera hold
-edit: name pill SIROIS & PYCHYL (2013) on "psychologist" · left side pops on "better", right side on "expense" · focus rack from left to right on "future"
-host: N06 "in"
-Left (sage): **FEEL BETTER NOW**. Right (red): FUTURE YOU ~~PAYS~~.
-narration: "In two thousand thirteen, he and psychologist Fuschia Sirois described it as choosing to feel better right now, at the expense of your future self."
+**D21** · CODED bars3 · camera hold
+edit: bars grow on "worse"
+host: N01 "in"
+Bars (no numbers), title HOW GOOD THE SOLUTIONS WERE: AFTER RUMINATING (red, short) vs AFTER THINKING ABOUT SOMETHING ELSE (sage, tall).
+narration: "In her studies, people who spent a few minutes ruminating came up with worse solutions to problems than people who spent the same time thinking about something else."
 
-**D19** · picture S06 (NEW: the narrator at his desk staring at one sheet of paper; around the paper float four small grey cartoon clouds with faces: a bored yawning one, a confused one with a question mark, a scared one, and one huge heavy one) · camera zoom-in
-edit: tour: snap zoom to the bored cloud on "boring" → whip slide to the confused cloud on "confusing" → whip slide to the scared cloud on "scary" → zoom out to the huge cloud on "big"
-narration: "Think about how a task makes you feel. Boring. Confusing. Scary. Too big."
+**D22** · picture S06 · camera zoom-out
+edit: snap zoom to his sweating face on "harder" · zoom out on "less"
+narration: "They were thinking harder. And getting less done."
 
-**D20** · picture S06 · camera zoom-out
-edit: snap zoom to his worried eyes on "feeling"
-narration: "Your brain doesn't like that feeling. So it looks for a way out."
-beats: icon I81 "way"
+**D23** · CODED split · camera hold
+edit: left side pops on "thinking" (1st occurrence), right side on "overthinking" · speech pills: "WHAT CAN I DO ABOUT THIS?" on "what" (1st occurrence), "WHY? WHAT DOES IT SAY ABOUT ME?" on "why"
+host: N08 "here's" → N01 "thinking" → N02 "overthinking"
+Left (sage): THINKING → **NEXT STEP**. Right (red): OVERTHINKING → ~~LOOPS~~.
+narration: "Here's the easiest way to tell the difference. Thinking moves you toward a next step. "What can I do about this?" Overthinking just loops. "Why did this happen? What does it say about me? What if it happens again?""
 
-**D21** · picture S07 (NEW: the narrator snapping his laptop shut and leaning back with relief, happy closed eyes, little relief sparkles around him) · camera zoom-in
-edit: snap zoom to his relieved eyes on "relief" · light sweep across him on "instantly"
-narration: "And the second you avoid the task, you get a little reward. Relief. Close the laptop, and the bad feeling is gone. Instantly."
-beats: card "relief" → **RELIEF**
+**D24** · CODED card, swapping to card B on "other" · camera hold
+host: N06 "one"
+Card A: ENDS IN **ACTION**. Card B: ENDS ~~WHERE IT STARTED~~.
+narration: "One ends with an action. The other ends right where it started."
 
-**D22** · CODED loop · camera hold
-edit: nodes pop: BAD FEELING on "every", AVOID on "avoid", RELIEF on "better" · center badge **"AVOIDING WORKS"** on "avoiding" · pulse on "faster"
-host: N02 "and" → N06 "so"
-narration: "And your brain remembers that. Every time you avoid something hard and feel better, your brain learns, "Avoiding works." So the next time, it reaches for that escape even faster."
+**D25** · picture S07 (NEW: the narrator gripping the steering wheel of a small car stuck in deep mud, the back wheel spinning and spraying mud, engine smoke puffing, the car not moving) · camera zoom-in
+edit: snap zoom to the spinning wheel on "spinning" → whip slide to his face on "engine" · zoom out on "going"
+narration: "It's like a car spinning its wheels in the mud. The engine is loud. You're just not going anywhere."
+beats: icon I97 "mud"
 
-**D23** · CODED card, swapping to card B on "loop" · camera hold
-edit: ~~LAZY~~ stamps on "lazy" · kinetic swap to card B on "loop"
-host: N02 "that's" → N06 "you're" (2nd occurrence)
-Card A: NOT ~~LAZY~~. Card B: A **LEARNED LOOP**.
-narration: "That's why procrastination can feel almost automatic. You're not deciding to be lazy. You're following a loop your brain learned to keep you comfortable."
-
-**D24** · picture S08 (NEW: a brain-scan lab; a stickman lies in a big friendly MRI scanner while a stickman researcher looks at two brain-scan pictures side by side on a monitor) · camera zoom-in
-edit: push wipe in on "in" · name pill HAL HERSHFIELD on "researcher" · snap zoom to the monitor on "scanned" · badges on the two scans: NOW on "now", +10 YEARS on "ten"
+**D26** · picture S08 (NEW: a busy city street; several stickmen doing everyday things: cooking at a window, riding a bus, typing at a desk; each has a little thought cloud showing somewhere else: a beach, an argument, a phone; a few phones show a notification bubble) · camera zoom-in
+edit: push wipe in on "in" · name pill KILLINGSWORTH & GILBERT (2010) on "researchers" · badge **2,250 PEOPLE** on "people"
 host: N01 "and"
-narration: "And there's another piece to this. In two thousand nine, researcher Hal Hershfield and his team scanned people's brains while they thought about themselves now, and themselves ten years in the future."
+narration: "And it happens way more than you'd think. In two thousand ten, Harvard researchers Matthew Killingsworth and Daniel Gilbert built an app that checked in on two thousand two hundred fifty people at random moments during their day."
+beats: icon I80 "app"
 
-**D25** · picture S09 (NEW: the narrator looking into a tall mirror; the reflection is not him but a dark, blurry, faceless stranger in a hoodie behind frosted glass) · camera zoom-in
-edit: snap zoom to the narrator on "people" → whip slide to the blurry stranger in the mirror on "someone" · focus rack between them on "else"
-narration: "When people thought about their future selves, their brain activity looked less like thinking about themselves... and more like thinking about someone else."
+**D27** · picture S08 · camera zoom-in
+edit: tour: snap zoom to the cooking stickman on "doing" → whip slide to the bus rider on "thinking" · speech pills: "WHAT ARE YOU DOING?" on "doing", "WHAT ARE YOU THINKING ABOUT?" on "thinking"
+host: N06 "it"
+narration: "It asked, "What are you doing right now? And what are you thinking about?""
 
-**D26** · picture S10 (NEW: the narrator relaxing on the couch, happily handing a big stack of homework and to-do papers to a tall grey silhouette standing in the doorway, its face hidden in shadow) · camera zoom-in
-edit: snap zoom to the narrator on "tomorrow" → whip slide to the silhouette on "someone" · speech pill "I'LL DO IT TOMORROW" on "tomorrow"
-narration: "So when you say, "I'll do it tomorrow," part of your brain hears, "Someone else will do it.""
+**D28** · CODED pie · camera hold
+edit: soft riser · pie fills with a count-up to **47%** on "forty" · impact hit on "forty"
+host: N02 "almost"
+Pie label: MIND SOMEWHERE ELSE:
+narration: "Almost forty-seven percent of the time, people's minds were somewhere else."
 
-**D27** · picture S10 · camera zoom-in
-edit: three pills pop beside the silhouette: MORE MOTIVATED on "motivated", MORE RESTED on "rested", MORE ORGANIZED on "organized"
-narration: "And that someone else is always more motivated, more rested, and more organized than you."
+**D29** · picture S08 · camera zoom-out
+edit: snap zoom to a stickman with a thought cloud on "wandered" · badge ~~LESS HAPPY~~ on "less"
+host: N02 "and"
+narration: "And when their minds wandered, they were less happy than when they were focused on what they were doing."
 
-**D28** · picture S10b (NEW, edit of S10: the same doorway, but now the light reveals the silhouette is the narrator himself, tired eyes, holding the huge stack of papers) · camera zoom-in
-edit: hard cut swap to S10b on "turn", with a ding · impact hit on "you"
-narration: "Until tomorrow comes. And they turn out to be you."
+**D30** · CODED card · camera hold
+edit: marker highlight on UNHAPPY MIND on "unhappy"
+host: N06 "a"
+Card: WANDERING MIND = / **UNHAPPY MIND**.
+narration: "A wandering mind, the researchers wrote, is an unhappy mind."
 
-**D29** · CODED card, swapping to card B on "choosing" · camera hold
-edit: ~~LAZINESS~~ stamps on "laziness" · kinetic swap to card B
-host: N06 "so"
-Card A: NOT ~~LAZINESS~~. Card B: FEEL BETTER **NOW**.
-narration: "So put it together. Procrastination isn't laziness. It's your brain choosing to feel better now, and sending the bill to a version of you it doesn't really see as you."
-beats: icon I82 "bill"
+**D31** · CODED bars3 · camera hold
+edit: badge **1,300 ADULTS** on "thirteen" · bars grow on "ruminate" · badge **4×** on "four" · impact hit on "four"
+host: N02 "and"
+Bars, title DEVELOPED MAJOR DEPRESSION: RUMINATORS (red, 20%) vs NON-RUMINATORS (sky, 5%).
+narration: "And it isn't harmless. In one survey of about thirteen hundred adults, Nolen-Hoeksema found that people who tended to ruminate were about four times more likely to develop major depression than people who didn't."
 
-**D30** · CODED grid · camera hold
-edit: name pill PIERS STEEL on "researcher" · 20 little people in a 5×4 grid, 4 of them turn red on "one" · badge **1 IN 5** on "five" · all 20 pulse once on "alone"
-host: N01 "researcher"
-narration: "Researcher Piers Steel estimates that somewhere around one in five adults are chronic procrastinators. So if this sounds like you, you're definitely not alone."
+**D32** · picture S06 · camera zoom-out
+edit: snap zoom to his tired face on "waste" · zoom out on "mood"
+narration: "Overthinking doesn't just waste your time. Over time, it can wear down your mood."
 
-**D31** · picture S05 · camera zoom-in
-edit: snap zoom to the glowing notebook on "stuck" · badges count up beside it: DAYS on "days", WEEKS on "weeks", YEARS on "years"
-narration: "But why does it get so stuck? Why do some tasks sit there for days, or weeks, or even years?"
+**D33** · CODED card, swapping to card B on "loop" · camera hold
+edit: red badges pop: ~~SMART~~ on "smart", ~~CAREFUL~~ on "careful", ~~DEEP~~ on "deep" · kinetic swap to card B
+host: N02 "so" → N06 "it's"
+Card A: NOT ~~SMART~~ ~~CAREFUL~~ ~~DEEP~~. Card B: A **LOOP**.
+narration: "So overthinking isn't a sign that you're smart, or careful, or deep. It's a loop your brain gets stuck in."
+
+**D34** · picture S06 · camera zoom-in
+edit: snap zoom to his face on "begging"
+narration: "But why does it get stuck? Why does the same thought keep coming back, even when you're begging it to stop?"
 
 ---
 
 ## PART 3: The four traps (`audio/part3.mp3`)
 
-**D32** · icon I84 as the main picture · camera hold
+**D35** · icon I84 as the main picture · camera hold
 edit: badge **4 TRAPS** on "four"
-host: N01 "researchers"
-narration: "Researchers keep finding the same few traps. Here are the four that show up the most."
+host: N01 "there"
+narration: "There are four traps that keep the loop running."
 
-**D33** · picture S11 (NEW: the narrator standing small at the bottom of a giant foggy mountain made of tangled black scribbles, with no path and no first step) · camera zoom-in
-edit: three fog pills pop over the mountain: WORK ON THE PROJECT on "work", GET IN SHAPE on "shape", FIGURE OUT MY LIFE on "figure"
-narration: "One. The task is too big and too blurry. "Work on the project." "Get in shape." "Figure out my life.""
-beats: step "one" → TRAP 1 + TOO BIG & BLURRY
+**D36** · picture S09 (NEW: the narrator in front of a huge detective corkboard covered in photos and notes connected by a mess of red string, holding more string, exhausted eyes) · camera zoom-in
+edit: snap zoom to the red strings on "replaying"
+narration: "One. It feels like you're solving something. Your brain thinks replaying the problem is the same as fixing it."
+beats: step "one" → TRAP 1 + IT FEELS LIKE SOLVING
 
-**D34** · picture S11 · camera zoom-out
-edit: zoom out to the whole mountain on "giant"
-narration: "Your brain can't see where to start, so it all feels like one giant, heavy thing."
+**D37** · picture S09 · camera zoom-in
+edit: thought-bubble pill "ONE MORE TIME…" on "one" · snap zoom to his face on "ready"
+narration: "If you just think about it one more time, maybe you'll finally understand. Maybe you'll be ready next time."
+beats: icon I91 "understand"
 
-**D35** · picture S20 · camera zoom-in
-edit: push wipe in (time jump) on "back" · name pill SOLOMON & ROTHBLUM (1984) on "psychologists" · snap zoom to the pile of notes on "hundreds"
-host: N01 "back" → N02 "one"
-narration: "Back in nineteen eighty-four, psychologists Laura Solomon and Esther Rothblum asked hundreds of college students why they put things off. One of the biggest reasons was simply that the task felt unpleasant to face."
-beats: card "unpleasant" → THE TASK FELT **UNPLEASANT**
+**D38** · picture S20 · camera zoom-in
+edit: red badges: ~~MORE NEGATIVE~~ on "negative", ~~MORE PESSIMISTIC~~ on "pessimistic"
+host: N02 "but"
+narration: "But Nolen-Hoeksema's research found the opposite. Ruminating made people more negative, and more pessimistic about the future."
 
-**D36** · picture S11 · camera zoom-in
-edit: snap zoom to the narrator at the bottom on "step"
-narration: "And nothing feels worse to face than a task with no clear first step."
+**D39** · CODED loop · camera hold
+edit: nodes pop: REPLAY IT on "think", ANALYZE IT on "way", FEEL WORSE on "loop" · pulse on "around"
+host: N05 "you"
+narration: "You can't think your way out of a loop. You just go around it again."
 
-**D37** · picture S12 (NEW: the narrator standing nervously in front of a giant blank exam paper; beside it a row of three stern stickman judges holding up blank score cards) · camera zoom-in
-edit: snap zoom to the judges on "test" · red badge ~~FEAR OF FAILURE~~ on "fear"
-narration: "Two. The task feels like a test of who you are. The other big reason in that same study was fear of failure."
-beats: step "two" → TRAP 2 + A TEST OF YOU
+**D40** · picture S10 (NEW: the narrator hunched over a glowing crystal ball that shows a dark storm and lightning, while the window behind him shows a sunny, calm day) · camera zoom-in
+edit: snap zoom to the stormy crystal ball on "worst" · thought-bubble pills: "WHAT IF THEY'RE MAD?" on "mad", "WHAT IF I FAIL?" on "fail"
+narration: "Two. Your brain predicts the worst. Overthinking is usually about the future. "What if they're mad?" "What if I fail?""
+beats: step "two" → TRAP 2 + PREDICTING THE WORST
 
-**D38** · CODED card · camera hold
-edit: marker highlight on NEVER FAIL on "fail"
-host: N06 "if"
-Card: NEVER START = **NEVER FAIL**.
-narration: "If you never really start, you can never really fail."
+**D41** · picture S20 · camera zoom-in
+edit: push wipe in on "in" · name pill PENN STATE (2020) on "researchers" · badge **10 DAYS** on "ten"
+host: N01 "in"
+narration: "In two thousand twenty, researchers at Penn State had people with anxiety write down their worries every day for ten days, then checked what actually happened."
+beats: icon I94 "write"
 
-**D39** · picture S12 · camera zoom-in
-edit: snap zoom to the narrator on "tell" · thought-bubble pill "I COULD HAVE DONE IT GREAT…" on "could"
-narration: "As long as it's unfinished, you can still tell yourself, "I could have done it great if I'd had more time.""
+**D42** · CODED pie · camera hold · **reveal: at least 2s of silence after**
+edit: soft riser · pie fills with a count-up to **91%** on "ninety" · impact hit on "ninety"
+host: N02 "ninety-one"
+Pie label: NEVER CAME TRUE:
+narration: "Ninety-one percent of those worries never came true."
 
-**D40** · picture S12 · camera zoom-out
-edit: zoom out to the whole scene on "delay"
-narration: "So the delay protects you. Not from the work... from finding out what you're capable of. That's why the thing you care about most is so often the thing you put off the longest."
-beats: pop N06 "that's" → card CARE MOST = **PUT OFF LONGEST**
+**D43** · picture S10 · camera zoom-in
+edit: snap zoom to the sunny window on "better" → whip slide to the crystal ball on "fortune"
+narration: "And some of the ones that did turned out better than people expected. Your brain is a terrible fortune teller. It just sounds really confident."
+beats: pop N05 "terrible" → card TERRIBLE **FORTUNE TELLER**
 
-**D41** · picture S13 (NEW: the narrator standing on a long road; far away on the horizon a tiny shining gold trophy; right above his head a small grumpy grey rain cloud drizzling on him) · camera zoom-in
-edit: snap zoom to the tiny trophy on "reward" → whip slide to the rain cloud over his head on "bad"
-narration: "Three. Future you feels like a stranger. Remember those brain scans. The reward for doing the task lives in the future. The bad feeling lives right now."
-beats: step "three" → TRAP 3 + THE REWARD IS FAR AWAY
+**D44** · picture S11 (NEW: after a conversation, the narrator and a stickman friend walk away from each other on a sidewalk; above the narrator a thought bubble replays a close-up of himself laughing awkwardly, red-faced; above the friend a thought bubble shows a big happy smiley face) · camera zoom-in
+edit: zoom out to the whole picture on "liking"
+narration: "Three. You think everyone's judging you. Remember the liking gap."
+beats: step "three" → TRAP 3 + EVERYONE'S JUDGING ME
 
-**D42** · CODED bars2 · camera hold
-edit: bars grow on "wins"
-host: N05 "and"
-Bars (no numbers), title HOW REAL IT FEELS: RIGHT NOW (red, tall) vs LATER (sky, short).
-narration: "And right now always wins, because right now is the only one your brain fully believes in."
+**D45** · picture S11 · camera zoom-in
+edit: snap zoom to the narrator's replay bubble on "replays" · badges: PAUSE on "pause", WEIRD LAUGH on "laugh"
+narration: "After a conversation, your brain replays your awkward moments, because those are the ones you were watching. You noticed every pause and every weird laugh."
 
-**D43** · CODED split · camera hold
-edit: left side pops on "three", right side on "tomorrow" · impact hit on "emergency"
-host: N01 "that's"
-Left (sky): DEADLINE IN 3 WEEKS → "NOTHING". Right (red): DEADLINE TOMORROW → ~~EMERGENCY~~.
-narration: "That's why a deadline three weeks away feels like nothing, and a deadline tomorrow feels like an emergency. Same task. Different distance."
-beats: icon I86 "same"
+**D46** · picture S11 · camera zoom-in
+edit: whip slide to the friend's happy bubble on "other"
+narration: "The other person mostly noticed that you were nice to talk to."
 
-**D44** · picture S14 (NEW: the narrator sitting on the floor hugging his knees inside a slow whirl of grey guilt clouds that circle around him like a ring) · camera zoom-in
-edit: snap zoom to the circling clouds on "bad" (1st occurrence)
-narration: "Four. The guilt loop. You put something off. Then you feel bad about it. And feeling bad is exactly the kind of feeling your brain wants to escape."
-beats: step "four" → TRAP 4 + THE GUILT LOOP
+**D47** · CODED card · camera hold
+edit: "MONTHS" pops on "months"
+host: N02 "and"
+Card: COLLEGE ROOMMATES: / THE GAP LASTED / **MONTHS**.
+narration: "And in that research, the gap didn't fade after a few minutes. For college roommates, it lasted for months."
 
-**D45** · CODED loop · camera hold
-edit: nodes pop: AVOID on "avoid" (1st occurrence), FEEL WORSE on "worse", AVOID MORE on "more" · pulse on "more"
-host: N06 "so"
-narration: "So you avoid the task even harder, which makes you feel worse, which makes you avoid it even more."
+**D48** · picture S12 (NEW: the narrator alone in a car at night, stopped at a red light on an empty street, staring ahead; little grey thought clouds are starting to rise out of his brain head on their own) · camera zoom-in
+edit: name pill WATKINS & NOLEN-HOEKSEMA on "psychologists" · snap zoom to the rising clouds on "habit" (2nd occurrence)
+narration: "Four. It turns into a habit. Psychologists Ed Watkins and Susan Nolen-Hoeksema have argued that rumination works a lot like a habit."
+beats: step "four" → TRAP 4 + IT'S A HABIT
 
-**D46** · picture S14 · camera zoom-out
-edit: zoom out on "standing"
-narration: "The shame doesn't push you forward. It becomes one more bad feeling standing between you and the work."
+**D49** · picture S12 · camera zoom-in
+edit: snap zoom to the narrator on "car"
+narration: "It gets linked to certain cues. Lying in bed. A quiet car ride. A phone that hasn't buzzed back."
+beats: icon I93 "bed" · icon I89 "phone"
 
-**D47** · CODED list · camera hold
+**D50** · CODED loop · camera hold
+edit: nodes pop: THE CUE on "cue", THE LOOP STARTS on "starts", REPLAY on "think" · pulse on "anything"
+host: N02 "when"
+narration: "When the cue shows up, the loop starts on its own, before you've even decided to think about anything."
+
+**D51** · picture S01b · camera zoom-in
+edit: snap zoom to the bed on "bed"
+narration: "That's why it always seems to hit at two A.M. Bed is the cue."
+beats: card "bed" → BED IS **THE CUE**
+
+**D52** · CODED list · camera hold
 edit: items pop on their words
 host: N02 "so"
-Items: 1 TOO BLURRY on "blurry", 2 A TEST on "test", 3 TOO FAR AWAY on "far", 4 THE GUILT LOOP on "guilt".
-narration: "So put those four together. A task that's too blurry. A task that feels like a test. A reward that feels too far away. And guilt that keeps feeding the loop."
+Items: 1 FEELS LIKE SOLVING on "solving", 2 PREDICTS THE WORST on "worst", 3 EVERYONE'S JUDGING on "judging", 4 AUTOPILOT on "autopilot".
+narration: "So put those four together. It feels like solving. Your brain predicts the worst. You think everyone's judging you. And it runs on autopilot."
 
-**D48** · picture S15 (NEW: the narrator holding up a small round cartoon shield, protecting himself from a giant looming task paper; his eyes are worried but brave, his brain glows warmly) · camera zoom-in
-edit: snap zoom plus a hand-drawn circle around the shield on "protect"
-narration: "That's not a lazy person. That's a brain trying to protect you, in a way that's quietly costing you the things you want most."
+**D53** · picture S09 · camera zoom-out
+edit: snap zoom to his face on "cares" · zoom out on "wrong"
+narration: "That's not a broken mind. That's a mind that cares a lot, stuck using the wrong tool."
 
 ---
 
-## PART 4: Five ways to start (`audio/part4.mp3`)
+## PART 4: Five ways out of the loop (`audio/part4.mp3`)
 
-**D49** · CODED card · camera hold
+**D54** · CODED card · camera hold
 edit: count-up 5 on "five"
 host: N01 "so"
-Card: **5** STEPS.
-narration: "So here's what actually works. Five steps."
+Card: **5** WAYS OUT.
+narration: "So here's how to get out of the loop. Five steps."
 
-**D50** · picture S01 · camera zoom-in
-edit: snap zoom to the laptop on "document"
-narration: "One. Shrink it until it's almost silly. Don't "write the essay." Open the document and write one bad sentence. Don't "go to the gym." Just put your shoes on."
-beats: step "one" → STEP 1 + SHRINK IT · icon I85 "shoes"
+**D55** · picture S13 (NEW: the narrator standing at a fork in a path: the left path leads to a ladder climbing up to a sunny hill; the right path curls into a small circular track that loops back on itself) · camera zoom-in
+edit: tour: snap zoom to the ladder path on "solving" → whip slide to the looping path on "spinning" → zoom out on "question"
+narration: "One. Ask, "Am I solving or spinning?" When you catch yourself replaying something, ask one question. "Is there something I can actually do about this right now?""
+beats: step "one" → STEP 1 + SOLVING OR SPINNING?
 
-**D51** · picture S01 · camera zoom-in
-edit: punch-in crop on the laptop on "small" · pill WRITE THE FIRST LINE on "line"
-narration: "The goal isn't to finish. The goal is to make the first step so small that your brain has nothing to run from. For this video, my first step wasn't "write a script." It was "write the first line.""
+**D56** · picture S13 · camera zoom-in
+edit: snap zoom to the ladder path on "yes" · pills: SEND THE TEXT on "send", MAKE THE PLAN on "make"
+narration: "If the answer is yes, do the smallest version of it. Send the text. Make the plan."
+beats: icon I80 "text"
 
-**D52** · CODED card · camera hold
-edit: marker highlight on HEAVIEST on "heaviest"
-host: N01 "once"
-Card: STARTING IS THE **HEAVIEST** PART.
-narration: "Once you're moving, the task almost always feels lighter than you expected. Starting is the heaviest part."
+**D57** · CODED card, swapping to card B on "write" · camera hold
+host: N01 "say"
+Card A: CAN YOU **FIX IT** TOMORROW? Card B: WRITE THE FIX. **DONE.**
+narration: "Say you're replaying a mistake from work. Can you fix it tomorrow? Then write down the fix, and you're done for tonight."
 
-**D53** · picture S20 · camera zoom-in
-edit: name pill PETER GOLLWITZER on "psychologist" · snap zoom to the researcher on "exactly"
-host: N07 "two" → N01 "psychologist"
-narration: "Two. Make an if-then plan. Psychologist Peter Gollwitzer studied what he called implementation intentions. Instead of "I'll study this week," you decide exactly when and where."
-beats: step "two" → STEP 2 + IF-THEN PLAN
+**D58** · picture S13 · camera zoom-in
+edit: whip slide to the looping path on "spinning" (1st occurrence) · thought-bubble pill "OH, I'M SPINNING." on "oh"
+narration: "If the answer is no, you're not solving anything. You're spinning. And just naming it, "Oh, I'm spinning," can give you a little distance from it."
 
-**D54** · CODED card, swapping to card B on "then" · camera hold
-host: N01 "if"
-Card A: IF IT'S **7:00**… Card B: …THEN I OPEN MY NOTES.
-narration: ""If it's seven o'clock, then I sit at my desk and open my notes.""
+**D59** · picture S14 (NEW: the narrator calmly dropping folded worry notes into a small wooden box with a round clock on its lid; a few notes are already inside) · camera zoom-in
+edit: name pill TOM BORKOVEC on "psychologist" · snap zoom to the box on "schedule"
+narration: "Two. Give your worries an appointment. Back in the nineteen-eighties, psychologist Tom Borkovec came up with a strange idea. Instead of trying to stop worrying, schedule it."
+beats: step "two" → STEP 2 + A WORRY APPOINTMENT · icon I86 "schedule"
 
-**D55** · CODED grid · camera hold
-edit: name pill GOLLWITZER & SHEERAN (2006) on "researchers" · 94 small dots fill in with a count-up to **94 STUDIES** on "combined" · badge **MEDIUM-TO-LARGE EFFECT** on "effect" · impact hit on "goals"
-host: N02 "when"
-narration: "When researchers combined ninety-four studies on this, if-then plans had a medium-to-large effect on people actually reaching their goals."
+**D60** · picture S14 · camera zoom-in
+edit: badge **30 MINUTES A DAY** on "thirty" · speech pill "NOT NOW. LATER." on "not"
+narration: "Pick one thirty-minute window each day. When a worry shows up outside that window, write it down and tell yourself, "Not now. Later.""
 
-**D56** · picture S01 · camera zoom-out
-edit: snap zoom to the empty chair at the desk on "show"
-narration: "Because you're not waiting to feel like it anymore. The decision has already been made. All you have to do is show up for it."
+**D61** · CODED bars3 · camera hold
+edit: name pill NETHERLANDS (2011) on "study" · bars grow on "dropped"
+host: N02 "in"
+Bars (no numbers), title ANXIETY & STRESS DROPPED: STANDARD TREATMENT (sky, short) vs + WORRY TIME (sage, tall).
+narration: "In a two thousand eleven study in the Netherlands, people who practiced this coped better with their problems, and their anxiety and stress dropped more than people who only got standard treatment."
 
-**D57** · picture S16 (NEW: the narrator at his laptop, surprised wide eyes, looking at the screen, which shows an aged-up older version of himself: a slightly greyer, wrinklier brain head with round glasses, waving back) · camera zoom-in
-edit: snap zoom to the older face on the screen on "pictures"
-narration: "Three. Meet your future self. In a later study, Hershfield showed people realistic aged-up pictures of their own faces."
-beats: step "three" → STEP 3 + MEET FUTURE YOU
+**D62** · picture S14 · camera zoom-out
+edit: snap zoom to the box on "finally" · zoom out on "simple"
+narration: "When the thirty minutes finally come, a lot of those worries won't feel as urgent anymore. It sounds too simple. But your brain lets go more easily when it knows the worry has a time slot."
 
-**D58** · CODED bars2 · camera hold
-edit: bars grow on "willing" · badge **2×** on "twice" · ding
-host: N02 "the"
-Bars, title PUT AWAY FOR THE FUTURE: SAW THEIR FACE TODAY (sky, 1×) vs SAW THEIR OLDER FACE (sage, 2×).
-narration: "The people who saw their older selves were willing to put away about twice as much money for the future."
+**D63** · picture S15 (NEW: the narrator at a desk writing on a sheet of paper; little grey worry clouds flow out of his brain head and turn into ink lines on the page; his eyes look lighter and calmer) · camera zoom-in
+edit: name pill RAMIREZ & BEILOCK (2011) on "researchers" · badge **10 MINUTES** on "ten"
+narration: "Three. Write it down. At the University of Chicago, researchers Gerardo Ramirez and Sian Beilock had students spend ten minutes writing about their worries right before a big exam."
+beats: step "three" → STEP 3 + WRITE IT DOWN
 
-**D59** · picture S16 · camera zoom-in
-edit: snap zoom to the narrator's face on "ask" · thought-bubble pill "HOW WILL TOMORROW-ME FEEL?" on "how"
-narration: "You can do the same thing without a photo. Before you put something off, ask, "How will tomorrow-me feel when they find this still waiting?" Then do one small thing as a favor to them."
+**D64** · CODED bars3 · camera hold
+edit: bars grow on "wrote" · impact hit on "minus"
+host: N02 "students"
+Bars, title ANXIOUS STUDENTS' FINAL GRADE: WROTE FIRST (sage, B+) vs DIDN'T WRITE (sky, B−).
+narration: "Students with high test anxiety who wrote first averaged a B-plus. Anxious students who didn't write averaged a B-minus."
 
-**D60** · picture S09 · camera zoom-in · crossfade in
-edit: focus rack onto the reflection on "just"
-narration: "Future you isn't a stranger. They're just you, a little later."
+**D65** · picture S15 · camera zoom-in
+edit: tour: snap zoom to the clouds leaving his head on "head" → whip slide to the page on "page" · zoom out on "test"
+narration: "Writing it down moves the worry out of your head and onto the page, so your brain doesn't have to keep holding it. You can do it before a test, before bed, or any time a thought keeps circling."
 
-**D61** · picture S17 (NEW: the narrator relaxed and smiling, drawing a messy, scribbly rough sketch on a big sheet of paper, eraser crumbs everywhere, not caring that it's messy) · camera zoom-in
-edit: snap zoom to the messy sketch on "permission"
-narration: "Four. Give yourself permission to do it badly. If fear of failure is what's stopping you, take the test away. Tell yourself, "This is just a rough draft. Nobody has to see it.""
-beats: step "four" → STEP 4 + DO IT BADLY · icon I87 "draft"
+**D66** · CODED card · camera hold
+edit: marker highlight on 10-MINUTE on "ten"
+host: N01 "this"
+Card: THE **10-MINUTE** ONE / A PAPER AND A PEN (small second line).
+narration: "This is the ten-minute one. Just a piece of paper and a pen."
+beats: icon I94 "pen"
 
-**D62** · CODED split · camera hold
-edit: left side pops on "fix", right side on "perfect" · focus rack from right to left on "can't"
-host: N05 "a"
-Left (sage): A ROUGH DRAFT → **FIXABLE**. Right (red): PERFECT IN YOUR HEAD → ~~STUCK~~.
-narration: "A bad first version is something you can fix. A perfect version that only lives in your head is something you can't."
+**D67** · picture S16 (NEW: the narrator walking calmly along a sunny park path under green trees, small birds, his eyes soft and relaxed) · camera zoom-in
+edit: name pill STANFORD (2015) on "researchers" · badge **90 MINUTES** on "ninety"
+narration: "Four. Go outside and walk. At Stanford, researchers sent people on a ninety-minute walk, either through nature or along a busy road."
+beats: step "four" → STEP 4 + WALK OUTSIDE · icon I95 "nature"
 
-**D63** · picture S17 · camera zoom-out
-edit: zoom out on "messy" (1st occurrence) · light sweep on "allowed"
-narration: "Most good work starts out messy. You're allowed to be messy too."
+**D68** · CODED split · camera hold
+edit: left side pops on "nature", right side on "brain" · focus rack from left to right on "negative"
+host: N02 "only"
+Left (sage): NATURE WALK → **LESS RUMINATION**. Right (sky): BRAIN SCANS → **QUIETER**.
+narration: "Only the nature walk reduced rumination. And brain scans showed less activity in an area linked to negative, self-focused thinking."
 
-**D64** · picture S18 (NEW: the narrator kneeling and gently helping a small, tired, sad version of himself up off the floor, a kind hand on his shoulder, warm light) · camera zoom-in
-edit: snap zoom to the two of them on "forgive"
-narration: "Five. Forgive yourself. This is the one that surprised me."
-beats: step "five" → STEP 5 + FORGIVE YOURSELF
+**D69** · picture S16 · camera zoom-in
+edit: snap zoom to the trees on "green" · zoom out on "short" · light sweep along the path on "real"
+narration: "You don't need a forest. A park, a quiet street with trees, anything green. It gives your brain something real to look at, instead of the replay. And even a short walk is a better use of that energy than watching the same conversation again."
+beats: icon I85 "walk"
 
-**D65** · picture S04 · camera zoom-in
-edit: push wipe in (time jump) on "in" · name pill CARLETON UNIVERSITY on "researchers" · badge count-up **134 STUDENTS** on "students" · snap zoom to the students on "exams"
-host: N01 "in"
-narration: "In two thousand ten, researchers at Carleton University followed a hundred and thirty-four first-year students across two rounds of exams."
+**D70** · picture S17 (NEW: the narrator happily absorbed in playing an acoustic guitar on his bed, focused content eyes; behind him a few grey thought clouds fade away) · camera zoom-in
+edit: snap zoom to his focused eyes on "focused"
+narration: "Five. Get absorbed in something. In Nolen-Hoeksema's experiments, people who spent a few minutes focused on something other than their problems felt better afterward."
+beats: step "five" → STEP 5 + GET ABSORBED
 
-**D66** · CODED bars2 · camera hold
-edit: bars grow on "forgave" · badge **LESS** on "less"
-host: N02 "the"
-Bars (no numbers), title PROCRASTINATION BEFORE EXAM 2: DIDN'T FORGIVE THEMSELVES (red, tall) vs FORGAVE THEMSELVES (sage, short).
-narration: "The students who forgave themselves for procrastinating before the first exams procrastinated less before the second ones."
+**D71** · CODED loop · camera hold
+edit: the loop from D39 (REPLAY IT → ANALYZE IT → FEEL WORSE) is already there · break on "interrupted"
+host: N01 "not"
+narration: "Not because the problem went away. Because the loop got interrupted. Even a few minutes can be enough to break the spin."
 
-**D67** · CODED loop · camera hold
-edit: the guilt loop from D45 (AVOID → FEEL WORSE → AVOID MORE) is already there · break on "breaks"
-host: N06 "because"
-narration: "Because forgiving yourself breaks the guilt loop. It takes away the bad feeling your brain was trying to escape."
+**D72** · picture S17 · camera zoom-in
+edit: pills top-center one by one: A GAME on "game", A WORKOUT on "workout", COOKING on "cooking", MUSIC on "music", A FRIEND on "friend"
+narration: "So pick something that takes your full attention. A game. A workout. Cooking. Music. A conversation with a friend."
+beats: icon I96 "game"
 
-**D68** · picture S18 · camera zoom-in
-edit: snap zoom to the two of them on "catch" · ~~LAZY~~ pill pops and is crossed out on "lazy" · speech pill "WHAT'S THE SMALLEST NEXT STEP?" on "what's"
-narration: "So next time you catch yourself putting something off, don't call yourself lazy. Say, "Okay. That happened. What's the smallest next step?""
+**D73** · picture S04 · camera zoom-in
+edit: snap zoom to the phone on "scrolling" · red badge ~~SCROLLING~~ on "scrolling"
+narration: "Scrolling usually doesn't work, because it hands your brain new things to compare and worry about."
 
-**D69** · picture S05 · camera zoom-in · crossfade in
-edit: snap zoom to the glowing notebook on "care" (1st occurrence)
-narration: "Here's what I keep coming back to. Procrastination isn't proof that you don't care. Most of the time, it's proof that you care a lot. Enough that the task feels heavy. Enough that failing would hurt."
-beats: card "lot" → YOU **CARE A LOT**
+**D74** · picture S11 · camera zoom-in · crossfade in
+edit: snap zoom to the narrator on "conversation" → whip slide to the friend's happy bubble on "other"
+narration: "Here's what I keep coming back to. That conversation you replayed at two A.M.? The other person probably isn't thinking about it at all. And they probably liked you more than you think."
 
-**D70** · picture S15 · camera zoom-in
-edit: light sweep across the shield on "protecting"
-narration: "Your brain isn't broken. It's been protecting you from a feeling, with a shortcut that costs more than it saves."
+**D75** · picture S02 · camera zoom-in
+edit: snap zoom to the ceiling movie on "guesses"
+narration: "Your thoughts aren't facts. They're guesses your brain makes when it's tired and scared. Overthinking promises that if you just think hard enough, you'll be safe."
+beats: card "facts" → THOUGHTS AREN'T **FACTS**
 
-**D71** · picture S19 (NEW: the next morning; the same desk from S01 in warm sunrise light, the narrator sitting at it with the glowing notebook finally open, writing the first line, calm happy eyes) · camera zoom-in · crossfade in
-edit: iris reveal into the picture on "so" · snap zoom to the open notebook on "step"
-narration: "So you don't need to become a different person. And you don't need to wait until you feel ready. You just need one step that's easier than avoiding it."
+**D76** · picture S18 (NEW: the same bedroom as S01, now peaceful: the narrator sleeping calmly with a soft content look, moonlight through the window, the ceiling dark, no projector, no clouds) · camera zoom-in · crossfade in
+edit: iris reveal into the picture on "but" · light sweep on "peace"
+narration: "But you don't find peace at the end of the loop. You find it by stepping out of it."
 
-**D72** · picture S19 · camera zoom-out · **at least 2s of silence after "did"**
-edit: light sweep across the notebook on "today"
-narration: "So pick the one thing you've been putting off. And do the smallest piece of it. Today. Future you is going to be really glad you did."
+**D77** · picture S18 · camera zoom-out · **at least 2s of silence after "tomorrow" (2nd occurrence)**
+edit: pills top-center one by one: SOLVING OR SPINNING? on "solving", WRITE IT DOWN on "write", GO OUTSIDE on "outside"
+narration: "So next time your brain hits replay, you don't have to watch. Ask if you're solving or spinning. Write it down. Go outside. And let tomorrow handle tomorrow."
 
-**D73** · picture S29 (COPY: narrator on the right, pointing left; end screen) · camera hold · hold the last frame 5s after the narration
-narration: "What's the one thing you've been putting off the longest? Tell me in the comments, along with your first tiny step. Saying it out loud makes it real. And if fear of failure is what's really holding you back, I made a whole video on where self-doubt comes from. I'll leave it right here."
-beats: pop N06 "what's" → card YOUR **ONE THING?** (finish it before "and if" so the end screen stays clean)
+**D78** · picture S29 (COPY: narrator on the right, pointing left; end screen) · camera hold · hold the last frame 5s after the narration
+narration: "What's the thing your brain replays the most? Tell me in the comments. You might find out you're not the only one. And if your overthinking keeps stopping you from starting things, I made a whole video on why we procrastinate. I'll leave it right here."
+beats: pop N06 "what's" → card YOUR **REPLAY?** (finish it before "and if" so the end screen stays clean)

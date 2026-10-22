@@ -49,7 +49,8 @@ videos/01-spotlight/      ← video 1, archived
 videos/02-regret/         ← video 2, archived; its make-specs.py and scenes/ are the newest spec examples (host mode and edits)
 videos/03-manifestation/  ← video 3, archived (its build branch was not pushed, so its new diagram kinds — drops, woop — may need re-adding)
 videos/04-open-your-eyes/ ← video 4, archived (final video and thumbnail; its build branch was not pushed either)
-videos/05-self-doubt/     ← video 5, archived (merged to main; its make-specs.py and scenes/ are the newest spec examples: quad, list, bars2, irow)
+videos/05-self-doubt/     ← video 5, archived (merged to main; quad, list, bars2, irow)
+videos/06-procrastination/ ← video 6, archived (merged to main; its make-specs.py is the newest spec example: reads VIDEO.md directly; loop, lines2, bars3, people, dots)
 ```
 
 ## 2. Setup (once per cloud session, quietly)
@@ -66,7 +67,7 @@ videos/05-self-doubt/     ← video 5, archived (merged to main; its make-specs.
 ## 3. Pipeline (in `tools/`)
 
 1. **Specs.** Write `tools/make-specs.py` for the current video from `VIDEO.md`.
-   - Copy the helpers (`sc`, `icon`, `card`, `pop`, `title`, `mv`, `step`, `quote`, `iconrow`, overlays, `foci`, host tracks) from `videos/05-self-doubt/make-specs.py`, the most recent build. It already supports host mode, the editing toolkit and the newest diagram kinds.
+   - Copy the helpers (`sc`, `icon`, `card`, `pop`, `title`, `mv`, `step`, `quote`, `iconrow`, overlays, `foci`, host tracks) from `videos/06-procrastination/make-specs.py`, the most recent build. It already supports host mode, the editing toolkit and the newest diagram kinds.
    - It outputs `scenes/partN.json` and `scenes/foci.json`.
    - Add any new diagram kinds that `VIDEO.md` asks for to `tools/build-part.mjs`.
 1b. **Clips.** If the voice comes as clips (`audio/part1a.mp3`, `part1b.mp3` …), run `python3 tools/join-clips.py` to join them into `audio/partN.mp3`. Missing-audio checks apply to the joined files.

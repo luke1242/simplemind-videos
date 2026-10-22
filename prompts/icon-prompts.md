@@ -1,12 +1,12 @@
-# Icon prompts: "Psychology of Procrastination"
+# Icon prompts: "The Psychology of Overthinking"
 
-**10 new icons (I79–I88).** No reused icons this time.
+**10 new icons (I89–I98).** I80, I84, I85 and I86 are reused from video 6 and already in `icons/`.
 
 ## How to use
 
 1. Open a **new** Nano Banana chat. Attach 2 old icons as examples (`reference/style/icon-example-1.jpg` and `icon-example-2.jpg`).
 2. Paste the **SETUP**, then the prompts one at a time, choosing **2K**.
-3. Name each file exactly as shown, **starting with I** (`I79.jpg` …). Put them in **Icons Vid6** in Downloads.
+3. Name each file exactly as shown, **starting with I** (`I89.jpg` …). Put them in **Icons Vid7** in Downloads.
 
 ## SETUP
 
@@ -20,13 +20,13 @@ Reply "ready" and wait for my first prompt.
 
 | File | Prompt |
 |---|---|
-| I79 | A simple round wall clock with a red rim (tick marks only, no numbers). |
-| I80 | A smartphone with three colorful message bubbles popping out of the screen. |
-| I81 | An open wooden door with bright light shining through the doorway. |
-| I82 | A paper bill in an open envelope, with a red stamp mark (no writing). |
-| I83 | A desk calendar with one page flying off the top. |
-| I84 | An old metal bear trap, wide open. |
-| I85 | A pair of white running sneakers with a red stripe. |
-| I86 | A red alarm clock ringing, with shake lines around it. |
-| I87 | A yellow pencil with a pink eraser, a little scribble line under it. |
-| I88 | A cartoon peach-pink brain with a small grey rain cloud above it. |
+| I89 | A smartphone showing one grey "typing" bubble with three dots. |
+| I90 | An old film reel with a strip of film curling out of it. |
+| I91 | A magnifying glass with a small question mark in the lens. |
+| I92 | A glowing crystal ball on a little wooden stand, with a storm cloud inside. |
+| I93 | A cozy bed with a pillow and a folded blanket. |
+| I94 | An open notebook with a pen lying across it. |
+| I95 | A single round green tree. |
+| I96 | A game controller. |
+| I97 | A car tire half sunk in brown mud, with mud splashes. |
+| I98 | A cartoon peach-pink brain with a curved arrow circling around it in a loop. |

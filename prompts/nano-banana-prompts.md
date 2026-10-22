@@ -1,12 +1,12 @@
-# Nano Banana picture prompts: "Psychology of Procrastination"
+# Nano Banana picture prompts: "The Psychology of Overthinking"
 
-**21 new pictures (19 scenes + 2 edits), all in our normal comic style.** S20 (researcher) and S29 (end screen) are reused and already in `pictures/`.
+**21 new pictures (18 scenes + 3 edits), all in our normal comic style.** S20 (researcher) and S29 (end screen) are reused and already in `pictures/`.
 
 ## How to use
 
 1. Open a new chat. Attach `reference/characters/narrator.png` plus 2–3 old comic pictures, paste the **SETUP**, then the prompts one at a time.
 2. Choose **2K**, and name each file **exactly** as shown (e.g. `S01.png`). *(edit of …)* prompts go right after the picture they edit.
-3. Put them all in **Pictures Vid6** in Downloads and tell Claude.
+3. Put them all in **Scenes Vid7** in Downloads and tell Claude.
 
 ---
 
@@ -26,105 +26,105 @@ Reply "ready" and wait for my first prompt.
 
 **S01.png**
 ```
-A cozy bedroom at night. The narrator sits at his desk in front of an open laptop, looking at it with tired, unsure eyes. One small yellow sticky note is stuck to the top of the laptop screen (blank, no writing). On the wall above the desk, a simple round clock with its hands pointing to nine o'clock (no numbers on the clock face). Warm desk lamp, dark window.
+A dark blue bedroom at night. The narrator lies asleep in bed on his back, blanket up to his chest, eyes closed (two thin curved lines). On the bedside table, a small glowing digital clock (glow only, no numbers). Moonlight through the window. Calm and quiet.
+```
+
+**S01b.png** *(edit of S01)*
+```
+Same bedroom, same pose, but now the narrator's eyes have snapped wide open in alarm. Above his head floats a thought bubble showing a tiny scene of himself standing next to a stickman, waving his hands awkwardly mid-sentence.
 ```
 
 **S02.png**
 ```
-The same bedroom at night. The narrator happily cleans his desk with a spray bottle in one hand and a cloth in the other, even though the desk is already spotless and tidy. His open laptop has been pushed to the far edge of the desk, ignored. Content, busy eyes.
+The narrator lying in bed in the dark, staring up at the ceiling with tired, wide eyes. A soft beam of light shines up from his glowing brain head and projects a movie onto the ceiling: the same tiny scene of him talking awkwardly to a stickman, shown as a film strip with the same frame repeating over and over across the ceiling.
 ```
 
 **S03.png**
 ```
-The same bedroom at midnight, very dark, lit only by faint moonlight from the window. The narrator lies in bed on his back with the blanket up to his chest, eyes wide open, staring at the ceiling, worried. Across the room on the desk, the closed laptop with the small yellow sticky note on it.
+A cozy café. Two stickman strangers sit across a small round table, talking. The one in the sage green shirt smiles warmly and leans in. The one in the sky-blue shirt sits stiffly with a nervous smile and a sweat drop. In the background, a stickman researcher with glasses and a clipboard watches.
+```
+
+**S03b.png** *(edit of S03)*
+```
+Same café, same characters. Now a thought bubble above the warm stickman in the sage shirt shows a big happy smiling heart, while a thought bubble above the nervous one in the sky-blue shirt shows a small worried frowning face.
 ```
 
 **S04.png**
 ```
-A sunny college campus early in the school year: green lawn, a brick building, trees. In the front, one stickman student (terracotta shirt) relaxes happily in a hammock between two trees, reading a comic book, totally calm. Behind him, several other stickman students hurry past carrying stacks of books, looking busy and stressed.
-```
-
-**S04b.png** *(edit of S04)*
-```
-Same campus, same characters, but at the end of the school year: grey rainy sky, bare trees. Now the stickman in the terracotta shirt sits at a small desk outside, buried under huge piles of papers and books, a thermometer in his mouth, a tissue box beside him, panicking with sweat drops. Behind him, the other students now relax calmly on the lawn.
+A living room in the evening. The narrator sits on the couch hunched over his phone, staring at it with worried eyes, a sweat drop on his brain head. The phone screen shows one sent message bubble and nothing else (no words).
 ```
 
 **S05.png**
 ```
-The narrator at his desk, very busy: neat floating folders around his computer screen, the screen full of little video thumbnails, a tall stack of to-do lists next to him. In the far corner of the desk sits one closed notebook that glows softly under its own small spotlight, completely untouched. The narrator is not looking at it.
+The narrator sitting on the couch with his head in his hands, surrounded by floating crumpled paper drafts and small grey thought clouds. In one big thought cloud above him, a little wooden bridge between him and a stickman friend is cracking and falling apart.
+```
+
+**S05b.png** *(edit of S05)*
+```
+Same couch, but the clouds and drafts are gone. The narrator holds his phone with flat, deadpan, unimpressed eyes. The phone screen shows a tiny picture of a cheerful stickman lifting a dumbbell at the gym.
 ```
 
 **S06.png**
 ```
-The narrator sitting at his desk, staring nervously at one single sheet of paper in front of him. Floating around the paper are four small grey cartoon clouds with simple faces: one bored and yawning, one confused with a question mark above it, one scared, and one huge heavy cloud pressing down. He leans back away from the paper.
+A dim, empty room. The narrator runs as hard as he can inside a giant wooden hamster wheel, sweat drops flying, motion lines on the spinning wheel, clearly going nowhere. Tired, stressed eyes.
 ```
 
 **S07.png**
 ```
-The narrator snapping his laptop shut and leaning back in his chair with relief, happy closed upward-arc eyes, shoulders relaxed, small soft sparkles of relief around him. Cozy room, warm lamp.
+A muddy country road. The narrator sits in the driver's seat of a small round cartoon car, gripping the steering wheel with stressed eyes. The car's back wheel spins in deep mud, spraying mud everywhere, with puffs of grey smoke from the engine. The car is clearly not moving.
 ```
 
 **S08.png**
 ```
-A clean, friendly brain-scan lab. A stickman lies on the bed of a big, rounded white MRI scanner. To the right, a stickman researcher in a lab coat with glasses looks at a monitor showing two simple cartoon brain-scan pictures side by side, with a few glowing spots on each.
+A busy, sunny city street. Several stickmen doing everyday things: one cooking at an open apartment window, one sitting on a bus, one typing at a café table. Each has a small thought cloud showing something else entirely: a beach, an argument with a frowning stickman, a phone. A few of their phones show a small notification bubble (no text).
 ```
 
 **S09.png**
 ```
-The narrator standing in front of a tall standing mirror in a quiet room. The reflection in the mirror is NOT him: it is a dark, blurry, faceless stranger in a grey hoodie, seen through frosted, foggy glass. The narrator looks at it with confused, uneasy eyes.
+The narrator standing in front of a huge detective corkboard covered in photos, sticky notes and pins, all connected by a chaotic mess of red string. He holds even more red string in his hands, exhausted droopy eyes, papers on the floor.
 ```
 
 **S10.png**
 ```
-A living room. The narrator relaxes on a couch, happily handing a huge stack of homework and papers to a tall grey silhouette standing in the open doorway. The silhouette's face is completely hidden in shadow. Warm room, dark doorway.
-```
-
-**S10b.png** *(edit of S10)*
-```
-Same room, same doorway, but now light falls on the figure in the doorway, revealing that it is the narrator himself: tired, droopy eyes, struggling to hold the giant stack of papers. The couch is empty.
+The narrator hunched over a glowing crystal ball on a small table. Inside the crystal ball: a dark storm with lightning. Behind him, the window shows a bright sunny calm day with blue sky and birds. His eyes are worried.
 ```
 
 **S11.png**
 ```
-The narrator standing very small at the bottom of a giant mountain made of tangled black scribbles, wrapped in thick white fog, so you can't see where it starts or ends. There is no path and no first step. He looks up at it with overwhelmed eyes.
+A sidewalk outside a coffee shop. The narrator and a stickman friend (sage green shirt) walk away from each other after a chat. Above the narrator, a thought bubble shows a close-up of himself laughing awkwardly with a red embarrassed blush. Above the friend, a thought bubble shows a big happy smiley face. The narrator's eyes are worried; the friend is smiling.
 ```
 
 **S12.png**
 ```
-The narrator standing nervously in front of a giant blank exam paper as tall as he is, propped up like a wall. Beside it, three stern stickman judges sit at a long table, each holding up a blank score card. Spotlight on the narrator, sweat drop on his brain head.
+Night. The narrator alone in a small car stopped at a red traffic light on an empty street, both hands on the wheel, staring ahead. Little grey thought clouds are slowly rising out of his brain head on their own. Dark blue night, glowing red light.
 ```
 
 **S13.png**
 ```
-The narrator standing at the start of a very long straight road that stretches to the horizon. Far, far away on the horizon, a tiny shining gold trophy glows. Right above his head floats a small, grumpy grey rain cloud with a frowning face, drizzling on him. He looks gloomy.
+A grassy hillside. The narrator stands at a fork in a dirt path. The left path leads to a wooden ladder climbing up to a sunny hilltop. The right path curls into a small circular track that loops back on itself again and again. He looks between them, thinking.
 ```
 
 **S14.png**
 ```
-The narrator sitting on the floor of a dim room, hugging his knees, sad downcast eyes. A ring of grey guilt clouds circles slowly around him like a whirlpool, with little curved motion lines showing they go round and round.
+A calm bedroom desk. The narrator calmly drops a folded paper note into a small wooden box with a round clock face on its lid. A few folded notes are already inside. Relaxed, content eyes.
 ```
 
 **S15.png**
 ```
-The narrator holding up a small round wooden cartoon shield in front of himself, protecting himself from a giant looming sheet of paper that leans over him like a wave. His eyes are worried but brave, and his brain head glows warmly.
+The narrator sitting at a desk writing on a sheet of paper with a pen. Little grey worry clouds flow out of his brain head and turn into ink lines on the page. His eyes look lighter and calmer. Warm desk lamp.
 ```
 
 **S16.png**
 ```
-The narrator sitting at his laptop with wide, surprised eyes. On the laptop screen is an older version of himself: the same brain head but slightly greyer and wrinklier, with small round glasses and a grey cardigan, smiling eyes, waving back at him.
+A sunny park path lined with green trees, flowers and a few small birds. The narrator walks calmly along the path, hands in his hoodie pocket, soft relaxed eyes. Bright, peaceful daylight.
 ```
 
 **S17.png**
 ```
-The narrator relaxed and smiling with happy upward-arc eyes, drawing a messy, scribbly rough sketch on a big sheet of paper on the floor. Pencil shavings and eraser crumbs everywhere. He clearly doesn't care that it's messy.
+The narrator sitting on his bed happily absorbed in playing an acoustic guitar, focused content upward-arc eyes. Behind him, a few small grey thought clouds are fading away into nothing. Warm afternoon light.
 ```
 
 **S18.png**
 ```
-Warm, soft light. The narrator kneels and gently helps a small, tired, sad version of himself (same design, child-sized) up off the floor, one kind hand on the little one's shoulder. The little one's eyes are starting to lift.
-```
-
-**S19.png**
-```
-The next morning: the same desk and bedroom from the first picture, now filled with warm golden sunrise light through the window. The narrator sits at the desk with the softly glowing notebook finally open in front of him, writing the first line with a pencil, calm and happy eyes.
+The same bedroom as the first picture, now peaceful: the narrator sleeping calmly on his side with a soft content look, moonlight through the window, the ceiling dark and empty, no clouds, no projector beam. Warm, quiet, safe.
 ```

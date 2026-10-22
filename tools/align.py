@@ -11,7 +11,10 @@ EXTRA = {"pychyl": "P AY K AH L", "sirois": "S IH R W AA", "fuschia": "F Y UW SH
          "gollwitzer": "G AA L W IH T S ER", "rothblum": "R AA TH B L UW M", "carleton": "K AA R L T AH N", "baumeister": "B AW M AY S T ER",
          "procrastinators": "P R OW K R AE S T AH N EY T ER Z", "procrastinated": "P R OW K R AE S T AH N EY T IH D",
          "procrastinating": "P R OW K R AE S T AH N EY T IH NG", "procrastinate": "P R OW K R AE S T AH N EY T",
-         "procrastination": "P R OW K R AE S T AH N EY SH AH N", "unfinished": "AH N F IH N IH SH T", "rothbloom": "R AA TH B L UW M"}
+         "procrastination": "P R OW K R AE S T AH N EY SH AH N", "unfinished": "AH N F IH N IH SH T", "rothbloom": "R AA TH B L UW M",
+         "nolen": "N OW L AH N", "hoeksema": "HH UH K S M AH", "hoeksema's": "HH UH K S M AH Z", "beilock": "B AY L AA K", "borkovec": "B AO R K AH V EH K",
+         "killingsworth": "K IH L IH NG Z W ER TH", "sian": "SH AA N", "gerardo": "HH EH R AA R D OW", "haha": "HH AA HH AA", "ruminating": "R UW M AH N EY T IH NG",
+         "ruminate": "R UW M AH N EY T", "rumination": "R UW M AH N EY SH AH N", "overthinking": "OW V ER TH IH NG K IH NG", "autopilot": "AO T OW P AY L AH T"}
 n = sys.argv[1]
 txt = open("prompts/voice-clips.md").read()
 clips = dict(re.findall(r"\*\*(part\d[a-z])\.mp3\*\*.*?```\n(.*?)```", txt, re.S))
