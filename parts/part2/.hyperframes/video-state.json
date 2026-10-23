@@ -1,7 +1,7 @@
 {
   "version": 1,
   "historyId": "3338adb4-96bb-4ba0-af12-8279cf4e4a20",
-  "currentRevision": null,
+  "currentRevision": "314c1035-337d-450c-b408-8efe07165e2e",
   "pendingChanges": false,
   "files": {
     "assets/fonts/nunito-800.woff2": {
@@ -45,8 +45,8 @@
       "content": "/root/.cache/hyperframes/history/3338adb4-96bb-4ba0-af12-8279cf4e4a20/blobs/53/53dbce1e19aa713cbb12ee0bc4d206143b45ab15e6ffbfcaa8f69572d4d24d50"
     },
     "index.html": {
-      "hash": "94e02fe47e6c0a322ebcbcb2e40f522172da4557f487f65adc63d96113adddb0",
-      "content": "/root/.cache/hyperframes/history/3338adb4-96bb-4ba0-af12-8279cf4e4a20/blobs/94/94e02fe47e6c0a322ebcbcb2e40f522172da4557f487f65adc63d96113adddb0"
+      "hash": "7d881ed9e5fee1aaf5531df6a99e026474e9c5c4782bfbb915c6f251bd40b2cb",
+      "content": "/root/.cache/hyperframes/history/3338adb4-96bb-4ba0-af12-8279cf4e4a20/blobs/7d/7d881ed9e5fee1aaf5531df6a99e026474e9c5c4782bfbb915c6f251bd40b2cb"
     },
     "meta.json": {
       "hash": "0fe82ab3f47c368ef6fe4b43078f9507cdd4bfb8a5e2e641001c900f1195dec3",
@@ -69,7 +69,23 @@
       "content": "/root/.cache/hyperframes/history/3338adb4-96bb-4ba0-af12-8279cf4e4a20/blobs/21/21b4361a878135cf39e3d88ed74db6f5d043cf0b23148149637d1337cf16de78"
     }
   },
-  "revisions": {},
+  "revisions": {
+    "314c1035-337d-450c-b408-8efe07165e2e": {
+      "actor": {
+        "kind": "outside",
+        "name": "Outside"
+      },
+      "label": "Changed outside the app",
+      "startedAt": 1792788526116,
+      "endedAt": 1792788526119,
+      "files": {
+        "index.html": {
+          "before": "/root/.cache/hyperframes/history/3338adb4-96bb-4ba0-af12-8279cf4e4a20/blobs/94/94e02fe47e6c0a322ebcbcb2e40f522172da4557f487f65adc63d96113adddb0",
+          "after": "/root/.cache/hyperframes/history/3338adb4-96bb-4ba0-af12-8279cf4e4a20/blobs/7d/7d881ed9e5fee1aaf5531df6a99e026474e9c5c4782bfbb915c6f251bd40b2cb"
+        }
+      }
+    }
+  },
   "checks": {
     "latest": null,
     "revisions": {},
@@ -2103,5 +2119,18 @@
         "attribution": "unversioned"
       }
     ]
-  }
+  },
+  "renders": {
+    "latest": {
+      "id": "ea72d996-6e5b-46db-bce9-54625a95c45e",
+      "completedAt": 1792788801908,
+      "output": "/home/user/simplemind-videos/renders/part2.mp4",
+      "status": "completed",
+      "revision": "314c1035-337d-450c-b408-8efe07165e2e"
+    },
+    "retainedRevisions": [
+      "314c1035-337d-450c-b408-8efe07165e2e"
+    ]
+  },
+  "pendingArtifactCleanup": []
 }

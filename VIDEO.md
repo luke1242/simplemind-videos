@@ -16,6 +16,10 @@
 - **Icons:** I89–I97 are in `icons/` (1376×768, fine for icons). **I98 is missing**, so D16 uses I91.
 - `scenes/partN.rawwords.json` already holds forced-alignment word times for the raw parts (`tools/align.py`). Use Whisper if it works; if not, continue from these with the steps in `videos/06-procrastination/VIDEO.md` ("Build status").
 
+## Build status
+
+Built Oct 23: `renders/full.mp4` (11:16) and `renders/full-small.mp4` (85 MB). Whisper small.en worked, so word times come from it. D56 and D72 skip their icon beats (I80 "text", I96 "game") because the icon would hide the pills that appear on the next words. D21 grows its bars on "ruminating" instead of "worse" so the chart isn't empty for 6s. New in `tools/build-part.mjs`: count-up on card parts (`cnt`/`cs`) and on screen badges (`cnt`/`cs`), part-level `at` on card lines.
+
 ## How to read this list
 
 - **Scene IDs (D01…) and picture files (S01.png…) are separate.** `(NEW)` = Luke makes it (`prompts/nano-banana-prompts.md`). `(COPY)` = already in `pictures/`. `CODED` = build it in code.
