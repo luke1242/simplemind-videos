@@ -1,66 +1,63 @@
 # Upload package: "The Psychology of Overthinking"
 
-Chapters get added after the build. **The final title is still open**; options are below.
+## Title
 
-## Title (pick later)
+**Your Brain Lies to You at 2 AM (Psychology of Overthinking)**
 
-- Why You Replay Conversations at 2 AM (Psychology of Overthinking)
-- Overthinking Is a Habit, Not Your Personality (Here's How to Break It)
-- Overthinking Isn't Thinking: Why Your Brain Is Stuck in a Loop
-- Your Brain Overthinks Because It Thinks It's Helping You
-- Stop Replaying It: The Psychology of Overthinking
+Backups to test later: "Overthinking Feels Like Thinking (That's the Trap)" · "They Liked You More Than You Think (Psychology of Overthinking)"
 
-Keep "overthinking" in the title so search finds it.
+## Thumbnail: graphic novel skull (Luke's pick)
 
-## Thumbnails: a style test
+Main: the anatomy skull with a man running in a hamster wheel inside it, text **YOU'RE NOT THINKING** ("THINKING" in red). The text doesn't repeat the title, so the two work together.
 
-Make all three and test them together in YouTube Studio → **Test & Compare** (it takes up to 3).
-- **A vs C** use the same hook, so they test the **style** again: dark drawn vs our comic narrator.
-- **B** tests a **different hook** in the dark style.
-
-### Dark drawn style (A and B)
-
-No reference image needed. Paste the style block first, then the thumbnail prompt.
-
+**Fix the text** (attach the first version):
 ```
-STYLE FOR THIS IMAGE: a dark, moody editorial illustration, hand-drawn ink plus digital painting, semi-realistic proportions, heavy crosshatching and gritty textured shading, muted desaturated colors (charcoal, olive grey, dusty brown) with only ONE warm accent color, dramatic low-key lighting, graphic-novel feel. Original artwork, not a copy of any existing image. YouTube thumbnail, 16:9, 2K. One clear subject, lots of dark empty space, readable at phone size.
+Keep this exact image the same, but replace the text. Remove the current brushy title completely.
+NEW TEXT: across the top, "YOU'RE NOT THINKING" in a clean, heavy, condensed all-caps sans-serif font (like Anton or Impact), perfectly sharp edges, no brush texture, no grunge. "YOU'RE NOT" is pure white, "THINKING" is solid red (#D64545). Every letter has a thick clean black outline and a soft dark drop shadow. Letters are evenly spaced, perfectly straight, and fill the top fifth of the image. Nothing else written anywhere.
 ```
 
-**A: "WHY CAN'T YOU STOP?" (main pick)**
+**Version with a fuller left side** (for Test & Compare):
 ```
-SUBJECT: a young man lying awake in bed in a pitch-dark bedroom, seen from above, eyes wide open and bloodshot, staring straight up. Above him on the ceiling, a pale projected image of the same man in mid-conversation, repeated three times like frames of a film, fading as they go. The only warm color is the dim orange glow of a bedside clock (no numbers).
-TEXT: across the top, in huge heavy bold all-caps sans-serif letters: "WHY CAN'T YOU STOP?". "STOP?" is red (#D64545), the other words are white. Nothing else written anywhere.
-```
-
-**B: "YOU'RE NOT THINKING"**
-```
-SUBJECT: a young man sitting hunched on the edge of his bed in a dark room, head in his hands. His head is wrapped in a tight loop of tangled black string that circles round and round it like a knot. The only warm color is the faint orange light from a phone screen on the floor.
-TEXT: across the top, in huge heavy bold all-caps sans-serif letters: "YOU'RE NOT THINKING". "THINKING" is red (#D64545), the other words are white. Nothing else written anywhere.
+YouTube thumbnail, 16:9, 2K. Gritty graphic novel style: heavy black ink linework, bold crosshatching, halftone dot shading, vintage anatomy-illustration feel, dark charcoal background with ONE accent color: blood red. Original artwork.
+SUBJECT: a cutaway side view of a human head in profile facing right, drawn like an old anatomy illustration, skull and spine visible, placed on the right half of the image. Inside the skull, a tiny exhausted man in a shirt and tie runs as hard as he can in a hamster wheel, sweat flying. Tangled red scribble lines spiral around the wheel.
+LEFT SIDE: trailing out behind the head to the left are three fading "echo" copies of the same skull profile, each one more faded, smaller and more see-through than the last, like motion frames of the same thought replaying over and over. Thin red scribble lines connect the echoes back to the main head.
+TEXT: across the top, "YOU'RE NOT THINKING" in a clean, heavy, condensed all-caps sans-serif font (like Anton or Impact), perfectly sharp edges, no brush texture. "YOU'RE NOT" is pure white, "THINKING" is solid red (#D64545). Every letter has a thick clean black outline and a soft dark drop shadow. Nothing else written anywhere.
+Strong contrast, readable at phone size.
 ```
 
-### Our comic style (C)
+If the letters come out messy, ask for the image with no text and add it in Canva: Anton, white + #D64545, black outline about 8–10, soft drop shadow.
 
-Attach `reference/characters/narrator.png`.
+## Description
 
-**C: "WHY CAN'T YOU STOP?" (narrator)**
-```
-YouTube thumbnail, 16:9, 2K. Bold, minimal, high contrast. Clean thick black outlines, flat colors, comic style.
-BACKGROUND: solid plain near-black (#111111), nothing else.
-CHARACTER: the narrator from the attached image, exactly the same design (glowing peach brain head, two white oval eyes, no mouth, black hoodie), BIG, filling about 65% of the image height, sitting up in bed holding the blanket, eyes wide open and exhausted. A glowing beam from his brain projects a small repeating film strip above him. The brain glows softly.
-TEXT: across the top, in huge heavy bold all-caps sans-serif letters: "WHY CAN'T YOU STOP?". "STOP?" is red (#D64545), the other words are white. Nothing else written anywhere.
-Lots of empty space. No other characters, no small details. Must be readable at phone size.
-```
-
-If the text comes out wrong, ask for the same image **with no text**, then add the hook in Canva (Montserrat Black or Anton, the same colors).
-
-## Description (draft; chapters after the build)
+Keywords go in the first 200 words. Chapter times come from the final render (11:12).
 
 ```
-Why do you replay conversations at 2 AM? This is the psychology of overthinking, explained simply. Overthinking feels like problem solving, but research shows it makes you worse at it, and once you see how the loop works, you can learn how to stop overthinking.
+Why do you replay conversations at 2 AM? This is the psychology of overthinking, explained simply. Overthinking feels like problem solving, but research shows it actually makes you worse at it, and once you see how the loop works, you can learn how to stop overthinking.
 
-In this psychology explained video: the "liking gap" study that shows people like you more than you think, Susan Nolen-Hoeksema's research on rumination, Killingsworth and Gilbert's finding that our minds wander almost half the time, and a study where 91% of worries never came true. Then the 4 traps that keep your mind stuck on repeat (it feels like solving, predicting the worst, thinking everyone's judging you, and running on autopilot) and 5 research-backed ways to stop ruminating, calm anxious thoughts and get out of your head.
+In this psychology explained video: the "liking gap" study that shows people like you more than you think, Susan Nolen-Hoeksema's research on rumination, Killingsworth and Gilbert's finding that our minds wander almost half the time, and a study where 91% of worries never came true. Then the 4 traps that keep your mind stuck on repeat (it feels like solving, predicting the worst, thinking everyone's judging you, and running on autopilot) and 5 research-backed ways to stop ruminating, quiet anxious thoughts and get out of your head.
 
 What's the thing your brain replays the most? Tell me in the comments.
+
+CHAPTERS
+0:00 Why you replay conversations at 2 AM
+1:01 How one text took over my whole day
+1:35 Why your brain won't let it go
+1:57 What rumination really is
+2:33 Thinking vs. overthinking
+3:01 Your mind wanders 47% of the time
+3:37 Why overthinking isn't harmless
+3:57 It's a loop, not a personality
+4:13 Trap 1: It feels like solving
+4:47 Trap 2: Predicting the worst (91% never happens)
+5:24 Trap 3: Thinking everyone's judging you
+5:53 Trap 4: It runs on autopilot
+6:24 Why your mind isn't broken
+6:46 Step 1: Am I solving or spinning?
+7:29 Step 2: Give your worries an appointment
+8:17 Step 3: Write it down
+8:57 Step 4: Walk outside
+9:32 Step 5: Get absorbed in something
+10:07 They liked you more than you think
 
 You were watching Brain Guy Psychology. I'll see you in the next one.
 
