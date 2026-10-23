@@ -9,13 +9,20 @@
 **Upload kit:** `prompts/upload-package.md`.
 **Spec examples:** copy the helpers from `videos/06-procrastination/make-specs.py` (the newest build: it reads narration and host tracks straight from VIDEO.md, and uses loop, lines2, bars3, people, dots, split `fs0`, red screen badges). Copy the word-timing steps from `videos/06-procrastination/VIDEO.md` ("Build status") if Whisper can't download its model.
 
+## Inputs (checked Oct 23)
+
+- **Audio:** all 15 clips are in `audio/` and already joined into `audio/part1-4.mp3` (raw total about 9:16; about 11:10 after padding). Clip order was checked (steady 2.7–3.3 words per second).
+- **Pictures:** 20 of 21 are in `pictures/` (plus S20 and S29). **S05b is missing**, so D13–D14 reuse S04.
+- **Icons:** I89–I97 are in `icons/` (1376×768, fine for icons). **I98 is missing**, so D16 uses I91.
+- `scenes/partN.rawwords.json` already holds forced-alignment word times for the raw parts (`tools/align.py`). Use Whisper if it works; if not, continue from these with the steps in `videos/06-procrastination/VIDEO.md` ("Build status").
+
 ## How to read this list
 
 - **Scene IDs (D01…) and picture files (S01.png…) are separate.** `(NEW)` = Luke makes it (`prompts/nano-banana-prompts.md`). `(COPY)` = already in `pictures/`. `CODED` = build it in code.
 - **beats:** key moments with the exact trigger word in quotes: `icon Ixx "word"`, `pop Nxx "word" → content`, `card "word" → TEXT`, `step "word" → STEP n + TEXT`, `badge "word" → TEXT`. **Bold** = yellow badge, ~~struck~~ = red badge. Fill the rest per CLAUDE.md (every shot ≤ 4s, except the cold-open scenes).
 - **edit:** specific moves (CLAUDE.md section 9). **host:** the narrator-host pose track; no `host:` line = full-frame.
 - **narration** is for timing only and must match the audio. Never show it on screen.
-- **Icons:** I89–I98 are new (`prompts/icon-prompts.md`). I80, I84, I85 and I86 are reused from video 6 (already in `icons/`). Missing icon → skip that beat.
+- **Icons:** I89–I97 are new (I98 was not made) (`prompts/icon-prompts.md`). I80, I84, I85 and I86 are reused from video 6 (already in `icons/`). Missing icon → skip that beat.
 - **Numbers:** Whisper may write "two thousand eighteen" as "2018", "forty-seven percent" as "47%", "ninety-one percent" as "91%", "thirteen hundred" as "1,300", "two thousand two hundred fifty" as "2,250", "thirty-minute" as "30-minute", "B-plus" as "B+". Match triggers either way.
 - **Names:** Nolen-Hoeksema ("NO-len HOOK-sma"), Beilock ("BYE-lock"), Borkovec ("BOR-ko-vek"). If Whisper writes them differently, match the scene by its other words. The forced-alignment fallback (`tools/align.py`) already has pronunciations for them.
 
@@ -88,11 +95,11 @@ beats: icon I89 "reply"
 edit: badge ~~20 TIMES~~ on "twenty" · tour: snap zoom to the floating drafts on "apologies" → whip slide to the crumbling bridge on "friendship"
 narration: "In those few hours, I reread my message about twenty times, decided it sounded rude, wrote three different apologies in my head, and imagined the whole friendship falling apart."
 
-**D13** · picture S05b (NEW, edit of S05: the clouds are gone; the narrator stares at his phone with flat, deadpan eyes; on the screen a stickman lifting a dumbbell at the gym) · camera zoom-in
+**D13** · picture S04 (S05b was not made, so reuse S04: the narrator on the couch staring at his phone) · camera zoom-in
 edit: whip-pan cut in on "then" · snap zoom to the phone on "haha" · speech pill "HAHA SORRY, I WAS AT THE GYM" on "haha"
 narration: "Then they replied. "Haha sorry, I was at the gym.""
 
-**D14** · picture S05b · camera zoom-out
+**D14** · picture S04 · camera zoom-out
 edit: zoom out on "brain"
 narration: "And it wasn't even a big deal. It was one text. My brain had worked for hours... and solved absolutely nothing."
 beats: pop N10 "brain" → card SOLVED **NOTHING**
@@ -104,7 +111,7 @@ narration: "So why does your brain do this? Why does it keep replaying things it
 
 **D16** · CODED iconRow · camera hold
 host: N01 "by"
-Icons: I98 on "know", I84 on "four", I95 on "five". Labels: THINKING VS OVERTHINKING · 4 TRAPS · 5 WAYS OUT.
+Icons: I91 on "know" (I98 was not made), I84 on "four", I95 on "five". Labels: THINKING VS OVERTHINKING · 4 TRAPS · 5 WAYS OUT.
 narration: "By the end of this video, you'll know the difference between thinking and overthinking, the four traps that keep your mind stuck on repeat, and five research-backed ways to finally turn it off."
 
 **D17** · CODED card · camera hold
