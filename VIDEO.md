@@ -12,7 +12,7 @@
 ## Inputs (checked Oct 23)
 
 - **Audio:** all 15 clips are in `audio/` and already joined into `audio/part1-4.mp3` (raw total about 9:16; about 11:10 after padding). Clip order was checked (steady 2.7–3.3 words per second).
-- **Pictures:** 20 of 21 are in `pictures/` (plus S20 and S29). **S05b is missing**, so D13–D14 reuse S04.
+- **Pictures:** all 21 are in `pictures/` (plus S20 and S29). S05b came in at 1K (1376×768), so keep its zooms at 1.2× or less.
 - **Icons:** I89–I97 are in `icons/` (1376×768, fine for icons). **I98 is missing**, so D16 uses I91.
 - `scenes/partN.rawwords.json` already holds forced-alignment word times for the raw parts (`tools/align.py`). Use Whisper if it works; if not, continue from these with the steps in `videos/06-procrastination/VIDEO.md` ("Build status").
 
@@ -95,11 +95,11 @@ beats: icon I89 "reply"
 edit: badge ~~20 TIMES~~ on "twenty" · tour: snap zoom to the floating drafts on "apologies" → whip slide to the crumbling bridge on "friendship"
 narration: "In those few hours, I reread my message about twenty times, decided it sounded rude, wrote three different apologies in my head, and imagined the whole friendship falling apart."
 
-**D13** · picture S04 (S05b was not made, so reuse S04: the narrator on the couch staring at his phone) · camera zoom-in
+**D13** · picture S05b (NEW, edit of S05: the narrator stares at his phone with flat, deadpan eyes; on the screen a stickman lifting a dumbbell. This one is 1K, so keep zooms at 1.2× or less) · camera zoom-in
 edit: whip-pan cut in on "then" · snap zoom to the phone on "haha" · speech pill "HAHA SORRY, I WAS AT THE GYM" on "haha"
 narration: "Then they replied. "Haha sorry, I was at the gym.""
 
-**D14** · picture S04 · camera zoom-out
+**D14** · picture S05b · camera zoom-out
 edit: zoom out on "brain"
 narration: "And it wasn't even a big deal. It was one text. My brain had worked for hours... and solved absolutely nothing."
 beats: pop N10 "brain" → card SOLVED **NOTHING**
