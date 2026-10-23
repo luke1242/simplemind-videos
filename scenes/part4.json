@@ -1,0 +1,1008 @@
+{
+ "part": 4,
+ "audio": "audio/padded/part4.wav",
+ "scenes": [
+  {
+   "id": "D54",
+   "camera": "hold",
+   "narration": "So here's how to get out of the loop. Five steps.",
+   "events": [],
+   "host": [
+    [
+     "N01"
+    ]
+   ],
+   "diagram": {
+    "kind": "card",
+    "parts": [
+     {
+      "t": "5",
+      "badge": "yellow",
+      "cnt": 5,
+      "at": {
+       "word": "five",
+       "occ": 1
+      }
+     },
+     {
+      "t": "WAYS OUT",
+      "at": {
+       "word": "five",
+       "occ": 1
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": "D55",
+   "camera": "zoom-in",
+   "narration": "One. Ask, \"Am I solving or spinning?\" When you catch yourself replaying something, ask one question. \"Is there something I can actually do about this right now?\"",
+   "events": [],
+   "picture": "S13",
+   "overlays": [
+    {
+     "type": "step",
+     "step": "STEP 1",
+     "text": "SOLVING OR SPINNING?",
+     "word": "one",
+     "occ": 1,
+     "dur": 3.0
+    }
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "solving",
+     "occ": 1,
+     "f": [
+      0.23,
+      0.32,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "spinning",
+     "occ": 1,
+     "f": [
+      0.79,
+      0.53,
+      1.4
+     ]
+    },
+    {
+     "kind": "zoom",
+     "word": "question",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.5,
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D56",
+   "camera": "zoom-in",
+   "narration": "If the answer is yes, do the smallest version of it. Send the text. Make the plan.",
+   "events": [],
+   "picture": "S13",
+   "overlays": [
+    {
+     "type": "sbadge",
+     "text": "SEND THE TEXT",
+     "word": "send",
+     "occ": 1,
+     "until": "make",
+     "dur": 2.6,
+     "red": false
+    },
+    {
+     "type": "sbadge",
+     "text": "MAKE THE PLAN",
+     "word": "make",
+     "occ": 1,
+     "until": null,
+     "dur": 2.2,
+     "red": false
+    }
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "yes",
+     "occ": 1,
+     "f": [
+      0.23,
+      0.32,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D57",
+   "camera": "hold",
+   "narration": "Say you're replaying a mistake from work. Can you fix it tomorrow? Then write down the fix, and you're done for tonight.",
+   "events": [],
+   "host": [
+    [
+     "N01"
+    ]
+   ],
+   "swap": {
+    "word": "write"
+   },
+   "diagram": {
+    "kind": "card",
+    "parts": [
+     {
+      "t": "CAN YOU"
+     },
+     {
+      "t": "FIX IT",
+      "badge": "yellow"
+     },
+     {
+      "t": "TOMORROW?"
+     }
+    ]
+   },
+   "diagramB": {
+    "kind": "card",
+    "parts": [
+     {
+      "t": "WRITE THE FIX."
+     },
+     {
+      "t": "DONE.",
+      "badge": "yellow"
+     }
+    ]
+   }
+  },
+  {
+   "id": "D58",
+   "camera": "zoom-in",
+   "narration": "If the answer is no, you're not solving anything. You're spinning. And just naming it, \"Oh, I'm spinning,\" can give you a little distance from it.",
+   "events": [],
+   "picture": "S13",
+   "overlays": [
+    {
+     "type": "bubble",
+     "text": "OH, I'M SPINNING.",
+     "word": "oh",
+     "box": {
+      "x": 0.62,
+      "y": 0.2,
+      "w": 0.3,
+      "h": 0.15
+     }
+    }
+   ],
+   "moves": [
+    {
+     "kind": "whip",
+     "word": "spinning",
+     "occ": 1,
+     "f": [
+      0.79,
+      0.53,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D59",
+   "camera": "zoom-in",
+   "narration": "Two. Give your worries an appointment. Back in the nineteen-eighties, psychologist Tom Borkovec came up with a strange idea. Instead of trying to stop worrying, schedule it.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I86",
+     "word": "schedule",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "picture": "S14",
+   "overlays": [
+    {
+     "type": "step",
+     "step": "STEP 2",
+     "text": "A WORRY APPOINTMENT",
+     "word": "two",
+     "occ": 1,
+     "until": "back"
+    },
+    {
+     "type": "pill",
+     "text": "TOM BORKOVEC",
+     "word": "psychologist",
+     "occ": 1,
+     "until": null,
+     "dur": 3.0
+    }
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "instead",
+     "occ": 1,
+     "f": [
+      0.36,
+      0.5,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D60",
+   "camera": "zoom-in",
+   "narration": "Pick one thirty-minute window each day. When a worry shows up outside that window, write it down and tell yourself, \"Not now. Later.\"",
+   "events": [],
+   "picture": "S14",
+   "overlays": [
+    {
+     "type": "sbadge",
+     "text": "30 MINUTES A DAY",
+     "word": "thirty",
+     "occ": 1,
+     "until": "when",
+     "dur": 2.6,
+     "red": false,
+     "cnt": 30,
+     "cs": " MINUTES A DAY"
+    },
+    {
+     "type": "bubble",
+     "text": "NOT NOW. LATER.",
+     "word": "not",
+     "box": {
+      "x": 0.14,
+      "y": 0.08,
+      "w": 0.33,
+      "h": 0.17
+     }
+    }
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "window",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.4,
+      1.3
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D61",
+   "camera": "hold",
+   "narration": "In a two thousand eleven study in the Netherlands, people who practiced this coped better with their problems, and their anxiety and stress dropped more than people who only got standard treatment.",
+   "events": [],
+   "host": [
+    [
+     "N02"
+    ]
+   ],
+   "diagram": {
+    "kind": "bars3",
+    "title": "ANXIETY & STRESS DROPPED",
+    "bars": [
+     {
+      "label": "STANDARD TREATMENT",
+      "h": 0.45,
+      "col": "#8EC5E8"
+     },
+     {
+      "label": "+ WORRY TIME",
+      "h": 0.9,
+      "col": "#9CC08B"
+     }
+    ],
+    "at": {
+     "grow": {
+      "word": "dropped",
+      "occ": 1
+     }
+    }
+   },
+   "overlays": [
+    {
+     "type": "pill",
+     "text": "NETHERLANDS (2011)",
+     "word": "study",
+     "occ": 1,
+     "until": null,
+     "dur": 3.0
+    }
+   ]
+  },
+  {
+   "id": "D62",
+   "camera": "zoom-out",
+   "narration": "When the thirty minutes finally come, a lot of those worries won't feel as urgent anymore. It sounds too simple. But your brain lets go more easily when it knows the worry has a time slot.",
+   "events": [],
+   "picture": "S14",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "finally",
+     "occ": 1,
+     "f": [
+      0.36,
+      0.5,
+      1.4
+     ]
+    },
+    {
+     "kind": "zoom",
+     "word": "simple",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.5,
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D63",
+   "camera": "zoom-in",
+   "narration": "Three. Write it down. At the University of Chicago, researchers Gerardo Ramirez and Sian Beilock had students spend ten minutes writing about their worries right before a big exam.",
+   "events": [],
+   "picture": "S15",
+   "overlays": [
+    {
+     "type": "step",
+     "step": "STEP 3",
+     "text": "WRITE IT DOWN",
+     "word": "three",
+     "occ": 1,
+     "until": "at"
+    },
+    {
+     "type": "pill",
+     "text": "RAMIREZ & BEILOCK (2011)",
+     "word": "researchers",
+     "occ": 1,
+     "until": "had",
+     "dur": 3.0
+    },
+    {
+     "type": "sbadge",
+     "text": "10 MINUTES",
+     "word": "ten",
+     "occ": 1,
+     "until": null,
+     "dur": 2.6,
+     "red": false,
+     "cnt": 10,
+     "cs": " MINUTES"
+    }
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "chicago",
+     "occ": 1,
+     "f": [
+      0.64,
+      0.3,
+      1.3
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D64",
+   "camera": "hold",
+   "narration": "Students with high test anxiety who wrote first averaged a B-plus. Anxious students who didn't write averaged a B-minus.",
+   "events": [],
+   "host": [
+    [
+     "N02"
+    ]
+   ],
+   "diagram": {
+    "kind": "bars3",
+    "title": "ANXIOUS STUDENTS' FINAL GRADE",
+    "bars": [
+     {
+      "label": "WROTE FIRST",
+      "h": 0.85,
+      "col": "#9CC08B",
+      "val": "B+"
+     },
+     {
+      "label": "DIDN'T WRITE",
+      "h": 0.6,
+      "col": "#8EC5E8",
+      "val": "B\u2212"
+     }
+    ],
+    "at": {
+     "grow": {
+      "word": "wrote",
+      "occ": 1
+     }
+    }
+   },
+   "fx": [
+    {
+     "type": "impact",
+     "word": "minus"
+    }
+   ]
+  },
+  {
+   "id": "D65",
+   "camera": "zoom-out",
+   "narration": "Writing it down moves the worry out of your head and onto the page, so your brain doesn't have to keep holding it. You can do it before a test, before bed, or any time a thought keeps circling.",
+   "events": [],
+   "picture": "S15",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "head",
+     "occ": 1,
+     "f": [
+      0.65,
+      0.15,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "page",
+     "occ": 1,
+     "f": [
+      0.375,
+      0.72,
+      1.4
+     ]
+    },
+    {
+     "kind": "zoom",
+     "word": "test",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.5,
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D66",
+   "camera": "hold",
+   "narration": "This is the ten-minute one. Just a piece of paper and a pen.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I94",
+     "word": "pen",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "host": [
+    [
+     "N01"
+    ]
+   ],
+   "diagram": {
+    "kind": "card",
+    "parts": [
+     {
+      "t": "THE",
+      "sz": "mid"
+     },
+     {
+      "t": "10-MINUTE",
+      "mk": true,
+      "at": {
+       "word": "ten",
+       "occ": 1
+      }
+     },
+     {
+      "t": "ONE",
+      "sz": "mid"
+     },
+     {
+      "t": "A PAPER AND A PEN",
+      "small": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "D67",
+   "camera": "zoom-in",
+   "narration": "Four. Go outside and walk. At Stanford, researchers sent people on a ninety-minute walk, either through nature or along a busy road.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I95",
+     "word": "nature",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "picture": "S16",
+   "overlays": [
+    {
+     "type": "step",
+     "step": "STEP 4",
+     "text": "WALK OUTSIDE",
+     "word": "four",
+     "occ": 1,
+     "until": "at"
+    },
+    {
+     "type": "pill",
+     "text": "STANFORD (2015)",
+     "word": "researchers",
+     "occ": 1,
+     "until": "ninety",
+     "dur": 3.0
+    },
+    {
+     "type": "sbadge",
+     "text": "90 MINUTES",
+     "word": "ninety",
+     "occ": 1,
+     "until": null,
+     "dur": 2.6,
+     "red": false,
+     "cnt": 90,
+     "cs": " MINUTES"
+    }
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "walk",
+     "occ": 1,
+     "f": [
+      0.39,
+      0.4,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D68",
+   "camera": "hold",
+   "narration": "Only the nature walk reduced rumination. And brain scans showed less activity in an area linked to negative, self-focused thinking.",
+   "events": [],
+   "host": [
+    [
+     "N02"
+    ]
+   ],
+   "diagram": {
+    "kind": "split",
+    "left": [
+     "NATURE WALK",
+     "LESS RUMINATION"
+    ],
+    "right": [
+     "BRAIN SCANS",
+     "QUIETER"
+    ],
+    "at": {
+     "left": {
+      "word": "nature",
+      "occ": 1
+     },
+     "right": {
+      "word": "brain",
+      "occ": 1
+     },
+     "rack": {
+      "word": "negative",
+      "occ": 1
+     }
+    },
+    "fs": 80,
+    "fs0": 70
+   }
+  },
+  {
+   "id": "D69",
+   "camera": "zoom-out",
+   "narration": "You don't need a forest. A park, a quiet street with trees, anything green. It gives your brain something real to look at, instead of the replay. And even a short walk is a better use of that energy than watching the same conversation again.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I85",
+     "word": "walk",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "picture": "S16",
+   "overlays": [
+    {
+     "type": "sweep",
+     "word": "real",
+     "box": {
+      "x": 0.2,
+      "y": 0.5,
+      "w": 0.6,
+      "h": 0.45
+     }
+    }
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "green",
+     "occ": 1,
+     "f": [
+      0.62,
+      0.28,
+      1.3
+     ]
+    },
+    {
+     "kind": "zoom",
+     "word": "short",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.5,
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D70",
+   "camera": "zoom-in",
+   "narration": "Five. Get absorbed in something. In Nolen-Hoeksema's experiments, people who spent a few minutes focused on something other than their problems felt better afterward.",
+   "events": [],
+   "picture": "S17",
+   "overlays": [
+    {
+     "type": "step",
+     "step": "STEP 5",
+     "text": "GET ABSORBED",
+     "word": "five",
+     "occ": 1,
+     "dur": 3.0
+    }
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "focused",
+     "occ": 1,
+     "f": [
+      0.43,
+      0.28,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D71",
+   "camera": "hold",
+   "narration": "Not because the problem went away. Because the loop got interrupted. Even a few minutes can be enough to break the spin.",
+   "events": [],
+   "host": [
+    [
+     "N01"
+    ]
+   ],
+   "diagram": {
+    "kind": "loop",
+    "nodes": [
+     {
+      "t": "REPLAY IT",
+      "word": null
+     },
+     {
+      "t": "ANALYZE IT",
+      "word": null
+     },
+     {
+      "t": "FEEL WORSE",
+      "word": null
+     }
+    ],
+    "pre": true,
+    "brk": {
+     "word": "interrupted",
+     "occ": 1
+    }
+   }
+  },
+  {
+   "id": "D72",
+   "camera": "zoom-in",
+   "narration": "So pick something that takes your full attention. A game. A workout. Cooking. Music. A conversation with a friend.",
+   "events": [],
+   "picture": "S17",
+   "overlays": [
+    {
+     "type": "sbadge",
+     "text": "A GAME",
+     "word": "game",
+     "occ": 1,
+     "until": "workout",
+     "dur": 2.6,
+     "red": false
+    },
+    {
+     "type": "sbadge",
+     "text": "A WORKOUT",
+     "word": "workout",
+     "occ": 1,
+     "until": "cooking",
+     "dur": 2.6,
+     "red": false
+    },
+    {
+     "type": "sbadge",
+     "text": "COOKING",
+     "word": "cooking",
+     "occ": 1,
+     "until": "music",
+     "dur": 2.6,
+     "red": false
+    },
+    {
+     "type": "sbadge",
+     "text": "MUSIC",
+     "word": "music",
+     "occ": 1,
+     "until": "friend",
+     "dur": 2.6,
+     "red": false
+    },
+    {
+     "type": "sbadge",
+     "text": "A FRIEND",
+     "word": "friend",
+     "occ": 1,
+     "until": null,
+     "dur": 2.0,
+     "red": false
+    }
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "attention",
+     "occ": 1,
+     "f": [
+      0.41,
+      0.54,
+      1.3
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D73",
+   "camera": "zoom-in",
+   "narration": "Scrolling usually doesn't work, because it hands your brain new things to compare and worry about.",
+   "events": [],
+   "picture": "S04",
+   "overlays": [
+    {
+     "type": "sbadge",
+     "text": "SCROLLING",
+     "word": "scrolling",
+     "occ": 1,
+     "until": null,
+     "dur": 2.6,
+     "red": true
+    }
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "scrolling",
+     "occ": 1,
+     "f": [
+      0.49,
+      0.55,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D74",
+   "camera": "zoom-in",
+   "narration": "Here's what I keep coming back to. That conversation you replayed at two A.M.? The other person probably isn't thinking about it at all. And they probably liked you more than you think.",
+   "events": [],
+   "picture": "S11",
+   "trans": "fade",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "conversation",
+     "occ": 1,
+     "f": [
+      0.25,
+      0.45,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "other",
+     "occ": 1,
+     "f": [
+      0.8,
+      0.3,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D75",
+   "camera": "zoom-in",
+   "narration": "Your thoughts aren't facts. They're guesses your brain makes when it's tired and scared. Overthinking promises that if you just think hard enough, you'll be safe.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "THOUGHTS AREN'T",
+       "sz": "mid"
+      },
+      {
+       "t": "FACTS",
+       "badge": "yellow"
+      }
+     ],
+     "word": "facts",
+     "occ": 1,
+     "dur": 2.0
+    }
+   ],
+   "picture": "S02",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "guesses",
+     "occ": 1,
+     "f": [
+      0.38,
+      0.14,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D76",
+   "camera": "zoom-in",
+   "narration": "But you don't find peace at the end of the loop. You find it by stepping out of it.",
+   "events": [],
+   "picture": "S18",
+   "trans": "iris",
+   "irisAt": [
+    0.34,
+    0.47
+   ],
+   "overlays": [
+    {
+     "type": "sweep",
+     "word": "peace",
+     "box": {
+      "x": 0.5,
+      "y": 0.2,
+      "w": 0.4,
+      "h": 0.6
+     }
+    }
+   ]
+  },
+  {
+   "id": "D77",
+   "camera": "zoom-out",
+   "narration": "So next time your brain hits replay, you don't have to watch. Ask if you're solving or spinning. Write it down. Go outside. And let tomorrow handle tomorrow.",
+   "events": [],
+   "picture": "S18",
+   "overlays": [
+    {
+     "type": "sbadge",
+     "text": "SOLVING OR SPINNING?",
+     "word": "solving",
+     "occ": 1,
+     "until": "write",
+     "dur": 2.6,
+     "red": false
+    },
+    {
+     "type": "sbadge",
+     "text": "WRITE IT DOWN",
+     "word": "write",
+     "occ": 1,
+     "until": "outside",
+     "dur": 2.6,
+     "red": false
+    },
+    {
+     "type": "sbadge",
+     "text": "GO OUTSIDE",
+     "word": "outside",
+     "occ": 1,
+     "until": null,
+     "dur": 2.2,
+     "red": false
+    }
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "watch",
+     "occ": 1,
+     "f": [
+      0.34,
+      0.47,
+      1.3
+     ]
+    },
+    {
+     "kind": "zoom",
+     "word": "ask",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.5,
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D78",
+   "camera": "hold",
+   "narration": "What's the thing your brain replays the most? Tell me in the comments. You might find out you're not the only one. And if your overthinking keeps stopping you from starting things, I made a whole video on why we procrastinate. I'll leave it right here.",
+   "events": [
+    {
+     "kind": "pop",
+     "pose": "N06",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "YOUR"
+       },
+       {
+        "t": "REPLAY?",
+        "badge": "yellow"
+       }
+      ]
+     },
+     "word": "what's",
+     "occ": 1,
+     "dur": 2.4
+    }
+   ],
+   "picture": "S29",
+   "holdEnd": true
+  }
+ ]
+}

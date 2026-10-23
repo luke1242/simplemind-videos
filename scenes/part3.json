@@ -1,0 +1,738 @@
+{
+ "part": 3,
+ "audio": "audio/padded/part3.wav",
+ "scenes": [
+  {
+   "id": "D35",
+   "camera": "hold",
+   "narration": "There are four traps that keep the loop running.",
+   "events": [],
+   "picture": "I84",
+   "host": [
+    [
+     "N01"
+    ]
+   ],
+   "overlays": [
+    {
+     "type": "sbadge",
+     "text": "4 TRAPS",
+     "word": "four",
+     "occ": 1,
+     "until": null,
+     "dur": 2.6,
+     "red": false
+    }
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "four",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.5,
+      1.2
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D36",
+   "camera": "zoom-in",
+   "narration": "One. It feels like you're solving something. Your brain thinks replaying the problem is the same as fixing it.",
+   "events": [],
+   "picture": "S09",
+   "overlays": [
+    {
+     "type": "step",
+     "step": "TRAP 1",
+     "text": "IT FEELS LIKE SOLVING",
+     "word": "one",
+     "occ": 1,
+     "dur": 3.0
+    }
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "replaying",
+     "occ": 1,
+     "f": [
+      0.55,
+      0.3,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D37",
+   "camera": "zoom-in",
+   "narration": "If you just think about it one more time, maybe you'll finally understand. Maybe you'll be ready next time.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I91",
+     "word": "understand",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "picture": "S09",
+   "overlays": [
+    {
+     "type": "bubble",
+     "text": "ONE MORE TIME\u2026",
+     "word": "one",
+     "box": {
+      "x": 0.56,
+      "y": 0.04,
+      "w": 0.26,
+      "h": 0.15
+     }
+    }
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "ready",
+     "occ": 1,
+     "f": [
+      0.51,
+      0.32,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D38",
+   "camera": "zoom-in",
+   "narration": "But Nolen-Hoeksema's research found the opposite. Ruminating made people more negative, and more pessimistic about the future.",
+   "events": [],
+   "picture": "S20",
+   "host": [
+    [
+     "N02"
+    ]
+   ],
+   "overlays": [
+    {
+     "type": "sbadge",
+     "text": "MORE NEGATIVE",
+     "word": "negative",
+     "occ": 1,
+     "until": "pessimistic",
+     "dur": 2.6,
+     "red": true
+    },
+    {
+     "type": "sbadge",
+     "text": "MORE PESSIMISTIC",
+     "word": "pessimistic",
+     "occ": 1,
+     "until": null,
+     "dur": 2.4,
+     "red": true
+    }
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "opposite",
+     "occ": 1,
+     "f": [
+      0.45,
+      0.4,
+      1.35
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D39",
+   "camera": "hold",
+   "narration": "You can't think your way out of a loop. You just go around it again.",
+   "events": [],
+   "host": [
+    [
+     "N05"
+    ]
+   ],
+   "diagram": {
+    "kind": "loop",
+    "nodes": [
+     {
+      "t": "REPLAY IT",
+      "word": {
+       "word": "think",
+       "occ": 1
+      }
+     },
+     {
+      "t": "ANALYZE IT",
+      "word": {
+       "word": "way",
+       "occ": 1
+      }
+     },
+     {
+      "t": "FEEL WORSE",
+      "word": {
+       "word": "loop",
+       "occ": 1
+      }
+     }
+    ],
+    "pulse": {
+     "word": "around",
+     "occ": 1
+    }
+   }
+  },
+  {
+   "id": "D40",
+   "camera": "zoom-in",
+   "narration": "Two. Your brain predicts the worst. Overthinking is usually about the future. \"What if they're mad?\" \"What if I fail?\"",
+   "events": [],
+   "picture": "S10",
+   "overlays": [
+    {
+     "type": "step",
+     "step": "TRAP 2",
+     "text": "PREDICTING THE WORST",
+     "word": "two",
+     "occ": 1,
+     "dur": 3.0
+    },
+    {
+     "type": "bubble",
+     "text": "WHAT IF THEY'RE MAD?",
+     "word": "mad",
+     "box": {
+      "x": 0.62,
+      "y": 0.05,
+      "w": 0.33,
+      "h": 0.17
+     }
+    },
+    {
+     "type": "bubble",
+     "text": "WHAT IF I FAIL?",
+     "word": "fail",
+     "box": {
+      "x": 0.04,
+      "y": 0.15,
+      "w": 0.28,
+      "h": 0.16
+     }
+    }
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "worst",
+     "occ": 1,
+     "f": [
+      0.52,
+      0.5,
+      1.3
+     ]
+    },
+    {
+     "kind": "zoom",
+     "word": "future",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.5,
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D41",
+   "camera": "zoom-in",
+   "narration": "In two thousand twenty, researchers at Penn State had people with anxiety write down their worries every day for ten days, then checked what actually happened.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I94",
+     "word": "write",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "picture": "S20",
+   "host": [
+    [
+     "N01"
+    ]
+   ],
+   "trans": "push",
+   "overlays": [
+    {
+     "type": "pill",
+     "text": "PENN STATE (2020)",
+     "word": "researchers",
+     "occ": 1,
+     "until": "write",
+     "dur": 3.0
+    },
+    {
+     "type": "sbadge",
+     "text": "10 DAYS",
+     "word": "ten",
+     "occ": 1,
+     "until": null,
+     "dur": 2.4,
+     "red": false,
+     "cnt": 10,
+     "cs": " DAYS"
+    }
+   ]
+  },
+  {
+   "id": "D42",
+   "camera": "hold",
+   "narration": "Ninety-one percent of those worries never came true.",
+   "events": [],
+   "host": [
+    [
+     "N02"
+    ]
+   ],
+   "lead": 0.7,
+   "diagram": {
+    "kind": "pie",
+    "pct": 91,
+    "from": 0,
+    "label": "NEVER CAME TRUE:",
+    "fs": 100,
+    "badge": "yellow",
+    "value": "91%",
+    "at": {
+     "fill": {
+      "word": "ninety",
+      "occ": 1
+     }
+    }
+   },
+   "fx": [
+    {
+     "type": "riser",
+     "word": "ninety"
+    },
+    {
+     "type": "impact",
+     "word": "ninety"
+    }
+   ]
+  },
+  {
+   "id": "D43",
+   "camera": "zoom-in",
+   "narration": "And some of the ones that did turned out better than people expected. Your brain is a terrible fortune teller. It just sounds really confident.",
+   "events": [
+    {
+     "kind": "pop",
+     "pose": "N05",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "TERRIBLE"
+       },
+       {
+        "t": "FORTUNE TELLER",
+        "badge": "yellow",
+        "sz": "mid"
+       }
+      ]
+     },
+     "word": "terrible",
+     "occ": 1,
+     "dur": 2.6
+    }
+   ],
+   "picture": "S10",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "better",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.33,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "your",
+     "occ": 1,
+     "f": [
+      0.52,
+      0.5,
+      1.3
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D44",
+   "camera": "zoom-out",
+   "narration": "Three. You think everyone's judging you. Remember the liking gap.",
+   "events": [],
+   "picture": "S11",
+   "overlays": [
+    {
+     "type": "step",
+     "step": "TRAP 3",
+     "text": "EVERYONE'S JUDGING ME",
+     "word": "three",
+     "occ": 1,
+     "dur": 3.0
+    }
+   ],
+   "moves": [
+    {
+     "kind": "cut",
+     "word": "three",
+     "occ": 1,
+     "f": [
+      0.3,
+      0.4,
+      1.3
+     ]
+    },
+    {
+     "kind": "zoom",
+     "word": "liking",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.5,
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D45",
+   "camera": "zoom-in",
+   "narration": "After a conversation, your brain replays your awkward moments, because those are the ones you were watching. You noticed every pause and every weird laugh.",
+   "events": [],
+   "picture": "S11",
+   "overlays": [
+    {
+     "type": "sbadge",
+     "text": "PAUSE",
+     "word": "pause",
+     "occ": 1,
+     "until": "weird",
+     "dur": 2.6,
+     "red": false
+    },
+    {
+     "type": "sbadge",
+     "text": "WEIRD LAUGH",
+     "word": "laugh",
+     "occ": 1,
+     "until": null,
+     "dur": 2.4,
+     "red": false
+    }
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "replays",
+     "occ": 1,
+     "f": [
+      0.38,
+      0.28,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D46",
+   "camera": "zoom-in",
+   "narration": "The other person mostly noticed that you were nice to talk to.",
+   "events": [],
+   "picture": "S11",
+   "moves": [
+    {
+     "kind": "whip",
+     "word": "other",
+     "occ": 1,
+     "f": [
+      0.8,
+      0.3,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D47",
+   "camera": "hold",
+   "narration": "And in that research, the gap didn't fade after a few minutes. For college roommates, it lasted for months.",
+   "events": [],
+   "host": [
+    [
+     "N02"
+    ]
+   ],
+   "diagram": {
+    "kind": "card",
+    "parts": [
+     {
+      "t": "COLLEGE ROOMMATES:",
+      "sz": "mid",
+      "at": {
+       "word": "college",
+       "occ": 1
+      }
+     },
+     {
+      "t": "THE GAP LASTED",
+      "sz": "mid"
+     },
+     {
+      "t": "MONTHS",
+      "badge": "yellow",
+      "at": {
+       "word": "months",
+       "occ": 1
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": "D48",
+   "camera": "zoom-in",
+   "narration": "Four. It turns into a habit. Psychologists Ed Watkins and Susan Nolen-Hoeksema have argued that rumination works a lot like a habit.",
+   "events": [],
+   "picture": "S12",
+   "overlays": [
+    {
+     "type": "step",
+     "step": "TRAP 4",
+     "text": "IT'S A HABIT",
+     "word": "four",
+     "occ": 1,
+     "dur": 2.8
+    },
+    {
+     "type": "pill",
+     "text": "WATKINS & NOLEN-HOEKSEMA",
+     "word": "psychologists",
+     "occ": 1,
+     "until": null,
+     "dur": 3.2
+    }
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "habit",
+     "occ": 2,
+     "f": [
+      0.38,
+      0.17,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D49",
+   "camera": "zoom-in",
+   "narration": "It gets linked to certain cues. Lying in bed. A quiet car ride. A phone that hasn't buzzed back.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I93",
+     "word": "bed",
+     "occ": 1,
+     "dur": 1.8
+    },
+    {
+     "kind": "icon",
+     "icon": "I89",
+     "word": "phone",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "picture": "S12",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "car",
+     "occ": 1,
+     "f": [
+      0.37,
+      0.5,
+      1.35
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D50",
+   "camera": "hold",
+   "narration": "When the cue shows up, the loop starts on its own, before you've even decided to think about anything.",
+   "events": [],
+   "host": [
+    [
+     "N02"
+    ]
+   ],
+   "diagram": {
+    "kind": "loop",
+    "nodes": [
+     {
+      "t": "THE CUE",
+      "word": {
+       "word": "cue",
+       "occ": 1
+      }
+     },
+     {
+      "t": "THE LOOP STARTS",
+      "word": {
+       "word": "starts",
+       "occ": 1
+      }
+     },
+     {
+      "t": "REPLAY",
+      "word": {
+       "word": "think",
+       "occ": 1
+      }
+     }
+    ],
+    "pulse": {
+     "word": "anything",
+     "occ": 1
+    }
+   }
+  },
+  {
+   "id": "D51",
+   "camera": "zoom-in",
+   "narration": "That's why it always seems to hit at two A.M. Bed is the cue.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "BED IS"
+      },
+      {
+       "t": "THE CUE",
+       "badge": "yellow"
+      }
+     ],
+     "word": "bed",
+     "occ": 1,
+     "dur": 2.0
+    }
+   ],
+   "picture": "S01b",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "two",
+     "occ": 1,
+     "f": [
+      0.4,
+      0.45,
+      1.2
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D52",
+   "camera": "hold",
+   "narration": "So put those four together. It feels like solving. Your brain predicts the worst. You think everyone's judging you. And it runs on autopilot.",
+   "events": [],
+   "host": [
+    [
+     "N02"
+    ]
+   ],
+   "diagram": {
+    "kind": "list",
+    "items": [
+     {
+      "t": "1. FEELS LIKE SOLVING",
+      "word": {
+       "word": "solving",
+       "occ": 1
+      }
+     },
+     {
+      "t": "2. PREDICTS THE WORST",
+      "word": {
+       "word": "worst",
+       "occ": 1
+      }
+     },
+     {
+      "t": "3. EVERYONE'S JUDGING",
+      "word": {
+       "word": "judging",
+       "occ": 1
+      }
+     },
+     {
+      "t": "4. AUTOPILOT",
+      "word": {
+       "word": "autopilot",
+       "occ": 1
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": "D53",
+   "camera": "zoom-out",
+   "narration": "That's not a broken mind. That's a mind that cares a lot, stuck using the wrong tool.",
+   "events": [],
+   "picture": "S09",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "cares",
+     "occ": 1,
+     "f": [
+      0.51,
+      0.32,
+      1.4
+     ]
+    },
+    {
+     "kind": "zoom",
+     "word": "wrong",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.5,
+      1
+     ]
+    }
+   ]
+  }
+ ]
+}

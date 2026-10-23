@@ -1,0 +1,708 @@
+{
+ "part": 2,
+ "audio": "audio/padded/part2.wav",
+ "scenes": [
+  {
+   "id": "D18",
+   "camera": "zoom-in",
+   "narration": "Psychologists have a name for this. Rumination. Thinking about the same problem, over and over, without getting anywhere.",
+   "events": [],
+   "picture": "S06",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "over",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.5,
+      1.3
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "sbadge",
+     "text": "RUMINATION",
+     "word": "rumination",
+     "occ": 1,
+     "until": null,
+     "dur": 2.6,
+     "red": false
+    }
+   ]
+  },
+  {
+   "id": "D19",
+   "camera": "zoom-in",
+   "narration": "Psychologist Susan Nolen-Hoeksema spent decades studying it, and she found something surprising.",
+   "events": [],
+   "picture": "S20",
+   "host": [
+    [
+     "N06"
+    ]
+   ],
+   "overlays": [
+    {
+     "type": "pill",
+     "text": "SUSAN NOLEN-HOEKSEMA",
+     "word": "psychologist",
+     "occ": 1,
+     "until": null,
+     "dur": 3.2
+    }
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "surprising",
+     "occ": 1,
+     "f": [
+      0.45,
+      0.35,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D20",
+   "camera": "hold",
+   "narration": "Rumination feels like problem solving. But it makes you worse at it.",
+   "events": [],
+   "host": [
+    [
+     "N02"
+    ]
+   ],
+   "swap": {
+    "word": "worse"
+   },
+   "diagram": {
+    "kind": "card",
+    "parts": [
+     {
+      "t": "FEELS LIKE"
+     },
+     {
+      "t": "SOLVING",
+      "badge": "yellow"
+     }
+    ]
+   },
+   "diagramB": {
+    "kind": "card",
+    "parts": [
+     {
+      "t": "MAKES YOU"
+     },
+     {
+      "t": "WORSE",
+      "badge": "red",
+      "slam": true
+     },
+     {
+      "t": "AT IT"
+     }
+    ]
+   },
+   "fx": [
+    {
+     "type": "impact",
+     "word": "worse"
+    }
+   ]
+  },
+  {
+   "id": "D21",
+   "camera": "hold",
+   "narration": "In her studies, people who spent a few minutes ruminating came up with worse solutions to problems than people who spent the same time thinking about something else.",
+   "events": [],
+   "host": [
+    [
+     "N01"
+    ]
+   ],
+   "diagram": {
+    "kind": "bars3",
+    "title": "HOW GOOD THE SOLUTIONS WERE",
+    "bars": [
+     {
+      "label": "AFTER RUMINATING",
+      "h": 0.35,
+      "col": "#D64545"
+     },
+     {
+      "label": "AFTER THINKING ABOUT SOMETHING ELSE",
+      "h": 1.0,
+      "col": "#9CC08B"
+     }
+    ],
+    "at": {
+     "grow": {
+      "word": "ruminating",
+      "occ": 1
+     }
+    }
+   }
+  },
+  {
+   "id": "D22",
+   "camera": "zoom-out",
+   "narration": "They were thinking harder. And getting less done.",
+   "events": [],
+   "picture": "S06",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "harder",
+     "occ": 1,
+     "f": [
+      0.55,
+      0.3,
+      1.4
+     ]
+    },
+    {
+     "kind": "zoom",
+     "word": "less",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.5,
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D23",
+   "camera": "hold",
+   "narration": "Here's the easiest way to tell the difference. Thinking moves you toward a next step. \"What can I do about this?\" Overthinking just loops. \"Why did this happen? What does it say about me? What if it happens again?\"",
+   "events": [],
+   "host": [
+    [
+     "N08"
+    ],
+    [
+     "N01",
+     "thinking"
+    ],
+    [
+     "N02",
+     "overthinking"
+    ]
+   ],
+   "diagram": {
+    "kind": "split",
+    "left": [
+     "THINKING",
+     "NEXT STEP"
+    ],
+    "right": [
+     "OVERTHINKING",
+     "LOOPS"
+    ],
+    "at": {
+     "left": {
+      "word": "thinking",
+      "occ": 1
+     },
+     "right": {
+      "word": "overthinking",
+      "occ": 1
+     }
+    },
+    "fs": 90,
+    "fs0": 70,
+    "norack": true
+   },
+   "overlays": [
+    {
+     "type": "bubble",
+     "text": "WHAT CAN I DO ABOUT THIS?",
+     "word": "what",
+     "box": {
+      "x": 0.03,
+      "y": 0.68,
+      "w": 0.44,
+      "h": 0.2
+     }
+    },
+    {
+     "type": "bubble",
+     "text": "WHY? WHAT DOES IT SAY ABOUT ME?",
+     "word": "why",
+     "box": {
+      "x": 0.53,
+      "y": 0.68,
+      "w": 0.44,
+      "h": 0.22
+     }
+    }
+   ]
+  },
+  {
+   "id": "D24",
+   "camera": "hold",
+   "narration": "One ends with an action. The other ends right where it started.",
+   "events": [],
+   "host": [
+    [
+     "N06"
+    ]
+   ],
+   "swap": {
+    "word": "other"
+   },
+   "diagram": {
+    "kind": "card",
+    "parts": [
+     {
+      "t": "ENDS IN"
+     },
+     {
+      "t": "ACTION",
+      "badge": "yellow"
+     }
+    ]
+   },
+   "diagramB": {
+    "kind": "card",
+    "parts": [
+     {
+      "t": "ENDS"
+     },
+     {
+      "t": "WHERE IT STARTED",
+      "badge": "red",
+      "sz": "mid"
+     }
+    ]
+   }
+  },
+  {
+   "id": "D25",
+   "camera": "zoom-out",
+   "narration": "It's like a car spinning its wheels in the mud. The engine is loud. You're just not going anywhere.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I97",
+     "word": "mud",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "picture": "S07",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "spinning",
+     "occ": 1,
+     "f": [
+      0.61,
+      0.7,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "engine",
+     "occ": 1,
+     "f": [
+      0.46,
+      0.33,
+      1.4
+     ]
+    },
+    {
+     "kind": "zoom",
+     "word": "going",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.5,
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D26",
+   "camera": "zoom-in",
+   "narration": "And it happens way more than you'd think. In two thousand ten, Harvard researchers Matthew Killingsworth and Daniel Gilbert built an app that checked in on two thousand two hundred fifty people at random moments during their day.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I80",
+     "word": "app",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "picture": "S08",
+   "host": [
+    [
+     "N01"
+    ]
+   ],
+   "trans": "push",
+   "overlays": [
+    {
+     "type": "pill",
+     "text": "KILLINGSWORTH & GILBERT (2010)",
+     "word": "researchers",
+     "occ": 1,
+     "until": "built",
+     "dur": 3.0
+    },
+    {
+     "type": "sbadge",
+     "text": "2,250 PEOPLE",
+     "word": "people",
+     "occ": 1,
+     "until": null,
+     "dur": 2.6,
+     "red": false,
+     "cnt": 2250,
+     "cs": " PEOPLE"
+    }
+   ]
+  },
+  {
+   "id": "D27",
+   "camera": "zoom-in",
+   "narration": "It asked, \"What are you doing right now? And what are you thinking about?\"",
+   "events": [],
+   "picture": "S08",
+   "host": [
+    [
+     "N06"
+    ]
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "doing",
+     "occ": 1,
+     "f": [
+      0.14,
+      0.25,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "thinking",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.55,
+      1.35
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "bubble",
+     "text": "WHAT ARE YOU DOING?",
+     "word": "doing",
+     "box": {
+      "x": 0.24,
+      "y": 0.34,
+      "w": 0.3,
+      "h": 0.17
+     }
+    },
+    {
+     "type": "bubble",
+     "text": "WHAT ARE YOU THINKING ABOUT?",
+     "word": "thinking",
+     "box": {
+      "x": 0.3,
+      "y": 0.72,
+      "w": 0.36,
+      "h": 0.2
+     }
+    }
+   ]
+  },
+  {
+   "id": "D28",
+   "camera": "hold",
+   "narration": "Almost forty-seven percent of the time, people's minds were somewhere else.",
+   "events": [],
+   "host": [
+    [
+     "N02"
+    ]
+   ],
+   "diagram": {
+    "kind": "pie",
+    "pct": 47,
+    "from": 0,
+    "label": "MIND SOMEWHERE ELSE:",
+    "fs": 90,
+    "badge": "yellow",
+    "value": "47%",
+    "at": {
+     "fill": {
+      "word": "forty",
+      "occ": 1
+     }
+    }
+   },
+   "fx": [
+    {
+     "type": "riser",
+     "word": "forty"
+    },
+    {
+     "type": "impact",
+     "word": "forty"
+    }
+   ]
+  },
+  {
+   "id": "D29",
+   "camera": "zoom-out",
+   "narration": "And when their minds wandered, they were less happy than when they were focused on what they were doing.",
+   "events": [],
+   "picture": "S08",
+   "host": [
+    [
+     "N02"
+    ]
+   ],
+   "overlays": [
+    {
+     "type": "sbadge",
+     "text": "LESS HAPPY",
+     "word": "less",
+     "occ": 1,
+     "until": null,
+     "dur": 2.6,
+     "red": true
+    }
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "wandered",
+     "occ": 1,
+     "f": [
+      0.82,
+      0.5,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D30",
+   "camera": "hold",
+   "narration": "A wandering mind, the researchers wrote, is an unhappy mind.",
+   "events": [],
+   "host": [
+    [
+     "N06"
+    ]
+   ],
+   "diagram": {
+    "kind": "card",
+    "parts": [
+     {
+      "t": "WANDERING MIND =",
+      "sz": "mid"
+     },
+     {
+      "t": "UNHAPPY MIND",
+      "mk": true,
+      "at": {
+       "word": "unhappy",
+       "occ": 1
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": "D31",
+   "camera": "hold",
+   "narration": "And it isn't harmless. In one survey of about thirteen hundred adults, Nolen-Hoeksema found that people who tended to ruminate were about four times more likely to develop major depression than people who didn't.",
+   "events": [],
+   "host": [
+    [
+     "N02"
+    ]
+   ],
+   "diagram": {
+    "kind": "bars3",
+    "title": "DEVELOPED MAJOR DEPRESSION",
+    "bars": [
+     {
+      "label": "RUMINATORS",
+      "h": 1.0,
+      "col": "#D64545"
+     },
+     {
+      "label": "NON-RUMINATORS",
+      "h": 0.25,
+      "col": "#8EC5E8"
+     }
+    ],
+    "at": {
+     "grow": {
+      "word": "ruminate",
+      "occ": 1
+     }
+    },
+    "badge": {
+     "t": "4\u00d7",
+     "word": {
+      "word": "four",
+      "occ": 1
+     },
+     "top": 330
+    }
+   },
+   "overlays": [
+    {
+     "type": "badge",
+     "text": "1,300 ADULTS",
+     "word": "thirteen",
+     "badge": "yellow",
+     "fs": 60,
+     "box": {
+      "x": 0.3,
+      "y": 0.17,
+      "w": 0.4,
+      "h": 0.11
+     }
+    }
+   ],
+   "fx": [
+    {
+     "type": "impact",
+     "word": "four"
+    }
+   ]
+  },
+  {
+   "id": "D32",
+   "camera": "zoom-out",
+   "narration": "Overthinking doesn't just waste your time. Over time, it can wear down your mood.",
+   "events": [],
+   "picture": "S06",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "waste",
+     "occ": 1,
+     "f": [
+      0.55,
+      0.3,
+      1.4
+     ]
+    },
+    {
+     "kind": "zoom",
+     "word": "mood",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.5,
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D33",
+   "camera": "hold",
+   "narration": "So overthinking isn't a sign that you're smart, or careful, or deep. It's a loop your brain gets stuck in.",
+   "events": [],
+   "host": [
+    [
+     "N02"
+    ],
+    [
+     "N06",
+     "it's"
+    ]
+   ],
+   "swap": {
+    "word": "loop"
+   },
+   "diagram": {
+    "kind": "card",
+    "parts": [
+     {
+      "t": "NOT",
+      "sz": "mid"
+     },
+     {
+      "t": "SMART",
+      "badge": "red",
+      "sz": "mid",
+      "at": {
+       "word": "smart",
+       "occ": 1
+      }
+     },
+     {
+      "t": "CAREFUL",
+      "badge": "red",
+      "sz": "mid",
+      "at": {
+       "word": "careful",
+       "occ": 1
+      }
+     },
+     {
+      "t": "DEEP",
+      "badge": "red",
+      "sz": "mid",
+      "at": {
+       "word": "deep",
+       "occ": 1
+      }
+     }
+    ]
+   },
+   "diagramB": {
+    "kind": "card",
+    "parts": [
+     {
+      "t": "A"
+     },
+     {
+      "t": "LOOP",
+      "badge": "yellow"
+     }
+    ]
+   }
+  },
+  {
+   "id": "D34",
+   "camera": "zoom-in",
+   "narration": "But why does it get stuck? Why does the same thought keep coming back, even when you're begging it to stop?",
+   "events": [],
+   "picture": "S06",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "begging",
+     "occ": 1,
+     "f": [
+      0.55,
+      0.3,
+      1.4
+     ]
+    }
+   ]
+  }
+ ]
+}

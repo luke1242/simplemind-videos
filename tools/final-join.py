@@ -43,11 +43,11 @@ else:
     mus_chain = f"music/{music[0]}"
 vd = f"{R}/full-voice.mkv"
 if mus_chain:
-    # music at its quietest in the cold open (first scenes up to the title card) and in the final scene (D53 onward)
+    # music at its quietest in the cold open (first scenes up to the title card) and in the end-screen scene (D78)
     dips = []
     try:
-        t1 = [s for s in json.load(open("scenes/part1.timing.json"))["scenes"] if s["id"] == "D05"][0]["end"]
-        dips.append((0, t1)); d53 = [s for s in json.load(open("scenes/part4.timing.json"))["scenes"] if s["id"] == "D53"][0]["start"]; dips.append((offs[3] + d53, total))
+        t1 = [s for s in json.load(open("scenes/part1.timing.json"))["scenes"] if s["id"] == "D10"][0]["end"]
+        dips.append((0, t1)); d78 = [s for s in json.load(open("scenes/part4.timing.json"))["scenes"] if s["id"] == "D78"][0]["start"]; dips.append((offs[3] + d78, total))
     except Exception as e: print("no dips", e)
     DIP = "1"
     for a, b in reversed(dips): DIP = f"if(between(t,{a:.2f},{b:.2f}),0.6,{DIP})"

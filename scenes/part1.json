@@ -1,0 +1,644 @@
+{
+ "part": 1,
+ "audio": "audio/padded/part1.wav",
+ "scenes": [
+  {
+   "id": "D01",
+   "camera": "zoom-in",
+   "narration": "It's two in the morning. You're exhausted. Your eyes are closed.",
+   "events": [],
+   "picture": "S01",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "two",
+     "occ": 1,
+     "f": [
+      0.13,
+      0.62,
+      1.4
+     ]
+    },
+    {
+     "kind": "snap",
+     "word": "closed",
+     "occ": 1,
+     "f": [
+      0.34,
+      0.48,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D02",
+   "camera": "zoom-in",
+   "narration": "And then your brain says, \"Hey. Remember that thing you said today?\"",
+   "events": [],
+   "picture": "S01",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "brain",
+     "occ": 1,
+     "f": [
+      0.34,
+      0.48,
+      1.4
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "bubble",
+     "text": "REMEMBER THAT THING YOU SAID TODAY?",
+     "word": "remember",
+     "box": {
+      "x": 0.35,
+      "y": 0.15,
+      "w": 0.35,
+      "h": 0.22
+     }
+    }
+   ]
+  },
+  {
+   "id": "D03",
+   "camera": "zoom-in",
+   "narration": "And now you're wide awake. Replaying it.",
+   "events": [],
+   "picture": "S01",
+   "pictureB": "S01b",
+   "swap": {
+    "word": "wide"
+   },
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "replaying",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.2,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D04",
+   "camera": "zoom-in",
+   "narration": "\"Why did I say it like that?\" \"Did they think I was weird?\" \"Why did I laugh at my own joke?\"",
+   "events": [],
+   "picture": "S01b",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "weird",
+     "occ": 1,
+     "f": [
+      0.55,
+      0.4,
+      1.15
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "bubble",
+     "text": "WHY DID I SAY IT LIKE THAT?",
+     "word": "say",
+     "box": {
+      "x": 0.62,
+      "y": 0.04,
+      "w": 0.36,
+      "h": 0.2
+     }
+    },
+    {
+     "type": "bubble",
+     "text": "DID THEY THINK I WAS WEIRD?",
+     "word": "weird",
+     "box": {
+      "x": 0.62,
+      "y": 0.3,
+      "w": 0.36,
+      "h": 0.2
+     }
+    },
+    {
+     "type": "bubble",
+     "text": "WHY DID I LAUGH AT MY OWN JOKE?",
+     "word": "laugh",
+     "box": {
+      "x": 0.6,
+      "y": 0.56,
+      "w": 0.38,
+      "h": 0.22
+     }
+    }
+   ]
+  },
+  {
+   "id": "D05",
+   "camera": "zoom-in",
+   "narration": "Ten seconds of a conversation... and you've watched it fifty times.",
+   "events": [],
+   "picture": "S02",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "conversation",
+     "occ": 1,
+     "f": [
+      0.38,
+      0.14,
+      1.4
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "sbadge",
+     "text": "10 SECONDS",
+     "word": "ten",
+     "occ": 1,
+     "until": "fifty",
+     "dur": 2.6,
+     "red": false,
+     "cnt": 10,
+     "cs": " SECONDS"
+    },
+    {
+     "type": "sbadge",
+     "text": "50 TIMES",
+     "word": "fifty",
+     "occ": 1,
+     "until": null,
+     "dur": 2.4,
+     "red": true,
+     "cnt": 50,
+     "cs": " TIMES"
+    }
+   ]
+  },
+  {
+   "id": "D06",
+   "camera": "zoom-in",
+   "narration": "Here's what's strange. In two thousand eighteen, a team of researchers paired up strangers and had them talk for just five minutes.",
+   "events": [],
+   "picture": "S03",
+   "host": [
+    [
+     "N02"
+    ]
+   ],
+   "trans": "push",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "strangers",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.45,
+      1.3
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "pill",
+     "text": "BOOTHBY ET AL. (2018)",
+     "word": "researchers",
+     "occ": 1,
+     "until": "five",
+     "dur": 3.0
+    },
+    {
+     "type": "sbadge",
+     "text": "5 MINUTES",
+     "word": "five",
+     "occ": 1,
+     "until": null,
+     "dur": 2.4,
+     "red": false,
+     "cnt": 5,
+     "cs": " MINUTES"
+    }
+   ]
+  },
+  {
+   "id": "D07",
+   "camera": "zoom-in",
+   "narration": "Afterward, each person rated how much they liked the other one, and how much they thought the other one liked them.",
+   "events": [],
+   "picture": "S03",
+   "host": [
+    [
+     "N02"
+    ]
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "liked",
+     "occ": 1,
+     "f": [
+      0.36,
+      0.34,
+      1.4
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "thought",
+     "occ": 1,
+     "f": [
+      0.66,
+      0.34,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D08",
+   "camera": "hold",
+   "narration": "Almost everyone made the same mistake. Their partner liked them more than they thought.",
+   "events": [],
+   "host": [
+    [
+     "N06"
+    ],
+    [
+     "N02",
+     "their"
+    ]
+   ],
+   "diagram": {
+    "kind": "bars3",
+    "title": "AFTER 5 MINUTES OF TALKING",
+    "bars": [
+     {
+      "label": "HOW MUCH THEY THOUGHT THEY WERE LIKED",
+      "h": 0.5,
+      "col": "#8EC5E8"
+     },
+     {
+      "label": "HOW MUCH THEY WERE ACTUALLY LIKED",
+      "h": 0.9,
+      "col": "#9CC08B"
+     }
+    ],
+    "at": {
+     "grow": {
+      "word": "partner",
+      "occ": 1
+     }
+    }
+   }
+  },
+  {
+   "id": "D09",
+   "camera": "zoom-in",
+   "narration": "The researchers called it the liking gap.",
+   "events": [],
+   "picture": "S03b",
+   "host": [
+    [
+     "N02"
+    ]
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "called",
+     "occ": 1,
+     "f": [
+      0.2,
+      0.2,
+      1.4
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "sbadge",
+     "text": "THE LIKING GAP",
+     "word": "liking",
+     "occ": 1,
+     "until": null,
+     "dur": 2.6,
+     "red": false
+    }
+   ]
+  },
+  {
+   "id": "D10",
+   "camera": "zoom-in",
+   "narration": "The conversation you're replaying at two A.M.? It probably went better than you think.",
+   "events": [
+    {
+     "kind": "card",
+     "parts": [
+      {
+       "t": "IT WENT"
+      },
+      {
+       "t": "BETTER",
+       "badge": "yellow"
+      },
+      {
+       "t": "THAN YOU THINK",
+       "sz": "mid"
+      }
+     ],
+     "word": "better",
+     "occ": 1,
+     "dur": 2.0
+    },
+    {
+     "kind": "title",
+     "dur": 2.5,
+     "pill": "LESSON",
+     "l1": "PSYCHOLOGY OF",
+     "l2": "OVERTHINKING"
+    }
+   ],
+   "picture": "S01b",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "replaying",
+     "occ": 1,
+     "f": [
+      0.33,
+      0.5,
+      1.4
+     ]
+    }
+   ],
+   "fx": [
+    {
+     "type": "riser",
+     "word": "better"
+    },
+    {
+     "type": "impact",
+     "word": "better"
+    }
+   ]
+  },
+  {
+   "id": "D11",
+   "camera": "zoom-in",
+   "narration": "I do this all the time. A few weeks ago, I sent someone a message, and they took a few hours to reply.",
+   "events": [
+    {
+     "kind": "icon",
+     "icon": "I89",
+     "word": "reply",
+     "occ": 1,
+     "dur": 1.8
+    }
+   ],
+   "picture": "S04",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "message",
+     "occ": 1,
+     "f": [
+      0.49,
+      0.55,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D12",
+   "camera": "zoom-in",
+   "narration": "In those few hours, I reread my message about twenty times, decided it sounded rude, wrote three different apologies in my head, and imagined the whole friendship falling apart.",
+   "events": [],
+   "picture": "S05",
+   "overlays": [
+    {
+     "type": "sbadge",
+     "text": "20 TIMES",
+     "word": "twenty",
+     "occ": 1,
+     "until": null,
+     "dur": 2.4,
+     "red": true,
+     "cnt": 20,
+     "cs": " TIMES"
+    }
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "apologies",
+     "occ": 1,
+     "f": [
+      0.3,
+      0.5,
+      1.35
+     ]
+    },
+    {
+     "kind": "whip",
+     "word": "friendship",
+     "occ": 1,
+     "f": [
+      0.62,
+      0.2,
+      1.4
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D13",
+   "camera": "zoom-in",
+   "narration": "Then they replied. \"Haha sorry, I was at the gym.\"",
+   "events": [],
+   "picture": "S05b",
+   "trans": "whip",
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "haha",
+     "occ": 1,
+     "f": [
+      0.47,
+      0.5,
+      1.2
+     ]
+    }
+   ],
+   "overlays": [
+    {
+     "type": "bubble",
+     "text": "HAHA SORRY, I WAS AT THE GYM",
+     "word": "haha",
+     "box": {
+      "x": 0.46,
+      "y": 0.1,
+      "w": 0.4,
+      "h": 0.22
+     }
+    }
+   ]
+  },
+  {
+   "id": "D14",
+   "camera": "zoom-out",
+   "narration": "And it wasn't even a big deal. It was one text. My brain had worked for hours... and solved absolutely nothing.",
+   "events": [
+    {
+     "kind": "pop",
+     "pose": "N10",
+     "content": {
+      "type": "card",
+      "parts": [
+       {
+        "t": "SOLVED"
+       },
+       {
+        "t": "NOTHING",
+        "badge": "yellow"
+       }
+      ]
+     },
+     "word": "brain",
+     "occ": 1,
+     "dur": 2.4
+    }
+   ],
+   "picture": "S05b",
+   "moves": [
+    {
+     "kind": "cut",
+     "word": "and",
+     "occ": 1,
+     "f": [
+      0.47,
+      0.55,
+      1.2
+     ]
+    },
+    {
+     "kind": "zoom",
+     "word": "brain",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.5,
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D15",
+   "camera": "hold",
+   "narration": "So why does your brain do this? Why does it keep replaying things it can't change?",
+   "events": [],
+   "picture": "I90",
+   "host": [
+    [
+     "N06"
+    ]
+   ],
+   "moves": [
+    {
+     "kind": "snap",
+     "word": "replaying",
+     "occ": 1,
+     "f": [
+      0.5,
+      0.5,
+      1.25
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D16",
+   "camera": "hold",
+   "narration": "By the end of this video, you'll know the difference between thinking and overthinking, the four traps that keep your mind stuck on repeat, and five research-backed ways to finally turn it off.",
+   "events": [],
+   "host": [
+    [
+     "N01"
+    ]
+   ],
+   "diagram": {
+    "kind": "irow",
+    "items": [
+     {
+      "icon": "I91",
+      "label": "THINKING VS OVERTHINKING",
+      "word": {
+       "word": "know",
+       "occ": 1
+      }
+     },
+     {
+      "icon": "I84",
+      "label": "4 TRAPS",
+      "word": {
+       "word": "four",
+       "occ": 1
+      }
+     },
+     {
+      "icon": "I95",
+      "label": "5 WAYS OUT",
+      "word": {
+       "word": "five",
+       "occ": 1
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": "D17",
+   "camera": "hold",
+   "narration": "One of them takes ten minutes and a piece of paper.",
+   "events": [],
+   "host": [
+    [
+     "N01"
+    ]
+   ],
+   "diagram": {
+    "kind": "card",
+    "parts": [
+     {
+      "t": "10",
+      "badge": "yellow",
+      "cnt": 10,
+      "cs": " MINUTES",
+      "at": {
+       "word": "ten",
+       "occ": 1
+      }
+     },
+     {
+      "t": "AND A PIECE OF PAPER",
+      "small": true,
+      "at": {
+       "word": "piece",
+       "occ": 1
+      }
+     }
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,319 @@
+[
+ {
+  "scene": "D01",
+  "kind": "main",
+  "a": 0,
+  "e": 3.54,
+  "host": false
+ },
+ {
+  "scene": "D01",
+  "kind": "main",
+  "a": 3.54,
+  "e": 5.88,
+  "host": false
+ },
+ {
+  "scene": "D02",
+  "kind": "main",
+  "a": 5.88,
+  "e": 8.54,
+  "host": false
+ },
+ {
+  "scene": "D02",
+  "kind": "main",
+  "a": 8.54,
+  "e": 11.08,
+  "host": false
+ },
+ {
+  "scene": "D03",
+  "kind": "main",
+  "a": 11.08,
+  "e": 11.84,
+  "host": false
+ },
+ {
+  "scene": "D03",
+  "kind": "main",
+  "a": 11.84,
+  "e": 14.7,
+  "host": false
+ },
+ {
+  "scene": "D04",
+  "kind": "main",
+  "a": 14.7,
+  "e": 18.32,
+  "host": false
+ },
+ {
+  "scene": "D04",
+  "kind": "main",
+  "a": 18.32,
+  "e": 21.26,
+  "host": false
+ },
+ {
+  "scene": "D05",
+  "kind": "main",
+  "a": 21.26,
+  "e": 23.3,
+  "host": false
+ },
+ {
+  "scene": "D05",
+  "kind": "main",
+  "a": 23.3,
+  "e": 27.2,
+  "host": false
+ },
+ {
+  "scene": "D06",
+  "kind": "main",
+  "a": 27.2,
+  "e": 30.68,
+  "host": true
+ },
+ {
+  "scene": "D06",
+  "kind": "main",
+  "a": 30.68,
+  "e": 33.88,
+  "host": true
+ },
+ {
+  "scene": "D06",
+  "kind": "main",
+  "a": 33.88,
+  "e": 36.2,
+  "host": true
+ },
+ {
+  "scene": "D07",
+  "kind": "main",
+  "a": 36.2,
+  "e": 39.52,
+  "host": true
+ },
+ {
+  "scene": "D07",
+  "kind": "main",
+  "a": 39.52,
+  "e": 43.36,
+  "host": true
+ },
+ {
+  "scene": "D08",
+  "kind": "main",
+  "a": 43.36,
+  "e": 46.28,
+  "host": true
+ },
+ {
+  "scene": "D08",
+  "kind": "main",
+  "a": 46.28,
+  "e": 49.6,
+  "host": true
+ },
+ {
+  "scene": "D09",
+  "kind": "main",
+  "a": 49.6,
+  "e": 53.2,
+  "host": true
+ },
+ {
+  "scene": "D10",
+  "kind": "main",
+  "a": 53.2,
+  "e": 56.1,
+  "host": false
+ },
+ {
+  "scene": "D10",
+  "kind": "main",
+  "a": 56.1,
+  "e": 57.34,
+  "host": false
+ },
+ {
+  "scene": "D10",
+  "kind": "card",
+  "a": 57.34,
+  "e": 59.04,
+  "host": false
+ },
+ {
+  "scene": "D10",
+  "kind": "title",
+  "a": 59.04,
+  "e": 61.54,
+  "host": false
+ },
+ {
+  "scene": "D11",
+  "kind": "main",
+  "a": 61.54,
+  "e": 64.18,
+  "host": false
+ },
+ {
+  "scene": "D11",
+  "kind": "main",
+  "a": 64.18,
+  "e": 68,
+  "host": false
+ },
+ {
+  "scene": "D11",
+  "kind": "icon",
+  "a": 68,
+  "e": 69.42,
+  "host": false
+ },
+ {
+  "scene": "D12",
+  "kind": "main",
+  "a": 69.42,
+  "e": 72.6,
+  "host": false
+ },
+ {
+  "scene": "D12",
+  "kind": "main",
+  "a": 72.6,
+  "e": 75.34,
+  "host": false
+ },
+ {
+  "scene": "D12",
+  "kind": "main",
+  "a": 75.34,
+  "e": 78.42,
+  "host": false
+ },
+ {
+  "scene": "D12",
+  "kind": "main",
+  "a": 78.42,
+  "e": 80.84,
+  "host": false
+ },
+ {
+  "scene": "D13",
+  "kind": "main",
+  "a": 80.84,
+  "e": 84.54,
+  "host": false
+ },
+ {
+  "scene": "D14",
+  "kind": "main",
+  "a": 84.54,
+  "e": 87.62,
+  "host": false
+ },
+ {
+  "scene": "D14",
+  "kind": "main",
+  "a": 87.62,
+  "e": 89.56,
+  "host": false
+ },
+ {
+  "scene": "D14",
+  "kind": "pop",
+  "a": 89.56,
+  "e": 91.94,
+  "host": true
+ },
+ {
+  "scene": "D14",
+  "kind": "main",
+  "a": 91.94,
+  "e": 95.4,
+  "host": false
+ },
+ {
+  "scene": "D15",
+  "kind": "main",
+  "a": 95.4,
+  "e": 97.78,
+  "host": true
+ },
+ {
+  "scene": "D15",
+  "kind": "main",
+  "a": 97.78,
+  "e": 101.2,
+  "host": true
+ },
+ {
+  "scene": "D16",
+  "kind": "main",
+  "a": 101.2,
+  "e": 104.54,
+  "host": true
+ },
+ {
+  "scene": "D16",
+  "kind": "main",
+  "a": 104.54,
+  "e": 107.68,
+  "host": true
+ },
+ {
+  "scene": "D16",
+  "kind": "main",
+  "a": 107.68,
+  "e": 110.96,
+  "host": true
+ },
+ {
+  "scene": "D16",
+  "kind": "main",
+  "a": 110.96,
+  "e": 113.08,
+  "host": true
+ },
+ {
+  "scene": "D17",
+  "kind": "main",
+  "a": 113.08,
+  "e": 116.806,
+  "host": true
+ },
+ {
+  "scene": "host",
+  "kind": "pose:N02",
+  "a": 27.2,
+  "e": 43.36
+ },
+ {
+  "scene": "host",
+  "kind": "pose:N06",
+  "a": 43.36,
+  "e": 46.28
+ },
+ {
+  "scene": "host",
+  "kind": "pose:N02",
+  "a": 46.28,
+  "e": 53.2
+ },
+ {
+  "scene": "host",
+  "kind": "pose:N06",
+  "a": 95.4,
+  "e": 101.2
+ },
+ {
+  "scene": "host",
+  "kind": "pose:N01",
+  "a": 101.2,
+  "e": 116.806
+ }
+]

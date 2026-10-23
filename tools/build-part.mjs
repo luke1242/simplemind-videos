@@ -27,13 +27,16 @@ const pieSvg = (id, cx, cy, r, pct) => {
 };
 const piePath = (cx, cy, r, pct) => { const p = Math.min(Math.max(pct, 0.01), 99.99), a = (p / 100) * 2 * Math.PI; return `M${cx} ${cy} L${cx} ${cy - r} A${r} ${r} 0 ${a > Math.PI ? 1 : 0} 1 ${f3(cx + r * Math.sin(a))} ${f3(cy - r * Math.cos(a))} Z`; };
 const partHtml = (p, extra = "") => {
+  if (p.cnt !== undefined) return `<span class="badge ${p.badge || "yellow"}" id="${extra}-bd"><span id="${extra}-cn">0</span>${p.cs || ""}</span>`;
   if (p.mk) return `<span class="mk"><i id="${extra}-mk"></i><b>${p.t}</b></span>`;
   if (p.circ) return `<span class="circw"><span class="badge ${p.badge || "yellow"}" id="${extra}-cw">${p.t}</span><svg class="circ" viewBox="0 0 400 200" preserveAspectRatio="none"><ellipse id="${extra}-ci" cx="200" cy="100" rx="185" ry="88" fill="none" stroke="${RED}" stroke-width="9" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg></span>${p.after || ""}`;
   const inner = p.badge ? `<span class="badge ${p.badge}" id="${extra}-bd">${p.t}</span>` : p.t;
   return p.ul ? `<span class="ulw">${inner}<svg class="ul" viewBox="0 0 400 30" preserveAspectRatio="none"><path id="${extra}-ul" d="M6 18 C60 6 110 26 170 14 S300 8 394 16" fill="none" stroke="${RED}" stroke-width="9" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg></span>` : inner;
 };
 const linesHtml = (parts, pre, cls = "ln") => parts.map((p, i) => `<div class="${cls}${p.small ? " small" : ""}${p.sz === "big" ? " big" : ""}${p.sz === "mid" ? " mid" : ""}" id="${pre}-l${i}">${partHtml(p, `${pre}-p${i}`)}</div>`).join("");
-const partTweens = (parts, pre, t0) => { const r = []; parts.forEach((p, i) => {
+const partTweens = (parts, pre, t00, T) => { const r = []; parts.forEach((p, i) => {
+  const t0 = T && p.at ? T(p.at) : t00;
+  if (p.cnt !== undefined) { const ob = vid(`${pre}_p${i}_c`); r.push(`const ${ob}={v:0};`, countTw(`${pre}-p${i}-cn`, ob, p.cnt, t0 + 0.05, 0.7, `Math.round(${ob}.v).toLocaleString("en-US")`)); }
   if (p.mk) r.push(`tl.fromTo("#${pre}-p${i}-mk",{scaleX:0},{scaleX:1,duration:0.45,ease:"power2.out"},${f3(t0 + 0.2)});`);
   if (p.circ) r.push(`tl.to("#${pre}-p${i}-ci",{strokeDashoffset:0,duration:0.5,ease:"power2.out"},${f3(t0 + 0.35)});`);
   if (p.ul) r.push(`tl.to("#${pre}-p${i}-ul",{strokeDashoffset:0,duration:0.5,ease:"power2.out"},${f3(t0 + 0.4)});`);
@@ -50,7 +53,7 @@ function diagram(d, pre, T, S0 = 0) {
   const at = (k, dflt = 0) => (d.at && d.at[k] !== undefined ? T(d.at[k]) : dflt);
   if (d.kind === "card") {
     const h = `<div class="fill diag cardc"><div class="cardtxt" id="${pre}-ct">${linesHtml(d.parts, pre)}</div>${d.sweep ? `<div class="sweep" id="${pre}-sw" style="left:760px;top:240px;width:400px;height:600px;border-radius:0;transform:skewX(-20deg)"></div>` : ""}</div>`;
-    tw.push(...partTweens(d.parts, pre, d.rise !== undefined ? d.rise : S0));
+    tw.push(...partTweens(d.parts, pre, d.rise !== undefined ? d.rise : S0, d.rise === undefined ? T : null));
     d.parts.forEach((p, i) => {
       if (p.at && d.rise === undefined) tw.push(`tl.set("#${pre}-l${i}",{opacity:0},0);`, `tl.fromTo("#${pre}-l${i}",{opacity:0,scale:0.8},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.5)"},${f3(T(p.at))});`);
       if (p.slam) tw.push(`tl.fromTo("#${pre}-p${i}-bd",{scale:1.5,rotation:-9},{scale:1,rotation:-3,duration:0.28,ease:"back.out(1.7)"},${f3((d.rise !== undefined ? d.rise : S0) + 0.3)});`);
@@ -196,7 +199,7 @@ function diagram(d, pre, T, S0 = 0) {
     svg += `<g id="${pre}-spin" style="transform-origin:${cx}px ${cy}px" opacity="0"><circle cx="${cx}" cy="${cy - r}" r="26" fill="${YEL}" stroke="${INK}" stroke-width="7"/></g>`;
     const COL = [SKY, ORG, SAGE];
     let h = `<div class="fill diag">${svgWrap(svg)}`;
-    d.nodes.forEach((nd, k) => { h += `<div class="lnode" id="${pre}-n${k}" style="left:${f3(pts[k][0] - 270)}px;top:${f3(pts[k][1] - 72)}px;background:${nd.col || COL[k]}">${nd.t}</div>`; });
+    d.nodes.forEach((nd, k) => { h += `<div class="lnode" id="${pre}-n${k}" style="left:${f3(pts[k][0] - 270)}px;top:${f3(pts[k][1] - 72)}px;background:${nd.col || COL[k]};${nd.t.length > 12 ? "font-size:50px" : ""}">${nd.t}</div>`; });
     if (d.center) h += `<div class="lcenter" id="${pre}-ce"><span class="badge yellow">${d.center.t}</span></div>`;
     h += `</div>`;
     d.nodes.forEach((nd, k) => { if (!nd.word) return; const t1 = T(nd.word); tw.push(`tl.set("#${pre}-n${k}",{opacity:0},0);`, `tl.fromTo("#${pre}-n${k}",{opacity:0,scale:0.7},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.6)"},${f3(t1)});`); sfx.push({ t: f3(t1), kind: "pop" }); });
@@ -240,7 +243,7 @@ function diagram(d, pre, T, S0 = 0) {
 function screenOv(id, o, host) {
   const ul = o.ul ? `<svg class="ulp" viewBox="0 0 400 30" preserveAspectRatio="none"><path id="${id}-ul" d="M6 18 C60 6 110 26 170 14 S300 8 394 16" fill="none" stroke="${RED}" stroke-width="9" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg>` : "";
   if (o.type === "step") return `<div id="${id}" class="scr${host ? " row" : ""}" data-layout-allow-overlap><div class="pill big">${o.step}</div><div class="spill2">${o.text}</div></div>`;
-  if (o.type === "sbadge") return `<div id="${id}" class="scr" data-layout-allow-overlap><span class="badge ${o.red ? "red" : "yellow"}" style="font-size:78px;padding:0 38px 8px">${o.text}</span></div>`;
+  if (o.type === "sbadge") return `<div id="${id}" class="scr" data-layout-allow-overlap><span class="badge ${o.red ? "red" : "yellow"}" style="font-size:78px;padding:0 38px 8px">${o.cnt !== undefined ? `<span id="${id}-n">${o.cnt.toLocaleString("en-US")}</span>${o.cs || ""}` : o.text}</span></div>`;
   if (o.type === "pill") return `<div id="${id}" class="scr${host ? " row" : ""}" data-layout-allow-overlap><div class="pill big">${o.text}</div></div>`;
   return `<div id="${id}" class="scr" data-layout-allow-overlap><div class="spill2">${o.text}${ul}</div></div>`;
 }
@@ -463,6 +466,7 @@ G.forEach((sh, gi) => {
     for (const [o, k] of scrOvs) {
       const [t0, t1] = overlayWin(sc, ws, W, o), oid = `${id}-so${k}`, vis = t1 > a && t0 < e;
       if (!vis) { tl.push(`tl.set("#${oid}",{opacity:0},0);`); continue; }
+      if (o.cnt !== undefined) { const ob = vid(`${oid}_c`); tl.push(`const ${ob}={v:0};`, countTw(`${oid}-n`, ob, o.cnt, t0, 0.7, `Math.round(${ob}.v).toLocaleString("en-US")`)); }
       if (t0 >= a - 0.001) { tl.push(`tl.set("#${oid}",{opacity:0},0);`, `tl.fromTo("#${oid}",{opacity:0,y:-20},{opacity:1,y:0,duration:0.3,ease:"back.out(1.4)"},${f3(t0)});`); if (o.ul) tl.push(`tl.to("#${oid}-ul",{strokeDashoffset:0,duration:0.5,ease:"power2.out"},${f3(t0 + 0.5)});`); }
       if (t1 < e - 0.01) tl.push(`tl.to("#${oid}",{opacity:0,duration:0.2},${f3(t1)});`);
     }
