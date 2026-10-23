@@ -17,3 +17,4 @@ audio/raw/
 parts/*/assets/
 parts/*/snapshots/
 renders/log*.txt
+parts/*/.hyperframes/artifacts/
