@@ -1,12 +1,12 @@
-# Nano Banana picture prompts: "The Psychology of Overthinking"
+# Nano Banana picture prompts: "The Psychology of Discipline"
 
-**21 new pictures (18 scenes + 3 edits), all in our normal comic style.** S20 (researcher) and S29 (end screen) are reused and already in `pictures/`.
+**21 new pictures (17 scenes + 4 edits), all in our normal comic style.** S20 (researcher) and S29 (end screen) are reused and already in `pictures/`.
 
 ## How to use
 
 1. Open a new chat. Attach `reference/characters/narrator.png` plus 2–3 old comic pictures, paste the **SETUP**, then the prompts one at a time.
-2. Choose **2K**, and name each file **exactly** as shown (e.g. `S01.png`). *(edit of …)* prompts go right after the picture they edit.
-3. Put them all in **Scenes Vid7** in Downloads and tell Claude.
+2. Choose **2K** and download each one at 2K. *(edit of …)* prompts go right after the picture they edit.
+3. **Rename each file exactly as shown** (e.g. `S01.jpg`) before you send it, or just send them in this order and tell me. Put them all in **Scenes Vid8** in Downloads.
 
 ---
 
@@ -24,107 +24,107 @@ SIDE CHARACTERS: classic stickmen: round white heads, dot eyes, expressive curve
 Reply "ready" and wait for my first prompt.
 ```
 
-**S01.png**
+**S01**
 ```
-A dark blue bedroom at night. The narrator lies asleep in bed on his back, blanket up to his chest, eyes closed (two thin curved lines). On the bedside table, a small glowing digital clock (glow only, no numbers). Moonlight through the window. Calm and quiet.
-```
-
-**S01b.png** *(edit of S01)*
-```
-Same bedroom, same pose, but now the narrator's eyes have snapped wide open in alarm. Above his head floats a thought bubble showing a tiny scene of himself standing next to a stickman, waving his hands awkwardly mid-sentence.
+Midnight in a dark bedroom. The narrator sits up in bed, his face lit by his phone, which shows a fiery motivational video (flames and a lightning bolt on the screen, no words). His eyes blaze with determination and one fist is clenched in the air.
 ```
 
-**S02.png**
+**S02**
 ```
-The narrator lying in bed in the dark, staring up at the ceiling with tired, wide eyes. A soft beam of light shines up from his glowing brain head and projects a movie onto the ceiling: the same tiny scene of him talking awkwardly to a stickman, shown as a film strip with the same frame repeating over and over across the ceiling.
-```
-
-**S03.png**
-```
-A cozy café. Two stickman strangers sit across a small round table, talking. The one in the sage green shirt smiles warmly and leans in. The one in the sky-blue shirt sits stiffly with a nervous smile and a sweat drop. In the background, a stickman researcher with glasses and a clipboard watches.
+Morning light through the curtains. The narrator is still in bed, tangled in the blanket, one hand slapping a ringing alarm clock on the nightstand, a half-eaten bowl of cereal balanced on the bed, his phone glowing in his other hand. Droopy, tired eyes.
 ```
 
-**S03b.png** *(edit of S03)*
+**S03**
 ```
-Same café, same characters. Now a thought bubble above the warm stickman in the sage shirt shows a big happy smiling heart, while a thought bubble above the nervous one in the sky-blue shirt shows a small worried frowning face.
-```
-
-**S04.png**
-```
-A living room in the evening. The narrator sits on the couch hunched over his phone, staring at it with worried eyes, a sweat drop on his brain head. The phone screen shows one sent message bubble and nothing else (no words).
+A small research room. Several stickmen sit at separate desks, each holding a phone that is beeping (little ring lines around it). One stickman stares longingly at a slice of cake, one at a pillow, one at a game controller. A stickman researcher with glasses and a clipboard watches from the side.
 ```
 
-**S05.png**
+**S04**
 ```
-The narrator sitting on the couch with his head in his hands, surrounded by floating crumpled paper drafts and small grey thought clouds. In one big thought cloud above him, a little wooden bridge between him and a stickman friend is cracking and falling apart.
-```
-
-**S05b.png** *(edit of S05)*
-```
-Same couch, but the clouds and drafts are gone. The narrator holds his phone with flat, deadpan, unimpressed eyes. The phone screen shows a tiny picture of a cheerful stickman lifting a dumbbell at the gym.
+A bedroom in the evening. The narrator proudly tapes a huge hand-drawn hourly schedule to his wall: a big sheet full of neat lines, boxes and little check boxes (no readable words). Proud, excited eyes.
 ```
 
-**S06.png**
+**S04b** *(edit of S04)*
 ```
-A dim, empty room. The narrator runs as hard as he can inside a giant wooden hamster wheel, sweat drops flying, motion lines on the spinning wheel, clearly going nowhere. Tired, stressed eyes.
-```
-
-**S07.png**
-```
-A muddy country road. The narrator sits in the driver's seat of a small round cartoon car, gripping the steering wheel with stressed eyes. The car's back wheel spins in deep mud, spraying mud everywhere, with puffs of grey smoke from the engine. The car is clearly not moving.
+Same bedroom and wall, but now it's late morning, sunlight high in the window. The schedule hangs half off the wall, one corner torn. The narrator stands in front of it in pajamas with guilty, droopy eyes.
 ```
 
-**S08.png**
+**S05**
 ```
-A busy, sunny city street. Several stickmen doing everyday things: one cooking at an open apartment window, one sitting on a bus, one typing at a café table. Each has a small thought cloud showing something else entirely: a beach, an argument with a frowning stickman, a phone. A few of their phones show a small notification bubble (no text).
-```
-
-**S09.png**
-```
-The narrator standing in front of a huge detective corkboard covered in photos, sticky notes and pins, all connected by a chaotic mess of red string. He holds even more red string in his hands, exhausted droopy eyes, papers on the floor.
+A small lab room with a table. A stickman sits at the table, staring longingly at a plate of fresh warm chocolate-chip cookies, while sadly chewing a radish from a bowl of radishes in front of him. Behind a large dark window (a two-way mirror), a stickman researcher watches.
 ```
 
-**S10.png**
+**S06**
 ```
-The narrator hunched over a glowing crystal ball on a small table. Inside the crystal ball: a dark storm with lightning. Behind him, the window shows a bright sunny calm day with blue sky and birds. His eyes are worried.
-```
-
-**S11.png**
-```
-A sidewalk outside a coffee shop. The narrator and a stickman friend (sage green shirt) walk away from each other after a chat. Above the narrator, a thought bubble shows a close-up of himself laughing awkwardly with a red embarrassed blush. Above the friend, a thought bubble shows a big happy smiley face. The narrator's eyes are worried; the friend is smiling.
+The narrator straining to carry a big glass fuel tank strapped to his back like a backpack. The tank has a round fuel gauge drawn on it (no numbers, needle near empty) and the liquid inside is low. Small temptations float around him: a donut, a phone, a pillow.
 ```
 
-**S12.png**
+**S07**
 ```
-Night. The narrator alone in a small car stopped at a red traffic light on an empty street, both hands on the wheel, staring ahead. Little grey thought clouds are slowly rising out of his brain head on their own. Dark blue night, glowing red light.
-```
-
-**S13.png**
-```
-A grassy hillside. The narrator stands at a fork in a dirt path. The left path leads to a wooden ladder climbing up to a sunny hilltop. The right path curls into a small circular track that loops back on itself again and again. He looks between them, thinking.
+A sunny street with a cute bakery. On one side, a stickman is pressed against the bakery window, drooling at the cakes. Across the street, a calm stickman in a sage green shirt simply walks past on the other sidewalk, relaxed, not even looking at the bakery.
 ```
 
-**S14.png**
+**S08**
 ```
-A calm bedroom desk. The narrator calmly drops a folded paper note into a small wooden box with a round clock face on its lid. A few folded notes are already inside. Relaxed, content eyes.
-```
-
-**S15.png**
-```
-The narrator sitting at a desk writing on a sheet of paper with a pen. Little grey worry clouds flow out of his brain head and turn into ink lines on the page. His eyes look lighter and calmer. Warm desk lamp.
+A classroom during a test. Rows of stickman students at desks, most of them distracted (looking around, doodling, yawning). One student in a sage green shirt sits calm and focused, with a neat open planner on the desk.
 ```
 
-**S16.png**
+**S09**
 ```
-A sunny park path lined with green trees, flowers and a few small birds. The narrator walks calmly along the path, hands in his hoodie pocket, soft relaxed eyes. Bright, peaceful daylight.
-```
-
-**S17.png**
-```
-The narrator sitting on his bed happily absorbed in playing an acoustic guitar, focused content upward-arc eyes. Behind him, a few small grey thought clouds are fading away into nothing. Warm afternoon light.
+A gym packed shoulder to shoulder with stickmen on every treadmill and machine, a festive "new year" party banner with stars hanging from the ceiling (no letters). The narrator is squeezed in the middle holding a water bottle, with excited eyes.
 ```
 
-**S18.png**
+**S09b** *(edit of S09)*
 ```
-The same bedroom as the first picture, now peaceful: the narrator sleeping calmly on his side with a soft content look, moonlight through the window, the ceiling dark and empty, no clouds, no projector beam. Warm, quiet, safe.
+The same gym a few weeks later: almost completely empty. The narrator is gone. One lonely stickman walks slowly on a single treadmill. The party banner droops from the ceiling.
+```
+
+**S10**
+```
+A small, plain room. A young stickman kid sits at a table staring hard at one fluffy white marshmallow on a plate, sweating, gripping the table edge. A small bell sits on the table.
+```
+
+**S10b** *(edit of S10)*
+```
+The same kid and room, but the marshmallow is now hidden under an upside-down metal cake tin. The kid sits relaxed, humming, swinging his legs, eyes happily closed.
+```
+
+**S11**
+```
+The narrator standing in front of a glowing vending machine full of candy bars, his hand hovering over the button, torn and worried eyes. A small stern rule book sticks out of his hoodie pocket.
+```
+
+**S12**
+```
+The narrator sitting on the floor next to a torn-up wall calendar. One day has a big red X on it, and the rest of the calendar pages are ripped and scattered around him. Defeated eyes.
+```
+
+**S13**
+```
+A view through an open doorway. In the far kitchen, the narrator's phone sits charging on the counter. In the near room, the narrator works at his desk, focused and calm, with nothing tempting around him.
+```
+
+**S14**
+```
+The narrator in bed reading a book under a warm bedside lamp, calm content eyes. On the nightstand, a toothbrush in a cup next to the lamp.
+```
+
+**S15**
+```
+The narrator calmly and confidently pushing away a plate of glazed donuts with one hand, his other hand in his hoodie pocket, relaxed half-closed eyes, totally unbothered.
+```
+
+**S16**
+```
+Night, by the front door. The narrator packs a gym bag on the floor; sneakers and a water bottle are ready beside it. His phone, propped on a shelf, shows a sent message bubble with a thumbs-up reply (no words).
+```
+
+**S17**
+```
+A calm pond in a park. The narrator walks along a path of round stepping stones across the water. One stone in the path is missing, and he simply steps over the gap onto the next stone, steady and calm.
+```
+
+**S18**
+```
+Early morning sunrise. The narrator walks out of his front door with a gym bag on his shoulder, calm happy eyes. Through the window behind him, his phone sits charging on the kitchen counter.
 ```

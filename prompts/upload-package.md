@@ -1,98 +1,92 @@
-# Upload package: "The Psychology of Overthinking"
+# Upload package: "The Psychology of Discipline"
 
-## Title
+Chapters get added after the build. **The final title is still open**; options are below.
 
-**Your Brain Lies to You at 2 AM (Psychology of Overthinking)**
+## Title (pick later)
 
-Backups to test later: "Overthinking Feels Like Thinking (That's the Trap)" · "They Liked You More Than You Think (Psychology of Overthinking)"
+- Psychology of Discipline: Why Motivation Never Lasts
+- Disciplined People Don't Have More Willpower (Psychology Explains)
+- The Willpower Myth: Why Disciplined People Don't Fight Temptation
+- Psychology of Discipline (And Why You Keep Quitting on Day 3)
+- Why You Can't Stay Disciplined (It's Not Willpower)
 
-## Thumbnail: graphic novel skull (Luke's pick)
+Keep "discipline" in the title so search finds it.
 
-Main: the anatomy skull with a man running in a hamster wheel inside it, text **YOU'RE NOT THINKING** ("THINKING" in red). The text doesn't repeat the title, so the two work together.
+## Thumbnails: graphic novel style (like the skull one)
 
-**Fix the text** (attach the first version):
-```
-Keep this exact image the same, but replace the text. Remove the current brushy title completely.
-NEW TEXT: across the top, "YOU'RE NOT THINKING" in a clean, heavy, condensed all-caps sans-serif font (like Anton or Impact), perfectly sharp edges, no brush texture, no grunge. "YOU'RE NOT" is pure white, "THINKING" is solid red (#D64545). Every letter has a thick clean black outline and a soft dark drop shadow. Letters are evenly spaced, perfectly straight, and fill the top fifth of the image. Nothing else written anywhere.
-```
+Paste the whole prompt, style included. If the letters come out messy, ask for the image with no text and add it in Canva: Anton, white + #D64545, black outline about 8–10, soft drop shadow.
 
-**Version with a fuller left side** (for Test & Compare):
+**A: "WILLPOWER IS A LIE"** (main pick)
 ```
 YouTube thumbnail, 16:9, 2K. Gritty graphic novel style: heavy black ink linework, bold crosshatching, halftone dot shading, vintage anatomy-illustration feel, dark charcoal background with ONE accent color: blood red. Original artwork.
-SUBJECT: a cutaway side view of a human head in profile facing right, drawn like an old anatomy illustration, skull and spine visible, placed on the right half of the image. Inside the skull, a tiny exhausted man in a shirt and tie runs as hard as he can in a hamster wheel, sweat flying. Tangled red scribble lines spiral around the wheel.
-LEFT SIDE: trailing out behind the head to the left are three fading "echo" copies of the same skull profile, each one more faded, smaller and more see-through than the last, like motion frames of the same thought replaying over and over. Thin red scribble lines connect the echoes back to the main head.
-TEXT: across the top, "YOU'RE NOT THINKING" in a clean, heavy, condensed all-caps sans-serif font (like Anton or Impact), perfectly sharp edges, no brush texture. "YOU'RE NOT" is pure white, "THINKING" is solid red (#D64545). Every letter has a thick clean black outline and a soft dark drop shadow. Nothing else written anywhere.
+SUBJECT: a cutaway side view of a human head in profile facing right, drawn like an old anatomy illustration, skull and spine visible, on the right half of the image. Inside the skull, an old glass fuel tank with a gauge, its needle on empty, cracked and leaking. A tiny exhausted man in a shirt and tie is pumping it with a hand pump, sweating.
+LEFT SIDE: floating temptations drawn in the same ink style, connected to the skull by thin red lines: a donut, a glowing phone, a pillow, a can of soda.
+TEXT: across the top, "WILLPOWER IS A LIE" in a clean, heavy, condensed all-caps sans-serif font (like Anton or Impact), perfectly sharp edges, no brush texture. "WILLPOWER IS A" is pure white, "LIE" is solid red (#D64545). Every letter has a thick clean black outline and a soft dark drop shadow. Nothing else written anywhere.
 Strong contrast, readable at phone size.
 ```
 
-If the letters come out messy, ask for the image with no text and add it in Canva: Anton, white + #D64545, black outline about 8–10, soft drop shadow.
+**B: "STOP USING WILLPOWER"**
+```
+YouTube thumbnail, 16:9, 2K. Gritty graphic novel style: heavy black ink linework, bold crosshatching, halftone dot shading, dramatic noir lighting, dark charcoal background with ONE accent color: blood red. Original artwork.
+SUBJECT: a man in a dark hoodie, seen from behind, calmly walking away down a dark street. Behind him, in a glowing shop window, a monstrous grinning shadow made of donuts, phones and screens reaches out toward him with long clawed hands, but he doesn't look back. The only warm light comes from the shop window.
+TEXT: across the top, "STOP USING WILLPOWER" in a clean, heavy, condensed all-caps sans-serif font (like Anton or Impact), perfectly sharp edges. "STOP USING" is pure white, "WILLPOWER" is solid red (#D64545). Thick clean black outline and a soft dark drop shadow. Nothing else written anywhere.
+Strong contrast, readable at phone size.
+```
 
-## Description
+**C: "DAY 3"** (our comic narrator, for comparison)
+```
+YouTube thumbnail, 16:9, 2K. Bold, minimal, high contrast. Clean thick black outlines, flat colors, comic style.
+BACKGROUND: solid plain near-black (#111111), nothing else.
+CHARACTER: the narrator from the attached image, exactly the same design (glowing peach brain head, two white oval eyes, no mouth, black hoodie, white sneakers with a red stripe), BIG, filling about 65% of the image height, holding a torn piece of paper (a ripped schedule) in one hand, guilty droopy eyes.
+TEXT: across the top, in huge heavy bold all-caps sans-serif letters: "WHY YOU QUIT ON DAY 3". "DAY 3" is red (#D64545), the other words are white. Nothing else written anywhere.
+Lots of empty space. No other characters, no small details. Must be readable at phone size.
+```
 
-Keywords go in the first 200 words. Chapter times come from the final render (11:12).
+## Description (draft; chapters after the build)
 
 ```
-Why do you replay conversations at 2 AM? This is the psychology of overthinking, explained simply. Overthinking feels like problem solving, but research shows it actually makes you worse at it, and once you see how the loop works, you can learn how to stop overthinking.
+Why can't you stay disciplined, even when you're motivated? This is the psychology of discipline, explained simply. Research shows the most disciplined people don't have more willpower. They just fight temptation less often, and once you see why, you can learn how to build self-discipline that actually lasts.
 
-In this psychology explained video: the "liking gap" study that shows people like you more than you think, Susan Nolen-Hoeksema's research on rumination, Killingsworth and Gilbert's finding that our minds wander almost half the time, and a study where 91% of worries never came true. Then the 4 traps that keep your mind stuck on repeat (it feels like solving, predicting the worst, thinking everyone's judging you, and running on autopilot) and 5 research-backed ways to stop ruminating, quiet anxious thoughts and get out of your head.
+In this psychology explained video: Hofmann's beeper study on everyday temptations, why the famous "willpower is a muscle" idea failed a 23-lab replication, Duckworth and Seligman's finding that self-discipline predicts grades better than IQ, and the marshmallow experiments. Then the 4 reasons discipline keeps breaking (running on motivation, fighting temptation face to face, rules that feel like punishment, and all-or-nothing thinking) and 5 research-backed ways to build discipline, stop relying on motivation and stay consistent.
 
-What's the thing your brain replays the most? Tell me in the comments.
-
-CHAPTERS
-0:00 Why you replay conversations at 2 AM
-1:01 How one text took over my whole day
-1:35 Why your brain won't let it go
-1:57 What rumination really is
-2:33 Thinking vs. overthinking
-3:01 Your mind wanders 47% of the time
-3:37 Why overthinking isn't harmless
-3:57 It's a loop, not a personality
-4:13 Trap 1: It feels like solving
-4:47 Trap 2: Predicting the worst (91% never happens)
-5:24 Trap 3: Thinking everyone's judging you
-5:53 Trap 4: It runs on autopilot
-6:24 Why your mind isn't broken
-6:46 Step 1: Am I solving or spinning?
-7:29 Step 2: Give your worries an appointment
-8:17 Step 3: Write it down
-8:57 Step 4: Walk outside
-9:32 Step 5: Get absorbed in something
-10:07 They liked you more than you think
+What's one temptation you're going to move out of reach this week? Tell me in the comments.
 
 You were watching Brain Guy Psychology. I'll see you in the next one.
 
-#psychology #overthinking #howtostopoverthinking #anxiety #psychologyexplained #brainguypsychology
+#psychology #discipline #selfdiscipline #motivation #psychologyexplained #brainguypsychology
 
 ---
 
 Research referenced:
-- Boothby, Cooney, Sandstrom & Clark (2018), Psychological Science: the liking gap, people underestimate how much their conversation partners like them
-- Lyubomirsky & Nolen-Hoeksema (1995), Journal of Personality and Social Psychology: rumination increases negative thinking and worsens problem solving
-- Killingsworth & Gilbert (2010), Science: minds wander about 47% of the time, and a wandering mind is an unhappy mind
-- Nolen-Hoeksema (2000), Journal of Abnormal Psychology: rumination and later depression
-- LaFreniere & Newman (2020), Behavior Therapy: 91% of worry predictions did not come true
-- Watkins & Nolen-Hoeksema (2014), Journal of Abnormal Psychology: rumination as a habit
-- Borkovec et al. (1983), Behaviour Research and Therapy: worry postponement (stimulus control)
-- Verkuil, Brosschot et al. (2011), Psychotherapy and Psychosomatics: worry-reduction training before therapy
-- Ramirez & Beilock (2011), Science: writing about worries before an exam improves scores
-- Bratman et al. (2015), PNAS: a nature walk reduces rumination
+- Hofmann, Baumeister, Förster & Vohs (2012), Journal of Personality and Social Psychology: everyday temptations; people high in self-control resisted less often
+- Baumeister, Bratslavsky, Muraven & Tice (1998), Journal of Personality and Social Psychology: the original "ego depletion" cookies-and-radishes study
+- Hagger et al. (2016), Perspectives on Psychological Science: a 23-lab replication with 2,141 people found almost no ego-depletion effect
+- Job, Dweck & Walton (2010), Psychological Science: beliefs about willpower shape whether people get worn out
+- Duckworth & Seligman (2005), Psychological Science: self-discipline predicted grades better than IQ
+- Dai, Milkman & Riis (2014), Management Science: the fresh start effect
+- Mischel & Ebbesen (1970), Journal of Personality and Social Psychology: hiding the reward makes waiting easier
+- Patrick & Hagtvedt (2012), Journal of Consumer Research: "I don't" vs "I can't"
+- Lally et al. (2010), European Journal of Social Psychology: missing one day doesn't derail habit formation
+- Wood, Quinn & Kashy (2002), Journal of Personality and Social Psychology: about 43% of daily behaviors are habits
+- Galla & Duckworth (2015), Journal of Personality and Social Psychology: self-control and good habits
+- Ariely & Wertenbroch (2002), Psychological Science: self-imposed deadlines
 
 ---
 
-Disclaimer: This video is for educational purposes only and is not professional psychological or medical advice. If you're struggling, please reach out to a licensed professional.
+Disclaimer: This video is for educational purposes only and is not professional psychological or medical advice.
 ```
 
 ## Tags
 
 ```
-psychology of overthinking, overthinking, how to stop overthinking, why do i overthink, rumination, how to stop ruminating, anxiety, anxious thoughts, replaying conversations, liking gap, worry, psychology explained, psychology, self improvement, personal development, mental health, psychology facts, brain guy psychology
+psychology of discipline, discipline, self discipline, how to be disciplined, how to build discipline, motivation vs discipline, willpower, how to stay consistent, how to stop being lazy, ego depletion, marshmallow test, habits, psychology explained, psychology, self improvement, personal development, psychology facts, brain guy psychology
 ```
 
 ## Pinned comment
 
 ```
-What's the thing your brain replays the most? 👇
-The 5 steps: 1 Solving or spinning? · 2 Give worries an appointment · 3 Write it down · 4 Walk outside · 5 Get absorbed in something
+What's one temptation you're moving out of reach this week? 👇
+The 5 steps: 1 Make it hard to reach · 2 Same time, same place · 3 Say "I don't" · 4 Decide in advance · 5 Never miss twice
 ```
 
 ## End screen

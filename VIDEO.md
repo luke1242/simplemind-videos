@@ -1,24 +1,13 @@
-# Current video: "The Psychology of Overthinking" (final title TBD)
+# Current video: "The Psychology of Discipline" (final title TBD)
 
-**Working title:** Why You Replay Conversations at 2 AM (Psychology of Overthinking). Luke will pick the final title later; the title card just says PSYCHOLOGY OF / OVERTHINKING.
-**Topic:** overthinking (rumination) feels like problem solving but makes you worse at it. The liking gap, mind-wandering, worry predictions. Four traps (it feels like solving, predicting the worst, everyone's judging me, autopilot habit) and five research-backed ways out.
-**Follows:** `PLAYBOOK.md` (cold open with a study → personal story → research → 4 traps → 5 steps → emotional close). It points to the procrastination video at the end.
-**Length:** the raw voice is about 1,590 words. After pause padding, the target is about **11:00**.
+**Working title:** Psychology of Discipline: Why Motivation Never Lasts. Luke will pick the final title later; the title card just says PSYCHOLOGY OF / DISCIPLINE.
+**Topic:** discipline isn't a bigger willpower tank. Disciplined people avoid the fight (Hofmann's beeper study), willpower-as-a-tank is shaky (ego depletion replication), and four reasons discipline breaks (running on motivation, temptation face to face, "I can't" rules, all-or-nothing). Five research-backed ways to build discipline that lasts.
+**Follows:** `PLAYBOOK.md` (cold open with a study → personal story → research → 4 reasons → 5 steps → emotional close). It points to the procrastination video at the end.
+**Length:** the raw voice is about 1,570 words. After pause padding, the target is about **11:00**.
 **Audio:** 15 clips, `audio/part1a.mp3` … (Part 1 a–c, Part 2 a–b, Part 3 a–d, Part 4 a–f). Run `python3 tools/join-clips.py` first.
-**Music:** `music/track.mp3`, mixed softly. Keep it at its quietest during the cold open (D01–D10) and the final scenes (D78–D79).
+**Music:** `music/track.mp3`, mixed softly. Keep it at its quietest during the cold open (D01–D10) and the final scenes (D74–D75).
 **Upload kit:** `prompts/upload-package.md`.
-**Spec examples:** copy the helpers from `videos/06-procrastination/make-specs.py` (the newest build: it reads narration and host tracks straight from VIDEO.md, and uses loop, lines2, bars3, people, dots, split `fs0`, red screen badges). Copy the word-timing steps from `videos/06-procrastination/VIDEO.md` ("Build status") if Whisper can't download its model.
-
-## Inputs (checked Oct 23)
-
-- **Audio:** all 15 clips are in `audio/` and already joined into `audio/part1-4.mp3` (raw total about 9:16; about 11:10 after padding). Clip order was checked (steady 2.7–3.3 words per second).
-- **Pictures:** all 21 are in `pictures/` (plus S20 and S29). S05b came in at 1K (1376×768), so keep its zooms at 1.2× or less.
-- **Icons:** I89–I97 are in `icons/` (1376×768, fine for icons). **I98 is missing**, so D16 uses I91.
-- `scenes/partN.rawwords.json` already holds forced-alignment word times for the raw parts (`tools/align.py`). Use Whisper if it works; if not, continue from these with the steps in `videos/06-procrastination/VIDEO.md` ("Build status").
-
-## Build status
-
-Built Oct 23: `renders/full.mp4` (11:16) and `renders/full-small.mp4` (85 MB). Whisper small.en worked, so word times come from it. D56 and D72 skip their icon beats (I80 "text", I96 "game") because the icon would hide the pills that appear on the next words. D21 grows its bars on "ruminating" instead of "worse" so the chart isn't empty for 6s. New in `tools/build-part.mjs`: count-up on card parts (`cnt`/`cs`) and on screen badges (`cnt`/`cs`), part-level `at` on card lines.
+**Spec examples:** copy `videos/07-overthinking/make-specs.py` (newest build: reads narration and host tracks straight from VIDEO.md; loop, lines2, bars3, people, dots, pie, split `fs0`, red screen badges). If Whisper can't download its model, use `tools/align.py` (forced alignment; steps in `videos/06-procrastination/VIDEO.md`, "Build status").
 
 ## How to read this list
 
@@ -26,15 +15,15 @@ Built Oct 23: `renders/full.mp4` (11:16) and `renders/full-small.mp4` (85 MB). W
 - **beats:** key moments with the exact trigger word in quotes: `icon Ixx "word"`, `pop Nxx "word" → content`, `card "word" → TEXT`, `step "word" → STEP n + TEXT`, `badge "word" → TEXT`. **Bold** = yellow badge, ~~struck~~ = red badge. Fill the rest per CLAUDE.md (every shot ≤ 4s, except the cold-open scenes).
 - **edit:** specific moves (CLAUDE.md section 9). **host:** the narrator-host pose track; no `host:` line = full-frame.
 - **narration** is for timing only and must match the audio. Never show it on screen.
-- **Icons:** I89–I97 are new (I98 was not made) (`prompts/icon-prompts.md`). I80, I84, I85 and I86 are reused from video 6 (already in `icons/`). Missing icon → skip that beat.
-- **Numbers:** Whisper may write "two thousand eighteen" as "2018", "forty-seven percent" as "47%", "ninety-one percent" as "91%", "thirteen hundred" as "1,300", "two thousand two hundred fifty" as "2,250", "thirty-minute" as "30-minute", "B-plus" as "B+". Match triggers either way.
-- **Names:** Nolen-Hoeksema ("NO-len HOOK-sma"), Beilock ("BYE-lock"), Borkovec ("BOR-ko-vek"). If Whisper writes them differently, match the scene by its other words. The forced-alignment fallback (`tools/align.py`) already has pronunciations for them.
+- **Icons:** I99 and I101–I108 are new (there is no I100) (`prompts/icon-prompts.md`). I78, I80, I84 and I86 are reused (already in `icons/`). Missing icon → skip that beat.
+- **Numbers:** Whisper may write "two thousand twelve" as "2012", "two hundred and five" as "205", "twenty-three" as "23", "forty-three percent" as "43%", "sixty-four percent" as "64%", "eighth graders" as "8th graders". Match triggers either way.
+- **Names:** Hagtvedt ("HAG-vet"), Wertenbroch ("VER-ten-brock"), Mischel ("mih-SHELL"). The forced-alignment fallback (`tools/align.py`) has pronunciations for them.
 
 ---
 
 ## The cold open
 
-D01–D10 are in the normal comic style, but slightly slower and calmer: shots may run up to **4.5s**, moves are snap zooms and soft pushes on words, and the music stays at its quietest. After D10, show the **title card** right away: green pill **LESSON**, big text PSYCHOLOGY OF / OVERTHINKING, with "OVERTHINKING" in orange, 2.5s.
+D01–D10 are in the normal comic style, but slightly slower and calmer: shots may run up to **4.5s**, moves are snap zooms and soft pushes on words, and the music stays at its quietest. After D10, show the **title card** right away: green pill **LESSON**, big text PSYCHOLOGY OF / DISCIPLINE, with "DISCIPLINE" in orange, 2.5s.
 
 ## The narrator host
 
@@ -44,401 +33,393 @@ Same rules as before (poses from the tone tags, frame on the right, hard-cut pos
 
 ## PART 1: The cold open and my story (`audio/part1.mp3`)
 
-**D01** · picture S01 (NEW: the narrator asleep in bed at night, eyes closed, a small glowing bedside clock, dark blue room) · camera zoom-in
-edit: snap zoom to the glowing clock on "two" · snap zoom to his closed eyes on "closed"
-narration: "It's two in the morning. You're exhausted. Your eyes are closed."
+**D01** · picture S01 (NEW: midnight; the narrator sitting up in bed, lit by his phone, which shows a fiery motivational video; his eyes blaze with determination, one fist clenched) · camera zoom-in
+edit: snap zoom to the glowing phone on "video" → whip slide to his blazing eyes on "fired"
+narration: "It's midnight. You just watched a video that got you fired up."
 
-**D02** · picture S01 · camera zoom-in
-edit: snap zoom to his brain head on "brain" · thought-bubble pill "REMEMBER THAT THING YOU SAID TODAY?" on "remember"
-narration: "And then your brain says, "Hey. Remember that thing you said today?""
+**D02** · picture S01 · camera zoom-out
+edit: pills top-center one by one: WAKE UP AT 5 on "five", GYM on "gym", COLD SHOWER on "cold", NO PHONE on "phone", NO JUNK FOOD on "junk"
+narration: "Tomorrow, everything changes. Wake up at five. Gym. Cold shower. No phone. No junk food."
 
-**D03** · picture S01, swapping to S01b on "wide" (NEW, edit of S01: the same bed, but his eyes snap wide open, and a thought bubble above his head shows a tiny scene of him talking awkwardly to a stickman) · camera zoom-in
-edit: hard swap to S01b on "wide", with a ding · snap zoom to the thought bubble on "replaying"
-narration: "And now you're wide awake. Replaying it."
+**D03** · picture S01 · camera zoom-in
+edit: snap zoom to his face on "feel"
+narration: "You can feel it. This time is different."
+beats: card "different" → THIS TIME IS **DIFFERENT**
 
-**D04** · picture S01b · camera zoom-in
-edit: three thought-bubble pills pop beside him: "WHY DID I SAY IT LIKE THAT?" on "say", "DID THEY THINK I WAS WEIRD?" on "weird", "WHY DID I LAUGH AT MY OWN JOKE?" on "laugh"
-narration: ""Why did I say it like that?" "Did they think I was weird?" "Why did I laugh at my own joke?""
+**D04** · picture S02 (NEW: Thursday morning; the narrator still in bed, tangled in the blanket, one hand slapping a ringing alarm clock, a half-eaten bowl of cereal on the bed, his phone glowing in his other hand, droopy eyes) · camera zoom-in
+edit: whip-pan cut in on "and" · tour: snap zoom to the alarm clock on "snooze" → whip slide to the cereal on "cereal" → whip slide to the phone on "scrolled"
+narration: "And then it's Thursday. You hit snooze three times, ate cereal in bed, and scrolled for two hours."
+beats: icon I86 "three"
 
-**D05** · picture S02 (NEW: the narrator lying in bed staring up; a beam from his glowing brain projects the same tiny awkward conversation onto the ceiling like a movie, with a film strip of the same frame repeating over and over) · camera zoom-in
-edit: snap zoom to the ceiling movie on "conversation" · badges count up: **10 SECONDS** on "ten", ~~50 TIMES~~ on "fifty"
-narration: "Ten seconds of a conversation... and you've watched it fifty times."
+**D05** · picture S02 · camera zoom-out
+edit: red badge ~~GONE~~ on "gone"
+narration: "And the motivation from Monday? Gone. Like it was never there."
 
-**D06** · picture S03 (NEW: two stickman strangers sitting across a small café table, chatting; one in a sage shirt smiles warmly, the other in a sky-blue shirt looks nervous; a stickman researcher with a clipboard in the background) · camera zoom-in
-edit: push wipe in (time jump) on "in" · name pill BOOTHBY ET AL. (2018) on "researchers" · badge **5 MINUTES** on "five"
+**D06** · picture S03 (NEW: a small research room; several stickmen sit at desks, each holding a phone that is beeping with little ring lines; one stares at a slice of cake, one at a pillow, one at a game controller; a stickman researcher with a clipboard watches) · camera zoom-in
+edit: push wipe in (time jump) on "in" · name pill HOFMANN ET AL. (2012) on "researchers" · badges: **205 PEOPLE** on "people", **7 BEEPS A DAY** on "seven"
 host: N02 "here's"
-narration: "Here's what's strange. In two thousand eighteen, a team of researchers paired up strangers and had them talk for just five minutes."
+narration: "Here's what's strange. In two thousand twelve, a team of researchers gave two hundred and five people a phone that beeped seven times a day for a whole week."
 
 **D07** · picture S03 · camera zoom-in
-edit: tour: snap zoom to the warm stickman on "liked" (1st occurrence) → whip slide to the nervous stickman on "thought"
-host: N02 "afterward"
-narration: "Afterward, each person rated how much they liked the other one, and how much they thought the other one liked them."
+edit: tour: snap zoom to the stickman staring at the cake on "wanted" → whip slide to the stickman staring at the controller on "resist"
+host: N02 "every"
+narration: "Every time it beeped, they reported what they wanted right then, and whether they were trying to resist it."
 
-**D08** · CODED bars3 · camera hold
-edit: bars grow on "partner"
-host: N06 "almost" → N02 "their"
-Bars (no numbers): HOW MUCH THEY THOUGHT THEY WERE LIKED (sky, shorter) vs HOW MUCH THEY WERE ACTUALLY LIKED (sage, taller). Title: AFTER 5 MINUTES OF TALKING.
-narration: "Almost everyone made the same mistake. Their partner liked them more than they thought."
+**D08** · CODED card · camera hold
+host: N06 "you'd"
+Card: MOST DISCIPLINED = / **FIGHTING ALL DAY?**
+narration: "You'd expect the most disciplined people to be fighting temptation all day long."
 
-**D09** · picture S03b (NEW, edit of S03: the same café table; now a thought bubble above the warm stickman shows a big smiling heart, while the nervous one still frowns) · camera zoom-in
-edit: snap zoom to the heart bubble on "called" · badge **THE LIKING GAP** on "liking"
-host: N02 "the"
-narration: "The researchers called it the liking gap."
+**D09** · CODED bars3 · camera hold
+edit: bars grow on "resist" · impact hit on "less"
+host: N02 "they"
+Bars (no numbers), title HOW OFTEN THEY TRIED TO RESIST: HIGH SELF-CONTROL (sage, short) vs EVERYONE ELSE (sky, tall).
+narration: "They weren't. They tried to resist less often than everyone else."
 
-**D10** · picture S01b · camera zoom-in · **reveal: at least 2s of silence after**, then the title card
-edit: soft riser · snap zoom to his wide eyes on "replaying" · impact hit on "better"
-narration: "The conversation you're replaying at two A.M.? It probably went better than you think."
-beats: card "better" → IT WENT **BETTER** THAN YOU THINK
+**D10** · picture S07 (NEW: a sunny street with a bakery; one stickman is pressed against the bakery window drooling at the cakes, while across the street a calm stickman in a sage shirt simply walks past on the other sidewalk, not even looking) · camera zoom-in · **reveal: at least 2s of silence after**, then the title card
+edit: soft riser · snap zoom to the drooling stickman on "willpower" → whip slide to the calm walker on "fewer" · impact hit on "fewer"
+host: N02 "their" → N06 "they"
+narration: "Their secret wasn't more willpower. They just had fewer fights to begin with."
 
-**D11** · picture S04 (NEW: the narrator sitting on a couch staring at his phone, a sweat drop on his brain head; on the phone screen, one sent message bubble and no reply) · camera zoom-in
-edit: hard cut from the title card · snap zoom to the phone on "message"
-narration: "I do this all the time. A few weeks ago, I sent someone a message, and they took a few hours to reply."
-beats: icon I89 "reply"
+**D11** · picture S04 (NEW: the narrator proudly taping a huge hand-written hourly schedule to his bedroom wall, lots of neat lines and boxes, no readable words) · camera zoom-in
+edit: hard cut from the title card · snap zoom to the schedule on "schedule" · zoom out on "wall"
+narration: "I've made the midnight plan more times than I can count. One time, I wrote out a whole schedule on a piece of paper. Every hour of the day, planned out. I even taped it to my wall."
 
-**D12** · picture S05 (NEW: the narrator surrounded by floating crumpled drafts and little grey thought clouds; in one big thought cloud, a wooden bridge between him and a stickman friend is crumbling) · camera zoom-in
-edit: badge ~~20 TIMES~~ on "twenty" · tour: snap zoom to the floating drafts on "apologies" → whip slide to the crumbling bridge on "friendship"
-narration: "In those few hours, I reread my message about twenty times, decided it sounded rude, wrote three different apologies in my head, and imagined the whole friendship falling apart."
+**D12** · picture S04b (NEW, edit of S04: the same wall, but the schedule hangs half off, one corner torn, sunlight high in the window; the narrator stands in front of it in pajamas with guilty, droopy eyes) · camera zoom-in
+edit: push wipe in on "it" · badge **2 DAYS** on "two" · snap zoom to his face on "ruined"
+narration: "It lasted two days. On day three, I woke up late, felt like I'd already ruined it, and never looked at that paper again."
 
-**D13** · picture S05b (NEW, edit of S05: the narrator stares at his phone with flat, deadpan eyes; on the screen a stickman lifting a dumbbell. This one is 1K, so keep zooms at 1.2× or less) · camera zoom-in
-edit: whip-pan cut in on "then" · snap zoom to the phone on "haha" · speech pill "HAHA SORRY, I WAS AT THE GYM" on "haha"
-narration: "Then they replied. "Haha sorry, I was at the gym.""
+**D13** · picture S04b · camera zoom-out
+narration: "I didn't need a better plan. I needed to understand why my plans kept falling apart."
+beats: pop N06 "understand" → card WHY PLANS **FALL APART**
 
-**D14** · picture S05b · camera zoom-out
-edit: zoom out on "brain"
-narration: "And it wasn't even a big deal. It was one text. My brain had worked for hours... and solved absolutely nothing."
-beats: pop N10 "brain" → card SOLVED **NOTHING**
-
-**D15** · icon I90 as the main picture · camera hold
-edit: snap zoom into the film reel on "replaying"
+**D14** · icon I108 as the main picture · camera hold
+edit: snap zoom into the lightning bolt on "motivation"
 host: N06 "so"
-narration: "So why does your brain do this? Why does it keep replaying things it can't change?"
+narration: "So what is discipline, really? And why does motivation always run out right when you need it?"
 
-**D16** · CODED iconRow · camera hold
+**D15** · CODED iconRow · camera hold
 host: N01 "by"
-Icons: I91 on "know" (I98 was not made), I84 on "four", I95 on "five". Labels: THINKING VS OVERTHINKING · 4 TRAPS · 5 WAYS OUT.
-narration: "By the end of this video, you'll know the difference between thinking and overthinking, the four traps that keep your mind stuck on repeat, and five research-backed ways to finally turn it off."
+Icons: I101 on "willpower", I84 on "four", I105 on "five". Labels: THE WILLPOWER MYTH · 4 REASONS · 5 WAYS THAT LAST.
+narration: "By the end of this video, you'll know why willpower isn't what you think it is, the four reasons your discipline keeps breaking, and five research-backed ways to build discipline that actually lasts."
 
-**D17** · CODED card · camera hold
-edit: count-up 10 on "ten"
-host: N01 "one"
-Card: **10 MINUTES** / AND A PIECE OF PAPER (small second line).
-narration: "One of them takes ten minutes and a piece of paper."
-
----
-
-## PART 2: What overthinking really is (`audio/part2.mp3`)
-
-**D18** · picture S06 (NEW: the narrator running hard inside a giant hamster wheel in a dim room, sweat drops, the wheel spinning fast, going nowhere) · camera zoom-in
-edit: snap zoom to the wheel on "over" · badge **RUMINATION** on "rumination"
-narration: "Psychologists have a name for this. Rumination. Thinking about the same problem, over and over, without getting anywhere."
-
-**D19** · picture S20 (COPY: researcher at a desk with a huge pile of notes) · camera zoom-in
-edit: name pill SUSAN NOLEN-HOEKSEMA on "psychologist" · snap zoom to the researcher on "surprising"
-host: N06 "psychologist"
-narration: "Psychologist Susan Nolen-Hoeksema spent decades studying it, and she found something surprising."
-
-**D20** · CODED card, swapping to card B on "worse" · camera hold
-edit: kinetic swap to card B with a ding · impact hit on "worse"
-host: N02 "rumination"
-Card A: FEELS LIKE **SOLVING**. Card B: MAKES YOU ~~WORSE~~ AT IT.
-narration: "Rumination feels like problem solving. But it makes you worse at it."
-
-**D21** · CODED bars3 · camera hold
-edit: bars grow on "worse"
-host: N01 "in"
-Bars (no numbers), title HOW GOOD THE SOLUTIONS WERE: AFTER RUMINATING (red, short) vs AFTER THINKING ABOUT SOMETHING ELSE (sage, tall).
-narration: "In her studies, people who spent a few minutes ruminating came up with worse solutions to problems than people who spent the same time thinking about something else."
-
-**D22** · picture S06 · camera zoom-out
-edit: snap zoom to his sweating face on "harder" · zoom out on "less"
-narration: "They were thinking harder. And getting less done."
-
-**D23** · CODED split · camera hold
-edit: left side pops on "thinking" (1st occurrence), right side on "overthinking" · speech pills: "WHAT CAN I DO ABOUT THIS?" on "what" (1st occurrence), "WHY? WHAT DOES IT SAY ABOUT ME?" on "why"
-host: N08 "here's" → N01 "thinking" → N02 "overthinking"
-Left (sage): THINKING → **NEXT STEP**. Right (red): OVERTHINKING → ~~LOOPS~~.
-narration: "Here's the easiest way to tell the difference. Thinking moves you toward a next step. "What can I do about this?" Overthinking just loops. "Why did this happen? What does it say about me? What if it happens again?""
-
-**D24** · CODED card, swapping to card B on "other" · camera hold
-host: N06 "one"
-Card A: ENDS IN **ACTION**. Card B: ENDS ~~WHERE IT STARTED~~.
-narration: "One ends with an action. The other ends right where it started."
-
-**D25** · picture S07 (NEW: the narrator gripping the steering wheel of a small car stuck in deep mud, the back wheel spinning and spraying mud, engine smoke puffing, the car not moving) · camera zoom-in
-edit: snap zoom to the spinning wheel on "spinning" → whip slide to his face on "engine" · zoom out on "going"
-narration: "It's like a car spinning its wheels in the mud. The engine is loud. You're just not going anywhere."
-beats: icon I97 "mud"
-
-**D26** · picture S08 (NEW: a busy city street; several stickmen doing everyday things: cooking at a window, riding a bus, typing at a desk; each has a little thought cloud showing somewhere else: a beach, an argument, a phone; a few phones show a notification bubble) · camera zoom-in
-edit: push wipe in on "in" · name pill KILLINGSWORTH & GILBERT (2010) on "researchers" · badge **2,250 PEOPLE** on "people"
+**D16** · CODED card · camera hold
+edit: marker highlight on DAY 3 on "three"
 host: N01 "and"
-narration: "And it happens way more than you'd think. In two thousand ten, Harvard researchers Matthew Killingsworth and Daniel Gilbert built an app that checked in on two thousand two hundred fifty people at random moments during their day."
-beats: icon I80 "app"
-
-**D27** · picture S08 · camera zoom-in
-edit: tour: snap zoom to the cooking stickman on "doing" → whip slide to the bus rider on "thinking" · speech pills: "WHAT ARE YOU DOING?" on "doing", "WHAT ARE YOU THINKING ABOUT?" on "thinking"
-host: N06 "it"
-narration: "It asked, "What are you doing right now? And what are you thinking about?""
-
-**D28** · CODED pie · camera hold
-edit: soft riser · pie fills with a count-up to **47%** on "forty" · impact hit on "forty"
-host: N02 "almost"
-Pie label: MIND SOMEWHERE ELSE:
-narration: "Almost forty-seven percent of the time, people's minds were somewhere else."
-
-**D29** · picture S08 · camera zoom-out
-edit: snap zoom to a stickman with a thought cloud on "wandered" · badge ~~LESS HAPPY~~ on "less"
-host: N02 "and"
-narration: "And when their minds wandered, they were less happy than when they were focused on what they were doing."
-
-**D30** · CODED card · camera hold
-edit: marker highlight on UNHAPPY MIND on "unhappy"
-host: N06 "a"
-Card: WANDERING MIND = / **UNHAPPY MIND**.
-narration: "A wandering mind, the researchers wrote, is an unhappy mind."
-
-**D31** · CODED bars3 · camera hold
-edit: badge **1,300 ADULTS** on "thirteen" · bars grow on "ruminate" · badge **4×** on "four" · impact hit on "four"
-host: N02 "and"
-Bars, title DEVELOPED MAJOR DEPRESSION: RUMINATORS (red, 20%) vs NON-RUMINATORS (sky, 5%).
-narration: "And it isn't harmless. In one survey of about thirteen hundred adults, Nolen-Hoeksema found that people who tended to ruminate were about four times more likely to develop major depression than people who didn't."
-
-**D32** · picture S06 · camera zoom-out
-edit: snap zoom to his tired face on "waste" · zoom out on "mood"
-narration: "Overthinking doesn't just waste your time. Over time, it can wear down your mood."
-
-**D33** · CODED card, swapping to card B on "loop" · camera hold
-edit: red badges pop: ~~SMART~~ on "smart", ~~CAREFUL~~ on "careful", ~~DEEP~~ on "deep" · kinetic swap to card B
-host: N02 "so" → N06 "it's"
-Card A: NOT ~~SMART~~ ~~CAREFUL~~ ~~DEEP~~. Card B: A **LOOP**.
-narration: "So overthinking isn't a sign that you're smart, or careful, or deep. It's a loop your brain gets stuck in."
-
-**D34** · picture S06 · camera zoom-in
-edit: snap zoom to his face on "begging"
-narration: "But why does it get stuck? Why does the same thought keep coming back, even when you're begging it to stop?"
+Card: THE **DAY 3** MISTAKE.
+narration: "And the last one fixes the exact mistake that killed my schedule on day three."
 
 ---
 
-## PART 3: The four traps (`audio/part3.mp3`)
+## PART 2: The willpower myth (`audio/part2.mp3`)
 
-**D35** · icon I84 as the main picture · camera hold
-edit: badge **4 TRAPS** on "four"
-host: N01 "there"
-narration: "There are four traps that keep the loop running."
+**D17** · picture S06 (NEW: the narrator straining to carry a big glass fuel tank on his back like a backpack; the tank is labeled with a fuel gauge drawing (no numbers) and the liquid inside is low; little temptations (a donut, a phone, a pillow) float around him like magnets) · camera zoom-in
+edit: badge **LIKE A MUSCLE** on "muscle" · snap zoom to the fuel gauge on "tired"
+narration: "For years, psychologists believed willpower worked like a muscle. Use it too much, and it gets tired."
 
-**D36** · picture S09 (NEW: the narrator in front of a huge detective corkboard covered in photos and notes connected by a mess of red string, holding more string, exhausted eyes) · camera zoom-in
-edit: snap zoom to the red strings on "replaying"
-narration: "One. It feels like you're solving something. Your brain thinks replaying the problem is the same as fixing it."
-beats: step "one" → TRAP 1 + IT FEELS LIKE SOLVING
-
-**D37** · picture S09 · camera zoom-in
-edit: thought-bubble pill "ONE MORE TIME…" on "one" · snap zoom to his face on "ready"
-narration: "If you just think about it one more time, maybe you'll finally understand. Maybe you'll be ready next time."
-beats: icon I91 "understand"
-
-**D38** · picture S20 · camera zoom-in
-edit: red badges: ~~MORE NEGATIVE~~ on "negative", ~~MORE PESSIMISTIC~~ on "pessimistic"
-host: N02 "but"
-narration: "But Nolen-Hoeksema's research found the opposite. Ruminating made people more negative, and more pessimistic about the future."
-
-**D39** · CODED loop · camera hold
-edit: nodes pop: REPLAY IT on "think", ANALYZE IT on "way", FEEL WORSE on "loop" · pulse on "around"
-host: N05 "you"
-narration: "You can't think your way out of a loop. You just go around it again."
-
-**D40** · picture S10 (NEW: the narrator hunched over a glowing crystal ball that shows a dark storm and lightning, while the window behind him shows a sunny, calm day) · camera zoom-in
-edit: snap zoom to the stormy crystal ball on "worst" · thought-bubble pills: "WHAT IF THEY'RE MAD?" on "mad", "WHAT IF I FAIL?" on "fail"
-narration: "Two. Your brain predicts the worst. Overthinking is usually about the future. "What if they're mad?" "What if I fail?""
-beats: step "two" → TRAP 2 + PREDICTING THE WORST
-
-**D41** · picture S20 · camera zoom-in
-edit: push wipe in on "in" · name pill PENN STATE (2020) on "researchers" · badge **10 DAYS** on "ten"
+**D18** · picture S05 (NEW: a stickman sitting at a table, longingly staring at a plate of fresh warm cookies while sadly chewing a radish from a bowl of radishes; a stickman researcher watches from behind a two-way mirror) · camera zoom-in
+edit: push wipe in on "in" · name pill ROY BAUMEISTER on "psychologist" · snap zoom to the cookies on "cookies" → whip slide to the radishes on "radishes"
 host: N01 "in"
-narration: "In two thousand twenty, researchers at Penn State had people with anxiety write down their worries every day for ten days, then checked what actually happened."
-beats: icon I94 "write"
+narration: "In the late nineteen-nineties, psychologist Roy Baumeister ran a famous study. People who had to resist a plate of fresh cookies and eat radishes instead gave up faster on an impossible puzzle afterward."
+beats: icon I99 "famous"
 
-**D42** · CODED pie · camera hold · **reveal: at least 2s of silence after**
-edit: soft riser · pie fills with a count-up to **91%** on "ninety" · impact hit on "ninety"
-host: N02 "ninety-one"
-Pie label: NEVER CAME TRUE:
-narration: "Ninety-one percent of those worries never came true."
+**D19** · picture S06 · camera zoom-in
+edit: badge **EGO DEPLETION** on "ego" · snap zoom to the floating temptations on "temptation"
+narration: "The idea was called ego depletion. Your willpower is a tank, and every temptation drains it."
 
-**D43** · picture S10 · camera zoom-in
-edit: snap zoom to the sunny window on "better" → whip slide to the crystal ball on "fortune"
-narration: "And some of the ones that did turned out better than people expected. Your brain is a terrible fortune teller. It just sounds really confident."
-beats: pop N05 "terrible" → card TERRIBLE **FORTUNE TELLER**
+**D20** · CODED card · camera hold
+host: N01 "it"
+Card: ONE OF THE / **MOST FAMOUS IDEAS**.
+narration: "It became one of the most famous ideas in all of psychology."
 
-**D44** · picture S11 (NEW: after a conversation, the narrator and a stickman friend walk away from each other on a sidewalk; above the narrator a thought bubble replays a close-up of himself laughing awkwardly, red-faced; above the friend a thought bubble shows a big happy smiley face) · camera zoom-in
-edit: zoom out to the whole picture on "liking"
-narration: "Three. You think everyone's judging you. Remember the liking gap."
-beats: step "three" → TRAP 3 + EVERYONE'S JUDGING ME
+**D21** · picture S20 (COPY: researcher at a desk with a huge pile of notes) · camera zoom-in
+edit: push wipe in on "but" · badges: **23 LABS** on "twenty", **2,000+ PEOPLE** on "people"
+host: N02 "but"
+narration: "But in two thousand sixteen, twenty-three labs around the world tried to repeat a version of the effect, with more than two thousand people."
 
-**D45** · picture S11 · camera zoom-in
-edit: snap zoom to the narrator's replay bubble on "replays" · badges: PAUSE on "pause", WEIRD LAUGH on "laugh"
-narration: "After a conversation, your brain replays your awkward moments, because those are the ones you were watching. You noticed every pause and every weird laugh."
+**D22** · CODED card · camera hold
+edit: impact hit on "nothing"
+host: N02 "they"
+Card: THEY FOUND / ~~ALMOST NOTHING~~.
+narration: "They found almost nothing."
 
-**D46** · picture S11 · camera zoom-in
-edit: whip slide to the friend's happy bubble on "other"
-narration: "The other person mostly noticed that you were nice to talk to."
+**D23** · picture S20 · camera zoom-in
+edit: name pill CAROL DWECK on "dweck" · snap zoom to the researcher on "interesting"
+host: N06 "and"
+narration: "And in another set of studies, Carol Dweck and her colleagues found something interesting."
 
-**D47** · CODED card · camera hold
-edit: "MONTHS" pops on "months"
-host: N02 "and"
-Card: COLLEGE ROOMMATES: / THE GAP LASTED / **MONTHS**.
-narration: "And in that research, the gap didn't fade after a few minutes. For college roommates, it lasted for months."
+**D24** · CODED split · camera hold
+edit: right side pops on "believed", left side on "didn't" (1st occurrence)
+host: N06 "the"
+Right (red): BELIEVED IT RUNS OUT → ~~WORN OUT~~. Left (yellow): DIDN'T BELIEVE IT → **MOSTLY FINE**.
+narration: "The people who believed willpower runs out were the ones who got worn out. The people who didn't believe it mostly didn't."
 
-**D48** · picture S12 (NEW: the narrator alone in a car at night, stopped at a red light on an empty street, staring ahead; little grey thought clouds are starting to rise out of his brain head on their own) · camera zoom-in
-edit: name pill WATKINS & NOLEN-HOEKSEMA on "psychologists" · snap zoom to the rising clouds on "habit" (2nd occurrence)
-narration: "Four. It turns into a habit. Psychologists Ed Watkins and Susan Nolen-Hoeksema have argued that rumination works a lot like a habit."
-beats: step "four" → TRAP 4 + IT'S A HABIT
+**D25** · icon I101 as the main picture · camera hold
+edit: snap zoom into the battery on "clear" · red badge ~~NOT A RELIABLE TANK~~ on "reliable"
+host: N06 "scientists"
+narration: "Scientists are still arguing about it. But one thing is clear. Willpower isn't a reliable tank you can count on all day."
 
-**D49** · picture S12 · camera zoom-in
-edit: snap zoom to the narrator on "car"
-narration: "It gets linked to certain cues. Lying in bed. A quiet car ride. A phone that hasn't buzzed back."
-beats: icon I93 "bed" · icon I89 "phone"
+**D26** · picture S07 · camera zoom-in
+edit: snap zoom to the drooling stickman on "bigger" → whip slide to the calm walker on "remember" · name pill WILHELM HOFMANN on "hofmann"
+host: N01 "so"
+narration: "So if disciplined people aren't running on a bigger tank, what are they doing? Remember the beeper study. Wilhelm Hofmann and his team found that people with high self-control had just as many desires as everyone else."
 
-**D50** · CODED loop · camera hold
-edit: nodes pop: THE CUE on "cue", THE LOOP STARTS on "starts", REPLAY on "think" · pulse on "anything"
-host: N02 "when"
-narration: "When the cue shows up, the loop starts on its own, before you've even decided to think about anything."
+**D27** · CODED list · camera hold
+edit: items pop on their words
+host: N02 "but"
+Items: 1 WEAKER DESIRES on "weaker", 2 LESS TORN on "torn", 3 FEWER FIGHTS on "fight".
+narration: "But their desires were weaker, they felt less torn, and they had to fight them less often."
 
-**D51** · picture S01b · camera zoom-in
-edit: snap zoom to the bed on "bed"
-narration: "That's why it always seems to hit at two A.M. Bed is the cue."
-beats: card "bed" → BED IS **THE CUE**
+**D28** · picture S07 · camera zoom-in
+edit: whip slide to the calm walker on "picking"
+host: N06 "they"
+narration: "They weren't winning more battles. They were picking fewer of them."
+beats: card "fewer" → PICK **FEWER BATTLES**
 
-**D52** · CODED list · camera hold
+**D29** · picture S08 (NEW: a classroom of eighth-grade stickman students at desks during a test; one student in a sage shirt sits focused and calm with a neat planner open, while others look distracted) · camera zoom-in
+edit: push wipe in on "in" · name pill DUCKWORTH & SELIGMAN (2005) on "duckworth" · snap zoom to the focused student on "graders"
+host: N01 "and"
+narration: "And it matters a lot. In two thousand five, Angela Duckworth and Martin Seligman followed eighth graders through a school year."
+beats: icon I102 "year"
+
+**D30** · CODED bars3 · camera hold
+edit: bars grow on "explained" · impact hit on "twice"
+host: N02 "self-discipline"
+Bars, title WHAT PREDICTED THEIR GRADES: SELF-DISCIPLINE (sage, tall, 2×) vs IQ (sky, short, 1×).
+narration: "Self-discipline explained about twice as much of the difference in their grades as IQ did."
+
+**D31** · picture S08 · camera zoom-out
+edit: snap zoom to the focused student on "smart"
+host: N02 "so" → N06 "it"
+narration: "So discipline isn't just a nice extra. It might matter more than how smart you are."
+
+**D32** · CODED card · camera hold
+host: N06 "which"
+Card: WHY IS IT / **SO HARD TO KEEP?**
+narration: "Which raises the big question. If it's that important... why is it so hard to keep?"
+
+---
+
+## PART 3: Why discipline keeps breaking (`audio/part3.mp3`)
+
+**D33** · icon I84 as the main picture · camera hold
+edit: badge **4 REASONS** on "four"
+host: N01 "there"
+narration: "There are four reasons discipline keeps breaking."
+
+**D34** · picture S09 (NEW: a gym packed shoulder to shoulder with stickmen on every machine, a "new year" party banner hanging from the ceiling (no letters), the narrator squeezed in the middle with a water bottle, excited eyes) · camera zoom-in
+edit: snap zoom to the narrator on "motivation" (2nd occurrence)
+narration: "One. You're running on motivation. Motivation is a feeling. And feelings come and go."
+beats: step "one" → REASON 1 + RUNNING ON MOTIVATION · icon I108 "feeling"
+
+**D35** · picture S20 · camera zoom-in
+edit: name pill DAI, MILKMAN & RIIS (2014) on "researchers" · pills top-center: SEMESTER on "semester", BIRTHDAY on "birthday", MONDAY on "monday"
+host: N01 "researchers"
+narration: "Researchers at Wharton found that students were much more likely to hit the gym right after a fresh start, like the beginning of a semester, their birthday, or even just a Monday."
+
+**D36** · picture S09, swapping to S09b on "empty" (NEW, edit of S09: the same gym a few weeks later, almost completely empty; the narrator is gone; one lonely stickman on a treadmill, the banner drooping) · camera zoom-in
+edit: hard swap to S09b on "empty", with a ding
+narration: "Think about how packed the gym is in the first week of January, and how empty it gets a few weeks later."
+
+**D37** · picture S09b · camera zoom-in
+edit: snap zoom to the lonely treadmill on "spark" · badge **A SPARK, NOT AN ENGINE** on "spark"
+narration: "That burst of motivation is real. But it's a spark, not an engine."
+
+**D38** · CODED card, swapping to card B on "mood" · camera hold
+host: N05 "if"
+Card A: ONLY WORKS WHEN MOTIVATED? Card B: THAT'S A ~~MOOD~~.
+narration: "If your plan only works on the days you feel motivated, it's not a plan. It's a mood."
+
+**D39** · picture S10 (NEW: a small, plain room; a young stickman kid sits at a table staring hard at a single fluffy marshmallow on a plate, sweating, gripping the table edge; a little bell on the table) · camera zoom-in
+edit: name pill WALTER MISCHEL on "mischel's" · snap zoom to the marshmallow on "treat"
+narration: "Two. You're fighting temptation face to face. In the famous marshmallow experiments, Walter Mischel's team left young kids alone with a treat. If they could wait, they'd get two."
+beats: step "two" → REASON 2 + TEMPTATION FACE TO FACE · icon I103 "wait"
+
+**D40** · picture S10, swapping to S10b on "covered" (NEW, edit of S10: the same kid, but the marshmallow is now hidden under an upside-down metal cake tin; the kid sits relaxed, humming, swinging his legs, eyes closed happily) · camera zoom-in
+edit: snap zoom to the kid's straining face on "see" · hard swap to S10b on "covered", with a ding
+narration: "Kids who could see the treat gave up much faster than kids who couldn't. When the treat was covered up, waiting got way easier."
+
+**D41** · picture S02 · camera zoom-in
+edit: snap zoom to the phone on "phone" · whip slide to the cereal on "snacks"
+narration: "Most of us do the opposite. We leave the phone on the desk and the snacks on the counter, and then wonder why we keep giving in."
+beats: icon I80 "wonder"
+
+**D42** · picture S11 (NEW: the narrator standing in front of a glowing vending machine full of candy bars, his hand hovering over the button, torn eyes; a small stern rule-book sticks out of his hoodie pocket) · camera zoom-in
+edit: speech pills: "I CAN'T HAVE SUGAR." on "sugar", "I CAN'T SKIP THE GYM." on "skip"
+narration: "Three. Your rules feel like punishment. Listen to how you talk about your goals. "I can't have sugar." "I can't skip the gym.""
+beats: step "three" → REASON 3 + RULES FEEL LIKE PUNISHMENT
+
+**D43** · picture S20 · camera zoom-in
+edit: name pill PATRICK & HAGTVEDT (2012) on "researchers"
+host: N01 "researchers"
+narration: "Researchers Vanessa Patrick and Henrik Hagtvedt found that the words you use matter."
+
+**D44** · CODED bars3 · camera hold
+edit: bars grow on "sixty" · impact hit on "thirty"
+host: N01 "in"
+Bars, title CHOSE THE HEALTHY SNACK: SAID "I DON'T" (sage, 64%) vs SAID "I CAN'T" (red, 39%).
+narration: "In one study, people told to say "I don't" when tempted chose the healthy snack sixty-four percent of the time. People told to say "I can't"? Only thirty-nine percent."
+beats: icon I107 "snack"
+
+**D45** · CODED split · camera hold
+edit: right side pops on "rule", left side on "who" · focus rack from right to left on "who"
+host: N06 "i"
+Right (red): "I CAN'T" → ~~A RULE~~. Left (yellow): "I DON'T" → **WHO YOU ARE**.
+narration: ""I can't" sounds like a rule someone forced on you. "I don't" sounds like who you are."
+
+**D46** · picture S12 (NEW: the narrator sitting on the floor next to a torn-up wall calendar; one day has a big red X, and the rest of the pages are ripped and scattered around him; defeated eyes) · camera zoom-in
+edit: snap zoom to the red X on "miss" · zoom out on "quit"
+narration: "Four. All or nothing. You miss one day, and suddenly the whole thing feels ruined. So you quit."
+beats: step "four" → REASON 4 + ALL OR NOTHING
+
+**D47** · picture S12 · camera zoom-in
+edit: badge ~~1 SKIP → A WEEK~~ on "week" · thought-bubble pill "WHATEVER, I'LL START AGAIN MONDAY" on "whatever"
+narration: "One skipped workout turns into a skipped week. One cheat meal turns into "whatever, I'll start again on Monday.""
+
+**D48** · picture S20 · camera zoom-in
+edit: name pill UNIVERSITY COLLEGE LONDON on "university" · badge **1 MISSED DAY = FINE** on "missing"
+host: N01 "but"
+narration: "But in a habit study at University College London, missing a single day didn't really slow down how fast people built their habit."
+
+**D49** · CODED card, swapping to card B on "tell" · camera hold
+host: N06 "it's"
+Card A: NOT ~~THE MISS~~. Card B: WHAT YOU **TELL YOURSELF**.
+narration: "It's not the miss that breaks you. It's what you tell yourself after it."
+
+**D50** · picture S04b · camera zoom-in · crossfade in
+edit: snap zoom to the torn schedule on "schedule"
+narration: "That's exactly what happened to my schedule on the wall."
+
+**D51** · CODED list · camera hold
 edit: items pop on their words
 host: N02 "so"
-Items: 1 FEELS LIKE SOLVING on "solving", 2 PREDICTS THE WORST on "worst", 3 EVERYONE'S JUDGING on "judging", 4 AUTOPILOT on "autopilot".
-narration: "So put those four together. It feels like solving. Your brain predicts the worst. You think everyone's judging you. And it runs on autopilot."
+Items: 1 WAITING FOR MOTIVATION on "waiting", 2 TEMPTATION FACE TO FACE on "fighting", 3 RULES AS PUNISHMENT on "rules", 4 QUITTING AFTER ONE DAY on "quitting".
+narration: "So put those four together. Waiting for motivation. Fighting temptation face to face. Rules that feel like punishment. And quitting after one bad day."
 
-**D53** · picture S09 · camera zoom-out
-edit: snap zoom to his face on "cares" · zoom out on "wrong"
-narration: "That's not a broken mind. That's a mind that cares a lot, stuck using the wrong tool."
+**D52** · CODED card, swapping to card B on "strategy" · camera hold
+host: N06 "that's" → N01 "that's" (2nd occurrence)
+Card A: NOT ~~WILLPOWER~~. Card B: A **STRATEGY** PROBLEM.
+narration: "That's not a lack of willpower. That's a strategy problem. And strategies can be fixed."
 
 ---
 
-## PART 4: Five ways out of the loop (`audio/part4.mp3`)
+## PART 4: Five ways to build discipline that lasts (`audio/part4.mp3`)
 
-**D54** · CODED card · camera hold
+**D53** · CODED card · camera hold
 edit: count-up 5 on "five"
 host: N01 "so"
-Card: **5** WAYS OUT.
-narration: "So here's how to get out of the loop. Five steps."
+Card: **5** STEPS.
+narration: "So here's how to build discipline that lasts. Five steps."
 
-**D55** · picture S13 (NEW: the narrator standing at a fork in a path: the left path leads to a ladder climbing up to a sunny hill; the right path curls into a small circular track that loops back on itself) · camera zoom-in
-edit: tour: snap zoom to the ladder path on "solving" → whip slide to the looping path on "spinning" → zoom out on "question"
-narration: "One. Ask, "Am I solving or spinning?" When you catch yourself replaying something, ask one question. "Is there something I can actually do about this right now?""
-beats: step "one" → STEP 1 + SOLVING OR SPINNING?
+**D54** · picture S13 (NEW: a view through a doorway: in the far kitchen, the narrator's phone sits charging on the counter; in the near room, the narrator works at his desk, focused and calm, with nothing tempting around him) · camera zoom-in
+edit: snap zoom to the phone in the kitchen on "temptation" → whip slide to the narrator at his desk on "avoid"
+narration: "One. Make temptation hard to reach. Do what the disciplined people in the beeper study do. Avoid the fight before it starts."
+beats: step "one" → STEP 1 + MAKE IT HARD TO REACH
+
+**D55** · picture S13 · camera zoom-out
+edit: pills top-center one by one: ANOTHER ROOM on "room", NO JUNK FOOD on "junk", DELETE THE APP on "delete"
+narration: "Put your phone in another room while you work. Don't keep junk food in the house. Delete the app for a week."
+beats: icon I104 "app"
 
 **D56** · picture S13 · camera zoom-in
-edit: snap zoom to the ladder path on "yes" · pills: SEND THE TEXT on "send", MAKE THE PLAN on "make"
-narration: "If the answer is yes, do the smallest version of it. Send the text. Make the plan."
-beats: icon I80 "text"
+edit: snap zoom to the narrator on "distance" · zoom out on "need"
+narration: "Every bit of distance gives you a few seconds to choose. And a few seconds is often all you need."
 
-**D57** · CODED card, swapping to card B on "write" · camera hold
-host: N01 "say"
-Card A: CAN YOU **FIX IT** TOMORROW? Card B: WRITE THE FIX. **DONE.**
-narration: "Say you're replaying a mistake from work. Can you fix it tomorrow? Then write down the fix, and you're done for tonight."
+**D57** · icon I80 as the main picture · camera hold
+edit: badge **PHONE IN THE KITCHEN** on "kitchen"
+host: N01 "for"
+narration: "For me, the biggest one was my phone. When it charged in the kitchen instead of next to my bed, I stopped scrolling at midnight without even trying."
 
-**D58** · picture S13 · camera zoom-in
-edit: whip slide to the looping path on "spinning" (1st occurrence) · thought-bubble pill "OH, I'M SPINNING." on "oh"
-narration: "If the answer is no, you're not solving anything. You're spinning. And just naming it, "Oh, I'm spinning," can give you a little distance from it."
+**D58** · CODED card · camera hold
+edit: marker highlight on TESTING on "testing"
+host: N05 "you"
+Card: STOP **TESTING** IT.
+narration: "You don't need more willpower when you stop testing it."
 
-**D59** · picture S14 (NEW: the narrator calmly dropping folded worry notes into a small wooden box with a round clock on its lid; a few notes are already inside) · camera zoom-in
-edit: name pill TOM BORKOVEC on "psychologist" · snap zoom to the box on "schedule"
-narration: "Two. Give your worries an appointment. Back in the nineteen-eighties, psychologist Tom Borkovec came up with a strange idea. Instead of trying to stop worrying, schedule it."
-beats: step "two" → STEP 2 + A WORRY APPOINTMENT · icon I86 "schedule"
+**D59** · picture S14 (NEW: the narrator in bed reading a book under a warm lamp, calm content eyes; on the nightstand, a toothbrush in a cup next to the book's empty spot, showing the routine) · camera zoom-in
+edit: snap zoom to the book on "same" (1st occurrence)
+narration: "Two. Same time, same place."
+beats: step "two" → STEP 2 + SAME TIME, SAME PLACE
 
-**D60** · picture S14 · camera zoom-in
-edit: badge **30 MINUTES A DAY** on "thirty" · speech pill "NOT NOW. LATER." on "not"
-narration: "Pick one thirty-minute window each day. When a worry shows up outside that window, write it down and tell yourself, "Not now. Later.""
+**D60** · CODED pie · camera hold
+edit: name pill WENDY WOOD on "psychologist" · pie fills with a count-up to **43%** on "forty" · impact hit on "forty"
+host: N01 "psychologist"
+Pie label: DONE ALMOST EVERY DAY:
+narration: "Psychologist Wendy Wood found that about forty-three percent of the things people did each day were things they did almost every day, usually in the same place."
 
-**D61** · CODED bars3 · camera hold
-edit: name pill NETHERLANDS (2011) on "study" · bars grow on "dropped"
-host: N02 "in"
-Bars (no numbers), title ANXIETY & STRESS DROPPED: STANDARD TREATMENT (sky, short) vs + WORRY TIME (sage, tall).
-narration: "In a two thousand eleven study in the Netherlands, people who practiced this coped better with their problems, and their anxiety and stress dropped more than people who only got standard treatment."
+**D61** · picture S20 · camera zoom-in
+edit: pills top-center one by one: EXERCISING on "exercising", SLEEPING WELL on "sleeping", STUDYING on "studying"
+host: N01 "and"
+narration: "And Angela Duckworth's team found that people with more self-control tend to have stronger good habits, like exercising, sleeping well and studying."
 
-**D62** · picture S14 · camera zoom-out
-edit: snap zoom to the box on "finally" · zoom out on "simple"
-narration: "When the thirty minutes finally come, a lot of those worries won't feel as urgent anymore. It sounds too simple. But your brain lets go more easily when it knows the worry has a time slot."
+**D62** · picture S14 · camera zoom-in
+edit: snap zoom to his face on "forcing" · snap zoom to the book on "reading" · badge **BORING & AUTOMATIC** on "boring"
+narration: "They aren't forcing themselves every day. The habit does the work. So pick one time and one place. The gym right after work. Reading right after you brush your teeth. Make it boring and automatic."
+beats: icon I78 "gym"
 
-**D63** · picture S15 (NEW: the narrator at a desk writing on a sheet of paper; little grey worry clouds flow out of his brain head and turn into ink lines on the page; his eyes look lighter and calmer) · camera zoom-in
-edit: name pill RAMIREZ & BEILOCK (2011) on "researchers" · badge **10 MINUTES** on "ten"
-narration: "Three. Write it down. At the University of Chicago, researchers Gerardo Ramirez and Sian Beilock had students spend ten minutes writing about their worries right before a big exam."
-beats: step "three" → STEP 3 + WRITE IT DOWN
+**D63** · picture S15 (NEW: the narrator calmly and confidently pushing away a plate of glazed donuts with one hand, the other hand in his hoodie pocket, relaxed half-closed eyes, totally unbothered) · camera zoom-in
+edit: snap zoom to the hand pushing the plate on "don't"
+narration: "Three. Say "I don't," not "I can't." Remember the snack study."
+beats: step "three" → STEP 3 + SAY "I DON'T"
 
 **D64** · CODED bars3 · camera hold
-edit: bars grow on "wrote" · impact hit on "minus"
-host: N02 "students"
-Bars, title ANXIOUS STUDENTS' FINAL GRADE: WROTE FIRST (sage, B+) vs DIDN'T WRITE (sky, B−).
-narration: "Students with high test anxiety who wrote first averaged a B-plus. Anxious students who didn't write averaged a B-minus."
+edit: bars grow on "eight" · impact hit on "only"
+host: N01 "in"
+Bars, title STUCK WITH THEIR GOAL FOR 10 DAYS: SAID "I DON'T" (sage, 8 OF 10) vs SAID "I CAN'T" (red, 1 OF 10).
+narration: "In another part of that research, women with a personal health goal used one of the strategies for ten days. Eight out of ten who used "I don't" stuck with their goal the whole time. Only one out of ten using "I can't" did."
 
-**D65** · picture S15 · camera zoom-in
-edit: tour: snap zoom to the clouds leaving his head on "head" → whip slide to the page on "page" · zoom out on "test"
-narration: "Writing it down moves the worry out of your head and onto the page, so your brain doesn't have to keep holding it. You can do it before a test, before bed, or any time a thought keeps circling."
+**D65** · picture S15 · camera zoom-out
+edit: speech pills: "I DON'T SKIP WORKOUTS." on "skip", "I DON'T SCROLL IN BED." on "scroll"
+narration: ""I don't skip workouts." "I don't scroll in bed." It turns a rule into part of who you are. And people protect who they are."
+beats: card "protect" → PEOPLE **PROTECT** WHO THEY ARE
 
-**D66** · CODED card · camera hold
-edit: marker highlight on 10-MINUTE on "ten"
-host: N01 "this"
-Card: THE **10-MINUTE** ONE / A PAPER AND A PEN (small second line).
-narration: "This is the ten-minute one. Just a piece of paper and a pen."
-beats: icon I94 "pen"
+**D66** · picture S16 (NEW: night; the narrator packing a gym bag by the front door, sneakers and a water bottle ready beside it, his phone showing a sent text bubble with a thumbs-up reply) · camera zoom-in
+edit: name pill ARIELY & WERTENBROCH (2002) on "economists" · snap zoom to the bag on "decide"
+narration: "Four. Decide before you're tempted. Behavioral economists Dan Ariely and Klaus Wertenbroch gave people three proofreading jobs to finish."
+beats: step "four" → STEP 4 + DECIDE IN ADVANCE
 
-**D67** · picture S16 (NEW: the narrator walking calmly along a sunny park path under green trees, small birds, his eyes soft and relaxed) · camera zoom-in
-edit: name pill STANFORD (2015) on "researchers" · badge **90 MINUTES** on "ninety"
-narration: "Four. Go outside and walk. At Stanford, researchers sent people on a ninety-minute walk, either through nature or along a busy road."
-beats: step "four" → STEP 4 + WALK OUTSIDE · icon I95 "nature"
+**D67** · CODED split · camera hold
+edit: right side pops on "some", left side on "others"
+host: N01 "some"
+Right (red): ONE DEADLINE → **AT THE END**. Left (yellow): THEIR OWN DEADLINES → **SET IN ADVANCE**.
+narration: "Some had one deadline at the very end. Others set their own deadlines for each one, in advance."
 
-**D68** · CODED split · camera hold
-edit: left side pops on "nature", right side on "brain" · focus rack from left to right on "negative"
-host: N02 "only"
-Left (sage): NATURE WALK → **LESS RUMINATION**. Right (sky): BRAIN SCANS → **QUIETER**.
-narration: "Only the nature walk reduced rumination. And brain scans showed less activity in an area linked to negative, self-focused thinking."
+**D68** · CODED card · camera hold
+edit: marker highlight on BETTER WORK on "better"
+host: N02 "the"
+Card: SET YOUR OWN DEADLINES = / **BETTER WORK**.
+narration: "The people who set their own deadlines did better work, and turned it in late less often, than the people with one big deadline at the end."
 
 **D69** · picture S16 · camera zoom-in
-edit: snap zoom to the trees on "green" · zoom out on "short" · light sweep along the path on "real"
-narration: "You don't need a forest. A park, a quiet street with trees, anything green. It gives your brain something real to look at, instead of the replay. And even a short walk is a better use of that energy than watching the same conversation again."
-beats: icon I85 "walk"
+edit: snap zoom to the bag on "pack" → whip slide to the phone on "friend"
+narration: "In the moment, you're weaker. So make the decision now, while you're thinking clearly. Pack the gym bag tonight. Tell a friend you'll be there at six."
+beats: icon I106 "tonight"
 
-**D70** · picture S17 (NEW: the narrator happily absorbed in playing an acoustic guitar on his bed, focused content eyes; behind him a few grey thought clouds fade away) · camera zoom-in
-edit: snap zoom to his focused eyes on "focused"
-narration: "Five. Get absorbed in something. In Nolen-Hoeksema's experiments, people who spent a few minutes focused on something other than their problems felt better afterward."
-beats: step "five" → STEP 5 + GET ABSORBED
+**D70** · picture S17 (NEW: the narrator walking along a path of round stepping stones across a calm pond; one stone in the path is missing, and he simply steps over the gap onto the next stone, steady and calm) · camera zoom-in
+edit: snap zoom to the gap in the stones on "miss" (2nd occurrence)
+narration: "Five. Never miss twice. You're going to miss days. Everyone does. And the habit study showed that one miss doesn't ruin anything."
+beats: step "five" → STEP 5 + NEVER MISS TWICE
 
-**D71** · CODED loop · camera hold
-edit: the loop from D39 (REPLAY IT → ANALYZE IT → FEEL WORSE) is already there · break on "interrupted"
-host: N01 "not"
-narration: "Not because the problem went away. Because the loop got interrupted. Even a few minutes can be enough to break the spin."
+**D71** · picture S17 · camera zoom-in
+edit: badge **MISS TODAY? NOT TOMORROW.** on "today" · snap zoom to his steady step on "rule"
+narration: "A bad day isn't the end of the habit. It's just a bad day. So make one simple rule. If you miss today, you don't miss tomorrow."
 
-**D72** · picture S17 · camera zoom-in
-edit: pills top-center one by one: A GAME on "game", A WORKOUT on "workout", COOKING on "cooking", MUSIC on "music", A FRIEND on "friend"
-narration: "So pick something that takes your full attention. A game. A workout. Cooking. Music. A conversation with a friend."
-beats: icon I96 "game"
+**D72** · picture S04b · camera zoom-in · crossfade in
+edit: light leak (memory) on "schedule" · snap zoom to his face on "next" (1st occurrence)
+narration: "That's what I should have done with my schedule on day three. Not wait for Monday to start over. Just do the next thing, the next day."
 
-**D73** · picture S04 · camera zoom-in
-edit: snap zoom to the phone on "scrolling" · red badge ~~SCROLLING~~ on "scrolling"
-narration: "Scrolling usually doesn't work, because it hands your brain new things to compare and worry about."
+**D73** · picture S07 · camera zoom-in · crossfade in
+edit: snap zoom to the calm walker on "disciplined" · zoom out on "easy"
+narration: "Here's what I keep coming back to. The most disciplined people you know aren't superheroes with endless willpower. They're just people who made the right thing easy, and the wrong thing hard."
 
-**D74** · picture S11 · camera zoom-in · crossfade in
-edit: snap zoom to the narrator on "conversation" → whip slide to the friend's happy bubble on "other"
-narration: "Here's what I keep coming back to. That conversation you replayed at two A.M.? The other person probably isn't thinking about it at all. And they probably liked you more than you think."
+**D74** · picture S18 (NEW: early morning sunrise; the narrator walks out of his front door with a gym bag on his shoulder, calm happy eyes; through the window behind him, his phone sits charging on the kitchen counter) · camera zoom-in
+edit: iris reveal into the picture on "discipline" · light sweep on "building"
+narration: "Discipline isn't about fighting yourself every single day. It's about building a life where you don't have to. Motivation gets you started. Your setup keeps you going."
 
-**D75** · picture S02 · camera zoom-in
-edit: snap zoom to the ceiling movie on "guesses"
-narration: "Your thoughts aren't facts. They're guesses your brain makes when it's tired and scared. Overthinking promises that if you just think hard enough, you'll be safe."
-beats: card "facts" → THOUGHTS AREN'T **FACTS**
+**D75** · picture S18 · camera zoom-out · **at least 2s of silence after "two"**
+edit: pills top-center one by one: MOVE ONE TEMPTATION on "move", ONE TIME, ONE PLACE on "pick", NEVER MISS TWICE on "miss"
+narration: "So you don't need another midnight plan. You need one small change that makes tomorrow a little easier. Move one temptation out of reach. Pick one time and one place. And if you miss a day, just don't miss two."
 
-**D76** · picture S18 (NEW: the same bedroom as S01, now peaceful: the narrator sleeping calmly with a soft content look, moonlight through the window, the ceiling dark, no projector, no clouds) · camera zoom-in · crossfade in
-edit: iris reveal into the picture on "but" · light sweep on "peace"
-narration: "But you don't find peace at the end of the loop. You find it by stepping out of it."
-
-**D77** · picture S18 · camera zoom-out · **at least 2s of silence after "tomorrow" (2nd occurrence)**
-edit: pills top-center one by one: SOLVING OR SPINNING? on "solving", WRITE IT DOWN on "write", GO OUTSIDE on "outside"
-narration: "So next time your brain hits replay, you don't have to watch. Ask if you're solving or spinning. Write it down. Go outside. And let tomorrow handle tomorrow."
-
-**D78** · picture S29 (COPY: narrator on the right, pointing left; end screen) · camera hold · hold the last frame 5s after the narration
-narration: "What's the thing your brain replays the most? Tell me in the comments. You might find out you're not the only one. And if your overthinking keeps stopping you from starting things, I made a whole video on why we procrastinate. I'll leave it right here."
-beats: pop N06 "what's" → card YOUR **REPLAY?** (finish it before "and if" so the end screen stays clean)
+**D76** · picture S29 (COPY: narrator on the right, pointing left; end screen) · camera hold · hold the last frame 5s after the narration
+narration: "What's one temptation you're going to move out of reach this week? Tell me in the comments. And if you keep putting things off before you even start, I made a whole video on the psychology of procrastination. I'll leave it right here."
+beats: pop N06 "what's" → card YOUR **ONE TEMPTATION?** (finish it before "and if" so the end screen stays clean)

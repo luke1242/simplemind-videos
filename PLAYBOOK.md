@@ -115,10 +115,10 @@ From vidIQ, Oct 2026: "psychology explained" gets ~470K searches a month with **
 | Topic idea | Keyword | Monthly searches | Competition |
 |---|---|---|---|
 | Psychology of Procrastination (And How to Trick Your Brain Out of It) | how to stop procrastinating | 204K (↑28%) | 54 |
-| Psychology of Overthinking (video 7, in progress) | overthinking | 426K | 61 |
+| Psychology of Overthinking (video 7, done) | overthinking | 426K | 61 |
 | Psychology of Confidence (low-competition angle: "How to Be Confident") | how to be confident | 96K | 39 |
 | Psychology of Social Anxiety: Why Nobody's Watching You | how to overcome social anxiety | 38K (↑123%) | 48 |
-| Psychology of Habits: How Long It Really Takes (ties into the 66-day video) | how to build discipline | 83K (↑35%) | 45 |
+| Psychology of Discipline (video 8, in progress) | how to build discipline | 83K (↑35%) | 45 |
 | Psychology of Learning: Remember Everything You Study | learn anything fast | 57K (↑137%) | 45 |
 
 ## 7. Posting rhythm

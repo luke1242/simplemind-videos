@@ -1,110 +1,107 @@
-# Voice clips: "The Psychology of Overthinking"
+# Voice clips: "The Psychology of Discipline"
 
 15 clips. Paste each one into ElevenLabs on its own and save it with the exact file name (`part1a.mp3` …). Keep the emotion tags in the text.
 
-- **Nolen-Hoeksema** is said "NO-len HOOK-sma". If ElevenLabs gets it wrong, type it as "Nolen Hook-sma" in that clip only.
-- **Beilock** is said "BYE-lock", **Borkovec** is "BOR-ko-vek", **Sian** is "SHAWN".
-- The story in part1c (the unanswered text and "I was at the gym") is written as you. Change any detail that isn't true for you.
+- **Hagtvedt** is said "HAG-vet", **Wertenbroch** is "VER-ten-brock", **Mischel** is "mih-SHELL". If ElevenLabs gets one wrong, type it the way it sounds in that clip only.
+- The stories in part1c (the schedule on the wall) and part4a (phone charging in the kitchen) are written as you. Change any detail that isn't true for you.
 
 ## Part 1
 
-**part1a.mp3** (62 words)
+**part1a.mp3** (64 words)
 ```
-[calm, curious] It's two in the morning. You're exhausted. Your eyes are closed. [slow] And then your brain says, "Hey. Remember that thing you said today?" [wry] And now you're wide awake. Replaying it. "Why did I say it like that?" "Did they think I was weird?" "Why did I laugh at my own joke?" [softly] Ten seconds of a conversation... and you've watched it fifty times.
+[calm, curious] It's midnight. You just watched a video that got you fired up. [upbeat] Tomorrow, everything changes. Wake up at five. Gym. Cold shower. No phone. No junk food. [light] You can feel it. This time is different. [slow] And then it's Thursday. [wry] You hit snooze three times, ate cereal in bed, and scrolled for two hours. [softly] And the motivation from Monday? Gone. Like it was never there.
 ```
 
-**part1b.mp3** (78 words)
+**part1b.mp3** (85 words)
 ```
-[serious] Here's what's strange. In two thousand eighteen, a team of researchers paired up strangers and had them talk for just five minutes. Afterward, each person rated how much they liked the other one, and how much they thought the other one liked them. [curious] Almost everyone made the same mistake. [emphatic] Their partner liked them more than they thought. [slow] The researchers called it the liking gap. [softly] The conversation you're replaying at two A.M.? It probably went better than you think.
+[serious] Here's what's strange. In two thousand twelve, a team of researchers gave two hundred and five people a phone that beeped seven times a day for a whole week. Every time it beeped, they reported what they wanted right then, and whether they were trying to resist it. [curious] You'd expect the most disciplined people to be fighting temptation all day long. [emphatic] They weren't. They tried to resist less often than everyone else. [slow] Their secret wasn't more willpower. [softly] They just had fewer fights to begin with.
 ```
 
 **part1c.mp3** (143 words)
 ```
-[warm] I do this all the time. [storytelling] A few weeks ago, I sent someone a message, and they took a few hours to reply. [wry] In those few hours, I reread my message about twenty times, decided it sounded rude, wrote three different apologies in my head, and imagined the whole friendship falling apart. [light] Then they replied. "Haha sorry, I was at the gym." [softly] And it wasn't even a big deal. It was one text. [thoughtful] My brain had worked for hours... and solved absolutely nothing.
+[warm] I've made the midnight plan more times than I can count. [storytelling] One time, I wrote out a whole schedule on a piece of paper. Every hour of the day, planned out. I even taped it to my wall. [wry] It lasted two days. On day three, I woke up late, felt like I'd already ruined it, and never looked at that paper again. [thoughtful] I didn't need a better plan. I needed to understand why my plans kept falling apart.
 
-[curious] So why does your brain do this? Why does it keep replaying things it can't change? [calm] By the end of this video, you'll know the difference between thinking and overthinking, the four traps that keep your mind stuck on repeat, and five research-backed ways to finally turn it off. [warm] One of them takes ten minutes and a piece of paper.
+[curious] So what is discipline, really? And why does motivation always run out right when you need it? [calm] By the end of this video, you'll know why willpower isn't what you think it is, the four reasons your discipline keeps breaking, and five research-backed ways to build discipline that actually lasts. [warm] And the last one fixes the exact mistake that killed my schedule on day three.
 ```
 
 ## Part 2
 
-**part2a.mp3** (148 words)
+**part2a.mp3** (164 words)
 ```
-[calm, storytelling] Psychologists have a name for this. Rumination. Thinking about the same problem, over and over, without getting anywhere. [curious] Psychologist Susan Nolen-Hoeksema spent decades studying it, and she found something surprising. [emphatic] Rumination feels like problem solving. But it makes you worse at it. [storytelling] In her studies, people who spent a few minutes ruminating came up with worse solutions to problems than people who spent the same time thinking about something else. [thoughtful] They were thinking harder. And getting less done.
+[calm, storytelling] For years, psychologists believed willpower worked like a muscle. Use it too much, and it gets tired. [storytelling] In the late nineteen-nineties, psychologist Roy Baumeister ran a famous study. People who had to resist a plate of fresh cookies and eat radishes instead gave up faster on an impossible puzzle afterward. [thoughtful] The idea was called ego depletion. Your willpower is a tank, and every temptation drains it. [calm] It became one of the most famous ideas in all of psychology.
 
-[explaining] Here's the easiest way to tell the difference. [calm] Thinking moves you toward a next step. "What can I do about this?" [serious] Overthinking just loops. "Why did this happen? What does it say about me? What if it happens again?" [thoughtful] One ends with an action. The other ends right where it started. [light] It's like a car spinning its wheels in the mud. The engine is loud. You're just not going anywhere.
+[serious] But in two thousand sixteen, twenty-three labs around the world tried to repeat a version of the effect, with more than two thousand people. [emphatic] They found almost nothing. [curious] And in another set of studies, Carol Dweck and her colleagues found something interesting. The people who believed willpower runs out were the ones who got worn out. The people who didn't believe it mostly didn't. [thoughtful] Scientists are still arguing about it. But one thing is clear. Willpower isn't a reliable tank you can count on all day.
 ```
 
-**part2b.mp3** (181 words)
+**part2b.mp3** (133 words)
 ```
-[storytelling] And it happens way more than you'd think. In two thousand ten, Harvard researchers Matthew Killingsworth and Daniel Gilbert built an app that checked in on two thousand two hundred fifty people at random moments during their day. [curious] It asked, "What are you doing right now? And what are you thinking about?" [emphatic] Almost forty-seven percent of the time, people's minds were somewhere else. [serious] And when their minds wandered, they were less happy than when they were focused on what they were doing. [softly] A wandering mind, the researchers wrote, is an unhappy mind.
+[calm] So if disciplined people aren't running on a bigger tank, what are they doing? [storytelling] Remember the beeper study. Wilhelm Hofmann and his team found that people with high self-control had just as many desires as everyone else. [emphatic] But their desires were weaker, they felt less torn, and they had to fight them less often. [thoughtful] They weren't winning more battles. They were picking fewer of them.
 
-[serious] And it isn't harmless. In one survey of about thirteen hundred adults, Nolen-Hoeksema found that people who tended to ruminate were about four times more likely to develop major depression than people who didn't. [softly] Overthinking doesn't just waste your time. Over time, it can wear down your mood.
-
-[slow] So overthinking isn't a sign that you're smart, or careful, or deep. [thoughtful] It's a loop your brain gets stuck in. [curious] But why does it get stuck? Why does the same thought keep coming back, even when you're begging it to stop?
+[storytelling] And it matters a lot. In two thousand five, Angela Duckworth and Martin Seligman followed eighth graders through a school year. [emphatic] Self-discipline explained about twice as much of the difference in their grades as IQ did. [slow] So discipline isn't just a nice extra. [thoughtful] It might matter more than how smart you are. [curious] Which raises the big question. If it's that important... why is it so hard to keep?
 ```
 
 ## Part 3
 
-**part3a.mp3** (79 words)
+**part3a.mp3** (106 words)
 ```
-[calm] There are four traps that keep the loop running.
+[calm] There are four reasons discipline keeps breaking.
 
-[explaining] One. It feels like you're solving something. [calm] Your brain thinks replaying the problem is the same as fixing it. [thoughtful] If you just think about it one more time, maybe you'll finally understand. Maybe you'll be ready next time. [serious] But Nolen-Hoeksema's research found the opposite. Ruminating made people more negative, and more pessimistic about the future. [light] You can't think your way out of a loop. You just go around it again.
-```
-
-**part3b.mp3** (79 words)
-```
-[explaining] Two. Your brain predicts the worst. [calm] Overthinking is usually about the future. "What if they're mad?" "What if I fail?" [storytelling] In two thousand twenty, researchers at Penn State had people with anxiety write down their worries every day for ten days, then checked what actually happened. [emphatic] Ninety-one percent of those worries never came true. [thoughtful] And some of the ones that did turned out better than people expected. [light] Your brain is a terrible fortune teller. It just sounds really confident.
+[explaining] One. You're running on motivation. [calm] Motivation is a feeling. And feelings come and go. [storytelling] Researchers at Wharton found that students were much more likely to hit the gym right after a fresh start, like the beginning of a semester, their birthday, or even just a Monday. [calm] Think about how packed the gym is in the first week of January, and how empty it gets a few weeks later. [thoughtful] That burst of motivation is real. But it's a spark, not an engine. [light] If your plan only works on the days you feel motivated, it's not a plan. It's a mood.
 ```
 
-**part3c.mp3** (66 words)
+**part3b.mp3** (80 words)
 ```
-[explaining] Three. You think everyone's judging you. [calm] Remember the liking gap. [thoughtful] After a conversation, your brain replays your awkward moments, because those are the ones you were watching. [softly] You noticed every pause and every weird laugh. [light] The other person mostly noticed that you were nice to talk to. [serious] And in that research, the gap didn't fade after a few minutes. For college roommates, it lasted for months.
+[explaining] Two. You're fighting temptation face to face. [storytelling] In the famous marshmallow experiments, Walter Mischel's team left young kids alone with a treat. If they could wait, they'd get two. [emphatic] Kids who could see the treat gave up much faster than kids who couldn't. [thoughtful] When the treat was covered up, waiting got way easier. [light] Most of us do the opposite. We leave the phone on the desk and the snacks on the counter, and then wonder why we keep giving in.
 ```
 
-**part3d.mp3** (115 words)
+**part3c.mp3** (82 words)
 ```
-[explaining] Four. It turns into a habit. [calm] Psychologists Ed Watkins and Susan Nolen-Hoeksema have argued that rumination works a lot like a habit. [thoughtful] It gets linked to certain cues. Lying in bed. A quiet car ride. A phone that hasn't buzzed back. [serious] When the cue shows up, the loop starts on its own, before you've even decided to think about anything. [softly] That's why it always seems to hit at two A.M. Bed is the cue.
+[explaining] Three. Your rules feel like punishment. [calm] Listen to how you talk about your goals. "I can't have sugar." "I can't skip the gym." [storytelling] Researchers Vanessa Patrick and Henrik Hagtvedt found that the words you use matter. In one study, people told to say "I don't" when tempted chose the healthy snack sixty-four percent of the time. People told to say "I can't"? Only thirty-nine percent. [thoughtful] "I can't" sounds like a rule someone forced on you. "I don't" sounds like who you are.
+```
 
-[slow] So put those four together. It feels like solving. Your brain predicts the worst. You think everyone's judging you. And it runs on autopilot. [thoughtful] That's not a broken mind. [warm] That's a mind that cares a lot, stuck using the wrong tool.
+**part3d.mp3** (123 words)
+```
+[explaining] Four. All or nothing. [calm] You miss one day, and suddenly the whole thing feels ruined. So you quit. [calm] One skipped workout turns into a skipped week. One cheat meal turns into "whatever, I'll start again on Monday." [storytelling] But in a habit study at University College London, missing a single day didn't really slow down how fast people built their habit. [thoughtful] It's not the miss that breaks you. It's what you tell yourself after it. [softly] That's exactly what happened to my schedule on the wall.
+
+[slow] So put those four together. Waiting for motivation. Fighting temptation face to face. Rules that feel like punishment. And quitting after one bad day. [thoughtful] That's not a lack of willpower. [warm] That's a strategy problem. And strategies can be fixed.
 ```
 
 ## Part 4
 
-**part4a.mp3** (103 words)
+**part4a.mp3** (112 words)
 ```
-[warm] So here's how to get out of the loop. Five steps.
+[warm] So here's how to build discipline that lasts. Five steps.
 
-[upbeat] One. Ask, "Am I solving or spinning?" [calm] When you catch yourself replaying something, ask one question. "Is there something I can actually do about this right now?" [thoughtful] If the answer is yes, do the smallest version of it. Send the text. Make the plan. [storytelling] Say you're replaying a mistake from work. Can you fix it tomorrow? Then write down the fix, and you're done for tonight. [calm] If the answer is no, you're not solving anything. You're spinning. [light] And just naming it, "Oh, I'm spinning," can give you a little distance from it.
-```
-
-**part4b.mp3** (118 words)
-```
-[upbeat] Two. Give your worries an appointment. [storytelling] Back in the nineteen-eighties, psychologist Tom Borkovec came up with a strange idea. Instead of trying to stop worrying, schedule it. [calm] Pick one thirty-minute window each day. When a worry shows up outside that window, write it down and tell yourself, "Not now. Later." [emphatic] In a two thousand eleven study in the Netherlands, people who practiced this coped better with their problems, and their anxiety and stress dropped more than people who only got standard treatment. [calm] When the thirty minutes finally come, a lot of those worries won't feel as urgent anymore. [light] It sounds too simple. But your brain lets go more easily when it knows the worry has a time slot.
+[upbeat] One. Make temptation hard to reach. [calm] Do what the disciplined people in the beeper study do. Avoid the fight before it starts. [storytelling] Put your phone in another room while you work. Don't keep junk food in the house. Delete the app for a week. [thoughtful] Every bit of distance gives you a few seconds to choose. And a few seconds is often all you need. [storytelling] For me, the biggest one was my phone. When it charged in the kitchen instead of next to my bed, I stopped scrolling at midnight without even trying. [light] You don't need more willpower when you stop testing it.
 ```
 
-**part4c.mp3** (100 words)
+**part4b.mp3** (89 words)
 ```
-[upbeat] Three. Write it down. [storytelling] At the University of Chicago, researchers Gerardo Ramirez and Sian Beilock had students spend ten minutes writing about their worries right before a big exam. [emphatic] Students with high test anxiety who wrote first averaged a B-plus. Anxious students who didn't write averaged a B-minus. [thoughtful] Writing it down moves the worry out of your head and onto the page, so your brain doesn't have to keep holding it. [calm] You can do it before a test, before bed, or any time a thought keeps circling. [warm] This is the ten-minute one. Just a piece of paper and a pen.
-```
-
-**part4d.mp3** (168 words)
-```
-[upbeat] Four. Go outside and walk. [storytelling] At Stanford, researchers sent people on a ninety-minute walk, either through nature or along a busy road. [emphatic] Only the nature walk reduced rumination. And brain scans showed less activity in an area linked to negative, self-focused thinking. [calm] You don't need a forest. A park, a quiet street with trees, anything green. [light] It gives your brain something real to look at, instead of the replay. And even a short walk is a better use of that energy than watching the same conversation again.
-
-[upbeat] Five. Get absorbed in something. [calm] In Nolen-Hoeksema's experiments, people who spent a few minutes focused on something other than their problems felt better afterward. Not because the problem went away. Because the loop got interrupted. [warm] Even a few minutes can be enough to break the spin. [thoughtful] So pick something that takes your full attention. A game. A workout. Cooking. Music. A conversation with a friend. [light] Scrolling usually doesn't work, because it hands your brain new things to compare and worry about.
+[upbeat] Two. Same time, same place. [storytelling] Psychologist Wendy Wood found that about forty-three percent of the things people did each day were things they did almost every day, usually in the same place. [calm] And Angela Duckworth's team found that people with more self-control tend to have stronger good habits, like exercising, sleeping well and studying. [thoughtful] They aren't forcing themselves every day. The habit does the work. [light] So pick one time and one place. The gym right after work. Reading right after you brush your teeth. Make it boring and automatic.
 ```
 
-**part4e.mp3** (106 words)
+**part4c.mp3** (80 words)
 ```
-[reflective] Here's what I keep coming back to. [calm] That conversation you replayed at two A.M.? [softly] The other person probably isn't thinking about it at all. And they probably liked you more than you think. [thoughtful] Your thoughts aren't facts. They're guesses your brain makes when it's tired and scared. Overthinking promises that if you just think hard enough, you'll be safe. [warm] But you don't find peace at the end of the loop. You find it by stepping out of it.
-
-[warm, encouraging] So next time your brain hits replay, you don't have to watch.
-
-[slow, warm] Ask if you're solving or spinning. Write it down. Go outside. [warm] And let tomorrow handle tomorrow.
+[upbeat] Three. Say "I don't," not "I can't." [calm] Remember the snack study. [storytelling] In another part of that research, women with a personal health goal used one of the strategies for ten days. Eight out of ten who used "I don't" stuck with their goal the whole time. Only one out of ten using "I can't" did. [thoughtful] "I don't skip workouts." "I don't scroll in bed." [warm] It turns a rule into part of who you are. And people protect who they are.
 ```
 
-**part4f.mp3** (46 words)
+**part4d.mp3** (167 words)
 ```
-[curious] What's the thing your brain replays the most? Tell me in the comments. You might find out you're not the only one. [upbeat] And if your overthinking keeps stopping you from starting things, I made a whole video on why we procrastinate. I'll leave it right here.
+[upbeat] Four. Decide before you're tempted. [storytelling] Behavioral economists Dan Ariely and Klaus Wertenbroch gave people three proofreading jobs to finish. Some had one deadline at the very end. Others set their own deadlines for each one, in advance. [emphatic] The people who set their own deadlines did better work, and turned it in late less often, than the people with one big deadline at the end. [thoughtful] In the moment, you're weaker. So make the decision now, while you're thinking clearly. [light] Pack the gym bag tonight. Tell a friend you'll be there at six.
+
+[upbeat] Five. Never miss twice. [calm] You're going to miss days. Everyone does. And the habit study showed that one miss doesn't ruin anything. [light] A bad day isn't the end of the habit. It's just a bad day. [thoughtful] So make one simple rule. If you miss today, you don't miss tomorrow. [warm] That's what I should have done with my schedule on day three. Not wait for Monday to start over. Just do the next thing, the next day.
+```
+
+**part4e.mp3** (99 words)
+```
+[reflective] Here's what I keep coming back to. [calm] The most disciplined people you know aren't superheroes with endless willpower. [softly] They're just people who made the right thing easy, and the wrong thing hard. [thoughtful] Discipline isn't about fighting yourself every single day. It's about building a life where you don't have to. Motivation gets you started. Your setup keeps you going.
+
+[warm] So you don't need another midnight plan. [warm, encouraging] You need one small change that makes tomorrow a little easier.
+
+[slow, warm] Move one temptation out of reach. Pick one time and one place. [warm] And if you miss a day, just don't miss two.
+```
+
+**part4f.mp3** (43 words)
+```
+[curious] What's one temptation you're going to move out of reach this week? Tell me in the comments. [upbeat] And if you keep putting things off before you even start, I made a whole video on the psychology of procrastination. I'll leave it right here.
 ```
